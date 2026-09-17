@@ -1,8 +1,8 @@
-# Agent guide for nim-proxy
+# Agent guide for flock
 
 ## Start here
 
-nim-proxy is a Rust proxy that makes NVIDIA NIM's free tier usable for agent
+flock is a Rust proxy that makes NVIDIA NIM's free tier usable for agent
 harnesses by pacing requests to the per-key rate limit, load-balancing across
 keys, and keeping client connections alive while they wait.
 
