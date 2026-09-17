@@ -2716,6 +2716,15 @@ async fn observation_preserves_upstream_bytes() {
             .send()
             .await
             .unwrap();
+        // The substance guard rejects empty buffered completions: the
+        // buffered-basic fixture captures a real NVIDIA response whose
+        // message is empty, so it surfaces as 502 instead of a blank 200.
+        // All other fixtures still relay verbatim.
+        let case = evidence["case"].as_str().unwrap();
+        if case == "buffered-basic" {
+            assert_eq!(response.status().as_u16(), 502, "empty buffered completion must be guarded");
+            continue;
+        }
         assert_eq!(
             response.status().as_u16(),
             evidence["status"].as_u64().unwrap() as u16
@@ -2744,7 +2753,7 @@ async fn observation_preserves_upstream_bytes() {
         );
     }
 
-    let invalid_reasoning = r#"{"choices":[{"index":0,"message":{},"finish_reason":"stop"}],"usage":{"prompt_tokens":1,"completion_tokens":2,"completion_tokens_details":{"reasoning_tokens":3}}}"#;
+    let invalid_reasoning = r#"{"choices":[{"index":0,"message":{"role":"assistant","content":"hi"},"finish_reason":"stop"}],"usage":{"prompt_tokens":1,"completion_tokens":2,"completion_tokens_details":{"reasoning_tokens":3}}}"#;
     mock.state.push(Behavior::ExactResponse {
         content_type: "application/json".to_owned(),
         body: invalid_reasoning.to_owned(),
@@ -2929,7 +2938,7 @@ async fn dashboard_observation_quality_is_honest() {
     // the ordinary streamed response below.
     mock.state.push(Behavior::ExactResponse {
         content_type: "application/json".into(),
-        body: r#"{"choices":[],"usage":{"prompt_tokens":0,"completion_tokens":2,"total_tokens":2,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":1}}}"#.into(),
+        body: r#"{"choices":[{"index":0,"message":{"role":"assistant","content":"x"},"finish_reason":"stop"}],"usage":{"prompt_tokens":0,"completion_tokens":2,"total_tokens":2,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":1}}}"#.into(),
     });
     client()
         .post(proxy.url("/v1/chat/completions"))
@@ -2955,7 +2964,7 @@ async fn dashboard_observation_quality_is_honest() {
     // Unavailable: a valid buffered response carries no usage object.
     mock.state.push(Behavior::ExactResponse {
         content_type: "application/json".into(),
-        body: r#"{"choices":[]}"#.into(),
+        body: r#"{"choices":[{"index":0,"message":{"role":"assistant","content":"x"},"finish_reason":"stop"}]}"#.into(),
     });
     client()
         .post(proxy.url("/v1/chat/completions"))
@@ -2987,7 +2996,7 @@ async fn dashboard_observation_quality_is_honest() {
     // bounded usage fields without turning any of them into zero.
     mock.state.push(Behavior::ExactResponse {
         content_type: "application/json".into(),
-        body: r#"{"choices":[],"usage":[]}"#.into(),
+        body: r#"{"choices":[{"index":0,"message":{"role":"assistant","content":"x"},"finish_reason":"stop"}],"usage":[]}"#.into(),
     });
     client()
         .post(proxy.url("/v1/chat/completions"))
@@ -3435,6 +3444,57 @@ async fn login_throttles_after_repeated_failures() {
         .unwrap();
     assert_eq!(r.status(), 429);
     assert_eq!(r.headers().get("retry-after").unwrap(), "60");
+}
+
+/// An empty buffered chat completion (HTTP 200 with no content and no tool
+/// calls) is a routing failure, not a success: it surfaces an honest gateway
+/// error rather than a blank 200. Empty strikes are tracked per model.
+#[tokio::test]
+async fn buffered_empty_completion_is_guarded() {
+    let mock = start_mock().await;
+    let proxy = start_proxy(&mock.url, &[]).await;
+    let _cookie = login(&proxy).await;
+
+    // Empty message: honest gateway error, never a blank 200.
+    mock.state.push(Behavior::ExactResponse {
+        content_type: "application/json".to_owned(),
+        body: r#"{"choices":[{"index":0,"message":{"role":"assistant","content":""},"finish_reason":"stop"}]}"#.to_owned(),
+    });
+    let resp = client()
+        .post(proxy.url("/v1/chat/completions"))
+        .json(&chat_body("empty", false))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(resp.status(), 502, "empty completion surfaces a gateway error");
+
+    // Empty strikes are tracked per model.
+    let m = metrics(&proxy).await;
+    assert!(
+        m.lines().any(|l| l.starts_with("flock_model_empty_strikes{")),
+        "empty strikes are exported"
+    );
+}
+
+/// Tool-call responses carry substance even with no text content: the guard
+/// must not 502 them.
+#[tokio::test]
+async fn buffered_tool_calls_are_substantive() {
+    let mock = start_mock().await;
+    let proxy = start_proxy(&mock.url, &[]).await;
+    mock.state.push(Behavior::ExactResponse {
+        content_type: "application/json".to_owned(),
+        body: r#"{"choices":[{"index":0,"message":{"role":"assistant","tool_calls":[{"id":"1","type":"function","function":{"name":"get_weather","arguments":"{}"}}]},"finish_reason":"tool_calls"}]}"#.to_owned(),
+    });
+    let resp = client()
+        .post(proxy.url("/v1/chat/completions"))
+        .json(&chat_body("tools", false))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(resp.status(), 200, "tool_calls response is substantive");
+    let v: serde_json::Value = resp.json().await.unwrap();
+    assert_eq!(v["choices"][0]["finish_reason"], "tool_calls");
 }
 
 /// A buffered request against an upstream that sends headers then stalls the

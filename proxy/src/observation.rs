@@ -627,6 +627,47 @@ pub(crate) fn observe_buffered(body: &[u8]) -> ResponseObservations {
     state.finish(StreamOutcome::Completed, false, None)
 }
 
+/// Substance check for the empty-completion guard: does this buffered
+/// response body carry any generated content? A chat-completion choice
+/// counts as substantive when any message.content (or delta.content)
+/// is non-blank, or any message.tool_calls (or delta.tool_calls) is a
+/// non-empty array. Bodies without a choices envelope are not chat
+/// completions and pass through untouched.
+///
+/// Computes a single boolean; message content is inspected transiently
+/// and never retained, preserving the observer content-free contract.
+pub(crate) fn has_substance(body: &[u8]) -> bool {
+    let Ok(value) = serde_json::from_slice::<serde_json::Value>(body) else {
+        return true;
+    };
+    let Some(choices) = value.get("choices").and_then(|c| c.as_array()) else {
+        return true;
+    };
+    if choices.is_empty() {
+        return false;
+    }
+    for choice in choices {
+        for part in [choice.get("message"), choice.get("delta")] {
+            let Some(part) = part else { continue };
+            if part
+                .get("tool_calls")
+                .and_then(|t| t.as_array())
+                .is_some_and(|a| !a.is_empty())
+            {
+                return true;
+            }
+            if part
+                .get("content")
+                .and_then(|c| c.as_str())
+                .is_some_and(|s| !s.trim().is_empty())
+            {
+                return true;
+            }
+        }
+    }
+    false
+}
+
 fn unavailable_usage() -> UsageObservations {
     UsageObservations {
         cached_tokens: Observation::Unavailable,
