@@ -1,0 +1,15 @@
+{
+  "name": "nim-bench-dashboard",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot src/server.ts",
+    "start": "bun src/server.ts",
+    "save-all": "python3 scripts/save_all.py"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.2",
+    "hono": "^4.4.0"
+  },
+  "description": "MODEL focus dashboard - NVIDIA NIM community benchmarks - anomaly detection"
+}

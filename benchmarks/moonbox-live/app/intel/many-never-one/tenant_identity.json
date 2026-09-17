@@ -1,0 +1,21 @@
+{
+  "tenant_id": "0d5337bf-4b4e-40c2-a770-06bd6b6723b5",
+  "tenant_status": "active",
+  "provider": "tidb_cloud_native_shared",
+  "spending_limit": 10000,
+  "max_storage": 102400,
+  "max_file_size": 10240,
+  "current_usage": 0,
+  "local_ip": "169.254.68.6",
+  "gateway": "169.254.68.5",
+  "hostname": "c858102b",
+  "container_id": "pzzb22q4nstpoevw2p6ga2mfqnmuokavwugvcdzd",
+  "sandbox_id": "018974aa",
+  "drive9_contexts": [
+    "4uw5ya1",
+    "z55fp3a"
+  ],
+  "drive9_server": "10.213.5.144",
+  "portal_backend": "172.29.160.117:443",
+  "envd_backend": "10.133.167.x:49983"
+}

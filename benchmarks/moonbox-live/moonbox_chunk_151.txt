@@ -1,0 +1,78 @@
+sh.team/protos/kimi-go/kimi/datasource/admin/v1.(*ListDataSourceShowcasesResponse).GetNextPageToken
+slices.SortFunc[go.shape.[]github.com/agentable/go-intl/internal/localeid.UnicodeKeyword,go.shape.struct { Key string; Value string }]
+github.com/agentable/go-intl/internal/localeid.uniqueSorted.Keys[go.shape.map[string]bool,go.shape.string,go.shape.bool].func1
+slices.pdqsortCmpFunc[go.shape.struct { Key string; Value string }]
+slices.reverseRangeCmpFunc[go.shape.struct { Key string; Value string }]
+slices.insertionSortCmpFunc[go.shape.struct { Key string; Value string }]
+slices.partitionCmpFunc[go.shape.struct { Key string; Value string }]
+slices.partitionEqualCmpFunc[go.shape.struct { Key string; Value string }]
+slices.partialInsertionSortCmpFunc[go.shape.struct { Key string; Value string }]
+slices.choosePivotCmpFunc[go.shape.struct { Key string; Value string }]
+slices.medianAdjacentCmpFunc[go.shape.struct { Key string; Value string }]
+slices.medianCmpFunc[go.shape.struct { Key string; Value string }]
+slices.order2CmpFunc[go.shape.struct { Key string; Value string }]
+slices.breakPatternsCmpFunc[go.shape.struct { Key string; Value string }]
+slices.heapSortCmpFunc[go.shape.struct { Key string; Value string }]
+slices.siftDownCmpFunc[go.shape.struct { Key string; Value string }]
+type:.eq.github.com/agentable/go-intl/internal/localeid.UnicodeKeyword
+github.com/agentable/go-intl/internal/cldr/codec.StringRefKeyMap[go.shape.[]string]
+type:.eq.github.com/agentable/go-intl/internal/cldr/locale.minimizeSubtagKey
+github.com/agentable/go-intl/internal/cldr/codec.StringRefKeyMap[go.shape.map[string]string]
+github.com/agentable/go-intl/internal/localeid.UnicodeExtension.ValueForKey
+github.com/agentable/go-intl/internal/localeid.UnicodeExtension.TypeForKey
+github.com/agentable/go-intl/internal/collation.init.func1.Keys[go.shape.map[string]bool,go.shape.string,go.shape.bool].2
+github.com/agentable/go-intl/internal/collation.init.func1.Keys[go.shape.map[string]bool,go.shape.string,go.shape.bool].1
+github.com/agentable/go-intl/internal/localeid.UnicodeExtension.Keywords
+slices.Clone[go.shape.[]github.com/agentable/go-intl/internal/localeid.UnicodeKeyword,go.shape.struct { Key string; Value string }]
+github.com/agentable/go-intl/locale.unknownUnicodeKeywords
+github.com/agentable/go-intl/locale.Locale.unicodeExtensionKeywords
+github.com/agentable/go-intl/locale.setUnicodeKeyword
+github.com/agentable/go-intl/locale.extensions.numericKeyword
+github.com/agentable/go-intl/locale.Locale.unicodeExtensionKeywords.Keys[go.shape.map[string]string,go.shape.string,go.shape.string].func1
+github.com/agentable/go-intl/internal/ecma402.extensionKeyStrings
+github.com/agentable/go-intl/internal/cldr/codec.StringRefKeyMap[go.shape.map[string]github.com/agentable/go-intl/internal/cldr/number.compactExponentPatterns]
+github.com/kaptinlin/messageformat-go/mf1.(*Lexer).createToken
+github.com/kaptinlin/messageformat-go/mf1.(*Lexer).NextToken
+github.com/kaptinlin/messageformat-go/mf1.(*Lexer).Tokenize
+github.com/kaptinlin/messageformat-go/mf1.(*MessageFormat).executeTokens
+github.com/kaptinlin/messageformat-go/mf1.(*MessageFormat).executeTokensWithContext
+github.com/kaptinlin/messageformat-go/mf1.(*MessageFormat).executeTokensWithContext.func2
+github.com/kaptinlin/messageformat-go/mf1.(*MessageFormat).executeTokensWithContext.deferwrap3
+github.com/kaptinlin/messageformat-go/mf1.(*MessageFormat).executeTokensWithContext.deferwrap2
+github.com/kaptinlin/messageformat-go/mf1.(*MessageFormat).executeTokensWithContext.func1
+github.com/kaptinlin/messageformat-go/mf1.(*MessageFormat).executeTokensWithContext.deferwrap1
+github.com/kaptinlin/messageformat-go/mf1.(*Parser).checkSelectKey
+github.com/kaptinlin/messageformat-go/mf1.(*Parser).nextToken
+github.com/kaptinlin/messageformat-go/mf1.(*Parser).parseArgToken
+github.com/kaptinlin/messageformat-go/mf1.(*Parser).peekToken
+type:.eq.github.com/kaptinlin/messageformat-go/mf1.LexerToken
+type:.eq.github.com/kaptinlin/messageformat-go/mf1.pluralTokenInfo
+type:.eq.github.com/kaptinlin/messageformat-go/mf1.tokenInfo
+golang.org/x/text/language/display.(*tagIndex).keys
+kimi.darkmatter/packages/i18n/v2.Localize
+kimi.darkmatter/packages/i18n/v2.LocalizerFromContext
+kimi.darkmatter/packages/i18n/v2.Locale.String
+kimi.darkmatter/packages/i18n/v2.Locale.IsValid
+kimi.darkmatter/packages/i18n/v2.Resolve
+kimi.darkmatter/packages/i18n/v2.Resolve.PreferSameScript.func1
+kimi.darkmatter/packages/i18n/v2.BuildSupportedWithPriority
+slices.Sort[go.shape.[]kimi.darkmatter/packages/i18n/v2.Locale,go.shape.string]
+slices.Contains[go.shape.[]kimi.darkmatter/packages/i18n/v2.Locale,go.shape.string]
+slices.Index[go.shape.[]kimi.darkmatter/packages/i18n/v2.Locale,go.shape.string]
+kimi.darkmatter/packages/i18n/v2.(*Locale).IsValid
+kimi.darkmatter/packages/i18n/v2.(*Locale).String
+dev.msh.team/protos/kimi-go/kimi/plugin/v1.(*PluginMCP).GetMcpKey
+dev.msh.team/protos/kimi-go/kimi/plugin/v1.(*RemoteMCP).GetBearerTokenEnvVar
+dev.msh.team/protos/kimi-go/kimi/plugin/v1.(*Plugin).GetKeywords
+dev.msh.team/protos/kimi-go/kimi/plugin/v1.(*ListPublishedPluginsRequest).GetPageToken
+dev.msh.team/protos/kimi-go/kimi/plugin/v1.(*ListPublishedPluginsResponse).GetNextPageToken
+dev.msh.team/protos/kimi-go/kimi/plugin/v1.(*ListPublishedPluginVersionsRequest).GetPageToken
+dev.msh.team/protos/kimi-go/kimi/plugin/v1.(*ListPublishedPluginVersionsResponse).GetNextPageToken
+dev.msh.team/protos/kimi-go/kimi/plugin/showcase/admin/v1.(*ListPluginShowcasesRequest).GetPageToken
+dev.msh.team/protos/kimi-go/kimi/plugin/showcase/admin/v1.(*ListPluginShowcasesResponse).GetNextPageToken
+dev.msh.team/protos/kimi-go/kimi/gateway/doodle/v1.Page.Enum
+dev.msh.team/protos/kimi-go/kimi/gateway/doodle/v1.Page.String
+dev.msh.team/protos/kimi-go/kimi/gateway/doodle/v1.Page.Descriptor
+dev.msh.team/protos/kimi-go/kimi/gateway/doodle/v1.Page.Type
+dev.msh.team/protos/kimi-go/kimi/gateway/doodle/v1.Page.Number
+dev.msh.team/protos/kimi-go/kimi/gateway/doodle/v1.Page.EnumDe

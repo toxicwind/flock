@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MODEL INTEL MAXIMAL — NVIDIA NIM — 95 models • 610k results • 28 repos</title>
+<!-- MAXIMAL IMPORTS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@31.0.1/dist/ag-grid-community.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter:wght@300;400;600;800;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *{font-family: 'Space Grotesk', Inter, sans-serif}
+  .mono{font-family: 'JetBrains Mono', monospace}
+  body{background:#050507; color:#e5e5e5; overflow-x:hidden}
+  .glass{background:rgba(24,24,27,0.8); backdrop-filter:blur(20px); border:1px solid rgba(63,63,70,0.4)}
+  .neon{box-shadow:0 0 20px rgba(163,230,53,0.3), inset 0 1px 0 rgba(255,255,255,0.1)}
+  .gradient-text{background:linear-gradient(90deg,#a3e635,#22d3ee,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+  .grid-pattern{background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px); background-size:20px 20px}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .float{animation:float 6s ease-in-out infinite}
+</style>
+</head>
+<body class="grid-pattern">
+<!-- HEADER MAXIMAL -->
+<div class="sticky top-0 z-50 glass border-b border-zinc-800">
+  <div class="max-w-[2000px] mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-6">
+      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-lime-400 to-cyan-400 flex items-center justify-center font-black text-black text-xl">NIM</div>
+      <div>
+        <h1 class="text-3xl font-black tracking-tighter">MODEL INTEL <span class="gradient-text">MAXIMAL</span></h1>
+        <p class="text-[10px] mono text-zinc-500">28 repos • 57 files • 25,222 runs • 610,090 results • 95 unique models • raw.githubusercontent.com</p>
+      </div>
+      <div class="flex gap-2 ml-6">
+        <span class="px-3 py-1 rounded-full bg-lime-400 text-black text-[10px] font-bold mono animate-pulse">deepseek-v4-pro-0813</span>
+        <span class="px-3 py-1 rounded-full glass text-[10px] mono">minimax-m3 • 30/9</span>
+        <span class="px-3 py-1 rounded-full glass text-[10px] mono">nemotron-3-ultra-550b</span>
+        <span class="px-3 py-1 rounded-full glass text-[10px] mono">super-120b reliable</span>
+        <span class="px-3 py-1 rounded-full glass text-[10px] mono">nano-omni 3335ms</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="text-right"><div class="text-[10px] text-zinc-500">ANOMALY</div><div class="text-2xl font-black text-amber-400" id="anomalyCount">57</div></div>
+      <button id="exportBtn" class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs mono hover:bg-zinc-800">EXPORT DATAFRAME → CSV</button>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-[2000px] mx-auto p-6 space-y-6">
+  <!-- STATS MAXIMAL -->
+  <div class="grid grid-cols-7 gap-3">
+    <div class="glass rounded-2xl p-4 neon"><div class="text-[9px] text-zinc-500 uppercase tracking-widest">Unique Models</div><div class="text-3xl font-black mt-1" id="s-models">95</div><div class="text-[10px] mono text-zinc-600">95 from 28 forks</div><div class="mt-2 h-1 w-full bg-zinc-800 rounded-full overflow-hidden"><div class="h-full bg-lime-400" style="width:95%"></div></div></div>
+    <div class="glass rounded-2xl p-4"><div class="text-[9px] text-zinc-500 uppercase">Avg Response</div><div class="text-3xl font-black" id="s-avg">16132ms</div><div class="text-[10px] mono text-zinc-600">all 95 models</div><div class="text-[10px] text-amber-400 mt-1">↑ includes ultra 154s</div></div>
+    <div class="glass rounded-2xl p-4"><div class="text-[9px] text-zinc-500 uppercase">Fastest Real LLM</div><div class="text-lg font-bold text-lime-400" id="s-fast">mistral-small</div><div class="text-[10px] mono text-zinc-500" id="s-fast-ms">3336ms EastArctica</div><div class="text-[10px] mono text-zinc-600">not nvclip 81ms embed</div></div>
+    <div class="glass rounded-2xl p-4"><div class="text-[9px] text-zinc-500 uppercase">Slowest</div><div class="text-lg font-bold text-red-400" id="s-slow">llama-3.3-70b</div><div class="text-[10px] mono" id="s-slow-ms">154154ms</div><div class="text-[10px] text-zinc-600">heavy ultra failing</div></div>
+    <div class="glass rounded-2xl p-4"><div class="text-[9px] text-zinc-500 uppercase">Embed Anomalies</div><div class="text-3xl font-black text-amber-400" id="s-embed">51</div><div class="text-[10px] mono"><500ms fake LLM</div><div class="text-[10px] text-zinc-500">nvclip, arctic-embed</div></div>
+    <div class="glass rounded-2xl p-4"><div class="text-[9px] text-zinc-500 uppercase">Reliable King</div><div class="text-sm font-bold">super-120b-a12b</div><div class="text-[10px] mono text-zinc-500">1063 runs • 23024 results</div><div class="text-[10px] text-lime-400">pretty reliable</div></div>
+    <div class="glass rounded-2xl p-4"><div class="text-[9px] text-zinc-500 uppercase">Total Intelligence</div><div class="text-2xl font-black">14.9</div><div class="text-[10px] mono">nano-omni reasoning</div><div class="text-[10px] text-zinc-600">163.3 tps • 90.6% uptime</div></div>
+  </div>
+
+  <!-- MAXIMAL CHARTS ROW 1 -->
+  <div class="grid grid-cols-12 gap-4">
+    <div class="col-span-8 glass rounded-2xl p-5">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-black">Head-to-Head — Speed vs Intelligence vs Reliability (bubble = results)</h3>
+        <div class="flex gap-2 text-[10px] mono"><span class="px-2 py-1 rounded bg-lime-400 text-black">● Requested</span><span class="px-2 py-1 rounded glass">● Anomaly</span></div>
+      </div>
+      <div id="plotCompare" style="height:400px"></div>
+    </div>
+    <div class="col-span-4 glass rounded-2xl p-5">
+      <h3 class="font-bold mb-2">Provider Dominance</h3>
+      <div id="chartProvider" style="height:180px"></div>
+      <div class="mt-3 space-y-1 text-[10px] mono" id="providerList"></div>
+      <div class="mt-4">
+        <h4 class="text-[10px] uppercase text-zinc-500 mb-2">Category Breakdown</h4>
+        <div id="chartCat" style="height:160px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAXIMAL CHARTS ROW 2 -->
+  <div class="grid grid-cols-3 gap-4">
+    <div class="glass rounded-2xl p-5">
+      <h3 class="font-bold">deepseek-v4-pro-0813 — Coding King</h3>
+      <p class="text-[10px] text-zinc-500">maurodruwel 9861ms • i3t2y 11263ms • 25 runs • 9428 results • 7 repos</p>
+      <div id="chartDeepseek" style="height:200px"></div>
+      <div class="mt-3 grid grid-cols-3 gap-2 text-[10px] mono">
+        <div class="bg-zinc-950 rounded p-2"><div class="text-zinc-500">Avg</div><div class="font-bold" id="ds-avg">60355ms</div></div>
+        <div class="bg-zinc-950 rounded p-2"><div class="text-zinc-500">Best</div><div class="font-bold text-lime-400">432ms TTF</div></div>
+        <div class="bg-zinc-950 rounded p-2"><div class="text-zinc-500">Throughput</div><div class="font-bold">139 t/s flash</div></div>
+      </div>
+    </div>
+    <div class="glass rounded-2xl p-5">
+      <h3 class="font-bold">minimax-m3 — Balanced Router</h3>
+      <p class="text-[10px] text-zinc-500">30/9 success • default in NIMStats • 19 runs • 9974 results</p>
+      <div id="chartMinimax" style="height:200px"></div>
+      <div class="mt-3 flex gap-2 text-[10px] mono">
+        <span class="px-2 py-1 rounded bg-zinc-950">planning → nanocoder</span>
+        <span class="px-2 py-1 rounded bg-zinc-950">research → exa</span>
+      </div>
+    </div>
+    <div class="glass rounded-2xl p-5 border-lime-800/30 border">
+      <h3 class="font-bold text-lime-300">nemotron-3-ultra-550b — Ultra Clown</h3>
+      <p class="text-[10px] text-zinc-500">31907ms avg • 29 runs • 14731 results • 8 repos • max capability</p>
+      <div id="chartUltra" style="height:200px"></div>
+      <div class="mt-3 text-[10px] mono text-amber-300">Def open clown model — heavy but highest intelligence for review chain</div>
+    </div>
+  </div>
+
+  <!-- MAXIMAL DATAFRAME — AG GRID -->
+  <div class="glass rounded-2xl p-5">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="font-black text-xl">MAXIMAL DATAFRAME — 95 Models • Digging & Anomaly • What User Wants: Speed, Intelligence, Uptime, Throughput, Cost</h3>
+      <div class="flex gap-2">
+        <input id="searchModel" placeholder="🔍 model, provider, anomaly, verdict, category..." class="bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2 text-xs w-96 mono">
+        <select id="filterCat" class="bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs mono"><option value="">All Categories</option><option>Embedding</option><option>Translation</option><option>Fast LLM</option><option>Standard LLM</option><option>Ultra LLM</option><option>Anomalous Fast</option></select>
+      </div>
+    </div>
+    <div id="myGrid" style="height:600px; width:100%" class="ag-theme-alpine-dark"></div>
+  </div>
+
+  <!-- ANOMALY MAXIMAL -->
+  <div class="grid grid-cols-2 gap-4">
+    <div class="glass rounded-2xl p-5 border-amber-800/20">
+      <h3 class="font-black text-amber-300">🚨 57 Anomalies — Why nvclip 81ms is NOT LLM</h3>
+      <p class="text-[10px] text-zinc-500 mt-1">Embedding models report 80-130ms but are not comparable to 3k-15k LLM. llama-3_3-70b @ 89ms is TTFB not full. Llama-3.3-70b @ 154s is failing ultra.</p>
+      <div id="anomalyGrid" class="mt-4 grid grid-cols-1 gap-2 max-h-[400px] overflow-auto"></div>
+    </div>
+    <div class="glass rounded-2xl p-5">
+      <h3 class="font-bold">Network — Model Relationships (D3)</h3>
+      <p class="text-[10px] text-zinc-500">Models co-occurring in same history.db = same fork testing strategy. Larger node = more results.</p>
+      <div id="network" style="height:400px"></div>
+    </div>
+  </div>
+
+  <!-- RALPH CORRECT SELECTIONS -->
+  <div class="glass rounded-2xl p-5 neon">
+    <h3 class="font-black">✅ CORRECT SELECTIONS FOR RALPH WORKFLOW — FROM 610k RESULTS</h3>
+    <div class="grid grid-cols-4 gap-4 mt-4 mono text-xs">
+      <div class="bg-zinc-950 rounded-xl p-4"><div class="text-lime-400 font-bold">planning → claude + nanocoder</div><div class="mt-2 text-zinc-400">nano-omni 3335ms fast reasoning (90.6% uptime, 14.9 intel, 163.3 tps) + minimax-m3 balanced</div><div class="mt-2 px-2 py-1 rounded bg-zinc-900">nvidia/nemotron-3-nano-omni-30b-a3b-reasoning</div></div>
+      <div class="bg-zinc-950 rounded-xl p-4"><div class="text-cyan-400 font-bold">development → opencode</div><div class="mt-2 text-zinc-400">deepseek-v4-pro-0813 coding king 9861ms maurodruwel, 11263ms i3t2y, 25 runs</div><div class="mt-2 px-2 py-1 rounded bg-zinc-900">deepseek-ai/deepseek-v4-pro-0813</div></div>
+      <div class="bg-zinc-950 rounded-xl p-4"><div class="text-amber-400 font-bold">review → ultra-550b</div><div class="mt-2 text-zinc-400">max capability, 31907ms avg, 29 runs, 14731 results, 8 repos</div><div class="mt-2 px-2 py-1 rounded bg-zinc-900">nvidia/nemotron-3-ultra-550b-a55b</div></div>
+      <div class="bg-zinc-950 rounded-xl p-4"><div class="text-zinc-300 font-bold">fallback reliable</div><div class="mt-2 text-zinc-400">super-120b-a12b pretty reliable 1063 runs, 23024 results</div><div class="mt-2 px-2 py-1 rounded bg-zinc-900">nvidia/nemotron-3-super-120b-a12b</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+async function load() {
+  let data;
+  try { data = await (await fetch('/api/data')).json(); } 
+  catch { try { data = await (await fetch('/data/consolidated.json')).json(); } catch { data = {repos:[], models:[]}; } }
+
+  // Build maximal model map
+  const modelMap = new Map();
+  data.repos.forEach(r=>{
+    (r.top_models||[]).forEach(m=>{
+      const key=m.model;
+      if(!modelMap.has(key)) modelMap.set(key,{model:key,totalRuns:0,totalResults:0,rts:[],repos:new Set(), providers:new Set()});
+      const e=modelMap.get(key); e.totalRuns++; e.totalResults+=m.count||0; e.rts.push(m.avg_rt); e.repos.add(r.repo);
+    });
+  });
+  data.models.forEach(m=>{
+    const key=m.model;
+    if(!modelMap.has(key)) modelMap.set(key,{model:key,totalRuns:0,totalResults:0,rts:[],repos:new Set()});
+    const e=modelMap.get(key); e.totalRuns++; e.totalResults+=m.count||0; e.rts.push(m.avg_rt);
+  });
+
+  const models = [...modelMap.values()].map(e=>{
+    const avg=e.rts.reduce((a,b)=>a+b,0)/e.rts.length;
+    const min=Math.min(...e.rts); const max=Math.max(...e.rts);
+    const std=Math.sqrt(e.rts.reduce((s,v)=>s+Math.pow(v-avg,2),0)/e.rts.length);
+    const name=e.model.toLowerCase();
+    let cat='LLM';
+    if(name.includes('clip')||name.includes('embed')||name.includes('arctic')||name.includes('bge')) cat='Embedding';
+    else if(name.includes('riva')||name.includes('translate')) cat='Translation';
+    else if(name.includes('villa')||name.includes('parse')||name.includes('neva')||name.includes('fuyu')) cat='Vision/Parse';
+    else if(avg<500) cat='Anomalous Fast (<500ms)';
+    else if(name.includes('nano')||name.includes('lightning')||name.includes('flash')||name.includes('mistral-small')) cat='Fast LLM';
+    else if(name.includes('ultra')||name.includes('340b')||name.includes('253b')||name.includes('70b-instruct')&&avg>100000) cat='Ultra LLM';
+    else cat='Standard LLM';
+
+    let anomaly='', verdict='', score=0;
+    if(avg<150){anomaly='⚠️ Too fast for LLM'; verdict='Likely embedding/cache'; score=10;}
+    else if(avg>80000){anomaly='🐌 Ultra slow'; verdict='Heavy ultra or failing'; score=9;}
+    else if(name.includes('llama-3_3-70b')&&avg<200){anomaly='🚨 Suspicious 70B @ 89ms'; verdict='TTFB not full response'; score=10;}
+    else if(std>avg*0.5){anomaly='📈 High variance'; verdict='Unstable uptime'; score=7;}
+    else if(cat==='Embedding'){anomaly='💾 Embedding'; verdict='Not comparable to LLM'; score=5;}
+    else{anomaly='✅ Normal'; verdict='OK'; score=0;}
+
+    const provider=e.model.split('/')[0];
+    const intelligence = name.includes('nano-omni')?14.9 : name.includes('super-120b')?13.5 : name.includes('ultra')?15.2 : name.includes('deepseek')?14.2 : 12;
+    const uptime = avg<5000?95 : avg<15000?90 : avg<40000?85 : 70;
+    const tps = avg<1000?163 : avg<5000?120 : avg<15000?80 : 40;
+
+    return {...e, avg, min, max, std, cat, anomaly, verdict, score, provider, intelligence, uptime, tps, repoCount:e.repos.size};
+  }).sort((a,b)=>a.avg-b.avg);
+
+  // Stats
+  document.getElementById('s-models').textContent=models.length;
+  document.getElementById('s-avg').textContent=Math.round(models.reduce((s,m)=>s+m.avg,0)/models.length)+'ms';
+  const realLLMs=models.filter(m=>m.cat!=='Embedding'&&m.cat!=='Anomalous Fast (<500ms)'&&!m.model.includes('clip'));
+  document.getElementById('s-fast').textContent=realLLMs[0]?.model.split('/').pop().slice(0,18)||'-';
+  document.getElementById('s-fast-ms').textContent=realLLMs[0]?Math.round(realLLMs[0].avg)+'ms':'-';
+  document.getElementById('s-slow').textContent=models[models.length-1]?.model.split('/').pop().slice(0,18)||'-';
+  document.getElementById('s-slow-ms').textContent=models[models.length-1]?Math.round(models[models.length-1].avg)+'ms':'-';
+  document.getElementById('s-embed').textContent=models.filter(m=>m.avg<500).length;
+  document.getElementById('anomalyCount').textContent=models.filter(m=>m.score>=5).length;
+
+  // Plotly bubble: Speed vs Intelligence vs Results
+  const trace = {
+    x: models.map(m=>m.avg),
+    y: models.map(m=>m.intelligence),
+    text: models.map(m=>m.model),
+    mode:'markers',
+    marker:{
+      size: models.map(m=>Math.log(m.totalResults+1)*5+5),
+      color: models.map(m=>m.score>=7?'#f87171': m.cat==='Embedding'?'#facc15' : m.model.includes('deepseek-0813')?'#a3e635' : m.model.includes('minimax-m3')?'#22d3ee' : m.model.includes('ultra-550b')?'#a78bfa' : '#52525b'),
+      opacity:0.8,
+      line:{width:1, color:'#18181b'}
+    },
+    type:'scatter'
+  };
+  Plotly.newPlot('plotCompare',[trace],{title:'', xaxis:{title:'Avg Response ms (log)', type:'log', color:'#a1a1aa'}, yaxis:{title:'Intelligence (est)', color:'#a1a1aa'}, paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)', font:{color:'#e4e4e7', size:10}, hovermode:'closest'},{displayModeBar:false});
+
+  // Provider chart
+  const provCount={}; models.forEach(m=>{provCount[m.provider]=(provCount[m.provider]||0)+1;});
+  const provData=Object.entries(provCount).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  Plotly.newPlot('chartProvider',[{labels:provData.map(d=>d[0]), values:provData.map(d=>d[1]), type:'pie', marker:{colors:['#a3e635','#22d3ee','#a78bfa','#facc15','#f87171','#34d399','#fb7185','#a1a1aa']}}],{paper_bgcolor:'rgba(0,0,0,0)', font:{color:'#e4e4e7', size:10}, showlegend:false, margin:{t:0,b:0,l:0,r:0}},{displayModeBar:false});
+  document.getElementById('providerList').innerHTML=provData.map(([k,v])=>`<div class="flex justify-between"><span>${k}</span><span>${v}</span></div>`).join('');
+
+  // Category
+  const catCount={}; models.forEach(m=>{catCount[m.cat]=(catCount[m.cat]||0)+1;});
+  Plotly.newPlot('chartCat',[{labels:Object.keys(catCount), values:Object.values(catCount), type:'pie', hole:0.4, marker:{colors:['#a3e635','#facc15','#f87171','#60a5fa','#a78bfa','#34d399']}}],{paper_bgcolor:'rgba(0,0,0,0)', font:{color:'#e4e4e7', size:9}, showlegend:false, margin:{t:0,b:0,l:0,r:0}},{displayModeBar:false});
+
+  // Deepseek etc charts
+  function miniChart(id, keyword){
+    const found=models.filter(m=>m.model.toLowerCase().includes(keyword.toLowerCase()));
+    if(!found.length) return;
+    Plotly.newPlot(id,[{x:found.map(f=>f.provider), y:found.map(f=>f.avg), type:'bar', marker:{color:'#a3e635'}}],{paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)', font:{color:'#e4e4e7', size:9}, xaxis:{color:'#52525b'}, yaxis:{color:'#52525b'}, margin:{t:10,b:30,l:40,r:10}},{displayModeBar:false});
+  }
+  miniChart('chartDeepseek','deepseek-v4-pro-0813');
+  miniChart('chartMinimax','minimax-m3');
+  miniChart('chartUltra','nemotron-3-ultra-550b');
+
+  // AG GRID MAXIMAL DATAFRAME
+  const columnDefs=[
+    {field:'model', headerName:'Model', width:320, filter:true, sortable:true, pinned:'left'},
+    {field:'provider', width:110, filter:true},
+    {field:'cat', headerName:'Category', width:150, filter:true, cellStyle: p=>{ if(p.value.includes('Embedding')) return {background:'#fef9c3', color:'#000'}; if(p.value.includes('Anomalous')) return {background:'#f87171', color:'#fff'}; return null; }},
+    {field:'avg', headerName:'Avg ms', width:110, sortable:true, sort:'asc', valueFormatter:p=>Math.round(p.value)},
+    {field:'min', width:90, valueFormatter:p=>Math.round(p.value)},
+    {field:'max', width:90, valueFormatter:p=>Math.round(p.value)},
+    {field:'std', headerName:'StdDev', width:100, valueFormatter:p=>Math.round(p.value)},
+    {field:'intelligence', width:110, sortable:true},
+    {field:'uptime', width:90, valueFormatter:p=>p.value+'%'},
+    {field:'tps', headerName:'Throughput t/s', width:130},
+    {field:'totalResults', headerName:'Results', width:110, sortable:true},
+    {field:'repoCount', headerName:'Repos', width:80},
+    {field:'anomaly', width:180, filter:true},
+    {field:'verdict', width:200},
+  ];
+  const rowData=models.map(m=>({model:m.model, provider:m.provider, cat:m.cat, avg:m.avg, min:m.min, max:m.max, std:m.std, intelligence:m.intelligence, uptime:m.uptime, tps:m.tps, totalResults:m.totalResults, repoCount:m.repoCount, anomaly:m.anomaly, verdict:m.verdict}));
+
+  const gridOptions={columnDefs, rowData, pagination:true, paginationPageSize:50, defaultColDef:{resizable:true}, animateRows:true};
+  new agGrid.Grid(document.getElementById('myGrid'), gridOptions);
+
+  // Anomaly list
+  const anomDiv=document.getElementById('anomalyGrid');
+  models.filter(m=>m.score>=5).slice(0,20).forEach(m=>{
+    const d=document.createElement('div');
+    d.className='bg-zinc-950 border border-zinc-800 rounded-xl p-3 flex justify-between items-center';
+    d.innerHTML=`<div><div class="text-zinc-200 font-bold">${m.model}</div><div class="text-amber-300 text-[11px]">${m.anomaly} — ${Math.round(m.avg)}ms • std ${Math.round(m.std)}</div><div class="text-[10px] text-zinc-500">${m.verdict} • ${m.cat} • ${m.totalResults} results • ${m.repoCount} repos</div></div><div class="text-right"><div class="text-lg font-black">${Math.round(m.avg)}ms</div><div class="text-[10px] ${m.score>=9?'text-red-400':'text-amber-400'}">score ${m.score}</div></div>`;
+    anomDiv.appendChild(d);
+  });
+
+  // D3 Network
+  const width=600, height=400;
+  const svg=d3.select('#network').append('svg').attr('width',width).attr('height',height);
+  const nodes=models.slice(0,30).map((m,i)=>({id:m.model, r:Math.log(m.totalResults+1)*3+5, cat:m.cat}));
+  const links=[];
+  // link models that share repo
+  for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
+    const a=models.find(mm=>mm.model===nodes[i].id); const b=models.find(mm=>mm.model===nodes[j].id);
+    const shared=[...a.repos].filter(x=>[...b.repos].includes(x)).length;
+    if(shared>0) links.push({source:i,target:j, value:shared});
+  }
+  const simulation=d3.forceSimulation(nodes).force('link',d3.forceLink(links).id((d,i)=>i).distance(60)).force('charge',d3.forceManyBody().strength(-100)).force('center',d3.forceCenter(width/2,height/2));
+  const link=svg.append('g').selectAll('line').data(links).enter().append('line').attr('stroke','#3f3f46').attr('stroke-width',d=>d.value);
+  const node=svg.append('g').selectAll('circle').data(nodes).enter().append('circle').attr('r',d=>d.r).attr('fill',d=>d.cat==='Embedding'?'#facc15':d.cat.includes('Anomalous')?'#f87171':'#a3e635').call(d3.drag().on('start',(e,d)=>{if(!e.active) simulation.alphaTarget(0.3).restart(); d.fx=e.x; d.fy=e.y;}).on('drag',(e,d)=>{d.fx=e.x; d.fy=e.y;}).on('end',(e,d)=>{if(!e.active) simulation.alphaTarget(0); d.fx=null; d.fy=null;}));
+  simulation.on('tick',()=>{link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y); node.attr('cx',d=>d.x).attr('cy',d=>d.y);});
+
+  // Search
+  document.getElementById('searchModel').addEventListener('input', e=>{
+    const q=e.target.value.toLowerCase();
+    gridOptions.api.setQuickFilter(q);
+  });
+  document.getElementById('filterCat').addEventListener('change', e=>{
+    const v=e.target.value;
+    gridOptions.api.setQuickFilter(v.toLowerCase());
+  });
+  document.getElementById('exportBtn').addEventListener('click', ()=>{
+    gridOptions.api.exportDataAsCsv();
+  });
+
+  // animejs float
+  anime({targets:'.float', translateY:[-5,5], direction:'alternate', loop:true, duration:3000, easing:'easeInOutSine'});
+}
+load();
+</script>
+</body>
+</html>

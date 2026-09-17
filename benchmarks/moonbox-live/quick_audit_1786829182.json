@@ -1,0 +1,38 @@
+{
+  "ts": "2026-08-16T05:26:22",
+  "files": {
+    ".env.kimi": {
+      "size": 2056,
+      "exists": true
+    },
+    ".env.keys": {
+      "size": 478,
+      "exists": true
+    },
+    "CREDENTIALS.json": {
+      "size": 426,
+      "exists": true
+    },
+    "API_KEY_STATUS.json": {
+      "size": 855,
+      "exists": true
+    },
+    "all_env_credentials.json": {
+      "size": 7504,
+      "exists": true
+    }
+  },
+  "env": {},
+  "listeners": [
+    ""
+  ],
+  "agent_gw": {
+    "api_key": "sk-kimi-rHmZUSehP4Og8G3uvRYbkIMjUR71n33gobRU6UGKWBMlDnYQQs70mi6L0apkzqy4",
+    "base_url": "https://agent-gw.kimi.com/coding",
+    "kimi_chat_id": "1a0073ef-f1c2-8272-8000-0951f5f99721"
+  },
+  "envd_pid": "84",
+  "portal_pid": "69",
+  "drive9_pid": "783",
+  "kernel_pid": "78\n6053"
+}

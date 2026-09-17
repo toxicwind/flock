@@ -1,0 +1,205 @@
+/*
+ * kimi-widget 设计系统 display foundation,注入 show_widget 内联卡片的包装 HTML(见 ShowWidgetBlock.kt)。
+ * 来源(kimi_widget_skill_css_deliver 交付):
+ *   - css/styles.css:token 真值(--seo-chat-* / --font-* / motion,light + dark 两套)与基础 reset;
+ *   - css/widget-display-foundation.ts:TOKEN_ALIASES(--kimi-* / --color-* 别名)与基础排版。
+ * 别名用 var() 间接引用真值,深色模式只覆盖 :root.dark 的真值即可自动跟随。
+ * skill 交付的 token 更新时同步此文件。
+ */
+:root {
+  color-scheme: light;
+  --color-bg: #ffffff;
+  --color-border: #e5e5e5;
+  --color-text-secondary: #737373;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", Monaco, "Fira Code", "Courier New", monospace;
+  --seo-chat-Colors-KMBlue: #1783ff;
+  --seo-chat-Colors-KMBlue-hover: rgba(22, 127, 247, 1);
+  --seo-chat-Colors-Red: #ff3849;
+  --seo-chat-Colors-Green: #16c456;
+  --seo-chat-Colors-Yellow: #ffd230;
+  --seo-chat-Colors-Orange: #ff9500;
+  --seo-chat-Colors-Purple: #985ffb;
+  --seo-chat-Chart-Green: #7eb233;
+  --seo-chat-Chart-Purple: #a44185;
+  --seo-chat-Chart-Neutral: #b2b2b2;
+  --seo-chat-Bg-Primary: #ffffff;
+  --seo-chat-Bg-Primary-hover: rgba(247, 247, 247, 1);
+  --seo-chat-Bg-Secondary: #f5f5f5;
+  --seo-chat-BgGp-Secondary: #ffffff;
+  --seo-chat-BgGp-Secondary-hover: rgba(247, 247, 247, 1);
+  --seo-chat-Labels-Primary: rgba(0, 0, 0, 0.9);
+  --seo-chat-Labels-Primary-hover: rgba(37, 37, 37, 1);
+  --seo-chat-Labels-Primary-active: rgba(0, 0, 0, 0.905);
+  --seo-chat-Labels-Secondary: rgba(0, 0, 0, 0.6);
+  --seo-chat-Labels-Tertiary: rgba(0, 0, 0, 0.45);
+  --seo-chat-Labels-Quaternary: rgba(0, 0, 0, 0.27);
+  --seo-chat-Fills-F1: rgba(0, 0, 0, 0.03);
+  --seo-chat-Fills-F1-hover: rgba(0, 0, 0, 0.06);
+  --seo-chat-Fills-F1-active: rgba(0, 0, 0, 0.079);
+  --seo-chat-Fills-F2: rgba(0, 0, 0, 0.05);
+  --seo-chat-Fills-F2-hover: rgba(0, 0, 0, 0.079);
+  --seo-chat-Fills-F2-active: rgba(0, 0, 0, 0.098);
+  --seo-chat-Fills-F3: rgba(0, 0, 0, 0.15);
+  --seo-chat-Fills-F4: rgba(0, 0, 0, 0.25);
+  --seo-chat-MaskBg-Icon: rgba(0, 0, 0, 0.3);
+  --seo-chat-MaskBg-Icon-hover: rgba(0, 0, 0, 0.5);
+  --seo-chat-Separators-S1: rgba(0, 0, 0, 0.13);
+  --seo-chat-Separators-S1-hover: rgba(0, 0, 0, 0.156);
+  --seo-chat-Separators-S1-active: rgba(0, 0, 0, 0.173);
+  --seo-chat-Others-BubbleGray_PC: #f5f5f5;
+  --seo-chat-Others-LightRedBg: rgba(255, 77, 77, 0.1);
+  --seo-chat-Others-LightGreenBg: rgba(22, 196, 86, 0.1);
+  --seo-chat-Others-LightOrangeBg: rgba(255, 149, 0, 0.1);
+  --seo-chat-Others-LightYellowBg: rgba(255, 200, 0, 0.2);
+  --seo-chat-Others-KMBlue10: rgba(23, 131, 255, 0.1);
+  --seo-chat-Always-White: #ffffff;
+  --seo-chat-ui-B1-font-size: 15px;
+  --seo-chat-ui-B1-line-height: 22px;
+  --seo-chat-markdown-H1-font-size: 20px;
+  --seo-chat-markdown-H1-line-height: 32px;
+  --seo-chat-markdown-H2-font-size: 18px;
+  --seo-chat-markdown-H2-line-height: 28px;
+  --seo-chat-markdown-B1-font-size: 16px;
+  --seo-chat-markdown-B1-line-height: 26px;
+  --seo-chat-markdown-B3-font-size: 14px;
+  --seo-chat-markdown-B3-line-height: 22px;
+  --seo-chat-markdown-code-font-size: 14px;
+  --seo-chat-markdown-code-line-height: 22px;
+  --Colors-KMBlue: var(--seo-chat-Colors-KMBlue);
+  --Colors-KMBlue-hover: var(--seo-chat-Colors-KMBlue-hover);
+  --Colors-KMBlue-active: var(--seo-chat-Colors-KMBlue-hover);
+  --Bg-Primary: var(--seo-chat-Bg-Primary);
+  --Bg-Secondary: var(--seo-chat-Bg-Secondary);
+  --BgGp-Secondary: var(--seo-chat-BgGp-Secondary);
+  --Labels-Primary: var(--seo-chat-Labels-Primary);
+  --Labels-Secondary: var(--seo-chat-Labels-Secondary);
+  --Labels-Tertiary: var(--seo-chat-Labels-Tertiary);
+  --Labels-Quaternary: var(--seo-chat-Labels-Quaternary);
+  --Fills-F1: var(--seo-chat-Fills-F1);
+  --Fills-F2: var(--seo-chat-Fills-F2);
+  --Fills-F3: var(--seo-chat-Fills-F3);
+  --Separators-S1: var(--seo-chat-Separators-S1);
+  --t-micro: 60ms;
+  --t-fast: 120ms;
+  --t-normal: 200ms;
+  --t-slow: 300ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-motion-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-motion-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-motion-panel: cubic-bezier(0.32, 0.72, 0, 1);
+  --motion-popover-duration: 140ms;
+  --motion-popover-offset: 4px;
+  --motion-dialog-duration: 180ms;
+  --motion-dialog-exit-duration: 135ms;
+  --motion-view-duration: 180ms;
+  --motion-panel-duration: 240ms;
+  --motion-list-duration: 180ms;
+  --app-scrollbar-size: 8px;
+  --app-scrollbar-thumb: var(--seo-chat-Separators-S1);
+  --app-scrollbar-thumb-hover: var(--seo-chat-Labels-Tertiary);
+  --kimi-color-text-primary: var(--seo-chat-Labels-Primary);
+  --kimi-color-text-secondary: var(--seo-chat-Labels-Secondary);
+  --kimi-color-text-tertiary: var(--seo-chat-Labels-Tertiary);
+  --kimi-color-text-quaternary: var(--seo-chat-Labels-Quaternary);
+  --kimi-color-surface: var(--seo-chat-Bg-Primary);
+  --kimi-color-surface-muted: var(--seo-chat-Fills-F1);
+  --kimi-color-surface-raised: var(--seo-chat-BgGp-Secondary);
+  --kimi-color-surface-strong: var(--seo-chat-Fills-F2);
+  --kimi-color-border: var(--seo-chat-Separators-S1);
+  --kimi-color-accent: var(--seo-chat-Colors-KMBlue);
+  --kimi-color-danger: var(--seo-chat-Colors-Red);
+  --kimi-color-positive: var(--seo-chat-Colors-Green);
+  --kimi-color-warning: var(--seo-chat-Colors-Orange);
+  --kimi-chart-1: var(--seo-chat-Colors-KMBlue);
+  --kimi-chart-2: var(--seo-chat-Colors-Red);
+  --kimi-chart-3: var(--seo-chat-Chart-Green);
+  --kimi-chart-4: var(--seo-chat-Chart-Purple);
+  --kimi-chart-5: var(--seo-chat-Chart-Neutral);
+  --kimi-font-sans: var(--font-sans);
+  --kimi-font-mono: var(--font-mono);
+  --color-text-primary: var(--seo-chat-Labels-Primary);
+  --color-background-primary: var(--seo-chat-Bg-Primary);
+  --color-background-secondary: var(--seo-chat-Fills-F1);
+  --color-border-tertiary: var(--seo-chat-Separators-S1);
+  --color-accent: var(--seo-chat-Colors-KMBlue);
+  --color-danger: var(--seo-chat-Colors-Red);
+}
+:root.dark {
+  color-scheme: dark;
+  --color-bg: #121212;
+  --color-border: #404040;
+  --color-text-secondary: #a3a3a3;
+  --seo-chat-Colors-KMBlue: #1a88ff;
+  --seo-chat-Colors-KMBlue-hover: rgba(37, 142, 255, 1);
+  --seo-chat-Colors-Red: #ff4756;
+  --seo-chat-Colors-Green: #32ff7d;
+  --seo-chat-Colors-Yellow: #ffd230;
+  --seo-chat-Colors-Orange: #ff9f0a;
+  --seo-chat-Colors-Purple: #a16bff;
+  --seo-chat-Chart-Green: #dcdcaa;
+  --seo-chat-Chart-Purple: #ce9178;
+  --seo-chat-Chart-Neutral: #424242;
+  --seo-chat-Bg-Primary: #121212;
+  --seo-chat-Bg-Primary-hover: rgba(30, 30, 30, 1);
+  --seo-chat-Bg-Secondary: #1f1f1f;
+  --seo-chat-BgGp-Secondary: #1f1f1f;
+  --seo-chat-BgGp-Secondary-hover: rgba(42, 42, 42, 1);
+  --seo-chat-Labels-Primary: rgba(255, 255, 255, 0.84);
+  --seo-chat-Labels-Primary-hover: rgba(255, 255, 255, 0.848);
+  --seo-chat-Labels-Primary-active: rgba(255, 255, 255, 0.856);
+  --seo-chat-Labels-Secondary: rgba(255, 255, 255, 0.56);
+  --seo-chat-Labels-Tertiary: rgba(255, 255, 255, 0.42);
+  --seo-chat-Labels-Quaternary: rgba(255, 255, 255, 0.28);
+  --seo-chat-Fills-F1: rgba(255, 255, 255, 0.05);
+  --seo-chat-Fills-F1-hover: rgba(255, 255, 255, 0.08);
+  --seo-chat-Fills-F1-active: rgba(255, 255, 255, 0.145);
+  --seo-chat-Fills-F2: rgba(255, 255, 255, 0.1);
+  --seo-chat-Fills-F2-hover: rgba(255, 255, 255, 0.145);
+  --seo-chat-Fills-F2-active: rgba(255, 255, 255, 0.19);
+  --seo-chat-Fills-F3: rgba(255, 255, 255, 0.18);
+  --seo-chat-Fills-F4: rgba(255, 255, 255, 0.25);
+  --seo-chat-MaskBg-Icon: rgba(0, 0, 0, 0.45);
+  --seo-chat-MaskBg-Icon-hover: rgba(0, 0, 0, 0.65);
+  --seo-chat-Separators-S1: rgba(255, 255, 255, 0.12);
+  --seo-chat-Separators-S1-hover: rgba(255, 255, 255, 0.164);
+  --seo-chat-Separators-S1-active: rgba(255, 255, 255, 0.208);
+  --seo-chat-Others-BubbleGray_PC: #292929;
+  --seo-chat-Others-LightRedBg: rgba(255, 82, 82, 0.1);
+  --seo-chat-Others-LightGreenBg: rgba(22, 196, 86, 0.1);
+  --seo-chat-Others-LightOrangeBg: rgba(255, 159, 10, 0.1);
+  --seo-chat-Others-LightYellowBg: rgba(255, 210, 48, 0.2);
+  --seo-chat-Others-KMBlue10: rgba(26, 136, 255, 0.1);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+* { box-sizing: border-box; }
+html, body {
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  overflow-x: hidden;
+  color: var(--kimi-color-text-primary, var(--color-text-primary, CanvasText));
+  font-family: var(--kimi-font-sans, var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif));
+  font-size: 16px;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+body { padding: 8px; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+a { color: var(--kimi-color-accent, var(--color-accent, currentColor)); }
+::-webkit-scrollbar { width: var(--app-scrollbar-size); height: var(--app-scrollbar-size); }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { border-radius: 4px; background: var(--app-scrollbar-thumb); }

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Live strace patcher for portal/envd processes
+PID="${1:-$(pgrep -f 'portal|envd' | head -1)}"
+[ -z "$PID" ] && { echo "No portal/envd PID found"; exit 1; }
+echo "=== STRACE HOTFIX PID $PID ==="
+timeout 5 strace -p "$PID" -e trace=network,connect,sendto,recvfrom -s 256 2>&1 | head -50 || echo "strace timeout or permission denied"

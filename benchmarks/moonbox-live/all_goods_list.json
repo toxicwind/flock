@@ -1,0 +1,242 @@
+{
+  "goods": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "title": "Adagio",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_FREE",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "0"
+        }
+      ],
+      "transitionSummary": {},
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_MONTH"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789030",
+      "title": "Moderato",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_BASIC",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "18000"
+        }
+      ],
+      "transitionSummary": {},
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_YEAR"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+      "title": "Moderato",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_BASIC",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "1900"
+        }
+      ],
+      "transitionSummary": {},
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_MONTH"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789024",
+      "title": "Allegretto",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_INTERMEDIATE",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "37200"
+        }
+      ],
+      "transitionSummary": {
+        "action": "SUBSCRIPTION_ACTION_UPGRADE",
+        "refundAmount": {
+          "currency": "USD",
+          "priceInCents": "1696"
+        }
+      },
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_YEAR"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+      "title": "Allegretto",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_INTERMEDIATE",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "3900"
+        }
+      ],
+      "transitionSummary": {},
+      "subscribed": true,
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_MONTH"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789021",
+      "title": "Allegro",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_ADVANCED",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "94800"
+        }
+      ],
+      "transitionSummary": {
+        "action": "SUBSCRIPTION_ACTION_UPGRADE",
+        "refundAmount": {
+          "currency": "USD",
+          "priceInCents": "1696"
+        }
+      },
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_YEAR"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789017",
+      "title": "Allegro",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_ADVANCED",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "9900"
+        }
+      ],
+      "transitionSummary": {
+        "action": "SUBSCRIPTION_ACTION_UPGRADE",
+        "refundAmount": {
+          "currency": "USD",
+          "priceInCents": "1696"
+        }
+      },
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_MONTH"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    },
+    {
+      "id": "c3d4e5f6-a7b8-9012-cdef-345678901244",
+      "title": "Vivace",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_STANDARD",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "190800"
+        }
+      ],
+      "transitionSummary": {
+        "action": "SUBSCRIPTION_ACTION_UPGRADE",
+        "refundAmount": {
+          "currency": "USD",
+          "priceInCents": "1696"
+        }
+      },
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_YEAR"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    },
+    {
+      "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+      "title": "Vivace",
+      "durationDays": 30,
+      "useRegion": "REGION_OVERSEA",
+      "createTime": "2025-09-03T09:26:48.609Z",
+      "updateTime": "2025-09-03T09:26:48.609Z",
+      "membershipLevel": "LEVEL_STANDARD",
+      "amounts": [
+        {
+          "currency": "USD",
+          "priceInCents": "19900"
+        }
+      ],
+      "transitionSummary": {
+        "action": "SUBSCRIPTION_ACTION_UPGRADE",
+        "refundAmount": {
+          "currency": "USD",
+          "priceInCents": "1696"
+        }
+      },
+      "billingCycle": {
+        "duration": 1,
+        "timeUnit": "TIME_UNIT_MONTH"
+      },
+      "type": "GOODS_TYPE_SUBSCRIPTION",
+      "domain": "DOMAIN_NEXUS",
+      "stock": {}
+    }
+  ]
+}

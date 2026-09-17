@@ -1,0 +1,823 @@
+use std::fmt::{Debug, Display};
+use std::marker::PhantomData;
+use std::ops::{Deref, Range};
+
+#[cfg(feature = "partial_read_stats")]
+use bitvec::{bitvec, prelude::BitVec};
+use debugid::DebugId;
+use object::read::ReadRef;
+use samply_debugid::CodeId;
+
+use crate::generation::SymbolMapGeneration;
+use crate::SourceFilePathHandle;
+
+pub type FileLoadError = Box<dyn std::error::Error + Send + Sync + 'static>;
+pub type FileLoadResult<T> = std::result::Result<T, FileLoadError>;
+
+/// An address that can be looked up in a `SymbolMap`.
+///
+/// You'll usually want to use `LookupAddress::Relative`, i.e. addresses that
+/// are relative to some "image base address". This form works with all types
+/// of symbol maps across all platforms.
+///
+/// When testing, be aware that many binaries are laid out in such a way that
+/// all three representations of addresses are the same: The image base address
+/// is often zero and the sections are often laid out so that each section's
+/// address matches its file offset. So if you misrepresent an address in
+/// the wrong form, you might not notice it because it still works until you
+/// encounter a more complex binary.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum LookupAddress {
+    /// A relative address is relative to the image base address.
+    ///
+    /// What this means depends on the format of the binary:
+    ///
+    /// - On Windows, a "relative address" is the same as a RVA ("relative virtual
+    ///   address") in the PE file.
+    /// - On macOS, a "relative address" is relative to the start of the `__TEXT`
+    ///   segment.
+    /// - On Linux / ELF, a "relative address" is relative to the address of the
+    ///   first LOAD command in the program header table. In other words, it's
+    ///   relative to the start of the first segment.
+    /// - For Jitdump files, the "relative address" space is a conceptual space
+    ///   in which the code from all `JIT_CODE_LOAD` records is laid out
+    ///   sequentially, starting at 0.
+    ///   So the relative address of an instruction inside a `JIT_CODE_LOAD` record
+    ///   is the sum of the `code_size` fields of all previous `JIT_CODE_LOAD`
+    ///   records plus the offset of the instruction within the code of this
+    ///   `JIT_CODE_LOAD` record.
+    ///
+    /// See [`samply_object::relative_address_base`] for more information.
+    Relative(u32),
+    /// A "stated virtual memory address", i.e. a virtual memory address as
+    /// written down in the binary. In mach-O and ELF, this is the space that
+    /// section addresses and symbol addresses are in. It's the type of address
+    /// you'd pass to the Linux `addr2line` tool.
+    ///
+    /// This type of lookup address is not supported by symbol maps for PDB
+    /// files or Breakpad files.
+    Svma(u64),
+    /// A raw file offset to the point in the binary file where the bytes of the
+    /// instruction are stored for which symbols should be looked up.
+    ///
+    /// On Linux, if you have an "AVMA" (absolute virtual memory address) and
+    /// the `/proc/<pid>/maps` for the process, this is probably the easiest
+    /// form of address to compute, because the process maps give you the file offsets.
+    ///
+    /// However, if you do this, be aware that the file offset often is not
+    /// the same as an SVMA, so expect wrong results if you end up using it in
+    /// places where SVMAs are expected - it might work fine with some binaries
+    /// and then break with others.
+    ///
+    /// File offsets are not supported by symbol maps for PDB files or Breakpad files.
+    FileOffset(u64),
+}
+
+/// In case the loaded binary contains multiple architectures, this specifies
+/// how to resolve the ambiguity. This is only needed on macOS.
+#[derive(Debug, Clone)]
+pub enum MultiArchDisambiguator {
+    /// Disambiguate by CPU architecture (exact match).
+    ///
+    /// This string is a name for what mach-O calls the "CPU type" and "CPU subtype".
+    /// Examples are `x86_64`, `x86_64h`, `arm64`, `arm64e`.
+    ///
+    /// These strings are returned by the mach function `macho_arch_name_for_cpu_type`.
+    Arch(String),
+
+    /// Disambiguate by CPU architecture (best match).
+    ///
+    /// The Vec contains the first choice, followed by acceptable fallback choices.
+    /// Examples are `["arm64e", "arm64"]` or `["x86_64h", "x86_64"]`.
+    /// This is used in cases where you have lost information about the architecture
+    /// you're interested in and just want to hope to get the right one.
+    ///
+    /// The strings are names for what mach-O calls the "CPU type" and "CPU subtype".
+    /// Examples are `x86_64`, `x86_64h`, `arm64`, `arm64e`.
+    ///
+    /// These strings are returned by the mach function `macho_arch_name_for_cpu_type`.
+    BestMatch(Vec<String>),
+
+    /// Disambiguate by CPU architecture and find the best match for the architecture
+    /// that is currently executing this code. This is a heuristic, and should only
+    /// be used in cases where you have lost information about the architecture you're
+    /// interested in.
+    BestMatchForNative,
+
+    /// Disambiguate by `DebugId`.
+    DebugId(DebugId),
+}
+
+/// Information about a library ("binary" / "module" / "DSO") which allows finding
+/// symbol files for it. The information can be partial.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub struct LibraryInfo {
+    pub debug_name: Option<String>,
+    pub debug_id: Option<DebugId>,
+    pub debug_path: Option<String>,
+    pub name: Option<String>,
+    pub code_id: Option<CodeId>,
+    pub path: Option<String>,
+    pub arch: Option<String>,
+}
+
+impl LibraryInfo {
+    /// Fill all `None` fields on this object with the corresponding fields from `other`.
+    ///
+    /// This should only be called if some minimal matching has been established, for
+    /// example if the `code_id` matches or if the combination pair `debug_name, debug_id`
+    /// matches.
+    pub fn absorb(&mut self, other: &LibraryInfo) {
+        if self.debug_name.is_none() && other.debug_name.is_some() {
+            self.debug_name.clone_from(&other.debug_name);
+        }
+        if self.debug_id.is_none() && other.debug_id.is_some() {
+            self.debug_id = other.debug_id;
+        }
+        if self.debug_path.is_none() && other.debug_path.is_some() {
+            self.debug_path.clone_from(&other.debug_path);
+        }
+        if self.name.is_none() && other.name.is_some() {
+            self.name.clone_from(&other.name);
+        }
+        if self.code_id.is_none() && other.code_id.is_some() {
+            self.code_id.clone_from(&other.code_id);
+        }
+        if self.path.is_none() && other.path.is_some() {
+            self.path.clone_from(&other.path);
+        }
+        if self.arch.is_none() && other.arch.is_some() {
+            self.arch.clone_from(&other.arch);
+        }
+    }
+}
+
+/// A pure type-bundle trait that names the [`FileContents`] and [`FileLocation`]
+/// types used together by the sans-IO state machines.
+///
+/// This trait has no methods. Its only role is to pair `F` and `FL` behind a
+/// single type parameter, so generic signatures like `LoadSymbolMap<FT>` can
+/// stay one parameter instead of two. Implementers typically define an empty
+/// struct (or a tag-only type) and write a single trivial impl.
+///
+/// I/O — fetching file bytes, enumerating candidate paths — is the driver's
+/// responsibility and lives outside this trait.
+pub trait FileTypes {
+    type F: FileContents + 'static;
+    type FL: FileLocation + 'static;
+}
+
+/// Provides synchronous access to the raw bytes of a file.
+/// This trait needs to be implemented by the consumer of this crate.
+pub trait FileContents: Send + Sync {
+    /// Must return the length, in bytes, of this file.
+    fn len(&self) -> u64;
+
+    /// Whether the file is empty.
+    fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+
+    /// Must return a slice of the file contents, or an error.
+    /// The slice's lifetime must be valid for the entire lifetime of this
+    /// `FileContents` object. This restriction may be a bit cumbersome to satisfy;
+    /// it's a restriction that's inherited from the `object` crate's `ReadRef` trait.
+    fn read_bytes_at(&self, offset: u64, size: u64) -> FileLoadResult<&[u8]>;
+
+    /// TODO: document
+    fn read_bytes_at_until(&self, range: Range<u64>, delimiter: u8) -> FileLoadResult<&[u8]>;
+
+    /// Append `size` bytes to `buffer`, starting to read at `offset` in the file.
+    /// If successful, `buffer` must have had its len increased exactly by `size`,
+    /// otherwise the caller may panic.
+    fn read_bytes_into(&self, buffer: &mut Vec<u8>, offset: u64, size: usize)
+        -> FileLoadResult<()>;
+}
+
+/// The debug information (function name, file path, line number) for a single frame
+/// at the looked-up address.
+#[derive(Debug, Clone, Default, Hash, PartialEq, Eq)]
+pub struct FrameDebugInfo {
+    /// The function name for this frame, if known.
+    pub function: Option<FunctionNameHandle>,
+    /// The [`SourceFilePathHandle`] for this frame, if known.
+    pub file_path: Option<SourceFilePathHandle>,
+    /// The line number (1-based) for this frame, if known.
+    pub line_number: Option<u32>,
+    /// The column number (1-based) for this frame, if known.
+    pub column_number: Option<u32>,
+    /// The line number (1-based) where this frame's function starts, if known.
+    pub function_start_line: Option<u32>,
+    /// The column number (1-based) where this frame's function starts, if known.
+    pub function_start_column: Option<u32>,
+}
+
+/// A trait which abstracts away the token that identifies a file the driver
+/// should load.
+///
+/// `FileLocation` values are what the sans-IO state machines surface in
+/// [`LoadStep::NeedFile`](crate::LoadStep::NeedFile); the driver translates
+/// them to actual file bytes (an [`FT::F: FileContents`](FileContents)) before
+/// feeding the result back via `provide`.
+///
+/// This is usually something like a `PathBuf`, but it can also be more complicated. For example,
+/// in `wholesym` this is an enum which can refer to a local file or to a file from a symbol
+/// server.
+pub trait FileLocation: Clone + Display {
+    /// Called on a Dyld shared cache location to create a location for a subcache.
+    /// Subcaches are separate files with filenames such as `dyld_shared_cache_arm64e.01`.
+    ///
+    /// The suffix begins with a period.
+    fn location_for_dyld_subcache(&self, suffix: &str) -> Option<Self>;
+
+    /// Called on the location of a debug file in order to create a location for an
+    /// external object file, based on an absolute path found in the "object map" of
+    /// the original file.
+    fn location_for_external_object_file(&self, object_file: &str) -> Option<Self>;
+
+    /// Callod on the location of a PE binary in order to create a location for
+    /// a corresponding PDB file, based on an absolute PDB path found in the binary.
+    fn location_for_pdb_from_binary(&self, pdb_path_in_binary: &str) -> Option<Self>;
+
+    /// Called on the location of a debug file in order to create a location for
+    /// a source file. `source_file_path` is the path to the source file as written
+    /// down in the debug file. This is usually an absolute path.
+    ///
+    /// Only one case with a relative path has been observed to date: In this case the
+    /// "debug file" was a synthetic .so file which was generated by `perf inject --jit`
+    /// based on a JITDUMP file which included relative paths. You could argue
+    /// that the application which emitted relative paths into the JITDUMP file was
+    /// creating bad data and should have written out absolute paths. However, the `perf`
+    /// infrastructure worked fine on this file, because the relative paths happened to
+    /// be relative to the working directory, and because perf / objdump were resolving
+    /// those relative paths relative to the current working directory.
+    fn location_for_source_file(&self, source_file_path: &str) -> Option<Self>;
+
+    /// Called on the location of a Breakpad sym file, to get a location for its
+    /// corresponding symindex file.
+    fn location_for_breakpad_symindex(&self) -> Option<Self>;
+
+    fn location_for_dwo(&self, comp_dir: &str, path: &str) -> Option<Self>;
+
+    fn location_for_dwp(&self) -> Option<Self>;
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct FunctionNameIndex(pub u32);
+
+/// A handle for a function name. Can be resolved with the symbol map.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct FunctionNameHandle {
+    pub(crate) generation: SymbolMapGeneration,
+    pub(crate) index: FunctionNameIndex,
+}
+
+impl SymbolMapGeneration {
+    pub fn function_name_handle(&self, index: FunctionNameIndex) -> FunctionNameHandle {
+        FunctionNameHandle {
+            generation: *self,
+            index,
+        }
+    }
+
+    pub fn unwrap_function_name_index(&self, handle: FunctionNameHandle) -> FunctionNameIndex {
+        assert_eq!(
+            handle.generation, *self,
+            "SourceFilePathHandle from wrong symbol map used"
+        );
+        handle.index
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct SymbolNameIndex(pub u32);
+
+/// A handle for a function name. Can be resolved with the symbol map.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct SymbolNameHandle {
+    pub(crate) generation: SymbolMapGeneration,
+    pub(crate) index: SymbolNameIndex,
+}
+
+impl SymbolMapGeneration {
+    pub fn symbol_name_handle(&self, index: SymbolNameIndex) -> SymbolNameHandle {
+        SymbolNameHandle {
+            generation: *self,
+            index,
+        }
+    }
+
+    pub fn unwrap_symbol_name_index(&self, handle: SymbolNameHandle) -> SymbolNameIndex {
+        assert_eq!(
+            handle.generation, *self,
+            "SourceFilePathHandle from wrong symbol map used"
+        );
+        handle.index
+    }
+}
+
+/// The symbol for a function.
+#[derive(Debug, Clone, Hash, PartialEq, Eq)]
+pub struct SymbolInfo {
+    /// The function's address. This is a relative address.
+    pub address: u32,
+    /// The function size, in bytes. May have been approximated from neighboring symbols.
+    pub size: Option<u32>,
+    /// The function name, demangled.
+    pub name: SymbolNameHandle,
+}
+
+/// The lookup result for an address.
+#[derive(Debug, Clone, Hash, PartialEq, Eq)]
+pub struct AddressInfo {
+    /// Information about the symbol which contains the looked up address.
+    pub symbol: SymbolInfo,
+    /// Information about the frames at the looked up address, if found in the debug info.
+    ///
+    /// This Vec contains the file name and line number of the address.
+    /// If the compiler inlined a function call at this address, then this Vec
+    /// also contains the function name of the inlined function, along with the
+    /// file and line information inside that function.
+    ///
+    /// The Vec begins with the callee-most ("innermost") inlinee, followed by
+    /// its caller, and so on. The last element is always the outer function.
+    pub frames: Option<Vec<FrameDebugInfo>>,
+}
+
+/// The lookup result from `lookup_sync`.
+#[derive(Debug, Clone, Hash, PartialEq, Eq)]
+pub struct SyncAddressInfo {
+    /// Information about the symbol which contains the looked up address.
+    pub symbol: SymbolInfo,
+    /// Information about the frames at the looked up address, from the debug info.
+    pub frames: Option<FramesLookupResult>,
+}
+
+/// Contains address debug info (inlined functions, file names, line numbers) if
+/// available.
+#[derive(Debug, Clone, Hash, PartialEq, Eq)]
+pub enum FramesLookupResult {
+    /// Debug info for this address was found in the symbol map.
+    ///
+    /// This Vec contains the file name and line number of the address.
+    /// If the compiler inlined a function call at this address, then this Vec
+    /// also contains the function name of the inlined function, along with the
+    /// file and line information inside that function.
+    ///
+    /// The Vec begins with the callee-most ("innermost") inlinee, followed by
+    /// its caller, and so on. The last element is always the outer function.
+    Available(Vec<FrameDebugInfo>),
+
+    /// Debug info for this address was not found in the symbol map, but can
+    /// potentially be found in a different file, with the help of
+    /// [`SymbolMap::lookup_external`](crate::SymbolMap::lookup_external).
+    ///
+    /// This case can currently only be hit on macOS: On macOS, linking multiple
+    /// `.o` files together into a library or an executable does not copy the
+    /// DWARF information into the linked output. Instead, the linker stores the
+    /// paths to those original `.o` files, using 'OSO' stabs entries, and debug
+    /// info must be obtained from those original files.
+    External(ExternalFileAddressRef),
+}
+
+/// Information to find an external file and an address within that file, to be
+/// passed to [`SymbolMap::lookup_external`](crate::SymbolMap::lookup_external) or
+/// [`ExternalFileSymbolMap::lookup`](crate::ExternalFileSymbolMap::lookup).
+#[derive(Debug, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+pub struct ExternalFileAddressRef {
+    /// Information needed to find the external file.
+    pub file_ref: ExternalFileRef,
+    /// Information needed to find the address within that external file.
+    pub address_in_file: ExternalFileAddressInFileRef,
+}
+
+/// Information to find an external file with debug information.
+#[derive(Debug, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+pub enum ExternalFileRef {
+    MachoExternalObject {
+        /// The path to the file, as specified in the linked binary's object map.
+        file_path: String,
+    },
+    ElfExternalDwo {
+        comp_dir: String,
+        path: String,
+    },
+}
+
+/// Information to find an address within an external file, for debug info lookup.
+#[derive(Debug, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+pub enum ExternalFileAddressInFileRef {
+    MachoOsoObject {
+        /// The name of the function symbol, as bytes, for the function which contains the
+        /// address we want to look up.
+        symbol_name: Vec<u8>,
+        /// The address to look up, as a relative offset from the function symbol address.
+        offset_from_symbol: u32,
+    },
+    MachoOsoArchive {
+        /// If the external file is an archive file (e.g. `libjs_static.a`, created with `ar`),
+        /// then this is the name of the archive member (e.g. `Unified_cpp_js_src23.o`),
+        /// otherwise `None`.
+        name_in_archive: String,
+        /// The name of the function symbol, as bytes, for the function which contains the
+        /// address we want to look up.
+        symbol_name: Vec<u8>,
+        /// The address to look up, as a relative offset from the function symbol address.
+        offset_from_symbol: u32,
+    },
+    ElfDwo {
+        dwo_id: u64,
+        svma: u64,
+    },
+}
+
+/// Implementation for slices.
+impl<T: Deref<Target = [u8]> + Send + Sync> FileContents for T {
+    fn len(&self) -> u64 {
+        <[u8]>::len(self) as u64
+    }
+
+    fn read_bytes_at(&self, offset: u64, size: u64) -> FileLoadResult<&[u8]> {
+        <[u8]>::get(self, offset as usize..)
+            .and_then(|s| s.get(..size as usize))
+            .ok_or_else(|| {
+                std::io::Error::new(
+                    std::io::ErrorKind::UnexpectedEof,
+                    "FileContents::read_bytes_at for &[u8] was called with out-of-range indexes",
+                )
+                .into()
+            })
+    }
+
+    fn read_bytes_at_until(&self, range: Range<u64>, delimiter: u8) -> FileLoadResult<&[u8]> {
+        if range.end < range.start {
+            return Err("Invalid range in read_bytes_at_until".into());
+        }
+        let slice = self.read_bytes_at(range.start, range.end - range.start)?;
+        if let Some(pos) = memchr::memchr(delimiter, slice) {
+            Ok(&slice[..pos])
+        } else {
+            Err(Box::new(std::io::Error::new(
+                std::io::ErrorKind::InvalidInput,
+                "Delimiter not found",
+            )))
+        }
+    }
+
+    #[inline]
+    fn read_bytes_into(
+        &self,
+        buffer: &mut Vec<u8>,
+        offset: u64,
+        size: usize,
+    ) -> FileLoadResult<()> {
+        buffer.extend_from_slice(self.read_bytes_at(offset, size as u64)?);
+        Ok(())
+    }
+}
+
+#[cfg(feature = "partial_read_stats")]
+const CHUNK_SIZE: u64 = 32 * 1024;
+
+#[cfg(feature = "partial_read_stats")]
+struct FileReadStats {
+    bytes_read: u64,
+    unique_chunks_read: BitVec,
+    read_call_count: u64,
+}
+
+#[cfg(feature = "partial_read_stats")]
+impl FileReadStats {
+    pub fn new(size_in_bytes: u64) -> Self {
+        assert!(size_in_bytes > 0);
+        let chunk_count = (size_in_bytes - 1) / CHUNK_SIZE + 1;
+        FileReadStats {
+            bytes_read: 0,
+            unique_chunks_read: bitvec![0; chunk_count as usize],
+            read_call_count: 0,
+        }
+    }
+
+    pub fn record_read(&mut self, offset: u64, size: u64) {
+        if size == 0 {
+            return;
+        }
+
+        let start = offset;
+        let end = offset + size;
+        let chunk_index_start = start / CHUNK_SIZE;
+        let chunk_index_end = (end - 1) / CHUNK_SIZE + 1;
+
+        let chunkbits =
+            &mut self.unique_chunks_read[chunk_index_start as usize..chunk_index_end as usize];
+        if chunkbits.count_ones() != (chunk_index_end - chunk_index_start) as usize {
+            if chunkbits[0] {
+                self.bytes_read += chunk_index_end * CHUNK_SIZE - start;
+            } else {
+                self.bytes_read += (chunk_index_end - chunk_index_start) * CHUNK_SIZE;
+            }
+            self.read_call_count += 1;
+        }
+        chunkbits.fill(true);
+    }
+
+    pub fn unique_bytes_read(&self) -> u64 {
+        self.unique_chunks_read.count_ones() as u64 * CHUNK_SIZE
+    }
+}
+
+#[cfg(feature = "partial_read_stats")]
+impl std::fmt::Display for FileReadStats {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let unique_bytes_read = self.unique_bytes_read();
+        let repeated_bytes_read = self.bytes_read - unique_bytes_read;
+        let redudancy_percentage = repeated_bytes_read * 100 / unique_bytes_read;
+        write!(
+            f,
+            "{} total, {} unique, {}% redundancy, {} reads total",
+            bytesize::ByteSize(self.bytes_read),
+            bytesize::ByteSize(unique_bytes_read),
+            redudancy_percentage,
+            self.read_call_count
+        )
+    }
+}
+
+/// A wrapper for a FileContents object. The wrapper provides some convenience methods
+/// and, most importantly, implements `ReadRef` for `&FileContentsWrapper`.
+pub struct FileContentsWrapper<T: FileContents> {
+    file_contents: T,
+    len: u64,
+    #[cfg(feature = "partial_read_stats")]
+    partial_read_stats: std::sync::Mutex<FileReadStats>,
+}
+
+impl<T: FileContents> FileContentsWrapper<T> {
+    pub fn new(file_contents: T) -> Self {
+        let len = file_contents.len();
+        Self {
+            file_contents,
+            len,
+            #[cfg(feature = "partial_read_stats")]
+            partial_read_stats: std::sync::Mutex::new(FileReadStats::new(len)),
+        }
+    }
+
+    #[inline]
+    pub fn len(&self) -> u64 {
+        self.len
+    }
+
+    #[inline]
+    pub fn is_empty(&self) -> bool {
+        self.len == 0
+    }
+
+    #[inline]
+    pub fn read_bytes_at(&self, offset: u64, size: u64) -> FileLoadResult<&[u8]> {
+        #[cfg(feature = "partial_read_stats")]
+        self.partial_read_stats
+            .lock()
+            .unwrap()
+            .record_read(offset, size);
+
+        self.file_contents.read_bytes_at(offset, size)
+    }
+
+    #[inline]
+    pub fn read_bytes_at_until(&self, range: Range<u64>, delimiter: u8) -> FileLoadResult<&[u8]> {
+        #[cfg(feature = "partial_read_stats")]
+        let start = range.start;
+
+        let bytes = self.file_contents.read_bytes_at_until(range, delimiter)?;
+
+        #[cfg(feature = "partial_read_stats")]
+        self.partial_read_stats
+            .lock()
+            .unwrap()
+            .record_read(start, (bytes.len() + 1) as u64);
+
+        Ok(bytes)
+    }
+
+    /// Append `size` bytes to `buffer`, starting to read at `offset` in the file.
+    /// If successful, `buffer` must have had its len increased exactly by `size`,
+    /// otherwise the caller may panic.
+    pub fn read_bytes_into(
+        &self,
+        buffer: &mut Vec<u8>,
+        offset: u64,
+        size: usize,
+    ) -> FileLoadResult<()> {
+        #[cfg(feature = "partial_read_stats")]
+        self.partial_read_stats
+            .lock()
+            .unwrap()
+            .record_read(offset, size as u64);
+
+        self.file_contents.read_bytes_into(buffer, offset, size)
+    }
+
+    pub fn read_entire_data(&self) -> FileLoadResult<&[u8]> {
+        self.read_bytes_at(0, self.len())
+    }
+
+    pub fn full_range(&self) -> RangeReadRef<'_, &Self> {
+        RangeReadRef::new(self, 0, self.len)
+    }
+
+    pub fn range(&self, start: u64, size: u64) -> RangeReadRef<'_, &Self> {
+        RangeReadRef::new(self, start, size)
+    }
+}
+
+#[cfg(feature = "partial_read_stats")]
+impl<T: FileContents> Drop for FileContentsWrapper<T> {
+    fn drop(&mut self) {
+        eprintln!("{}", *self.partial_read_stats.lock().unwrap());
+    }
+}
+
+impl<T: FileContents> Debug for FileContentsWrapper<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "FileContentsWrapper({} bytes)", self.len())
+    }
+}
+
+impl<'data, T: FileContents> ReadRef<'data> for &'data FileContentsWrapper<T> {
+    #[inline]
+    fn len(self) -> Result<u64, ()> {
+        Ok(self.len())
+    }
+
+    #[inline]
+    fn read_bytes_at(self, offset: u64, size: u64) -> Result<&'data [u8], ()> {
+        self.read_bytes_at(offset, size).map_err(|_| {
+            // Note: We're discarding the error from the FileContents method here.
+        })
+    }
+
+    #[inline]
+    fn read_bytes_at_until(self, range: Range<u64>, delimiter: u8) -> Result<&'data [u8], ()> {
+        self.read_bytes_at_until(range, delimiter).map_err(|_| {
+            // Note: We're discarding the error from the FileContents method here.
+        })
+    }
+}
+
+#[test]
+fn test_filecontents_readref_is_send_and_sync() {
+    fn assert_is_send<T: Send>() {}
+    fn assert_is_sync<T: Sync>() {}
+    #[allow(unused)]
+    fn wrapper<T: FileContents + Sync>() {
+        assert_is_send::<&FileContentsWrapper<T>>();
+        assert_is_sync::<&FileContentsWrapper<T>>();
+    }
+}
+
+#[derive(Clone, Copy)]
+pub struct RangeReadRef<'data, T: ReadRef<'data>> {
+    original_readref: T,
+    range_start: u64,
+    range_size: u64,
+    _phantom_data: PhantomData<&'data ()>,
+}
+
+impl<'data, T: ReadRef<'data>> RangeReadRef<'data, T> {
+    pub fn new(original_readref: T, range_start: u64, range_size: u64) -> Self {
+        Self {
+            original_readref,
+            range_start,
+            range_size,
+            _phantom_data: PhantomData,
+        }
+    }
+
+    pub fn make_subrange(&self, start: u64, size: u64) -> Self {
+        Self::new(self.original_readref, self.range_start + start, size)
+    }
+
+    pub fn original_readref(&self) -> T {
+        self.original_readref
+    }
+
+    pub fn range_start(&self) -> u64 {
+        self.range_start
+    }
+
+    pub fn range_size(&self) -> u64 {
+        self.range_size
+    }
+}
+
+impl<'data, T: ReadRef<'data>> ReadRef<'data> for RangeReadRef<'data, T> {
+    #[inline]
+    fn len(self) -> Result<u64, ()> {
+        Ok(self.range_size)
+    }
+
+    #[inline]
+    fn read_bytes_at(self, offset: u64, size: u64) -> Result<&'data [u8], ()> {
+        let shifted_offset = self.range_start.checked_add(offset).ok_or(())?;
+        self.original_readref.read_bytes_at(shifted_offset, size)
+    }
+
+    #[inline]
+    fn read_bytes_at_until(self, range: Range<u64>, delimiter: u8) -> Result<&'data [u8], ()> {
+        if range.end < range.start {
+            return Err(());
+        }
+        let shifted_start = self.range_start.checked_add(range.start).ok_or(())?;
+        let shifted_end = self.range_start.checked_add(range.end).ok_or(())?;
+        let range = shifted_start..shifted_end;
+        self.original_readref.read_bytes_at_until(range, delimiter)
+    }
+}
+
+pub struct FileContentsCursor<'a, T: FileContents> {
+    /// The current offset of the cursor. This can be beyond the end of the file!
+    current_offset: u64,
+    /// The total length of the file.
+    total_len: u64,
+    inner: &'a FileContentsWrapper<T>,
+}
+
+impl<'a, T: FileContents> FileContentsCursor<'a, T> {
+    pub fn new(inner: &'a FileContentsWrapper<T>) -> Self {
+        let total_len = inner.len();
+        Self {
+            current_offset: 0,
+            total_len,
+            inner,
+        }
+    }
+}
+
+impl<T: FileContents> std::io::Read for FileContentsCursor<'_, T> {
+    fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
+        if self.current_offset >= self.total_len {
+            return Ok(0);
+        }
+        let remaining_len = self.total_len - self.current_offset;
+        let read_len = <[u8]>::len(buf).min(remaining_len as usize);
+        // Make a silly copy
+        let mut tmp_buf = Vec::with_capacity(read_len);
+        self.inner
+            .read_bytes_into(&mut tmp_buf, self.current_offset, read_len)
+            .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e))?;
+        buf[..read_len].copy_from_slice(&tmp_buf);
+        self.current_offset += read_len as u64;
+        Ok(read_len)
+    }
+}
+
+impl<T: FileContents> std::io::Seek for FileContentsCursor<'_, T> {
+    fn seek(&mut self, pos: std::io::SeekFrom) -> std::io::Result<u64> {
+        /// Returns None on overflow / underflow.
+        ///
+        /// Seeks beyond the file length are allowed.
+        fn inner(cur: u64, total_len: u64, pos: std::io::SeekFrom) -> Option<u64> {
+            let new_offset: u64 = match pos {
+                std::io::SeekFrom::Start(pos) => pos,
+                std::io::SeekFrom::End(pos) => {
+                    (total_len as i64).checked_add(pos)?.try_into().ok()?
+                }
+                std::io::SeekFrom::Current(pos) => {
+                    (cur as i64).checked_add(pos)?.try_into().ok()?
+                }
+            };
+            Some(new_offset)
+        }
+
+        match inner(self.current_offset, self.total_len, pos) {
+            Some(cur) => {
+                self.current_offset = cur;
+                Ok(cur)
+            }
+            None => Err(std::io::Error::new(std::io::ErrorKind::Other, "Bad Seek")),
+        }
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn file_contents_cursor_allows_seeks_beyond_eof() {
+        use std::io::{Read, Seek};
+        let bytes = b"Test";
+        let bytes = &bytes[..];
+        let file_contents_wrapper = FileContentsWrapper::new(bytes);
+        let mut cursor = FileContentsCursor::new(&file_contents_wrapper);
+        let mut read_buf = [0; 10];
+        let read_len = cursor.read(&mut read_buf[..3]).unwrap();
+        assert_eq!(read_len, 3);
+        assert_eq!(&read_buf[..3], b"Tes");
+        let new_pos = cursor.seek(std::io::SeekFrom::Current(2)).unwrap();
+        assert_eq!(new_pos, 5);
+        let read_len = cursor.read(&mut read_buf[..2]).unwrap();
+        assert_eq!(read_len, 0);
+    }
+}

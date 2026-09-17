@@ -1,0 +1,113 @@
+ elem []*types.AttributeTrail }
+3*[]struct { key string; elem *pb.FieldDescription }
+3*[8]struct { key string; elem *pb.TypeDescription }
+3*[8]struct { key string; elem *pb.FileDescription }
+3*membershipv2.GetSubscriptionReplacementInfoRequest
+3dev.msh.team/protos/kimi-go/kimi/gateway/context/v1
+3dev.msh.team/protos/kimi-go/kimi/gateway/project/v1
+3dev.msh.team/protos/kimi-go/kimi/gateway/suggest/v1
+3*[8]struct { key string; elem []*checker.localVar }
+3*[8]struct { key int64; elem checker.SizeEstimate }
+3*[]struct { key string; elem ext.extensionFactory }
+3*struct { key string; elem *pgservicefile.Service }
+3*[]struct { key do.ServiceDescription; elem error }
+3*struct { key reflect.Type; elem *yaml.structInfo }
+3*[8]struct { key string; elem yaml.resolveMapItem }
+3*[]struct { key int; elem []antlr.SemanticContext }
+3*[]struct { key language.Tag; elem catalog.msgMap }
+3*[]struct { key string; elem proto.CardinalityKey }
+3*[8]struct { key string; elem proto.IntervalScale }
+3*struct { key string; elem proto.ProfileEventType }
+4*[]struct { key uint32; elem *http.http2writeQueue }
+4*map.group[http.connectMethodKey][]*http.persistConn
+4*struct { key uint32; elem *http.http2clientStream }
+4*struct { key string; elem []*http.http2ClientConn }
+4*struct { key *http.http2ClientConn; elem []string }
+4*struct { key string; elem []*multipart.FileHeader }
+4*[8]struct { key runtime._typePair; elem struct {} }
+4*func() (*portalv1.ValidateBindTokenResponse, error)
+SSECustomerKeyMD5"json:"SSECustomerKeyMD5,omitempty"
+	KeyMarker*location:"query" locationName:"key-marker"
+ContinuationToken"json:"ContinuationToken,omitempty"
+CopySourceSSECKeyMD5
+json:"copy_source_ssec_key_md5"
+4*[8]struct { key uintptr; elem *pprof.profMapEntry }
+4*[]struct { key string; elem *x509.policyGraphNode }
+4*struct { key string; elem []*x509.policyGraphNode }
+4*struct { key protoreflect.Kind; elem reflect.Type }
+4*[8]struct { key string; elem clause.ClauseBuilder }
+4*[8]struct { key string; elem *schema.Relationship }
+4*[]struct { key string; elem *schema.Relationships }
+4*struct { key string; elem schema.UniqueConstraint }
+4*struct { key string; elem map[string]interface {} }
+4*[8]struct { key uint64; elem prometheus.Collector }
+4*[]struct { key string; elem jsonschema.anchorInfo }
+4*[8]struct { key string; elem *jsonschema.Resolved }
+E2BPluginSecrets#json:"e2b_plugin_secrets,omitempty"
+LastSwitchReason#json:"last_switch_reason,omitempty"
+4*[]struct { key ratelimit.Category; elem struct {} }
+4*[8]struct { key string; elem cel.SingletonLibrary }
+4*[8]struct { key jsonschema.url; elem interface {} }
+4*[]struct { key string; elem *jsonschema.MediaType }
+4dev.msh.team/protos/kimi-go/kimi/gateway/agentapi/v1
+ServiceAccountKey"json:"serviceAccountKey,omitempty"
+TrimLastSeparator"json:"trimLastSeparator,omitempty"
+4*struct { key string; elem cel.ASTValidatorFactory }
+4*[8]struct { key string; elem *pb.FieldDescription }
+4*[]struct { key string; elem func(ref.Val) ref.Val }
+4*struct { key string; elem func(time.Time) ref.Val }
+4*[]struct { key protoreflect.Kind; elem *expr.Type }
+4*membershipv2.GetSubscriptionReplacementInfoResponse
+4*struct { key string; elem *i18n.parsedTranslation }
+4*[8]struct { key string; elem ext.extensionFactory }
+4*[]struct { key string; elem mysql.DialContextFunc }
+4github.com/redis/go-redis/v9/internal/auth/streaming
+4*[8]struct { key do.ServiceDescription; elem error }
+4*struct { key string; elem *antlr.TokensStartState }
+4*struct { key int; elem []*antlr.PredictionContext }
+4*[8]struct { key int; elem []antlr.SemanticContext }
+4*[]struct { key int; elem *antlr.PredictionContext }
+4*[8]struct { key language.Tag; elem catalog.msgMap }
+4*[8]struct { key string; elem proto.CardinalityKey }
+4*[]struct { key string; elem proto.ClientQueryKind }
+4*[]struct { key string; elem *number.NumberSymbols }
+5*struct { key *http.http2serverConn; elem struct {} }
+5*[8]struct { key uint32; elem *http.http2writeQueue }
+5*struct { key *http.persistConn; elem *list.Element }
+5*[]struct { key string; elem *http.http2addConnCall }
+5*struct { key string; elem *connect.compressionPool }
+5*[]struct { key unsafe.Pointer; elem unsafe.Pointer }
+5*struct { F uintptr; X0 *tls13.ExporterMasterSecret }
+5*[]struct { key x509.rfc2821Mailbox; elem struct {} }
+5*[8]struct { key string; elem *x509.policyGraphNode }
+5*[]struct { key protowire.Number; elem interface {} }
+5*[]struct { key reflect.Type; elem protowire.Number }
+5*[]struct { key protowire.Number; elem reflect.Type }
+5*[8]struct { key string; elem *schema.Relationships }
+5*[]struct { key string; elem schema.CheckConstraint }
+5*[8]struct { key string; elem jsonschema.anchorInfo }
+5*struct { key reflect.Type; elem *jsonschema.Schema }
+	UserSkill+gorm:"foreignKey:UserSkillID;references:ID"
+5*struct { key interface {}; elem protoreflect.Value }
+5*[8]struct { key ratelimit.Category; elem struct {} }
+5*struct { key jsonschema.url; elem *jsonschema.root }
+5*[8]struct { key string; elem *jsonschema.MediaType }
+5*[]struct { key string; elem *jsonschema.Vocabulary }
+5*[]struct { key protoreflect.Kind; elem *types.Type }
+5*[]struct { key int64; elem []*types.AttributeTrail }
+5*[8]struct { key string; elem func(ref.Val) ref.Val }
+5*struct { key string; elem *pb.EnumValueDescription }
+5*[8]struct { key protoreflect.Kind; elem *expr.Type }
+5*struct { key string; elem push.NotificationHandler }
+5*membershipv2.CreateApplicationFormRequest_Occupation
+5*struct { key int64; elem checker.entrySizeEstimate }
+5*[8]struct { key string; elem mysql.DialContextFunc }
+5*[]struct { key string; elem *pgservicefile.Service }
+5*struct { key uint64; elem auth.CredentialsListener }
+5dev.msh.team/protos/kimi-go/kimi/gateway/converter/v1
+5*struct { key do.ServiceDescription; elem struct {} }
+5*[]struct { key reflect.Type; elem *yaml.structInfo }
+5*[8]struct { key int; elem *antlr.PredictionContext }
+5*[8]struct { key string; elem proto.ClientQueryKind }
+5*[]struct { key string; elem proto.ProfileEventType }
+5*[8]struct { k

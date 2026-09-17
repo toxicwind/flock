@@ -1,0 +1,10 @@
+{
+  "ts": 1786596984,
+  "cpu_count": 3,
+  "cpu_used_pct": 25.83,
+  "mem_total_mib": 4044,
+  "mem_used_mib": 2515,
+  "disk_used": 5093396480,
+  "disk_total": 43308449792,
+  "note": "envd exposes /metrics but no debug endpoints"
+}

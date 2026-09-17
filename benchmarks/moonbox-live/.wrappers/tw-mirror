@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Mirror toxicwind repos to Codeberg."""
+import sys, subprocess, os
+
+GITHUB_PAT = os.environ.get("GITHUB_PAT", "")
+CODEBERG_TOKEN = os.environ.get("CODEBERG_TOKEN", "")
+
+if not CODEBERG_TOKEN:
+    print("ERROR: Set CODEBERG_TOKEN env var")
+    sys.exit(1)
+
+repos = [
+    "toxicwind-repos",
+    "bashagt",
+    "github-advanced-search-mcp",
+    "federal-contract-sniper",
+    "agentic-sandbox-toolkit",
+]
+
+for repo in repos:
+    print(f"Mirroring {repo}...")
+    tmp = f"/tmp/mirror-{repo}"
+    subprocess.run(["git", "clone", "--mirror", f"https://{GITHUB_PAT}@github.com/toxicwind/{repo}.git", tmp], capture_output=True)
+    subprocess.run(["git", "-C", tmp, "remote", "add", "codeberg", f"https://{CODEBERG_TOKEN}@codeberg.org/toxicwind/{repo}.git"], capture_output=True)
+    subprocess.run(["git", "-C", tmp, "push", "--mirror", "codeberg"], capture_output=True)
+    subprocess.run(["rm", "-rf", tmp])
+    print(f"  Done: {repo}")

@@ -1,0 +1,24 @@
+# Gitleaks configuration — blocks secrets from being committed
+# Run: gitleaks detect --source . --verbose
+
+title = "Triangle Accessibility Secret Detection"
+
+[extend]
+# Use default rules + custom
+useDefault = true
+
+[allowlist]
+# Allow .env.keys to exist in working directory (but NEVER commit it)
+paths = [
+    '''\.env\.keys$''',
+    '''\.env\.keys\.example$''',
+    '''\.env\.example$''',
+]
+
+# Allow placeholder values
+regexes = [
+    '''placeholder''',
+    '''pk_test_placeholder''',
+    '''sk_test_placeholder''',
+    '''whsec_placeholder''',
+]

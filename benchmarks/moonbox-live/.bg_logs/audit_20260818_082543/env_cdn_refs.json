@@ -1,0 +1,85 @@
+{
+  "17": {
+    "cmdline": "python3 -m http.server 18080 --directory /tmp/project-probe",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "41": {
+    "cmdline": "s6-supervise envd",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "42": {
+    "cmdline": "s6-supervise portal",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "66": {
+    "cmdline": "/usr/local/bin/python3 /opt/moonbox-project-template/bin/project-cdp-proxy.py",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "67": {
+    "cmdline": "/usr/local/bin/portal -http-bind -allow-other -env prod -gateway-addr https://kimi-api-sandbox.msh.team/apiv2 /mnt/portal-overlay",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "73": {
+    "cmdline": "/usr/local/bin/envd -isnotfc",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "81": {
+    "cmdline": "python3 /app/kernel_server.py --host 0.0.0.0 --port 8888 --log-level info",
+    "cdn_refs": {
+      "PIP_TRUSTED_HOST": "mirrors.cloud.aliyuncs.com",
+      "PIP_EXTRA_INDEX_URL": "https://pypi.msh.team/simple",
+      "PIP_INDEX_URL": "https://pypi.mirrors.msh.team/simple",
+      "KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR": "https://kimi-api-sandbox.msh.team/apiv2",
+      "MOONBOX_BASE_IMAGE": "msh-sandbox.tencentcloudcr.com/kimiclaw/moonbox-okc:project-20260811-2"
+    },
+    "all_env_count": 37
+  },
+  "83": {
+    "cmdline": "python3 /app/browser_guard.py --wait-display --display :99 --timeout 60 --monitor",
+    "cdn_refs": {
+      "PIP_TRUSTED_HOST": "mirrors.cloud.aliyuncs.com",
+      "PIP_EXTRA_INDEX_URL": "https://pypi.msh.team/simple",
+      "PIP_INDEX_URL": "https://pypi.mirrors.msh.team/simple",
+      "KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR": "https://kimi-api-sandbox.msh.team/apiv2",
+      "MOONBOX_BASE_IMAGE": "msh-sandbox.tencentcloudcr.com/kimiclaw/moonbox-okc:project-20260811-2"
+    },
+    "all_env_count": 36
+  },
+  "181": {
+    "cmdline": "/usr/local/bin/python3 -m ipykernel_launcher -f /tmp/tmpbag37owj.json",
+    "cdn_refs": {
+      "PIP_TRUSTED_HOST": "mirrors.cloud.aliyuncs.com",
+      "PIP_EXTRA_INDEX_URL": "https://pypi.msh.team/simple",
+      "PIP_INDEX_URL": "https://pypi.mirrors.msh.team/simple",
+      "KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR": "https://kimi-api-sandbox.msh.team/apiv2",
+      "MOONBOX_BASE_IMAGE": "msh-sandbox.tencentcloudcr.com/kimiclaw/moonbox-okc:project-20260811-2"
+    },
+    "all_env_count": 38
+  },
+  "606": {
+    "cmdline": "s6-supervise drive9-fuse-watchdog",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "608": {
+    "cmdline": "s6-supervise drive9-fuse",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "609": {
+    "cmdline": "/bin/bash ./run drive9-fuse-watchdog",
+    "cdn_refs": {},
+    "all_env_count": 1
+  },
+  "610": {
+    "cmdline": "/usr/local/bin/drive9 mount --foreground --mode=fuse -allow-other -readdir-prefetch --parallel-read-concurrency 8 --read-concurrency 48 --server http://10.213.5.144 --profile kimi-project --durability close-sync :/projects/19fd6126-0bc2-8dfe-8000-0e510dd7d34d /mnt/agents",
+    "cdn_refs": {},
+    "all_env_count": 1
+  }
+}

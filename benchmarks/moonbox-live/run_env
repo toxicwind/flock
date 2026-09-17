@@ -1,0 +1,6 @@
+#!/bin/sh
+# Wrapper: source env then run command
+# Usage: run_env "your command here"
+. /mnt/agents/output/.env 2>/dev/null
+. /mnt/agents/output/auto_hook.sh 2>/dev/null
+sh -c "$*"

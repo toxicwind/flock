@@ -1,0 +1,71 @@
+{
+  "libraries": [
+    {
+      "name": "tailwindcss",
+      "pages": [
+        {
+          "slug": "readme",
+          "url": "https://raw.githubusercontent.com/tailwindlabs/tailwindcss/v4.1.11/README.md"
+        }
+      ]
+    },
+    {
+      "name": "@11ty/eleventy",
+      "pages": [
+        {
+          "slug": "getting-started",
+          "url": "https://www.11ty.dev/docs/"
+        },
+        {
+          "slug": "configuration",
+          "url": "https://www.11ty.dev/docs/config/"
+        }
+      ]
+    },
+    {
+      "name": "nunjucks",
+      "pages": [
+        {
+          "slug": "templating",
+          "url": "https://mozilla.github.io/nunjucks/templating.html"
+        }
+      ]
+    },
+    {
+      "name": "markdown-it",
+      "pages": [
+        {
+          "slug": "index",
+          "url": "https://markdown-it.github.io/"
+        }
+      ]
+    },
+    {
+      "name": "prismjs",
+      "pages": [
+        {
+          "slug": "index",
+          "url": "https://prismjs.com/"
+        }
+      ]
+    },
+    {
+      "name": "daisyui",
+      "pages": [
+        {
+          "slug": "install",
+          "url": "https://daisyui.com/docs/install/"
+        }
+      ]
+    },
+    {
+      "name": "postcss",
+      "pages": [
+        {
+          "slug": "index",
+          "url": "https://postcss.org/"
+        }
+      ]
+    }
+  ]
+}

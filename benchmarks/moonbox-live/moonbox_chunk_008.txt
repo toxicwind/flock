@@ -1,0 +1,197 @@
+*tls13.ExporterMasterSecret
+*mlkem.EncapsulationKey1024
+*mlkem.DecapsulationKey1024
+*map[filedesc.pathKey][]int
+*func() *slidesv1.PageLimit
+*orderv1.SubscriptionAction
+*orderv1.isMembership_Extra
+*func() *orderv1.Membership
+*orderv1.SubscriptionStatus
+*func() *payv1.Subscription
+*func() *clawv1.ModelAPIKey
+*configv1.CacheLimitsConfig
+*i18n.requestedLocaleCtxKey
+*skillv1.ListSkillsResponse
+*adminv1.ListSkillsResponse
+*slidesv1.ListStylesRequest
+*map.group[token.Token]bool
+*membershipv2.Giftcard_Code
+*membershipv2.Wallet_Status
+*[]*membershipv2.Capability
+*membershipv2.ThirdPayParam
+*[]*membershipv2.Tool_Usage
+*membershipv2.Resource_Type
+*membershipv2.Wallet_Option
+*parser.lookaheadLimitError
+*pgproto3.AuthenticationGSS
+*tls.EncryptedClientHelloKey
+**x509.UnknownAuthorityError
+*userctxv1.Membership_Domain
+*[]*chattyv1.KeywordArgument
+*tos.FederationTokenProvider
+*func(crypto.PublicKey) bool
+ClientHandshakeTrafficSecret
+ServerHandshakeTrafficSecret
+*searchv2.BilibiliMetaAuthor
+*func(...attribute.KeyValue)
+*func() []attribute.KeyValue
+*func() membershipv2.Feature
+*chatv1.VideoCard_AuthorInfo
+*func() *membershipv2.Wallet
+*slidesv1.ListStylesResponse
+*membershipv2.Giftcard_Claim
+GetMonthlyChargeLimitEnabled
+*membershipv2.Balance_Action
+*[]membershipv2.Balance_Type
+*[]*membershipv2.Model_Usage
+*membershipv2.Resource_Usage
+*membershipv2.Present_Status
+expressionSizeCodePointLimit
+GetTokenSourceCharStreamPair
+*pgproto3.AuthenticationSASL
+traceAuthenticationSASLFinal
+*ecma402.UnicodeExtensionKey
+*struct { key int; elem int }
+*func() *userctxv1.Membership
+*[]tos.PostSignatureCondition
+*func(crypto.PrivateKey) bool
+*func(*ecdsa.PrivateKey) bool
+*map.group[string]token.Token
+*mcpv1.MCPServerAuthorization
+*func() []*orderv1.Membership
+*orderv1.GetMembershipRequest
+*func() *orderv1.Subscription
+*searchv3.BilibiliMeta_Author
+*func(int) attribute.KeyValue
+*payv1.GetSubscriptionRequest
+gorm:"primaryKey;not null"
+*[]userctxv1.Membership_Level
+*func() *credentialsv1.APIKey
+*func() *billingv1.APIKeyMeta
+kimi.darkmatter/packages/tidb
+*tidb.ExportAzureBlobAuthType
+*tidb.ImportS3SourceAccessKey
+*tidb.ImportAzureBlobAuthType
+*map.group[cel.limitID]string
+*membershipv2.Giftcard_Entity
+*func() *membershipv2.Feature
+*func() *membershipv2.Balance
+*func() []*membershipv2.Goods
+*membershipv2.Giftcard_Option
+*func(int, int) []antlr.Token
+findAuthenticationMessageType
+*cldrlocale.minimizeSubtagKey
+*map[http.connectMethodKey]int
+kimi.darkmatter/apps/portal/fs
+*jsontext.requireKeyedLiterals
+*[]tls.EncryptedClientHelloKey
+*func(uint16) tls.keyAgreement
+kimi.darkmatter/packages/idgen
+AccessKeyID
+json:"AccessKeyId"
+json:"ssec_key_md5"
+ClientApplicationTrafficSecret
+ServerApplicationTrafficSecret
+*orderv1.GetMembershipResponse
+*orderv1.Membership_OkComputer
+*[]userctxv1.Membership_Domain
+*mcpv1.MCPServerProxyAuthExtra
+*func(bool) attribute.KeyValue
+*payv1.GetSubscriptionResponse
+*func(ratelimit.Category) bool
+*struct { key int; elem bool }
+gorm:"column:id;primaryKey"
+gorm:"primaryKey;column:id"
+gorm:"type:uuid;primaryKey"
+*func() clawv1.ModelAPIKeyType
+json:"secret,omitempty"
+*interpreter.evalSetMembership
+*[]*membershipv2.Giftcard_Code
+*membershipv2.GetWalletRequest
+*func() []*membershipv2.Wallet
+*func() []membershipv2.Feature
+*membershipv2.ListGoodsRequest
+*membershipv2.Entitlement_Type
+*membershipv2.EnterpriseOption
+yaml:"limits,omitempty"
+*struct { key int; elem *int }
+traceAuthenticationGSSContinue
+traceAuthenticationMD5Password
+*struct { key int8; elem int }
+*proto.keySerializationVersion
+kimi.darkmatter/apps/portal/tos
+*func() (jsontext.Token, error)
+*[]struct { key int; elem int }
+*func(protoreflect.MapKey) bool
+*rpcutil.otelconnectSuppressKey
+*func(*ed25519.PrivateKey) bool
+*map.group[filedesc.pathKey]int
+*orderv1.GetSubscriptionRequest
+*mcpv1.GetMCPServerTokenRequest
+*func(int64) attribute.KeyValue
+*func([]int) attribute.KeyValue
+gorm:"column:keywords"
+*func() *clawv1.ModelAPIKeyType
+kimi.darkmatter/packages/kimiim
+*func() membershipv2.SubFeature
+*billingv1.AuditMeta_ApiKeyMeta
+*struct { key int64; elem int }
+*jsonschema.ResourceExistsError
+*[]*membershipv2.Giftcard_Claim
+*membershipv2.GetWalletResponse
+*func() []*membershipv2.Balance
+*[]*membershipv2.Balance_Action
+*func() []*orderv1.Subscription
+*membershipv2.ListGoodsResponse
+*suggestv1.ListShowcasesRequest
+*credentialsv1.GetAPIKeyRequest
+*func() membershipv2.Model_Type
+*[]*membershipv2.Resource_Usage
+*func(antlr.Parser) antlr.Token
+traceAuthenticationSASLContinue
+authenticationCleartextPassword
+*struct { key uint8; elem int }
+*struct { key int32; elem int }
+*struct { key int16; elem int }
+ kimi.darkmatter/packages/x/cache
+ *struct { key string; elem int }
+ *[8]struct { key int; elem int }
+ *struct { key int; elem string }
+ *httptrace.clientEventContextKey
+ *struct { key uint32; elem int }
+ kimi.darkmatter/packages/rpcutil
+json:"MaxKeys,omitempty"
+ *tos.PreSingedPostSignatureInput
+ *func() (*ecdh.PublicKey, error)
+ *func() (hpke.PrivateKey, error)
+ *nettrace.LookupIPAltResolverKey
+ *func() orderv1.MembershipStatus
+ *orderv1.GetSubscriptionResponse
+ *orderv1.Membership_NormalSlides
+ *orderv1.Membership_BananaSlides
+ *orderv1.Membership_ThinkingMode
+ *orderv1.Membership_DeepResearch
+ *searchv3.SearchResponse_Keyword
+ *mcpv1.SaveMCPServerTokenRequest
+ *mcpv1.GetMCPServerTokenResponse
+ *func([]bool) attribute.KeyValue
+ *func(string) attribute.KeyValue
+ *func() payv1.SubscriptionStatus
+ *payv1.ResumeSubscriptionRequest
+ *payv1.CancelSubscriptionRequest
+ *[]struct { key int; elem bool }
+ *kimimodel.PluginManifestSummary
+ kimi.darkmatter/packages/i18n/v2
+ *clawv1.CreateModelAPIKeyRequest
+ *billingv1.Authentication_Method
+ *tidb.ImportS3CompatibleAuthType
+ *struct { key int32; elem bool }
+ *func() (*redis.ZWithKey, error)
+ *func() *membershipv2.SubFeature
+ *suggestv1.ListShowcasesResponse
+ *credentialsv1.GetAPIKeyResponse
+ *func() *membershipv2.Model_Type
+ *membershipv2.GiftBalanceRequest
+ *membershipv2.Entitlement_Status
+ *membershipv2.Entitlement_Zygote
+ *membershipv2.

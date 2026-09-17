@@ -1,0 +1,89 @@
+<<<<<<< HEAD
+# /etc/nginx/conf.d/default.conf
+# Eleventy static site on NGINX (server-only file; included by nginx.conf)
+
+server {
+  listen 80;
+  listen [::]:80;
+=======
+server {
+  listen 80;
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+  server_name _;
+
+  root /usr/share/nginx/html;
+  index index.html;
+
+  # ─────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+  # Static assets (don’t fall back to index.html)
+  # Use long cache; adjust to immutable if you fingerprint assets.
+  location ~* \.(?:js|mjs|css|png|jpe?g|gif|ico|svg|webp|avif|woff2?|ttf|otf|eot)$ {
+    try_files $uri =404;
+    access_log off;
+    add_header Cache-Control "public, max-age=31536000, immutable" always;
+    add_header Vary "Accept-Encoding" always;
+    expires 1y;
+  }
+
+  # Data-ish files (no cache)
+  location ~* \.(?:json|xml|txt|webmanifest|map)$ {
+    try_files $uri =404;
+    access_log off;
+    add_header Cache-Control "no-cache, must-revalidate" always;
+    add_header Vary "Accept-Encoding" always;
+    expires off;
+  }
+
+  # Service worker (explicitly no-cache)
+  location ~* ^/(?:sw|service-worker)\.js$ {
+    try_files $uri =404;
+    add_header Cache-Control "no-cache, must-revalidate" always;
+    add_header Vary "Accept-Encoding" always;
+    expires off;
+  }
+
+  # HTML (no cache; no SPA fallback here)
+  location ~* \.html?$ {
+    try_files $uri =404;
+    add_header Cache-Control "no-cache, must-revalidate" always;
+    add_header Vary "Accept-Encoding" always;
+    expires off;
+  }
+
+  # SPA fallback for pretty URLs
+  location / {
+    try_files $uri $uri/ /index.html;
+    add_header Cache-Control "no-cache, must-revalidate" always;
+    add_header Vary "Accept-Encoding" always;
+    expires off;
+  }
+
+  # ACME / well-known (allow direct access)
+  location ^~ /.well-known/ {
+    allow all;
+    try_files $uri =404;
+    add_header Cache-Control "public, max-age=0, must-revalidate" always;
+  }
+
+  # Security / meta headers
+  add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header X-Frame-Options "SAMEORIGIN" always;
+  add_header Permissions-Policy "interest-cohort=()" always;
+=======
+  # ✅ Protect static files from falling through to /index.html
+  location ~* \.(js|css|png|jpe?g|gif|ico|svg|woff2?|ttf|otf|eot|webp)$ {
+    try_files $uri =404;
+    expires 30d;
+    access_log off;
+    add_header Cache-Control "public";
+  }
+
+  # ─────────────────────────────────────────────────────────────
+  # ✅ Fallback for pretty URLs only
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+}

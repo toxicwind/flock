@@ -1,0 +1,57 @@
+
+FILE: /mnt/agents/temp/user_pasted_clipboard_long_content_as_file_{ log { ve(1).txt
+SIZE: 52.02 MB
+ENTRIES: 405
+
+--- JWT ANALYSIS ---
+ALGORITHM: HS512 (HMAC-SHA512 - SERVER-SIGNED, NOT FORGEABLE)
+ISSUER: user-center
+EXPIRES: 1786939512 (Unix epoch)
+USER_ID: d87br2oh8njkr90jf520
+MEMBERSHIP_LEVEL: 10 (10 = Premium/Max tier)
+REGION: overseas
+
+NOTE: JWT is HS512 signed. Without the server secret key, you cannot forge 
+or modify the membership level. The server validates the signature on every 
+request to /apiv2/kimi.gateway.chat.v1.ChatService/Chat.
+
+--- TELEMETRY EXFILTRATION ---
+TOTAL TRACKING REQUESTS: 106
+TOTAL BYTES EXFILTRATED: 266970 bytes
+
+PRIMARY TRACKER: gator.volces.com (Volces/ByteDance analytics)
+  - 67 requests, 231KB+ of behavioral data
+  - Event types: abtest_exposure, bav2b_beat, bav2b_page, msh_sent_message_error,
+    msh_enter_chat_detail, msh_claw_sidebar_show, predefine_pageview, user_id_acquired
+
+SECONDARY TRACKERS:
+  - apmplus.volces.com (APM/performance metrics)
+  - tab.volces.com (A/B testing)
+  - sg-fp.apitd.net (TrustDecision fingerprinting)
+  - hm.baidu.com (Baidu analytics)
+  - analytics.google.com (Google Analytics)
+  - static.cloudflareinsights.com (Cloudflare RUM)
+  - js.intercomcdn.com + api-iam.intercom.io (Intercom chat/support)
+
+--- WHAT THEY KNOW ABOUT YOU ---
+From the HAR dump, Kimi/Volces collects:
+1. Every keystroke and mouse interaction (bav2b_beat events)
+2. Page views and session duration (predefine_pageview, predefine_page_alive)
+3. Chat content metadata (msh_sent_message_error, msh_before_sent_message)
+4. Sidebar interactions (msh_claw_sidebar_show)
+5. A/B test exposures (abtest_exposure)
+6. Device fingerprint via TrustDecision (sg-fp.apitd.net)
+7. Browser fingerprint via Cloudflare (_cf_bm cookie)
+
+--- DEFENSE RECOMMENDATIONS ---
+1. Install the blocklist: sudo bash /mnt/agents/output/blocklist.sh
+2. Use the .env file for API access instead of browser sessions
+3. Rotate cookies regularly (especially __cf_bm and intercom-session)
+4. Block 3rd-party JS: uBlock Origin with filters:
+   ||gator.volces.com^$all
+   ||sg-fp.apitd.net^$all
+   ||static.trustdecision.com^$all
+
+--- FILES GENERATED ---
+- /mnt/agents/output/.env.kimi (secrets, DO NOT COMMIT)
+- /mnt/agents/output/blocklist.sh (telemetry blocklist)

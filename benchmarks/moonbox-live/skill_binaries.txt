@@ -1,0 +1,1025 @@
+=== COMPILED BINARIES ===
+441647360     16 -rwxr-xr-x   1 kimi     kimi        14769 Aug 11 15:07 /app/.agents/skills/docx/scripts/docx
+441665792    564 -rwxr-xr-x   1 kimi     kimi       577320 Aug 11 15:07 /app/.agents/skills/docx/scripts/docx_lib/_core.cpython-312-x86_64-linux-gnu.so
+441647440  14984 -rwxr-xr-x   1 kimi     kimi     15340648 Aug 11 15:07 /app/.agents/skills/docx/scripts/engine/_core.cpython-312-x86_64-linux-gnu.so
+442366208     72 -rwxr-xr-x   1 kimi     kimi        72568 Aug 11 15:07 /app/.agents/skills/docx/validator/Validator
+472638656      4 -rwxr-xr-x   1 kimi     kimi          685 Aug 11 15:07 /app/.agents/skills/webapp-building-swarm/scripts/.prepare-template.sh
+446033843      8 -rwxr-xr-x   1 kimi     kimi         6403 Aug 11 15:07 /app/.agents/skills/webapp-building-swarm/scripts/init-webapp.sh
+472774898      4 -rwxr-xr-x   1 kimi     kimi          363 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/@babel/parser/bin/babel-parser.js
+473020279  10844 -rwxr-xr-x   1 kimi     kimi     11100344 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/@esbuild/linux-x64/bin/esbuild
+473992001      8 -rwxr-xr-x   1 kimi     kimi         4739 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/@typescript-eslint/typescript-estree/node_modules/semver/bin/semver.js
+473939964      4 -rwxr-xr-x   1 kimi     kimi           60 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/acorn/bin/acorn
+474061539      4 -rwxr-xr-x   1 kimi     kimi          554 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/autoprefixer/bin/autoprefixer
+474086784      4 -rwxr-xr-x   1 kimi     kimi         2497 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/baseline-browser-mapping/dist/cli.js
+474078324      8 -rwxr-xr-x   1 kimi     kimi         4347 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/browserslist/cli.js
+474224640    184 -rwxr-xr-x   1 kimi     kimi       186559 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/core-js-compat/data.json
+474224768    584 -rwxr-xr-x   1 kimi     kimi       596438 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/core-js-compat/entries.json
+474122607      4 -rwxr-xr-x   1 kimi     kimi          394 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/core-js-compat/external.json
+474224896     16 -rwxr-xr-x   1 kimi     kimi        16233 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/core-js-compat/modules-by-versions.json
+474225024     16 -rwxr-xr-x   1 kimi     kimi        14519 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/core-js-compat/modules.json
+474225920      4 -rwxr-xr-x   1 kimi     kimi         3103 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/cssesc/bin/cssesc
+474363264     84 -rwxr-xr-x   1 kimi     kimi        85052 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/date-fns/index.cjs
+474360296     12 -rwxr-xr-x   1 kimi     kimi         8885 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/date-fns/index.js
+475078016     84 -rwxr-xr-x   1 kimi     kimi        85395 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/date-fns-jalali/index.cjs
+475094979     12 -rwxr-xr-x   1 kimi     kimi         8915 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/date-fns-jalali/index.js
+475215206      4 -rwxr-xr-x   1 kimi     kimi          647 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/didyoumean/package.json
+475244902  10844 -rwxr-xr-x   1 kimi     kimi     11100344 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/esbuild/bin/esbuild
+475596988      8 -rwxr-xr-x   1 kimi     kimi         5610 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/eslint/bin/eslint.js
+475838146      4 -rwxr-xr-x   1 kimi     kimi         1165 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/esrecurse/package.json
+475959397      4 -rwxr-xr-x   1 kimi     kimi          354 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/jiti/bin/jiti.js
+476023168      4 -rwxr-xr-x   1 kimi     kimi         2736 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/js-yaml/bin/js-yaml.js
+476035712      4 -rwxr-xr-x   1 kimi     kimi         3833 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/jsesc/bin/jsesc
+476044160      4 -rwxr-xr-x   1 kimi     kimi         3592 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/json5/lib/cli.js
+476094949      4 -rwxr-xr-x   1 kimi     kimi          356 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/loose-envify/cli.js
+477260416      4 -rwxr-xr-x   1 kimi     kimi         1091 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/micromatch/LICENSE
+477266007      4 -rwxr-xr-x   1 kimi     kimi         1129 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/nanoid/bin/nanoid.cjs
+477300175      4 -rwxr-xr-x   1 kimi     kimi         1118 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/postcss-import/LICENSE
+477300575     16 -rwxr-xr-x   1 kimi     kimi        13191 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/postcss-import/index.js
+477314125      4 -rwxr-xr-x   1 kimi     kimi         1081 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/queue-microtask/LICENSE
+477829760     24 -rwxr-xr-x   1 kimi     kimi        24073 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/recharts/es6/cartesian/Line.js
+477849680     28 -rwxr-xr-x   1 kimi     kimi        25812 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/recharts/lib/cartesian/Line.js
+477975040      8 -rwxr-xr-x   1 kimi     kimi         7189 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/regenerate-unicode-properties/index.js
+478003495      4 -rwxr-xr-x   1 kimi     kimi         1779 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/regjsparser/bin/parser
+478004291      4 -rwxr-xr-x   1 kimi     kimi         1535 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/resolve/bin/resolve
+478011233     84 -rwxr-xr-x   1 kimi     kimi        82269 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/rollup/dist/bin/rollup
+478101354      8 -rwxr-xr-x   1 kimi     kimi         4717 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/semver/bin/semver.js
+478107382      4 -rwxr-xr-x   1 kimi     kimi           55 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/sucrase/bin/sucrase
+478112746      4 -rwxr-xr-x   1 kimi     kimi          623 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/sucrase/bin/sucrase-node
+478178654      4 -rwxr-xr-x   1 kimi     kimi           75 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/tailwindcss/lib/cli.js
+478377852      4 -rwxr-xr-x   1 kimi     kimi           45 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/typescript/bin/tsc
+478377595      4 -rwxr-xr-x   1 kimi     kimi           50 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/typescript/bin/tsserver
+479119744      4 -rwxr-xr-x   1 kimi     kimi         1151 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/unicode-canonical-property-names-ecmascript/index.js
+479119086      4 -rwxr-xr-x   1 kimi     kimi          449 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/unicode-match-property-ecmascript/index.js
+479119854      4 -rwxr-xr-x   1 kimi     kimi          504 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/unicode-match-property-value-ecmascript/index.js
+479120896      4 -rwxr-xr-x   1 kimi     kimi         1688 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/unicode-property-aliases-ecmascript/index.js
+479120990      4 -rwxr-xr-x   1 kimi     kimi          912 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/update-browserslist-db/cli.js
+479121439      4 -rwxr-xr-x   1 kimi     kimi         1452 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/LICENSE
+479124864      8 -rwxr-xr-x   1 kimi     kimi         6416 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/README.md
+479133056      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/es5/uri.all.d.ts
+477879422     56 -rwxr-xr-x   1 kimi     kimi        57304 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/es5/uri.all.js
+479133184    100 -rwxr-xr-x   1 kimi     kimi       102192 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/es5/uri.all.js.map
+479133312      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/es5/uri.all.min.d.ts
+478973540     20 -rwxr-xr-x   1 kimi     kimi        17200 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/es5/uri.all.min.js
+479121487     84 -rwxr-xr-x   1 kimi     kimi        83083 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/es5/uri.all.min.js.map
+474143101      4 -rwxr-xr-x   1 kimi     kimi           23 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/index.d.ts
+478375277      4 -rwxr-xr-x   1 kimi     kimi          537 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/index.js
+478974310      4 -rwxr-xr-x   1 kimi     kimi          747 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/index.js.map
+479116282      4 -rwxr-xr-x   1 kimi     kimi           97 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/regexps-iri.d.ts
+479121526      4 -rwxr-xr-x   1 kimi     kimi          114 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/regexps-iri.js
+479119605      4 -rwxr-xr-x   1 kimi     kimi          192 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/regexps-iri.js.map
+479119987      4 -rwxr-xr-x   1 kimi     kimi          160 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/regexps-uri.d.ts
+479134848      8 -rwxr-xr-x   1 kimi     kimi         7813 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/regexps-uri.js
+478377723     12 -rwxr-xr-x   1 kimi     kimi         8283 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/regexps-uri.js.map
+479119994      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/http.d.ts
+479133135      4 -rwxr-xr-x   1 kimi     kimi          959 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/http.js
+478972386      4 -rwxr-xr-x   1 kimi     kimi          841 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/http.js.map
+479135224      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/https.d.ts
+479134967      4 -rwxr-xr-x   1 kimi     kimi          212 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/https.js
+479133167      4 -rwxr-xr-x   1 kimi     kimi          312 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/https.js.map
+478974828      4 -rwxr-xr-x   1 kimi     kimi          359 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/mailto.d.ts
+479135616      8 -rwxr-xr-x   1 kimi     kimi         7746 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/mailto.js
+479135872      8 -rwxr-xr-x   1 kimi     kimi         7209 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/mailto.js.map
+479135733      4 -rwxr-xr-x   1 kimi     kimi          279 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn-uuid.d.ts
+479119714      4 -rwxr-xr-x   1 kimi     kimi          868 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js
+479135972      4 -rwxr-xr-x   1 kimi     kimi          832 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js.map
+479118696      4 -rwxr-xr-x   1 kimi     kimi          324 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn.d.ts
+479136000      4 -rwxr-xr-x   1 kimi     kimi         2050 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn.js
+479135744      4 -rwxr-xr-x   1 kimi     kimi         1939 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn.js.map
+479118709      4 -rwxr-xr-x   1 kimi     kimi          228 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/ws.d.ts
+479136067      4 -rwxr-xr-x   1 kimi     kimi         1659 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/ws.js
+479135807      4 -rwxr-xr-x   1 kimi     kimi         1610 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/ws.js.map
+478974842      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/wss.d.ts
+479135860      4 -rwxr-xr-x   1 kimi     kimi          198 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/wss.js
+479120872      4 -rwxr-xr-x   1 kimi     kimi          307 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/schemes/wss.js.map
+479134976      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/uri.d.ts
+479135104     20 -rwxr-xr-x   1 kimi     kimi        20153 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/uri.js
+479135232     20 -rwxr-xr-x   1 kimi     kimi        19219 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/uri.js.map
+478970736      4 -rwxr-xr-x   1 kimi     kimi          343 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/util.d.ts
+479135323      4 -rwxr-xr-x   1 kimi     kimi         1114 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/util.js
+479125062      4 -rwxr-xr-x   1 kimi     kimi         1715 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/dist/esnext/util.js.map
+479124992      4 -rwxr-xr-x   1 kimi     kimi         2172 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/package.json
+479124939    104 -rwxr-xr-x   1 kimi     kimi       103956 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/uri-js/yarn.lock
+479164032      4 -rwxr-xr-x   1 kimi     kimi         2574 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/vite/bin/vite.js
+479230627      4 -rwxr-xr-x   1 kimi     kimi          985 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/scripts/template/node_modules/which/bin/node-which
+479519090      4 -rwxr-xr-x   1 kimi     kimi          363 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/@babel/parser/bin/babel-parser.js
+479764591  10844 -rwxr-xr-x   2 kimi     kimi     11100344 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/@esbuild/linux-x64/bin/esbuild
+480736065      8 -rwxr-xr-x   1 kimi     kimi         4739 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/@typescript-eslint/typescript-estree/node_modules/semver/bin/semver.js
+480684028      4 -rwxr-xr-x   1 kimi     kimi           60 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/acorn/bin/acorn
+480805603      4 -rwxr-xr-x   1 kimi     kimi          554 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/autoprefixer/bin/autoprefixer
+480830848      4 -rwxr-xr-x   1 kimi     kimi         2497 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/baseline-browser-mapping/dist/cli.js
+480822388      8 -rwxr-xr-x   1 kimi     kimi         4347 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/browserslist/cli.js
+480968704    184 -rwxr-xr-x   1 kimi     kimi       186559 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/core-js-compat/data.json
+480968832    584 -rwxr-xr-x   1 kimi     kimi       596438 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/core-js-compat/entries.json
+480866671      4 -rwxr-xr-x   1 kimi     kimi          394 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/core-js-compat/external.json
+480968960     16 -rwxr-xr-x   1 kimi     kimi        16233 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/core-js-compat/modules-by-versions.json
+480969088     16 -rwxr-xr-x   1 kimi     kimi        14519 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/core-js-compat/modules.json
+480969984      4 -rwxr-xr-x   1 kimi     kimi         3103 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/cssesc/bin/cssesc
+481107328     84 -rwxr-xr-x   1 kimi     kimi        85052 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/date-fns/index.cjs
+481104360     12 -rwxr-xr-x   1 kimi     kimi         8885 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/date-fns/index.js
+481822080     84 -rwxr-xr-x   1 kimi     kimi        85395 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/date-fns-jalali/index.cjs
+481839043     12 -rwxr-xr-x   1 kimi     kimi         8915 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/date-fns-jalali/index.js
+481959270      4 -rwxr-xr-x   1 kimi     kimi          647 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/didyoumean/package.json
+479764591  10844 -rwxr-xr-x   2 kimi     kimi     11100344 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/esbuild/bin/esbuild
+481994172      8 -rwxr-xr-x   1 kimi     kimi         5610 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/eslint/bin/eslint.js
+482235330      4 -rwxr-xr-x   1 kimi     kimi         1165 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/esrecurse/package.json
+482356581      4 -rwxr-xr-x   1 kimi     kimi          354 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/jiti/bin/jiti.js
+482420352      4 -rwxr-xr-x   1 kimi     kimi         2736 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/js-yaml/bin/js-yaml.js
+482432896      4 -rwxr-xr-x   1 kimi     kimi         3833 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/jsesc/bin/jsesc
+482441344      4 -rwxr-xr-x   1 kimi     kimi         3592 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/json5/lib/cli.js
+482492133      4 -rwxr-xr-x   1 kimi     kimi          356 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/loose-envify/cli.js
+483657600      4 -rwxr-xr-x   1 kimi     kimi         1091 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/micromatch/LICENSE
+483663191      4 -rwxr-xr-x   1 kimi     kimi         1129 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/nanoid/bin/nanoid.cjs
+483697359      4 -rwxr-xr-x   1 kimi     kimi         1118 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/postcss-import/LICENSE
+483697759     16 -rwxr-xr-x   1 kimi     kimi        13191 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/postcss-import/index.js
+483711309      4 -rwxr-xr-x   1 kimi     kimi         1081 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/queue-microtask/LICENSE
+484226944     24 -rwxr-xr-x   1 kimi     kimi        24073 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/recharts/es6/cartesian/Line.js
+484246864     28 -rwxr-xr-x   1 kimi     kimi        25812 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/recharts/lib/cartesian/Line.js
+484372224      8 -rwxr-xr-x   1 kimi     kimi         7189 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/regenerate-unicode-properties/index.js
+484400896      4 -rwxr-xr-x   1 kimi     kimi         1779 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/regjsparser/bin/parser
+484401792      4 -rwxr-xr-x   1 kimi     kimi         1535 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/resolve/bin/resolve
+484410089     84 -rwxr-xr-x   1 kimi     kimi        82269 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/rollup/dist/bin/rollup
+484498538      8 -rwxr-xr-x   1 kimi     kimi         4717 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/semver/bin/semver.js
+484493560      4 -rwxr-xr-x   1 kimi     kimi           55 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/sucrase/bin/sucrase
+484509930      4 -rwxr-xr-x   1 kimi     kimi          623 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/sucrase/bin/sucrase-node
+484544123      4 -rwxr-xr-x   1 kimi     kimi           75 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/tailwindcss/lib/cli.js
+484775036      4 -rwxr-xr-x   1 kimi     kimi           45 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/typescript/bin/tsc
+484774779      4 -rwxr-xr-x   1 kimi     kimi           50 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/typescript/bin/tsserver
+485516928      4 -rwxr-xr-x   1 kimi     kimi         1151 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/unicode-canonical-property-names-ecmascript/index.js
+485516270      4 -rwxr-xr-x   1 kimi     kimi          449 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/unicode-match-property-ecmascript/index.js
+485517038      4 -rwxr-xr-x   1 kimi     kimi          504 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/unicode-match-property-value-ecmascript/index.js
+485518080      4 -rwxr-xr-x   1 kimi     kimi         1688 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/unicode-property-aliases-ecmascript/index.js
+485518174      4 -rwxr-xr-x   1 kimi     kimi          912 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/update-browserslist-db/cli.js
+485518623      4 -rwxr-xr-x   1 kimi     kimi         1452 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/LICENSE
+485522048      8 -rwxr-xr-x   1 kimi     kimi         6416 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/README.md
+485530240      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.d.ts
+484276606     56 -rwxr-xr-x   1 kimi     kimi        57304 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.js
+485530368    100 -rwxr-xr-x   1 kimi     kimi       102192 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.js.map
+485530496      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.min.d.ts
+485370724     20 -rwxr-xr-x   1 kimi     kimi        17200 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.min.js
+485518671     84 -rwxr-xr-x   1 kimi     kimi        83083 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.min.js.map
+480700029      4 -rwxr-xr-x   1 kimi     kimi           23 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/index.d.ts
+484772461      4 -rwxr-xr-x   1 kimi     kimi          537 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/index.js
+485371494      4 -rwxr-xr-x   1 kimi     kimi          747 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/index.js.map
+485513466      4 -rwxr-xr-x   1 kimi     kimi           97 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-iri.d.ts
+485518710      4 -rwxr-xr-x   1 kimi     kimi          114 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-iri.js
+485516789      4 -rwxr-xr-x   1 kimi     kimi          192 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-iri.js.map
+485517171      4 -rwxr-xr-x   1 kimi     kimi          160 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-uri.d.ts
+485532032      8 -rwxr-xr-x   1 kimi     kimi         7813 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-uri.js
+485517178     12 -rwxr-xr-x   1 kimi     kimi         8283 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-uri.js.map
+485532408      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/http.d.ts
+485530319      4 -rwxr-xr-x   1 kimi     kimi          959 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/http.js
+485369570      4 -rwxr-xr-x   1 kimi     kimi          841 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/http.js.map
+485532151      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/https.d.ts
+485530351      4 -rwxr-xr-x   1 kimi     kimi          212 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/https.js
+485372012      4 -rwxr-xr-x   1 kimi     kimi          312 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/https.js.map
+485515880      4 -rwxr-xr-x   1 kimi     kimi          359 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/mailto.d.ts
+485532800      8 -rwxr-xr-x   1 kimi     kimi         7746 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/mailto.js
+485533056      8 -rwxr-xr-x   1 kimi     kimi         7209 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/mailto.js.map
+485532917      4 -rwxr-xr-x   1 kimi     kimi          279 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn-uuid.d.ts
+485516898      4 -rwxr-xr-x   1 kimi     kimi          868 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js
+485533156      4 -rwxr-xr-x   1 kimi     kimi          832 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js.map
+485518056      4 -rwxr-xr-x   1 kimi     kimi          324 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn.d.ts
+485533184      4 -rwxr-xr-x   1 kimi     kimi         2050 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn.js
+485532928      4 -rwxr-xr-x   1 kimi     kimi         1939 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn.js.map
+485515894      4 -rwxr-xr-x   1 kimi     kimi          228 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/ws.d.ts
+485533251      4 -rwxr-xr-x   1 kimi     kimi         1659 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/ws.js
+485532991      4 -rwxr-xr-x   1 kimi     kimi         1610 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/ws.js.map
+485533305      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/wss.d.ts
+485518069      4 -rwxr-xr-x   1 kimi     kimi          198 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/wss.js
+485533044      4 -rwxr-xr-x   1 kimi     kimi          307 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/wss.js.map
+485532160      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/uri.d.ts
+485532288     20 -rwxr-xr-x   1 kimi     kimi        20153 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/uri.js
+485532416     20 -rwxr-xr-x   1 kimi     kimi        19219 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/uri.js.map
+485367920      4 -rwxr-xr-x   1 kimi     kimi          343 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/util.d.ts
+485532507      4 -rwxr-xr-x   1 kimi     kimi         1114 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/util.js
+485522246      4 -rwxr-xr-x   1 kimi     kimi         1715 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/util.js.map
+485522176      4 -rwxr-xr-x   1 kimi     kimi         2172 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/package.json
+485522123    104 -rwxr-xr-x   1 kimi     kimi       103956 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/uri-js/yarn.lock
+485561216      4 -rwxr-xr-x   1 kimi     kimi         2574 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/vite/bin/vite.js
+485627904      4 -rwxr-xr-x   1 kimi     kimi          985 Aug 11 15:29 /app/.agents/skills/webapp-building-swarm/templates/0-origin/0-origin/node_modules/which/bin/node-which
+441550575      4 -rwxr-xr-x   1 kimi     kimi          217 Aug 11 15:07 /app/.agents/skills/backend-building-swarm/scripts/.prepare-template.sh
+441552475     28 -rwxr-xr-x   1 kimi     kimi        25521 Aug 11 15:07 /app/.agents/skills/backend-building-swarm/scripts/init.sh
+454227712      4 -rwxr-xr-x   1 kimi     kimi         1663 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@aws-sdk/types/package.json
+454241408     16 -rwxr-xr-x   1 kimi     kimi        16053 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@drizzle-team/brocli/README.md
+454242127      4 -rwxr-xr-x   1 kimi     kimi         1483 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@drizzle-team/brocli/package.json
+454241781  10864 -rwxr-xr-x   2 kimi     kimi     11120788 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@esbuild/linux-x64/bin/esbuild
+454591616     60 -rwxr-xr-x   1 kimi     kimi        60585 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@esbuild-kit/core-utils/dist/index.js
+454224254   9128 -rwxr-xr-x   2 kimi     kimi      9347072 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@esbuild-kit/core-utils/node_modules/@esbuild/linux-x64/bin/esbuild
+454224254   9128 -rwxr-xr-x   2 kimi     kimi      9347072 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@esbuild-kit/core-utils/node_modules/esbuild/bin/esbuild
+454884204      8 -rwxr-xr-x   1 kimi     kimi         4512 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@esbuild-kit/esm-loader/dist/index.js
+455688796      4 -rwxr-xr-x   1 kimi     kimi          718 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@trpc/client/bin/intent.js
+455725030      4 -rwxr-xr-x   1 kimi     kimi          718 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@trpc/server/bin/intent.js
+456742776  23540 -rwxr-xr-x   1 kimi     kimi     24101026 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/@typescript/typescript-linux-x64/lib/tsc
+456772480      4 -rwxr-xr-x   1 kimi     kimi         1194 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/aws-ssl-profiles/package.json
+457120256   3608 -rwxr-xr-x   1 kimi     kimi      3693410 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/drizzle-kit/bin.cjs
+456788462  10120 -rwxr-xr-x   2 kimi     kimi     10358936 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/drizzle-kit/node_modules/@esbuild/linux-x64/bin/esbuild
+456788462  10120 -rwxr-xr-x   2 kimi     kimi     10358936 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/drizzle-kit/node_modules/esbuild/bin/esbuild
+457773148      4 -rwxr-xr-x   1 kimi     kimi         1085 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/es-module-lexer/LICENSE
+457787008     12 -rwxr-xr-x   1 kimi     kimi        12156 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/es-module-lexer/README.md
+457787136      4 -rwxr-xr-x   1 kimi     kimi         1732 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/es-module-lexer/package.json
+454241781  10864 -rwxr-xr-x   2 kimi     kimi     11120788 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/esbuild/bin/esbuild
+457505401     28 -rwxr-xr-x   1 kimi     kimi        24735 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/get-tsconfig/dist/index.cjs
+457692665     28 -rwxr-xr-x   1 kimi     kimi        24718 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/get-tsconfig/dist/index.mjs
+458257088      4 -rwxr-xr-x   1 kimi     kimi         1519 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/nanoid/bin/nanoid.js
+458270719      4 -rwxr-xr-x   1 kimi     kimi         1129 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/postcss/node_modules/nanoid/bin/nanoid.cjs
+458314112      4 -rwxr-xr-x   1 kimi     kimi         2628 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/prettier/bin/prettier.cjs
+458737792      4 -rwxr-xr-x   1 kimi     kimi         2150 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/resolve-pkg-maps/dist/index.cjs
+458737920      4 -rwxr-xr-x   1 kimi     kimi         2080 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/resolve-pkg-maps/dist/index.mjs
+458263164      4 -rwxr-xr-x   1 kimi     kimi           46 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/rolldown/bin/cli.mjs
+458828005      4 -rwxr-xr-x   1 kimi     kimi          650 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/cjs/api/index.cjs
+458828106      4 -rwxr-xr-x   1 kimi     kimi          568 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/cjs/api/index.mjs
+458808807      4 -rwxr-xr-x   1 kimi     kimi          545 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/cjs/index.cjs
+458827988      4 -rwxr-xr-x   1 kimi     kimi          464 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/cjs/index.mjs
+458826880    120 -rwxr-xr-x   1 kimi     kimi       122348 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/cli.cjs
+458827136    120 -rwxr-xr-x   1 kimi     kimi       121808 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/cli.mjs
+458828206      4 -rwxr-xr-x   1 kimi     kimi         1298 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/esm/api/index.cjs
+458828325      4 -rwxr-xr-x   1 kimi     kimi         1148 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/esm/api/index.mjs
+458828160      4 -rwxr-xr-x   1 kimi     kimi         1398 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/esm/index.cjs
+458828126      4 -rwxr-xr-x   1 kimi     kimi          815 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/esm/index.mjs
+458827233      4 -rwxr-xr-x   1 kimi     kimi          827 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/loader.cjs
+458811741      4 -rwxr-xr-x   1 kimi     kimi          743 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/loader.mjs
+458803694      4 -rwxr-xr-x   1 kimi     kimi          506 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/patch-repl.cjs
+458808686      4 -rwxr-xr-x   1 kimi     kimi          496 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/patch-repl.mjs
+458827392      4 -rwxr-xr-x   1 kimi     kimi         1169 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/preflight.cjs
+458827431      4 -rwxr-xr-x   1 kimi     kimi         1134 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/preflight.mjs
+458827469      4 -rwxr-xr-x   1 kimi     kimi          798 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/repl.cjs
+458827962      4 -rwxr-xr-x   1 kimi     kimi          755 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/repl.mjs
+458827628      4 -rwxr-xr-x   1 kimi     kimi          497 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/suppress-warnings.cjs
+458827496      4 -rwxr-xr-x   1 kimi     kimi          484 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/dist/suppress-warnings.mjs
+458732282  11164 -rwxr-xr-x   2 kimi     kimi     11427952 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/node_modules/@esbuild/linux-x64/bin/esbuild
+458732282  11164 -rwxr-xr-x   2 kimi     kimi     11427952 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/tsx/node_modules/esbuild/bin/esbuild
+458725623      4 -rwxr-xr-x   1 kimi     kimi           44 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/typescript/bin/tsc
+459277312      4 -rwxr-xr-x   1 kimi     kimi         2574 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/vite/bin/vite.js
+459259772      4 -rwxr-xr-x   1 kimi     kimi           43 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/vitest/vitest.mjs
+459404525      4 -rwxr-xr-x   1 kimi     kimi          441 Aug 11 15:28 /app/.agents/skills/backend-building-swarm/scripts/template/node_modules/why-is-node-running/cli.js
+459551194      4 -rwxr-xr-x   1 kimi     kimi          703 Aug 11 15:07 /app/.agents/skills/webapp-building/scripts/.prepare-template.sh
+445317353     12 -rwxr-xr-x   1 kimi     kimi         8810 Aug 11 15:07 /app/.agents/skills/webapp-building/scripts/init-webapp.sh
+459689586      4 -rwxr-xr-x   1 kimi     kimi          363 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/@babel/parser/bin/babel-parser.js
+459935704  10844 -rwxr-xr-x   1 kimi     kimi     11100344 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/@esbuild/linux-x64/bin/esbuild
+460907073      8 -rwxr-xr-x   1 kimi     kimi         4739 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/@typescript-eslint/typescript-estree/node_modules/semver/bin/semver.js
+460855036      4 -rwxr-xr-x   1 kimi     kimi           60 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/acorn/bin/acorn
+460976611      4 -rwxr-xr-x   1 kimi     kimi          554 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/autoprefixer/bin/autoprefixer
+460997376      4 -rwxr-xr-x   1 kimi     kimi         2891 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/baseline-browser-mapping/dist/cli.cjs
+460993396      8 -rwxr-xr-x   1 kimi     kimi         4347 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/browserslist/cli.js
+461091328    184 -rwxr-xr-x   1 kimi     kimi       188284 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/core-js-compat/data.json
+461091456    592 -rwxr-xr-x   1 kimi     kimi       605693 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/core-js-compat/entries.json
+461062767      4 -rwxr-xr-x   1 kimi     kimi          394 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/core-js-compat/external.json
+460778492     20 -rwxr-xr-x   1 kimi     kimi        16433 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/core-js-compat/modules-by-versions.json
+461091584     16 -rwxr-xr-x   1 kimi     kimi        14691 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/core-js-compat/modules.json
+461092736      4 -rwxr-xr-x   1 kimi     kimi         3103 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/cssesc/bin/cssesc
+461241600     84 -rwxr-xr-x   1 kimi     kimi        85052 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/date-fns/index.cjs
+461253076     12 -rwxr-xr-x   1 kimi     kimi         8885 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/date-fns/index.js
+461966848     84 -rwxr-xr-x   1 kimi     kimi        85395 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/date-fns-jalali/index.cjs
+461980099     12 -rwxr-xr-x   1 kimi     kimi         8915 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/date-fns-jalali/index.js
+462099686      4 -rwxr-xr-x   1 kimi     kimi          647 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/didyoumean/package.json
+462129908  10844 -rwxr-xr-x   1 kimi     kimi     11100344 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/esbuild/bin/esbuild
+462482432      8 -rwxr-xr-x   1 kimi     kimi         5610 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/eslint/bin/eslint.js
+462755200      4 -rwxr-xr-x   1 kimi     kimi         1165 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/esrecurse/package.json
+462842097      4 -rwxr-xr-x   1 kimi     kimi          354 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/jiti/bin/jiti.js
+462908160      4 -rwxr-xr-x   1 kimi     kimi         2736 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/js-yaml/bin/js-yaml.js
+462920704      4 -rwxr-xr-x   1 kimi     kimi         3833 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/jsesc/bin/jsesc
+462929152      4 -rwxr-xr-x   1 kimi     kimi         3592 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/json5/lib/cli.js
+462998473      4 -rwxr-xr-x   1 kimi     kimi          356 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/loose-envify/cli.js
+464160192      4 -rwxr-xr-x   1 kimi     kimi         1091 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/micromatch/LICENSE
+464167000      4 -rwxr-xr-x   1 kimi     kimi         1129 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/nanoid/bin/nanoid.cjs
+464185807      4 -rwxr-xr-x   1 kimi     kimi         1118 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/postcss-import/LICENSE
+464186207     16 -rwxr-xr-x   1 kimi     kimi        13191 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/postcss-import/index.js
+464200146      4 -rwxr-xr-x   1 kimi     kimi         1081 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/queue-microtask/LICENSE
+464715520     24 -rwxr-xr-x   1 kimi     kimi        24073 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/recharts/es6/cartesian/Line.js
+464735440     28 -rwxr-xr-x   1 kimi     kimi        25812 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/recharts/lib/cartesian/Line.js
+464860928      8 -rwxr-xr-x   1 kimi     kimi         7189 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/regenerate-unicode-properties/index.js
+464889472      4 -rwxr-xr-x   1 kimi     kimi         1779 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/regjsparser/bin/parser
+464890368      4 -rwxr-xr-x   1 kimi     kimi         1535 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/resolve/bin/resolve
+464898665     84 -rwxr-xr-x   1 kimi     kimi        82269 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/rollup/dist/bin/rollup
+464986986      8 -rwxr-xr-x   1 kimi     kimi         4717 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/semver/bin/semver.js
+464982136      4 -rwxr-xr-x   1 kimi     kimi           55 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/sucrase/bin/sucrase
+464998506      4 -rwxr-xr-x   1 kimi     kimi          623 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/sucrase/bin/sucrase-node
+465064357      4 -rwxr-xr-x   1 kimi     kimi           75 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/tailwindcss/lib/cli.js
+465263612      4 -rwxr-xr-x   1 kimi     kimi           45 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/typescript/bin/tsc
+465240572      4 -rwxr-xr-x   1 kimi     kimi           50 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/typescript/bin/tsserver
+466005504      4 -rwxr-xr-x   1 kimi     kimi         1151 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/unicode-canonical-property-names-ecmascript/index.js
+466004846      4 -rwxr-xr-x   1 kimi     kimi          449 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/unicode-match-property-ecmascript/index.js
+466005614      4 -rwxr-xr-x   1 kimi     kimi          504 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/unicode-match-property-value-ecmascript/index.js
+466006656      4 -rwxr-xr-x   1 kimi     kimi         1688 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/unicode-property-aliases-ecmascript/index.js
+466006750      4 -rwxr-xr-x   1 kimi     kimi          914 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/update-browserslist-db/cli.js
+466007296      4 -rwxr-xr-x   1 kimi     kimi         1452 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/LICENSE
+466007344      8 -rwxr-xr-x   1 kimi     kimi         6416 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/README.md
+466018816      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/es5/uri.all.d.ts
+464765182     56 -rwxr-xr-x   1 kimi     kimi        57304 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/es5/uri.all.js
+466018944    100 -rwxr-xr-x   1 kimi     kimi       102192 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/es5/uri.all.js.map
+466019072      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/es5/uri.all.min.d.ts
+465859300     20 -rwxr-xr-x   1 kimi     kimi        17200 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/es5/uri.all.min.js
+466018895     84 -rwxr-xr-x   1 kimi     kimi        83083 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/es5/uri.all.min.js.map
+466005117      4 -rwxr-xr-x   1 kimi     kimi           23 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/index.d.ts
+465860588      4 -rwxr-xr-x   1 kimi     kimi          537 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/index.js
+465860070      4 -rwxr-xr-x   1 kimi     kimi          747 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/index.js.map
+466002042      4 -rwxr-xr-x   1 kimi     kimi           97 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/regexps-iri.d.ts
+466010873      4 -rwxr-xr-x   1 kimi     kimi          114 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/regexps-iri.js
+466018934      4 -rwxr-xr-x   1 kimi     kimi          192 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/regexps-iri.js.map
+466005365      4 -rwxr-xr-x   1 kimi     kimi          160 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/regexps-uri.d.ts
+466020608      8 -rwxr-xr-x   1 kimi     kimi         7813 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/regexps-uri.js
+466007419     12 -rwxr-xr-x   1 kimi     kimi         8283 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/regexps-uri.js.map
+466020984      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/http.d.ts
+466019151      4 -rwxr-xr-x   1 kimi     kimi          959 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/http.js
+465861091      4 -rwxr-xr-x   1 kimi     kimi          841 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/http.js.map
+466020727      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/https.d.ts
+465260017      4 -rwxr-xr-x   1 kimi     kimi          212 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/https.js
+465855729      4 -rwxr-xr-x   1 kimi     kimi          312 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/https.js.map
+465261040      4 -rwxr-xr-x   1 kimi     kimi          359 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/mailto.d.ts
+466021504      8 -rwxr-xr-x   1 kimi     kimi         7746 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/mailto.js
+466021760      8 -rwxr-xr-x   1 kimi     kimi         7209 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/mailto.js.map
+466021621      4 -rwxr-xr-x   1 kimi     kimi          279 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn-uuid.d.ts
+465858146      4 -rwxr-xr-x   1 kimi     kimi          868 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js
+466021860      4 -rwxr-xr-x   1 kimi     kimi          832 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js.map
+465856496      4 -rwxr-xr-x   1 kimi     kimi          324 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn.d.ts
+466021176      4 -rwxr-xr-x   1 kimi     kimi         2050 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn.js
+466021888      4 -rwxr-xr-x   1 kimi     kimi         1939 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/urn.js.map
+465241328      4 -rwxr-xr-x   1 kimi     kimi          228 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/ws.d.ts
+466021951      4 -rwxr-xr-x   1 kimi     kimi         1659 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/ws.js
+466021632      4 -rwxr-xr-x   1 kimi     kimi         1610 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/ws.js.map
+465260026      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/wss.d.ts
+466022005      4 -rwxr-xr-x   1 kimi     kimi          198 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/wss.js
+466019183      4 -rwxr-xr-x   1 kimi     kimi          307 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/schemes/wss.js.map
+466020736      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/uri.d.ts
+466020864     20 -rwxr-xr-x   1 kimi     kimi        20153 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/uri.js
+466020992     20 -rwxr-xr-x   1 kimi     kimi        19219 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/uri.js.map
+466005747      4 -rwxr-xr-x   1 kimi     kimi          343 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/util.d.ts
+466021083      4 -rwxr-xr-x   1 kimi     kimi         1114 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/util.js
+466021120      4 -rwxr-xr-x   1 kimi     kimi         1715 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/dist/esnext/util.js.map
+466010752      4 -rwxr-xr-x   1 kimi     kimi         2172 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/package.json
+466010822    104 -rwxr-xr-x   1 kimi     kimi       103956 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/uri-js/yarn.lock
+466049792      4 -rwxr-xr-x   1 kimi     kimi         2574 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/vite/bin/vite.js
+466116387      4 -rwxr-xr-x   1 kimi     kimi          985 Aug 11 15:29 /app/.agents/skills/webapp-building/scripts/template/node_modules/which/bin/node-which
+466406642      4 -rwxr-xr-x   1 kimi     kimi          363 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/@babel/parser/bin/babel-parser.js
+466622967  10844 -rwxr-xr-x   2 kimi     kimi     11100344 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/@esbuild/linux-x64/bin/esbuild
+467624129      8 -rwxr-xr-x   1 kimi     kimi         4739 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/@typescript-eslint/typescript-estree/node_modules/semver/bin/semver.js
+467572092      4 -rwxr-xr-x   1 kimi     kimi           60 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/acorn/bin/acorn
+467693667      4 -rwxr-xr-x   1 kimi     kimi          554 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/autoprefixer/bin/autoprefixer
+467714432      4 -rwxr-xr-x   1 kimi     kimi         2891 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/baseline-browser-mapping/dist/cli.cjs
+467710452      8 -rwxr-xr-x   1 kimi     kimi         4347 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/browserslist/cli.js
+467808384    184 -rwxr-xr-x   1 kimi     kimi       188284 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/core-js-compat/data.json
+467808512    592 -rwxr-xr-x   1 kimi     kimi       605693 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/core-js-compat/entries.json
+467779823      4 -rwxr-xr-x   1 kimi     kimi          394 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/core-js-compat/external.json
+467495548     20 -rwxr-xr-x   1 kimi     kimi        16433 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/core-js-compat/modules-by-versions.json
+467808640     16 -rwxr-xr-x   1 kimi     kimi        14691 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/core-js-compat/modules.json
+467809792      4 -rwxr-xr-x   1 kimi     kimi         3103 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/cssesc/bin/cssesc
+467958656     84 -rwxr-xr-x   1 kimi     kimi        85052 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/date-fns/index.cjs
+467970132     12 -rwxr-xr-x   1 kimi     kimi         8885 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/date-fns/index.js
+468683904     84 -rwxr-xr-x   1 kimi     kimi        85395 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/date-fns-jalali/index.cjs
+468697155     12 -rwxr-xr-x   1 kimi     kimi         8915 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/date-fns-jalali/index.js
+468816742      4 -rwxr-xr-x   1 kimi     kimi          647 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/didyoumean/package.json
+466622967  10844 -rwxr-xr-x   2 kimi     kimi     11100344 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/esbuild/bin/esbuild
+468852608      8 -rwxr-xr-x   1 kimi     kimi         5610 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/eslint/bin/eslint.js
+469093442      4 -rwxr-xr-x   1 kimi     kimi         1165 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/esrecurse/package.json
+469215066      4 -rwxr-xr-x   1 kimi     kimi          354 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/jiti/bin/jiti.js
+469278336      4 -rwxr-xr-x   1 kimi     kimi         2736 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/js-yaml/bin/js-yaml.js
+469290880      4 -rwxr-xr-x   1 kimi     kimi         3833 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/jsesc/bin/jsesc
+469299456      4 -rwxr-xr-x   1 kimi     kimi         3592 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/json5/lib/cli.js
+469366757      4 -rwxr-xr-x   1 kimi     kimi          356 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/loose-envify/cli.js
+470532224      4 -rwxr-xr-x   1 kimi     kimi         1091 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/micromatch/LICENSE
+470537815      4 -rwxr-xr-x   1 kimi     kimi         1129 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/nanoid/bin/nanoid.cjs
+470556239      4 -rwxr-xr-x   1 kimi     kimi         1118 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/postcss-import/LICENSE
+470556383     16 -rwxr-xr-x   1 kimi     kimi        13191 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/postcss-import/index.js
+470571701      4 -rwxr-xr-x   1 kimi     kimi         1081 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/queue-microtask/LICENSE
+471085567     24 -rwxr-xr-x   1 kimi     kimi        24073 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/recharts/es6/cartesian/Line.js
+471112273     28 -rwxr-xr-x   1 kimi     kimi        25812 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/recharts/lib/cartesian/Line.js
+471231104      8 -rwxr-xr-x   1 kimi     kimi         7189 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/regenerate-unicode-properties/index.js
+471259304      4 -rwxr-xr-x   1 kimi     kimi         1779 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/regjsparser/bin/parser
+471260099      4 -rwxr-xr-x   1 kimi     kimi         1535 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/resolve/bin/resolve
+471267058     84 -rwxr-xr-x   1 kimi     kimi        82269 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/rollup/dist/bin/rollup
+471357162      8 -rwxr-xr-x   1 kimi     kimi         4717 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/semver/bin/semver.js
+471367546      4 -rwxr-xr-x   1 kimi     kimi           55 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/sucrase/bin/sucrase
+471368682      4 -rwxr-xr-x   1 kimi     kimi          623 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/sucrase/bin/sucrase-node
+471434462      4 -rwxr-xr-x   1 kimi     kimi           75 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/tailwindcss/lib/cli.js
+471633660      4 -rwxr-xr-x   1 kimi     kimi           45 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/typescript/bin/tsc
+471633403      4 -rwxr-xr-x   1 kimi     kimi           50 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/typescript/bin/tsserver
+472375552      4 -rwxr-xr-x   1 kimi     kimi         1151 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/unicode-canonical-property-names-ecmascript/index.js
+472374894      4 -rwxr-xr-x   1 kimi     kimi          449 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/unicode-match-property-ecmascript/index.js
+472375662      4 -rwxr-xr-x   1 kimi     kimi          504 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/unicode-match-property-value-ecmascript/index.js
+472376704      4 -rwxr-xr-x   1 kimi     kimi         1688 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/unicode-property-aliases-ecmascript/index.js
+472376798      4 -rwxr-xr-x   1 kimi     kimi          914 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/update-browserslist-db/cli.js
+472377344      4 -rwxr-xr-x   1 kimi     kimi         1452 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/LICENSE
+472377392      8 -rwxr-xr-x   1 kimi     kimi         6416 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/README.md
+472388864      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.d.ts
+469366014     56 -rwxr-xr-x   1 kimi     kimi        57304 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.js
+472388992    100 -rwxr-xr-x   1 kimi     kimi       102192 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.js.map
+472389120      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.min.d.ts
+472229348     20 -rwxr-xr-x   1 kimi     kimi        17200 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.min.js
+472388943     84 -rwxr-xr-x   1 kimi     kimi        83083 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/es5/uri.all.min.js.map
+472375165      4 -rwxr-xr-x   1 kimi     kimi           23 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/index.d.ts
+471631085      4 -rwxr-xr-x   1 kimi     kimi          537 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/index.js
+472307558      4 -rwxr-xr-x   1 kimi     kimi          747 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/index.js.map
+472372090      4 -rwxr-xr-x   1 kimi     kimi           97 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-iri.d.ts
+472380921      4 -rwxr-xr-x   1 kimi     kimi          114 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-iri.js
+472388982      4 -rwxr-xr-x   1 kimi     kimi          192 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-iri.js.map
+472375413      4 -rwxr-xr-x   1 kimi     kimi          160 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-uri.d.ts
+472390656      8 -rwxr-xr-x   1 kimi     kimi         7813 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-uri.js
+471633531     12 -rwxr-xr-x   1 kimi     kimi         8283 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/regexps-uri.js.map
+472391032      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/http.d.ts
+472389199      4 -rwxr-xr-x   1 kimi     kimi          959 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/http.js
+472231267      4 -rwxr-xr-x   1 kimi     kimi          841 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/http.js.map
+472390775      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/https.d.ts
+472225777      4 -rwxr-xr-x   1 kimi     kimi          212 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/https.js
+472389231      4 -rwxr-xr-x   1 kimi     kimi          312 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/https.js.map
+472230636      4 -rwxr-xr-x   1 kimi     kimi          359 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/mailto.d.ts
+472391552      8 -rwxr-xr-x   1 kimi     kimi         7746 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/mailto.js
+472391808      8 -rwxr-xr-x   1 kimi     kimi         7209 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/mailto.js.map
+472391669      4 -rwxr-xr-x   1 kimi     kimi          279 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn-uuid.d.ts
+472228194      4 -rwxr-xr-x   1 kimi     kimi          868 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js
+472391908      4 -rwxr-xr-x   1 kimi     kimi          832 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js.map
+472374504      4 -rwxr-xr-x   1 kimi     kimi          324 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn.d.ts
+472391224      4 -rwxr-xr-x   1 kimi     kimi         2050 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn.js
+472391936      4 -rwxr-xr-x   1 kimi     kimi         1939 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/urn.js.map
+472374517      4 -rwxr-xr-x   1 kimi     kimi          228 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/ws.d.ts
+472391999      4 -rwxr-xr-x   1 kimi     kimi         1659 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/ws.js
+472391680      4 -rwxr-xr-x   1 kimi     kimi         1610 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/ws.js.map
+472225786      4 -rwxr-xr-x   1 kimi     kimi          108 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/wss.d.ts
+472392053      4 -rwxr-xr-x   1 kimi     kimi          198 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/wss.js
+472376680      4 -rwxr-xr-x   1 kimi     kimi          307 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/schemes/wss.js.map
+472390784      4 -rwxr-xr-x   1 kimi     kimi         2446 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/uri.d.ts
+472390912     20 -rwxr-xr-x   1 kimi     kimi        20153 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/uri.js
+472391040     20 -rwxr-xr-x   1 kimi     kimi        19219 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/uri.js.map
+472375795      4 -rwxr-xr-x   1 kimi     kimi          343 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/util.d.ts
+472391131      4 -rwxr-xr-x   1 kimi     kimi         1114 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/util.js
+472391168      4 -rwxr-xr-x   1 kimi     kimi         1715 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/dist/esnext/util.js.map
+472380800      4 -rwxr-xr-x   1 kimi     kimi         2172 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/package.json
+472380870    104 -rwxr-xr-x   1 kimi     kimi       103956 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/uri-js/yarn.lock
+472419840      4 -rwxr-xr-x   1 kimi     kimi         2574 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/vite/bin/vite.js
+472486435      4 -rwxr-xr-x   1 kimi     kimi          985 Aug 11 15:29 /app/.agents/skills/webapp-building/templates/0-origin/0-origin/node_modules/which/bin/node-which
+448532215      4 -rwxr-xr-x   1 kimi     kimi          217 Aug 11 15:07 /app/.agents/skills/backend-building/scripts/.prepare-template.sh
+441548672     24 -rwxr-xr-x   1 kimi     kimi        23777 Aug 11 15:07 /app/.agents/skills/backend-building/scripts/init.sh
+448717469      4 -rwxr-xr-x   1 kimi     kimi         1663 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@aws-sdk/types/package.json
+448731136     16 -rwxr-xr-x   1 kimi     kimi        16053 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@drizzle-team/brocli/README.md
+448731855      4 -rwxr-xr-x   1 kimi     kimi         1483 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@drizzle-team/brocli/package.json
+448731366  10864 -rwxr-xr-x   2 kimi     kimi     11120788 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@esbuild/linux-x64/bin/esbuild
+449081344     60 -rwxr-xr-x   1 kimi     kimi        60585 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@esbuild-kit/core-utils/dist/index.js
+448719998   9128 -rwxr-xr-x   2 kimi     kimi      9347072 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@esbuild-kit/core-utils/node_modules/@esbuild/linux-x64/bin/esbuild
+448719998   9128 -rwxr-xr-x   2 kimi     kimi      9347072 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@esbuild-kit/core-utils/node_modules/esbuild/bin/esbuild
+449373932      8 -rwxr-xr-x   1 kimi     kimi         4512 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@esbuild-kit/esm-loader/dist/index.js
+450178524      4 -rwxr-xr-x   1 kimi     kimi          718 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@trpc/client/bin/intent.js
+450217438      4 -rwxr-xr-x   1 kimi     kimi          718 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@trpc/server/bin/intent.js
+450353016  23540 -rwxr-xr-x   1 kimi     kimi     24101026 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/@typescript/typescript-linux-x64/lib/tsc
+451262336      4 -rwxr-xr-x   1 kimi     kimi         1194 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/aws-ssl-profiles/package.json
+451610112   3608 -rwxr-xr-x   1 kimi     kimi      3693410 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/drizzle-kit/bin.cjs
+451278318  10120 -rwxr-xr-x   2 kimi     kimi     10358936 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/drizzle-kit/node_modules/@esbuild/linux-x64/bin/esbuild
+451278318  10120 -rwxr-xr-x   2 kimi     kimi     10358936 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/drizzle-kit/node_modules/esbuild/bin/esbuild
+452262876      4 -rwxr-xr-x   1 kimi     kimi         1085 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/es-module-lexer/LICENSE
+452276736     12 -rwxr-xr-x   1 kimi     kimi        12156 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/es-module-lexer/README.md
+452276864      4 -rwxr-xr-x   1 kimi     kimi         1732 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/es-module-lexer/package.json
+448731366  10864 -rwxr-xr-x   2 kimi     kimi     11120788 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/esbuild/bin/esbuild
+452165753     28 -rwxr-xr-x   1 kimi     kimi        24735 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/get-tsconfig/dist/index.cjs
+452191353     28 -rwxr-xr-x   1 kimi     kimi        24718 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/get-tsconfig/dist/index.mjs
+452746816      4 -rwxr-xr-x   1 kimi     kimi         1519 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/nanoid/bin/nanoid.js
+452760447      4 -rwxr-xr-x   1 kimi     kimi         1129 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/postcss/node_modules/nanoid/bin/nanoid.cjs
+452803840      4 -rwxr-xr-x   1 kimi     kimi         2628 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/prettier/bin/prettier.cjs
+453227648      4 -rwxr-xr-x   1 kimi     kimi         2150 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/resolve-pkg-maps/dist/index.cjs
+453227776      4 -rwxr-xr-x   1 kimi     kimi         2080 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/resolve-pkg-maps/dist/index.mjs
+453215994      4 -rwxr-xr-x   1 kimi     kimi           46 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/rolldown/bin/cli.mjs
+453317798      4 -rwxr-xr-x   1 kimi     kimi          650 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/cjs/api/index.cjs
+453317858      4 -rwxr-xr-x   1 kimi     kimi          568 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/cjs/api/index.mjs
+453317778      4 -rwxr-xr-x   1 kimi     kimi          545 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/cjs/index.cjs
+453317743      4 -rwxr-xr-x   1 kimi     kimi          464 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/cjs/index.mjs
+453316608    120 -rwxr-xr-x   1 kimi     kimi       122348 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/cli.cjs
+453316864    120 -rwxr-xr-x   1 kimi     kimi       121808 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/cli.mjs
+453318016      4 -rwxr-xr-x   1 kimi     kimi         1298 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/esm/api/index.cjs
+453318144      4 -rwxr-xr-x   1 kimi     kimi         1148 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/esm/api/index.mjs
+453317925      4 -rwxr-xr-x   1 kimi     kimi         1398 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/esm/index.cjs
+453317971      4 -rwxr-xr-x   1 kimi     kimi          815 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/esm/index.mjs
+453301469      4 -rwxr-xr-x   1 kimi     kimi          827 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/loader.cjs
+453317328      4 -rwxr-xr-x   1 kimi     kimi          743 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/loader.mjs
+453298414      4 -rwxr-xr-x   1 kimi     kimi          506 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/patch-repl.cjs
+453296109      4 -rwxr-xr-x   1 kimi     kimi          496 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/patch-repl.mjs
+453317404      4 -rwxr-xr-x   1 kimi     kimi         1169 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/preflight.cjs
+453317443      4 -rwxr-xr-x   1 kimi     kimi         1134 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/preflight.mjs
+453317690      4 -rwxr-xr-x   1 kimi     kimi          798 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/repl.cjs
+453317717      4 -rwxr-xr-x   1 kimi     kimi          755 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/repl.mjs
+453317481      4 -rwxr-xr-x   1 kimi     kimi          497 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/suppress-warnings.cjs
+453317760      4 -rwxr-xr-x   1 kimi     kimi          484 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/dist/suppress-warnings.mjs
+453293432  11164 -rwxr-xr-x   2 kimi     kimi     11427952 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/node_modules/@esbuild/linux-x64/bin/esbuild
+453293432  11164 -rwxr-xr-x   2 kimi     kimi     11427952 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/tsx/node_modules/esbuild/bin/esbuild
+453278203      4 -rwxr-xr-x   1 kimi     kimi           44 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/typescript/bin/tsc
+453767168      4 -rwxr-xr-x   1 kimi     kimi         2574 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/vite/bin/vite.js
+453751676      4 -rwxr-xr-x   1 kimi     kimi           43 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/vitest/vitest.mjs
+453896296      4 -rwxr-xr-x   1 kimi     kimi          441 Aug 11 15:29 /app/.agents/skills/backend-building/scripts/template/node_modules/why-is-node-running/cli.js
+441541120     28 -rwxr-xr-x   1 kimi     kimi        26917 Aug 11 15:07 /app/.agents/skills/api-doc-gen/scripts/generate_api_doc.py
+441544549     24 -rwxr-xr-x   1 kimi     kimi        21217 Aug 11 15:07 /app/.agents/skills/auto-hypothesis-test/scripts/statistical_test_suite.py
+441544773     24 -rwxr-xr-x   1 kimi     kimi        21217 Aug 11 15:07 /app/.agents/skills/auto-stat-test/scripts/statistical_test_suite.py
+441560704      8 -rwxr-xr-x   1 kimi     kimi         7660 Aug 11 15:07 /app/.agents/skills/business-plan-ppt/SKILL.md
+441561088      8 -rwxr-xr-x   1 kimi     kimi         7325 Aug 11 15:07 /app/.agents/skills/business-plan-ppt/references/structure_contract.md
+441561216      8 -rwxr-xr-x   1 kimi     kimi         7765 Aug 11 15:07 /app/.agents/skills/business-plan-ppt/references/style_contract.md
+441559773     20 -rwxr-xr-x   1 kimi     kimi        17214 Aug 11 15:07 /app/.agents/skills/cashflow-valuation/scripts/dcf_model.py
+441567055     20 -rwxr-xr-x   1 kimi     kimi        17742 Aug 11 15:07 /app/.agents/skills/chrono-flow/scripts/generate_timeline.py
+441569742     32 -rwxr-xr-x   1 kimi     kimi        29916 Aug 11 15:07 /app/.agents/skills/cite-style-converter/scripts/citation_formatter.py
+441607121     32 -rwxr-xr-x   1 kimi     kimi        30084 Aug 11 15:07 /app/.agents/skills/code-safety-audit/scripts/security_scan.py
+441595240     20 -rwxr-xr-x   1 kimi     kimi        17030 Aug 11 15:07 /app/.agents/skills/code-to-chart/scripts/analyze_codebase.py
+441560551     20 -rwxr-xr-x   1 kimi     kimi        17030 Aug 11 15:07 /app/.agents/skills/code-to-diagram/scripts/analyze_codebase.py
+441594576     32 -rwxr-xr-x   1 kimi     kimi        30084 Aug 11 15:07 /app/.agents/skills/code-vuln-audit/scripts/security_scan.py
+441615052      8 -rwxr-xr-x   1 kimi     kimi         5674 Aug 11 15:07 /app/.agents/skills/commodities-outlook/SKILL.md
+441596258     12 -rwxr-xr-x   1 kimi     kimi         9050 Aug 11 15:07 /app/.agents/skills/commodities-outlook/references/structure_contract.md
+441607618     12 -rwxr-xr-x   1 kimi     kimi         9986 Aug 11 15:07 /app/.agents/skills/commodities-outlook/references/style_contract.md
+441611468      8 -rwxr-xr-x   1 kimi     kimi         5683 Aug 11 15:07 /app/.agents/skills/commodity-research-outlook/SKILL.md
+441606644     12 -rwxr-xr-x   1 kimi     kimi         8504 Aug 11 15:07 /app/.agents/skills/commodity-research-outlook/references/structure_contract.md
+441608143     12 -rwxr-xr-x   1 kimi     kimi         9636 Aug 11 15:07 /app/.agents/skills/commodity-research-outlook/references/style_contract.md
+441626496     12 -rwxr-xr-x   1 kimi     kimi        11463 Aug 11 15:07 /app/.agents/skills/conventional-commit-gen/scripts/analyze_diff.py
+441597159     16 -rwxr-xr-x   1 kimi     kimi        12961 Aug 11 15:07 /app/.agents/skills/corr-insight/scripts/correlation_explorer.py
+441594087     16 -rwxr-xr-x   1 kimi     kimi        12961 Aug 11 15:07 /app/.agents/skills/correlation-auditor/scripts/correlation_explorer.py
+441633280     28 -rwxr-xr-x   1 kimi     kimi        27242 Aug 11 15:07 /app/.agents/skills/data-viz-gen/scripts/build_infographic.py
+441634304     28 -rwxr-xr-x   1 kimi     kimi        27242 Aug 11 15:07 /app/.agents/skills/data-viz-renderer/scripts/build_infographic.py
+441634944     16 -rwxr-xr-x   1 kimi     kimi        15775 Aug 11 15:07 /app/.agents/skills/database-inspector/scripts/db_explorer.py
+441635584     16 -rwxr-xr-x   1 kimi     kimi        15775 Aug 11 15:07 /app/.agents/skills/database-scout/scripts/db_explorer.py
+441604076     28 -rwxr-xr-x   1 kimi     kimi        25108 Aug 11 15:07 /app/.agents/skills/dataset-health-audit/scripts/data_quality_checker.py
+441608935     28 -rwxr-xr-x   1 kimi     kimi        25108 Aug 11 15:07 /app/.agents/skills/dataset-quality-audit/scripts/data_quality_checker.py
+441602276     20 -rwxr-xr-x   1 kimi     kimi        17214 Aug 11 15:07 /app/.agents/skills/discounted-cashflow-model/scripts/dcf_model.py
+442366848      8 -rwxr-xr-x   1 kimi     kimi         6360 Aug 11 15:07 /app/.agents/skills/earnings-review-note/SKILL.md
+442367488     12 -rwxr-xr-x   1 kimi     kimi        11973 Aug 11 15:07 /app/.agents/skills/earnings-review-note/references/structure_contract.md
+442367616     12 -rwxr-xr-x   1 kimi     kimi        11341 Aug 11 15:07 /app/.agents/skills/earnings-review-note/references/style_contract.md
+442371968     24 -rwxr-xr-x   1 kimi     kimi        24264 Aug 11 15:07 /app/.agents/skills/email-newsletter-builder/scripts/generate_newsletter.py
+442380544      8 -rwxr-xr-x   1 kimi     kimi         6415 Aug 11 15:07 /app/.agents/skills/equity-earnings-review/SKILL.md
+442381184     12 -rwxr-xr-x   1 kimi     kimi        11630 Aug 11 15:07 /app/.agents/skills/equity-earnings-review/references/structure_contract.md
+442381312     12 -rwxr-xr-x   1 kimi     kimi        10642 Aug 11 15:07 /app/.agents/skills/equity-earnings-review/references/style_contract.md
+442435963     24 -rwxr-xr-x   1 kimi     kimi        20572 Aug 11 15:07 /app/.agents/skills/financial-ratio-toolkit/scripts/analyze.py
+442440832     28 -rwxr-xr-x   1 kimi     kimi        27737 Aug 11 15:07 /app/.agents/skills/financial-report-reader/scripts/analyze_financials.py
+442441984     28 -rwxr-xr-x   1 kimi     kimi        27737 Aug 11 15:07 /app/.agents/skills/financial-statement-analyzer/scripts/analyze_financials.py
+442442496     12 -rwxr-xr-x   1 kimi     kimi        10846 Aug 11 15:07 /app/.agents/skills/flashcard-studio/scripts/generate_flashcards.py
+442438466     16 -rwxr-xr-x   1 kimi     kimi        13632 Aug 11 15:07 /app/.agents/skills/fund-risk-analyzer/scripts/etf_screener.py
+442386370     16 -rwxr-xr-x   1 kimi     kimi        13632 Aug 11 15:07 /app/.agents/skills/fund-risk-compare/scripts/etf_screener.py
+442444928     28 -rwxr-xr-x   1 kimi     kimi        27420 Aug 11 15:07 /app/.agents/skills/gantt-chart-builder/scripts/gantt_generator.py
+442446080     28 -rwxr-xr-x   1 kimi     kimi        27420 Aug 11 15:07 /app/.agents/skills/gantt-planner/scripts/gantt_generator.py
+442458112      4 -rwxr-xr-x   1 kimi     kimi         3656 Aug 11 15:07 /app/.agents/skills/git-repo-audit/scripts/hotfiles.sh
+442453725      8 -rwxr-xr-x   1 kimi     kimi         5150 Aug 11 15:07 /app/.agents/skills/git-repo-audit/scripts/ownership.sh
+442451412     12 -rwxr-xr-x   1 kimi     kimi         9413 Aug 11 15:07 /app/.agents/skills/git-repo-audit/scripts/secret-scan.sh
+442502784     24 -rwxr-xr-x   1 kimi     kimi        24264 Aug 11 15:07 /app/.agents/skills/html-email-builder/scripts/generate_newsletter.py
+442504064     32 -rwxr-xr-x   1 kimi     kimi        31463 Aug 11 15:07 /app/.agents/skills/html-mail-builder/scripts/generate_email_template.py
+442505344     32 -rwxr-xr-x   1 kimi     kimi        31463 Aug 11 15:07 /app/.agents/skills/html-mailer-builder/scripts/generate_email_template.py
+442506112     16 -rwxr-xr-x   1 kimi     kimi        14673 Aug 11 15:07 /app/.agents/skills/http-load-profiler/scripts/http_benchmark.py
+442506752     16 -rwxr-xr-x   1 kimi     kimi        14673 Aug 11 15:07 /app/.agents/skills/http-load-tester/scripts/http_benchmark.py
+442511872     24 -rwxr-xr-x   1 kimi     kimi        23142 Aug 11 15:07 /app/.agents/skills/incident-retrospective/scripts/generate_postmortem.py
+442513024     24 -rwxr-xr-x   1 kimi     kimi        23142 Aug 11 15:07 /app/.agents/skills/incident-review-guide/scripts/generate_postmortem.py
+442702976      8 -rwxr-xr-x   1 kimi     kimi         6933 Aug 11 15:07 /app/.agents/skills/investment-memo/SKILL.md
+442702579     12 -rwxr-xr-x   1 kimi     kimi         8466 Aug 11 15:07 /app/.agents/skills/investment-memo/references/analysis_framework.md
+442703616      8 -rwxr-xr-x   1 kimi     kimi         7309 Aug 11 15:07 /app/.agents/skills/investment-memo/references/structure_contract.md
+442703744      8 -rwxr-xr-x   1 kimi     kimi         7281 Aug 11 15:07 /app/.agents/skills/investment-memo/references/style_contract.md
+442704000      8 -rwxr-xr-x   1 kimi     kimi         6554 Aug 11 15:07 /app/.agents/skills/investor-letter-writer/SKILL.md
+442701426     12 -rwxr-xr-x   1 kimi     kimi         8509 Aug 11 15:07 /app/.agents/skills/investor-letter-writer/references/analysis_framework.md
+442704640      8 -rwxr-xr-x   1 kimi     kimi         7823 Aug 11 15:07 /app/.agents/skills/investor-letter-writer/references/structure_contract.md
+442704768      8 -rwxr-xr-x   1 kimi     kimi         7653 Aug 11 15:07 /app/.agents/skills/investor-letter-writer/references/style_contract.md
+445259136     24 -rwxr-xr-x   1 kimi     kimi        24206 Aug 11 15:07 /app/.agents/skills/landing-page-scaffold/scripts/generate_landing_page.py
+445262848     16 -rwxr-xr-x   1 kimi     kimi        13327 Aug 11 15:07 /app/.agents/skills/log-diagnostic/scripts/analyze_logs.py
+445262919     16 -rwxr-xr-x   1 kimi     kimi        13327 Aug 11 15:07 /app/.agents/skills/log-error-digest/scripts/analyze_logs.py
+445264768     24 -rwxr-xr-x   1 kimi     kimi        24206 Aug 11 15:07 /app/.agents/skills/lp-proto-gen/scripts/generate_landing_page.py
+445260136     12 -rwxr-xr-x   1 kimi     kimi         8843 Aug 11 15:07 /app/.agents/skills/market-insight-report/SKILL.md
+444792697      8 -rwxr-xr-x   1 kimi     kimi         4252 Aug 11 15:07 /app/.agents/skills/market-insight-report/references/sota_analysis.md
+445266688     12 -rwxr-xr-x   1 kimi     kimi        10900 Aug 11 15:07 /app/.agents/skills/market-insight-report/references/structure_contract.md
+442483965     12 -rwxr-xr-x   1 kimi     kimi         8212 Aug 11 15:07 /app/.agents/skills/market-insight-report/references/style_contract.md
+445266775     12 -rwxr-xr-x   1 kimi     kimi         8968 Aug 11 15:07 /app/.agents/skills/market-research-brief/SKILL.md
+445250804      8 -rwxr-xr-x   1 kimi     kimi         4405 Aug 11 15:07 /app/.agents/skills/market-research-brief/references/sota_analysis.md
+445268480     12 -rwxr-xr-x   1 kimi     kimi        11612 Aug 11 15:07 /app/.agents/skills/market-research-brief/references/structure_contract.md
+445061621     12 -rwxr-xr-x   1 kimi     kimi         8466 Aug 11 15:07 /app/.agents/skills/market-research-brief/references/style_contract.md
+445262954     12 -rwxr-xr-x   1 kimi     kimi         8798 Aug 11 15:07 /app/.agents/skills/meeting-recap/scripts/validate_minutes.py
+445274624     12 -rwxr-xr-x   1 kimi     kimi        11685 Aug 11 15:07 /app/.agents/skills/outlier-scan/scripts/anomaly_detector.py
+445309440     12 -rwxr-xr-x   1 kimi     kimi        10907 Aug 11 15:07 /app/.agents/skills/pdf/scripts/browser_helper.js
+445309568      4 -rwxr-xr-x   1 kimi     kimi         3051 Aug 11 15:07 /app/.agents/skills/pdf/scripts/cmd_convert.py
+445278285      8 -rwxr-xr-x   1 kimi     kimi         5396 Aug 11 15:07 /app/.agents/skills/pdf/scripts/cmd_extract.py
+445262454     12 -rwxr-xr-x   1 kimi     kimi         8420 Aug 11 15:07 /app/.agents/skills/pdf/scripts/cmd_form.py
+445309696      4 -rwxr-xr-x   1 kimi     kimi         3532 Aug 11 15:07 /app/.agents/skills/pdf/scripts/cmd_meta.py
+445278173      8 -rwxr-xr-x   1 kimi     kimi         5010 Aug 11 15:07 /app/.agents/skills/pdf/scripts/cmd_pages.py
+445309824     12 -rwxr-xr-x   1 kimi     kimi        10774 Aug 11 15:07 /app/.agents/skills/pdf/scripts/compile_latex.py
+445276631     24 -rwxr-xr-x   1 kimi     kimi        21398 Aug 11 15:07 /app/.agents/skills/pdf/scripts/html_to_pdf.js
+445309527     12 -rwxr-xr-x   1 kimi     kimi         9234 Aug 11 15:07 /app/.agents/skills/pdf/scripts/pdf.py
+445309952      4 -rwxr-xr-x   1 kimi     kimi         3437 Aug 11 15:07 /app/.agents/skills/pdf/scripts/pdf.sh
+445310080     16 -rwxr-xr-x   1 kimi     kimi        16211 Aug 11 15:07 /app/.agents/skills/pdf/scripts/setup.sh
+445312128      8 -rwxr-xr-x   1 kimi     kimi         8022 Aug 11 15:07 /app/.agents/skills/pitch-deck-creator/SKILL.md
+445312640      8 -rwxr-xr-x   1 kimi     kimi         7785 Aug 11 15:07 /app/.agents/skills/pitch-deck-creator/references/structure_contract.md
+445259260     12 -rwxr-xr-x   1 kimi     kimi         8239 Aug 11 15:07 /app/.agents/skills/pitch-deck-creator/references/style_contract.md
+445317504      8 -rwxr-xr-x   1 kimi     kimi         6283 Aug 11 15:07 /app/.agents/skills/primary-market-research/SKILL.md
+445318144     12 -rwxr-xr-x   1 kimi     kimi        10385 Aug 11 15:07 /app/.agents/skills/primary-market-research/references/structure_contract.md
+445317575     12 -rwxr-xr-x   1 kimi     kimi         9401 Aug 11 15:07 /app/.agents/skills/primary-market-research/references/style_contract.md
+445326464     12 -rwxr-xr-x   1 kimi     kimi        12071 Aug 11 15:07 /app/.agents/skills/project-sizing-guide/scripts/estimate_calculator.py
+445276517     24 -rwxr-xr-x   1 kimi     kimi        21262 Aug 11 15:07 /app/.agents/skills/py-perf-analyzer/scripts/perf_profile.py
+445350144     32 -rwxr-xr-x   1 kimi     kimi        29916 Aug 11 15:07 /app/.agents/skills/ref-style-converter/scripts/citation_formatter.py
+445350222     16 -rwxr-xr-x   1 kimi     kimi        13281 Aug 11 15:07 /app/.agents/skills/regression-insight/scripts/regression_analyzer.py
+445350821     16 -rwxr-xr-x   1 kimi     kimi        13281 Aug 11 15:07 /app/.agents/skills/regression-modeler/scripts/regression_analyzer.py
+445352448      4 -rwxr-xr-x   1 kimi     kimi         3656 Aug 11 15:07 /app/.agents/skills/repo-audit/scripts/hotfiles.sh
+445351901      8 -rwxr-xr-x   1 kimi     kimi         5150 Aug 11 15:07 /app/.agents/skills/repo-audit/scripts/ownership.sh
+445352576     12 -rwxr-xr-x   1 kimi     kimi         9413 Aug 11 15:07 /app/.agents/skills/repo-audit/scripts/secret-scan.sh
+445364352     16 -rwxr-xr-x   1 kimi     kimi        15807 Aug 11 15:07 /app/.agents/skills/risk-heatmap/scripts/generate_risk_heatmap.py
+445365376     28 -rwxr-xr-x   1 kimi     kimi        26917 Aug 11 15:07 /app/.agents/skills/route-to-openapi/scripts/generate_api_doc.py
+445393920     12 -rwxr-xr-x   1 kimi     kimi        10860 Aug 11 15:07 /app/.agents/skills/skill-creator/scripts/init_skill.py
+445394048      4 -rwxr-xr-x   1 kimi     kimi         3288 Aug 11 15:07 /app/.agents/skills/skill-creator/scripts/package_skill.py
+445394176      4 -rwxr-xr-x   1 kimi     kimi         3972 Aug 11 15:07 /app/.agents/skills/skill-creator/scripts/quick_validate.py
+445395328     12 -rwxr-xr-x   1 kimi     kimi        10860 Aug 11 15:07 /app/.agents/skills/skill-creator-swarm/scripts/init_skill.py
+445395456      4 -rwxr-xr-x   1 kimi     kimi         3288 Aug 11 15:07 /app/.agents/skills/skill-creator-swarm/scripts/package_skill.py
+445395584      4 -rwxr-xr-x   1 kimi     kimi         3972 Aug 11 15:07 /app/.agents/skills/skill-creator-swarm/scripts/quick_validate.py
+445396096     12 -rwxr-xr-x   1 kimi     kimi        11463 Aug 11 15:07 /app/.agents/skills/smart-commit-gen/scripts/analyze_diff.py
+445401728      8 -rwxr-xr-x   1 kimi     kimi         7019 Aug 11 15:07 /app/.agents/skills/split-test-evaluator/scripts/ab_test_analyze.py
+445400266     36 -rwxr-xr-x   1 kimi     kimi        34279 Aug 11 15:07 /app/.agents/skills/sql-insight/scripts/sql_query_helper.py
+445400897     36 -rwxr-xr-x   1 kimi     kimi        34279 Aug 11 15:07 /app/.agents/skills/sql-tutor/scripts/sql_query_helper.py
+445403769     24 -rwxr-xr-x   1 kimi     kimi        20572 Aug 11 15:07 /app/.agents/skills/stock-finance-profiler/scripts/analyze.py
+445407653     20 -rwxr-xr-x   1 kimi     kimi        17568 Aug 11 15:07 /app/.agents/skills/stock-signal-analyzer/scripts/compute_indicators.py
+445409024     20 -rwxr-xr-x   1 kimi     kimi        17568 Aug 11 15:07 /app/.agents/skills/stock-tech-analysis/scripts/compute_indicators.py
+445385833     16 -rwxr-xr-x   1 kimi     kimi        12940 Aug 11 15:07 /app/.agents/skills/story-map-builder/scripts/generate_story_map.py
+445402219     12 -rwxr-xr-x   1 kimi     kimi         8798 Aug 11 15:07 /app/.agents/skills/structured-minutes/scripts/validate_minutes.py
+445396201     16 -rwxr-xr-x   1 kimi     kimi        12940 Aug 11 15:07 /app/.agents/skills/user-story-canvas/scripts/generate_story_map.py
+445446016      8 -rwxr-xr-x   1 kimi     kimi         6542 Aug 11 15:07 /app/.agents/skills/vc-industry-research/SKILL.md
+445446656     12 -rwxr-xr-x   1 kimi     kimi        11005 Aug 11 15:07 /app/.agents/skills/vc-industry-research/references/structure_contract.md
+445446784     12 -rwxr-xr-x   1 kimi     kimi        10000 Aug 11 15:07 /app/.agents/skills/vc-industry-research/references/style_contract.md
+445451648     36 -rwxr-xr-x   1 kimi     kimi        36031 Aug 11 15:07 /app/.agents/skills/video-compare-tool/scripts/compare.py
+445455232     36 -rwxr-xr-x   1 kimi     kimi        36031 Aug 11 15:07 /app/.agents/skills/video-quality-diff/scripts/compare.py
+446112000     12 -rwxr-xr-x   1 kimi     kimi         9751 Aug 11 15:07 /app/.agents/skills/weighted-scorer/scripts/decision_matrix.py
+446112051     12 -rwxr-xr-x   1 kimi     kimi         9751 Aug 11 15:07 /app/.agents/skills/weighted-scoring/scripts/decision_matrix.py
+446114176     12 -rwxr-xr-x   1 kimi     kimi        12071 Aug 11 15:07 /app/.agents/skills/workload-calculator/scripts/estimate_calculator.py
+445313377  75200 -rwxr-xr-x   1 kimi     kimi     77001601 Aug 11 15:07 /app/.agents/skills/xlsx/scripts/Xlsx
+
+=== FAST-BROWSER-USE BINARY ===
+/app/.agents/skills/fast-browser-use/CODEBUDDY.md
+/app/.agents/skills/fast-browser-use/Cargo.toml
+/app/.agents/skills/fast-browser-use/README.md
+/app/.agents/skills/fast-browser-use/SKILL.md
+/app/.agents/skills/fast-browser-use/_meta.json
+/app/.agents/skills/fast-browser-use/package.json
+/app/.agents/skills/fast-browser-use/rustfmt.toml
+/app/.agents/skills/fast-browser-use/src/browser/config.rs
+/app/.agents/skills/fast-browser-use/src/browser/debug.rs
+/app/.agents/skills/fast-browser-use/src/browser/mod.rs
+/app/.agents/skills/fast-browser-use/src/browser/session.rs
+/app/.agents/skills/fast-browser-use/src/dom/element.rs
+/app/.agents/skills/fast-browser-use/src/dom/extract_dom.js
+/app/.agents/skills/fast-browser-use/src/dom/mod.rs
+/app/.agents/skills/fast-browser-use/src/dom/tree.rs
+/app/.agents/skills/fast-browser-use/src/dom/yaml.rs
+/app/.agents/skills/fast-browser-use/src/error.rs
+/app/.agents/skills/fast-browser-use/src/lib.rs
+/app/.agents/skills/fast-browser-use/src/mcp/handler.rs
+/app/.agents/skills/fast-browser-use/src/mcp/mod.rs
+
+=== GITLAB AUTH SKILL ===
+---
+name: glab-auth
+description: Manage GitLab CLI authentication including login/logout, check auth status, switch accounts, and configure Docker registry access. Use when setting up glab for first time, troubleshooting auth issues, switching GitLab instances/accounts, or configuring Docker to pull from GitLab registry. Triggers on auth, login, logout, authentication, credentials, token, Docker registry.
+---
+
+# glab auth
+
+Manage GitLab CLI authentication.
+
+## Quick start
+
+```bash
+# Interactive login
+glab auth login
+
+# Check current auth status
+glab auth status
+
+# Login to different instance
+glab auth login --hostname gitlab.company.com
+
+# Logout
+glab auth logout
+```
+
+## Workflows
+
+### First-time setup
+
+1. Run `glab auth login`
+2. Choose authentication method (token or browser)
+3. Follow prompts for your GitLab instance
+4. Verify with `glab auth status`
+
+### Switching accounts/instances
+
+1. **Logout from current:**
+   ```bash
+   glab auth logout
+   ```
+
+2. **Login to new instance:**
+   ```bash
+   glab auth login --hostname gitlab.company.com
+   ```
+
+3. **Verify:**
+   ```bash
+   glab auth status
+   ```
+
+### Docker registry access
+
+1. **Configure Docker helper:**
+   ```bash
+   glab auth configure-docker
+   ```
+
+2. **Verify Docker can authenticate:**
+   ```bash
+   docker login registry.gitlab.com
+   ```
+
+3. **Pull private images:**
+   ```bash
+   docker pull registry.gitlab.com/group/project/image:tag
+   ```
+
+## Troubleshooting
+
+**"401 Unauthorized" errors:**
+- Check status: `glab auth status`
+- Verify token hasn't expired (check GitLab settings)
+- Re-authenticate: `glab auth login`
+
+**Multiple instances:**
+- Use `--hostname` flag to specify instance
+- Each instance maintains separate auth
+
+**Docker authentication fails:**
+- Re-run: `glab auth configure-docker`
+- Check Docker config: `cat ~/.docker/config.json`
+- Verify helper is set: `"credHelpers": { "registry.gitlab.com": "glab-cli" }`
+
+## Subcommands
+
+See [references/commands.md](references/commands.md) for detailed flag documentation:
+- `login` - Authenticate with GitLab instance
+- `logout` - Log out of GitLab instance
+- `status` - View authentication status
+- `configure-docker` - Configure Docker to use GitLab registry
+- `docker-helper` - Docker credential helper
+- `dpop-gen` - Generate DPoP token
+
+## Related Skills
+
+**Initial setup:**
+- After authentication, see `glab-config` to set CLI defaults
+- See `glab-ssh-key` for SSH key management
+- See `glab-gpg-key` for commit signing setup
+
+**Repository operations:**
+- See `glab-repo` for cloning repositories
+- Authentication required before first clone/push
+
+
+=== GITLAB DUO SKILL ===
+---
+name: glab-duo
+description: Interact with GitLab Duo AI assistant for code suggestions and chat. Use when accessing AI-powered code assistance, getting code suggestions, or chatting with GitLab Duo. Triggers on Duo, AI assistant, code suggestions, AI chat.
+---
+
+# glab duo
+
+## Overview
+
+```
+
+  Work with GitLab Duo, our AI-native assistant for the command line.                                                   
+                                                                                                                        
+  GitLab Duo for the CLI integrates AI capabilities directly into your terminal                                         
+  workflow. It helps you retrieve forgotten Git commands and offers guidance on                                         
+  Git operations. You can accomplish specific tasks without switching contexts.                                         
+                                                                                                                        
+         
+  USAGE  
+         
+    glab duo <command> prompt [command] [--flags]  
+            
+  COMMANDS  
+            
+    ask <prompt> [--flags]  Generate Git commands from natural language.
+    help [command]          Show help information for duo commands and subcommands.
+         
+  FLAGS  
+         
+    -h --help               Show help for this command.
+```
+
+## Quick start
+
+```bash
+glab duo --help
+```
+
+## v1.87.0 Changes
+
+### Binary download management
+As of v1.87.0, `glab duo` includes a CLI binary download management command for installing and updating the GitLab Duo AI binary.
+
+```bash
+# Download/update the Duo CLI binary
+glab duo update
+
+# Check current Duo binary version
+glab duo --version
+```
+
+**When to use:** Run `glab duo update` after upgrading glab to ensure the Duo AI binary matches your CLI version. If `glab duo ask` stops working after a glab upgrade, this is usually the fix.
+
+## v1.88.0 Changes
+
+### `glab duo help` subcommand
+
+```bash
+# Show help for all duo commands
+glab duo help
+
+# Show help for a specific subcommand
+glab duo help ask
+```
+
+## Subcommands
+
+See [references/commands.md](references/commands.md) for full `--help` output.
+
+=== BROWSE SKILL (web access) ===
+---
+name: browse
+description: "Automate browser interactions via CLI commands to navigate web pages, extract data, take screenshots, fill forms, and interact with web apps. Supports remote sessions with CAPTCHA solving and anti-bot stealth for scraping protected sites. Trigger when the user asks to browse websites, scrape data, or automate clicks on any page."
+compatibility: "Requires the browse CLI (`npm install -g @browserbasehq/browse-cli`). Optional: set BROWSERBASE_API_KEY and BROWSERBASE_PROJECT_ID for remote Browserbase sessions; falls back to local Chrome otherwise."
+license: MIT
+allowed-tools: Bash
+metadata:
+  openclaw:
+    requires:
+      bins:
+        - browse
+    install:
+      - kind: node
+        package: "@browserbasehq/browse-cli"
+        bins: [browse]
+    homepage: https://github.com/browserbase/skills
+---
+
+# Browser Automation
+
+Automate browser interactions using the browse CLI with Claude.
+
+## Setup check
+
+Before running any browser commands, verify the CLI is available:
+
+```bash
+which browse || npm install -g @browserbasehq/browse-cli
+```
+
+## Environment Selection (Local vs Remote)
+
+The CLI automatically selects between local and remote browser environments based on available configuration:
+
+### Local mode (default)
+- Uses local Chrome — no API keys needed
+- Best for: development, simple pages, trusted sites with no bot protection
+
+### Remote mode (Browserbase)
+- Activated when `BROWSERBASE_API_KEY` and `BROWSERBASE_PROJECT_ID` are set
+- Provides: anti-bot stealth, automatic CAPTCHA solving, residential proxies, session persistence
+- **Use remote mode when:** the target site has bot detection, CAPTCHAs, IP rate limiting, Cloudflare protection, or requires geo-specific access
+- Get credentials at https://browserbase.com/settings
+
+### When to choose which
+- **Simple browsing** (docs, wikis, public APIs): local mode is fine
+- **Protected sites** (login walls, CAPTCHAs, anti-scraping): use remote mode
+- **If local mode fails** with bot detection or access denied: switch to remote mode
+
+## Commands
+
+All commands work identically in both modes. The daemon auto-starts on first command.
+
+### Navigation
+```bash
+browse open <url>                        # Go to URL (aliases: goto)
+browse reload                            # Reload current page
+browse back                              # Go back in history
+browse forward                           # Go forward in history
+```
+
+### Page state (prefer snapshot over screenshot)
+```bash
+browse snapshot                          # Get accessibility tree with element refs (fast, structured)
+browse screenshot [path]                 # Take visual screenshot (slow, uses vision tokens)
+browse get url                           # Get current URL
+browse get title                         # Get page title
+browse get text <selector>               # Get text content (use "body" for all text)
+browse get html <selector>               # Get HTML content of element
+browse get value <selector>              # Get form field value
+```
+
+Use `browse snapshot` as your default for understanding page state — it returns the accessibility tree with element refs you can use to interact. Only use `browse screenshot` when you need visual context (layout, images, debugging).
+
+### Interaction
+```bash
+browse click <ref>                       # Click element by ref from snapshot (e.g., @0-5)
+browse type <text>                       # Type text into focused element
+browse fill <selector> <value>           # Fill input and press Enter
+browse select <selector> <values...>     # Select dropdown option(s)
+browse press <key>                       # Press key (Enter, Tab, Escape, Cmd+A, etc.)
+browse drag <fromX> <fromY> <toX> <toY>  # Drag from one point to another
+browse scroll <x> <y> <deltaX> <deltaY> # Scroll at coordinates
+browse highlight <selector>              # Highlight element on page
+browse is visible <selector>             # Check if element is visible
+browse is checked <selector>             # Check if element is checked
+browse wait <type> [arg]                 # Wait for: load, selector, timeout
+```
+
+### Session management
+```bash
+browse stop                              # Stop the browser daemon
+browse status                            # Check daemon status (includes env)
+browse env                               # Show current environment (local or remote)
+browse env local                         # Switch to local Chrome
+browse env remote                        # Switch to Browserbase (requires API keys)
+browse pages                             # List all open tabs
+browse tab_switch <index>                # Switch to tab by index
+browse tab_close [index]                 # Close tab
+```
+
+### Typical workflow
+1. `browse open <url>` — navigate to the page
+2. `browse snapshot` — read the accessibility tree to understand page structure and get element refs
+3. `browse click <ref>` / `browse type <text>` / `browse fill <selector> <value>` — interact using refs from snapshot
+4. `browse snapshot` — confirm the action worked
+5. Repeat 3-4 as needed
+6. `browse stop` — close the browser when done
+
+## Quick Example
+
+```bash
+browse open https://example.com
+browse snapshot                          # see page structure + element refs
+browse click @0-5                        # click element with ref 0-5
+browse get title
+browse stop
+```
+
+## Mode Comparison
+
+| Feature | Local | Browserbase |
+|---------|-------|-------------|
+| Speed | Faster | Slightly slower |
+| Setup | Chrome required | API key required |
+| Stealth mode | No | Yes (custom Chromium, anti-bot fingerprinting) |
+| CAPTCHA solving | No | Yes (automatic reCAPTCHA/hCaptcha) |
+| Residential proxies | No | Yes (201 countries, geo-targeting) |
+| Session persistence | No | Yes (cookies/auth persist across sessions) |
+| Best for | Development/simple pages | Protected sites, bot detection, production scraping |
+
+## Best Practices
+
+1. **Always `browse open` first** before interacting
+2. **Use `browse snapshot`** to check page state — it's fast and gives you element refs
+3. **Only screenshot when visual context is needed** (layout checks, images, debugging)
+4. **Use refs from snapshot** to click/interact — e.g., `browse click @0-5`
+5. **`browse stop`** when done to clean up the browser session
+
+## Troubleshooting
+
+- **"No active page"**: Run `browse stop`, then check `browse status`. If it still says running, kill the zombie daemon with `pkill -f "browse.*daemon"`, then retry `browse open`
+- **Chrome not found**: Install Chrome or use `browse env remote`
+- **Action fails**: Run `browse snapshot` to see available elements and their refs
+- **Browserbase fails**: Verify API key and project ID are set
+
+## Switching to Remote Mode
+
+Switch to remote when you detect: CAPTCHAs (reCAPTCHA, hCaptcha, Turnstile), bot detection pages ("Checking your browser..."), HTTP 403/429, empty pages on sites that should have content, or the user asks for it.
+
+Don't switch for simple sites (docs, wikis, public APIs, localhost).
+
+```bash
+browse env remote            # switch to Browserbase
+browse env local             # switch back to local Chrome
+```
+
+The switch is sticky until you run `browse stop` or switch again.
+
+For detailed examples, see [EXAMPLES.md](EXAMPLES.md).
+For API reference, see [REFERENCE.md](REFERENCE.md).
+
+=== ALL PERMISSION-111 FILES ===
+/app/.agents/skills/docx/scripts/docx
+/app/.agents/skills/docx/scripts/docx_lib/_core.cpython-312-x86_64-linux-gnu.so
+/app/.agents/skills/docx/scripts/engine/_core.cpython-312-x86_64-linux-gnu.so
+/app/.agents/skills/docx/validator/Validator
+/app/.agents/skills/webapp-building-swarm/scripts/.prepare-template.sh
+/app/.agents/skills/webapp-building-swarm/scripts/init-webapp.sh
+/app/.agents/skills/backend-building-swarm/scripts/.prepare-template.sh
+/app/.agents/skills/backend-building-swarm/scripts/init.sh
+/app/.agents/skills/webapp-building/scripts/.prepare-template.sh
+/app/.agents/skills/webapp-building/scripts/init-webapp.sh
+/app/.agents/skills/backend-building/scripts/.prepare-template.sh
+/app/.agents/skills/backend-building/scripts/init.sh
+/app/.agents/skills/api-doc-gen/scripts/generate_api_doc.py
+/app/.agents/skills/auto-hypothesis-test/scripts/statistical_test_suite.py
+/app/.agents/skills/auto-stat-test/scripts/statistical_test_suite.py
+/app/.agents/skills/business-plan-ppt/SKILL.md
+/app/.agents/skills/business-plan-ppt/references/structure_contract.md
+/app/.agents/skills/business-plan-ppt/references/style_contract.md
+/app/.agents/skills/cashflow-valuation/scripts/dcf_model.py
+/app/.agents/skills/chrono-flow/scripts/generate_timeline.py
+/app/.agents/skills/cite-style-converter/scripts/citation_formatter.py
+/app/.agents/skills/code-safety-audit/scripts/security_scan.py
+/app/.agents/skills/code-to-chart/scripts/analyze_codebase.py
+/app/.agents/skills/code-to-diagram/scripts/analyze_codebase.py
+/app/.agents/skills/code-vuln-audit/scripts/security_scan.py
+/app/.agents/skills/commodities-outlook/SKILL.md
+/app/.agents/skills/commodities-outlook/references/structure_contract.md
+/app/.agents/skills/commodities-outlook/references/style_contract.md
+/app/.agents/skills/commodity-research-outlook/SKILL.md
+/app/.agents/skills/commodity-research-outlook/references/structure_contract.md

@@ -1,0 +1,9 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "magic-of-pumpkin",
+  "title": "Magic of Pumpkin",
+  "character_slugs": ["mokoko"],
+  "notes": "Seeded from initial article; needs confirmation."
+}

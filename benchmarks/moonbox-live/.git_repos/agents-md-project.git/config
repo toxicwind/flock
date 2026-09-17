@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = https://github.com/toxicwind/agents-md-project.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[user]
+	name = toxicwind
+	email = toxicwind@users.noreply.github.com

@@ -1,0 +1,82 @@
+<<<<<<< HEAD
+version: '3.9'
+
+services:
+  effusion:
+    build:
+      context: .
+      dockerfile: services/Dockerfile.orchestrator # Placeholder if we use same image or separate
+=======
+version: "3.8"
+
+services:
+  effusion-labs:
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+    image: ghcr.io/toxicwind/effusion-labs:latest
+    container_name: effusion
+    restart: unless-stopped
+    ports:
+<<<<<<< HEAD
+      - "43000:80"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=production
+
+  orchestrator:
+    build:
+      context: .
+      dockerfile: services/Dockerfile.orchestrator
+    container_name: mildlyawesome-orchestrator
+    restart: unless-stopped
+    ports:
+      - "43001:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:pass@postgres:5432/mildlyawesome
+      - REDIS_URL=redis://redis:6379/0
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: redis:7-alpine
+    container_name: mildlyawesome-redis
+    ports:
+      - "43002:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: mildlyawesome-postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=mildlyawesome
+    volumes:
+      - mildlyawesome-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d mildlyawesome" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: mildlyawesome-jaeger
+    ports:
+      - "43003:16686"
+      - "43004:4317"
+
+volumes:
+  mildlyawesome-data:
+=======
+      - "18400:80"
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option

@@ -1,0 +1,35 @@
+{
+  "type": "product",
+  "product_id": "pop-mart--the-monsters--labubu--wacky-mart-china--figure--std--20250612--reg-cn",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "character": "labubu",
+  "series": "wacky-mart-china",
+  "form": "figure",
+  "variant": "std",
+  "edition": {
+    "kind": "regional"
+  },
+  "distribution": {
+    "region_lock": true,
+    "markets": [
+      "CN"
+    ]
+  },
+  "release_date": "2025-06-12",
+  "market_listings": [
+    {
+      "market": "CN",
+      "currency": "CNY",
+      "price": 199
+    }
+  ],
+  "availability": {
+    "limited": false,
+    "unit_count": null
+  },
+  "images": [],
+  "provenance_ref": "/content/archives/collectables/designer-toys/pop-mart/the-monsters/provenance/pop-mart--the-monsters--labubu--wacky-mart-china--figure--std--20250612--reg-cn.jsonl",
+  "confidence": 0.45,
+  "notes": "Seeded from initial article; requires re-research."
+}

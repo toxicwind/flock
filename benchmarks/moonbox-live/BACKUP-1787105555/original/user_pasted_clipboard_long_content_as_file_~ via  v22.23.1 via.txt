@@ -1,0 +1,220 @@
+~ via  v22.23.1 via 🐍 v3.12.13
+❯ cat pi
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ============================================================================
+# pi — First-class entry point for pi-agent with hot-reloading support
+# ============================================================================
+
+# Usage:
+#   pi                     # Run with hot reload (development)
+#   pi --built             # Run built binary (production)
+#   pi --no-env            # Run without API keys (testing)
+#   pi -p "prompt"         # Pass args to coding agent
+#   pi --check             # Type-check only (tsgo --noEmit)
+#   pi --health            # Check service health
+#   pi --web               # Start web dashboard server
+# ============================================================================
+
+# Resolve real script location through symlinks, then project root = parent of bin/
+_SCRIPT_REAL="$(readlink -f "${BASH_SOURCE[0]}")"
+_BIN_DIR="$(cd "$(dirname "${_SCRIPT_REAL}")" && pwd)"
+PI_ROOT="$(cd "${_BIN_DIR}/.." && pwd)"
+cd "$PI_ROOT"
+
+# Default mode: development with hot reload
+MODE="dev"
+NO_ENV=false
+ARGS=()
+
+# Parse arguments - handle help/version flags first
+for arg in "$@"; do
+  case "$arg" in
+    --help|-h)
+      # Show help and exit immediately
+      echo "Usage: pi [--built] [--dev] [--no-env] [--check] [--health] [--web] [--help] [--version]"
+      echo ""
+      echo "Commands:"
+      echo "  --built          Run built binary (production)"
+      echo "  --dev            Run with hot reload (development)"
+      echo "  --no-env         Run without API keys (testing)"
+      echo "  --check          Type-check only (tsgo --noEmit)"
+      echo "  --health         Check service health"
+      echo "  --web            Start web dashboard server"
+      echo "  --help, -h       Show this help message"
+      echo "  --version, -v    Print the package version and exit"
+      exit 0
+      ;;
+    --version|-v)
+      echo "pi-agent 0.1.0"
+      exit 0
+      ;;
+    *)
+      ARGS+=("$arg")
+      ;;
+  esac
+done
+
+# Now parse the remaining args for mode selection
+for arg in "${ARGS[@]}"; do
+  case "$arg" in
+    --built)
+      MODE="built"
+      ;;
+    --dev)
+      MODE="dev"
+      ;;
+    --no-env)
+      NO_ENV=true
+      ;;
+    --check)
+      TYPE_CHECK=true
+      ;;
+    --health)
+      HEALTH_CHECK=true
+      ;;
+    --web)
+      WEB_DASHBOARD=true
+      ;;
+    *)
+      # Pass through other args to the agent
+      ;;
+  esac
+done
+
+# Web dashboard function
+web_dashboard() {
+  echo "Starting pi-agent web dashboard on port 25192..."
+  echo "Dashboard: http://localhost:25192"
+  echo "API: http://localhost:25192/api/health"
+  exec node "$PI_ROOT/packages/server/dist/web-server.js"
+}
+
+# Health check function
+health_check() {
+  local all_ok=true
+  for p in 25100 25109 25112 25113 25115; do
+    if fuser -s "$p/tcp" 2>/dev/null; then
+      echo "✅ :$p"
+    else
+      echo "❌ :$p DOWN"
+      all_ok=false
+    fi
+  done
+  if [[ "$all_ok" == "true" ]]; then
+    echo "All core services healthy"
+    return 0
+  else
+    echo "Some services are down"
+    return 1
+  fi
+}
+
+# Ensure the mcpproxy gateway (:25109) is up; bring it up forcefully if not.
+# pi's mcp.json points at http://127.0.0.1:25109/mcp, so a dead gateway =
+# every call_tool_* call fails. We probe, and if down, force a start via
+# pitchfork ONLY (pitchfork owns the daemon + its deps like llama-swap).
+# No manual nohup launch — if pitchfork can't bring it up, we report and bail.
+ensure_mcpproxy_up() {
+  local PORT=25109
+  local HEALTH="http://127.0.0.1:${PORT}/health"
+
+  if curl -s -m 3 -o /dev/null "$HEALTH" 2>/dev/null; then
+    return 0
+  fi
+
+  echo "⚠️  mcpproxy (:${PORT}) not responding — starting via pitchfork..."
+
+  if ! command -v pitchfork >/dev/null 2>&1; then
+    echo "❌ pitchfork not found — cannot bring up mcpproxy" >&2
+    return 1
+  fi
+
+  pitchfork start mcpproxy 2>&1 | tail -5 || true
+
+  # High-frequency failfast wait (max ~30s) for readiness.
+  local i
+  for i in $(seq 1 30); do
+    if curl -s -m 3 -o /dev/null "$HEALTH" 2>/dev/null; then
+      echo "✅ mcpproxy up on :${PORT}"
+      return 0
+    fi
+    sleep 1
+  done
+
+  echo "❌ mcpproxy failed to come up on :${PORT} (check: pitchfork logs)" >&2
+  return 1
+}
+
+# Type-check only
+type_check() {
+  echo "Running type-check (tsgo --noEmit)..."
+  cd "$PI_ROOT"
+  npx tsgo --noEmit
+}
+
+# Unset API keys for testing
+unset_api_keys() {
+  unset ANTHROPIC_API_KEY ANTHROPIC_OAUTH_TOKEN
+  unset OPENAI_API_KEY GEMINI_API_KEY GROQ_API_KEY CEREBRAS_API_KEY XAI_API_KEY OPENROUTER_API_KEY ZAI_API_KEY MINIMAX_API_KEY MINIMAX_CN_API_KEY AI_GATEWAY_API_KEY OPENCODE_API_KEY COPILOT_GITHUB_TOKEN
+  unset GH_TOKEN GITHUB_TOKEN HF_TOKEN
+  unset GOOGLE_APPLICATION_CREDENTIALS GOOGLE_CLOUD_PROJECT GCLOUD_PROJECT GOOGLE_CLOUD_LOCATION
+  unset AWS_PROFILE AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_REGION AWS_DEFAULT_REGION AWS_BEARER_TOKEN_BEDROCK AWS_CONTAINER_CREDENTIALS_RELATIVE_URI AWS_CONTAINER_CREDENTIALS_FULL_URI AWS_WEB_IDENTITY_TOKEN_FILE
+  unset AZURE_OPENAI_API_KEY AZURE_OPENAI_BASE_URL AZURE_OPENAI_RESOURCE_NAME
+  echo "Running without API keys..."
+}
+
+# Ensure the MCP gateway is alive before launching the agent (forceful up if down).
+ensure_mcpproxy_up || true
+
+# Export required env for the agent
+export PI_CODING_AGENT="true"
+export PI_CONFIG_PATH="${HOME}/.pi/agent/config.yaml"
+export PI_AGENT_DIR="${HOME}/.pi/agent"
+
+# Node options for large context
+export NODE_OPTIONS="--max-old-space-size=8192 ${NODE_OPTIONS:-}"
+
+case "$MODE" in
+  built)
+    # Run built binary
+    BIN="$PI_ROOT/packages/coding-agent/dist/cli.js"
+    if [[ ! -f "$BIN" ]]; then
+      echo "Error: Built binary not found at $BIN"
+      echo "Run 'npm run build' first"
+      exit 1
+    fi
+    exec node "$BIN" "${ARGS[@]}"
+    ;;
+
+  dev)
+    # Development mode with hot reload.
+    # Prefer bun (runs TS natively, fast restart); fall back to tsx --watch.
+    # --continue resumes the most recent session for cwd so a hot-reload restart
+    # (which kills the in-memory conversation) continues it from the durable jsonl
+    # log instead of starting blank. Skipped if the user passes their own session flag.
+    echo "Starting pi in development mode with hot reload..."
+    echo "Watching: packages/coding-agent/src, packages/ai/src, packages/agent/src, packages/tui/src"
+    case " ${ARGS[*]} " in
+      *" --resume "*|*" --continue "*|*" --session "*) CONTINUE_FLAG="" ;;
+      *) CONTINUE_FLAG="--continue" ;;
+    esac
+    if command -v bun >/dev/null 2>&1; then
+      exec bun --watch "$PI_ROOT/packages/coding-agent/src/cli.ts" "${ARGS[@]}" $CONTINUE_FLAG
+    fi
+    exec npx tsx --watch \
+      --tsconfig "$PI_ROOT/tsconfig.json" \
+      "$PI_ROOT/packages/coding-agent/src/cli.ts" \
+      "${ARGS[@]}" $CONTINUE_FLAG
+    ;;
+
+  *)
+    echo "Unknown mode: $MODE"
+    exit 1
+    ;;
+esac
+falsefalsefalsefalsefalsefalsefalsefalsefalsefalsefalsefalsefalsefalse
+
+~ via  v22.23.1 via 🐍 v3.12.13
+❯

@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-08-12T10:56:48Z",
+  "correct_endpoint": "https://api.kimi.com/coding/v1",
+  "wrong_endpoint": "https://agent-gw.kimi.com/coding/v1",
+  "api_key_valid": true,
+  "models_endpoint": "200 OK",
+  "generation_endpoints": "403 EXHAUSTED",
+  "available_models": [
+    {
+      "id": "kimi-for-coding",
+      "name": "K2.7 Coding",
+      "context": 262144
+    },
+    {
+      "id": "kimi-for-coding-highspeed",
+      "name": "K2.7 Coding Highspeed",
+      "context": 262144
+    },
+    {
+      "id": "k3",
+      "name": "K3",
+      "context": 1048576
+    },
+    {
+      "id": "k3-256k",
+      "name": "K3-256k",
+      "context": 262144
+    }
+  ],
+  "billing_status": "EXHAUSTED",
+  "quota_refresh": "Next weekly cycle (Aug 18, 2026)",
+  "upgrade_url": "https://www.kimi.com/code/#pricing",
+  "key_format": "sk-kimi-{base64url} \u2192 Kimi Coding Plan",
+  "legacy_endpoint": "api.moonshot.ai/v1 (requires different key format)",
+  "china_endpoint": "api.moonshot.cn (requires China account)",
+  "conclusion": "Endpoint corrected. Key valid. Billing only blocker."
+}

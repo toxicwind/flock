@@ -1,0 +1,46 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go
+vendor/
+go.sum
+
+# Results
+results/*.json
+results/*.jsonl
+results/*.csv
+
+# Secrets and environment files
+.env
+.env.*
+.env.keys
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+config.local.toml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# token-scrub 2026-09-14: never commit secrets
+*.pat
+github_*_pat.json
+.env*
+*secret*
+*token*

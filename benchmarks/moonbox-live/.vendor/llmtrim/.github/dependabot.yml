@@ -1,0 +1,31 @@
+version: 2
+updates:
+  # Cargo: monthly + grouped — a 467-dep tree on a weekly per-crate cadence is steady PR
+  # noise, each PR running the full 3-OS CI matrix. Security updates are NOT affected by
+  # this schedule; Dependabot opens those as soon as an advisory lands.
+  - package-ecosystem: cargo
+    directory: "/"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    groups:
+      cargo-minor-patch:
+        update-types: ["minor", "patch"]
+    ignore:
+      # rusqlite 0.40+ pulls libsqlite3-sys 0.38, whose build.rs uses the unstable
+      # cfg_select macro (rust#115585) — won't compile on stable. Held at 0.39 until
+      # cfg_select stabilizes or libsqlite3-sys drops it.
+      - dependency-name: "rusqlite"
+        versions: [">=0.40"]
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+    ignore:
+      # The @1.88 ref selects the MSRV toolchain, not an action version — a Dependabot
+      # bump here silently rewrites the MSRV job to test the wrong Rust. Bump it only
+      # by hand, together with `rust-version` in Cargo.toml and the CI job name.
+      - dependency-name: "dtolnay/rust-toolchain"

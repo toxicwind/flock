@@ -1,0 +1,28 @@
+{% macro kpis(links) %}
+<<<<<<< HEAD
+  <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+    {% for l in links %}
+      {% set u = l.url or '#' %}{% if u and u[0] == '/' %}{% set u = u | url %}{% endif %}
+      <a
+        href="{{ u }}"
+        class="
+          block rounded border border-base-content/15 bg-base-100/80 backdrop-blur p-4
+          transition hover:-translate-y-0.5 hover:shadow-xl hover:border-primary/50
+          focus:outline-none focus-visible:ring focus-visible:ring-primary/40 no-underline
+        "
+      >
+        {{ l.title }}{% if l.count is not undefined %}
+          <span class="text-sm text-base-content/70">({{ l.count }})</span>{% endif %}
+      </a>
+    {% endfor %}
+  </div>
+=======
+<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+  {% for l in links %}
+  <a href="{{ l.url }}" class="block rounded border border-white/10 p-4 hover:bg-white/5 focus:outline-none focus:ring">
+    {{ l.title }}{% if l.count !== undefined %} <span class="text-sm text-gray-400">({{ l.count }})</span>{% endif %}
+  </a>
+  {% endfor %}
+</div>
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+{% endmacro %}

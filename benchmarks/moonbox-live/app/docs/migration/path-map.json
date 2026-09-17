@@ -1,0 +1,7 @@
+{
+  "src/assets/css/tailwind.css": "src/styles/app.tailwind.css",
+  "src/assets/js/base.js": "src/scripts/base.js",
+  "src/assets/js/footnote-nav.js": "src/scripts/footnote-nav.js"
+,
+  "src/assets/logo.png": "src/assets/static/logo.png"
+}

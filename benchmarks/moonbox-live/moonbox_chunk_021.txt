@@ -1,0 +1,102 @@
+reter.FunctionTracker }
+8*[8]struct { key string; elem *pb.EnumValueDescription }
+8*[]struct { key string; elem protoreflect.ProtoMessage }
+8*[]struct { key jsonschema.jsonPointer; elem struct {} }
+8*[8]struct { key string; elem push.NotificationHandler }
+8dev.msh.team/protos/kimi-go/kimi/gateway/notification/v1
+8*func() membershipv2.CreateApplicationFormRequest_Source
+8*membershipv2.GetSubscriptionStatsResponse_RateLimitStat
+8*membershipv2.GetSubscriptionStatsResponse_Notice_Action
+8*[8]struct { key int64; elem checker.entrySizeEstimate }
+8*[]struct { key string; elem checker.FunctionEstimator }
+8*[]struct { key *pgconn.StatementDescription; elem int }
+8*[8]struct { key uint64; elem auth.CredentialsListener }
+8*[8]struct { key do.ServiceDescription; elem struct {} }
+8*struct { key ecma402.UnicodeExtensionKey; elem string }
+8*[]struct { key string; elem cldrlocale.weekPreference }
+8*struct { key string; elem number.currencySignPatterns }
+8*[]struct { key int; elem number.compactPluralPatterns }
+8*[8]struct { key number.Locale; elem number.numberData }
+9*[8]struct { key chan<- os.Signal; elem *signal.handler }
+9*func(*tls.keySharePrivateKeys, []uint8) ([]uint8, error)
+9*[8]struct { key protoreflect.Kind; elem protowire.Type }
+9*func(func(protoreflect.MapKey, protoreflect.Value) bool)
+9*[]struct { key uint64; elem *fuse.retrieveCacheRequest }
+9*struct { key profile.mappingKey; elem *profile.Mapping }
+9*[]struct { key profile.sampleKey; elem *profile.Sample }
+9*func(*ecdh.PrivateKey, *ecdh.PublicKey) ([]uint8, error)
+9*[]struct { key protoreflect.Name; elem *filedesc.Field }
+9*[8]struct { key protowire.Number; elem *filedesc.Field }
+9*struct { key string; elem protoreflect.FieldDescriptor }
+9*[]struct { key protoreflect.Name; elem *filedesc.Oneof }
+9*[8]struct { key protoreflect.Name; elem *filedesc.Enum }
+9*struct { key protoreflect.Name; elem *filedesc.Message }
+9*struct { key protoreflect.Name; elem *filedesc.Service }
+9*[8]struct { key protowire.Number; elem *impl.fieldInfo }
+9*[]struct { key protoreflect.Name; elem *impl.oneofInfo }
+9*[]struct { key reflect.Type; elem *impl.coderFieldInfo }
+9*func() annotations.FlowControlLimitExceededBehaviorProto
+9*[]struct { key *regexp.Regexp; elem *jsonschema.Schema }
+9*[]struct { key i18n.Locale; elem kimimodel.StyleConfig }
+9*struct { key protowire.Number; elem protoreflect.Value }
+9*struct { key platform.OSArch; elem platform.osArchInfo }
+9*[]struct { key string; elem prometheus.LabelConstraint }
+9*[8]struct { key string; elem protoreflect.ProtoMessage }
+9*struct { key jsonschema.jsonPointer; elem interface {} }
+9*[8]struct { key jsonschema.jsonPointer; elem struct {} }
+9*func() *membershipv2.CreateApplicationFormRequest_Source
+9*func() *membershipv2.GetSubscriptionStatsResponse_Notice
+9*[8]struct { key string; elem checker.FunctionEstimator }
+9*struct { key string; elem *pgconn.StatementDescription }
+9*[]struct { key reflect.Type; elem [2]pgtype.EncodePlan }
+9*[8]struct { key *pgconn.StatementDescription; elem int }
+9*struct { key do.ServiceDescription; elem time.Duration }
+9*struct { key string; elem clickhouse.CompressionMethod }
+9*[8]struct { key string; elem cldrlocale.weekPreference }
+9*[8]struct { key int; elem number.compactPluralPatterns }
+:*struct { key http.routingIndexKey; elem []*http.pattern }
+:*[8]struct { key uint64; elem *fuse.retrieveCacheRequest }
+ReplaceKeyPrefixWith%json:"ReplaceKeyPrefixWith,omitempty"
+:*[8]struct { key profile.sampleKey; elem *profile.Sample }
+:*[]struct { key protoreflect.FullName; elem interface {} }
+:*struct { key string; elem []protoreflect.FileDescriptor }
+:*[8]struct { key protoreflect.Name; elem *filedesc.Field }
+:*[8]struct { key protoreflect.Name; elem *filedesc.Oneof }
+:*[]struct { key protoreflect.Name; elem *filedesc.Method }
+:*[8]struct { key protoreflect.Name; elem *impl.oneofInfo }
+:*struct { key protowire.Number; elem reflect.StructField }
+:*struct { key *impl.coderFieldInfo; elem impl.lazyAction }
+:*[8]struct { key reflect.Type; elem *impl.coderFieldInfo }
+:*func() *annotations.FlowControlLimitExceededBehaviorProto
+:*[]struct { key sentry.TransactionSource; elem struct {} }
+:*[8]struct { key *regexp.Regexp; elem *jsonschema.Schema }
+:*datatypes.JSONType[*kimi.darkmatter/packages/tidb.Export]
+:*datatypes.JSONType[*kimi.darkmatter/packages/tidb.Import]
+:*[8]struct { key i18n.Locale; elem kimimodel.StyleConfig }
+:*[8]struct { key string; elem prometheus.LabelConstraint }
+:*[]struct { key string; elem protoreflect.FileDescriptor }
+:*struct { key jsonschema.urlPtr; elem *jsonschema.Schema }
+:*[]struct { key string; elem interpreter.FunctionTracker }
+:*struct { key jsonschema.Regexp; elem *jsonschema.Schema }
+:*func(context.Context, ...interface {}) *redis.KeyFlagsCmd
+:*[8]struct { key reflect.Type; elem [2]pgtype.EncodePlan }
+:*struct { Type string; AuthMechanism string; Data string }
+:*[]struct { key ecma402.UnicodeExtensionKey; elem string }
+:*[]struct { key string; elem number.currencySignPatterns }
+:*struct { key string; elem number.compactDisplayPatterns }
+;*weak.Pointer[kimi.darkmatter/apps/portal/tos.cachedObject]
+;*struct { key *http.Request; elem context.CancelCauseFunc }
+;*go.shape.struct { Key reflect.Value; Value reflect.Value }
+Keys6protobuf:"bytes,4,opt,name=keys" json:"keys,omitempty"
+;*struct { key profile.functionKey; elem *profile.Function }
+;*struct { key profile.locationKey; elem *profile.Location }
+;*[]struct { key profile.mappingKey; elem *profile.Mapping }
+;*[8]struct { key protoreflect.FullName; elem interface {} }
+;*struct { key protoreflect.Name; elem *filedesc.EnumValue }
+;*[]struct { key string; elem protoreflect.FieldDescriptor }
+;*[]struct { key protoreflect.Name; elem *filedesc.Message }
+;*[8]struct { key protoreflect.Name; elem *filedesc.Method }
+;*[]struct { key protoreflect.Name; elem *filedesc.Service }
+;*struct { key protoreflect.Name; elem *filedesc.Extension }
+;*struct { key protowire.Number; elem *impl.coderFieldInfo }
+;*struct { key protoreflect.Name; el

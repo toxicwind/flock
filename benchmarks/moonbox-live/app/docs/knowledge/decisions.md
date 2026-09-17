@@ -1,0 +1,26 @@
+- Removed `@downwindcss/text-decoration` and migrated to native Tailwind `decoration-*` utilities. @source: [downwindcss/text-decoration](https://github.com/downwindcss/text-decoration)
+- Dropped explicit `autoprefixer` since `@tailwindcss/postcss` bundles it. @source: [Tailwind CSS Installation - PostCSS](https://tailwindcss.com/docs/installation#postcss)
+- Added `prismjs` to import `prism-tomorrow.css` theme. @source: [PrismJS Home](https://prismjs.com/)
+- Integrate `@11ty/eleventy-img` HTML Transform to auto-generate AVIF/WebP and rewrite `<img>` to `<picture>`. @source: [Eleventy Image Plugin](https://www.11ty.dev/docs/plugins/image/)
+- Use AVIF and WebP formats with Sharp since both offer transparent compression and are widely supported in modern browsers. @source: [Sharp Output Formats](https://sharp.pixelplumbing.com/api-output); [Can I Use AVIF](https://raw.githubusercontent.com/Fyrd/caniuse/main/features-json/avif.json); [Can I Use WebP](https://raw.githubusercontent.com/Fyrd/caniuse/main/features-json/webp.json)
+- Follow MDN guidance for responsive images using `srcset`/`sizes` and `<picture>` wrappers. @source: [MDN Responsive Images](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
+- Implemented `collectFootnoteTokens` and revised footnote tests to match hybrid rendering and popover markup. @source: [markdown-it-footnote README](https://raw.githubusercontent.com/markdown-it/markdown-it-footnote/master/README.md); [Markdown Guide – Footnotes](https://www.markdownguide.org/extended-syntax/#footnotes)
+- Corrected footnote backreference IDs to align with markdown-it-footnote defaults, ensuring backrefs scroll to their references. @source: [HTML Links - Bookmarks](https://www.w3schools.com/html/html_links_bookmarks.asp); [markdown-it-footnote index.mjs](https://raw.githubusercontent.com/markdown-it/markdown-it-footnote/master/index.mjs)
+
+- Replaced green accent with lapis (#0A84FF) to align with Apple HIG color guidance and maintain a consistent blue palette. @source: [Apple HIG - Color](https://developer.apple.com/design/human-interface-guidelines/color)
+- Capped RSS feed at 20 items to avoid overwhelming lists and focus attention. @source: [Apple HIG - Lists](https://developer.apple.com/design/human-interface-guidelines/lists)
+- Harmonized palette around lapis (#0A84FF) as sole accent to follow Apple's guidance on limited color use. @source: [Apple HIG - Color](https://developer.apple.com/design/human-interface-guidelines/color)
+- Raised base body text to 17px and ensured buttons meet 44px minimum touch target for readability and accessibility. @source: [Apple HIG - Typography](https://developer.apple.com/design/human-interface-guidelines/typography)
+- Redesigned homepage hero and map sections with consistent spacing and adaptive layout. @source: [Apple HIG - Layout](https://developer.apple.com/design/human-interface-guidelines/layout)
+- Added test to enforce RSS feed cap of 20 items. @source: [Apple HIG - Lists](https://developer.apple.com/design/human-interface-guidelines/lists)
+- Introduced fluid type scale with CSS clamp for headings, aligning with Apple HIG Dynamic Type guidance and fluid typography trend. @source: [Apple HIG - Typography](https://developer.apple.com/design/human-interface-guidelines/typography); [Web.dev Fluid Typography](https://web.dev/fluid-typography/)
+- Added skip navigation link and main landmark to meet WCAG 2.1 Bypass Blocks and streamline keyboard access. @source: [WCAG 2.1 - Bypass Blocks](https://www.w3.org/TR/WCAG21/#bypass-blocks); [WebAIM: Skip Navigation Links](https://webaim.org/techniques/skipnav/)
+- Introduced `webpageToMarkdown` utility leveraging Readability.js and Turndown for full-page Markdown extraction. @source: [Readability.js README](https://raw.githubusercontent.com/mozilla/readability/master/README.md); [Turndown README](https://raw.githubusercontent.com/mixmark-io/turndown/master/README.md)
+- Exposed `webpageToMarkdown` as both an Eleventy filter and CLI command to streamline remote content capture. @source: [andymason/url-to-markdown](https://github.com/andymason/url-to-markdown)
+- Updated `web2md` CLI to emit SHA256 hash alongside Markdown.
+- README regenerated from repository reality; prior README replaced except verified items.
+- Archived official library docs via web2md into docs/vendors.
+- Added initial POP MART 'The Monsters' archive scaffolding with record-per-product model. Used local HTML for provenance due to Node fetch network limitations.
+- Seeded POP MART “The Monsters” products from placeholder seed article; bulk records initialized.
+- Network connectivity failed; marked selected POP MART products as low-confidence pending verification.
+- Added Eleventy capture tooling (`tools/eleventy/*`) to generate Effusion Labs Markdown pages with consistent frontmatter and tags.

@@ -1,0 +1,68 @@
+
+================================================================================
+UPSTREAM LLAMA-SWAP ROUTING ARCHITECTURE ANALYSIS
+================================================================================
+
+1. ORIGINAL DESIGN (mostlygeek/llama-swap upstream):
+   - Router interface: ServeHTTP, Handles(model), Shutdown
+   - LocalRouter extends Router with RunningModels, Unload, ProcessLogger
+   - Two concrete implementations:
+     a) Group Router: static group-based model swapping
+     b) Matrix Router: set-based coexistence solver (SAT-like)
+
+   - Base Router: channel-based async scheduler
+     * handlerCh -> schedule.OnRequest()
+     * swapDoneCh -> schedule.OnSwapDone()  
+     * serveDoneCh -> schedule.OnServeDone()
+     * Uses unbuffered channels for backpressure
+     * Process lifecycle: Stop() -> Run() -> WaitReady()
+
+   - Server dispatch (localPeerHandler):
+     1. shared.FetchContext(req, cfg) -> extracts model ID
+     2. s.local.Handles(data.ModelID) -> local process
+     3. s.peer.Handles(data.ModelID) -> peer router  
+     4. s.cloud.Handles(data.ModelID) -> astmatrix (cloud)
+     5. default -> ErrNoRouterFound
+
+2. TOXICWIND FORK (astmatrix) - WHAT WAS ADDED:
+   - AstMatrixConfig in config.go with YAML bindings
+   - astmatrix.Router implements router.Router interface
+   - Handles() checks: explicit aliases, auto/fcm, provider model lists
+   - ServeHTTP() does full HTTP proxy to cloud providers
+   - Strategies: hybrid, ast_race, sticky_affinity, weighted_elo, 
+                 circuit_chain, fifo_matrix, free
+   - Circuit breaker + ELO scoring + per-provider rate limiting
+   - HealthDB for persistent metrics + session sticky affinity
+   - RegistryProviders merge from external registry
+
+3. KEY PROBLEMS IN CURRENT ASTMATRIX:
+   a) callOne() does NOT properly proxy streaming responses - it returns
+      Stream as resp.Body but the caller in ServeHTTP does io.Copy which
+      may not handle SSE properly
+   b) No retry logic on 5xx errors - immediate circuit open
+   c) routeAstRace has 95s hardcoded timeout but doesn't cancel goroutines
+   d) isAST() detection is crude regex - should use proper content analysis
+   e) No health check / probe before routing - blind dispatch
+   f) Missing provider: Cerebras has empty models list
+   g) No fallback chain within a strategy - first failure = exhausted
+   h) Sticky affinity uses in-memory only, not distributed
+   i) No request/response transformation for provider quirks
+
+4. WHAT UPSTREAM DOES BETTER:
+   - Proper process lifecycle management (Run/Stop/WaitReady)
+   - Graceful shutdown with in-flight tracking
+   - Scheduler abstraction (FIFO, effects, swapper)
+   - Config-driven model groups with set-based coexistence
+   - Clean separation: local processes vs peer hosts vs cloud
+   - Metrics middleware, auth middleware, profile middleware
+
+5. PRODUCTION-GRADE IMPROVEMENTS NEEDED:
+   a) Streaming proxy: proper SSE forwarding with flush
+   b) Retry with exponential backoff (3 attempts per provider)
+   c) Health probes: active /healthz checks before routing
+   d) Content-aware routing: token count -> model selection
+   e) Request coalescing: dedupe identical concurrent requests
+   f) Proper error classification: 429 vs 5xx vs 4xx
+   g) Metrics: latency histograms, error rates, throughput
+   h) Circuit breaker: half-open probe after timeout
+   i) Load balancing: weighted round-robin + least-latency

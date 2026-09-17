@@ -1,0 +1,38 @@
+{
+  "https://kimi.kimi.team": {
+    "status": 200,
+    "body": "<!doctype html> <html lang=\"zh-CN\" translate=\"no\" class=\"light\"> <head> <script type=\"module\" crossorigin src=\"https://statics.moonshot.cn/kimi-web-seo/assets/polyfills-B7LwMgLB.js\"></script> <meta ch"
+  },
+  "https://kimi.kimi.team/api": {
+    "status": 404
+  },
+  "https://kimi.kimi.team/api/v1": {
+    "status": 404
+  },
+  "https://kimi.kimi.team/api/v2": {
+    "status": 404
+  },
+  "https://kimi.kimi.team/grpc": {
+    "status": 200,
+    "body": "<!doctype html> <html lang=\"zh-CN\" translate=\"no\" class=\"light\"> <head> <script type=\"module\" crossorigin src=\"https://statics.moonshot.cn/kimi-web-seo/assets/polyfills-B7LwMgLB.js\"></script> <meta ch"
+  },
+  "https://kimi.kimi.team/rpc": {
+    "status": 200,
+    "body": "<!doctype html> <html lang=\"zh-CN\" translate=\"no\" class=\"light\"> <head> <script type=\"module\" crossorigin src=\"https://statics.moonshot.cn/kimi-web-seo/assets/polyfills-B7LwMgLB.js\"></script> <meta ch"
+  },
+  "https://agent-gw.kimi.com/coding": {
+    "status": 404
+  },
+  "https://agent-gw.kimi.com/coding/api": {
+    "status": 404
+  },
+  "https://agent-gw.kimi.com/coding/v1": {
+    "status": 404
+  },
+  "https://agent-gw-dev.dev.kimi.team/coding": {
+    "status": 404
+  },
+  "https://agent-gw-dev.dev.kimi.team/coding/v1": {
+    "status": 404
+  }
+}

@@ -1,0 +1,171 @@
+Present_EntityType
+ *map.group[proto.AuthCode]string
+ *struct { key int64; elem bool }
+ *func(...*env.Limit) *env.Config
+ errorRecoveryLookaheadTokenLimit
+ *[]struct { key int; elem *int }
+ errorRecoveryTokenLookaheadLimit
+ *map.group[string]*rsa.PublicKey
+ *antlr.TokenSourceCharStreamPair
+ *struct { key uint16; elem int }
+ *struct { key uint64; elem int }
+ *[]struct { key int8; elem int }
+ *map[string]proto.CardinalityKey
+!*struct { key string; elem bool }
+!*struct { key uint64; elem bool }
+!*connect.clientCallInfoContextKey
+!initLegacySessionTicketKeyRLocked
+!*struct { key uint16; elem bool }
+!*validate.FieldPathElement_IntKey
+!*tos.PreSingedPostSignatureOutput
+!*func() (*ecdh.PrivateKey, error)
+!*map.group[filedesc.pathKey][]int
+!*func() mcpv1.AuthorizationStatus
+!*mcpv1.HandleOAuthCallbackRequest
+!*func() *orderv1.MembershipStatus
+!*orderv1.GetMembershipListRequest
+!*func() orderv1.Subscription_Type
+!*func([]uint8) attribute.KeyValue
+!*func(float64) attribute.KeyValue
+!*func([]int64) attribute.KeyValue
+!*func() (int, attribute.KeyValue)
+!*func() *payv1.SubscriptionStatus
+!*payv1.ResumeSubscriptionResponse
+!*payv1.CancelSubscriptionResponse
+!*[8]struct { key int; elem bool }
+!**kimimodel.PluginManifestSummary
+gorm:"primaryKey;not null"
+!*struct { key uint8; elem uint8 }
+!*map[ratelimit.Category]struct {}
+!*reflectionv1.ListServiceResponse
+!*clawv1.CreateModelAPIKeyResponse
+!*func() *billingv1.Authentication
+!*skillv1.ListSkillUseCasesRequest
+!*adminv1.ListSkillUseCasesRequest
+!*slidesv1.ListSlidesByChatRequest
+!*tidb.ImportS3CompatibleAccessKey
+!*struct { key int64; elem int64 }
+!*func(*env.Limit, *env.Limit) int
+!*[]struct { key int64; elem int }
+!*struct { key string; elem uint }
+!*func() ([]redis.KeyFlags, error)
+!*func() ([]redis.KeyValue, error)
+!*membershipv2.UpdateWalletRequest
+!*membershipv2.CreateWalletRequest
+!*func() membershipv2.Balance_Type
+!*membershipv2.Balance_Action_Item
+!*membershipv2.RateLimitWindowType
+!*membershipv2.GiftBalanceResponse
+!*func() *membershipv2.Entitlement
+!*struct { key int64; elem int32 }
+!isExpr_CreateStruct_Entry_KeyKind
+protobuf_oneof:"key_kind"
+!*[8]struct { key int; elem *int }
+!github.com/redis/go-redis/v9/auth
+!*pgproto3.AuthenticationSASLFinal
+!*[]struct { key uint8; elem int }
+!*[]struct { key int32; elem int }
+!*[]struct { key int16; elem int }
+!*[8]struct { key int8; elem int }
+!*struct { key float64; elem int }
+!*struct { key float32; elem int }
+"*[]struct { key string; elem int }
+"*func() *portalv1.BindTokenContext
+"*portalv1.ValidateBindTokenRequest
+"*struct { key int32; elem string }
+"*struct { key string; elem int32 }
+"kimi.darkmatter/apps/portal/fs/env
+"*struct { key string; elem []int }
+"*[]struct { key int; elem string }
+"*validate.FieldPathElement_BoolKey
+"*validate.FieldPathElement_UintKey
+"*func() userctxv1.Membership_Level
+"*[]struct { key uint32; elem int }
+json:"KeyCount,omitempty"
+"*func(*tos.SigningKeyInfo) []uint8
+"*func() (*ecdsa.PrivateKey, error)
+"*func() *mlkem.EncapsulationKey768
+"*struct { key uint32; elem int32 }
+"*struct { key string; elem uint8 }
+"*func() *mcpv1.AuthorizationStatus
+"*func() orderv1.SubscriptionAction
+"*orderv1.GetMembershipListResponse
+"*func() orderv1.isMembership_Extra
+"*orderv1.CreateSubscriptionRequest
+"*func() *orderv1.Subscription_Type
+"*func() orderv1.SubscriptionStatus
+"*func([]string) attribute.KeyValue
+"*errdetails.QuotaFailure_Violation
+"*struct { key uint64; elem []int }
+"*struct { key string; elem int64 }
+"kimi.darkmatter/packages/kimimodel
+json:"keywords,omitempty"
+gorm:"column:object_key"
+gorm:"primaryKey;not null"
+gorm:"primaryKey;not null"
+"*func() *configv1.MembershipConfig
+"*skillv1.ListSkillUseCasesResponse
+"*adminv1.ListSkillUseCasesResponse
+"*slidesv1.ListSlidesByChatResponse
+json:"authType,omitempty"
+json:"sasToken,omitempty"
+"*[8]struct { key int64; elem int }
+"*[]struct { key int32; elem bool }
+"*struct { key uint16; elem error }
+"*struct { key string; elem error }
+"*membershipv2.Giftcard_Code_Status
+"*membershipv2.UpdateWalletResponse
+"*func() membershipv2.Wallet_Status
+"*membershipv2.CreateWalletResponse
+"*func() *membershipv2.Balance_Type
+"*func() []*membershipv2.Capability
+"*func() *suggestv1.Showcase_Author
+"*func() membershipv2.Resource_Type
+"*membershipv2.Balance_Action_Index
+"*func() []*membershipv2.Tool_Usage
+"*membershipv2.EarmarkCreditRequest
+"*membershipv2.Entitlement_Metadata
+"*[]struct { key int64; elem bool }
+"*parser.recoveryLimitErrorStrategy
+"*struct { key uint32; elem int16 }
+"*auth.StreamingCredentialsProvider
+"GetExpectedTokensWithinCurrentRule
+"*struct { key uint8; elem string }
+"*[8]struct { key uint8; elem int }
+"*[]struct { key uint16; elem int }
+"*[]struct { key uint64; elem int }
+"*[8]struct { key int32; elem int }
+"*[8]struct { key int16; elem int }
+"*struct { key [8]uint8; elem int }
+#*struct { key string; elem string }
+#*[]struct { key string; elem bool }
+#*[8]struct { key string; elem int }
+#*[]struct { key uint64; elem bool }
+#*struct { key string; elem uint64 }
+#*portalv1.ValidateBindTokenResponse
+#*[]struct { key uint16; elem bool }
+#*[8]struct { key int; elem string }
+#*func() *userctxv1.Membership_Level
+#*func() []*chattyv1.KeywordArgument
+#*struct { key uint32; elem string }
+#*[8]struct { key uint32; elem int }
+#*func() *portalv1.GetAPIKeyResponse
+#*func() *mlkem.EncapsulationKey1024
+#*struct { key string; elem uint16 }
+#GetFlowControlLimitExceededBehavior
+#*func() *orderv1.SubscriptionAction
+#*func() userctxv1.Membership_Domain
+#*orderv1.CreateSubscriptionResponse
+#*func() *orderv1.SubscriptionStatus
+#*func([]float64) attribute.KeyValue
+#*payv1.BindApplePurchaseUUIDRequest
+#*payv1.DowngradeSubscriptionRequest
+#*payv1.TerminateSubscriptionRequest
+#*[]struct { key uint8; elem uint8 }
+#*func() *configv1.CacheLimitsConfig
+#*[]struct { key int64; elem int64 }
+#*struct { key int64; elem ref.Val }
+#*[8]struct { key int32; elem bool }
+#*struct { key int; elem struct {} }
+#*[]struct { key string; elem uint }
+#*struct { key string; elem uint32

@@ -1,0 +1,17 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "close-to-sweet-v1",
+  "title": "Close to Sweet (v1)",
+<<<<<<< HEAD
+  "character_slugs": ["mokoko"],
+  "notes": "Seeded from initial article; needs confirmation."
+}
+=======
+  "character_slugs": [
+    "mokoko"
+  ],
+  "notes": "Seeded from initial article; needs confirmation."
+}
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option

@@ -1,0 +1,28 @@
+<<<<<<< HEAD
+{# components/section.njk #}
+{% macro section(title, url) -%}
+  <section class="space-y-6">
+    <div class="flex items-baseline justify-between">
+      <h2 class="font-heading text-2xl text-base-content">{{ title }}</h2>
+      {% if url %}
+        <a
+          href="{{ url }}"
+          class="link link-hover text-sm rounded-sm px-1 focus:outline-none focus-visible:ring focus-visible:ring-primary/40"
+        >
+          View all →
+        </a>
+      {% endif %}
+    </div>
+    {{ caller() }}
+  </section>
+=======
+{% macro section(title, url) -%}
+<section class="space-y-6">
+  <div class="flex items-baseline justify-between">
+    <h2 class="font-heading text-2xl">{{ title }}</h2>
+    {% if url %}<a href="{{ url }}" class="text-sm hover:text-primary focus:outline-none focus:ring">View all →</a>{% endif %}
+  </div>
+  {{ caller() }}
+</section>
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+{%- endmacro %}

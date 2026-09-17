@@ -1,0 +1,1 @@
+{"id":"u_1786434695_10380","cmd":"ps auxf | grep auto_hook | grep -v grep","rc":0,"size":1984,"parts":1,"file":"/mnt/agents/output/.bg_logs/unlimited/u_1786434695_10380.txt"}

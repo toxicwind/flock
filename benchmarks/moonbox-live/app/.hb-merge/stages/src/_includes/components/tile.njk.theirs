@@ -1,0 +1,16 @@
+{% macro tile(item) %}
+<a href="{{ item.url }}" aria-label="{{ item.data.title }}" class="tile block rounded-lg border border-white/10 p-4 transition hover:-translate-y-0.5 hover:shadow focus:outline-none focus:ring">
+  {% if item.data.image %}
+  <div class="mb-2 aspect-[4/3] overflow-hidden rounded bg-white/5">
+    <img src="{{ item.data.image }}" alt="" class="h-full w-full object-cover" />
+  </div>
+  {% else %}
+  <div class="mb-2 aspect-[4/3] rounded bg-white/5"></div>
+  {% endif %}
+  <div class="flex items-center justify-between text-xs text-gray-400">
+    <span class="capitalize">{{ item.data.type }}</span>
+    {% if item.date %}<time datetime="{{ item.date | htmlDateString }}">{{ item.date | readableDate }}</time>{% endif %}
+  </div>
+  <h3 class="mt-2 font-heading text-lg text-gray-100">{{ item.data.title }}</h3>
+</a>
+{% endmacro %}

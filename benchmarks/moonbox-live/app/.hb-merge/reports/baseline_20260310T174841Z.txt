@@ -1,0 +1,4 @@
+HEAD 57e6c1d9382a3007f8c7c23970e61a01e259b6b2
+BRANCH main
+REPO /home/toxic/apex-workspace/projects/github/toxicwind/effusion-labs
+PATH /usr/bin:/bin:/usr/sbin:/sbin:/home/toxic/.config/niri/apex-operator/bin:/usr/lib/jvm/java-25-graalvm-ce/bin:/home/toxic/go/bin:/home/toxic/.nvm/versions/node/v25.7.0/bin:/home/toxic/.bun/bin:/home/toxic/.bun/bin:/home/toxic/.bun/bin:/home/toxic/.bun/bin:/home/toxic/.bun/bin:/home/toxic/.bun/bin:/usr/local/sbin:/usr/local/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl

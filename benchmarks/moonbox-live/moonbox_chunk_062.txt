@@ -1,0 +1,114 @@
+erKeyExchange
+net/textproto.(*Reader).upcomingHeaderKeys
+net/textproto.CanonicalMIMEHeaderKey
+net/textproto.canonicalMIMEHeaderKey
+mime.isToken
+mime.isTokenChar
+maps.Keys[go.shape.map[string]string,go.shape.string,go.shape.string]
+mime.isTSpecial
+mime.FormatMediaType.Keys[go.shape.map[string]string,go.shape.string,go.shape.string].func1
+mime.consumeToken
+mime/multipart.(*Reader).isBoundaryDelimiterLine
+maps.Keys[go.shape.map[string][]string,go.shape.string,go.shape.[]string]
+mime/multipart.(*Writer).CreatePart.Keys[go.shape.map[string][]string,go.shape.string,go.shape.[]string].func1
+compress/flate.matchToken
+compress/flate.(*huffmanBitWriter).indexTokens
+compress/flate.token.length
+compress/flate.token.offset
+compress/flate.(*huffmanBitWriter).writeTokens
+compress/flate.(*dictDecoder).histSize
+vendor/golang.org/x/net/http/httpguts.headerValueContainsToken
+vendor/golang.org/x/net/http/httpguts.tokenEqual
+vendor/golang.org/x/net/http2/hpack.(*Encoder).SetMaxDynamicTableSizeLimit
+vendor/golang.org/x/net/http/httpguts.HeaderValuesContainsToken
+net/http.basicAuth
+net/http.CanonicalHeaderKey
+net/http.isToken
+net/http.http2http2ConfigStrictMaxConcurrentRequests
+net/http.http2parseRSTStreamFrame
+net/http.(*http2Framer).WriteRSTStream
+net/http.(*http2Framer).maxHeaderListSize
+vendor/golang.org/x/net/http/httpguts.IsTokenRune
+net/http.(*http2sorter).Keys
+net/http.(*http2serverConn).maxHeaderListSize
+net/http.http2authorityAddr
+net/http.(*http2Transport).maxHeaderListSize
+net/http.http2ErrCode.stringToken
+net/http.(*http2roundRobinWriteScheduler).AdjustStream
+net/http.Header.sortedKeyValues
+slices.SortFunc[go.shape.[]net/http.keyValues,go.shape.struct { net/http.key string; net/http.values []string }]
+net/http.hasToken
+net/http.isTokenBoundary
+net/http.(*contextKey).String
+net/http.(*pattern).lastSegment
+net/http.(*Request).BasicAuth
+net/http.(*Request).SetBasicAuth
+net/http.firstSegment
+net/http.(*connReader).hitReadLimit
+net/http.(*Server).initialReadLimitSize
+net/http.(*connReader).setReadLimit
+net/http.(*connReader).setInfiniteReadLimit
+maps.Keys[go.shape.map[string]bool,go.shape.string,go.shape.bool]
+net/http.(*ServeMux).matchingMethods.Keys[go.shape.map[string]bool,go.shape.string,go.shape.bool].func1
+net/http.(*socksUsernamePassword).Authenticate
+net/http.(*connectMethod).proxyAuth
+net/http.(*connectMethod).key
+net/http.connectMethodKey.String
+net/http.Header.sortedKeyValues.func1
+net/http.parseBasicAuth
+type:.eq.net/http.http2RSTStreamFrame
+type:.eq.net/http.routingIndexKey
+type:.hash.net/http.routingIndexKey
+type:.eq.net/http.connectMethodKey
+type:.hash.net/http.connectMethodKey
+slices.pdqsortCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.reverseRangeCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.insertionSortCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.partitionCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.partitionEqualCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.partialInsertionSortCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.choosePivotCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.medianAdjacentCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.medianCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.order2CmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.breakPatternsCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.heapSortCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+slices.siftDownCmpFunc[go.shape.struct { net/http.key string; net/http.values []string }]
+net/http.(*connectMethodKey).String
+net/http.transportRequest.BasicAuth
+net/http.(*transportRequest).BasicAuth
+net/http.transportRequest.SetBasicAuth
+net/http.(*transportRequest).SetBasicAuth
+net/http.http2RSTStreamFrame.Header
+net/http.(*http2RSTStreamFrame).Header
+net/http.http2RSTStreamFrame.String
+net/http.(*http2RSTStreamFrame).String
+net/http.(*http2RSTStreamFrame).invalidate
+net/http.(*socksUsernamePassword).Authenticate-fm
+regexp/syntax.(*parser).checkLimits
+go/token.init.0
+go/token.IsExported
+type:.eq.go/token.lineInfo
+type:.eq.go/token.Position
+google.golang.org/protobuf/reflect/protoreflect.Value.MapKey
+google.golang.org/protobuf/reflect/protoreflect.MapKey.IsValid
+google.golang.org/protobuf/reflect/protoreflect.MapKey.Interface
+google.golang.org/protobuf/reflect/protoreflect.MapKey.Bool
+google.golang.org/protobuf/reflect/protoreflect.MapKey.Int
+google.golang.org/protobuf/reflect/protoreflect.MapKey.Uint
+google.golang.org/protobuf/reflect/protoreflect.MapKey.String
+google.golang.org/protobuf/reflect/protoreflect.MapKey.Value
+google.golang.org/protobuf/reflect/protoreflect.(*Value).MapKey
+google.golang.org/protobuf/reflect/protoreflect.(*MapKey).Bool
+google.golang.org/protobuf/reflect/protoreflect.(*MapKey).Int
+google.golang.org/protobuf/reflect/protoreflect.(*MapKey).Interface
+google.golang.org/protobuf/reflect/protoreflect.(*MapKey).IsValid
+google.golang.org/protobuf/reflect/protoreflect.(*MapKey).String
+google.golang.org/protobuf/reflect/protoreflect.(*MapKey).Uint
+google.golang.org/protobuf/reflect/protoreflect.(*MapKey).Value
+type:.eq.struct { google.golang.org/protobuf/internal/pragma.NoUnkeyedLiterals; Message google.golang.org/protobuf/reflect/protoreflect.Message; Flags uint8 }
+type:.eq.struct { google.golang.org/protobuf/internal/pragma.NoUnkeyedLiterals; Message google.golang.org/protobuf/reflect/protoreflect.Message }
+google.golang.org/protobuf/internal/encoding/json.Token.RawString
+google.golang.org/protobuf/internal/encoding/json.(*Decoder).consumeToken
+google.golang.org/protobuf/internal/encoding/json.(*Decoder).consumeStringToken
+google.golang.org/protobuf/internal/encoding/json.(*Decoder).consumeBoolToke

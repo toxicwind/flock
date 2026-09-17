@@ -1,0 +1,94 @@
+python-dotenv could not parse statement starting at line 37
+python-dotenv could not parse statement starting at line 38
+python-dotenv could not parse statement starting at line 39
+python-dotenv could not parse statement starting at line 40
+🗑  Deleted results.json — starting fresh.
+Starting fresh — 20 models to benchmark.
+
+→ Nemotron Content Safety (nvidia/nemotron-3-content-safety)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'nvidia/nemotron-3-conten
+
+→ GLM 4.7 (z-ai/glm4.7)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'z-ai/glm4.7' has reached
+
+→ MiniMax M2.7 (minimaxai/minimax-m2.7)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'minimaxai/minimax-m2.7' 
+
+→ Step 3.5 Flash (stepfun-ai/step-3.5-flash)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'stepfun-ai/step-3.5-flas
+
+→ Kimi K2 Thinking (moonshotai/kimi-k2-thinking)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'moonshotai/kimi-k2-think
+
+→ Mistral Large 3 675B (mistralai/mistral-large-3-675b-instruct-2512)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'mistralai/mistral-large-
+
+→ Nemotron Safety Guard 8B (nvidia/llama-3.1-nemotron-safety-guard-8b-v3)
+........
+   8 tokens in 1.16s = 6.9 tok/s
+
+→ Seed OSS 36B (bytedance/seed-oss-36b-instruct)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'bytedance/seed-oss-36b-i
+
+→ Qwen3 Coder 480B (qwen/qwen3-coder-480b-a35b-instruct)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'qwen/qwen3-coder-480b-a3
+
+→ Kimi K2 (moonshotai/kimi-k2-instruct)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'moonshotai/kimi-k2-instr
+
+→ Magistral Small (mistralai/magistral-small-2506)
+
+   ERROR: 404 page not found
+
+→ Llama Guard 4 12B (meta/llama-guard-4-12b)
+
+   ERROR: The read operation timed out
+
+→ Gemma 3n E4B (google/gemma-3n-e4b-it)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'google/gemma-3n-e4b-it' 
+
+→ Gemma 3n E2B (google/gemma-3n-e2b-it)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'google/gemma-3n-e2b-it' 
+
+→ Mistral Nemotron (mistralai/mistral-nemotron)
+.........
+   9 tokens in 2.11s = 4.3 tok/s
+
+→ Llama-4 Maverick 17B (meta/llama-4-maverick-17b-128e-instruct)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'meta/llama-4-maverick-17
+
+→ Dracarys 70B (abacusai/dracarys-llama-3.1-70b-instruct)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'abacusai/dracarys-llama-
+
+→ Nemotron Mini 4B (nvidia/nemotron-mini-4b-instruct)
+........
+   8 tokens in 0.93s = 8.6 tok/s
+
+→ Gemma 2 2B (google/gemma-2-2b-it)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'google/gemma-2-2b-it' ha
+
+→ Solar 10.7B (upstage/solar-10.7b-instruct)
+
+   ERROR: Error code: 410 - {'type': 'about:blank', 'title': 'Gone', 'status': 410, 'detail': "The model 'upstage/solar-10.7b-inst
+
+
+Done! Results saved to results.json
+
+Top 5 by tokens/second:
+  1. Nemotron Mini 4B: 8.62 tok/s
+  2. Nemotron Safety Guard 8B: 6.87 tok/s
+  3. Mistral Nemotron: 4.26 tok/s

@@ -1,0 +1,55 @@
+---
+title: "Meta"
+<<<<<<< HEAD
+layout: "base.njk"
+permalink: "/meta/index.html"
+---
+
+{% from "components/list-item.njk" import listItem %}
+
+<main
+  id="content"
+  class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10"
+  data-page-kind="meta"
+>
+  <header class="mb-8" aria-labelledby="meta-title" aria-describedby="meta-deck">
+    <div class="badge badge-primary badge-outline">META</div>
+    <h1 id="meta-title" class="mt-3 text-5xl font-extrabold leading-tight tracking-tight">Meta</h1>
+    <p id="meta-deck" class="mt-2 max-w-3xl text-base-content/70">
+      Colophon, protocol, policy. How this site is made and run.
+    </p>
+  </header>
+
+  <div class="divider my-8 before:bg-base-200 after:bg-base-200"></div>
+
+  <section aria-labelledby="meta-list-title">
+    <h2 id="meta-list-title" class="sr-only">Meta documents</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr" role="list">
+      {% for item in collections.meta %}
+        {% if item.url != page.url %}
+          {{ listItem(item) }}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% set metaCount = (collections.meta | length) or 0 %}
+    {% if metaCount <= 1 %}
+      <p class="mt-8 text-sm text-base-content/60">Nothing else here yet.</p>
+    {% endif %}
+  </section>
+</main>
+=======
+layout: "layout.njk"
+permalink: "/meta/index.html" # <-- Add or modify this line for correct URL
+eleventyNavigation:
+  key: Meta
+  parent: Showcase # Adjust parent as needed for your navigation
+---
+<p>This section contains information about the lab itself, its purpose, and related administrative details.</p>
+<ul>
+{# Loop through all items in the 'meta' collection, excluding the current page #}
+{% for item in collections.meta %}
+    {% if item.url != page.url %}<li><a href="{{ item.url }}">{{ item.data.title }}</a></li>{% endif %}
+{% endfor %}
+</ul>
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option

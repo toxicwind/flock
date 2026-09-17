@@ -1,0 +1,85 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en" class="scroll-pt-10" data-theme="dim">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <title>{{ title or "Embed" }}</title>
+
+    {# Optional canonical, if present #}
+    {% if page and page.url %}<link rel="canonical" href="{{ page.url | url }}">{% endif %}
+
+    <script type="module" src="{{ '/assets/js/app.js' | url }}"></script>
+  </head>
+  <body class="bg-base-100 text-base-content font-body antialiased">
+    <main class="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8 py-8">
+      <section
+        class="rounded-box border-2 border-black bg-base-200 shadow-[8px_8px_0_rgba(0,0,0,0.9)] hb-neon hb-intensity-lite"
+        style="--neon-a: oklch(0.72 0.18 280); --neon-b: oklch(0.82 0.14 30)"
+      >
+        <div class="p-5 sm:p-7">
+          {% if title %}
+            <h1 class="m-0 font-extrabold tracking-tight text-2xl sm:text-3xl">{{ title }}</h1>
+          {% endif %}
+          {% if description %}
+            <p class="mt-2 opacity-80">{{ description }}</p>
+          {% endif %}
+
+          <div class="prose dark:prose-invert max-w-none mt-5">
+            {{ content | safe }}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {# Optional overlay CSS (if you ship it) #}
+    <link
+      rel="stylesheet"
+      href="css/mschf-overlay.css{% if build and (build.hash or build.commit or build.version) %}?v={{ build.hash or build.commit or build.version }}{% endif %}"
+    >
+  </body>
+</html>
+=======
+<a href="{{ url }}" class="embed block border border-zinc-700 rounded-md p-4 bg-zinc-900 hover:bg-zinc-800 transition-all">
+  <div class="mb-1">
+    <strong class="text-lg">{{ title or fileSlug or "Untitled" }}</strong>
+  </div>
+
+  {% if description %}
+    <p class="text-zinc-400 text-sm mb-2">{{ description }}</p>
+  {% endif %}
+
+  <div class="text-xs text-zinc-400 space-y-1">
+    {% if status or certainty or importance %}
+    <div class="flex gap-3 flex-wrap">
+      {% if status %}<span class="inline-block px-2 py-0.5 bg-zinc-800 rounded">{{ status }}</span>{% endif %}
+      {% if certainty %}<span class="inline-block px-2 py-0.5 bg-zinc-800 rounded">certainty: {{ certainty }}</span>{% endif %}
+      {% if importance %}<span class="inline-block px-2 py-0.5 bg-zinc-800 rounded">importance: {{ importance }}</span>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if tags %}
+    <div class="mt-1">
+      <strong class="text-zinc-500">Tags:</strong>
+      <span>
+        {% for tag in tags %}
+          <span class="inline-block px-1.5 py-0.5 bg-zinc-800 rounded-sm mr-1">{{ tag }}</span>
+        {% endfor %}
+      </span>
+    </div>
+    {% endif %}
+
+    {% if memory_ref %}
+    <div class="mt-1">
+      <strong class="text-zinc-500">Memory:</strong>
+      <ul class="list-disc pl-4">
+        {% for ref in memory_ref %}
+          <li><a href="{{ ref }}" class="text-zinc-300 hover:text-zinc-100 underline">{{ ref }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</a>
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option

@@ -1,0 +1,47 @@
+use std::{
+    io::{stdout, BufWriter},
+    path::PathBuf,
+};
+
+use clap::Parser;
+use query_api::query_api;
+
+#[derive(Parser)]
+#[command(
+    name = "query-api",
+    about = "Query the Tecken JSON symbolication API against a local symbol directory."
+)]
+struct Opt {
+    /// Path to a directory that contains binaries and debug archives
+    symbol_directory: PathBuf,
+
+    /// A URL. Should always be /symbolicate/v5
+    url: String,
+
+    /// Request data, or path to file with request data if preceded by @ (like curl)
+    request_json_or_filename: String,
+}
+
+fn main() -> anyhow::Result<()> {
+    let opt = Opt::parse();
+    let request_json = if opt.request_json_or_filename.starts_with('@') {
+        let filename = opt.request_json_or_filename.trim_start_matches('@');
+        std::fs::read_to_string(filename)?
+    } else {
+        opt.request_json_or_filename
+    };
+    let runtime = tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()?;
+    let response_json = runtime.block_on(query_api(&opt.url, &request_json, opt.symbol_directory));
+    let stdout_writer = stdout().lock();
+    let stdout_writer = BufWriter::new(stdout_writer);
+    serde_json::to_writer(stdout_writer, &response_json).unwrap();
+    Ok(())
+}
+
+#[test]
+fn verify_cli() {
+    use clap::CommandFactory;
+    Opt::command().debug_assert()
+}

@@ -1,0 +1,62 @@
+name: Build and Deploy to GHCR
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  packages: write  # ← Enables write access for GHCR
+
+env:
+  NODE_VERSION: '20'
+  IMAGE_ID: ghcr.io/${{ github.actor }}/effusion-labs:latest
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ env.NODE_VERSION }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ env.NODE_VERSION }}-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build Eleventy static files
+        run: npm run build
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        run: |
+          echo "📦 Building and pushing $IMAGE_ID"
+          docker build -t "$IMAGE_ID" -f .portainer/Dockerfile .
+          docker push "$IMAGE_ID"
+      - name: Trigger Portainer Webhook Redeployment
+        run: |
+          if ! curl -X POST http://effusionlabs.com:9000/api/stacks/webhooks/d85d48d6-a407-4ac0-8683-a7962bfbb9d3; then
+            echo "Webhook trigger failed!";
+            exit 1;
+          fi

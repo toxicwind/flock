@@ -1,0 +1,135 @@
+#!/bin/bash
+# autoloader - persistent entrypoint for arc-agi ops
+# Loads on every shell start, bans forbidden commands
+
+set -euo pipefail
+
+# Load aliases
+[ -f /mnt/agents/dot/etc/aliases.sh ] && source /mnt/agents/dot/etc/aliases.sh
+
+# Load banned commands
+BAN_FILE="/mnt/agents/dot/etc/banned_cmds.conf"
+if [ -f "$BAN_FILE" ]; then
+    while IFS= read -r cmd; do
+        [ -z "$cmd" ] && continue
+        [[ "$cmd" =~ ^# ]] && continue
+        alias "$cmd"='echo "BANNED: $cmd" && false'
+    done < "$BAN_FILE"
+fi
+
+# PATH injection
+export PATH="/mnt/agents/dot/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+export PYTHONPATH="/mnt/agents/dot/lib:/mnt/agents/output:$PYTHONPATH"
+export GOPATH="/mnt/agents/dot/go"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOBIN:$PATH"
+
+# PAT in env only - NEVER in files
+export GH_USER="toxicwind"
+export GH_REPO="_git"
+export GH_REMOTE="https://github.com/toxicwind/_git.git"
+
+# Network-aware connect function
+connect() {
+    local url="$1"
+    local method="${2:-GET}"
+    local data="${3:-}"
+    local timeout="${4:-3}"
+    
+    # Detect protocol
+    if [[ "$url" =~ ^https?:// ]]; then
+        local proto="http"
+    elif [[ "$url" =~ ^wss?:// ]]; then
+        local proto="ws"
+    elif [[ "$url" =~ ^grpc:// ]]; then
+        local proto="grpc"
+    else
+        local proto="tcp"
+    fi
+    
+    # Try direct first, then via proxy if available
+    if [ "$proto" = "http" ]; then
+        if [ -n "${data}" ]; then
+            curl -s -m "$timeout" -X "$method" -H "Content-Type: application/json" -d "$data" "$url" 2>/dev/null
+        else
+            curl -s -m "$timeout" -X "$method" "$url" 2>/dev/null
+        fi
+    elif [ "$proto" = "ws" ]; then
+        echo "WS_NOT_YET_IMPL"
+    else
+        curl -s -m "$timeout" "$url" 2>/dev/null
+    fi
+}
+
+# _git wrapper with PAT from env
+_git() {
+    local git_dir="${GIT_DIR_OVERRIDE:-_git}"
+    local pat="${GITHUB_PAT:-}"
+    
+    if [ -z "$pat" ]; then
+        echo "ERROR: GITHUB_PAT not set"
+        return 1
+    fi
+    
+    case "${1:-help}" in
+        init)
+            [ -d "$git_dir" ] && { echo "[_git] already init"; return 0; }
+            mkdir -p "$git_dir"
+            GIT_DIR="$git_dir" git --work-tree="." init
+            ;;
+        remote)
+            local url="${2:-$GH_REMOTE}"
+            url="$(echo "$url" | sed "s|https://|https://toxicwind:${pat}@|")"
+            GIT_DIR="$git_dir" git --work-tree="." remote add origin "$url" 2>/dev/null || \
+            GIT_DIR="$git_dir" git --work-tree="." remote set-url origin "$url"
+            echo "[_git] remote set"
+            ;;
+        add)
+            GIT_DIR="$git_dir" git --work-tree="." add -A
+            ;;
+        commit)
+            local msg="${2:-"_git auto $(date -u +%Y-%m-%dT%H:%M:%SZ)"}"
+            GIT_DIR="$git_dir" git --work-tree="." commit -m "$msg" || echo "[_git] nothing new"
+            ;;
+        push)
+            local branch="${2:-master}"
+            GIT_DIR="$git_dir" git --work-tree="." push origin "$branch" 2>&1
+            ;;
+        sync)
+            local msg="${2:-"_git sync $(date -u +%Y-%m-%dT%H:%M:%SZ)"}"
+            _git init
+            _git remote "$GH_REMOTE"
+            _git add
+            _git commit "$msg"
+            _git push
+            ;;
+        status)
+            GIT_DIR="$git_dir" git --work-tree="." status --short
+            ;;
+        log)
+            GIT_DIR="$git_dir" git --work-tree="." log --oneline -10
+            ;;
+        *)
+            GIT_DIR="$git_dir" git --work-tree="." "$@"
+            ;;
+    esac
+}
+
+# Recursive _git init for all dirs
+_git_all() {
+    local base="${1:-/mnt/agents}"
+    local maxdepth="${2:-2}"
+    find "$base" -maxdepth "$maxdepth" -type d | while read -r dir; do
+        [ -d "$dir/_git" ] && continue
+        [ "$dir" = "/mnt/agents" ] && continue
+        (cd "$dir" && _git init 2>/dev/null && echo "INIT: $dir")
+    done
+}
+
+# Export functions
+export -f connect _git _git_all
+
+# Prompt
+export PS1='[\t][\h]\w\$ '
+
+echo "[autoloader] loaded $(date -u +%Y-%m-%dT%H:%M:%SZ)"

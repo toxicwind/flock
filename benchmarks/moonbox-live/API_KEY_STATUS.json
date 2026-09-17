@@ -1,0 +1,20 @@
+{
+  "status": "API_KEY_FOUND_BUT_UNAUTHORIZED",
+  "agent_gw_json": "/mnt/portal-overlay/.agent-gw.json - NOW READABLE",
+  "api_key": "sk-kimi-... (redacted)",
+  "base_url": "https://agent-gw.kimi.com/coding",
+  "test_results": {
+    "agent_gw_models": "403 Forbidden",
+    "agent_gw_chat": "403 Forbidden",
+    "sandbox_models": "tested",
+    "portal_status": "tested",
+    "crud_endpoints": "ALL 404 (do not exist on coding gateway)"
+  },
+  "conclusion": "The API key is readable but NOT authorized for direct use. It likely requires portal proxying or has IP restrictions.",
+  "next_steps": [
+    "Use portal bind-token mechanism with warden-signed JWT",
+    "The key may work through the portal proxy, not direct HTTP",
+    "Check if IP whitelist is blocking container egress",
+    "The 100/100 quota is the 25-call tool budget, not an API quota"
+  ]
+}

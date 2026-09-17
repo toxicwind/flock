@@ -1,0 +1,7 @@
+kimi.portal.v1.PortalService/GetAPIKeyinvalid
+kimi.portal.v1.PortalService/GetEvoSessionFileinvalid
+kimi.portal.v1.PortalService/GetS3Credentialsinvalid
+kimi.portal.v1.PortalService/ListChatFilesevo
+kimi.portal.v1.PortalService/ListEvoSessionFilesinode
+kimi.portal.v1.PortalService/SetupApp
+kimi.portal.v1.PortalService/ValidateBindToken

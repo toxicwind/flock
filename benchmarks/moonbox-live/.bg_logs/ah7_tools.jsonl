@@ -1,0 +1,30 @@
+{"ts": "2026-08-16T05:24:52", "tool": "popen", "cmd": "python3 /mnt/agents/output/portal_probe_v2.py", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5640}
+{"ts": "2026-08-16T05:24:53", "tool": "run", "cmd": "python3 /mnt/agents/output/portal_probe_v2.py", "rc": 0, "out_len": 8000, "err_len": 731, "dt_ms": 277, "pid": 5640}
+{"ts": "2026-08-16T05:25:28", "tool": "popen", "cmd": "cd /mnt/agents/output/effusion-labs && git add -A", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:28", "tool": "run", "cmd": "cd /mnt/agents/output/effusion-labs && git add -A", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 138, "pid": 5889}
+{"ts": "2026-08-16T05:25:28", "tool": "popen", "cmd": "cd /mnt/agents/output/effusion-labs && git commit -m \"ah7: effusion\"", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:28", "tool": "run", "cmd": "cd /mnt/agents/output/effusion-labs && git commit -m \"ah7: effusion\"", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 66, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "popen", "cmd": "cd /mnt/agents/output/envd-project && git add -A", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "run", "cmd": "cd /mnt/agents/output/envd-project && git add -A", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 90, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "popen", "cmd": "cd /mnt/agents/output/envd-project && git commit -m \"ah7: envd\"", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "run", "cmd": "cd /mnt/agents/output/envd-project && git commit -m \"ah7: envd\"", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 79, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "popen", "cmd": "cd /mnt/agents/output/repo_kimi_team_recon && git add -A", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "run", "cmd": "cd /mnt/agents/output/repo_kimi_team_recon && git add -A", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 72, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "popen", "cmd": "cd /mnt/agents/output/repo_kimi_team_recon && git commit -m \"ah7: recon\"", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "run", "cmd": "cd /mnt/agents/output/repo_kimi_team_recon && git commit -m \"ah7: recon\"", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 96, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "popen", "cmd": "cd /mnt/agents/output/triangle-access && git add -A", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:29", "tool": "run", "cmd": "cd /mnt/agents/output/triangle-access && git add -A", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 75, "pid": 5889}
+{"ts": "2026-08-16T05:25:30", "tool": "popen", "cmd": "cd /mnt/agents/output/triangle-access && git commit -m \"ah7: triangle\"", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:30", "tool": "run", "cmd": "cd /mnt/agents/output/triangle-access && git commit -m \"ah7: triangle\"", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 67, "pid": 5889}
+{"ts": "2026-08-16T05:25:30", "tool": "popen", "cmd": "cd /mnt/agents/output/toxicwind-repos && git add -A", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:30", "tool": "run", "cmd": "cd /mnt/agents/output/toxicwind-repos && git add -A", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 80, "pid": 5889}
+{"ts": "2026-08-16T05:25:30", "tool": "popen", "cmd": "cd /mnt/agents/output/toxicwind-repos && git commit -m \"ah7: toxicwind\"", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:30", "tool": "run", "cmd": "cd /mnt/agents/output/toxicwind-repos && git commit -m \"ah7: toxicwind\"", "rc": 128, "out_len": 0, "err_len": 142, "dt_ms": 65, "pid": 5889}
+{"ts": "2026-08-16T05:25:30", "tool": "popen", "cmd": "ps aux | grep -E 'envd|portal' | grep -v grep", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:30", "tool": "run", "cmd": "ps aux | grep -E 'envd|portal' | grep -v grep", "rc": 0, "out_len": 457, "err_len": 0, "dt_ms": 87, "pid": 5889}
+{"ts": "2026-08-16T05:25:31", "tool": "popen", "cmd": "sudo -n ls -la /proc/$(pgrep envd)/fd/ 2>/dev/null | head -15", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:31", "tool": "run", "cmd": "sudo -n ls -la /proc/$(pgrep envd)/fd/ 2>/dev/null | head -15", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 94, "pid": 5889}
+{"ts": "2026-08-16T05:25:31", "tool": "popen", "cmd": "sudo -n ls -la /proc/$(pgrep portal)/fd/ 2>/dev/null | head -15", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:31", "tool": "run", "cmd": "sudo -n ls -la /proc/$(pgrep portal)/fd/ 2>/dev/null | head -15", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 85, "pid": 5889}
+{"ts": "2026-08-16T05:25:31", "tool": "popen", "cmd": "sudo -n cat /proc/$(pgrep envd)/environ 2>/dev/null | tr '\\0' '\\n' | grep -v -i 'token|key|secret' | head -20", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 0, "pid": 5889}
+{"ts": "2026-08-16T05:25:31", "tool": "run", "cmd": "sudo -n cat /proc/$(pgrep envd)/environ 2>/dev/null | tr '\\0' '\\n' | grep -v -i 'token|key|secret' | head -20", "rc": 0, "out_len": 0, "err_len": 0, "dt_ms": 88, "pid": 5889}

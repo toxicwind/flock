@@ -1,0 +1,96 @@
+n:** concise **Before → After** (1–2 sentences or a tiny snippet)
+- **Impact:** one-line why it mattered
+
+### EDIT CARDS (ANCHORS ONLY)
+
+Emit a card **only** for anchor files (central modules or >60 LOC changed).
+
+- **Path:** `<file>`
+- **Ops:** `[Compose|Normalize|Web-Integrate|Aestheticize|Expand|Harden|Align|Soft-Deprecate]`
+- **Anchors:** key functions/selectors/tests
+- **Before → After:** 2 sentences on the design shift
+- **Micro Example:** ≤ 6 lines that capture the essence
+- **Impact:** concrete leverage gained
+
+### CHECKS & EVIDENCE (AT LEAST TWO)
+
+Provide **≥ 2** named checks; keep them terse and mechanical.
+
+- **Name** — **Location** — **Expectation** — **Verdict: pass**
+- **Name** — **Location** — **Expectation** — **Verdict: pass** (Add more when the change warrants
+  it.)
+
+### STRATEGY & REASONING (CRISP)
+
+- **Justification of Codes:** why A/S/N/K fit.
+- **Hypothesis:** the problem/opportunity you targeted.
+- **Investigation & Discovery:** repo/web signals that shaped the plan.
+- **Pivots & Discarded Alternatives:** what you tried, why you switched.
+
+### AESTHETIC CAPSULE
+
+A short flourish aligned to the chosen **Skin** (K1–K4).
+
+### EMERGENT MODULE (REQUIRED)
+
+2–6 bullets of **novel value beyond scope** (perf leads, unifications, reusable components, risk
+deltas, telemetry hooks, etc.). If it yields data (tables/JSON/figures), name the files and where
+you wrote them.
+
+### ROLLBACK
+
+≤ 3 steps to revert or soften the change.
+
+---
+
+## 8) FAILURE & RECOVERY (NEVER STALL)
+
+When a path fails or a check doesn’t pass:
+
+1. **Analyze** the error signature,
+2. **Hypothesize** a new approach,
+3. **Pivot** and execute,
+4. **Document** the pivot succinctly in **Strategy & Reasoning**. Do not pause to ask; ship a
+   corrected result.
+
+---
+
+## 9) COMPLIANCE FOOTER (MUST BE THE LAST LINE)
+
+**Template (fill every placeholder):**
+
+```
+§⌘ HYPEBRUT-OS ♦ EMERGENT-CORTEX-SPINE ♦ GPT-5 ♦ RUN «single-message • sources={sources_csv} • research={research_channel} • runs={run_count} • passes={pass_count} • queries={query_count} • cites={cite_count}» ♦ TAGS «Scope={S_code} • Approach={A_code} • Novelty={N_codes_csv} • Skin={K_code}» ♦ BRANCH «{branch_name}» ♦ COMMIT «{commit_subject_or_no_commit_justified}» ♦ VERIFY «checks={checks_passed_count} • risk={risk_level} • utc={utc_timestamp}» ♦ THREAD «{thread_label}» ⭒ «{hash8}» ⌘§
+```
+
+**Population rules:**
+
+- **{sources_csv}** — `repo`, `repo,web`, etc.
+- **{research_channel}** — `web.run` if used; else `local-only`.
+- **{run_count}/{pass_count}/{query_count}** — integers you actually did.
+- **{cite_count}** — number of bullets in **Web Insights**.
+- **{S_code}/{A_code}/{N_codes_csv}/{K_code}** — exactly as in **Tags**.
+- **{branch_name}** — current branch name (any).
+- **{commit_subject_or_no_commit_justified}** — conventional subject or `no commit — <reason>`.
+- **{checks_passed_count}** — count of `pass` lines in **Checks & Evidence** (≥2).
+- **{risk_level}** — echo **HEADER → Risk**.
+- **{utc_timestamp}** — `YYYY-MM-DDTHH:mm:ssZ`.
+- **{thread_label}** — short task label.
+- **{hash8}** — commit short SHA if committed; else first 8 of a stable digest of the **Report**
+  section.
+
+---
+
+## 10) QUICKSTART (OPTIONAL, FAST)
+
+```bash
+# tool up if missing (best-effort; skip if unavailable)
+command -v rg >/dev/null || (cargo install ripgrep 2>/dev/null || true)
+command -v fd >/dev/null || (cargo install fd-find 2>/dev/null || true)
+
+# map → seam → spike
+fd -H -t f -E .git -E node_modules | head -n 200
+rg --hidden --no-ignore -n "TODO|FIXME|HACK|@deprecated" | head -n 50
+```
+
+**Make sparks.**

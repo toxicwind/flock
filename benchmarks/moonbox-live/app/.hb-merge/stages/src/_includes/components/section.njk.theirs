@@ -1,0 +1,9 @@
+{% macro section(title, url) -%}
+<section class="space-y-6">
+  <div class="flex items-baseline justify-between">
+    <h2 class="font-heading text-2xl">{{ title }}</h2>
+    {% if url %}<a href="{{ url }}" class="text-sm hover:text-primary focus:outline-none focus:ring">View all →</a>{% endif %}
+  </div>
+  {{ caller() }}
+</section>
+{%- endmacro %}

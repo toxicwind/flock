@@ -1,0 +1,90 @@
+{
+  "CVE-2026 POC exploit language:python": [],
+  "CVE-2026 remote code execution": [],
+  "CVE-2026 POC exploit language:go": [],
+  "CVE-2026 SQL injection POC": [
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-25746.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-25746.md"
+    },
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-44418.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-44418.md"
+    },
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-13566.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-13566.md"
+    }
+  ],
+  "CVE-2026 SSRF exploit": [
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-7412.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-7412.md"
+    },
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-22664.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-22664.md"
+    },
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-58478.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-58478.md"
+    }
+  ],
+  "CVE-2026 RCE exploit": [
+    {
+      "repo": "cdk-team/CDK",
+      "file": "README.md",
+      "url": "https://github.com/cdk-team/CDK/blob/69da22ad1087fb13dc9a2230eb9e10a4f762afdb/README.md"
+    },
+    {
+      "repo": "billchurch/webssh2",
+      "file": "SECURITY.md",
+      "url": "https://github.com/billchurch/webssh2/blob/7901c891d90fbbece2a8519915c854507c48a401/SECURITY.md"
+    },
+    {
+      "repo": "ramimac/aws-customer-security-incidents",
+      "file": "ACTORS.md",
+      "url": "https://github.com/ramimac/aws-customer-security-incidents/blob/82a47f0b8e2c3781aa4ebee5ebe681ecd308714a/ACTORS.md"
+    }
+  ],
+  "CVE-2026 privilege escalation": [
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-26422.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-26422.md"
+    },
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-8980.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-8980.md"
+    },
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-2637.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-2637.md"
+    }
+  ],
+  "CVE-2026 authentication bypass": [
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-1729.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-1729.md"
+    },
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-4924.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-4924.md"
+    },
+    {
+      "repo": "trickest/cve",
+      "file": "CVE-2026-3194.md",
+      "url": "https://github.com/trickest/cve/blob/1f04f5c064b08fe260cb363f580d04c039b05ffd/2026/CVE-2026-3194.md"
+    }
+  ]
+}

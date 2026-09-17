@@ -1,0 +1,12 @@
+[submodule "tools/nypm"]
+	path = tools/nypm
+	url = https://github.com/unjs/nypm.git
+[submodule "tools/moon"]
+	path = tools/moon
+	url = https://github.com/moonrepo/moon.git
+[submodule "tools/syncpack"]
+	path = tools/syncpack
+	url = https://github.com/JamieMason/syncpack.git
+[submodule "tools/turbo"]
+	path = tools/turbo
+	url = https://github.com/vercel/turbo.git

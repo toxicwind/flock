@@ -1,0 +1,13 @@
+#!/bin/sh
+alias p='python3'
+alias px='proxychains4 -q'
+alias c='curl -x http://10.86.13.73:5900 -sL'
+alias w='wget -e http_proxy=http://10.86.13.73:5900 -q'
+alias g='git'
+alias r='rg --hidden -uu'
+alias t='tree -a'
+alias s='strace -f -tt -yy'
+alias u='unshare --fork --pid --mount-proc'
+alias b='bash -x -c'
+alias n='netstat -tulpn 2>/dev/null || ss -tulpn'
+alias d='date -u +%Y%m%d_%H%M%S'

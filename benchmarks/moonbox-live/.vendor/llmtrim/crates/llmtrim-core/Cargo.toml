@@ -1,0 +1,116 @@
+[package]
+name = "llmtrim-core"
+description = "Static, deterministic LLM prompt/payload compression engine — the zero-LLM-call transform core behind llmtrim. No network, no async."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+readme = "README.md"
+keywords = ["llm", "mcp", "compression", "openai", "anthropic"]
+categories = ["compression", "text-processing", "api-bindings", "development-tools"]
+
+# Workspace CHANGELOG stamping (run once, on this crate). cargo-release resolves `file`
+# relative to this manifest, so `../../CHANGELOG.md` is the repo-root changelog shared by
+# the whole workspace. Kept here rather than in release.toml so it fires exactly once
+# instead of per published crate. See release.toml for the rest of the release config.
+[package.metadata.release]
+pre-release-replacements = [
+  { file = "../../CHANGELOG.md", search = "## \\[Unreleased\\]", replace = "## [Unreleased]\n\n## [{{version}}] - {{date}}", exactly = 1 },
+  # $1 captures the previous release tag from the existing link — {{prev_version}} would
+  # give the -dev version, producing a bogus compare URL.
+  { file = "../../CHANGELOG.md", search = "\\[Unreleased\\]: https://github.com/fkiene/llmtrim/compare/(v[0-9.]+)\\.\\.\\.HEAD", replace = "[Unreleased]: https://github.com/fkiene/llmtrim/compare/v{{version}}...HEAD\n[{{version}}]: https://github.com/fkiene/llmtrim/compare/${1}...v{{version}}", exactly = 1 },
+  # Keep the README's versioned install snippets (Maven exact coordinate, SwiftPM `from:`)
+  # current — they'd otherwise pin a stale version after each release. `min = 0` so a
+  # README edit that drops them can't fail the release.
+  { file = "../../README.md", search = "io\\.github\\.fkiene:llmtrim:[0-9]+\\.[0-9]+\\.[0-9]+", replace = "io.github.fkiene:llmtrim:{{version}}", min = 0 },
+  { file = "../../README.md", search = "(fkiene/llmtrim\", from: \")[0-9]+\\.[0-9]+\\.[0-9]+", replace = "${1}{{version}}", min = 0 },
+]
+
+[dependencies]
+anyhow.workspace = true
+base64.workspace = true
+bm25 = "2.3.2"
+csv.workspace = true
+gaoya = "0.2.0"
+# Optional: image decoders (png/jpeg) for Stage H downscaling. Behind the default-on
+# `multimodal` feature so text-only / size-constrained builds (wasm) can drop them.
+image = { version = "0.25.10", default-features = false, features = [
+  "png",
+  "jpeg",
+], optional = true }
+once_cell.workspace = true
+regex.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+stop-words = "0.10.0"
+# Optional: embeds ~8.3 MB of BPE vocab assets. Behind the default-on `tiktoken` feature
+# so size-constrained targets (wasm) can drop it and fall back to the estimate tokenizer.
+tiktoken-rs = { workspace = true, optional = true }
+toml.workspace = true
+toml_edit.workspace = true
+# default-features off drops syntect/onig (a C dep pulled only by toon-format's `cli`
+# feature); the library encode/decode path we use is pure Rust and stays intact. Required
+# for the wasm32 build and a smaller dep graph everywhere.
+toon-format = { version = "0.5.0", default-features = false }
+# Stage C (skeletonize) tree-sitter runtime + grammars compile C via `cc`, which has no
+# wasm32-unknown-unknown toolchain by default. Gated behind the default-on `skeleton`
+# feature so a `--no-default-features` build (e.g. the wasm crate) drops the whole C chain.
+tree-sitter = { version = "0.26.9", optional = true }
+tree-sitter-javascript = { version = "0.25.0", optional = true }
+tree-sitter-rust = { version = "0.24.2", optional = true }
+# Stage C skeletonization grammars — top languages (all ABI-verified against ts 0.26).
+tree-sitter-typescript = { version = "0.23.2", optional = true }
+tree-sitter-python = { version = "0.25.0", optional = true }
+tree-sitter-go = { version = "0.25.0", optional = true }
+tree-sitter-java = { version = "0.23.5", optional = true }
+tree-sitter-c = { version = "0.24.2", optional = true }
+tree-sitter-cpp = { version = "0.23.4", optional = true }
+tree-sitter-c-sharp = { version = "0.23.5", optional = true }
+tree-sitter-kotlin-ng = { version = "1.1.0", optional = true }
+tree-sitter-swift = { version = "0.7.3", optional = true }
+tree-sitter-zig = { version = "1.1.2", optional = true }
+tree-sitter-ruby = { version = "0.23.1", optional = true }
+tree-sitter-php = { version = "0.24.2", optional = true }
+unicode-normalization = "0.1.25"
+unicode-segmentation = "1.13.3"
+whatlang = "0.18.0"
+
+# wasm32 needs the JS-backed getrandom: 0.2 (via gaoya→rand) takes the `js` feature; 0.3
+# (via ahash) and 0.4 (via newer gaoya→rand) take `wasm_js` plus
+# `--cfg getrandom_backend="wasm_js"` in RUSTFLAGS.
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom_02 = { package = "getrandom", version = "0.2", features = ["js"] }
+getrandom_03 = { package = "getrandom", version = "0.3", features = ["wasm_js"] }
+getrandom_04 = { package = "getrandom", version = "0.4", features = ["wasm_js"] }
+
+[features]
+default = ["skeleton", "tiktoken", "multimodal"]
+# Stage H image downscaling via the `image` crate (png/jpeg decoders). Off → image
+# payloads pass through unchanged.
+multimodal = ["dep:image"]
+# Exact OpenAI tokenization via tiktoken-rs (embeds the BPE vocabs). Without it the
+# estimate tokenizer is used everywhere (approximate counts; savings % is unchanged).
+tiktoken = ["dep:tiktoken-rs"]
+# Stage C tree-sitter code skeletonization. Drop it for targets with no C toolchain.
+skeleton = [
+  "dep:tree-sitter",
+  "dep:tree-sitter-javascript",
+  "dep:tree-sitter-rust",
+  "dep:tree-sitter-typescript",
+  "dep:tree-sitter-python",
+  "dep:tree-sitter-go",
+  "dep:tree-sitter-java",
+  "dep:tree-sitter-c",
+  "dep:tree-sitter-cpp",
+  "dep:tree-sitter-c-sharp",
+  "dep:tree-sitter-kotlin-ng",
+  "dep:tree-sitter-swift",
+  "dep:tree-sitter-zig",
+  "dep:tree-sitter-ruby",
+  "dep:tree-sitter-php",
+]
+
+[lints]
+workspace = true

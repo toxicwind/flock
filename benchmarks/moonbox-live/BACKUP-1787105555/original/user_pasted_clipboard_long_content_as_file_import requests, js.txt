@@ -1,0 +1,93 @@
+
+import requests, json, concurrent.futures
+
+JWT = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTc4NjkzOTUxMiwiaWF0IjoxNzg0MzQ3NTEyLCJqdGkiOiJkOWRmbXUyZTBtN2ZvZmppMnBoZyIsInR5cCI6ImFjY2VzcyIsImFwcF9pZCI6ImtpbWkiLCJzdWIiOiJkODdicjJvaDhuamtyOTBqZjUyMCIsInNwYWNlX2lkIjoiZDg3YnIyZ2g4bmprcjkwamU5N2ciLCJhYnN0cmFjdF91c2VyX2lkIjoiZDg3YnIyZ2g4bmprcjkwamU5NzAiLCJzc2lkIjoiMTczMTczNzQxMDg0MjU0NzAzMyIsImRldmljZV9pZCI6Ijc2NTI1NTE1ODg3MzY4MDcxODMiLCJyZWdpb24iOiJvdmVyc2VhcyIsIm1lbWJlcnNoaXAiOnsibGV2ZWwiOjEwfX0.-9-OczLe8Ghkb28wYdTQSFb-UHZW0hxaByfVEZU-Dsc9zWWcMdyAPWK3v5ZrQAz8BIg4om89-VODnXDyT7RPMw"
+
+BASE = "https://www.kimi.com/apiv2"
+NEW_API_KEY = "km_b_prod_vJ6hP3bEWK3Gibtjdiogoc58Z3culaFQ"
+
+# Test new API key on ALL membership endpoints
+endpoints = [
+    ("kimi.gateway.membership.v2.MembershipService", "GetSubscription", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "GetSubscriptionStats", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "ListBalanceActions", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "ListSubscriptions", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "UpdateSubscription", {"level": "LEVEL_ADVANCED"}),
+    ("kimi.gateway.membership.v2.MembershipService", "SetSubscription", {"level": "LEVEL_ADVANCED"}),
+    ("kimi.gateway.membership.v2.MembershipService", "RenewSubscription", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "UpgradeSubscription", {"target_level": "LEVEL_ADVANCED"}),
+    ("kimi.gateway.membership.v2.MembershipService", "ChangeLevel", {"level": "LEVEL_ADVANCED"}),
+    ("kimi.gateway.membership.v2.MembershipService", "ExtendSubscription", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "CancelSubscription", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "PauseSubscription", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "ResumeSubscription", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "AddBalance", {"amount": 1000}),
+    ("kimi.gateway.membership.v2.MembershipService", "ResetBalance", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "ResetQuota", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "ResetRateLimit", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "GetMembershipLevels", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "ListMembershipLevels", {}),
+    ("kimi.gateway.membership.v2.MembershipService", "GetAvailableLevels", {}),
+    ("kimi.gateway.order.v1.OrderService", "CreateOrder", {"goods_id": "19b69633-d662-88f5-8000-0000152fd8ee"}),
+    ("kimi.gateway.order.v1.OrderService", "PlaceOrder", {"goods_id": "19b69633-d662-88f5-8000-0000152fd8ee"}),
+    ("kimi.gateway.order.v1.OrderService", "PurchaseGoods", {"goods_id": "19b69633-d662-88f5-8000-0000152fd8ee"}),
+    ("kimi.gateway.order.v1.OrderService", "BuyBooster", {"goods_id": "19b69633-d662-88f5-8000-0000152fd8ee"}),
+    ("kimi.gateway.order.v1.OrderService", "SubmitOrder", {}),
+    ("kimi.gateway.order.v1.OrderService", "ProcessOrder", {}),
+    ("kimi.gateway.order.v1.OrderService", "CancelOrder", {}),
+    ("kimi.gateway.order.v1.GoodsService", "GetGoods", {"id": "19b69633-d662-88f5-8000-0000152fd8ee"}),
+    ("kimi.gateway.order.v1.GoodsService", "ListBoosterGoods", {}),
+    ("kimi.gateway.order.v1.GoodsService", "ListSubscriptions", {}),
+    ("kimi.gateway.billing.v1.BillingService", "GetBillingInfo", {}),
+    ("kimi.gateway.billing.v1.BillingService", "CreateBill", {}),
+    ("kimi.gateway.billing.v1.BillingService", "ProcessPayment", {}),
+    ("kimi.gateway.payment.v1.PaymentService", "GetPaymentMethods", {}),
+    ("kimi.gateway.payment.v1.PaymentService", "ProcessPayment", {}),
+    ("kimi.gateway.payment.v1.PaymentService", "CreatePayment", {}),
+    ("kimi.gateway.admin.v1.AdminService", "GetAdminInfo", {}),
+    ("kimi.gateway.admin.v1.AdminService", "GetAdminStats", {}),
+    ("kimi.gateway.internal.v1.InternalService", "GetInternalStatus", {}),
+    ("kimi.gateway.internal.v1.InternalService", "GetInternalConfig", {}),
+    ("kimi.order.v1.MembershipInternalService", "GetMembership", {}),
+    ("kimi.order.v1.MembershipInternalService", "CalculateTotalRemainingInvoiceAmount", {}),
+    ("kimi.portal.v1.PortalService", "GetAPIKey", {}),
+    ("kimi.portal.v1.PortalService", "GetAPIKeyByUser", {}),
+    ("kimi.portal.v1.PortalService", "SetupApp", {}),
+    ("kimi.portal.v1.PortalService", "ValidateBindToken", {}),
+]
+
+def test_endpoint(svc, method, params, auth_type):
+    if auth_type == "jwt":
+        headers = {"Authorization": f"Bearer {JWT}", "Content-Type": "application/json", "connect-protocol-version": "1"}
+    elif auth_type == "bot":
+        headers = {"Authorization": f"Bearer {NEW_API_KEY}", "Content-Type": "application/json", "connect-protocol-version": "1"}
+    elif auth_type == "none":
+        headers = {"Content-Type": "application/json", "connect-protocol-version": "1"}
+    
+    url = f"{BASE}/{svc}/{method}"
+    try:
+        r = requests.post(url, headers=headers, json=params, timeout=3)
+        return (auth_type, svc, method, r.status_code, r.text[:150])
+    except Exception as e:
+        return (auth_type, svc, method, -1, str(e)[:50])
+
+# Run all tests in parallel
+all_tests = []
+for svc, method, params in endpoints:
+    for auth in ["jwt", "bot", "none"]:
+        all_tests.append((svc, method, params, auth))
+
+print(f"Running {len(all_tests)} tests in parallel...")
+results = []
+with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
+    futures = {executor.submit(test_endpoint, svc, method, params, auth): (svc, method, auth) for svc, method, params, auth in all_tests}
+    for future in concurrent.futures.as_completed(futures):
+        result = future.result()
+        results.append(result)
+        auth_type, svc, method, status, body = result
+        if status != 404 and status != 401 and status != 200:
+            print(f"UNUSUAL [{auth_type}] {svc}/{method}: {status} - {body}")
+        elif status == 200 and method not in ["GetSubscription", "GetSubscriptionStats", "ListBalanceActions", "ListSubscriptions", "ListBoosterGoods", "GetGoods", "ListOrders", "GetConfig", "GetAvailableModels", "GetCurrentUser", "ListWorkspaces", "ListBots", "ListFeeds", "ListRooms", "ListUserNotifications", "ListPinResources", "ListPromotionalAssets", "GetUserSetting"]:
+            print(f"WRITE WORKS [{auth_type}] {svc}/{method}: {status} - {body}")
+
+print(f"\nCompleted {len(results)} tests")

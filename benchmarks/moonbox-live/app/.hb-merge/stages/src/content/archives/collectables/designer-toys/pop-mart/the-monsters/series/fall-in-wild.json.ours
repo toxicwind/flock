@@ -1,0 +1,9 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "fall-in-wild",
+  "title": "Fall in Wild",
+  "character_slugs": ["labubu"],
+  "notes": "Seeded from initial article; needs confirmation."
+}

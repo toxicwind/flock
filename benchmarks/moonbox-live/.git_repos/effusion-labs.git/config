@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/toxicwind/effusion-labs.git
+[user]
+	email = toxicwind@users.noreply.github.com
+	name = toxicwind
+[submodule ".github/bun-workflows"]
+	url = https://github.com/juunini/github-workflows.git
+	active = true

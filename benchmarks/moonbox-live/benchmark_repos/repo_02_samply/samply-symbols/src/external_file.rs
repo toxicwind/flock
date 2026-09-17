@@ -1,0 +1,323 @@
+use std::collections::HashMap;
+use std::sync::Mutex;
+
+use object::read::archive::ArchiveFile;
+use object::{File, FileKind, ReadRef};
+use yoke::Yoke;
+use yoke_derive::Yokeable;
+
+use crate::dwarf::{get_frames, Addr2lineContextData};
+use crate::error::Error;
+use crate::sans_io::{LoadStep, NeedsFiles};
+use crate::shared::{
+    ExternalFileAddressInFileRef, FileContents, FileContentsWrapper, FileLoadError, FileLocation,
+    FileTypes, FrameDebugInfo,
+};
+use crate::SymbolMapStringInterner;
+
+struct ExternalFileOuter<F: FileContents> {
+    file_path: String,
+    file_contents: FileContentsWrapper<F>,
+    addr2line_context_data: Addr2lineContextData,
+}
+
+impl<F: FileContents> ExternalFileOuter<F> {
+    pub fn new(file_path: &str, file: F) -> Self {
+        let file_contents = FileContentsWrapper::new(file);
+        Self {
+            file_path: file_path.to_owned(),
+            file_contents,
+            addr2line_context_data: Addr2lineContextData::new(),
+        }
+    }
+
+    pub fn file_path(&self) -> &str {
+        &self.file_path
+    }
+
+    fn make_member_context(
+        &self,
+        offset_and_size: (u64, u64),
+    ) -> Result<ExternalFileMemberContext<'_>, Error> {
+        let (start, size) = offset_and_size;
+        let data = self.file_contents.range(start, size);
+        let object_file = File::parse(data).map_err(Error::MachOHeaderParseError)?;
+        self.make_single_context(data, object_file)
+    }
+
+    fn make_single_context<'s, R: ReadRef<'s>>(
+        &'s self,
+        data: R,
+        object_file: object::read::File<'s, R>,
+    ) -> Result<ExternalFileMemberContext<'s>, Error> {
+        use object::{Object, ObjectSymbol};
+        let context = self
+            .addr2line_context_data
+            .make_context(data, &object_file, None, None);
+        let symbol_addresses = object_file
+            .symbols()
+            .filter_map(|symbol| {
+                let file_path = symbol.name_bytes().ok()?;
+                let address = symbol.address();
+                Some((file_path, address))
+            })
+            .collect();
+        let member_context = ExternalFileMemberContext {
+            context: context.ok(),
+            symbol_addresses,
+        };
+        Ok(member_context)
+    }
+
+    pub fn make_inner(&self) -> Result<ExternalFileInner<'_, F>, Error> {
+        let file_kind = FileKind::parse(&self.file_contents)
+            .map_err(|_| Error::CouldNotDetermineExternalFileFileKind)?;
+        let member_contexts = match file_kind {
+            FileKind::MachO32 | FileKind::MachO64 => {
+                let data = self.file_contents.full_range();
+                let object_file = File::parse(data).map_err(Error::MachOHeaderParseError)?;
+                let context = self.make_single_context(data, object_file)?;
+                ExternalFileMemberContexts::SingleObject(context)
+            }
+            FileKind::Archive => {
+                let archive = ArchiveFile::parse(&self.file_contents)
+                    .map_err(Error::ParseErrorInExternalArchive)?;
+                let mut member_ranges = HashMap::new();
+                for member in archive.members() {
+                    let member = member.map_err(Error::ParseErrorInExternalArchive)?;
+                    let file_path = member.name().to_owned();
+                    member_ranges.insert(file_path, member.file_range());
+                }
+                ExternalFileMemberContexts::Archive {
+                    member_ranges,
+                    contexts: Mutex::new(HashMap::new()),
+                }
+            }
+            FileKind::MachOFat32 | FileKind::MachOFat64 => {
+                return Err(Error::UnexpectedExternalFileFileKind(file_kind));
+            }
+            _ => {
+                return Err(Error::UnexpectedExternalFileFileKind(file_kind));
+            }
+        };
+        Ok(ExternalFileInner {
+            external_file: self,
+            member_contexts,
+        })
+    }
+}
+
+enum ExternalFileMemberContexts<'a> {
+    SingleObject(ExternalFileMemberContext<'a>),
+    /// member file_path -> context
+    Archive {
+        member_ranges: HashMap<Vec<u8>, (u64, u64)>,
+        contexts: Mutex<HashMap<String, ExternalFileMemberContext<'a>>>,
+    },
+}
+
+#[derive(Yokeable)]
+struct ExternalFileInnerWrapper<'a>(Box<dyn ExternalFileInnerTrait + Send + 'a>);
+
+trait ExternalFileInnerTrait {
+    fn lookup(
+        &self,
+        external_file_address: &ExternalFileAddressInFileRef,
+        string_interner: &mut SymbolMapStringInterner,
+    ) -> Option<Vec<FrameDebugInfo>>;
+}
+
+struct ExternalFileInner<'a, T: FileContents> {
+    external_file: &'a ExternalFileOuter<T>,
+    member_contexts: ExternalFileMemberContexts<'a>,
+}
+
+impl<F: FileContents> ExternalFileInnerTrait for ExternalFileInner<'_, F> {
+    fn lookup(
+        &self,
+        external_file_address: &ExternalFileAddressInFileRef,
+        string_interner: &mut SymbolMapStringInterner,
+    ) -> Option<Vec<FrameDebugInfo>> {
+        match (&self.member_contexts, external_file_address) {
+            (
+                ExternalFileMemberContexts::SingleObject(context),
+                ExternalFileAddressInFileRef::MachoOsoObject {
+                    symbol_name,
+                    offset_from_symbol,
+                },
+            ) => context.lookup(symbol_name, *offset_from_symbol, string_interner),
+            (
+                ExternalFileMemberContexts::Archive {
+                    member_ranges,
+                    contexts,
+                },
+                ExternalFileAddressInFileRef::MachoOsoArchive {
+                    name_in_archive,
+                    symbol_name,
+                    offset_from_symbol,
+                },
+            ) => {
+                let mut member_contexts = contexts.lock().unwrap();
+                match member_contexts.get(name_in_archive) {
+                    Some(member_context) => {
+                        member_context.lookup(symbol_name, *offset_from_symbol, string_interner)
+                    }
+                    None => {
+                        let range = *member_ranges.get(name_in_archive.as_bytes())?;
+                        // .ok_or_else(|| Error::FileNotInArchive(name_in_archive.to_owned()))?;
+                        let member_context = self.external_file.make_member_context(range).ok()?;
+                        let res = member_context.lookup(
+                            symbol_name,
+                            *offset_from_symbol,
+                            string_interner,
+                        );
+                        member_contexts.insert(name_in_archive.to_string(), member_context);
+                        res
+                    }
+                }
+            }
+            (
+                ExternalFileMemberContexts::SingleObject(_),
+                ExternalFileAddressInFileRef::MachoOsoArchive { .. },
+            )
+            | (
+                ExternalFileMemberContexts::Archive { .. },
+                ExternalFileAddressInFileRef::MachoOsoObject { .. },
+            )
+            | (_, ExternalFileAddressInFileRef::ElfDwo { .. }) => None,
+        }
+    }
+}
+
+struct ExternalFileMemberContext<'a> {
+    context: Option<addr2line::Context<gimli::EndianSlice<'a, gimli::RunTimeEndian>>>,
+    symbol_addresses: HashMap<&'a [u8], u64>,
+}
+
+impl ExternalFileMemberContext<'_> {
+    pub fn lookup(
+        &self,
+        symbol_name: &[u8],
+        offset_from_symbol: u32,
+        string_interner: &mut SymbolMapStringInterner,
+    ) -> Option<Vec<FrameDebugInfo>> {
+        let symbol_address = self
+            .symbol_addresses
+            .get(symbol_name)
+            .or_else(|| self.lookup_with_llvm_suffix_fallback(symbol_name))?;
+        let address = symbol_address + offset_from_symbol as u64;
+        get_frames(address, self.context.as_ref(), string_interner)
+    }
+
+    /// Fallback lookup for when the exact name match fails. ThinLTO / CGU
+    /// partitioning adds a `.llvm.<hash>` suffix to promoted local symbols in
+    /// .o files, but ld64 strips this suffix from stabs and the symbol table.
+    /// If the exact match failed, scan all symbols for one whose name matches
+    /// after stripping the suffix, following the same approach as dsymutil:
+    /// <https://github.com/llvm/llvm-project/blob/270e7b497ec893a43e60a0db35f10c0153200e38/llvm/tools/dsymutil/MachODebugMapParser.cpp#L741-L752>
+    fn lookup_with_llvm_suffix_fallback(&self, symbol_name: &[u8]) -> Option<&u64> {
+        self.symbol_addresses.iter().find_map(|(name, addr)| {
+            let suffix = name.strip_prefix(symbol_name)?;
+            if suffix.starts_with(b".llvm.") {
+                Some(addr)
+            } else {
+                None
+            }
+        })
+    }
+}
+
+pub struct ExternalFileSymbolMap<F: FileContents + 'static>(
+    Yoke<ExternalFileInnerWrapper<'static>, Box<ExternalFileOuter<F>>>,
+);
+
+impl<F: FileContents + 'static> ExternalFileSymbolMap<F> {
+    pub fn new(file_path: &str, file: F) -> Result<Self, Error> {
+        let outer = ExternalFileOuter::new(file_path, file);
+        let inner = Yoke::try_attach_to_cart(
+            Box::new(outer),
+            |outer| -> Result<ExternalFileInnerWrapper<'_>, Error> {
+                let inner = outer.make_inner()?;
+                Ok(ExternalFileInnerWrapper(Box::new(inner)))
+            },
+        )?;
+        Ok(Self(inner))
+    }
+
+    /// The string which identifies this external file. This is usually an absolute
+    /// path.
+    pub fn file_path(&self) -> &str {
+        self.0.backing_cart().file_path()
+    }
+
+    /// Look up the debug info for the given [`ExternalFileAddressInFileRef`].
+    pub fn lookup(
+        &self,
+        external_file_address: &ExternalFileAddressInFileRef,
+        string_interner: &mut SymbolMapStringInterner,
+    ) -> Option<Vec<FrameDebugInfo>> {
+        self.0
+            .get()
+            .0
+            .lookup(external_file_address, string_interner)
+    }
+}
+
+/// State machine that fetches a single external object file and parses it into
+/// an `ExternalFileSymbolMap`.
+///
+/// Mirrors `SymbolManager::load_external_file` without performing any I/O.
+pub struct LoadExternalFile<FT: FileTypes> {
+    external_file_path: String,
+    state: LoadExternalFileState<FT>,
+}
+
+enum LoadExternalFileState<FT: FileTypes> {
+    NeedFile { location: FT::FL },
+    Done(Result<ExternalFileSymbolMap<FT::F>, Error>),
+    Poisoned,
+}
+
+impl<FT: FileTypes> LoadExternalFile<FT> {
+    pub fn new(debug_file_location: &FT::FL, external_file_path: &str) -> Result<Self, Error> {
+        let location = debug_file_location
+            .location_for_external_object_file(external_file_path)
+            .ok_or(Error::FileLocationRefusedExternalObjectLocation)?;
+        Ok(Self {
+            external_file_path: external_file_path.to_owned(),
+            state: LoadExternalFileState::NeedFile { location },
+        })
+    }
+
+    pub fn finish(self) -> Result<ExternalFileSymbolMap<FT::F>, Error> {
+        match self.state {
+            LoadExternalFileState::Done(result) => result,
+            _ => panic!("LoadExternalFile::finish called before reaching Done"),
+        }
+    }
+}
+
+impl<FT: FileTypes> NeedsFiles<FT> for LoadExternalFile<FT> {
+    fn poll(&self) -> LoadStep<'_, FT::FL> {
+        match &self.state {
+            LoadExternalFileState::NeedFile { location } => LoadStep::NeedFile {
+                location,
+                required: true,
+            },
+            LoadExternalFileState::Done(_) => LoadStep::Done,
+            LoadExternalFileState::Poisoned => unreachable!("invalid LoadExternalFile state"),
+        }
+    }
+
+    fn provide(&mut self, result: Result<FT::F, FileLoadError>) {
+        let _location = match std::mem::replace(&mut self.state, LoadExternalFileState::Poisoned) {
+            LoadExternalFileState::NeedFile { location } => location,
+            _ => panic!("LoadExternalFile::provide called when not awaiting a file"),
+        };
+        let parsed = match result {
+            Ok(file) => ExternalFileSymbolMap::new(&self.external_file_path, file),
+            Err(e) => Err(Error::OpenFile(self.external_file_path.clone(), e)),
+        };
+        self.state = LoadExternalFileState::Done(parsed);
+    }
+}

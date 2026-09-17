@@ -1,0 +1,9 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "i-found-you-v1",
+  "title": "I FOUND YOU (v1)",
+  "character_slugs": ["zimomo"],
+  "notes": "Seeded from initial article; needs confirmation."
+}

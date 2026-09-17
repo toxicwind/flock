@@ -1,0 +1,37 @@
+[
+  {
+    "auth": "Bearer header",
+    "status": 401,
+    "preview": "{\"error\":{\"code\":\"AUTHENTICATION_FAILED\",\"message\":\"Authentication failed\"},\"method\":\"GET\",\"path\":\"/"
+  },
+  {
+    "auth": "x-api-key header",
+    "status": 401,
+    "preview": "{\"error\":{\"code\":\"AUTHENTICATION_FAILED\",\"message\":\"Authentication failed\"},\"method\":\"GET\",\"path\":\"/"
+  },
+  {
+    "auth": "x-traffic-token header",
+    "status": 401,
+    "preview": "{\"error\":{\"code\":\"AUTHENTICATION_FAILED\",\"message\":\"Authentication failed\"},\"method\":\"GET\",\"path\":\"/"
+  },
+  {
+    "auth": "traffic-access-token header",
+    "status": 401,
+    "preview": "{\"error\":{\"code\":\"AUTHENTICATION_FAILED\",\"message\":\"Authentication failed\"},\"method\":\"GET\",\"path\":\"/"
+  },
+  {
+    "auth": "Token header",
+    "status": 401,
+    "preview": "{\"error\":{\"code\":\"AUTHENTICATION_FAILED\",\"message\":\"Authentication failed\"},\"method\":\"GET\",\"path\":\"/"
+  },
+  {
+    "auth": "X-Token header",
+    "status": 401,
+    "preview": "{\"error\":{\"code\":\"AUTHENTICATION_FAILED\",\"message\":\"Authentication failed\"},\"method\":\"GET\",\"path\":\"/"
+  },
+  {
+    "auth": "api_key header",
+    "status": 401,
+    "preview": "{\"error\":{\"code\":\"AUTHENTICATION_FAILED\",\"message\":\"Authentication failed\"},\"method\":\"GET\",\"path\":\"/"
+  }
+]

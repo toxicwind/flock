@@ -1,0 +1,21 @@
+<div id="sysmon" style="font-family:monospace;font-size:12px;padding:12px">
+  <div style="font-weight:600;font-size:14px;margin-bottom:8px">K3 System Monitor</div>
+  <div id="ports"></div>
+  <div id="tc" style="margin-top:8px;color:#666;font-size:11px"></div>
+  <div style="margin-top:8px">
+    <button onclick="probe('http://127.0.0.1:8888/')">Kernel</button>
+    <button onclick="probe('http://127.0.0.1:6080/')">VNC</button>
+    <button onclick="probe('http://127.0.0.1:9223/json/version')">CDP</button>
+  </div>
+  <pre id="out" style="margin-top:8px;padding:8px;background:#f5f5f5;border-radius:4px;font-size:10px;max-height:150px;overflow:auto"></pre>
+</div>
+<script>
+const ports=[8888,6080,9223,18080,18888,18889,18890,18891];
+const names={8888:"Kernel",6080:"VNC",9223:"CDP",18080:"Restarter",18888:"envd",18889:"KTun",18890:"RTun",18891:"ETun"};
+async function check(p){try{await fetch(`http://127.0.0.1:${p}/`,{method:"HEAD",mode:"no-cors",signal:AbortSignal.timeout(1500)});return true}catch(e){return false}}
+async function update(){let h="";for(const p of ports){const ok=await check(p);h+=`<span style="color:${ok?'#22c55e':'#ef4444'};margin-right:8px">● :${p} ${names[p]}</span>`}document.getElementById("ports").innerHTML=h;}
+async function probe(url){try{const r=await fetch(url,{signal:AbortSignal.timeout(3000)});document.getElementById("out").textContent+=`${url} -> ${r.status}
+`}catch(e){document.getElementById("out").textContent+=`${url} -> ${e.message}
+`}}
+update();setInterval(update,5000);
+</script>

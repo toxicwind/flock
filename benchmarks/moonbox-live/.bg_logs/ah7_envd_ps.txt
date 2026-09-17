@@ -1,0 +1,4 @@
+root        39  0.0  0.0    216     0 ?        S    04:53   0:00 s6-supervise envd
+root        41  0.0  0.0    216     0 ?        S    04:53   0:00 s6-supervise portal
+root        69  0.1  1.1 1312608 45948 ?       Ssl  04:53   0:02 /usr/local/bin/portal -http-bind -allow-other -env prod -gateway-addr https://kimi-api-sandbox.msh.team/apiv2 /mnt/portal-overlay
+root        84  1.1  0.5 1792608 21128 ?       Ssl  04:53   0:21 /usr/local/bin/envd -isnotfc

@@ -1,0 +1,11 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "angel-in-clouds-v2",
+  "title": "ANGEL IN CLOUDS (v2)",
+  "character_slugs": [
+    "zimomo"
+  ],
+  "notes": "Seeded from initial article; needs confirmation."
+}

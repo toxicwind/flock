@@ -1,0 +1,22 @@
+---
+title: "Concepts"
+<<<<<<< HEAD
+layout: "collection.njk"
+section: "concepts"
+=======
+layout: "layout.njk"
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+permalink: "/concepts/index.html" # <-- Add or modify this line
+eleventyNavigation:
+  key: Concepts
+  parent: Showcase
+---
+<<<<<<< HEAD
+=======
+<p>This is the central hub for all individual concepts explored within the lab.</p>
+<ul>
+{% for item in collections.concepts %}
+    {% if item.url != page.url %}<li><a href="{{ item.url }}">{{ item.data.title }}</a></li>{% endif %}
+{% endfor %}
+</ul>
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option

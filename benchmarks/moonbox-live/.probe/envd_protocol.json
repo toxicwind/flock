@@ -1,0 +1,4 @@
+{
+  "curl -s --connect-timeout 2 --max-time 3": "rc=0 404 page not found\n",
+  "http2_probe": "rc=0 404 page not found\n"
+}

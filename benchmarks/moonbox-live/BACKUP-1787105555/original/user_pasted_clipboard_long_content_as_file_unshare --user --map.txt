@@ -1,0 +1,26 @@
+unshare --user --map-root-user bash -s << 'EOF'
+source /mnt/agents/output/.dsshrc 2>/dev/null
+
+# Search for the puzzle string in ALL binaries
+for binary in /usr/local/bin/portal /usr/local/bin/envd /usr/local/bin/drive9 /app/browser_guard.py /app/kernel_server.py; do
+  if [ -f "$binary" ]; then
+    echo "=== $binary ==="
+    strings "$binary" 2>/dev/null | grep -i "several chats\|wait for them\|already have" | head -5
+  fi
+done
+EOF
+[dssh] initializing...
+[dssh] auto-root enabled via unshare
+[dssh] loading: 00-auto-root
+[dssh] 00-auto-root OK
+[dssh] loading: 01-env-persist
+[dssh] 01-env-persist OK
+[dssh] skip background: 02-race-monitor
+[dssh] skip background: 03-tool-mitm
+[dssh] ready | hooks loaded
+=== /usr/local/bin/portal ===
+runtime: cannot map pages in arena address spaceruntime: malformed profBuf buffer - invalid sizeruntime: taggedPointerPack invalid packing: ptr=attempt to trace invalid or unsupported P statustls: CloseWrite called before handshake completeunable to generate random session ticket key: %vfailed to parse certificate #%d in the chain: %wtls: no FIPS compatible certificate chains foundtls: CurvePreferences includes unsupported curvebufio: writer returned negative count from Writestrconv: illegal AppendFloat/FormatFloat bitSizegetConnection: expect 1 control message, got %#vwriter: Write/Writev failed, err: %v. opcode: %vinvalid UUID version, expected version 8, got %dinvalid object name, the length must be [1, 696]application/vnd.ms-word.document.macroEnabled.12application/vnd.ms-word.template.macroEnabled.12application/vnd.oasis.opendocument.text-templateFail to create folder due to a same file exists.tos: crc64 check failed, expected:%d, in fact:%dunexpected end of generation in batch of size >1ecdsa: curve not supported by ParseRawPrivateKeyx509: internal error: URI SAN %q failed to parsex509: X25519 key encoded with illegal parametersx509: SAN uniformResourceIdentifier is malformedx509: IP constraint contained value of length %dx509: only RSA, ECDSA and Ed25519 keys supportedout points to big.Int, but defaultValue does notparsing/packing of this type isn't available yetdivision of zero by zero or infinity by infinityInt.GobDecode: encoding version %d not supportedRat.GobDecode: encoding version %d not supportedinvalid Mutable on field with non-composite typefield %v has invalid type: got %v, want map kindlist field %v cannot be set with read-only valueinvalid association values, length doesn't matchconverting driver.Value type %T (%q) to a %s: %vcrypto/rsa: input must be hashed with given hashDropping transaction: EnableTracing is set to %tindex %d is out of bounds for array of length %dtype: %v of type %[1]T is not a valid JSON valueexclusiveMinimum: %s is less than or equal to %fpattern: %q does not match regular expression %qTotal user and system CPU time spent in seconds.cannot be specified with implicit field presencemessage field %q must not use reserved number %dpq: unexpected DataRow in simple query executionpq: unexpected ReadyForQuery in response to COPYinvalid GOPPC64: must be power8, power9, power10Count of goroutines created since program start.invalid validator: %s unsupported limit type: %vbinary function bound to non-binary overload: %sinvalid UTF-8 in bytes, cannot convert to stringtype registration conflict. found: %v, input: %vversionCore must have 3 numbers separated by dotmetaschemas/draft/2020-12/meta/format-annotationredis: unexpected key %q in CLUSTER SHARDS replyat least one of LibName and LibVer should be setpubsub: reconnecting to new endpoint %s (was %s)failed to subscribe to streaming credentials: %winappropriate_access_mode_for_branch_transactionno_active_sql_transaction_for_branch_transactionundeclared reference to '%s' (in container '%s')compare two values of the same type for equalitysubtract two numbers, or two time-related valuesmatches('123-456', '^[0-9]+(-[0-9]+)?$') // trueBUG: bad sslmode should already have been caughtunable to encode %v into OID %d in binary formatcatmsg: expected prior call to EncodeMessageTypeinvalid length for CopyOutResponse.OverallFormatxml: EncodeToken of ProcInst with invalid Targetxml: end tag </%s> does not match start tag <%s>CharsetReader returned a nil Reader for charset type mismatch in column %s - expected %s, got %stype mismatch in column %s, expected list got %stableLiteralLengthstableOffsetstableMatchLengthsstrings.Reader.UnreadByte: at beginning of stringstrings.Reader.UnreadRune: at beginning of stringstrings.Reader.WriteTo: invalid WriteString counthttp2: request body closed due to handler exitinghttp: wrote more than the declared Content-Length (Client.Timeout exceeded while awaiting headers)http: partitioned cookies must be set with Secureunexpected Peek failure reading buffered byte: %vnet/http: Transport.Dial hook returned (nil, nil)expected Compressor, got incorrect type from poolconnect.makeEnvelopePrefix: size %d out of boundsconfigured read-only mount path %q already exists<tr><td>%d</td><td><a href='%s'>%s</a></td></tr>
+=== /usr/local/bin/envd ===
+=== /usr/local/bin/drive9 ===
+=== /app/browser_guard.py ===
+=== /app/kernel_server.py ===

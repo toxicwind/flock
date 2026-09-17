@@ -1,0 +1,29 @@
+<<<<<<< HEAD
+{# src/_includes/components/pathway.njk #}
+{% macro pathway(path) %}
+  <nav class="flex items-center gap-2 text-sm" aria-label="Breadcrumb">
+    {% for node in path %}
+      {% if not loop.first %}<span aria-hidden="true" class="opacity-60">→</span>{% endif %}
+      {% set u = node.url or '#' %}
+      {% if u and u[0] == '/' %}{% set u = u | url %}{% endif %}
+      <a
+        href="{{ u }}"
+        class="
+          link link-hover underline-offset-2 decoration-dotted rounded-sm px-0.5
+          focus:outline-none focus-visible:ring focus-visible:ring-primary/40
+        "
+      >
+        {{ node.title }}
+      </a>
+    {% endfor %}
+  </nav>
+=======
+{% macro pathway(path) %}
+<div class="flex items-center gap-2 text-sm">
+  {% for node in path %}
+    {% if not loop.first %}<span aria-hidden="true">→</span>{% endif %}
+    <a href="{{ node.url }}" class="underline hover:text-primary focus:outline-none focus:ring">{{ node.title }}</a>
+  {% endfor %}
+</div>
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+{% endmacro %}

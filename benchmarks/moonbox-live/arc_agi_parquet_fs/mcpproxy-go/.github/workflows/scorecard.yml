@@ -1,0 +1,65 @@
+name: OpenSSF Scorecard
+
+on:
+  # Fires whenever branch protection rules change — one of the three canonical
+  # Scorecard triggers; lets the score update immediately after policy changes.
+  branch_protection_rule:
+
+  # Weekly scan — Sunday 02:47 UTC (off-peak; spread from codeql's Tuesday slot)
+  schedule:
+    - cron: '47 2 * * 0'
+
+  # Score every push to the default branch so the badge reflects current state.
+  push:
+    branches:
+      - main
+
+# Least-privilege default; the analysis job adds only what it needs.
+permissions: read-all
+
+jobs:
+  analysis:
+    name: Scorecard analysis
+    runs-on: ubuntu-latest
+
+    # One concurrent run per ref; cancel in-progress if a newer push arrives.
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    permissions:
+      # Required to upload SARIF results to the repository Security tab.
+      security-events: write
+      # Required by ossf/scorecard-action when publish_results: true.
+      id-token: write
+      # Required to read source code.
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run OpenSSF Scorecard
+        uses: ossf/scorecard-action@2d1146689b8cda280b9bc96326124645441f03bc # v2.4.4
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          # publish_results: true publishes the score to the public Scorecard API
+          # (https://api.securityscorecards.dev) and enables the README badge.
+          # Requires id-token: write (OIDC) and only takes effect on the default
+          # branch; pull_request runs always skip publishing.
+          publish_results: true
+
+      - name: Upload SARIF artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: scorecard-results
+          path: results.sarif
+          retention-days: 5
+
+      - name: Upload SARIF to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@5595ccaf912efad79be6eef63a5619ff05969be3 # v4.37.6
+        with:
+          sarif_file: results.sarif

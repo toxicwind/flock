@@ -1,0 +1,161 @@
+ }
+#*struct { key string; elem *int64 }
+#*membershipv2.Giftcard_Claim_Status
+#*func() *membershipv2.Giftcard_Code
+#*membershipv2.Giftcard_Entity_Goods
+#*func() *membershipv2.Wallet_Status
+#*membershipv2.Balance_Action_Status
+#*func() []membershipv2.Balance_Type
+#*membershipv2.Capability_Constraint
+#*func() *membershipv2.ThirdPayParam
+#*membershipv2.ApplicationFormStatus
+#*func() *membershipv2.Resource_Type
+#*func() []*membershipv2.Model_Usage
+#*membershipv2.FinalizeCreditRequest
+#*membershipv2.EarmarkCreditResponse
+#*func() *membershipv2.Wallet_Option
+#*membershipv2.GetEntitlementRequest
+#*[8]struct { key int64; elem bool }
+#*[]struct { key int64; elem int32 }
+#*map[string]*antlr.TokensStartState
+#*pgproto3.AuthenticationMD5Password
+#*pgproto3.AuthenticationGSSContinue
+#*[8]struct { key uint16; elem int }
+#*[8]struct { key uint64; elem int }
+#*struct { key time.Time; elem int }
+#*[]struct { key float64; elem int }
+#*[]struct { key float32; elem int }
+#*struct { key [64]uint8; elem int }
+#*struct { key [32]uint8; elem int }
+#*struct { key [16]uint8; elem int }
+$*[8]struct { key string; elem bool }
+$*map.group[http.connectMethodKey]int
+$*[8]struct { key uint64; elem bool }
+$*[]struct { key int32; elem string }
+$*[]struct { key string; elem int32 }
+$kimi.darkmatter/apps/portal/fs/inode
+$*[]struct { key string; elem []int }
+$*[8]struct { key uint16; elem bool }
+$*struct { pragma.NoUnkeyedLiterals }
+$*validate.FieldPathElement_StringKey
+$*func() *userctxv1.Membership_Domain
+$kimi.darkmatter/packages/x/idmapping
+json:"Delimiter,omitempty"
+json:"KeyMarker,omitempty"
+json:"SourceKey,omitempty"
+json:"KeyPrefix,omitempty"
+json:"KeySuffix,omitempty"
+$*struct { key string; elem []int64 }
+$*func() (*ed25519.PrivateKey, error)
+$*[]struct { key uint32; elem int32 }
+$*[]struct { key string; elem uint8 }
+$*func() *searchv2.BilibiliMetaAuthor
+$*searchv3.SearchToolResponse_Keyword
+$*struct { key string; elem []uint8 }
+$*payv1.BindApplePurchaseUUIDResponse
+$*payv1.DowngradeSubscriptionResponse
+$*payv1.TerminateSubscriptionResponse
+$*[]struct { key uint64; elem []int }
+$*[]struct { key string; elem int64 }
+$kimi.darkmatter/packages/x/gormtypes
+$*struct { key string; elem float64 }
+$*[8]struct { key uint8; elem uint8 }
+$*struct { key string; elem ref.Val }
+$*func() *chatv1.VideoCard_AuthorInfo
+$*func() []userctxv1.Membership_Level
+json:"delimiter,omitempty"
+json:"accessKey,omitempty"
+$*struct { key oid.Oid; elem string }
+$*[8]struct { key int64; elem int64 }
+$*struct { key int64; elem ast.Expr }
+$*struct { key string; elem float32 }
+$*[8]struct { key string; elem uint }
+$*[]struct { key uint16; elem error }
+$*[]struct { key string; elem error }
+$*func() *membershipv2.Giftcard_Claim
+$*membershipv2.GetGiftcardCodeRequest
+$*[]*membershipv2.Balance_Action_Item
+$*membershipv2.GetSubscriptionRequest
+$*func() *membershipv2.Balance_Action
+$*membershipv2.FinalizeCreditResponse
+$*membershipv2.GetEntitlementResponse
+$*func() *membershipv2.Present_Status
+$*[8]struct { key int64; elem int32 }
+$*expr.Expr_CreateStruct_Entry_MapKey
+$*struct { key int64; elem []string }
+$*[]struct { key uint32; elem int16 }
+$*struct { key string; elem *string }
+$*map[uint64]auth.CredentialsListener
+$*pgproto3.AuthenticationSASLContinue
+$*[]struct { key uint8; elem string }
+$traceAuthenticationCleartextPassword
+$*struct { key proto.IPv6; elem int }
+$*struct { key proto.IPv4; elem int }
+$*[8]struct { key float64; elem int }
+$*[8]struct { key float32; elem int }
+$*[]struct { key [8]uint8; elem int }
+$*struct { key [128]uint8; elem int }
+%*[]struct { key string; elem string }
+json:"app_secret,omitempty"
+%*struct { key string; elem []string }
+%*[]struct { key string; elem uint64 }
+%*[8]struct { key int32; elem string }
+%*[8]struct { key string; elem int32 }
+%*func() (*tos.FederationToken, error)
+%*[8]struct { key string; elem []int }
+%*[]struct { key uint32; elem string }
+%*struct { key string; elem [2]int32 }
+%*[]struct { key string; elem uint16 }
+%*[8]struct { key uint32; elem int32 }
+%*struct { key [11]uint8; elem int16 }
+%*[8]struct { key string; elem uint8 }
+%*func() *mcpv1.MCPServerAuthorization
+%*orderv1.TerminateSubscriptionRequest
+%*func() []userctxv1.Membership_Domain
+%*func() *searchv3.BilibiliMeta_Author
+%*mcpv1.GetMCPServerOAuthConfigRequest
+%*func(int) (attribute.KeyValue, bool)
+%*[]*errdetails.QuotaFailure_Violation
+%*struct { key gob.typeId; elem bool }
+%*[8]struct { key uint64; elem []int }
+%*[8]struct { key string; elem int64 }
+json:"need_oauth,omitempty"
+%*struct { key float64; elem float64 }
+%*struct { key cel.limitID; elem int }
+%*struct { key ref.Val; elem ref.Val }
+%*[]struct { key int64; elem ref.Val }
+%*[]struct { key int; elem struct {} }
+%*[]struct { key string; elem uint32 }
+%*[8]struct { key uint16; elem error }
+%*[8]struct { key string; elem error }
+%*[]struct { key string; elem *int64 }
+%*membershipv2.isGiftcard_Entity_Inner
+%*func() *membershipv2.Giftcard_Entity
+%*func() []*membershipv2.Giftcard_Code
+%*membershipv2.GetGiftcardCodeResponse
+%*membershipv2.GetSubscriptionResponse
+%*credentialsv1.GetAPIKeyByUserRequest
+%*membershipv2.Balance_Action_Metadata
+%*membershipv2.Balance_Action_TitleKey
+%*membershipv2.GetBalanceActionRequest
+%*func() *membershipv2.Giftcard_Option
+%*func() membershipv2.Entitlement_Type
+%*struct { key int32; elem struct {} }
+%*[8]struct { key uint32; elem int16 }
+%*struct { key *yaml.Node; elem bool }
+%*[8]struct { key uint8; elem string }
+%*struct { key proto.Enum8; elem int }
+%*[]struct { key time.Time; elem int }
+%*[8]struct { key [8]uint8; elem int }
+%*[]struct { key [64]uint8; elem int }
+%*struct { key *[512]uint8; elem int }
+%*[]struct { key [32]uint8; elem int }
+%*struct { key *[256]uint8; elem int }
+%*[]struct { key [16]uint8; elem int }
+&*[8]struct { key string; elem string }
+&*[8]struct { key string; elem uint64 }
+&*struct { key string; elem struct {} }
+&*struct { key string; elem *fs.Inode }
+&*struct { key tls.alert; elem string }
+&*struct { key x509.sum224; elem bool }
+&*struct { key

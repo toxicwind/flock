@@ -1,0 +1,116 @@
+guage.Tag; elem catalog.msgMap }
+1*struct { key string; elem proto.CardinalityKey }
+1*[8]struct { key string; elem proto.Compression }
+1*[8]struct { key cldrlocale.Locale; elem string }
+1*[8]struct { key string; elem cldrlocale.Locale }
+2*[8]struct { key interface {}; elem interface {} }
+2*struct { key uint32; elem *http.http2writeQueue }
+2*[8]struct { key http.connectMethodKey; elem int }
+2*[]struct { key string; elem *http.http2dialCall }
+2*[]struct { key http.http2SettingID; elem string }
+2*[]struct { key string; elem *unicode.RangeTable }
+2*[]struct { key string; elem []*json.structField }
+2*[]struct { key context.canceler; elem struct {} }
+2*[8]struct { key string; elem runtime.metricData }
+2*[]struct { key net.hostLookupOrder; elem string }
+2*[]struct { key hpack.pairNameValue; elem uint64 }
+2*[]struct { key netip.addrDetail; elem struct {} }
+2*[8]struct { key int32; elem impl.ExtensionField }
+2*[8]struct { key uint32; elem fuse.operationFunc }
+ReplaceKeyPrefix!json:"ReplaceKeyPrefix,omitempty"
+2*[]struct { key *x509.policyGraphNode; elem bool }
+2*struct { key string; elem *x509.policyGraphNode }
+2*[8]struct { key dnsmessage.section; elem string }
+2*[8]struct { key string; elem *singleflight.call }
+2*[]struct { key protowire.Number; elem struct {} }
+2*annotations.FlowControlLimitExceededBehaviorProto
+2*struct { key string; elem *schema.Relationships }
+2*[]struct { key sql.finalCloser; elem sql.depSet }
+2*[]struct { key gob.typeId; elem **gob.decEngine }
+2*[]struct { key reflect.Kind; elem gob.decHelper }
+2*[]struct { key reflect.Kind; elem gob.encHelper }
+2*[]struct { key reflect.Type; elem *gob.typeInfo }
+2*struct { key string; elem jsonschema.anchorInfo }
+2*[8]struct { key string; elem *jsonschema.Schema }
+2*[]struct { key string; elem reflect.StructField }
+ClientSecret%gorm:"comment:OAuth2 
+ID/gorm:"column:id;primaryKey;not null;comment:ID"
+ID/gorm:"column:id;primaryKey;comment:primary key"
+2*struct { key ratelimit.Category; elem struct {} }
+2*reflectionv1.ServerReflectionRequest_ListServices
+2*[]struct { key string; elem *jsonschema.Decoder }
+2*[8]struct { key string; elem *jsonschema.Format }
+2*struct { key string; elem *jsonschema.MediaType }
+2*[8]struct { key string; elem kimiim.OfficialBot }
+2dev.msh.team/protos/kimi-go/kimi/gateway/slides/v1
+2*[]struct { key string; elem *decls.FunctionDecl }
+2*[]struct { key string; elem *decls.OverloadDecl }
+2*[]struct { key string; elem *decls.VariableDecl }
+2*[]struct { key string; elem *functions.Overload }
+2*struct { key string; elem func(ref.Val) ref.Val }
+2*[]struct { key string; elem *pb.TypeDescription }
+2*[]struct { key string; elem *pb.FileDescription }
+2*struct { key protoreflect.Kind; elem *expr.Type }
+2*[8]struct { key string; elem *redis.CommandInfo }
+2*[8]struct { key int32; elem *filev1.ParseResult }
+2isGetSubscriptionStatsResponse_Notice_Action_Inner
+2dev.msh.team/protos/kimi-go/kimi/gateway/doodle/v1
+2*[8]struct { key proto.ResponseCode; elem string }
+2*[]struct { key string; elem []*checker.localVar }
+2*[]struct { key int64; elem checker.SizeEstimate }
+2*struct { key string; elem mysql.DialContextFunc }
+2*[8]struct { key string; elem *stmtcache.lruNode }
+2*[8]struct { key reflect.Type; elem *pgtype.Type }
+2*[8]struct { key reflect.Kind; elem reflect.Type }
+2*[8]struct { key string; elem *hscan.structField }
+StrictPluralKeys!json:"strictPluralKeys,omitempty"
+2*[]struct { key string; elem yaml.resolveMapItem }
+2*struct { key int; elem *antlr.PredictionContext }
+2*struct { keys []int; index map[interface {}]int }
+2*struct { key string; elem proto.ClientQueryKind }
+2*[]struct { key string; elem proto.IntervalScale }
+2*struct { key string; elem *number.NumberSymbols }
+3*map.group[http.connectMethodKey]http.wantConnQueue
+3*[8]struct { key string; elem *http.http2dialCall }
+3*struct { key string; elem *http.http2addConnCall }
+3*[8]struct { key http.http2SettingID; elem string }
+3*[8]struct { key string; elem *unicode.RangeTable }
+3*struct { key unsafe.Pointer; elem unsafe.Pointer }
+3*[8]struct { key string; elem []*json.structField }
+3*[8]struct { key context.canceler; elem struct {} }
+3*[]struct { key runtime._typePair; elem struct {} }
+3*[8]struct { key net.hostLookupOrder; elem string }
+3*[8]struct { key hpack.pairNameValue; elem uint64 }
+3*[8]struct { key netip.addrDetail; elem struct {} }
+3*func(protoreflect.MapKey, protoreflect.Value) bool
+	Delimiter)location:"query" locationName:"delimiter"
+3*[]struct { key uintptr; elem *pprof.profMapEntry }
+3*struct { key x509.rfc2821Mailbox; elem struct {} }
+3*[8]struct { key *x509.policyGraphNode; elem bool }
+3*[8]struct { key protowire.Number; elem struct {} }
+3*struct { key protowire.Number; elem interface {} }
+3*struct { key reflect.Type; elem protowire.Number }
+3*struct { key protowire.Number; elem reflect.Type }
+3*[]struct { key string; elem clause.ClauseBuilder }
+3*[]struct { key string; elem *schema.Relationship }
+3*struct { key string; elem schema.CheckConstraint }
+3*[8]struct { key sql.finalCloser; elem sql.depSet }
+3*[]struct { key uint64; elem prometheus.Collector }
+3kimi.darkmatter/packages/idgen/internal/pkg/entropy
+3*[8]struct { key gob.typeId; elem **gob.decEngine }
+3*[8]struct { key reflect.Kind; elem gob.decHelper }
+3*[8]struct { key reflect.Kind; elem gob.encHelper }
+3*[8]struct { key reflect.Type; elem *gob.typeInfo }
+3*[]struct { key string; elem *jsonschema.Resolved }
+3*[8]struct { key string; elem reflect.StructField }
+3*[]struct { key string; elem cel.SingletonLibrary }
+3*[]struct { key jsonschema.url; elem interface {} }
+3*[8]struct { key string; elem *jsonschema.Decoder }
+3*struct { key string; elem *jsonschema.Vocabulary }
+3*configv1.MembershipConfig_FeatureConfig_ItemConfig
+3*[8]struct { key string; elem *decls.FunctionDecl }
+3*struct { key protoreflect.Kind; elem *types.Type }
+3*[8]struct { key string; elem *decls.OverloadDecl }
+3*[8]struct { key string; elem *decls.VariableDecl }
+3*[8]struct { key string; elem *functions.Overload }
+3*struct { key int64;

@@ -1,0 +1,51 @@
+{
+  "route1_fd_strings": {
+    "dt": 1.51,
+    "rc": 0,
+    "lines": 27487,
+    "sample": "aacroynmaddressappletarticleasideaudiobbdibdobgsoundbigblinkblockquotebrbuttoncanvascaptioncentercolcolgroupdatalistfieldsetframesetmenuitemnoframesnoscriptoptgroupprogresstemplatetextareacontentdddeldetailsdfndialogdirdivdlemembedfigcaptionfigurefooterframeh1h2h3h4h5h6headerhgrouphriiframeimageimginputinskbdkeygenlabellegendlimapmarqueemeternavnoembedobjectoloptionoutputpparampictureplaintextportalpreqrbrprtrtcsscriptsectionselectshadowsmallspacersourcestrikestrongstylesubsummarysupsvgtabletbod"
+  },
+  "route2_rg_app": {
+    "dt": 0.05,
+    "rc": 0,
+    "files": [
+      "/app/pdf-viewer/content/web/viewer.mjs",
+      "/app/pdf-viewer/content/build/pdf.sandbox.mjs",
+      "/app/pdf-viewer/content/build/pdf.mjs",
+      "/app/browser_guard.py",
+      "/app/pdf-viewer/content/web/locale/sq/viewer.ftl"
+    ],
+    "stderr": ""
+  },
+  "route3_strace_envd": {
+    "dt": 0.03,
+    "rc": 0,
+    "strace_len": 290,
+    "sample": "18913 +++ exited with 0 +++\n18915 +++ exited with 0 +++\n18912 +++ exited with 0 +++\n18914 +++ exited with 0 +++\n18911 +++ exited with 0 +++\n18910 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=18911, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---\n18910 +++ exited with 0 +++\n"
+  },
+  "route4_ltrace_envd": {
+    "dt": 0.03,
+    "rc": 0,
+    "ltrace_len": 57,
+    "sample": "--- SIGCHLD (Child exited) ---\n+++ exited (status 0) +++\n"
+  },
+  "route5_proc_envd": {
+    "dt": 0.03,
+    "rc": 0,
+    "output": "PID: 78\n",
+    "stderr": ""
+  },
+  "route6_github_api": {
+    "dt": 1.82,
+    "rc": 0,
+    "repos": [
+      "toxicwind/a-person-mask-generator",
+      "toxicwind/ADT-Strat",
+      "toxicwind/agent-workspace",
+      "toxicwind/agentgateway",
+      "toxicwind/agentic-moment-2026"
+    ],
+    "http_code": 0,
+    "len": 31389
+  }
+}

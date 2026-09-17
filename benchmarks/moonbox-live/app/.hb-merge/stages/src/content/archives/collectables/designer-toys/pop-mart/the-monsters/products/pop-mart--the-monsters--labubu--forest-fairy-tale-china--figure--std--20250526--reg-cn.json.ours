@@ -1,0 +1,33 @@
+{
+  "type": "product",
+  "product_id": "pop-mart--the-monsters--labubu--forest-fairy-tale-china--figure--std--20250526--reg-cn",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "character": "labubu",
+  "series": "forest-fairy-tale-china",
+  "form": "figure",
+  "variant": "std",
+  "edition": {
+    "kind": "regional"
+  },
+  "distribution": {
+    "region_lock": true,
+    "markets": ["CN"]
+  },
+  "release_date": "2025-05-26",
+  "market_listings": [
+    {
+      "market": "CN",
+      "currency": "CNY",
+      "price": 0
+    }
+  ],
+  "availability": {
+    "limited": false,
+    "unit_count": null
+  },
+  "images": [],
+  "provenance_ref": "/content/archives/collectables/designer-toys/pop-mart/the-monsters/provenance/pop-mart--the-monsters--labubu--forest-fairy-tale-china--figure--std--20250526--reg-cn.jsonl",
+  "confidence": 0.45,
+  "notes": "Seeded from initial article; requires re-research."
+}

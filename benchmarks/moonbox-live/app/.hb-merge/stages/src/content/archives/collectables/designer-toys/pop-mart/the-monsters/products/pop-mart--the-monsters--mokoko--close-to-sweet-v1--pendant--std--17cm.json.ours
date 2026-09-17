@@ -1,0 +1,36 @@
+{
+  "type": "product",
+  "product_id": "pop-mart--the-monsters--mokoko--close-to-sweet-v1--pendant--std--17cm",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "character": "mokoko",
+  "series": "close-to-sweet-v1",
+  "form": "pendant",
+  "variant": "std",
+  "edition": {
+    "kind": "core"
+  },
+  "distribution": {
+    "region_lock": false,
+    "markets": ["CN"]
+  },
+  "size": {
+    "unit": "cm",
+    "h": 17
+  },
+  "market_listings": [
+    {
+      "market": "CN",
+      "currency": "CNY",
+      "price": 159
+    }
+  ],
+  "availability": {
+    "limited": false,
+    "unit_count": null
+  },
+  "images": [],
+  "provenance_ref": "/content/archives/collectables/designer-toys/pop-mart/the-monsters/provenance/pop-mart--the-monsters--mokoko--close-to-sweet-v1--pendant--std--17cm.jsonl",
+  "confidence": 0.2,
+  "notes": "Network fetch failed; pending verification."
+}

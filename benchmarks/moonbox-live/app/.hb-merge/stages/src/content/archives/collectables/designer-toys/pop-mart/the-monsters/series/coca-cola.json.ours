@@ -1,0 +1,9 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "coca-cola",
+  "title": "Coca-Cola",
+  "character_slugs": ["labubu"],
+  "notes": "Seeded from initial article; needs confirmation."
+}

@@ -1,0 +1,10 @@
+0000000000000000000000000000000000000000 3818526f61a4706bd7ccc7d381d4ba92f5cfa98b toxicwind <toxicwind@users.noreply.github.com> 1786416675 +0000	initial pull
+3818526f61a4706bd7ccc7d381d4ba92f5cfa98b 210b8fc47e4d0fafa16843587d25075ff12a36fa toxicwind <toxicwind@users.noreply.github.com> 1786420577 +0000	commit: auto: security scrub + lint hooks + migration guide + audit data
+210b8fc47e4d0fafa16843587d25075ff12a36fa 816b28a4a14b333ee124f0f22efacf97a7b4f781 toxicwind <toxicwind@users.noreply.github.com> 1786425600 +0000	commit: fix: gitw v5 with cd, toxicwind_kernel env-load, push-safe wrapper
+816b28a4a14b333ee124f0f22efacf97a7b4f781 713e21448337265df79128da725745553b0b3dcc toxicwind <toxicwind@users.noreply.github.com> 1786425747 +0000	commit: final: bg daemon, effusion-labs disabled, todo update
+713e21448337265df79128da725745553b0b3dcc 01e23488cad135db837f50c60a89f0f5aecdcf34 toxicwind <toxicwind@users.noreply.github.com> 1786446961 +0000	commit: auto: 2026-08-11T11:16:00+00:00
+1e2cfd0daf5333d6cb46d7f2edaa27df6d7ba1ca 1f46bad77c3fd88884c5303daad206e8ad7d428d toxicwind <toxicwind@users.noreply.github.com> 1786469568 +0000	commit: feat: unlimited wrappers, gitea setup, secret scanning, codeberg mirror
+1f46bad77c3fd88884c5303daad206e8ad7d428d c5430a4e221bb37f91e65aa535788e1e5acd61cd toxicwind <toxicwind@users.noreply.github.com> 1786474951 +0000	commit: feat: kimi-root-bootstrap v2 — modular master control system
+c5430a4e221bb37f91e65aa535788e1e5acd61cd def64aa6225802590ac3cee0b9b967bcb52ead70 toxicwind <toxicwind@users.noreply.github.com> 1786595210 +0000	commit: add: MITM proxy v1, portal audit schemas, ChattyStreamResponse decoder, limit detector
+def64aa6225802590ac3cee0b9b967bcb52ead70 74edfc34175c6becf8060e746b43c4023c43fde6 toxicwind <toxicwind@users.noreply.github.com> 1786597388 +0000	commit: add: agents.md v1, swarm_workspace skill, MITM proxy, save-instruction
+74edfc34175c6becf8060e746b43c4023c43fde6 9a6ac6aecfaa570306fde702b6948c8da67489ae toxicwind <toxicwind@users.noreply.github.com> 1786600820 +0000	commit: fix: portal s6 flag bug, add reactive chat protocol, coord updated

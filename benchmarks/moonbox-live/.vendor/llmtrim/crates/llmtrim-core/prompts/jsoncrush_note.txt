@@ -1,0 +1,1 @@
+Some large JSON arrays below were down-sampled to a representative subset of rows (the first and last rows, statistical outliers such as errors or rare values, and a sample of the rest); other rows were omitted. Treat these arrays as samples, not complete listings.

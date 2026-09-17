@@ -1,0 +1,124 @@
+ expr.isExpr_CreateStruct_Entry_KeyKind
+.*[]struct { key int; elem []*antlr.ATNConfig }
+.*[8]struct { key int; elem []*antlr.DFAState }
+.*[8]struct { key int; elem []go.shape.*uint8 }
+.*[8]struct { key string; elem *rsa.PublicKey }
+.*[]struct { key string; elem *pgx.ConnConfig }
+.*struct { key pool.ConnState; elem struct {} }
+.*func(uint64) (auth.CredentialsListener, bool)
+.*[8]struct { key do.ServiceType; elem string }
+.*[]struct { key v1.PluralCategory; elem bool }
+.*[8]struct { key string; elem yaml.fieldInfo }
+.*[8]struct { key *antlr.ATNConfig; elem bool }
+.*struct { ProcessID uint32; SecretKey string }
+.*struct { key string; elem proto.Compression }
+.*[]struct { key string; elem proto.Interface }
+.*[]struct { key string; elem compress.Method }
+.*struct { key cldrlocale.Locale; elem string }
+.*struct { key string; elem cldrlocale.Locale }
+.*[8]struct { key string; elem *time.Location }
+/*struct { key interface {}; elem interface {} }
+/*[]struct { key *net.Listener; elem struct {} }
+/*map.group[http.routingIndexKey][]*http.pattern
+/*struct { key http.connectMethodKey; elem int }
+/*[]struct { key [8]uint8; elem chan struct {} }
+/*[8]struct { key http.http2Flags; elem string }
+/*[]struct { key *reflect.structType; elem int }
+/*[8]struct { key interface {}; elem struct {} }
+/*struct { key string; elem runtime.metricData }
+/*[]struct { key string; elem *tls.Certificate }
+/*[8]struct { key string; elem []net.nssSource }
+/*[8]struct { key *abi.Type; elem interface {} }
+/*struct { key int32; elem impl.ExtensionField }
+/*[]struct { key fs.StableAttr; elem *fs.Inode }
+/*[]struct { key fs.parentData; elem struct {} }
+/*struct { key uint32; elem fuse.operationFunc }
+/*func(*portalv1.ValidateBindTokenRequest) error
+/*[]struct { key string; elem *userupload.File }
+/*[]struct { key string; elem tos.trailerValue }
+/*[]struct { key uint64; elem *profile.Mapping }
+/*[8]struct { key uint64; elem profile.mapInfo }
+/*[8]struct { key interface {}; elem []uintptr }
+/*[]struct { key dnsmessage.Class; elem string }
+/*[]struct { key dnsmessage.RCode; elem string }
+/*struct { key dnsmessage.section; elem string }
+/*struct { key string; elem *singleflight.call }
+/*[8]struct { key string; elem *filedesc.Field }
+/*[8]struct { key filedesc.pathKey; elem []int }
+/*[]struct { key string; elem syntax.charGroup }
+/*[8]struct { key string; elem *structpb.Value }
+/dev.msh.team/protos/kimi-go/kimi/gateway/mcp/v1
+/*[8]struct { key string; elem attribute.Value }
+/*[8]struct { key string; elem *gorm.processor }
+/*[8]struct { key string; elem []reflect.Value }
+/*[]struct { key reflect.Type; elem gob.typeId }
+/*[8]struct { key *sql.driverConn; elem string }
+/*[]struct { key string; elem *structpb.Struct }
+/*[]struct { key string; elem *stmt_store.Stmt }
+/*[]struct { key reflect.Type; elem *gob.decOp }
+/*[]struct { key reflect.Type; elem *gob.encOp }
+/*struct { key string; elem *jsonschema.Schema }
+DetailObjectKey
+gorm:"column:detail_object_key"
+ID,gorm:"column:id;primaryKey;comment:
+/*func(report.DiscardReason, ratelimit.Category)
+/*[8]struct { key string; elem *metrics.Sample }
+/*[]struct { key global.il; elem *global.meter }
+/*[]struct { key string; elem template.element }
+/*[8]struct { key string; elem map[string]bool }
+/*struct { key string; elem *jsonschema.Format }
+/*struct { key string; elem kimiim.OfficialBot }
+/dev.msh.team/protos/kimi-go/kimi/gateway/tts/v1
+/*struct { key string; elem *redis.CommandInfo }
+/*struct { key int32; elem *filev1.ParseResult }
+/*membershipv2.Balance_Action_Index_WebsiteInfra
+/*func() *membershipv2.Balance_Action_Index_Chat
+/*func() *membershipv2.Balance_Action_Index_Claw
+/*func() membershipv2.isEntitlement_Zygote_Scope
+/*struct { key proto.ResponseCode; elem string }
+/*[8]struct { key int; elem []*antlr.ATNConfig }
+/*[]struct { key string; elem func() io.Reader }
+/*struct { key string; elem *stmtcache.lruNode }
+/*struct { key reflect.Type; elem *pgtype.Type }
+/*struct { key reflect.Kind; elem reflect.Type }
+/*[8]struct { key string; elem *pgx.ConnConfig }
+/*struct { key string; elem *hscan.structField }
+/*[8]struct { key v1.PluralCategory; elem bool }
+/*[]struct { key string; elem proto.ClientCode }
+/*[8]struct { key string; elem proto.Interface }
+/*[]struct { key string; elem proto.ServerCode }
+/*[8]struct { key string; elem compress.Method }
+0*[]struct { key string; elem *http.routingNode }
+0*[8]struct { key *net.Listener; elem struct {} }
+0*[]struct { key uint32; elem *http.http2stream }
+0*[8]struct { key [8]uint8; elem chan struct {} }
+0*struct { key string; elem *http.http2dialCall }
+0*[]struct { key http.http2ErrCode; elem string }
+0*[]struct { key http.http2SettingID; elem bool }
+0*struct { key http.http2SettingID; elem string }
+0*[]struct { key string; elem http.RoundTripper }
+0*struct { key string; elem *unicode.RangeTable }
+0*[]struct { key *reflect.structType; elem bool }
+0*[8]struct { key *reflect.structType; elem int }
+0*[]struct { key string; elem *json.structField }
+0*struct { key string; elem []*json.structField }
+0*struct { key context.canceler; elem struct {} }
+0*[8]struct { key string; elem *tls.Certificate }
+0*struct { key net.hostLookupOrder; elem string }
+0*[]struct { key string; elem map[string]string }
+0*struct { key hpack.pairNameValue; elem uint64 }
+0*struct { key netip.addrDetail; elem struct {} }
+0*struct { pragma.NoUnkeyedLiterals; Equal bool }
+0*[]struct { key string; elem language.Language }
+0*[8]struct { key fs.StableAttr; elem *fs.Inode }
+0*[8]struct { key fs.parentData; elem struct {} }
+0*[8]struct { key string; elem *userupload.File }
+MaxKeys(location:"query" locationName:"max-keys"
+KeyPrefixEquals json:"KeyPrefixEquals,omitempty"
+0*[8]struct { key string; elem tos.trailerValue }
+0*map.group[profile.functionKey]*profile.Function
+0*map.group[profile.locationKey]*profile.Location
+0*[]struct { key uint64; elem *profile.Function }
+0*[]struct { key uint64; elem *profile.Location }
+0*[8]struct { key uint64; elem *profile.Mapping }
+0*struct { key *x509.policyGr

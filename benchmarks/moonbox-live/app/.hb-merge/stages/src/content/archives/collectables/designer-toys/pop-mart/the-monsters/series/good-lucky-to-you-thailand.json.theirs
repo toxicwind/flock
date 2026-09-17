@@ -1,0 +1,11 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "good-lucky-to-you-thailand",
+  "title": "GOOD LUCKY TO YOU (Thailand)",
+  "character_slugs": [
+    "labubu"
+  ],
+  "notes": "Seeded from initial article; needs confirmation."
+}

@@ -1,0 +1,115 @@
+[package]
+name = "samply"
+version = "0.13.1"
+authors = ["Markus Stange <mstange@themasta.com>"]
+edition = "2021"
+rust-version = "1.89" # needed for std::fs::File::lock / try_lock / unlock
+license = "MIT OR Apache-2.0"
+description = "A command line profiler for macOS and Linux."
+repository = "https://github.com/mstange/samply/"
+readme = "README.md"
+
+[dependencies]
+
+fxprof-processed-profile = { version = "0.8", path = "../fxprof-processed-profile" }
+# framehop = { path = "../../framehop" }
+framehop = "0.16"
+# linux-perf-data = { path = "../../linux-perf-data", default-features = false }
+linux-perf-data = { version = "0.13" }
+
+tokio = { version = "1.52", features = ["rt", "rt-multi-thread", "macros"] }
+tokio-util = "0.7.11"
+hyper = { version = "1", features = ["full"] }
+hyper-util = { version = "0.1.9", features = ["server", "http1", "tokio"] }
+http-body-util = "0.1"
+futures-util = "0.3"
+clap = { version = "4", features = ["derive"] }
+byteorder = "1.4.3"
+debugid = "0.8.0"
+memchr = "2.7.2"
+memmap2 = "0.9.9"
+serde_json = "1"
+thiserror = "2"
+tempfile = "3.13"
+uuid = { version = "1.11", features = ["v4"] }
+percent-encoding = "2.1.0"
+libc = "0.2"
+flate2 = "1.1"
+opener = { version = "0.8", default-features = false }
+rand = "0.10"
+nix-base32 = "0.2.0"
+serde_derive = "1.0.137"
+serde = "1.0.204"
+json-slabs = "0.1.0"
+wholesym = { version = "0.8.1", path = "../wholesym", features = ["api"]}
+platform-dirs = "0.3"
+rustc-hash = "2"
+schnellru = "0.2"
+mio = { version = "1", features = ["os-ext", "os-poll"] }
+ctrlc = "3.4.4"
+log = "0.4.21"
+env_logger = "0.11"
+cfg-if = "1.0.0"
+humantime = "2.1.0"
+shlex = "2"
+samply-debugid = { version = "0.1.0", path = "../samply-debugid" }
+samply-quota-manager = { version = "0.1.0", path = "../samply-quota-manager" }
+samply-object = { version = "0.1.0", path = "../samply-object" }
+indexmap = "2.9.0"
+
+[target.'cfg(any(target_os = "android", target_os = "macos", target_os = "linux"))'.dependencies]
+
+crossbeam-channel = "0.5.15"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+
+mach2 = "0.6"
+lazy_static = "1.5.0"
+flate2 = "1.1"
+sysctl = "0.7.1"
+plist = "1.8.0"
+
+[target.'cfg(any(target_os = "android", target_os = "linux"))'.dependencies]
+
+parking_lot = "0.12.2"
+num_cpus = "1.13.1"
+uname = "0.1.1"
+nix = { version = "0.31", features = ["fs", "process"] }
+os-release = "0.1.0"
+
+[target.'cfg(windows)'.dependencies]
+
+rangemap = "1.6"
+bitflags = "2.10.0"
+memoffset = "0.9"
+num-traits = "0.2"
+num-derive = "0.4"
+runas = "1.2.0"
+which = "8"
+winver = "1"
+
+# etw-reader = { path = "../etw-reader" }
+
+[target.'cfg(windows)'.dependencies.windows]
+version = "0.61"
+features =  ["Win32",
+             "Win32_Foundation",
+             "Win32_Security",
+             "Win32_Security_Authorization",
+             "Win32_Storage",
+             "Win32_Storage_FileSystem",
+             "Win32_System",
+             "Win32_System_Diagnostics_Debug",
+             "Win32_System_Diagnostics_Etw",
+             "Win32_System_Memory",
+             "Win32_System_ProcessStatus",
+             "Win32_System_SystemInformation",
+             "Win32_System_Threading",
+             "Win32_System_Time",
+             "Win32_System_WindowsProgramming",
+             "Win32_UI_WindowsAndMessaging"]
+
+[dependencies.object]
+default-features = false
+features = ["std", "read_core", "elf", "pe", "unaligned", "write"]
+version = "0.40"

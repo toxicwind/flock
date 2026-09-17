@@ -1,0 +1,6093 @@
+{
+  "repos": [
+    {
+      "repo": "aigemini161-blip",
+      "file": "aigemini161-blip__NIMStats__history.db.gz",
+      "runs": 671,
+      "results": 6345,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "z-ai/glm-5.3",
+          "avg_rt": 118.10730253353204,
+          "count": 671,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 119.35022354694486,
+          "count": 671,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7011.034734917733,
+          "count": 547,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "google/diffusiongemma-26b-a4b-it",
+          "avg_rt": 12003.53772070626,
+          "count": 623,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 36437.810444874274,
+          "count": 517,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "moonshotai/kimi-k3",
+          "avg_rt": 38462.16531604538,
+          "count": 617,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 54318.75342465754,
+          "count": 511,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 56092.828571428574,
+          "count": 35,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 65189.8487804878,
+          "count": 410,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "meta/muse-glimmer-30b",
+          "avg_rt": 70816.72324723247,
+          "count": 542,
+          "repo": "aigemini161-blip"
+        }
+      ]
+    },
+    {
+      "repo": "vadash",
+      "file": "vadash__nimstats__history.db.gz.tmpdb",
+      "runs": 671,
+      "results": 6115,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "z-ai/glm-5.3",
+          "avg_rt": 116.2608047690015,
+          "count": 671,
+          "repo": "vadash"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 5064.551987767584,
+          "count": 654,
+          "repo": "vadash"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7502.8959107806695,
+          "count": 538,
+          "repo": "vadash"
+        },
+        {
+          "model": "google/diffusiongemma-26b-a4b-it",
+          "avg_rt": 14057.588333333333,
+          "count": 600,
+          "repo": "vadash"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 15199.0,
+          "count": 6,
+          "repo": "vadash"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 36261.89807692308,
+          "count": 520,
+          "repo": "vadash"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 47367.215953307394,
+          "count": 514,
+          "repo": "vadash"
+        },
+        {
+          "model": "moonshotai/kimi-k3",
+          "avg_rt": 48490.90924092409,
+          "count": 606,
+          "repo": "vadash"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 57354.524934383204,
+          "count": 381,
+          "repo": "vadash"
+        },
+        {
+          "model": "meta/muse-glimmer-30b",
+          "avg_rt": 58811.201058201055,
+          "count": 567,
+          "repo": "vadash"
+        }
+      ]
+    },
+    {
+      "repo": "dinggouhua",
+      "file": "dinggouhua__NIMStats__history.db",
+      "runs": 720,
+      "results": 15018,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 4602.154425612052,
+          "count": 531,
+          "avg_tok": 323.16760828625235,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 8350.977175463624,
+          "count": 701,
+          "avg_tok": 169.72610556348073,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 8623.640699523052,
+          "count": 629,
+          "avg_tok": 177.483306836248,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 9563.678275290216,
+          "count": 603,
+          "avg_tok": 486.7761194029851,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 14143.829694323143,
+          "count": 229,
+          "avg_tok": 441.5240174672489,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 15843.068965517241,
+          "count": 319,
+          "avg_tok": 285.47962382445144,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 25450.606382978724,
+          "count": 564,
+          "avg_tok": 84.79964539007092,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 37464.173708920185,
+          "count": 639,
+          "avg_tok": 500.0,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 42281.88438133874,
+          "count": 493,
+          "avg_tok": 100.11561866125761,
+          "repo": "dinggouhua"
+        },
+        {
+          "model": "qwen/qwen3.5-122b-a10b",
+          "avg_rt": 43368.70212765958,
+          "count": 376,
+          "avg_tok": 125.77925531914893,
+          "repo": "dinggouhua"
+        }
+      ]
+    },
+    {
+      "repo": "kumaa-1",
+      "file": "kumaa-1__NIMStats__history.db",
+      "runs": 720,
+      "results": 15840,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 4874.660550458716,
+          "count": 109,
+          "avg_tok": 0.0,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 5202.888888888889,
+          "count": 324,
+          "avg_tok": 325.75925925925924,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 7220.087591240876,
+          "count": 685,
+          "avg_tok": 0.0,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 7857.477663230241,
+          "count": 291,
+          "avg_tok": 486.9931271477663,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 12342.71186440678,
+          "count": 708,
+          "avg_tok": 104.61723163841808,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "qwen/qwen3.5-122b-a10b",
+          "avg_rt": 27103.183486238533,
+          "count": 109,
+          "avg_tok": 0.0,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash",
+          "avg_rt": 32671.202216066482,
+          "count": 361,
+          "avg_tok": 0.0,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 34228.25,
+          "count": 708,
+          "avg_tok": 0.0,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "qwen/qwen3-next-80b-a3b-instruct",
+          "avg_rt": 47542.08888888889,
+          "count": 225,
+          "avg_tok": 0.0,
+          "repo": "kumaa-1"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 53100.0372250423,
+          "count": 591,
+          "avg_tok": 500.0,
+          "repo": "kumaa-1"
+        }
+      ]
+    },
+    {
+      "repo": "Pixyde",
+      "file": "Pixyde__NIMStats__history.db",
+      "runs": 720,
+      "results": 15955,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "nvidia/riva-translate-4b-instruct-v2",
+          "avg_rt": 787.8169014084507,
+          "count": 71,
+          "avg_tok": 22.859154929577464,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "nvidia/llama-3.1-nemoguard-8b-content-safety",
+          "avg_rt": 977.6888888888889,
+          "count": 45,
+          "avg_tok": 8.0,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "nvidia/nemotron-3.5-content-safety",
+          "avg_rt": 1189.225352112676,
+          "count": 71,
+          "avg_tok": 5.0,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "nvidia/llama-3.1-nemotron-safety-guard-8b-v3",
+          "avg_rt": 3334.9014084507044,
+          "count": 71,
+          "avg_tok": 9.0,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "stepfun-ai/step-3.7-flash",
+          "avg_rt": 4924.04347826087,
+          "count": 23,
+          "avg_tok": 0.0,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "nvidia/ising-calibration-1.5-31b",
+          "avg_rt": 7146.802816901409,
+          "count": 71,
+          "avg_tok": 70.77464788732394,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 10394.664912280701,
+          "count": 570,
+          "avg_tok": 487.82456140350877,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "openai/gpt-oss-20b",
+          "avg_rt": 12805.155507559395,
+          "count": 463,
+          "avg_tok": 493.16630669546436,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "thinkingmachines/inkling",
+          "avg_rt": 14682.333333333334,
+          "count": 222,
+          "avg_tok": 456.2882882882883,
+          "repo": "Pixyde"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 15958.344879518072,
+          "count": 664,
+          "avg_tok": 488.9322289156627,
+          "repo": "Pixyde"
+        }
+      ]
+    },
+    {
+      "repo": "vadash",
+      "file": "vadash__nimstats__history.db.gz",
+      "runs": 671,
+      "results": 6115,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "z-ai/glm-5.3",
+          "avg_rt": 116.2608047690015,
+          "count": 671,
+          "repo": "vadash"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 5064.551987767584,
+          "count": 654,
+          "repo": "vadash"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7502.8959107806695,
+          "count": 538,
+          "repo": "vadash"
+        },
+        {
+          "model": "google/diffusiongemma-26b-a4b-it",
+          "avg_rt": 14057.588333333333,
+          "count": 600,
+          "repo": "vadash"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 15199.0,
+          "count": 6,
+          "repo": "vadash"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 36261.89807692308,
+          "count": 520,
+          "repo": "vadash"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 47367.215953307394,
+          "count": 514,
+          "repo": "vadash"
+        },
+        {
+          "model": "moonshotai/kimi-k3",
+          "avg_rt": 48490.90924092409,
+          "count": 606,
+          "repo": "vadash"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 57354.524934383204,
+          "count": 381,
+          "repo": "vadash"
+        },
+        {
+          "model": "meta/muse-glimmer-30b",
+          "avg_rt": 58811.201058201055,
+          "count": 567,
+          "repo": "vadash"
+        }
+      ]
+    },
+    {
+      "repo": "maurodruwel",
+      "file": "maurodruwel__nimstats__history.db",
+      "runs": 720,
+      "results": 6834,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 9861.87323943662,
+          "count": 639,
+          "avg_tok": 492.7981220657277,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 12141.775471698113,
+          "count": 530,
+          "avg_tok": 671.2207547169811,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "openai/gpt-oss-20b",
+          "avg_rt": 16065.414826498423,
+          "count": 634,
+          "avg_tok": 492.6687697160883,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 28042.496632996634,
+          "count": 594,
+          "avg_tok": 499.95286195286195,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "avg_rt": 31134.118616144977,
+          "count": 607,
+          "avg_tok": 493.9472817133443,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 55138.76023391813,
+          "count": 513,
+          "avg_tok": 489.94736842105266,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 69753.0,
+          "count": 1,
+          "avg_tok": 500.0,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 85214.08612440192,
+          "count": 209,
+          "avg_tok": 486.3732057416268,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "meta/llama-3.2-90b-vision-instruct",
+          "avg_rt": 99463.76851851853,
+          "count": 324,
+          "avg_tok": 391.3487654320988,
+          "repo": "maurodruwel"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 133017.73913043478,
+          "count": 161,
+          "avg_tok": 499.95652173913044,
+          "repo": "maurodruwel"
+        }
+      ]
+    },
+    {
+      "repo": "data-path-9",
+      "file": "data-path-9__NIMStats__history.db",
+      "runs": 720,
+      "results": 14652,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 4583.017307692307,
+          "count": 520,
+          "avg_tok": 323.1192307692308,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 8364.472934472935,
+          "count": 702,
+          "avg_tok": 211.8048433048433,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 8565.355048859934,
+          "count": 614,
+          "avg_tok": 217.15798045602605,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 9429.219814241485,
+          "count": 646,
+          "avg_tok": 486.8637770897833,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 14258.756097560976,
+          "count": 287,
+          "avg_tok": 446.8292682926829,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 15457.970027247957,
+          "count": 367,
+          "avg_tok": 317.38692098092645,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 25652.545634920636,
+          "count": 504,
+          "avg_tok": 94.89484126984127,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 30758.945904173106,
+          "count": 647,
+          "avg_tok": 500.0,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "qwen/qwen3.5-122b-a10b",
+          "avg_rt": 42184.93427230047,
+          "count": 426,
+          "avg_tok": 139.6737089201878,
+          "repo": "data-path-9"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 43495.446069469835,
+          "count": 547,
+          "avg_tok": 112.63985374771481,
+          "repo": "data-path-9"
+        }
+      ]
+    },
+    {
+      "repo": "nextunicorn2026",
+      "file": "nextunicorn2026__NIMStats-hgi__history.db",
+      "runs": 720,
+      "results": 21744,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "meta/llama-3_3-70b-instruct",
+          "avg_rt": 88.15829787234043,
+          "count": 1175,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 5099.661237785016,
+          "count": 614,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 8558.45025728988,
+          "count": 1166,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 10063.771587743733,
+          "count": 718,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 14612.596506550219,
+          "count": 1145,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "qwen/qwen2.5-coder-32b-instruct",
+          "avg_rt": 19112.944055944055,
+          "count": 143,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 20732.429378531073,
+          "count": 1239,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 23884.07481751825,
+          "count": 1096,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "qwen/qwen3-coder-480b-a35b-instruct",
+          "avg_rt": 25025.236338797815,
+          "count": 732,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 28066.760869565216,
+          "count": 1104,
+          "repo": "nextunicorn2026"
+        }
+      ]
+    },
+    {
+      "repo": "vadash",
+      "file": "vadash__NIMStats__history.db.gz.tmpdb",
+      "runs": 671,
+      "results": 6115,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "z-ai/glm-5.3",
+          "avg_rt": 116.2608047690015,
+          "count": 671,
+          "repo": "vadash"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 5064.551987767584,
+          "count": 654,
+          "repo": "vadash"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7502.8959107806695,
+          "count": 538,
+          "repo": "vadash"
+        },
+        {
+          "model": "google/diffusiongemma-26b-a4b-it",
+          "avg_rt": 14057.588333333333,
+          "count": 600,
+          "repo": "vadash"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 15199.0,
+          "count": 6,
+          "repo": "vadash"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 36261.89807692308,
+          "count": 520,
+          "repo": "vadash"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 47367.215953307394,
+          "count": 514,
+          "repo": "vadash"
+        },
+        {
+          "model": "moonshotai/kimi-k3",
+          "avg_rt": 48490.90924092409,
+          "count": 606,
+          "repo": "vadash"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 57354.524934383204,
+          "count": 381,
+          "repo": "vadash"
+        },
+        {
+          "model": "meta/muse-glimmer-30b",
+          "avg_rt": 58811.201058201055,
+          "count": 567,
+          "repo": "vadash"
+        }
+      ]
+    },
+    {
+      "repo": "EastArctica",
+      "file": "EastArctica__NIMStats__history.db",
+      "runs": 720,
+      "results": 12222,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 3335.777777777778,
+          "count": 117,
+          "avg_tok": 324.84615384615387,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 5797.113385826771,
+          "count": 635,
+          "avg_tok": 493.5165354330709,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 9259.240369799692,
+          "count": 649,
+          "avg_tok": 488.31587057010785,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "mistralai/mistral-large-3-675b-instruct-2512",
+          "avg_rt": 11422.49860724234,
+          "count": 718,
+          "avg_tok": 337.25626740947075,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 12239.953800298063,
+          "count": 671,
+          "avg_tok": 434.53949329359165,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 12817.639652677279,
+          "count": 691,
+          "avg_tok": 430.62807525325616,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 12830.467142857144,
+          "count": 700,
+          "avg_tok": 500.0,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 15024.359154929578,
+          "count": 710,
+          "avg_tok": 488.39014084507045,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 22843.960784313724,
+          "count": 102,
+          "avg_tok": 468.8921568627451,
+          "repo": "EastArctica"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 27760.658653846152,
+          "count": 624,
+          "avg_tok": 225.51282051282053,
+          "repo": "EastArctica"
+        }
+      ]
+    },
+    {
+      "repo": "vadash",
+      "file": "vadash__NIMStats__history.db.gz",
+      "runs": 671,
+      "results": 6115,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "z-ai/glm-5.3",
+          "avg_rt": 116.2608047690015,
+          "count": 671,
+          "repo": "vadash"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 5064.551987767584,
+          "count": 654,
+          "repo": "vadash"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7502.8959107806695,
+          "count": 538,
+          "repo": "vadash"
+        },
+        {
+          "model": "google/diffusiongemma-26b-a4b-it",
+          "avg_rt": 14057.588333333333,
+          "count": 600,
+          "repo": "vadash"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 15199.0,
+          "count": 6,
+          "repo": "vadash"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 36261.89807692308,
+          "count": 520,
+          "repo": "vadash"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 47367.215953307394,
+          "count": 514,
+          "repo": "vadash"
+        },
+        {
+          "model": "moonshotai/kimi-k3",
+          "avg_rt": 48490.90924092409,
+          "count": 606,
+          "repo": "vadash"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 57354.524934383204,
+          "count": 381,
+          "repo": "vadash"
+        },
+        {
+          "model": "meta/muse-glimmer-30b",
+          "avg_rt": 58811.201058201055,
+          "count": 567,
+          "repo": "vadash"
+        }
+      ]
+    },
+    {
+      "repo": "eastarctica",
+      "file": "eastarctica__nimstats__history.db",
+      "runs": 720,
+      "results": 12222,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 3335.777777777778,
+          "count": 117,
+          "avg_tok": 324.84615384615387,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 5797.113385826771,
+          "count": 635,
+          "avg_tok": 493.5165354330709,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 9259.240369799692,
+          "count": 649,
+          "avg_tok": 488.31587057010785,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "mistralai/mistral-large-3-675b-instruct-2512",
+          "avg_rt": 11422.49860724234,
+          "count": 718,
+          "avg_tok": 337.25626740947075,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 12239.953800298063,
+          "count": 671,
+          "avg_tok": 434.53949329359165,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 12817.639652677279,
+          "count": 691,
+          "avg_tok": 430.62807525325616,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 12830.467142857144,
+          "count": 700,
+          "avg_tok": 500.0,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 15024.359154929578,
+          "count": 710,
+          "avg_tok": 488.39014084507045,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 22843.960784313724,
+          "count": 102,
+          "avg_tok": 468.8921568627451,
+          "repo": "eastarctica"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 27760.658653846152,
+          "count": 624,
+          "avg_tok": 225.51282051282053,
+          "repo": "eastarctica"
+        }
+      ]
+    },
+    {
+      "repo": "brottobhmg",
+      "file": "brottobhmg__NIMStats__history.db",
+      "runs": 720,
+      "results": 15216,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 4602.154425612052,
+          "count": 531,
+          "avg_tok": 323.16760828625235,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 8288.669044222539,
+          "count": 701,
+          "avg_tok": 149.18259629101283,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 8704.00788643533,
+          "count": 634,
+          "avg_tok": 156.18927444794951,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 9766.541012216405,
+          "count": 573,
+          "avg_tok": 486.70506108202443,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 14128.622448979591,
+          "count": 196,
+          "avg_tok": 454.6224489795918,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 17103.475524475525,
+          "count": 286,
+          "avg_tok": 268.9300699300699,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 26067.365159128978,
+          "count": 597,
+          "avg_tok": 81.13400335008376,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 39643.9001584786,
+          "count": 631,
+          "avg_tok": 500.0,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 40144.90128755365,
+          "count": 466,
+          "avg_tok": 92.99570815450643,
+          "repo": "brottobhmg"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash",
+          "avg_rt": 43314.473094170404,
+          "count": 446,
+          "avg_tok": 155.02242152466368,
+          "repo": "brottobhmg"
+        }
+      ]
+    },
+    {
+      "repo": "xiaoqianran",
+      "file": "xiaoqianran__NIMStats__history.db",
+      "runs": 2000,
+      "results": 206832,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results",
+        "scheduler_state",
+        "model_outputs"
+      ],
+      "top_models": [
+        {
+          "model": "nvidia/nvclip",
+          "avg_rt": 80.784,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "nvidia/llama-3.2-nemoretriever-1b-vlm-embed-v1",
+          "avg_rt": 81.159,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "nvidia/nv-embed-v1",
+          "avg_rt": 82.3405,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "nvidia/nv-embedqa-e5-v5",
+          "avg_rt": 82.4835,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "nvidia/nemotron-3-embed-1b",
+          "avg_rt": 83.2635,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "bigcode/starcoder2-15b",
+          "avg_rt": 90.3275,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "snowflake/arctic-embed-l",
+          "avg_rt": 91.5405,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "nvidia/llama-3.2-nv-embedqa-1b-v1",
+          "avg_rt": 92.4685,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "nvidia/nv-embedcode-7b-v1",
+          "avg_rt": 93.266,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        },
+        {
+          "model": "nvidia/llama-nemotron-embed-vl-1b-v2",
+          "avg_rt": 95.2485,
+          "count": 2000,
+          "avg_tok": null,
+          "repo": "xiaoqianran"
+        }
+      ]
+    },
+    {
+      "repo": "ahmedhabibo",
+      "file": "ahmedhabibo__NIMStats__history.db",
+      "runs": 1063,
+      "results": 23024,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "meta/llama-3_3-70b-instruct",
+          "avg_rt": 90.59590792838874,
+          "count": 782,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "nvidia/nemotron-3.5-content-safety",
+          "avg_rt": 578.3780487804878,
+          "count": 328,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-30b-a3b",
+          "avg_rt": 3441.3333333333335,
+          "count": 6,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "stepfun-ai/step-3.7-flash",
+          "avg_rt": 5910.75,
+          "count": 4,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 7315.678765880218,
+          "count": 551,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "nvidia/nemotron-content-safety-reasoning-4b",
+          "avg_rt": 8156.615384615385,
+          "count": 13,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 8806.306701030928,
+          "count": 776,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 11407.375,
+          "count": 384,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 18304.81697612732,
+          "count": 754,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "qwen/qwen2.5-coder-32b-instruct",
+          "avg_rt": 19112.944055944055,
+          "count": 143,
+          "repo": "ahmedhabibo"
+        }
+      ]
+    },
+    {
+      "repo": "anupamme",
+      "file": "anupamme__NIMStats__history.db",
+      "runs": 720,
+      "results": 15300,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 4602.154425612052,
+          "count": 531,
+          "avg_tok": 323.16760828625235,
+          "repo": "anupamme"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 8359.407142857142,
+          "count": 700,
+          "avg_tok": 138.50857142857143,
+          "repo": "anupamme"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 8645.847003154575,
+          "count": 634,
+          "avg_tok": 143.74921135646687,
+          "repo": "anupamme"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 9807.437722419929,
+          "count": 562,
+          "avg_tok": 486.8291814946619,
+          "repo": "anupamme"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 14118.175824175823,
+          "count": 182,
+          "avg_tok": 455.6373626373626,
+          "repo": "anupamme"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 17693.323529411766,
+          "count": 272,
+          "avg_tok": 260.1102941176471,
+          "repo": "anupamme"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 26433.729950900164,
+          "count": 611,
+          "avg_tok": 78.27659574468085,
+          "repo": "anupamme"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 40048.4238410596,
+          "count": 453,
+          "avg_tok": 89.20529801324503,
+          "repo": "anupamme"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 40313.5552,
+          "count": 625,
+          "avg_tok": 500.0,
+          "repo": "anupamme"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash",
+          "avg_rt": 42384.77448747153,
+          "count": 439,
+          "avg_tok": 142.78587699316628,
+          "repo": "anupamme"
+        }
+      ]
+    },
+    {
+      "repo": "agylogic-eng",
+      "file": "agylogic-eng__NIMStats__history.db.gz",
+      "runs": 671,
+      "results": 6345,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "z-ai/glm-5.3",
+          "avg_rt": 118.10730253353204,
+          "count": 671,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 119.35022354694486,
+          "count": 671,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7011.034734917733,
+          "count": 547,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "google/diffusiongemma-26b-a4b-it",
+          "avg_rt": 12003.53772070626,
+          "count": 623,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 36437.810444874274,
+          "count": 517,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "moonshotai/kimi-k3",
+          "avg_rt": 38462.16531604538,
+          "count": 617,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 54318.75342465754,
+          "count": 511,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 56092.828571428574,
+          "count": 35,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 65189.8487804878,
+          "count": 410,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "meta/muse-glimmer-30b",
+          "avg_rt": 70816.72324723247,
+          "count": 542,
+          "repo": "agylogic-eng"
+        }
+      ]
+    },
+    {
+      "repo": "NiL4gh",
+      "file": "NiL4gh__NIMStats__history.db",
+      "runs": 720,
+      "results": 15840,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 4741.059071729957,
+          "count": 474,
+          "avg_tok": 323.26582278481015,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7739.908571428571,
+          "count": 700,
+          "avg_tok": 41.81,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 8023.917808219178,
+          "count": 146,
+          "avg_tok": 110.54109589041096,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 8284.943529411765,
+          "count": 425,
+          "avg_tok": 486.49411764705883,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 9335.684458398744,
+          "count": 637,
+          "avg_tok": 31.229199372056517,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 14243.828571428572,
+          "count": 35,
+          "avg_tok": 446.48571428571427,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 29193.688125894136,
+          "count": 699,
+          "avg_tok": 30.399141630901287,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash",
+          "avg_rt": 35054.59375,
+          "count": 416,
+          "avg_tok": 35.77884615384615,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 41912.128834355826,
+          "count": 326,
+          "avg_tok": 36.22699386503067,
+          "repo": "NiL4gh"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 45909.68801313629,
+          "count": 609,
+          "avg_tok": 500.0,
+          "repo": "NiL4gh"
+        }
+      ]
+    },
+    {
+      "repo": "iaaan12",
+      "file": "iaaan12__delaynim__history.db",
+      "runs": 2539,
+      "results": 58744,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "meta/llama-3_3-70b-instruct",
+          "avg_rt": 92.25289256198347,
+          "count": 3025,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "stepfun-ai/step-3.7-flash",
+          "avg_rt": 4947.304347826087,
+          "count": 23,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 8442.83444338725,
+          "count": 2102,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 10150.694444444445,
+          "count": 1332,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 14272.225806451614,
+          "count": 1488,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 15651.139795918367,
+          "count": 2940,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "qwen/qwen2.5-coder-32b-instruct",
+          "avg_rt": 19112.944055944055,
+          "count": 143,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "qwen/qwen3-coder-480b-a35b-instruct",
+          "avg_rt": 25025.236338797815,
+          "count": 732,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 25495.601632047477,
+          "count": 1348,
+          "repo": "iaaan12"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 27374.13701431493,
+          "count": 2445,
+          "repo": "iaaan12"
+        }
+      ]
+    },
+    {
+      "repo": "MauroDruwel",
+      "file": "MauroDruwel__NIMStats__history.db",
+      "runs": 720,
+      "results": 6834,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 9861.87323943662,
+          "count": 639,
+          "avg_tok": 492.7981220657277,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 12141.775471698113,
+          "count": 530,
+          "avg_tok": 671.2207547169811,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "openai/gpt-oss-20b",
+          "avg_rt": 16065.414826498423,
+          "count": 634,
+          "avg_tok": 492.6687697160883,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 28042.496632996634,
+          "count": 594,
+          "avg_tok": 499.95286195286195,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "avg_rt": 31134.118616144977,
+          "count": 607,
+          "avg_tok": 493.9472817133443,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 55138.76023391813,
+          "count": 513,
+          "avg_tok": 489.94736842105266,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 69753.0,
+          "count": 1,
+          "avg_tok": 500.0,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 85214.08612440192,
+          "count": 209,
+          "avg_tok": 486.3732057416268,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "meta/llama-3.2-90b-vision-instruct",
+          "avg_rt": 99463.76851851853,
+          "count": 324,
+          "avg_tok": 391.3487654320988,
+          "repo": "MauroDruwel"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 133017.73913043478,
+          "count": 161,
+          "avg_tok": 499.95652173913044,
+          "repo": "MauroDruwel"
+        }
+      ]
+    },
+    {
+      "repo": "scholzthibault",
+      "file": "scholzthibault__NIMStats__history.db",
+      "runs": 720,
+      "results": 9848,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "stepfun-ai/step-3.7-flash",
+          "avg_rt": 4924.04347826087,
+          "count": 23,
+          "avg_tok": 0.0,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 9376.874380165289,
+          "count": 605,
+          "avg_tok": 360.72396694214876,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "openai/gpt-oss-20b",
+          "avg_rt": 9817.325443786982,
+          "count": 338,
+          "avg_tok": 494.11538461538464,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "thinkingmachines/inkling",
+          "avg_rt": 14682.333333333334,
+          "count": 222,
+          "avg_tok": 456.2882882882883,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 15590.502183406114,
+          "count": 687,
+          "avg_tok": 413.07860262008734,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "avg_rt": 20180.928104575163,
+          "count": 306,
+          "avg_tok": 494.62418300653593,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 21112.093922651933,
+          "count": 362,
+          "avg_tok": 498.61878453038673,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 43184.026966292135,
+          "count": 445,
+          "avg_tok": 150.8314606741573,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 53792.3293768546,
+          "count": 337,
+          "avg_tok": 493.2017804154303,
+          "repo": "scholzthibault"
+        },
+        {
+          "model": "minimaxai/minimax-m3",
+          "avg_rt": 57983.61257309942,
+          "count": 684,
+          "avg_tok": 271.5263157894737,
+          "repo": "scholzthibault"
+        }
+      ]
+    },
+    {
+      "repo": "nextunicorn2026",
+      "file": "nextunicorn2026__nimstats-hgi__history.db",
+      "runs": 720,
+      "results": 21744,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "meta/llama-3_3-70b-instruct",
+          "avg_rt": 88.15829787234043,
+          "count": 1175,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 5099.661237785016,
+          "count": 614,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 8558.45025728988,
+          "count": 1166,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 10063.771587743733,
+          "count": 718,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 14612.596506550219,
+          "count": 1145,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "qwen/qwen2.5-coder-32b-instruct",
+          "avg_rt": 19112.944055944055,
+          "count": 143,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 20732.429378531073,
+          "count": 1239,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 23884.07481751825,
+          "count": 1096,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "qwen/qwen3-coder-480b-a35b-instruct",
+          "avg_rt": 25025.236338797815,
+          "count": 732,
+          "repo": "nextunicorn2026"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 28066.760869565216,
+          "count": 1104,
+          "repo": "nextunicorn2026"
+        }
+      ]
+    },
+    {
+      "repo": "aigemini161-blip",
+      "file": "aigemini161-blip__NIMStats__history.db.gz.tmpdb",
+      "runs": 671,
+      "results": 6345,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "z-ai/glm-5.3",
+          "avg_rt": 118.10730253353204,
+          "count": 671,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 119.35022354694486,
+          "count": 671,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7011.034734917733,
+          "count": 547,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "google/diffusiongemma-26b-a4b-it",
+          "avg_rt": 12003.53772070626,
+          "count": 623,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 36437.810444874274,
+          "count": 517,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "moonshotai/kimi-k3",
+          "avg_rt": 38462.16531604538,
+          "count": 617,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 54318.75342465754,
+          "count": 511,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 56092.828571428574,
+          "count": 35,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 65189.8487804878,
+          "count": 410,
+          "repo": "aigemini161-blip"
+        },
+        {
+          "model": "meta/muse-glimmer-30b",
+          "avg_rt": 70816.72324723247,
+          "count": 542,
+          "repo": "aigemini161-blip"
+        }
+      ]
+    },
+    {
+      "repo": "tobymcclean",
+      "file": "tobymcclean__NIMStats__history.db",
+      "runs": 720,
+      "results": 14838,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 4602.154425612052,
+          "count": 531,
+          "avg_tok": 323.16760828625235,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 8335.152421652421,
+          "count": 702,
+          "avg_tok": 190.65669515669515,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 8544.7154340836,
+          "count": 622,
+          "avg_tok": 196.4614147909968,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 9410.89825119237,
+          "count": 629,
+          "avg_tok": 486.9046104928458,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 14239.169884169884,
+          "count": 259,
+          "avg_tok": 446.6332046332046,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 15957.241379310344,
+          "count": 348,
+          "avg_tok": 297.7298850574713,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 25368.83738317757,
+          "count": 535,
+          "avg_tok": 89.396261682243,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 34370.46273291925,
+          "count": 644,
+          "avg_tok": 500.0,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "qwen/qwen3.5-122b-a10b",
+          "avg_rt": 42054.6975,
+          "count": 400,
+          "avg_tok": 132.9275,
+          "repo": "tobymcclean"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 44303.99038461538,
+          "count": 520,
+          "avg_tok": 106.67307692307692,
+          "repo": "tobymcclean"
+        }
+      ]
+    },
+    {
+      "repo": "ahmedhabibo",
+      "file": "ahmedhabibo__nimstats__history.db",
+      "runs": 1063,
+      "results": 23024,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "meta/llama-3_3-70b-instruct",
+          "avg_rt": 90.59590792838874,
+          "count": 782,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "nvidia/nemotron-3.5-content-safety",
+          "avg_rt": 578.3780487804878,
+          "count": 328,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-30b-a3b",
+          "avg_rt": 3441.3333333333335,
+          "count": 6,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "stepfun-ai/step-3.7-flash",
+          "avg_rt": 5910.75,
+          "count": 4,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 7315.678765880218,
+          "count": 551,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "nvidia/nemotron-content-safety-reasoning-4b",
+          "avg_rt": 8156.615384615385,
+          "count": 13,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 8806.306701030928,
+          "count": 776,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 11407.375,
+          "count": 384,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 18304.81697612732,
+          "count": 754,
+          "repo": "ahmedhabibo"
+        },
+        {
+          "model": "qwen/qwen2.5-coder-32b-instruct",
+          "avg_rt": 19112.944055944055,
+          "count": 143,
+          "repo": "ahmedhabibo"
+        }
+      ]
+    },
+    {
+      "repo": "xijinpingxijinping08-cloud",
+      "file": "xijinpingxijinping08-cloud__NIMStats__history.db",
+      "runs": 314,
+      "results": 4313,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "meta/llama-3_3-70b-instruct",
+          "avg_rt": 84.08433734939759,
+          "count": 249,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 8856.991967871487,
+          "count": 249,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 9522.341463414634,
+          "count": 246,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 18084.904458598725,
+          "count": 314,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "qwen/qwen3-coder-480b-a35b-instruct",
+          "avg_rt": 18261.684210526317,
+          "count": 285,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 18855.071428571428,
+          "count": 308,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "qwen/qwen2.5-coder-32b-instruct",
+          "avg_rt": 19247.3661971831,
+          "count": 142,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "meta/llama-3.2-90b-vision-instruct",
+          "avg_rt": 36186.906882591094,
+          "count": 247,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 52928.75,
+          "count": 220,
+          "repo": "xijinpingxijinping08-cloud"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 55457.238341968914,
+          "count": 193,
+          "repo": "xijinpingxijinping08-cloud"
+        }
+      ]
+    },
+    {
+      "repo": "Clouder1122",
+      "file": "Clouder1122__NIMStats__history.db",
+      "runs": 720,
+      "results": 14814,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "mistralai/mistral-small-4-119b-2603",
+          "avg_rt": 4602.154425612052,
+          "count": 531,
+          "avg_tok": 323.16760828625235,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 8333.055555555555,
+          "count": 702,
+          "avg_tok": 193.505698005698,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 8564.495961227787,
+          "count": 619,
+          "avg_tok": 198.22132471728594,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 9388.331753554503,
+          "count": 633,
+          "avg_tok": 486.9778830963665,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 14182.482889733841,
+          "count": 263,
+          "avg_tok": 447.27756653992395,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 15909.51282051282,
+          "count": 351,
+          "avg_tok": 298.9088319088319,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "z-ai/glm-5.2",
+          "avg_rt": 25442.87570621469,
+          "count": 531,
+          "avg_tok": 90.06967984934087,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 33865.64496124031,
+          "count": 645,
+          "avg_tok": 500.0,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "qwen/qwen3.5-122b-a10b",
+          "avg_rt": 41745.69059405941,
+          "count": 404,
+          "avg_tok": 133.83663366336634,
+          "repo": "Clouder1122"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 44428.401529636714,
+          "count": 523,
+          "avg_tok": 107.32122370936902,
+          "repo": "Clouder1122"
+        }
+      ]
+    },
+    {
+      "repo": "i3t2y",
+      "file": "i3t2y__NIMStats__history.db",
+      "runs": 720,
+      "results": 6876,
+      "tables": [
+        "prompts",
+        "sqlite_sequence",
+        "models",
+        "errors",
+        "runs",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+          "avg_rt": 11263.324175824177,
+          "count": 546,
+          "avg_tok": 564.9505494505495,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "openai/gpt-oss-20b",
+          "avg_rt": 13172.669811320755,
+          "count": 530,
+          "avg_tok": 492.64528301886793,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 14841.385560675883,
+          "count": 651,
+          "avg_tok": 490.74500768049154,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "avg_rt": 26115.74701195219,
+          "count": 502,
+          "avg_tok": 496.6314741035857,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 26852.124760076775,
+          "count": 521,
+          "avg_tok": 499.0403071017274,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "minimaxai/minimax-m3",
+          "avg_rt": 48469.01601164483,
+          "count": 687,
+          "avg_tok": 408.7467248908297,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 57718.64618644068,
+          "count": 472,
+          "avg_tok": 490.90889830508473,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 82921.69026548673,
+          "count": 113,
+          "avg_tok": 484.3008849557522,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "meta/llama-3.2-90b-vision-instruct",
+          "avg_rt": 98769.29275362319,
+          "count": 345,
+          "avg_tok": 362.60869565217394,
+          "repo": "i3t2y"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 119925.33540372671,
+          "count": 161,
+          "avg_tok": 372.6583850931677,
+          "repo": "i3t2y"
+        }
+      ]
+    },
+    {
+      "repo": "agylogic-eng",
+      "file": "agylogic-eng__NIMStats__history.db.gz.tmpdb",
+      "runs": 671,
+      "results": 6345,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "z-ai/glm-5.3",
+          "avg_rt": 118.10730253353204,
+          "count": 671,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "avg_rt": 119.35022354694486,
+          "count": 671,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 7011.034734917733,
+          "count": 547,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "google/diffusiongemma-26b-a4b-it",
+          "avg_rt": 12003.53772070626,
+          "count": 623,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 36437.810444874274,
+          "count": 517,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "moonshotai/kimi-k3",
+          "avg_rt": 38462.16531604538,
+          "count": 617,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 54318.75342465754,
+          "count": 511,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "google/gemma-4-31b-it",
+          "avg_rt": 56092.828571428574,
+          "count": 35,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 65189.8487804878,
+          "count": 410,
+          "repo": "agylogic-eng"
+        },
+        {
+          "model": "meta/muse-glimmer-30b",
+          "avg_rt": 70816.72324723247,
+          "count": 542,
+          "repo": "agylogic-eng"
+        }
+      ]
+    },
+    {
+      "repo": "tudragon154203",
+      "file": "tudragon154203__NIMStats__history.db",
+      "runs": 554,
+      "results": 8030,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "meta/llama-3_3-70b-instruct",
+          "avg_rt": 88.59100204498978,
+          "count": 489,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "openai/gpt-oss-120b",
+          "avg_rt": 7476.257731958763,
+          "count": 485,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "stepfun-ai/step-3.5-flash",
+          "avg_rt": 14240.906542056075,
+          "count": 107,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "meta/llama-4-maverick-17b-128e-instruct",
+          "avg_rt": 14634.556237218814,
+          "count": 489,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "qwen/qwen2.5-coder-32b-instruct",
+          "avg_rt": 19112.944055944055,
+          "count": 143,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 20611.317689530686,
+          "count": 554,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "qwen/qwen3-coder-480b-a35b-instruct",
+          "avg_rt": 21601.667984189724,
+          "count": 506,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "qwen/qwen3.5-397b-a17b",
+          "avg_rt": 25787.27671755725,
+          "count": 524,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "meta/llama-3.2-90b-vision-instruct",
+          "avg_rt": 43421.31185031185,
+          "count": 481,
+          "repo": "tudragon154203"
+        },
+        {
+          "model": "moonshotai/kimi-k2.6",
+          "avg_rt": 45839.9497716895,
+          "count": 438,
+          "repo": "tudragon154203"
+        }
+      ]
+    },
+    {
+      "repo": "xudaxing2023-dot",
+      "file": "xudaxing2023-dot__NIMStats__history.db",
+      "runs": 81,
+      "results": 486,
+      "tables": [
+        "runs",
+        "sqlite_sequence",
+        "model_results"
+      ],
+      "top_models": [
+        {
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "avg_rt": 9005.888888888889,
+          "count": 72,
+          "repo": "xudaxing2023-dot"
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "avg_rt": 31634.941176470587,
+          "count": 68,
+          "repo": "xudaxing2023-dot"
+        },
+        {
+          "model": "minimaxai/minimax-m3",
+          "avg_rt": 40949.52272727273,
+          "count": 44,
+          "repo": "xudaxing2023-dot"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-flash-0731",
+          "avg_rt": 43274.70212765958,
+          "count": 47,
+          "repo": "xudaxing2023-dot"
+        },
+        {
+          "model": "deepseek-ai/deepseek-v4-pro-0813",
+          "avg_rt": 49128.38775510204,
+          "count": 49,
+          "repo": "xudaxing2023-dot"
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "model": "z-ai/glm-5.3",
+      "avg_rt": 118.10730253353204,
+      "count": 671,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 119.35022354694486,
+      "count": 671,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7011.034734917733,
+      "count": 547,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 12003.53772070626,
+      "count": 623,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 36437.810444874274,
+      "count": 517,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "avg_rt": 38462.16531604538,
+      "count": 617,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 54318.75342465754,
+      "count": 511,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 56092.828571428574,
+      "count": 35,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 65189.8487804878,
+      "count": 410,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 70816.72324723247,
+      "count": 542,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "z-ai/glm-5.3",
+      "avg_rt": 116.2608047690015,
+      "count": 671,
+      "repo": "vadash"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 5064.551987767584,
+      "count": 654,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7502.8959107806695,
+      "count": 538,
+      "repo": "vadash"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 14057.588333333333,
+      "count": 600,
+      "repo": "vadash"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 15199.0,
+      "count": 6,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 36261.89807692308,
+      "count": 520,
+      "repo": "vadash"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 47367.215953307394,
+      "count": 514,
+      "repo": "vadash"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "avg_rt": 48490.90924092409,
+      "count": 606,
+      "repo": "vadash"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 57354.524934383204,
+      "count": 381,
+      "repo": "vadash"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 58811.201058201055,
+      "count": 567,
+      "repo": "vadash"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 4602.154425612052,
+      "count": 531,
+      "avg_tok": 323.16760828625235,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 8350.977175463624,
+      "count": 701,
+      "avg_tok": 169.72610556348073,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 8623.640699523052,
+      "count": 629,
+      "avg_tok": 177.483306836248,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 9563.678275290216,
+      "count": 603,
+      "avg_tok": 486.7761194029851,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 14143.829694323143,
+      "count": 229,
+      "avg_tok": 441.5240174672489,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 15843.068965517241,
+      "count": 319,
+      "avg_tok": 285.47962382445144,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 25450.606382978724,
+      "count": 564,
+      "avg_tok": 84.79964539007092,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 37464.173708920185,
+      "count": 639,
+      "avg_tok": 500.0,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 42281.88438133874,
+      "count": 493,
+      "avg_tok": 100.11561866125761,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 43368.70212765958,
+      "count": 376,
+      "avg_tok": 125.77925531914893,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 46396.19823788546,
+      "count": 454,
+      "avg_tok": 182.9933920704846,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 47689.04178272981,
+      "count": 359,
+      "avg_tok": 88.37883008356546,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 48334.60437710438,
+      "count": 594,
+      "avg_tok": 337.2239057239057,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 48674.09905660377,
+      "count": 636,
+      "avg_tok": 157.94182389937106,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 55753.38825448613,
+      "count": 613,
+      "avg_tok": 499.3295269168026,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 55826.08809891808,
+      "count": 647,
+      "avg_tok": 336.03091190108194,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 74340.10196078432,
+      "count": 510,
+      "avg_tok": 175.81728880157172,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 78337.00562851783,
+      "count": 533,
+      "avg_tok": 104.20825515947467,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 78460.49910233394,
+      "count": 557,
+      "avg_tok": 154.15798922800718,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 157420.03716216216,
+      "count": 296,
+      "avg_tok": 69.50675675675676,
+      "repo": "dinggouhua"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 4874.660550458716,
+      "count": 109,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 5202.888888888889,
+      "count": 324,
+      "avg_tok": 325.75925925925924,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 7220.087591240876,
+      "count": 685,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 7857.477663230241,
+      "count": 291,
+      "avg_tok": 486.9931271477663,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 12342.71186440678,
+      "count": 708,
+      "avg_tok": 104.61723163841808,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 27103.183486238533,
+      "count": 109,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 32671.202216066482,
+      "count": 361,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 34228.25,
+      "count": 708,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 47542.08888888889,
+      "count": 225,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 53100.0372250423,
+      "count": 591,
+      "avg_tok": 500.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 57009.880952380954,
+      "count": 294,
+      "avg_tok": 499.4761904761905,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 58728.1030927835,
+      "count": 194,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 59034.29881154499,
+      "count": 589,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 71682.99297423888,
+      "count": 427,
+      "avg_tok": 336.42857142857144,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 78183.84834123222,
+      "count": 422,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 81918.7401459854,
+      "count": 685,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 92664.32494758909,
+      "count": 477,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 107867.872,
+      "count": 250,
+      "avg_tok": 339.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 132825.81218274112,
+      "count": 394,
+      "avg_tok": 0.0,
+      "repo": "kumaa-1"
+    },
+    {
+      "model": "nvidia/riva-translate-4b-instruct-v2",
+      "avg_rt": 787.8169014084507,
+      "count": 71,
+      "avg_tok": 22.859154929577464,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "nvidia/llama-3.1-nemoguard-8b-content-safety",
+      "avg_rt": 977.6888888888889,
+      "count": 45,
+      "avg_tok": 8.0,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-content-safety",
+      "avg_rt": 1189.225352112676,
+      "count": 71,
+      "avg_tok": 5.0,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "nvidia/llama-3.1-nemotron-safety-guard-8b-v3",
+      "avg_rt": 3334.9014084507044,
+      "count": 71,
+      "avg_tok": 9.0,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "stepfun-ai/step-3.7-flash",
+      "avg_rt": 4924.04347826087,
+      "count": 23,
+      "avg_tok": 0.0,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "nvidia/ising-calibration-1.5-31b",
+      "avg_rt": 7146.802816901409,
+      "count": 71,
+      "avg_tok": 70.77464788732394,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 10394.664912280701,
+      "count": 570,
+      "avg_tok": 487.82456140350877,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "avg_rt": 12805.155507559395,
+      "count": 463,
+      "avg_tok": 493.16630669546436,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "thinkingmachines/inkling",
+      "avg_rt": 14682.333333333334,
+      "count": 222,
+      "avg_tok": 456.2882882882883,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 15958.344879518072,
+      "count": 664,
+      "avg_tok": 488.9322289156627,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 17858.65671641791,
+      "count": 67,
+      "avg_tok": 466.5970149253731,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "meta/llama-3.2-11b-vision-instruct",
+      "avg_rt": 20475.797101449276,
+      "count": 69,
+      "avg_tok": 393.1304347826087,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 26048.774403470718,
+      "count": 461,
+      "avg_tok": 498.91540130151844,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "avg_rt": 27215.516129032258,
+      "count": 434,
+      "avg_tok": 494.1221198156682,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 37279.378787878784,
+      "count": 66,
+      "avg_tok": 497.9848484848485,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 44497.267295597485,
+      "count": 318,
+      "avg_tok": 211.0691823899371,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 44793.23600605144,
+      "count": 661,
+      "avg_tok": 358.0121028744327,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 53118.60498960499,
+      "count": 481,
+      "avg_tok": 498.96049896049897,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 55368.71428571428,
+      "count": 420,
+      "avg_tok": 491.3309523809524,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "poolside/laguna-xs-2.1",
+      "avg_rt": 60008.09302325582,
+      "count": 43,
+      "avg_tok": 405.0232558139535,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "mistralai/mistral-nemotron",
+      "avg_rt": 80284.11111111111,
+      "count": 36,
+      "avg_tok": 237.61111111111111,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 90437.57352941176,
+      "count": 68,
+      "avg_tok": 489.6617647058824,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 90965.56962025317,
+      "count": 395,
+      "avg_tok": 300.746835443038,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 108053.47311827957,
+      "count": 186,
+      "avg_tok": 311.81720430107526,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 147208.608,
+      "count": 250,
+      "avg_tok": 237.616,
+      "repo": "Pixyde"
+    },
+    {
+      "model": "z-ai/glm-5.3",
+      "avg_rt": 116.2608047690015,
+      "count": 671,
+      "repo": "vadash"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 5064.551987767584,
+      "count": 654,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7502.8959107806695,
+      "count": 538,
+      "repo": "vadash"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 14057.588333333333,
+      "count": 600,
+      "repo": "vadash"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 15199.0,
+      "count": 6,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 36261.89807692308,
+      "count": 520,
+      "repo": "vadash"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 47367.215953307394,
+      "count": 514,
+      "repo": "vadash"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "avg_rt": 48490.90924092409,
+      "count": 606,
+      "repo": "vadash"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 57354.524934383204,
+      "count": 381,
+      "repo": "vadash"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 58811.201058201055,
+      "count": 567,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 9861.87323943662,
+      "count": 639,
+      "avg_tok": 492.7981220657277,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 12141.775471698113,
+      "count": 530,
+      "avg_tok": 671.2207547169811,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "avg_rt": 16065.414826498423,
+      "count": 634,
+      "avg_tok": 492.6687697160883,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 28042.496632996634,
+      "count": 594,
+      "avg_tok": 499.95286195286195,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "avg_rt": 31134.118616144977,
+      "count": 607,
+      "avg_tok": 493.9472817133443,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 55138.76023391813,
+      "count": 513,
+      "avg_tok": 489.94736842105266,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 69753.0,
+      "count": 1,
+      "avg_tok": 500.0,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 85214.08612440192,
+      "count": 209,
+      "avg_tok": 486.3732057416268,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 99463.76851851853,
+      "count": 324,
+      "avg_tok": 391.3487654320988,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 133017.73913043478,
+      "count": 161,
+      "avg_tok": 499.95652173913044,
+      "repo": "maurodruwel"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 4583.017307692307,
+      "count": 520,
+      "avg_tok": 323.1192307692308,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 8364.472934472935,
+      "count": 702,
+      "avg_tok": 211.8048433048433,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 8565.355048859934,
+      "count": 614,
+      "avg_tok": 217.15798045602605,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 9429.219814241485,
+      "count": 646,
+      "avg_tok": 486.8637770897833,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 14258.756097560976,
+      "count": 287,
+      "avg_tok": 446.8292682926829,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 15457.970027247957,
+      "count": 367,
+      "avg_tok": 317.38692098092645,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 25652.545634920636,
+      "count": 504,
+      "avg_tok": 94.89484126984127,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 30758.945904173106,
+      "count": 647,
+      "avg_tok": 500.0,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 42184.93427230047,
+      "count": 426,
+      "avg_tok": 139.6737089201878,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 43495.446069469835,
+      "count": 547,
+      "avg_tok": 112.63985374771481,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 44296.54961832061,
+      "count": 655,
+      "avg_tok": 337.12519083969465,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 47681.11747851003,
+      "count": 349,
+      "avg_tok": 90.91117478510029,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 49355.57704402516,
+      "count": 636,
+      "avg_tok": 196.15408805031447,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 49622.02801724138,
+      "count": 464,
+      "avg_tok": 228.0280172413793,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 50929.2990797546,
+      "count": 652,
+      "avg_tok": 336.65184049079755,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 53332.11933534743,
+      "count": 662,
+      "avg_tok": 499.40181268882174,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 73381.53093812375,
+      "count": 501,
+      "avg_tok": 218.982,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 73658.0018382353,
+      "count": 544,
+      "avg_tok": 186.11029411764707,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 79324.19915254238,
+      "count": 472,
+      "avg_tok": 117.67584745762711,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 162159.32170542635,
+      "count": 258,
+      "avg_tok": 79.74418604651163,
+      "repo": "data-path-9"
+    },
+    {
+      "model": "meta/llama-3_3-70b-instruct",
+      "avg_rt": 88.15829787234043,
+      "count": 1175,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 5099.661237785016,
+      "count": 614,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 8558.45025728988,
+      "count": 1166,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 10063.771587743733,
+      "count": 718,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 14612.596506550219,
+      "count": 1145,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "qwen/qwen2.5-coder-32b-instruct",
+      "avg_rt": 19112.944055944055,
+      "count": 143,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 20732.429378531073,
+      "count": 1239,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 23884.07481751825,
+      "count": 1096,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "qwen/qwen3-coder-480b-a35b-instruct",
+      "avg_rt": 25025.236338797815,
+      "count": 732,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 28066.760869565216,
+      "count": 1104,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 39392.346041055716,
+      "count": 682,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 43538.219638242896,
+      "count": 1161,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 51696.45733222867,
+      "count": 1207,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 54293.78982300885,
+      "count": 452,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 61030.62826086956,
+      "count": 920,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 64255.41217391304,
+      "count": 575,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 65076.67414403778,
+      "count": 847,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "avg_rt": 65499.40304826418,
+      "count": 1181,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 70025.45405405405,
+      "count": 555,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "z-ai/glm-5.3",
+      "avg_rt": 116.2608047690015,
+      "count": 671,
+      "repo": "vadash"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 5064.551987767584,
+      "count": 654,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7502.8959107806695,
+      "count": 538,
+      "repo": "vadash"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 14057.588333333333,
+      "count": 600,
+      "repo": "vadash"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 15199.0,
+      "count": 6,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 36261.89807692308,
+      "count": 520,
+      "repo": "vadash"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 47367.215953307394,
+      "count": 514,
+      "repo": "vadash"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "avg_rt": 48490.90924092409,
+      "count": 606,
+      "repo": "vadash"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 57354.524934383204,
+      "count": 381,
+      "repo": "vadash"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 58811.201058201055,
+      "count": 567,
+      "repo": "vadash"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 3335.777777777778,
+      "count": 117,
+      "avg_tok": 324.84615384615387,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 5797.113385826771,
+      "count": 635,
+      "avg_tok": 493.5165354330709,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 9259.240369799692,
+      "count": 649,
+      "avg_tok": 488.31587057010785,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 11422.49860724234,
+      "count": 718,
+      "avg_tok": 337.25626740947075,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 12239.953800298063,
+      "count": 671,
+      "avg_tok": 434.53949329359165,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 12817.639652677279,
+      "count": 691,
+      "avg_tok": 430.62807525325616,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 12830.467142857144,
+      "count": 700,
+      "avg_tok": 500.0,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 15024.359154929578,
+      "count": 710,
+      "avg_tok": 488.39014084507045,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 22843.960784313724,
+      "count": 102,
+      "avg_tok": 468.8921568627451,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 27760.658653846152,
+      "count": 624,
+      "avg_tok": 225.51282051282053,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 34354.94853963839,
+      "count": 719,
+      "avg_tok": 337.0528511821975,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 44115.54761904762,
+      "count": 84,
+      "avg_tok": 377.7142857142857,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 45940.3356545961,
+      "count": 718,
+      "avg_tok": 394.18384401114207,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 50202.230769230766,
+      "count": 507,
+      "avg_tok": 242.65285996055226,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 51811.0592459605,
+      "count": 557,
+      "avg_tok": 490.5188509874327,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 56322.30229007634,
+      "count": 655,
+      "avg_tok": 498.80763358778626,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 57357.221218961626,
+      "count": 443,
+      "avg_tok": 458.24379232505646,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 69756.04225352113,
+      "count": 355,
+      "avg_tok": 499.97457627118644,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 88784.78947368421,
+      "count": 114,
+      "avg_tok": 487.219298245614,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 165463.86274509804,
+      "count": 51,
+      "avg_tok": 403.4117647058824,
+      "repo": "EastArctica"
+    },
+    {
+      "model": "z-ai/glm-5.3",
+      "avg_rt": 116.2608047690015,
+      "count": 671,
+      "repo": "vadash"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 5064.551987767584,
+      "count": 654,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7502.8959107806695,
+      "count": 538,
+      "repo": "vadash"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 14057.588333333333,
+      "count": 600,
+      "repo": "vadash"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 15199.0,
+      "count": 6,
+      "repo": "vadash"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 36261.89807692308,
+      "count": 520,
+      "repo": "vadash"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 47367.215953307394,
+      "count": 514,
+      "repo": "vadash"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "avg_rt": 48490.90924092409,
+      "count": 606,
+      "repo": "vadash"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 57354.524934383204,
+      "count": 381,
+      "repo": "vadash"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 58811.201058201055,
+      "count": 567,
+      "repo": "vadash"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 3335.777777777778,
+      "count": 117,
+      "avg_tok": 324.84615384615387,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 5797.113385826771,
+      "count": 635,
+      "avg_tok": 493.5165354330709,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 9259.240369799692,
+      "count": 649,
+      "avg_tok": 488.31587057010785,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 11422.49860724234,
+      "count": 718,
+      "avg_tok": 337.25626740947075,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 12239.953800298063,
+      "count": 671,
+      "avg_tok": 434.53949329359165,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 12817.639652677279,
+      "count": 691,
+      "avg_tok": 430.62807525325616,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 12830.467142857144,
+      "count": 700,
+      "avg_tok": 500.0,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 15024.359154929578,
+      "count": 710,
+      "avg_tok": 488.39014084507045,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 22843.960784313724,
+      "count": 102,
+      "avg_tok": 468.8921568627451,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 27760.658653846152,
+      "count": 624,
+      "avg_tok": 225.51282051282053,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 34354.94853963839,
+      "count": 719,
+      "avg_tok": 337.0528511821975,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 44115.54761904762,
+      "count": 84,
+      "avg_tok": 377.7142857142857,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 45940.3356545961,
+      "count": 718,
+      "avg_tok": 394.18384401114207,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 50202.230769230766,
+      "count": 507,
+      "avg_tok": 242.65285996055226,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 51811.0592459605,
+      "count": 557,
+      "avg_tok": 490.5188509874327,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 56322.30229007634,
+      "count": 655,
+      "avg_tok": 498.80763358778626,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 57357.221218961626,
+      "count": 443,
+      "avg_tok": 458.24379232505646,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 69756.04225352113,
+      "count": 355,
+      "avg_tok": 499.97457627118644,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 88784.78947368421,
+      "count": 114,
+      "avg_tok": 487.219298245614,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 165463.86274509804,
+      "count": 51,
+      "avg_tok": 403.4117647058824,
+      "repo": "eastarctica"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 4602.154425612052,
+      "count": 531,
+      "avg_tok": 323.16760828625235,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 8288.669044222539,
+      "count": 701,
+      "avg_tok": 149.18259629101283,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 8704.00788643533,
+      "count": 634,
+      "avg_tok": 156.18927444794951,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 9766.541012216405,
+      "count": 573,
+      "avg_tok": 486.70506108202443,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 14128.622448979591,
+      "count": 196,
+      "avg_tok": 454.6224489795918,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 17103.475524475525,
+      "count": 286,
+      "avg_tok": 268.9300699300699,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 26067.365159128978,
+      "count": 597,
+      "avg_tok": 81.13400335008376,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 39643.9001584786,
+      "count": 631,
+      "avg_tok": 500.0,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 40144.90128755365,
+      "count": 466,
+      "avg_tok": 92.99570815450643,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 43314.473094170404,
+      "count": 446,
+      "avg_tok": 155.02242152466368,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 43634.31908831909,
+      "count": 351,
+      "avg_tok": 117.58689458689459,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 47689.04178272981,
+      "count": 359,
+      "avg_tok": 88.37883008356546,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 48813.59433962264,
+      "count": 636,
+      "avg_tok": 138.88522012578616,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 50908.31907308378,
+      "count": 561,
+      "avg_tok": 337.4901960784314,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 56286.377586206894,
+      "count": 580,
+      "avg_tok": 499.29137931034484,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 59114.375776397515,
+      "count": 644,
+      "avg_tok": 336.16149068322983,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 72705.37354085603,
+      "count": 514,
+      "avg_tok": 156.82261208576998,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 77009.40106007067,
+      "count": 566,
+      "avg_tok": 99.76148409893993,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 81232.83392857143,
+      "count": 560,
+      "avg_tok": 136.3375,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 158679.84565916398,
+      "count": 311,
+      "avg_tok": 67.53697749196141,
+      "repo": "brottobhmg"
+    },
+    {
+      "model": "nvidia/nvclip",
+      "avg_rt": 80.784,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/llama-3.2-nemoretriever-1b-vlm-embed-v1",
+      "avg_rt": 81.159,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/nv-embed-v1",
+      "avg_rt": 82.3405,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/nv-embedqa-e5-v5",
+      "avg_rt": 82.4835,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/nemotron-3-embed-1b",
+      "avg_rt": 83.2635,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "bigcode/starcoder2-15b",
+      "avg_rt": 90.3275,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "snowflake/arctic-embed-l",
+      "avg_rt": 91.5405,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/llama-3.2-nv-embedqa-1b-v1",
+      "avg_rt": 92.4685,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/nv-embedcode-7b-v1",
+      "avg_rt": 93.266,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/llama-nemotron-embed-vl-1b-v2",
+      "avg_rt": 95.2485,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/nv-embedqa-mistral-7b-v2",
+      "avg_rt": 99.303,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/embed-qa-4",
+      "avg_rt": 100.8005,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "zyphra/zamba2-7b-instruct",
+      "avg_rt": 106.779,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/vila",
+      "avg_rt": 107.216,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "google/recurrentgemma-2b",
+      "avg_rt": 108.8475,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/cosmos-reason2-8b",
+      "avg_rt": 108.906,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "ibm/granite-34b-code-instruct",
+      "avg_rt": 109.067,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "writer/palmyra-creative-122b",
+      "avg_rt": 109.3215,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/neva-22b",
+      "avg_rt": 109.425,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/nemotron-4-340b-instruct",
+      "avg_rt": 109.638,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "google/codegemma-1.1-7b",
+      "avg_rt": 109.7125,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/mistral-nemo-minitron-8b-8k-instruct",
+      "avg_rt": 110.4975,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "ibm/granite-3.0-3b-a800m-instruct",
+      "avg_rt": 112.367,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      "avg_rt": 116.6005,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "adept/fuyu-8b",
+      "avg_rt": 116.7115,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/llama3-chatqa-1.5-70b",
+      "avg_rt": 117.108,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "aisingapore/sea-lion-7b-instruct",
+      "avg_rt": 117.4445,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "writer/palmyra-med-70b-32k",
+      "avg_rt": 117.505,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "google/deplot",
+      "avg_rt": 118.2995,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "mistralai/codestral-22b-instruct-v0.1",
+      "avg_rt": 118.821,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/llama-nemotron-embed-1b-v2",
+      "avg_rt": 118.949,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "writer/palmyra-med-70b",
+      "avg_rt": 119.282,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "google/gemma-2b",
+      "avg_rt": 119.5235,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "microsoft/kosmos-2",
+      "avg_rt": 120.093,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/llama-3.1-nemotron-70b-instruct",
+      "avg_rt": 124.434,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "databricks/dbrx-instruct",
+      "avg_rt": 125.3915,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "01-ai/yi-large",
+      "avg_rt": 126.0515,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "deepseek-ai/deepseek-coder-6.7b-instruct",
+      "avg_rt": 126.2,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "mistralai/mistral-large-2-instruct",
+      "avg_rt": 126.4225,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "google/codegemma-7b",
+      "avg_rt": 127.158,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "meta/llama2-70b",
+      "avg_rt": 127.2135,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 127.289,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "ibm/granite-8b-code-instruct",
+      "avg_rt": 127.354,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "mistralai/mixtral-8x22b-v0.1",
+      "avg_rt": 127.409,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "google/gemma-3-4b-it",
+      "avg_rt": 127.8415,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "baai/bge-m3",
+      "avg_rt": 128.5735,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "mistralai/mistral-large",
+      "avg_rt": 129.967,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nv-mistralai/mistral-nemo-12b-instruct",
+      "avg_rt": 134.091,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "writer/palmyra-fin-70b-32k",
+      "avg_rt": 136.3695,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "nvidia/riva-translate-4b-instruct",
+      "avg_rt": 136.537,
+      "count": 2000,
+      "avg_tok": null,
+      "repo": "xiaoqianran"
+    },
+    {
+      "model": "meta/llama-3_3-70b-instruct",
+      "avg_rt": 90.59590792838874,
+      "count": 782,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-content-safety",
+      "avg_rt": 578.3780487804878,
+      "count": 328,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-30b-a3b",
+      "avg_rt": 3441.3333333333335,
+      "count": 6,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "stepfun-ai/step-3.7-flash",
+      "avg_rt": 5910.75,
+      "count": 4,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 7315.678765880218,
+      "count": 551,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-content-safety-reasoning-4b",
+      "avg_rt": 8156.615384615385,
+      "count": 13,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 8806.306701030928,
+      "count": 776,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 11407.375,
+      "count": 384,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 18304.81697612732,
+      "count": 754,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "qwen/qwen2.5-coder-32b-instruct",
+      "avg_rt": 19112.944055944055,
+      "count": 143,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 22707.228803716607,
+      "count": 861,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 23138.66037735849,
+      "count": 848,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "qwen/qwen3-coder-480b-a35b-instruct",
+      "avg_rt": 25025.236338797815,
+      "count": 732,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 27898.414258188826,
+      "count": 1038,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 30608.479834539812,
+      "count": 967,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 43257.9025974026,
+      "count": 770,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 46291.33781763827,
+      "count": 669,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 55483.22169811321,
+      "count": 212,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 55679.120137299775,
+      "count": 874,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 62947.90260869565,
+      "count": 575,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 64700.821476510064,
+      "count": 745,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 65059.44599303136,
+      "count": 861,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 67644.76682692308,
+      "count": 416,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 70467.76196319019,
+      "count": 815,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "avg_rt": 76519.6766004415,
+      "count": 906,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 4602.154425612052,
+      "count": 531,
+      "avg_tok": 323.16760828625235,
+      "repo": "anupamme"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 8359.407142857142,
+      "count": 700,
+      "avg_tok": 138.50857142857143,
+      "repo": "anupamme"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 8645.847003154575,
+      "count": 634,
+      "avg_tok": 143.74921135646687,
+      "repo": "anupamme"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 9807.437722419929,
+      "count": 562,
+      "avg_tok": 486.8291814946619,
+      "repo": "anupamme"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 14118.175824175823,
+      "count": 182,
+      "avg_tok": 455.6373626373626,
+      "repo": "anupamme"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 17693.323529411766,
+      "count": 272,
+      "avg_tok": 260.1102941176471,
+      "repo": "anupamme"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 26433.729950900164,
+      "count": 611,
+      "avg_tok": 78.27659574468085,
+      "repo": "anupamme"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 40048.4238410596,
+      "count": 453,
+      "avg_tok": 89.20529801324503,
+      "repo": "anupamme"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 40313.5552,
+      "count": 625,
+      "avg_tok": 500.0,
+      "repo": "anupamme"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 42384.77448747153,
+      "count": 439,
+      "avg_tok": 142.78587699316628,
+      "repo": "anupamme"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 44592.92375366569,
+      "count": 341,
+      "avg_tok": 113.71847507331378,
+      "repo": "anupamme"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 47689.04178272981,
+      "count": 359,
+      "avg_tok": 88.37883008356546,
+      "repo": "anupamme"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 48975.50471698113,
+      "count": 636,
+      "avg_tok": 128.94025157232704,
+      "repo": "anupamme"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 52100.946983546615,
+      "count": 547,
+      "avg_tok": 337.3711151736746,
+      "repo": "anupamme"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 56271.63074204947,
+      "count": 566,
+      "avg_tok": 499.36042402826854,
+      "repo": "anupamme"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 59845.975155279506,
+      "count": 644,
+      "avg_tok": 335.9875776397516,
+      "repo": "anupamme"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 73312.60314341847,
+      "count": 509,
+      "avg_tok": 145.6515748031496,
+      "repo": "anupamme"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 76608.77413793103,
+      "count": 580,
+      "avg_tok": 95.76379310344828,
+      "repo": "anupamme"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 81554.38421052632,
+      "count": 570,
+      "avg_tok": 132.41052631578947,
+      "repo": "anupamme"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 159241.77287066245,
+      "count": 317,
+      "avg_tok": 64.90220820189275,
+      "repo": "anupamme"
+    },
+    {
+      "model": "z-ai/glm-5.3",
+      "avg_rt": 118.10730253353204,
+      "count": 671,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 119.35022354694486,
+      "count": 671,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7011.034734917733,
+      "count": 547,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 12003.53772070626,
+      "count": 623,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 36437.810444874274,
+      "count": 517,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "avg_rt": 38462.16531604538,
+      "count": 617,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 54318.75342465754,
+      "count": 511,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 56092.828571428574,
+      "count": 35,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 65189.8487804878,
+      "count": 410,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 70816.72324723247,
+      "count": 542,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 4741.059071729957,
+      "count": 474,
+      "avg_tok": 323.26582278481015,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7739.908571428571,
+      "count": 700,
+      "avg_tok": 41.81,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 8023.917808219178,
+      "count": 146,
+      "avg_tok": 110.54109589041096,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 8284.943529411765,
+      "count": 425,
+      "avg_tok": 486.49411764705883,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 9335.684458398744,
+      "count": 637,
+      "avg_tok": 31.229199372056517,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 14243.828571428572,
+      "count": 35,
+      "avg_tok": 446.48571428571427,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 29193.688125894136,
+      "count": 699,
+      "avg_tok": 30.399141630901287,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 35054.59375,
+      "count": 416,
+      "avg_tok": 35.77884615384615,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 41912.128834355826,
+      "count": 326,
+      "avg_tok": 36.22699386503067,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 45909.68801313629,
+      "count": 609,
+      "avg_tok": 500.0,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 47375.75905511811,
+      "count": 635,
+      "avg_tok": 37.733858267716535,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 47402.12162162162,
+      "count": 222,
+      "avg_tok": 45.887387387387385,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 53986.50328947369,
+      "count": 304,
+      "avg_tok": 36.11513157894737,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 57622.5710955711,
+      "count": 429,
+      "avg_tok": 499.6200466200466,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 65210.39344262295,
+      "count": 549,
+      "avg_tok": 335.3187613843352,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 69181.9275,
+      "count": 400,
+      "avg_tok": 337.325,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 74882.00649350649,
+      "count": 462,
+      "avg_tok": 46.51731601731602,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 84633.88945578231,
+      "count": 588,
+      "avg_tok": 38.42687074829932,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 85717.12556053812,
+      "count": 669,
+      "avg_tok": 41.889387144992526,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 146589.75654450263,
+      "count": 382,
+      "avg_tok": 28.31151832460733,
+      "repo": "NiL4gh"
+    },
+    {
+      "model": "meta/llama-3_3-70b-instruct",
+      "avg_rt": 92.25289256198347,
+      "count": 3025,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "stepfun-ai/step-3.7-flash",
+      "avg_rt": 4947.304347826087,
+      "count": 23,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 8442.83444338725,
+      "count": 2102,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 10150.694444444445,
+      "count": 1332,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 14272.225806451614,
+      "count": 1488,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 15651.139795918367,
+      "count": 2940,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "qwen/qwen2.5-coder-32b-instruct",
+      "avg_rt": 19112.944055944055,
+      "count": 143,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "qwen/qwen3-coder-480b-a35b-instruct",
+      "avg_rt": 25025.236338797815,
+      "count": 732,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 25495.601632047477,
+      "count": 1348,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 27374.13701431493,
+      "count": 2445,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 30853.406307977737,
+      "count": 1617,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 45894.82231404959,
+      "count": 1452,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 46699.44210526316,
+      "count": 855,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 49459.259812050856,
+      "count": 1809,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 50692.762767710046,
+      "count": 2428,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 56821.30609597925,
+      "count": 1542,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 57137.962807017546,
+      "count": 1425,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "avg_rt": 62368.246422893484,
+      "count": 1258,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 70548.05701078582,
+      "count": 1298,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 76551.94440484676,
+      "count": 1403,
+      "repo": "iaaan12"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 9861.87323943662,
+      "count": 639,
+      "avg_tok": 492.7981220657277,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 12141.775471698113,
+      "count": 530,
+      "avg_tok": 671.2207547169811,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "avg_rt": 16065.414826498423,
+      "count": 634,
+      "avg_tok": 492.6687697160883,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 28042.496632996634,
+      "count": 594,
+      "avg_tok": 499.95286195286195,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "avg_rt": 31134.118616144977,
+      "count": 607,
+      "avg_tok": 493.9472817133443,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 55138.76023391813,
+      "count": 513,
+      "avg_tok": 489.94736842105266,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 69753.0,
+      "count": 1,
+      "avg_tok": 500.0,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 85214.08612440192,
+      "count": 209,
+      "avg_tok": 486.3732057416268,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 99463.76851851853,
+      "count": 324,
+      "avg_tok": 391.3487654320988,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 133017.73913043478,
+      "count": 161,
+      "avg_tok": 499.95652173913044,
+      "repo": "MauroDruwel"
+    },
+    {
+      "model": "stepfun-ai/step-3.7-flash",
+      "avg_rt": 4924.04347826087,
+      "count": 23,
+      "avg_tok": 0.0,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 9376.874380165289,
+      "count": 605,
+      "avg_tok": 360.72396694214876,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "avg_rt": 9817.325443786982,
+      "count": 338,
+      "avg_tok": 494.11538461538464,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "thinkingmachines/inkling",
+      "avg_rt": 14682.333333333334,
+      "count": 222,
+      "avg_tok": 456.2882882882883,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 15590.502183406114,
+      "count": 687,
+      "avg_tok": 413.07860262008734,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "avg_rt": 20180.928104575163,
+      "count": 306,
+      "avg_tok": 494.62418300653593,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 21112.093922651933,
+      "count": 362,
+      "avg_tok": 498.61878453038673,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 43184.026966292135,
+      "count": 445,
+      "avg_tok": 150.8314606741573,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 53792.3293768546,
+      "count": 337,
+      "avg_tok": 493.2017804154303,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 57983.61257309942,
+      "count": 684,
+      "avg_tok": 271.5263157894737,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 59522.86466165414,
+      "count": 532,
+      "avg_tok": 499.0601503759398,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 76952.18058690745,
+      "count": 443,
+      "avg_tok": 199.75169300225733,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 93450.63366336633,
+      "count": 202,
+      "avg_tok": 205.44554455445544,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 136254.33333333334,
+      "count": 333,
+      "avg_tok": 178.3903903903904,
+      "repo": "scholzthibault"
+    },
+    {
+      "model": "meta/llama-3_3-70b-instruct",
+      "avg_rt": 88.15829787234043,
+      "count": 1175,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 5099.661237785016,
+      "count": 614,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 8558.45025728988,
+      "count": 1166,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 10063.771587743733,
+      "count": 718,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 14612.596506550219,
+      "count": 1145,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "qwen/qwen2.5-coder-32b-instruct",
+      "avg_rt": 19112.944055944055,
+      "count": 143,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 20732.429378531073,
+      "count": 1239,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 23884.07481751825,
+      "count": 1096,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "qwen/qwen3-coder-480b-a35b-instruct",
+      "avg_rt": 25025.236338797815,
+      "count": 732,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 28066.760869565216,
+      "count": 1104,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 39392.346041055716,
+      "count": 682,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 43538.219638242896,
+      "count": 1161,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 51696.45733222867,
+      "count": 1207,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 54293.78982300885,
+      "count": 452,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 61030.62826086956,
+      "count": 920,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 64255.41217391304,
+      "count": 575,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 65076.67414403778,
+      "count": 847,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "avg_rt": 65499.40304826418,
+      "count": 1181,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 70025.45405405405,
+      "count": 555,
+      "repo": "nextunicorn2026"
+    },
+    {
+      "model": "z-ai/glm-5.3",
+      "avg_rt": 118.10730253353204,
+      "count": 671,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 119.35022354694486,
+      "count": 671,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7011.034734917733,
+      "count": 547,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 12003.53772070626,
+      "count": 623,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 36437.810444874274,
+      "count": 517,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "avg_rt": 38462.16531604538,
+      "count": 617,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 54318.75342465754,
+      "count": 511,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 56092.828571428574,
+      "count": 35,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 65189.8487804878,
+      "count": 410,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 70816.72324723247,
+      "count": 542,
+      "repo": "aigemini161-blip"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 4602.154425612052,
+      "count": 531,
+      "avg_tok": 323.16760828625235,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 8335.152421652421,
+      "count": 702,
+      "avg_tok": 190.65669515669515,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 8544.7154340836,
+      "count": 622,
+      "avg_tok": 196.4614147909968,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 9410.89825119237,
+      "count": 629,
+      "avg_tok": 486.9046104928458,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 14239.169884169884,
+      "count": 259,
+      "avg_tok": 446.6332046332046,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 15957.241379310344,
+      "count": 348,
+      "avg_tok": 297.7298850574713,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 25368.83738317757,
+      "count": 535,
+      "avg_tok": 89.396261682243,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 34370.46273291925,
+      "count": 644,
+      "avg_tok": 500.0,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 42054.6975,
+      "count": 400,
+      "avg_tok": 132.9275,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 44303.99038461538,
+      "count": 520,
+      "avg_tok": 106.67307692307692,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 46280.38782051282,
+      "count": 624,
+      "avg_tok": 337.37179487179486,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 47689.04178272981,
+      "count": 359,
+      "avg_tok": 88.37883008356546,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 49091.35062893082,
+      "count": 636,
+      "avg_tok": 176.99842767295598,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 49351.039387308534,
+      "count": 457,
+      "avg_tok": 203.44638949671773,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 54742.19018404908,
+      "count": 652,
+      "avg_tok": 336.8006134969325,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 54837.73250388802,
+      "count": 643,
+      "avg_tok": 499.3608087091757,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 74642.6507936508,
+      "count": 504,
+      "avg_tok": 195.80715705765408,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 77945.06972477064,
+      "count": 545,
+      "avg_tok": 166.21284403669725,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 79318.82504970179,
+      "count": 503,
+      "avg_tok": 110.42345924453281,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 159111.14695340503,
+      "count": 279,
+      "avg_tok": 73.74193548387096,
+      "repo": "tobymcclean"
+    },
+    {
+      "model": "meta/llama-3_3-70b-instruct",
+      "avg_rt": 90.59590792838874,
+      "count": 782,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-content-safety",
+      "avg_rt": 578.3780487804878,
+      "count": 328,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-30b-a3b",
+      "avg_rt": 3441.3333333333335,
+      "count": 6,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "stepfun-ai/step-3.7-flash",
+      "avg_rt": 5910.75,
+      "count": 4,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 7315.678765880218,
+      "count": 551,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-content-safety-reasoning-4b",
+      "avg_rt": 8156.615384615385,
+      "count": 13,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 8806.306701030928,
+      "count": 776,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 11407.375,
+      "count": 384,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 18304.81697612732,
+      "count": 754,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "qwen/qwen2.5-coder-32b-instruct",
+      "avg_rt": 19112.944055944055,
+      "count": 143,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 22707.228803716607,
+      "count": 861,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 23138.66037735849,
+      "count": 848,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "qwen/qwen3-coder-480b-a35b-instruct",
+      "avg_rt": 25025.236338797815,
+      "count": 732,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 27898.414258188826,
+      "count": 1038,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 30608.479834539812,
+      "count": 967,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 43257.9025974026,
+      "count": 770,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 46291.33781763827,
+      "count": 669,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 55483.22169811321,
+      "count": 212,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 55679.120137299775,
+      "count": 874,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 62947.90260869565,
+      "count": 575,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 64700.821476510064,
+      "count": 745,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 65059.44599303136,
+      "count": 861,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 67644.76682692308,
+      "count": 416,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 70467.76196319019,
+      "count": 815,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "avg_rt": 76519.6766004415,
+      "count": 906,
+      "repo": "ahmedhabibo"
+    },
+    {
+      "model": "meta/llama-3_3-70b-instruct",
+      "avg_rt": 84.08433734939759,
+      "count": 249,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 8856.991967871487,
+      "count": 249,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 9522.341463414634,
+      "count": 246,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 18084.904458598725,
+      "count": 314,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "qwen/qwen3-coder-480b-a35b-instruct",
+      "avg_rt": 18261.684210526317,
+      "count": 285,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 18855.071428571428,
+      "count": 308,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "qwen/qwen2.5-coder-32b-instruct",
+      "avg_rt": 19247.3661971831,
+      "count": 142,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 36186.906882591094,
+      "count": 247,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 52928.75,
+      "count": 220,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 55457.238341968914,
+      "count": 193,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "avg_rt": 63074.3,
+      "count": 310,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 66471.68449197861,
+      "count": 187,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 70596.24074074074,
+      "count": 108,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 73517.74404761905,
+      "count": 168,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 73859.2996742671,
+      "count": 307,
+      "repo": "xijinpingxijinping08-cloud"
+    },
+    {
+      "model": "mistralai/mistral-small-4-119b-2603",
+      "avg_rt": 4602.154425612052,
+      "count": 531,
+      "avg_tok": 323.16760828625235,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 8333.055555555555,
+      "count": 702,
+      "avg_tok": 193.505698005698,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 8564.495961227787,
+      "count": 619,
+      "avg_tok": 198.22132471728594,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 9388.331753554503,
+      "count": 633,
+      "avg_tok": 486.9778830963665,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 14182.482889733841,
+      "count": 263,
+      "avg_tok": 447.27756653992395,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 15909.51282051282,
+      "count": 351,
+      "avg_tok": 298.9088319088319,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "avg_rt": 25442.87570621469,
+      "count": 531,
+      "avg_tok": 90.06967984934087,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 33865.64496124031,
+      "count": 645,
+      "avg_tok": 500.0,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "avg_rt": 41745.69059405941,
+      "count": 404,
+      "avg_tok": 133.83663366336634,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 44428.401529636714,
+      "count": 523,
+      "avg_tok": 107.32122370936902,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 46012.259554140124,
+      "count": 628,
+      "avg_tok": 337.3487261146497,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "avg_rt": 47689.04178272981,
+      "count": 359,
+      "avg_tok": 88.37883008356546,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 49003.28144654088,
+      "count": 636,
+      "avg_tok": 179.52358490566039,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 49345.10021786492,
+      "count": 459,
+      "avg_tok": 204.72766884531592,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "mistralai/mistral-medium-3.5-128b",
+      "avg_rt": 54101.96779141104,
+      "count": 652,
+      "avg_tok": 336.74386503067484,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 54680.98606811146,
+      "count": 646,
+      "avg_tok": 499.3637770897833,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 74908.90457256461,
+      "count": 503,
+      "avg_tok": 198.18924302788844,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 77770.05340699815,
+      "count": 543,
+      "avg_tok": 167.74585635359117,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 79549.4008016032,
+      "count": 499,
+      "avg_tok": 111.30861723446894,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "meta/llama-3.3-70b-instruct",
+      "avg_rt": 159426.91366906476,
+      "count": 278,
+      "avg_tok": 74.00719424460432,
+      "repo": "Clouder1122"
+    },
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "avg_rt": 11263.324175824177,
+      "count": 546,
+      "avg_tok": 564.9505494505495,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "avg_rt": 13172.669811320755,
+      "count": 530,
+      "avg_tok": 492.64528301886793,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 14841.385560675883,
+      "count": 651,
+      "avg_tok": 490.74500768049154,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "avg_rt": 26115.74701195219,
+      "count": 502,
+      "avg_tok": 496.6314741035857,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 26852.124760076775,
+      "count": 521,
+      "avg_tok": 499.0403071017274,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 48469.01601164483,
+      "count": 687,
+      "avg_tok": 408.7467248908297,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 57718.64618644068,
+      "count": 472,
+      "avg_tok": 490.90889830508473,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 82921.69026548673,
+      "count": 113,
+      "avg_tok": 484.3008849557522,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 98769.29275362319,
+      "count": 345,
+      "avg_tok": 362.60869565217394,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 119925.33540372671,
+      "count": 161,
+      "avg_tok": 372.6583850931677,
+      "repo": "i3t2y"
+    },
+    {
+      "model": "z-ai/glm-5.3",
+      "avg_rt": 118.10730253353204,
+      "count": 671,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "avg_rt": 119.35022354694486,
+      "count": 671,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 7011.034734917733,
+      "count": 547,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "google/diffusiongemma-26b-a4b-it",
+      "avg_rt": 12003.53772070626,
+      "count": 623,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 36437.810444874274,
+      "count": 517,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "avg_rt": 38462.16531604538,
+      "count": 617,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 54318.75342465754,
+      "count": 511,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 56092.828571428574,
+      "count": 35,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 65189.8487804878,
+      "count": 410,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "meta/muse-glimmer-30b",
+      "avg_rt": 70816.72324723247,
+      "count": 542,
+      "repo": "agylogic-eng"
+    },
+    {
+      "model": "meta/llama-3_3-70b-instruct",
+      "avg_rt": 88.59100204498978,
+      "count": 489,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "avg_rt": 7476.257731958763,
+      "count": 485,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "stepfun-ai/step-3.5-flash",
+      "avg_rt": 14240.906542056075,
+      "count": 107,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "meta/llama-4-maverick-17b-128e-instruct",
+      "avg_rt": 14634.556237218814,
+      "count": 489,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "qwen/qwen2.5-coder-32b-instruct",
+      "avg_rt": 19112.944055944055,
+      "count": 143,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 20611.317689530686,
+      "count": 554,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "qwen/qwen3-coder-480b-a35b-instruct",
+      "avg_rt": 21601.667984189724,
+      "count": 506,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "avg_rt": 25787.27671755725,
+      "count": 524,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "meta/llama-3.2-90b-vision-instruct",
+      "avg_rt": 43421.31185031185,
+      "count": 481,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "avg_rt": 45839.9497716895,
+      "count": 438,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "avg_rt": 60899.247557003255,
+      "count": 307,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "minimaxai/minimax-m2.7",
+      "avg_rt": 65635.61560693642,
+      "count": 346,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "mistralai/mistral-large-3-675b-instruct-2512",
+      "avg_rt": 66206.8424908425,
+      "count": 546,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "avg_rt": 72090.72862453532,
+      "count": 538,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro",
+      "avg_rt": 77674.21153846153,
+      "count": 208,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "avg_rt": 77754.15264797508,
+      "count": 321,
+      "repo": "tudragon154203"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "avg_rt": 9005.888888888889,
+      "count": 72,
+      "repo": "xudaxing2023-dot"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "avg_rt": 31634.941176470587,
+      "count": 68,
+      "repo": "xudaxing2023-dot"
+    },
+    {
+      "model": "minimaxai/minimax-m3",
+      "avg_rt": 40949.52272727273,
+      "count": 44,
+      "repo": "xudaxing2023-dot"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-flash-0731",
+      "avg_rt": 43274.70212765958,
+      "count": 47,
+      "repo": "xudaxing2023-dot"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v4-pro-0813",
+      "avg_rt": 49128.38775510204,
+      "count": 49,
+      "repo": "xudaxing2023-dot"
+    }
+  ],
+  "summary": {}
+}

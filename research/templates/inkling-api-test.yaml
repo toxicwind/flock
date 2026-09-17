@@ -1,0 +1,60 @@
+id: inkling-api-compatibility-test
+
+info:
+  name: NVIDIA NIM Inkling API Compatibility Test
+  author: toxicwind
+  severity: info
+  description: |
+    Research-grade automated testing for NVIDIA NIM Inkling API endpoint.
+    Validates parameter acceptance, response schema, and reasoning token behavior.
+  tags: api,research,nim,inkling,llm
+
+self-contained: true
+
+variables:
+  api_key: "{{env('NVIDIA_API_KEY')}}"
+
+http:
+  - raw:
+      - |
+        POST {{BaseURL}}/chat/completions HTTP/1.1
+        Host: {{Hostname}}
+        Authorization: Bearer {{api_key}}
+        Content-Type: application/json
+
+        {
+          "model": "thinkingmachines/inkling",
+          "messages": [{"role": "user", "content": "{{prompt}}"}],
+          "max_tokens": {{max_tokens}},
+          "temperature": {{temperature}},
+          "stream": false,
+          "chat_template_kwargs": {"reasoning_effort": "{{effort}}"}
+        }
+
+    payloads:
+      effort: [none, low, medium, high, max, xhigh]
+      max_tokens: ["1", "128", "1024", "16384", "32768"]
+      temperature: ["0.7", "1.0"]
+      prompt: ["Hi", "Prove p^2-1 divisible by 24 for prime p>3"]
+
+    attack: clusterbomb
+
+    matchers:
+      - type: word
+        words: ['"reasoning_tokens": null']
+        part: body
+        name: null-reasoning-tokens
+      - type: status
+        status: [200]
+        name: success
+      - type: word
+        words: ['"error"']
+        part: body
+        name: api-error
+
+    extractors:
+      - type: json
+        part: body
+        json:
+          - '.usage.reasoning_tokens'
+          - '.choices[0].finish_reason'

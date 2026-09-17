@@ -1,0 +1,76 @@
+[
+  {
+    "script": "/mnt/portal-overlay/.agents/plugins/audio_generation/scripts/audio_generation_tool.py",
+    "urls": [
+      "https://cdn.kimi.com/agentgw/pysdk/manifest.json"
+    ],
+    "keys": false,
+    "endpoints": [],
+    "size": 10797
+  },
+  {
+    "script": "/mnt/portal-overlay/.agents/plugins/image_generation/scripts/image_generation_tool.py",
+    "urls": [
+      "https://cdn.kimi.com/agentgw/pysdk/manifest.json"
+    ],
+    "keys": false,
+    "endpoints": [
+      "/v1/files"
+    ],
+    "size": 13548
+  },
+  {
+    "script": "/mnt/portal-overlay/.agents/plugins/imf/scripts/imf_tool.py",
+    "urls": [
+      "https://cdn.kimi.com/agentgw/pysdk/manifest.json"
+    ],
+    "keys": false,
+    "endpoints": [],
+    "size": 4545
+  },
+  {
+    "script": "/mnt/portal-overlay/.agents/plugins/musepool/scripts/muse_tool.py",
+    "urls": [
+      "https://cdn.kimi.com/agentgw/pysdk/manifest.json"
+    ],
+    "keys": false,
+    "endpoints": [],
+    "size": 11895
+  },
+  {
+    "script": "/mnt/portal-overlay/.agents/plugins/scholar/scripts/scholar_tool.py",
+    "urls": [
+      "https://cdn.kimi.com/agentgw/pysdk/manifest.json"
+    ],
+    "keys": false,
+    "endpoints": [],
+    "size": 4560
+  },
+  {
+    "script": "/mnt/portal-overlay/.agents/plugins/sec_edgar/scripts/sec_edgar_tool.py",
+    "urls": [
+      "https://cdn.kimi.com/agentgw/pysdk/manifest.json"
+    ],
+    "keys": false,
+    "endpoints": [],
+    "size": 4568
+  },
+  {
+    "script": "/mnt/portal-overlay/.agents/plugins/world_bank_open_data/scripts/world_bank_open_data_tool.py",
+    "urls": [
+      "https://cdn.kimi.com/agentgw/pysdk/manifest.json"
+    ],
+    "keys": false,
+    "endpoints": [],
+    "size": 4626
+  },
+  {
+    "script": "/mnt/portal-overlay/.agents/plugins/yahoo_finance/scripts/yahoo_finance_tool.py",
+    "urls": [
+      "https://cdn.kimi.com/agentgw/pysdk/manifest.json"
+    ],
+    "keys": false,
+    "endpoints": [],
+    "size": 4584
+  }
+]

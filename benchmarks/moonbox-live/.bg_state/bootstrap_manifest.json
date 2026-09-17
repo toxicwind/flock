@@ -1,0 +1,17 @@
+{
+  "critical_files": [
+    "autohook_v7.py",
+    "envd_shim_v4.py",
+    "portal_probe_v2.py",
+    "loader_v3.py",
+    "master_runner_v1.py",
+    "strace_wrapper_v1.py",
+    "deploy_shim_v1.py",
+    "tcpdump_wrapper_v1.py",
+    "quick_audit_v1.py",
+    "activate_all_v1.py",
+    "drive9_client_v1.py"
+  ],
+  "missing": [],
+  "ts": "2026-08-17T23:12:00"
+}

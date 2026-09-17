@@ -1,0 +1,287 @@
+{
+  "nobill_https_agent-gw.kimi.com__v1_models": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 2039.527122000436
+  },
+  "nobill_https_agent-gw.kimi.com__v1_health": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 1015.220591999423
+  },
+  "nobill_https_agent-gw.kimi.com__healthz": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 1038.513215000421
+  },
+  "nobill_https_agent-gw.kimi.com__metrics": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 945.216385999629
+  },
+  "nobill_https_agent-gw.kimi.com__api_v1_bind_token": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 988.1900310001583
+  },
+  "nobill_https_agent-gw.kimi.com__api_v1_bind": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 992.1609809998699
+  },
+  "nobill_https_agent-gw.kimi.com__v1_billing": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 991.6040709995286
+  },
+  "nobill_https_agent-gw.kimi.com__v1_usage": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 999.2305149999083
+  },
+  "nobill_https_agent-gw.kimi.com__v1_quota": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 1048.7163170000713
+  },
+  "nobill_https_agent-gw.kimi.com__v1_auth": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 957.1479830001408
+  },
+  "nobill_https_agent-gw.kimi.com__v1_token": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 968.4513029997106
+  },
+  "nobill_https_agent-gw.kimi.com__v1_status": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 1024.5325349997074
+  },
+  "nobill_https_agent-gw.kimi.com__v1_info": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 1009.5141330002662
+  },
+  "nobill_https_agent-gw.kimi.com__v1_version": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 1000.9775749995242
+  },
+  "nobill_https_agent-gw.kimi.com__": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 1006.3380290002897
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_models": {
+    "status": 403,
+    "body": "{\"error\":{\"code\":\"api_key_path_forbidden\",\"message\":\"This API key is not permitted to access this endpoint.\",\"type\":\"invalid_request_error\"}}",
+    "elapsed_ms": 1025.8554029996958
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_health": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 1003.1243860003087
+  },
+  "nobill_https_agent-gw.kimi.com_coding__healthz": {
+    "status": 204,
+    "body": "",
+    "elapsed_ms": 1026.8772839999656
+  },
+  "nobill_https_agent-gw.kimi.com_coding__metrics": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 3001.1767269998018
+  },
+  "nobill_https_agent-gw.kimi.com_coding__api_v1_bind_token": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 1979.7771530002137
+  },
+  "nobill_https_agent-gw.kimi.com_coding__api_v1_bind": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 1030.6507860004785
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_billing": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 1048.31223400015
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_usage": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 985.4779899997084
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_quota": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 954.8435850001624
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_auth": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 2965.0664670007245
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_token": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 2103.155599999809
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_status": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 938.8069299993731
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_info": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 1008.800046000033
+  },
+  "nobill_https_agent-gw.kimi.com_coding__v1_version": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 1002.850922000107
+  },
+  "nobill_https_agent-gw.kimi.com_coding__": {
+    "status": 200,
+    "body": "{\"message\":\"Welcome to the Kimi For Coding API!\"}",
+    "elapsed_ms": 975.4099789997781
+  },
+  "tool_get_data_source_desc": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "elapsed_ms": 973.0340420001085
+  },
+  "tool_call_data_source_tool": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "elapsed_ms": 976.6961360001005
+  },
+  "tool_nlp_tokenize": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "elapsed_ms": 1050.4147349993218
+  },
+  "tool_get_stock_realtime_price": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "elapsed_ms": 1006.5198149995922
+  },
+  "tool_get_stock_kline": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 971.2595130004047
+  },
+  "tool_get_stock_company_info": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 991.5338430000702
+  },
+  "tool_get_stock_financial_report": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 984.492238000712
+  },
+  "tool_get_stock_holder_info": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 994.7968850001416
+  },
+  "tool_get_stock_sector_info": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 3398.408803000166
+  },
+  "tool_get_stock_market_data": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 1982.175742000436
+  },
+  "tool_get_stock_news": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 1008.0073990002347
+  },
+  "tool_get_stock_search": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 980.6732970000667
+  },
+  "tool_get_stock_hot_rank": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 1015.0788540004214
+  },
+  "tool_get_stock_plate_info": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 1410.9501269995235
+  },
+  "tool_get_stock_margin_trade": {
+    "status": 404,
+    "body": "{\"error\":\"method not found\"}",
+    "elapsed_ms": 1024.096723999719
+  },
+  "gen_https_agent-gw.kimi.com__v1_chat_completions": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 991.9122459996288
+  },
+  "gen_https_agent-gw.kimi.com__v1_completions": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 1411.8411489998834
+  },
+  "gen_https_agent-gw.kimi.com__v1_generations": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "elapsed_ms": 990.5702710002515
+  },
+  "gen_https_agent-gw.kimi.com/coding__v1_chat_completions": {
+    "status": 403,
+    "body": "{\"error\":{\"code\":\"api_key_path_forbidden\",\"message\":\"This API key is not permitted to access this endpoint.\",\"type\":\"invalid_request_error\"}}",
+    "elapsed_ms": 1012.5244000000748
+  },
+  "gen_https_agent-gw.kimi.com/coding__v1_completions": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 958.3209720003651
+  },
+  "gen_https_agent-gw.kimi.com/coding__v1_generations": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "elapsed_ms": 3148.3919180000157
+  },
+  "ssrf_http___127.0.0.1_8080_metrics": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "elapsed_ms": 1067.4212539997825
+  },
+  "ssrf_http___127.0.0.1_8080_api_v1_bind_token": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "elapsed_ms": 999.7749660005866
+  },
+  "ssrf_http___127.0.0.1_8080_api_v1_bind": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "elapsed_ms": 1017.4775209998188
+  },
+  "ssrf_http___169.254.68.6_8888_api": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "elapsed_ms": 978.8147879999087
+  },
+  "ssrf_http___169.254.68.6_8888_api_status": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "elapsed_ms": 1378.4768539999277
+  },
+  "ssrf_http___10.133.167.46_34558_": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "elapsed_ms": 2026.7081490001146
+  }
+}

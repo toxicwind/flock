@@ -1,0 +1,444 @@
+Metadata-Version: 2.4
+Name: agent-gw
+Version: 0.2.8
+Summary: Kimi agent-gw（Kimi For Coding Backend）的 Python SDK —— 覆盖 tools/chat/messages/embeddings/search/fetch 等接口。
+Author: Moonshot AI
+License: Proprietary
+Project-URL: Homepage, https://github.com/MoonshotAI
+Keywords: kimi,moonshot,agent-gw,codegw,llm
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Intended Audience :: Developers
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: requests>=2.28.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7; extra == "dev"
+Requires-Dist: responses>=0.23; extra == "dev"
+
+# agent-gw Python SDK
+
+**Kimi agent-gw**（Kimi For Agent Backend）的同步 Python 客户端 ——
+该网关聚合了 chat completions、NLP 工具、Web 搜索，以及
+`/v1/tools` 工具分发器（用于 `get_stock_realtime_price`、`nlp_tokenize`、
+`call_data_source_tool` 等方法）。
+
+## 安装
+
+> 公司内部使用。当前发版方式以 git tag 为准（`v<version>`），
+> 版本号同 `agent_gw/_version.py`。仓库地址：
+> `git@dev.msh.team:leixun/agent-gw-pysdk.git`。
+
+要求 Python ≥ 3.8、`requests` ≥ 2.28。
+
+### 方式 ①：内网安装（推荐，走公司 Nexus PyPI）
+
+```bash
+# 最新版
+pip3 install -i https://pypi.msh.team/simple agent-gw
+
+# 指定版本
+pip3 install -i https://pypi.msh.team/simple agent-gw==0.2.0
+```
+
+`requirements.txt` 写法：把 `--index-url` 写进文件首行（或者全局配在
+`~/.pip/pip.conf` 的 `index-url` 里），其它项目正常 `agent-gw==0.2.0`。
+
+### 方式 ②：外网安装（走 CDN 直链）
+
+```bash
+# 指定版本
+pip3 install https://cdn.kimi.com/agentgw/pysdk/v0.2.0/agent_gw-0.2.0-py3-none-any.whl
+
+# 最新版（用 manifest.json 探出最新 URL）
+pip3 install "$(curl -s https://cdn.kimi.com/agentgw/pysdk/manifest.json \
+    | python3 -c "import json,sys; print(json.load(sys.stdin)['latest']['url'])")"
+```
+
+`requirements.txt` 写法（指定版本）：
+
+```
+agent-gw @ https://cdn.kimi.com/agentgw/pysdk/v0.2.0/agent_gw-0.2.0-py3-none-any.whl
+```
+
+## 快速开始
+
+```python
+from agent_gw import AgentGwClient
+
+client = AgentGwClient(
+    api_key="sk-...",
+    base_url="https://agent-gw-dev.dev.kimi.team/coding",  # ⚠️ 末尾 /coding 必填，是 agent-gw 的服务挂载路径
+    skill="stock-assistant",                              # 设置 X-Kimi-Skill 请求头
+)
+# 兼容写法：如果你的老配置里 base_url 带 ".../v1/tools" 或 ".../v1" 后缀，
+# SDK 会自动剥掉这两个后缀（_strip_tool_suffix），保留 /coding 部分。
+
+# /v1/tools 工具分发器
+rsp = client.tools.stock_realtime_price(
+    ticker="600519.SH",
+    time="2025-06-08 10:30:00",
+    type="realtime_price",
+)
+if rsp.is_success:
+    data = rsp.json()      # 把 result.user[0].text 解析成 JSON
+elif rsp.is_rate_limited:
+    ...                    # 触发限速，建议退避
+else:
+    print(rsp.error)
+```
+
+### 配置的三档兜底
+
+`api_key` / `base_url` / `kimi_chat_id` / `kimi_session_id` 都按下面这套顺序解析（**取第一个非空**）：
+
+| 优先级 | 来源                                                                  | api_key         | base_url           | kimi_chat_id             | kimi_session_id             |
+| ------ | --------------------------------------------------------------------- | --------------- | ------------------ | ------------------------ | --------------------------- |
+| ①      | `AgentGwClient(api_key=..., base_url=..., kimi_chat_id=...)` 显式传入 | ✓               | ✓                  | ✓                        | ✓                           |
+| ②      | 环境变量                                                              | `KIMI_API_KEY`  | `KIMI_BASE_URL`    | `KIMI_CHAT_ID`           | `KIMI_SESSION_ID`           |
+| ③      | JSON 文件 `~/.kimi/agent-gw.json`                                     | `api_key` 字段  | `base_url` 字段    | `kimi_chat_id` 字段      | `kimi_session_id` 字段      |
+| 兜底   | （没拿到的行为）                                                      | 抛 `ValueError` | `DEFAULT_BASE_URL` | 不发 `X-Kimi-Chat-Id` 头 | 不发 `X-Kimi-Session-Id` 头 |
+
+JSON 文件示例：
+
+```json
+{
+  "api_key":         "sk-...",
+  "base_url":        "https://agent-gw-dev.dev.kimi.team/coding",
+  "kimi_chat_id":    "<可选；存在则所有请求都会带 X-Kimi-Chat-Id 头>",
+  "kimi_session_id": "<可选；存在则所有请求都会带 X-Kimi-Session-Id 头>"
+}
+```
+
+落盘命令：
+
+```bash
+mkdir -p ~/.kimi && chmod 700 ~/.kimi
+cat > ~/.kimi/agent-gw.json <<'JSON'
+{
+  "api_key":  "sk-...",
+  "base_url": "https://agent-gw-dev.dev.kimi.team/coding"
+}
+JSON
+chmod 600 ~/.kimi/agent-gw.json
+```
+
+`kimi_chat_id` 是可选字段：解析到非空值（不论来自参数、env 还是 JSON）时，
+SDK 会给所有发往 agent-gw 的请求带上 HTTP 头 `X-Kimi-Chat-Id`，取值就是这个字符串；
+都没配则该头不出现。`kimi_session_id` 行为相同，对应头 `X-Kimi-Session-Id`（用量归因，沙箱环境由平台写进 JSON 配置）。
+
+此外 SDK 每次请求会读取环境变量 `KIMI_THREAD_ID` / `KIMI_EVENT_ID`（平台在每次沙箱 exec 时注入），
+存在则分别携带 `X-Kimi-Thread-Id` / `X-Kimi-Event-Id`；`X-Kimi-Plugin` 支持 `plugin` 显式参数，
+不传时按入口脚本路径推断（`/mnt/agents/plugins/<name>/` 或 `/app/.agents/plugins/<name>/` 下自动取 `<name>`）。
+这些归因头对沙箱内的插件代码零改动生效；需手动覆盖时用 `extra_headers`（合并在自动值之后，同名键覆盖）。
+
+所以最简用法：
+
+```python
+AgentGwClient()                                    # 全从 env / JSON 读
+AgentGwClient(api_key="sk-...")                    # 只覆盖 api_key
+AgentGwClient(base_url="https://other/coding")     # 只覆盖 base_url
+```
+
+也可以 `from agent_gw import API_KEY_ENV_VAR, BASE_URL_ENV_VAR, CONFIG_FILE`
+拿到常量名做自检。配置文件 JSON 解析失败会抛 `ValueError`（不会被静默吃掉，
+保证配置错误立刻可见）。
+
+### User-Agent
+
+**默认值**：`Kimi AgentGW PySDK/<version>`（同 `agent_gw.DEFAULT_USER_AGENT`，版本号取自 `__version__`）。
+
+**覆盖方式**：构造时传 `user_agent=`：
+
+```python
+from agent_gw import AgentGwClient, DEFAULT_USER_AGENT
+
+print(DEFAULT_USER_AGENT)   # → 'Kimi AgentGW PySDK/0.1.0'
+
+# 自定义 UA（推荐写成 `<产品名>/<版本> (<额外信息>)` 的格式）
+client = AgentGwClient(user_agent="MyAgent/1.2.3 (Windows)")
+
+# 不传 = 用默认 DEFAULT_USER_AGENT
+client = AgentGwClient()
+```
+
+
+## 接口覆盖
+
+| 路由                             | 方法                                        | 说明                                     |
+| -------------------------------- | ------------------------------------------- | ---------------------------------------- |
+| `GET  /v1/models`                | `list_models()`                             | 列出可用模型                             |
+| `POST /v1/chat/completions`      | `chat_completion()`                         | `stream=True` 返回 SSE 迭代器            |
+| `POST /v1/messages`              | `messages()`                                | `stream=True` 返回 SSE 迭代器            |
+| `POST /v1/messages/count_tokens` | `count_tokens()`                            | 仅计算 token 数                          |
+| `POST /v1/embeddings`            | `embeddings()`                              | 文本向量化                               |
+| `POST /v1/search`                | `search(query)`                             | Web 搜索                                 |
+| `POST /v1/fetch`                 | `fetch(url)`                                | `as_markdown=True` 返回 text/markdown    |
+| `POST /v1/files`                 | `upload_file()`                             | multipart 文件上传（透传到 OpenGW）      |
+| `POST /v1/storage`               | `upload_storage()`                          | 上传素材，返回公网签名下载 URL（kimifs） |
+| `GET  /v1/storage/{file_id}`     | `get_storage_file()` / `download_storage()` | 取元信息 / 下载二进制                    |
+| `POST /v1/tools`                 | `tools.invoke()`                            | 工具分发器，另有类型化 helper（见下）    |
+
+### Tools 分发器 helper
+
+```python
+client.tools.invoke("call_data_source_tool", {...})
+client.tools.stock_realtime_price(ticker=..., time=..., type=...)
+client.tools.nlp_tokenize("文本")
+client.tools.nlp_normalize("文本")
+client.tools.nlp_shortkeys("文本")
+client.tools.nlp_embedding(["a", "b"])
+client.tools.call_data_source_tool({...})
+client.tools.get_data_source_desc({...})
+
+# 媒体生成 / 图搜（素材与产物均为文件 URL）
+client.tools.generate_image("一朵红花", ratio="1:1", resolution="1K")
+client.tools.generate_sound_effects("Heavy rain falling on a metal roof, distant thunder, cinematic ambience", duration_seconds=5)
+client.tools.generate_speech("你好，世界", voice_id="...")
+client.tools.generate_video("猫在奔跑", resolution="720p", duration_seconds=5)
+client.tools.search_image("猫", page_size=10)
+
+# 图搜图：用图片 URL 作为 keywords 搜相似图
+client.tools.search_image(
+    keywords=["https://example.com/image.jpg"],
+    engines=[38],  # 测试环境可用引擎
+    page_size=10,
+    enable_image_moderation=False,
+    enable_image_clip=True,
+    ab={"globalTimeout": "100000"},
+    timeout=120.0,
+)
+```
+
+> 这 5 个 method 的 `method` 名分别是 `generate_image` / `generate_sound_effects` /
+> `generate_speech` / `generate_video` / `search_image`，也可直接用
+> `client.tools.invoke("<method>", {...})` 调用。媒体生成的素材文件先经
+> `POST /v1/storage` 上传得到 `signed_url`，再作为 `reference_*_urls` 传入；
+> 产物以 URL 形式返回。视频/图像生成较慢，helper 已放宽默认 `timeout`。
+
+上面所有 `tools.*` helper 都返回 `ToolResponse` —— 对 agent-gw `/v1/tools` 信封的薄包装：
+
+| 属性                 | 含义                                          |
+| -------------------- | --------------------------------------------- |
+| `raw`                | 完整 JSON 信封（dict）                        |
+| `is_success`         | 顶层 `is_success` 字段                        |
+| `error`              | 顶层 `error` 字段（字符串）                   |
+| `is_rate_limited`    | body 中包含 429/rate/limit 时为 `True`        |
+| `text`               | `result.user[0].text`（内层 JSON 字符串原文） |
+| `json()`             | 把 `text` 解析为 JSON                         |
+| `raise_for_status()` | `is_success=False` 时抛出 `ToolError`         |
+
+### 对象存储 `/v1/storage`（媒体素材 / 产物）
+
+```python
+# 上传素材（路径 / bytes / 文件对象 / (name, content, ct) 元组皆可）
+obj = client.upload_storage("cat.png")          # 或 b"...", filename="cat.png"
+url = obj["signed_url"]                          # 公网可访问，喂给媒体生成工具
+
+# 用 signed_url 作为参考图生图
+client.tools.generate_image("把猫变成水彩风", reference_image_urls=[url])
+
+# 取元信息 / 下载
+meta = client.get_storage_file(obj["file_id"])  # 重新签发 signed_url
+data = client.download_storage(obj["file_id"])  # bytes；或 dest="out.png" 落盘
+```
+
+> 与 `upload_file()`（透传 OpenGW）不同，`upload_storage()` 底层走 kimifs，返回的
+> `signed_url` 公网可直接 GET（kimifs 307 → 对象存储），适合做媒体生成的素材/产物。
+
+## 异常体系
+
+```python
+from agent_gw import (
+    AgentGwError,        # 所有异常的基类
+      TransportError,      # 网络/超时（请求未送达）
+      APIError,            # 4xx / 5xx（携带 .status_code、.body、.request_id）
+        AuthenticationError,   # 401，API key 无效/过期
+        PaymentRequiredError,  # 402，需要付费/会员
+        QuotaExceededError,    # 403，额度耗尽
+        NotFoundError,         # 404，路由或方法不存在
+        RateLimitError,        # 429，限速（携带 .retry_after）
+        ServerError,           # 5xx，服务端或下游故障
+      ToolError,           # /v1/tools 信封 is_success=false
+)
+```
+
+## 流式（SSE）
+
+`chat_completion(..., stream=True)` 与 `messages(..., stream=True)` 返回生成器，
+逐条 yield 解析后的 SSE `data:` 内容（dict）。遇到 `[DONE]` 自动结束。
+
+## 如何运行测试
+
+```bash
+cd /Users/moonshot/codes/kimi-agent-workspace/agent-gw-pysdk
+
+# 1) 安装 dev 依赖（pytest）
+pip install -e '.[dev]'
+# 或者：python3 -m pip install --user pytest
+
+# 2) 跑全部测试
+python3 -m pytest tests/ -q
+# 详细输出：
+python3 -m pytest tests/ -v
+# 跑单个文件 / 单个用例：
+python3 -m pytest tests/test_tools.py -v
+python3 -m pytest tests/test_endpoints.py::test_chat_completion_streaming_iterates_data_chunks -v
+```
+
+测试覆盖（75 条用例，全部 mock HTTP，无须真实 API key）：
+
+| 文件                      | 覆盖范围                                                  |
+| ------------------------- | --------------------------------------------------------- |
+| `tests/conftest.py`       | 共享 `FakeSession` / `FakeResponse` 夹具                  |
+| `tests/test_client.py`    | 构造参数、base_url 处理、请求头、生命周期                 |
+| `tests/test_errors.py`    | 401/402/403/404/429/5xx 异常映射、Retry-After、网络错误   |
+| `tests/test_tools.py`     | `ToolResponse` 全部属性 + `ToolsAPI` 所有 helper          |
+| `tests/test_endpoints.py` | 9 个 HTTP 接口（含 SSE 流式 / Markdown fetch / 204 响应） |
+
+## 如何运行示例
+
+```bash
+cd /Users/moonshot/codes/kimi-agent-workspace/agent-gw-pysdk
+export KIMI_API_KEY=sk-...          # 必填
+export KIMI_BASE_URL=https://agent-gw-dev.dev.kimi.team/coding   # 可选，默认就是这个
+export KIMI_MODEL=kimi-k2-0905-preview            # 可选
+
+python3 examples/list_models.py
+python3 examples/chat_completion.py
+python3 examples/messages.py
+python3 examples/count_tokens.py
+python3 examples/embeddings.py
+python3 examples/search_and_fetch.py
+python3 examples/file_upload.py
+python3 examples/stock_price.py
+python3 examples/tools_general.py
+python3 examples/error_handling.py
+```
+
+每个示例的具体作用见 [`examples/README.md`](examples/README.md)。
+
+## 关于 stock-assistant 的迁移示例
+
+`skr/skills/stock-assistant/scripts/data_fetch.py` 与 `monitor.py`
+已经从直接 `requests.post(...)` 切到本 SDK：
+
+- 通过 `_kimi_client(kimi_cfg)` 缓存复用 `AgentGwClient`；
+- 三处旧的 `get_stock_realtime_price` POST 调用全部替换为 `client.tools.stock_realtime_price(...)`；
+- 限速 / 网络错误改用 SDK 提供的 `RateLimitError` / `TransportError` / `APIError`；
+- 原有 `_load_kimi_cfg()` 与 `kimiPluginBaseUrl` 配置完全兼容（SDK 自动剥离 `/v1/tools` 后缀）。
+
+可作为其他调用方迁移的参考。
+
+## 发布新版本（给维护者）
+
+**版本号唯一真值 = git tag**（形如 `v0.2.0`）。仓库用
+[`setuptools_scm`](https://setuptools-scm.readthedocs.io/) 在构建/安装时
+从 `git describe` 自动推导版本号，写出 `agent_gw/_version.py`（已 `.gitignore`，
+**不要手动改**）。`pyproject.toml` 也不再保存版本号，`version` 字段是 `dynamic`。
+
+版本号遵守 [semver](https://semver.org/lang/zh-CN/)：
+
+| 改动类型               | 版本号 bump 规则           |
+| ---------------------- | -------------------------- |
+| 仅 bug fix             | `0.1.0` → `0.1.1`（PATCH） |
+| 新增接口、向后兼容     | `0.1.0` → `0.2.0`（MINOR） |
+| 不兼容改动（破坏 API） | `0.1.0` → `1.0.0`（MAJOR） |
+
+### 各种状态下的版本字符串
+
+| 仓库状态                      | 解析出的版本                        |
+| ----------------------------- | ----------------------------------- |
+| 干净的 tag commit（`v0.2.0`） | `0.2.0`                             |
+| tag 之后还有 3 个 commit      | `0.2.1.dev3+g<sha>`                 |
+| 工作树有未提交改动            | `0.2.1.dev3+g<sha>.d<date>`         |
+| 完全没有任何 tag（极端情况）  | `0.0.0+local`（`fallback_version`） |
+
+dev 安装（`pip install -e .` / 纯 clone）默认就是 dev 版本号，能一眼看出
+"我用的不是正式 release"。
+
+### 发版流程
+
+CI 触发规则（见 `.gitlab-ci.yml`）：
+
+- **分支 push（含主干）**：自动跑 `test`（pytest）兜底，**不**构建、**不**发布。
+- **正式版 tag `vX.Y.Z`**（如 `v0.3.0`）：完整发版流水线（test → build → publish:nexus + publish:tos → verify），发到正式目录，Nexus + CDN `agentgw/pysdk/`。
+- **测试版 tag `vX.Y.Z.devN`**（如 `v0.3.0.dev1`，[PEP 440](https://peps.python.org/pep-0440/#developmental-releases) 开发版）：只跑 **test → build → publish:tos**，**只发 CDN 测试目录** `agentgw/pysdk-test/`；不发 Nexus、不做 checksum 校验，测试版 wheel 允许覆盖迭代。
+
+所以：日常联调用 `.devN` tag 发到测试目录给使用方装；验收 OK 再打正式 `vX.Y.Z`。
+
+```bash
+# 1. 跑测试 + 烟测（也可以先 push 分支，让 CI 跑 test）
+python3 -m pytest tests/ -q
+python3 examples/list_models.py
+
+# 2a. 发测试版（→ CDN agentgw/pysdk-test/，可反复 devN 迭代）
+git tag v0.3.0.dev1
+git push origin v0.3.0.dev1
+
+# 2b. 发正式版（→ Nexus + CDN agentgw/pysdk/）
+git tag v0.3.0
+git push origin main                        # 分支 push：CI 自动跑 test
+git push origin v0.3.0                       # 推正式 tag：触发完整发版流水线
+```
+
+> 使用方装测试版（按精确 URL，`.devN` 是预发布版，`pip install` 默认不会自动选）：
+> ```bash
+> pip3 install https://cdn.kimi.com/agentgw/pysdk-test/v0.3.0.dev1/agent_gw-0.3.0.dev1-py3-none-any.whl
+> # 或从测试目录的 manifest 取 latest
+> pip3 install "$(curl -s https://cdn.kimi.com/agentgw/pysdk-test/manifest.json | python3 -c 'import sys,json;print(json.load(sys.stdin)["latest"]["url"])')"
+> ```
+
+> 没有任何"改文件、commit、再打 tag"的步骤 —— 直接 `git tag v0.2.0` 就行。
+> 想确认版本号能正确推出来：``python3 -c "from setuptools_scm import get_version; print(get_version())"``。
+
+### CI 在做什么
+
+**分支 push（含主干）**：只跑下面的第 1 步 `test`，跑完即止。
+
+**正式版 tag `vX.Y.Z`**：`.gitlab-ci.yml` 顺序跑全部：
+
+1. **test** — `pytest tests/ -q` 兜底。
+2. **build:wheel** — `setuptools_scm` 从 tag 推版本号，`python -m build --wheel` 产出
+   `dist/agent_gw-X.Y.Z-py3-none-any.whl`。
+3. **publish:nexus** — `twine upload` 推到内网 Nexus PyPI（`$NEXUS_PYPI_URL`）。
+4. **publish:tos** — 把新 wheel 归档到 `cdn/vX.Y.Z/`，重跑 `scripts/regen_index.sh`
+   刷新 `manifest.json`，最后用 `scripts/upload_cdn_to_tos.py`（火山引擎 TOS Python SDK）
+   把整个 `cdn/` 同步到 `tos://prod-chat-kimi/agentgw/pysdk/`。
+5. **verify:checksums** — 从 Nexus、TOS 两端把刚发布的 wheel 拉回来，与本地 build 产物
+   三方对 `sha256`，不一致则 fail（发布漂移防护；可在 UI 手动触发 `rollback` 撤回）。
+
+**测试版 tag `vX.Y.Z.devN`**：只跑 **1(test) + 2(build) + 4(publish:tos)**，跳过 3(nexus) 与
+5(verify)。且 `publish:tos` 通过 `rules:variables` 切到测试目标：`TOS_PREFIX=agentgw/pysdk-test/`、
+`CDN_BASE_URL=.../agentgw/pysdk-test`（manifest 独立维护）、`IMMUTABLE_WHEELS=false`（同名 dev
+wheel 允许覆盖，便于迭代）。
+
+### CI 需要的 Variables
+
+在 GitLab → Settings → CI/CD → Variables 里维护：
+
+| 变量名                | 用途                             | 建议属性          |
+| --------------------- | -------------------------------- | ----------------- |
+| `NEXUS_PYPI_URL`      | 内网 Nexus PyPI upload URL       | Protected         |
+| `NEXUS_PYPI_USERNAME` | Nexus 上传账号                   | Protected         |
+| `NEXUS_PYPI_PASSWORD` | Nexus 上传密码                   | Protected, Masked |
+| `TOS_ACCESS_KEY`      | 火山引擎 AK                      | Protected, Masked |
+| `TOS_SECRET_KEY`      | 火山引擎 SK                      | Protected, Masked |
+| `TOS_ENDPOINT`        | 例如 `tos-cn-beijing.volces.com` | Protected         |
+| `TOS_REGION`          | 例如 `cn-beijing`                | Protected         |
+
+`TOS_BUCKET`（`prod-chat-kimi`）和 `TOS_PREFIX`（`agentgw/pysdk/`）已经写死在
+`.gitlab-ci.yml` 的 `publish:tos` job 里，按需覆盖即可。
+
+> Variables 建议都打 **Protected** —— 只有 protected tag（如 `v*`）才能读到密钥，
+> 防止从普通分支偷跑。
+
+### 通知使用方
+
+push tag 之后通知调用方 bump 版本号（改一处 `requirements.txt` /
+`pyproject.toml` 即可）。Breaking change 的 release 一定要在 commit / tag
+message 里写清楚迁移说明。
+
+## 协议
+
+Proprietary —— Moonshot AI 内部使用。

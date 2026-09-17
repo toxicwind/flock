@@ -1,0 +1,9 @@
+{% macro kpis(links) %}
+<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+  {% for l in links %}
+  <a href="{{ l.url }}" class="block rounded border border-white/10 p-4 hover:bg-white/5 focus:outline-none focus:ring">
+    {{ l.title }}{% if l.count !== undefined %} <span class="text-sm text-gray-400">({{ l.count }})</span>{% endif %}
+  </a>
+  {% endfor %}
+</div>
+{% endmacro %}

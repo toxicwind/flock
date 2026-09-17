@@ -1,0 +1,777 @@
+[
+  {
+    "pid": "17",
+    "fd": "3",
+    "socket": "socket:[121]"
+  },
+  {
+    "pid": "62",
+    "fd": "3",
+    "socket": "socket:[173]"
+  },
+  {
+    "pid": "62",
+    "fd": "4",
+    "socket": "socket:[174]"
+  },
+  {
+    "pid": "63",
+    "fd": "4",
+    "socket": "socket:[1801]"
+  },
+  {
+    "pid": "63",
+    "fd": "5",
+    "socket": "socket:[1802]"
+  },
+  {
+    "pid": "63",
+    "fd": "6",
+    "socket": "socket:[1803]"
+  },
+  {
+    "pid": "69",
+    "fd": "5",
+    "socket": "socket:[182]"
+  },
+  {
+    "pid": "69",
+    "fd": "9",
+    "socket": "socket:[6586]"
+  },
+  {
+    "pid": "76",
+    "fd": "11",
+    "socket": "socket:[195]"
+  },
+  {
+    "pid": "76",
+    "fd": "12",
+    "socket": "socket:[196]"
+  },
+  {
+    "pid": "76",
+    "fd": "41",
+    "socket": "socket:[1954]"
+  },
+  {
+    "pid": "76",
+    "fd": "42",
+    "socket": "socket:[1962]"
+  },
+  {
+    "pid": "76",
+    "fd": "43",
+    "socket": "socket:[2665]"
+  },
+  {
+    "pid": "76",
+    "fd": "44",
+    "socket": "socket:[1977]"
+  },
+  {
+    "pid": "76",
+    "fd": "45",
+    "socket": "socket:[1979]"
+  },
+  {
+    "pid": "76",
+    "fd": "46",
+    "socket": "socket:[1981]"
+  },
+  {
+    "pid": "76",
+    "fd": "47",
+    "socket": "socket:[2048]"
+  },
+  {
+    "pid": "79",
+    "fd": "5",
+    "socket": "socket:[37034]"
+  },
+  {
+    "pid": "79",
+    "fd": "8",
+    "socket": "socket:[2414]"
+  },
+  {
+    "pid": "79",
+    "fd": "10",
+    "socket": "socket:[35737]"
+  },
+  {
+    "pid": "79",
+    "fd": "13",
+    "socket": "socket:[37039]"
+  },
+  {
+    "pid": "79",
+    "fd": "14",
+    "socket": "socket:[36141]"
+  },
+  {
+    "pid": "79",
+    "fd": "15",
+    "socket": "socket:[36154]"
+  },
+  {
+    "pid": "79",
+    "fd": "16",
+    "socket": "socket:[36160]"
+  },
+  {
+    "pid": "79",
+    "fd": "17",
+    "socket": "socket:[37085]"
+  },
+  {
+    "pid": "79",
+    "fd": "18",
+    "socket": "socket:[35767]"
+  },
+  {
+    "pid": "79",
+    "fd": "19",
+    "socket": "socket:[35773]"
+  },
+  {
+    "pid": "79",
+    "fd": "20",
+    "socket": "socket:[35779]"
+  },
+  {
+    "pid": "79",
+    "fd": "21",
+    "socket": "socket:[35784]"
+  },
+  {
+    "pid": "79",
+    "fd": "24",
+    "socket": "socket:[33910]"
+  },
+  {
+    "pid": "84",
+    "fd": "4",
+    "socket": "socket:[2525]"
+  },
+  {
+    "pid": "84",
+    "fd": "5",
+    "socket": "socket:[2526]"
+  },
+  {
+    "pid": "84",
+    "fd": "8",
+    "socket": "socket:[1939]"
+  },
+  {
+    "pid": "84",
+    "fd": "11",
+    "socket": "socket:[1941]"
+  },
+  {
+    "pid": "84",
+    "fd": "13",
+    "socket": "socket:[670]"
+  },
+  {
+    "pid": "85",
+    "fd": "0",
+    "socket": "socket:[148]"
+  },
+  {
+    "pid": "156",
+    "fd": "6",
+    "socket": "socket:[1819]"
+  },
+  {
+    "pid": "156",
+    "fd": "7",
+    "socket": "socket:[1820]"
+  },
+  {
+    "pid": "156",
+    "fd": "10",
+    "socket": "socket:[1822]"
+  },
+  {
+    "pid": "156",
+    "fd": "11",
+    "socket": "socket:[1823]"
+  },
+  {
+    "pid": "156",
+    "fd": "14",
+    "socket": "socket:[1824]"
+  },
+  {
+    "pid": "156",
+    "fd": "16",
+    "socket": "socket:[1940]"
+  },
+  {
+    "pid": "156",
+    "fd": "17",
+    "socket": "socket:[1942]"
+  },
+  {
+    "pid": "156",
+    "fd": "18",
+    "socket": "socket:[3355]"
+  },
+  {
+    "pid": "156",
+    "fd": "19",
+    "socket": "socket:[2990]"
+  },
+  {
+    "pid": "156",
+    "fd": "20",
+    "socket": "socket:[3368]"
+  },
+  {
+    "pid": "156",
+    "fd": "21",
+    "socket": "socket:[3370]"
+  },
+  {
+    "pid": "181",
+    "fd": "9",
+    "socket": "socket:[2554]"
+  },
+  {
+    "pid": "181",
+    "fd": "11",
+    "socket": "socket:[2556]"
+  },
+  {
+    "pid": "181",
+    "fd": "13",
+    "socket": "socket:[2558]"
+  },
+  {
+    "pid": "181",
+    "fd": "16",
+    "socket": "socket:[216]"
+  },
+  {
+    "pid": "181",
+    "fd": "17",
+    "socket": "socket:[217]"
+  },
+  {
+    "pid": "181",
+    "fd": "18",
+    "socket": "socket:[1955]"
+  },
+  {
+    "pid": "181",
+    "fd": "20",
+    "socket": "socket:[2559]"
+  },
+  {
+    "pid": "181",
+    "fd": "21",
+    "socket": "socket:[2560]"
+  },
+  {
+    "pid": "181",
+    "fd": "23",
+    "socket": "socket:[2562]"
+  },
+  {
+    "pid": "181",
+    "fd": "25",
+    "socket": "socket:[2563]"
+  },
+  {
+    "pid": "181",
+    "fd": "26",
+    "socket": "socket:[2564]"
+  },
+  {
+    "pid": "181",
+    "fd": "28",
+    "socket": "socket:[2566]"
+  },
+  {
+    "pid": "181",
+    "fd": "36",
+    "socket": "socket:[1957]"
+  },
+  {
+    "pid": "181",
+    "fd": "44",
+    "socket": "socket:[1960]"
+  },
+  {
+    "pid": "181",
+    "fd": "45",
+    "socket": "socket:[1961]"
+  },
+  {
+    "pid": "181",
+    "fd": "46",
+    "socket": "socket:[2666]"
+  },
+  {
+    "pid": "181",
+    "fd": "47",
+    "socket": "socket:[1963]"
+  },
+  {
+    "pid": "181",
+    "fd": "49",
+    "socket": "socket:[1978]"
+  },
+  {
+    "pid": "181",
+    "fd": "50",
+    "socket": "socket:[1980]"
+  },
+  {
+    "pid": "181",
+    "fd": "51",
+    "socket": "socket:[1982]"
+  },
+  {
+    "pid": "343",
+    "fd": "5",
+    "socket": "socket:[525]"
+  },
+  {
+    "pid": "343",
+    "fd": "7",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "343",
+    "fd": "8",
+    "socket": "socket:[529]"
+  },
+  {
+    "pid": "343",
+    "fd": "11",
+    "socket": "socket:[2959]"
+  },
+  {
+    "pid": "343",
+    "fd": "12",
+    "socket": "socket:[2961]"
+  },
+  {
+    "pid": "343",
+    "fd": "16",
+    "socket": "socket:[2988]"
+  },
+  {
+    "pid": "343",
+    "fd": "28",
+    "socket": "socket:[3354]"
+  },
+  {
+    "pid": "343",
+    "fd": "30",
+    "socket": "socket:[562]"
+  },
+  {
+    "pid": "343",
+    "fd": "34",
+    "socket": "socket:[570]"
+  },
+  {
+    "pid": "343",
+    "fd": "35",
+    "socket": "socket:[2991]"
+  },
+  {
+    "pid": "343",
+    "fd": "36",
+    "socket": "socket:[564]"
+  },
+  {
+    "pid": "343",
+    "fd": "43",
+    "socket": "socket:[3365]"
+  },
+  {
+    "pid": "343",
+    "fd": "45",
+    "socket": "socket:[3377]"
+  },
+  {
+    "pid": "343",
+    "fd": "46",
+    "socket": "socket:[633]"
+  },
+  {
+    "pid": "343",
+    "fd": "51",
+    "socket": "socket:[3378]"
+  },
+  {
+    "pid": "343",
+    "fd": "60",
+    "socket": "socket:[4127]"
+  },
+  {
+    "pid": "343",
+    "fd": "83",
+    "socket": "socket:[3385]"
+  },
+  {
+    "pid": "343",
+    "fd": "87",
+    "socket": "socket:[3399]"
+  },
+  {
+    "pid": "343",
+    "fd": "91",
+    "socket": "socket:[4138]"
+  },
+  {
+    "pid": "343",
+    "fd": "103",
+    "socket": "socket:[3389]"
+  },
+  {
+    "pid": "343",
+    "fd": "104",
+    "socket": "socket:[4129]"
+  },
+  {
+    "pid": "343",
+    "fd": "141",
+    "socket": "socket:[671]"
+  },
+  {
+    "pid": "343",
+    "fd": "143",
+    "socket": "socket:[702]"
+  },
+  {
+    "pid": "343",
+    "fd": "146",
+    "socket": "socket:[4214]"
+  },
+  {
+    "pid": "343",
+    "fd": "152",
+    "socket": "socket:[4088]"
+  },
+  {
+    "pid": "343",
+    "fd": "154",
+    "socket": "socket:[3580]"
+  },
+  {
+    "pid": "343",
+    "fd": "155",
+    "socket": "socket:[703]"
+  },
+  {
+    "pid": "343",
+    "fd": "161",
+    "socket": "socket:[762]"
+  },
+  {
+    "pid": "343",
+    "fd": "184",
+    "socket": "socket:[5127]"
+  },
+  {
+    "pid": "359",
+    "fd": "3",
+    "socket": "socket:[3350]"
+  },
+  {
+    "pid": "359",
+    "fd": "6",
+    "socket": "socket:[526]"
+  },
+  {
+    "pid": "362",
+    "fd": "4",
+    "socket": "socket:[3351]"
+  },
+  {
+    "pid": "363",
+    "fd": "3",
+    "socket": "socket:[2960]"
+  },
+  {
+    "pid": "363",
+    "fd": "4",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "365",
+    "fd": "3",
+    "socket": "socket:[2962]"
+  },
+  {
+    "pid": "365",
+    "fd": "4",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "383",
+    "fd": "4",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "383",
+    "fd": "14",
+    "socket": "socket:[565]"
+  },
+  {
+    "pid": "383",
+    "fd": "15",
+    "socket": "socket:[525]"
+  },
+  {
+    "pid": "383",
+    "fd": "20",
+    "socket": "socket:[3367]"
+  },
+  {
+    "pid": "383",
+    "fd": "21",
+    "socket": "socket:[3369]"
+  },
+  {
+    "pid": "383",
+    "fd": "23",
+    "socket": "socket:[3376]"
+  },
+  {
+    "pid": "383",
+    "fd": "35",
+    "socket": "socket:[3410]"
+  },
+  {
+    "pid": "383",
+    "fd": "37",
+    "socket": "socket:[3412]"
+  },
+  {
+    "pid": "383",
+    "fd": "38",
+    "socket": "socket:[971]"
+  },
+  {
+    "pid": "383",
+    "fd": "40",
+    "socket": "socket:[3435]"
+  },
+  {
+    "pid": "383",
+    "fd": "41",
+    "socket": "socket:[708]"
+  },
+  {
+    "pid": "387",
+    "fd": "3",
+    "socket": "socket:[525]"
+  },
+  {
+    "pid": "387",
+    "fd": "5",
+    "socket": "socket:[3366]"
+  },
+  {
+    "pid": "387",
+    "fd": "15",
+    "socket": "socket:[632]"
+  },
+  {
+    "pid": "387",
+    "fd": "25",
+    "socket": "socket:[4149]"
+  },
+  {
+    "pid": "387",
+    "fd": "27",
+    "socket": "socket:[30701]"
+  },
+  {
+    "pid": "387",
+    "fd": "44",
+    "socket": "socket:[769]"
+  },
+  {
+    "pid": "402",
+    "fd": "4",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "402",
+    "fd": "14",
+    "socket": "socket:[3379]"
+  },
+  {
+    "pid": "402",
+    "fd": "15",
+    "socket": "socket:[525]"
+  },
+  {
+    "pid": "402",
+    "fd": "21",
+    "socket": "socket:[4126]"
+  },
+  {
+    "pid": "420",
+    "fd": "4",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "420",
+    "fd": "14",
+    "socket": "socket:[3390]"
+  },
+  {
+    "pid": "420",
+    "fd": "15",
+    "socket": "socket:[525]"
+  },
+  {
+    "pid": "420",
+    "fd": "19",
+    "socket": "socket:[4137]"
+  },
+  {
+    "pid": "420",
+    "fd": "20",
+    "socket": "socket:[705]"
+  },
+  {
+    "pid": "420",
+    "fd": "23",
+    "socket": "socket:[704]"
+  },
+  {
+    "pid": "420",
+    "fd": "27",
+    "socket": "socket:[706]"
+  },
+  {
+    "pid": "420",
+    "fd": "29",
+    "socket": "socket:[3409]"
+  },
+  {
+    "pid": "420",
+    "fd": "33",
+    "socket": "socket:[972]"
+  },
+  {
+    "pid": "421",
+    "fd": "4",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "421",
+    "fd": "14",
+    "socket": "socket:[4130]"
+  },
+  {
+    "pid": "421",
+    "fd": "15",
+    "socket": "socket:[525]"
+  },
+  {
+    "pid": "421",
+    "fd": "17",
+    "socket": "socket:[3398]"
+  },
+  {
+    "pid": "421",
+    "fd": "27",
+    "socket": "socket:[4150]"
+  },
+  {
+    "pid": "421",
+    "fd": "28",
+    "socket": "socket:[693]"
+  },
+  {
+    "pid": "421",
+    "fd": "29",
+    "socket": "socket:[4215]"
+  },
+  {
+    "pid": "421",
+    "fd": "30",
+    "socket": "socket:[3411]"
+  },
+  {
+    "pid": "421",
+    "fd": "36",
+    "socket": "socket:[694]"
+  },
+  {
+    "pid": "421",
+    "fd": "37",
+    "socket": "socket:[3436]"
+  },
+  {
+    "pid": "463",
+    "fd": "4",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "463",
+    "fd": "14",
+    "socket": "socket:[3581]"
+  },
+  {
+    "pid": "463",
+    "fd": "15",
+    "socket": "socket:[525]"
+  },
+  {
+    "pid": "463",
+    "fd": "21",
+    "socket": "socket:[701]"
+  },
+  {
+    "pid": "463",
+    "fd": "30",
+    "socket": "socket:[707]"
+  },
+  {
+    "pid": "534",
+    "fd": "4",
+    "socket": "socket:[528]"
+  },
+  {
+    "pid": "534",
+    "fd": "14",
+    "socket": "socket:[4089]"
+  },
+  {
+    "pid": "534",
+    "fd": "15",
+    "socket": "socket:[525]"
+  },
+  {
+    "pid": "534",
+    "fd": "21",
+    "socket": "socket:[5126]"
+  },
+  {
+    "pid": "631",
+    "fd": "5",
+    "socket": "socket:[37227]"
+  },
+  {
+    "pid": "631",
+    "fd": "9",
+    "socket": "socket:[7835]"
+  },
+  {
+    "pid": "631",
+    "fd": "10",
+    "socket": "socket:[6576]"
+  }
+]

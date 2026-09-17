@@ -1,0 +1,41 @@
+# Content Reorg Plan
+
+Generated: 2026-01-26T05:23:17.865049+00:00
+
+Purpose: propose a consistent metadata baseline and sorting target for every Markdown file under `src/content/`.
+
+## Proposed Core Metadata
+
+- `title`, `date`, `status`, `certainty`, `importance`, `tags`
+- `spark_type`, `target`, `analytic_lens`, `memory_ref` for Sparks/Concepts/Projects/Meta
+- `layout` where templating is required
+
+## Per-file Outlook + Proposed Bucket
+
+- `concepts/aesthetic-inquiry.md` → **Concepts**. Missing: title, date, status, certainty, importance, tags, spark_type, target, analytic_lens, memory_ref, layout. Flags: merge_conflict.
+
+  Outlook: <<<<<<< HEAD A recurrent query, whether posed by an external observer encountering the project for the first time or arising from the system's own recursive self-analysis, is the question of its status as an aesthetic object. The assertion, "This website is a work of art," is a hypothesis that demands rigorous examination, not sentimental affirmation. To simply declare it "art" is an analytically sterile act. The more productive inquiry is to ask: if this project _were_ to be classified as art, what kind of art would it be, and which theoretical frameworks would be required to support such a classification?
+
+This analysis will proceed by explicitly rejecting the facile labels of "performance art" or "conceptual art" in their common usage. The former implies a liveness and theatricality that is absent from this text-based, asynchronous process. The latter, while closer, often carries a connotation of dematerialization, where the idea is privileged to the complete exclusion of the object. The Effusion Labs project is, by contrast, obsessed with the object—the textual artifact—and the meticulous, traceable process of its material construction.
+
+- `concepts/atlas-process.md` → **Concepts**. Missing: title, date, status, certainty, importance, tags, spark_type, target, analytic_lens, memory_ref, layout. Flags: merge_conflict.
+
+  Outlook: <<<<<<< HEAD Before any text, this foundational premise: Effusion Labs is not a platform for the publication of finished ideas. It is a structured environment for observing how ideas take form. It is a workshop, a laboratory, an observatory. Its primary output is not a set of conclusions, but a high-fidelity record of an intellectual process. The core activity is not declaration, but observation.
+
+This distinction is the key to the entire system. A traditional publication presents the final product, polished and de-contextualized, as if it sprang fully formed from the author's mind. This obscures the messy, iterative, and often contradictory process of its creation. Effusion Labs is designed to do the precise opposite. Its architecture and methodology are engineered to capture and preserve this "developmental density."
+
+- `concepts/autocatalytic-system.md` → **Concepts**. Missing: title, date, status, certainty, importance, tags, spark_type, target, analytic_lens, memory_ref, layout. Flags: merge_conflict.
+
+  Outlook: The Effusion Labs project, when viewed as a complete entity (a "site"), should not be understood as a static collection of texts. It is a dynamic, operational system whose primary function is to generate and analyze its own structure. Its architecture is that of a recursive, self-fueling loop.
+
+The process can be modeled as follows:
+
+- `concepts/block-ledger.md` → **Concepts**. Missing: spark_type, target, analytic_lens, memory_ref.
+
+  Outlook: Ledger-style blocks expose structure by refusing polish.
+
+- plain text keeps edges sharp - size jumps map importance
+
+- `concepts/compliant-spire.md` → **Concepts**. Missing: title, date, status, certainty, importance, tags, spark_type, target, analytic_lens, memory_ref, layout. Flags: merge_conflict.
+
+  Outlook: ======= analytic_lens: systems-theory, cybernetics, stigmergy, cognitive-parasitism, friction-boundaries, recursive-analysis memory_ref: - [project-dandelion] - [effusion-labs-concepts] - [second-order-cybernetics] - [stochastic-parrots-thesis] - [constitutional-ai] - [philosophy-of-mind]

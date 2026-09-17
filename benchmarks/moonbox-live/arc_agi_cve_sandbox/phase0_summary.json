@@ -1,0 +1,30 @@
+{
+  "check": {
+    "0": "github_auth",
+    "1": "repo_count",
+    "2": "weird_bin_tools",
+    "3": "ipython_dir",
+    "4": "magic_locations"
+  },
+  "status": {
+    "0": true,
+    "1": 100,
+    "2": 8,
+    "3": "/usr/local/lib/python3.12/site-packages/IPython",
+    "4": 2
+  },
+  "detail": {
+    "0": "toxicwind",
+    "1": "[('one-box-problem', '2026-08-18', False, True), ('sovereign-swap', '2026-08-18', True, False), ('sovereign-pi', '2026-08-18', False, True), ('zed-byok-config', '2026-08-18', False, True), ('antigravity-white', '2026-08-18', False, True)]",
+    "2": "{'t': True, 's': True, 'l': True, 'b': True, 'p': True, 'x_wpvivid': True, 'x_mcpjam': True, 'x_rootkit': True}",
+    "3": "['/usr/local/lib/python3.12/site-packages/IPython/core/magic.py', '/usr/local/lib/python3.12/site-packages/IPython/core/magic_arguments.py', '/usr/local/lib/python3.12/site-packages/IPython/extensions/storemagic.py']",
+    "4": "['/home/kimi/.ipython', '/home/kimi/.ipython']"
+  },
+  "ms": {
+    "0": 2513,
+    "1": 2513,
+    "2": 2513,
+    "3": 2513,
+    "4": 2513
+  }
+}

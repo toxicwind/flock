@@ -1,0 +1,467 @@
+//! End-user updates: a channel-aware `update` command + an occasional, cached, opt-out
+//! "new release available" check.
+//!
+//! No heavy self-update machinery. The binary channel re-runs the canonical installer
+//! (which downloads the latest release and restarts the daemon via `setup`); cargo /
+//! Homebrew installs are told to use their package manager. The release check hits the
+//! GitHub API, cached ≤ once/day (so the unauthenticated rate limit is irrelevant), and is
+//! skipped offline or when `LLMTRIM_NO_UPDATE_CHECK` is set.
+
+use std::time::{Duration, SystemTime, UNIX_EPOCH};
+
+// `Context` is only used by the non-Windows installer arm in `run()`.
+#[cfg_attr(windows, allow(unused_imports))]
+use anyhow::{Context, Result};
+
+const CURRENT: &str = env!("CARGO_PKG_VERSION");
+
+/// The "now restart the daemon onto the new binary" follow-up, shown after every channel's
+/// update instructions. One constant so the command and its comment stay in lockstep.
+/// Post-upgrade follow-up for package-manager channels: ensure restarts a skewed daemon and
+/// refreshes Claude Code integrations. Prefer this over a bare `start --force`.
+const ENSURE_HINT: &str = "llmtrim ensure           # restart daemon + refresh integrations";
+
+/// `owner/name` parsed from the crate's repository URL.
+fn repo() -> &'static str {
+    env!("CARGO_PKG_REPOSITORY")
+        .trim_end_matches('/')
+        .trim_start_matches("https://github.com/")
+}
+
+#[derive(PartialEq, Eq)]
+pub(crate) enum Channel {
+    Binary,
+    Cargo,
+    Homebrew,
+    Npm,
+}
+
+/// Where this binary was installed from — determines how to update it.
+pub(crate) fn channel() -> Channel {
+    channel_of(
+        &std::env::current_exe()
+            .map(|e| e.to_string_lossy().into_owned())
+            .unwrap_or_default(),
+    )
+}
+
+fn channel_of(p: &str) -> Channel {
+    if p.contains("node_modules") || p.contains("/_npx/") || p.contains("\\_npx\\") {
+        // npm global install or an npx cache — npm owns this binary, never the installer.
+        Channel::Npm
+    } else if p.contains("/.cargo/") || p.contains("\\.cargo\\") {
+        Channel::Cargo
+    } else if p.contains("/Cellar/") || p.contains("/homebrew/") || p.contains("/linuxbrew/") {
+        Channel::Homebrew
+    } else {
+        Channel::Binary
+    }
+}
+
+/// (major, minor, patch) for a loose comparison; non-numeric / pre-release suffixes ignored.
+fn semver(s: &str) -> (u64, u64, u64) {
+    let mut it = s.trim_start_matches('v').split(['.', '-', '+']);
+    let n = |x: Option<&str>| x.and_then(|v| v.parse().ok()).unwrap_or(0);
+    (n(it.next()), n(it.next()), n(it.next()))
+}
+
+/// Latest released version (without a leading `v`), or `None` on any failure (offline,
+/// rate-limit, parse error) — callers stay silent on `None`.
+fn fetch_latest() -> Option<String> {
+    let url = format!("https://api.github.com/repos/{}/releases/latest", repo());
+    let mut req = ureq::get(&url)
+        .config()
+        .timeout_global(Some(Duration::from_secs(3)))
+        .http_status_as_error(false)
+        .build();
+    req = req.header("User-Agent", "llmtrim-update-check"); // GitHub API requires a UA
+    let body = req.call().ok()?.body_mut().read_to_string().ok()?;
+    let v: serde_json::Value = serde_json::from_str(&body).ok()?;
+    Some(
+        v.get("tag_name")?
+            .as_str()?
+            .trim_start_matches('v')
+            .to_string(),
+    )
+}
+
+fn now_secs() -> u64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|d| d.as_secs())
+        .unwrap_or(0)
+}
+
+fn cache_path() -> Option<std::path::PathBuf> {
+    crate::daemon::home_dir()
+        .ok()
+        .map(|h| h.join("update-check.json"))
+}
+
+fn write_cache(latest: &str) {
+    if let Some(p) = cache_path() {
+        if let Some(dir) = p.parent() {
+            let _ = std::fs::create_dir_all(dir);
+        }
+        let _ = std::fs::write(
+            &p,
+            serde_json::json!({ "checked_at": now_secs(), "latest": latest }).to_string(),
+        );
+    }
+}
+
+/// A newer-version string if a release beyond the running version is known. Cached ≤ 24h;
+/// opt out with `LLMTRIM_NO_UPDATE_CHECK`; silent on any failure. Used for the passive
+/// `monitor` banner — `force` bypasses the cache (used by the `update` command).
+pub fn check(force: bool) -> Option<String> {
+    if llmtrim_core::config::RuntimeConfig::get().no_update_check {
+        return None;
+    }
+    if !force
+        && let Some(txt) = cache_path().and_then(|p| std::fs::read_to_string(p).ok())
+        && let Ok(c) = serde_json::from_str::<serde_json::Value>(&txt)
+    {
+        let at = c.get("checked_at").and_then(|x| x.as_u64()).unwrap_or(0);
+        if now_secs().saturating_sub(at) < 86_400 {
+            let latest = c.get("latest").and_then(|x| x.as_str()).unwrap_or("");
+            return newer(latest);
+        }
+    }
+    // Cache the result either way — including "" on failure — so an offline box backs off
+    // for 24h instead of re-hitting the network on every `monitor`.
+    let latest = fetch_latest().unwrap_or_default();
+    write_cache(&latest);
+    newer(&latest)
+}
+
+fn newer(latest: &str) -> Option<String> {
+    (!latest.is_empty() && semver(latest) > semver(CURRENT)).then(|| latest.to_string())
+}
+
+/// The `llmtrim update` command — channel-aware.
+pub fn run() -> Result<()> {
+    let color = crate::ui::color_stdout();
+    println!(
+        "{}  {}",
+        crate::ui::wordmark(color),
+        crate::ui::paint(
+            color,
+            crate::ui::Tone::Dim,
+            &format!("v{CURRENT} · checking the latest release…")
+        )
+    );
+    let latest = fetch_latest();
+    match &latest {
+        Some(v) if semver(v) <= semver(CURRENT) => {
+            println!(
+                "{}",
+                crate::ui::ok(color, &format!("Already up to date (v{CURRENT})."))
+            );
+            return Ok(());
+        }
+        Some(v) => println!(
+            "{} v{v} available {}",
+            crate::ui::paint(color, crate::ui::Tone::Accent, "→"),
+            crate::ui::paint(
+                color,
+                crate::ui::Tone::Dim,
+                &format!("(you have v{CURRENT})")
+            )
+        ),
+        None => println!(
+            "{}",
+            crate::ui::note(
+                color,
+                "Couldn't reach GitHub to confirm the version — proceeding anyway."
+            )
+        ),
+    }
+
+    // Re-point the statusline now, while the executable this binary was launched from still
+    // exists — a package manager is about to replace it.
+    match crate::statusline::refresh_if_installed() {
+        Ok(true) => println!(
+            "{}",
+            crate::ui::ok(
+                color,
+                "Refreshed the Claude Code statusline for this update."
+            )
+        ),
+        Ok(false) => {}
+        Err(e) => eprintln!(
+            "{}",
+            crate::ui::note(
+                color,
+                &format!("Couldn't refresh the Claude Code statusline: {e}")
+            )
+        ),
+    }
+
+    // Package-manager channels get their commands in a panel; the binary channel on
+    // Unix actually runs the installer, so its output stays plain.
+    let instructions = |title: &str, cmds: &[&str]| {
+        let lines: Vec<String> = cmds.iter().map(|c| c.to_string()).collect();
+        print!("\n{}", crate::ui::panel(color, title, &lines));
+    };
+    match channel() {
+        Channel::Cargo => instructions(
+            "update via cargo",
+            &["cargo install --locked llmtrim --force", ENSURE_HINT],
+        ),
+        Channel::Homebrew => instructions(
+            "update via Homebrew",
+            &[
+                "brew tap fkiene/tap",
+                "brew upgrade fkiene/tap/llmtrim",
+                ENSURE_HINT,
+            ],
+        ),
+        Channel::Npm => instructions(
+            "update via npm",
+            &["npm install -g @llmtrim/cli@latest", ENSURE_HINT],
+        ),
+        Channel::Binary => {
+            let tag = latest
+                .as_deref()
+                .map(|v| format!("v{v}"))
+                .unwrap_or_else(|| "main".to_string());
+            #[cfg(windows)]
+            instructions(
+                "update via the installer",
+                &[
+                    &format!(
+                        "iwr -useb https://raw.githubusercontent.com/{}/{tag}/install.ps1 | iex",
+                        repo()
+                    ),
+                    ENSURE_HINT,
+                ],
+            );
+            #[cfg(not(windows))]
+            {
+                let url = format!(
+                    "https://raw.githubusercontent.com/{}/{tag}/install.sh",
+                    repo()
+                );
+                println!(
+                    "Updating via the installer (downloads the latest release, then restarts the daemon)…"
+                );
+                let mut cmd = std::process::Command::new("sh");
+                cmd.args(["-c", &format!("curl -fsSL {url} | sh")]);
+                // Pin the *installed* version to the same resolved tag as the script, so the
+                // whole update is deterministic (no second "latest" lookup inside install.sh).
+                if tag != "main" {
+                    cmd.env("LLMTRIM_VERSION", &tag);
+                }
+                // If the install fails, the user is left on the old binary. Show the manual
+                // command for this channel (same curl one-liner, version pin included) so they
+                // can finish the update by hand, then restart the daemon.
+                let manual = || {
+                    print!(
+                        "\n{}",
+                        crate::ui::panel(
+                            color,
+                            "update failed, finish it manually",
+                            &[manual_install_cmd(&url, &tag), ENSURE_HINT.to_string()],
+                        )
+                    );
+                };
+                // Installer runs setup (and may start the daemon). Pin NO_SETUP so we control
+                // restart + ensure from this process via the *new* on-disk binary.
+                cmd.env("LLMTRIM_NO_SETUP", "1");
+                let status = match cmd.status() {
+                    Ok(s) => s,
+                    Err(e) => {
+                        manual();
+                        return Err(e)
+                            .context("failed to launch the installer (curl + sh required)");
+                    }
+                };
+                if !status.success() {
+                    manual();
+                    anyhow::bail!("installer exited non-zero");
+                }
+                if let Some(v) = latest {
+                    write_cache(&v); // clear the `monitor` banner
+                }
+                // Always finish on the new binary: in-process ensure would stamp the old
+                // CARGO_PKG_VERSION and rewrite Claude hooks with a ghost `(deleted)` path.
+                restart_daemon(color)?;
+                post_update_ensure(color);
+            }
+        }
+    }
+    // Package-manager channels: the panel already ends with `llmtrim ensure`.
+    Ok(())
+}
+
+/// Path to the on-disk llmtrim to spawn after a self-replacing install (never a deleted path).
+fn live_exe() -> std::path::PathBuf {
+    std::env::current_exe()
+        .ok()
+        .filter(|p| p.exists())
+        .unwrap_or_else(|| std::path::PathBuf::from("llmtrim"))
+}
+
+/// After a successful binary-channel update: run `ensure -q` via the **new** binary.
+/// Only used on non-Windows (Unix curl installer); Windows prints the manual panel instead.
+#[cfg(not(windows))]
+fn post_update_ensure(color: bool) {
+    println!(
+        "{}",
+        crate::ui::paint(
+            color,
+            crate::ui::Tone::Dim,
+            "Syncing integrations on the new binary…"
+        )
+    );
+    let status = std::process::Command::new(live_exe())
+        .args(["ensure", "-q"])
+        .status();
+    match status {
+        Ok(s) if s.success() => {
+            println!("{}", crate::ui::ok(color, "Integrations synced."));
+        }
+        Ok(_) => eprintln!(
+            "{}",
+            crate::ui::note(
+                color,
+                "ensure exited non-zero — run `llmtrim ensure` yourself."
+            )
+        ),
+        Err(e) => eprintln!(
+            "{}",
+            crate::ui::note(color, &format!("Could not run ensure: {e}"))
+        ),
+    }
+}
+
+/// Restart the daemon onto the freshly-installed binary via `start --force` (the documented
+/// "pick up a new binary after an update" path). Shared by the binary channel here (which runs
+/// the installer) and the TUI's `PostAction::Restart` in `main.rs`, so the restart lives in one
+/// place. On failure it bails with an actionable message rather than leaving the user guessing.
+pub fn restart_daemon(color: bool) -> Result<()> {
+    println!(
+        "\n{}",
+        crate::ui::paint(
+            color,
+            crate::ui::Tone::Dim,
+            "Restarting the daemon on the new binary…"
+        )
+    );
+    restart_daemon_silent()
+}
+
+/// Same as [`restart_daemon`] without the chatter — used by [`crate::ensure`].
+pub fn restart_daemon_silent() -> Result<()> {
+    // The installer replaces the binary on disk; on Linux `current_exe()` can then resolve to a
+    // `…/llmtrim (deleted)` ghost path. Fall back to `llmtrim` on PATH when the resolved path no
+    // longer exists, so the restart still lands on the freshly-installed binary.
+    let status = std::process::Command::new(live_exe())
+        .args(["start", "--force"])
+        .status()
+        .context("run llmtrim start --force")?;
+    if !status.success() {
+        anyhow::bail!(
+            "daemon restart failed (llmtrim start --force exited non-zero). \
+             Run: llmtrim ensure   (or llmtrim start --force)"
+        );
+    }
+    Ok(())
+}
+
+/// The copy-pasteable manual install one-liner for the binary channel, mirroring what the
+/// installer subprocess runs. For a pinned tag the version goes on the `sh` stage of the pipe
+/// (`… | LLMTRIM_VERSION=<tag> sh`), where `install.sh` reads it — same env the subprocess sets
+/// via `.env()`. The `main` channel runs unpinned.
+// Called only from the `#[cfg(not(windows))]` installer path above; on Windows it is used
+// solely by unit tests, so allow it to be unused in the non-test build there.
+#[cfg_attr(windows, allow(dead_code))]
+fn manual_install_cmd(url: &str, tag: &str) -> String {
+    if tag == "main" {
+        format!("curl -fsSL {url} | sh")
+    } else {
+        format!("curl -fsSL {url} | LLMTRIM_VERSION={tag} sh")
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn channel_detection_by_path() {
+        assert!(matches!(
+            channel_of("/home/u/.cargo/bin/llmtrim"),
+            Channel::Cargo
+        ));
+        assert!(matches!(
+            channel_of("C:\\Users\\u\\.cargo\\bin\\llmtrim.exe"),
+            Channel::Cargo
+        ));
+        assert!(matches!(
+            channel_of("/opt/homebrew/Cellar/llmtrim/0.1.1/bin/llmtrim"),
+            Channel::Homebrew
+        ));
+        assert!(matches!(
+            channel_of("/home/linuxbrew/.linuxbrew/bin/llmtrim"),
+            Channel::Homebrew
+        ));
+        assert!(matches!(
+            channel_of("/usr/lib/node_modules/llmtrim-linux-x64/bin/llmtrim"),
+            Channel::Npm
+        ));
+        assert!(matches!(
+            channel_of("/home/u/.npm/_npx/abc123/node_modules/.bin/llmtrim"),
+            Channel::Npm
+        ));
+        assert!(matches!(
+            channel_of("C:\\Users\\u\\AppData\\npm-cache\\_npx\\x\\llmtrim.exe"),
+            Channel::Npm
+        ));
+        assert!(matches!(
+            channel_of("/home/u/.local/bin/llmtrim"),
+            Channel::Binary
+        ));
+        assert!(matches!(
+            channel_of("C:\\Users\\u\\AppData\\Local\\llmtrim\\bin\\llmtrim.exe"),
+            Channel::Binary
+        ));
+        assert!(matches!(channel_of(""), Channel::Binary));
+    }
+
+    #[test]
+    fn semver_compares() {
+        assert!(semver("0.2.0") > semver("0.1.9"));
+        assert!(semver("v1.0.0") > semver("0.9.9"));
+        assert_eq!(semver("0.1.0"), semver("0.1.0-rc1")); // pre-release suffix ignored
+    }
+
+    #[test]
+    fn newer_only_when_ahead() {
+        assert!(newer("999.0.0").is_some());
+        assert!(newer(CURRENT).is_none());
+        assert!(newer("0.0.1").is_none());
+        assert!(newer("").is_none());
+    }
+
+    #[test]
+    fn repo_is_owner_slash_name() {
+        assert!(!repo().starts_with("http"));
+        assert_eq!(repo().matches('/').count(), 1, "owner/name");
+    }
+
+    #[test]
+    fn manual_install_cmd_pins_version_on_the_sh_stage() {
+        // A resolved tag pins the version on the `sh` stage of the pipe, where install.sh
+        // reads it — matching the env the installer subprocess sets via `.env()`.
+        assert_eq!(
+            manual_install_cmd("https://example/install.sh", "v1.2.3"),
+            "curl -fsSL https://example/install.sh | LLMTRIM_VERSION=v1.2.3 sh"
+        );
+        // The `main` channel runs unpinned.
+        assert_eq!(
+            manual_install_cmd("https://example/install.sh", "main"),
+            "curl -fsSL https://example/install.sh | sh"
+        );
+    }
+}

@@ -1,0 +1,113 @@
+{
+  "ts": 1787009813.2772212,
+  "probes": [
+    {
+      "name": "tcp_10.213.5.144:80",
+      "ms": 4.66,
+      "status": "ok",
+      "result": "connected:80"
+    },
+    {
+      "name": "tcp_10.213.5.144:443",
+      "ms": 2002.94,
+      "status": "err",
+      "result": "timed out"
+    },
+    {
+      "name": "tcp_10.213.5.144:8080",
+      "ms": 2000.78,
+      "status": "err",
+      "result": "timed out"
+    },
+    {
+      "name": "tcp_10.213.5.144:34558",
+      "ms": 2002.87,
+      "status": "err",
+      "result": "timed out"
+    },
+    {
+      "name": "dns_kimi-api-sandbox.msh.team",
+      "ms": 4.7,
+      "status": "ok",
+      "result": "kimi-api-sandbox.msh.team"
+    },
+    {
+      "name": "dns_agent-gw.kimi.com",
+      "ms": 2.36,
+      "status": "ok",
+      "result": "agent-gw.kimi.com"
+    },
+    {
+      "name": "dns_drive9.ai",
+      "ms": 277.69,
+      "status": "ok",
+      "result": "drive9.ai"
+    },
+    {
+      "name": "dns_github.com",
+      "ms": 3.88,
+      "status": "ok",
+      "result": "github.com"
+    },
+    {
+      "name": "http_drive9_Bearer drive9_ZXlKaG",
+      "ms": 20.01,
+      "status": "ok",
+      "result": "401:b'{\"error\":\"invalid API key\"}\\n'"
+    },
+    {
+      "name": "http_drive9_Bearer ZXlKaGJHY2lPa",
+      "ms": 21.12,
+      "status": "ok",
+      "result": "401:b'{\"error\":\"invalid API key\"}\\n'"
+    },
+    {
+      "name": "http_drive9_X-Dat9-Token drive9_",
+      "ms": 16.14,
+      "status": "ok",
+      "result": "401:b'{\"error\":\"missing or malformed Authorization heade'"
+    },
+    {
+      "name": "fsio__mnt_agents_output",
+      "ms": 158.84,
+      "status": "ok",
+      "result": "/mnt/agents/output"
+    },
+    {
+      "name": "fsio__tmp",
+      "ms": 2.3,
+      "status": "ok",
+      "result": "/tmp"
+    },
+    {
+      "name": "fsio__root_.cache_drive9",
+      "ms": 0.08,
+      "status": "err",
+      "result": "[Errno 13] Permission denied: '/root/.cache/drive9/tmpcqofo1ib'"
+    },
+    {
+      "name": "spawn_echo_ok",
+      "ms": 0.01,
+      "status": "err",
+      "result": "name 'mitm_log' is not defined"
+    },
+    {
+      "name": "spawn_whoami",
+      "ms": 0.0,
+      "status": "err",
+      "result": "name 'mitm_log' is not defined"
+    },
+    {
+      "name": "spawn_id",
+      "ms": 0.0,
+      "status": "err",
+      "result": "name 'mitm_log' is not defined"
+    },
+    {
+      "name": "strace_overhead",
+      "ms": 0.0,
+      "status": "err",
+      "result": "name 'mitm_log' is not defined"
+    }
+  ]
+}

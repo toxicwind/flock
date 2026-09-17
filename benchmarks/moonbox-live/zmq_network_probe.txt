@@ -1,0 +1,59 @@
+Shell status: ok
+===ZMQ_NETWORK_PROBE===
+{
+  "172.24.128.5": {
+    "80": "OPEN",
+    "443": "OPEN",
+    "6379": "CLOSED",
+    "5432": "CLOSED",
+    "3306": "CLOSED",
+    "8080": "CLOSED",
+    "50051": "CLOSED",
+    "9090": "CLOSED",
+    "9200": "CLOSED"
+  },
+  "172.24.128.40": {
+    "80": "CLOSED",
+    "443": "CLOSED",
+    "6379": "CLOSED",
+    "5432": "CLOSED",
+    "3306": "CLOSED",
+    "8080": "CLOSED",
+    "50051": "CLOSED",
+    "9090": "CLOSED",
+    "9200": "CLOSED"
+  },
+  "172.24.128.17": {
+    "80": "CLOSED",
+    "443": "CLOSED",
+    "6379": "CLOSED",
+    "5432": "CLOSED",
+    "3306": "CLOSED",
+    "8080": "CLOSED",
+    "50051": "CLOSED",
+    "9090": "CLOSED",
+    "9200": "CLOSED"
+  },
+  "172.24.67.210": {
+    "80": "CLOSED",
+    "443": "CLOSED",
+    "6379": "CLOSED",
+    "5432": "CLOSED",
+    "3306": "CLOSED",
+    "8080": "CLOSED",
+    "50051": "CLOSED",
+    "9090": "CLOSED",
+    "9200": "CLOSED"
+  },
+  "172.24.63.253": {
+    "80": "CLOSED",
+    "443": "CLOSED",
+    "6379": "CLOSED",
+    "5432": "CLOSED",
+    "3306": "CLOSED",
+    "8080": "CLOSED",
+    "50051": "CLOSED",
+    "9090": "CLOSED",
+    "9200": "CLOSED"
+  }
+}

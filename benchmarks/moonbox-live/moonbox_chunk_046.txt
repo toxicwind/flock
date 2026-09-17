@@ -1,0 +1,207 @@
+DoneH
+.kimi.chat.v1.HeartbeatH
+2#.kimi.chat.v1.MessageSpeechResponseH
+.kimi.chatty.v1.InteractionH
+.kimi.chat.v1.InteractionAckH
+.kimi.chat.v1.SearchChunkBriefH
+.kimi.chat.v1.ImageItemH
+.kimi.chat.v1.URLRefH
+.kimi.chat.v1.ProductRefH
+.kimi.chat.v1.SandboxFileRefH
+.kimi.chat.v1.Notification.TypeR
+.kimi.chat.v1.Usage.ResearchR
+.kimi.chat.v1.ChatMessageR
+next_page_token
+nextPageToken"9
+.kimi.chat.v1.ChatR
+.kimi.chat.v1.ChatBriefR
+.kimi.file.v1.FileR
+.kimi.chat.v1.ChatR
+.kimi.chat.v1.ChatMessageR
+.kimi.chat.v1.ToolBlockR	toolBlock"W
+.kimi.chat.v1.ToolBlockR	toolBlock"R
+.kimi.chat.v1.ChatMessageR
+com.kimi.chat.v1B
+Kimi.Chat.V1
+gerNorfolkeyjaN
+kimi.chat.v1
+.kimi.common.v1.ToolTypeR
+.kimi.chat.v1.Tool.SearchH
+.kimi.chat.v1.Tool.GenImageH
+2!.kimi.chat.v1.Tool.GenImage.RatioB
+.kimi.chat.v1.ScenarioR
+.kimi.chat.v1.ToolR
+.kimi.chat.v1.ChatMessageR
+2 .kimi.chat.v1.ChatRequestOptionsR
+2$.kimi.chat.v1.ChatRequestOptions.LBSH
+2".kimi.chat.v1.SlidesRequestOptionsH
+2$.kimi.chat.v1.KimiClawRequestOptionsH
+.kimi.common.v1.ReasoningEffortB
+.kimi.common.v1.ContextLengthB
+.kimi.slides.v1.TypeB
+.kimi.slides.v1.TemplateTypeB
+.kimi.slides.v1.PageLimitB
+R	pageLimit
+2#.kimi.slides.v1.SlidesDesignOptionsR
+.kimi.slides.v1.CustomColorsR
+.kimi.chat.v1.ChatMessageH
+.kimi.chat.v1.ToolR
+.kimi.chat.v1.ScenarioH
+2 .kimi.chat.v1.ChatRequestOptionsH
+com.kimi.chat.v1B
+Kimi.Chat.V1
+kimi/gateway/mcp/v1/mcp.proto
+kimi.gateway.mcp.v1
+.kimi.mcp.v1.TransportR	transport
+20.kimi.gateway.mcp.v1.MCPUserSetting.HeadersEntryR
+.kimi.gateway.mcp.v1.ToolConfigH
+R	needOauth
+.kimi.mcp.v1.ToolB
+2#.kimi.gateway.mcp.v1.MCPUserSettingR
+.kimi.mcp.v1.TransportB
+2=.kimi.gateway.mcp.v1.CreateMCPUserSettingRequest.HeadersEntryR
+.kimi.gateway.mcp.v1.ToolConfigH
+2#.kimi.gateway.mcp.v1.MCPUserSettingR
+2#.kimi.gateway.mcp.v1.MCPUserSettingB
+2#.kimi.gateway.mcp.v1.MCPUserSettingR
+.kimi.mcp.v1.MCPServerR
+/.kimi.gateway.mcp.v1.ListMCPUserSettingsRequest
+0.kimi.gateway.mcp.v1.ListMCPUserSettingsResponse
+0.kimi.gateway.mcp.v1.CreateMCPUserSettingRequest
+1.kimi.gateway.mcp.v1.CreateMCPUserSettingResponse
+0.kimi.gateway.mcp.v1.UpdateMCPUserSettingRequest
+1.kimi.gateway.mcp.v1.UpdateMCPUserSettingResponse
+0.kimi.gateway.mcp.v1.DeleteMCPUserSettingRequest
+1.kimi.gateway.mcp.v1.DeleteMCPUserSettingResponse
+3.kimi.gateway.mcp.v1.SetMCPUserSettingStatusRequest
+4.kimi.gateway.mcp.v1.SetMCPUserSettingStatusResponse
+0.kimi.gateway.mcp.v1.ImportRecommendedMCPRequest
+1.kimi.gateway.mcp.v1.ImportRecommendedMCPResponse
+..kimi.gateway.mcp.v1.ListRecommendedMCPRequest
+/.kimi.gateway.mcp.v1.ListRecommendedMCPResponseB
+com.kimi.gateway.mcp.v1B
+Z5dev.msh.team/protos/kimi-go/kimi/gateway/mcp/v1;mcpv1
+Kimi.Gateway.Mcp.V1
+Kimi\Gateway\Mcp\V1
+Kimi\Gateway\Mcp\V1\GPBMetadata
+Kimi::Gateway::Mcp::V1b
+kimi/order/v1/membership.proto
+kimi.order.v1
+userctx/v1/membership.proto"
+.kimi.order.v1.FeatureR
+.userctx.v1.Membership.LevelR
+.kimi.order.v1.GoodsH
+.kimi.order.v1.MembershipStatusR
+R	unlimited
+.kimi.order.v1.FeatureStrategyR
+2 .kimi.order.v1.DeepResearchExtraH
+.kimi.order.v1.OkComputerExtraH
+2 .kimi.order.v1.ThinkingModeExtraH
+2 .kimi.order.v1.BananaSlidesExtraH
+2 .kimi.order.v1.NormalSlidesExtraH
+Subscription
+subscription_id
+subscriptionId
+.kimi.order.v1.GoodsR
+subscription_time
+subscriptionTime
+2!.kimi.order.v1.SubscriptionStatusR
+2 .kimi.order.v1.Subscription.TypeR
+.userctx.v1.Membership.DomainR
+GetSubscriptionRequest
+.kimi.order.v1.FeatureB
+.userctx.v1.Membership.DomainB
+GetSubscriptionResponse
+subscription
+.kimi.order.v1.SubscriptionR
+subscription
+memberships
+.kimi.order.v1.MembershipR
+memberships
+next_subscription
+.kimi.order.v1.SubscriptionH
+nextSubscription
+_next_subscription"W
+.kimi.order.v1.FeatureR
+MembershipStatus
+MEMBERSHIP_STATUS_UNSPECIFIED
+MEMBERSHIP_STATUS_ACTIVE
+MEMBERSHIP_STATUS_EXPIRED
+SubscriptionStatus
+SUBSCRIPTION_STATUS_UNSPECIFIED
+SUBSCRIPTION_STATUS_ACTIVE
+SUBSCRIPTION_STATUS_CANCEL
+SUBSCRIPTION_STATUS_STOP
+SUBSCRIPTION_STATUS_UNPAID
+SUBSCRIPTION_STATUS_PRE_PAID
+SUBSCRIPTION_STATUS_DISCARD
+3SUBSCRIPTION_STATUS_SUBSCRIPTION_REGION_NOT_ALLOWED
+com.kimi.order.v1B
+MembershipProtoP
+Kimi.Order.V1
+ kimi/gateway/im/v1/message.proto
+kimi.gateway.im.v1
+R	pageToken
+21.kimi.gateway.im.v1.ListMessagesRequest.DirectionH
+_page_tokenB
+.kimi.chat.v1.ChatMessageR
+.kimi.gateway.im.v1.MessageR
+.kimi.gateway.im.v1.MessageR
+next_page_token
+nextPageToken"t
+.kimi.chat.v1.BlockB
+28.kimi.gateway.im.v1.SendMessageStreamRequest.BlockUpdateH
+21.kimi.gateway.im.v1.SendMessageStreamRequest.PingH
+20.kimi.gateway.im.v1.SendMessageStreamRequest.EndH
+.kimi.chat.v1.OperatorR
+.kimi.chat.v1.BlockR
+.kimi.chat.v1.ChatMessageR
+(	R	pageToken"o
+.kimi.gateway.im.v1.FileR
+next_page_token
+nextPageToken"I
+.kimi.chat.v1.BlockB
+com.kimi.gateway.im.v1B
+Z3dev.msh.team/protos/kimi-go/kimi/gateway/im/v1;imv1
+Kimi.Gateway.Im.V1
+Kimi\Gateway\Im\V1
+Kimi\Gateway\Im\V1\GPBMetadata
+Kimi::Gateway::Im::V1b
+kimi.config.v1
+(	R	syncToken
+2 .kimi.config.v1.DeploymentStatusR
+.kimi.config.v1.ConfigB
+2 .kimi.config.v1.DeploymentStatusR
+.kimi.config.v1.ConfigB
+2 .kimi.config.v1.DeploymentStatusR
+.kimi.config.v1.ConfigB
+2 .kimi.config.v1.DeploymentStatusR
+(	R	pageToken
+2!.kimi.config.v1.ListConfigsFilterR
+.kimi.config.v1.AppConfigR
+next_page_token
+nextPageToken"
+.kimi.config.v1.AppConfigR
+.kimi.config.v1.AppConfigR
+.kimi.config.v1.AppConfigR
+.kimi.config.v1.AppConfigR
+#.kimi.config.v1.CreateConfigRequest
+$.kimi.config.v1.CreateConfigResponse
+ .kimi.config.v1.GetConfigRequest
+!.kimi.config.v1.GetConfigResponse
+#.kimi.config.v1.UpdateConfigRequest
+$.kimi.config.v1.UpdateConfigResponse
+#.kimi.config.v1.DeleteConfigRequest
+".kimi.config.v1.ListConfigsRequest
+#.kimi.config.v1.ListConfigsResponse
+*.kimi.config.v1.PreviewActiveConfigRequest
++.kimi.config.v1.PreviewActiveConfigResponseB
+com.kimi.config.v1B
+Kimi.Config.V1
+.CONTENT_TYPE_MEDICAL_AUTHORITY_WEB_PDF_SUMMARY
++CONTENT_TYPE_MEDICAL_AUTHORITY_WEB_PDF_TEXT
+kimi.config.v1
+userctx/v1/membership.proto">
+.kimi.config.v1.TaskbarR
+.kimi.config.v1.TaskbarTypeR
+2#.kimi.config.v1.ImageGenPre

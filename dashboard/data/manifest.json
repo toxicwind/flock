@@ -1,0 +1,401 @@
+[
+  {
+    "repo": "agylogic-eng/NIMStats",
+    "file": "history.db.gz",
+    "url": "https://raw.githubusercontent.com/agylogic-eng/NIMStats/main/history.db.gz",
+    "size_bytes": "161852",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55bz_;nvidia/nemotron-3-ultra-550b-a55bv;nvidia/nemotron-3-ultra-550b-a55bsW;nvidia/nemotron-3-ultra-550b-a55bo;nvidia/nemotron-3-ultra-550b-a55blO;"
+  },
+  {
+    "repo": "agylogic-eng/NIMStats",
+    "file": "history.db.gz",
+    "url": "https://raw.githubusercontent.com/agylogic-eng/NIMStats/main/history.db.gz",
+    "size_bytes": "161852",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55bz_;nvidia/nemotron-3-ultra-550b-a55bv;nvidia/nemotron-3-ultra-550b-a55bsW;nvidia/nemotron-3-ultra-550b-a55bo;nvidia/nemotron-3-ultra-550b-a55blO;"
+  },
+  {
+    "repo": "agylogic-eng/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/agylogic-eng/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9501",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro-0813 ,\n     nvidia/nemotron-3-super-120b-a12b ,  # pretty reliable\n     nvidia/nemotron-3-ultra-550b-a55b , # def open clown model\n#  deepseek-ai/deepseek-v4-pro , # 49 / 0\n#  minimaxai/minimax-m3 , # 30 / 9"
+  },
+  {
+    "repo": "ahmedhabibo/nimstats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/ahmedhabibo/nimstats/main/history.db",
+    "size_bytes": "28057600",
+    "exact_terms_found": "minimaxai/minimax-m3S^;%nvidia/nemotron-3-super-120b-a12b@S;nvidia/nemotron-3-super-120b-a12b!;nvidia/nemotron-3-super-120b-a12b.k;nvidia/nemotron-3-super-120b-a12bD;"
+  },
+  {
+    "repo": "ahmedhabibo/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/ahmedhabibo/NIMStats/main/history.db",
+    "size_bytes": "28057600",
+    "exact_terms_found": "minimaxai/minimax-m3S^;%nvidia/nemotron-3-super-120b-a12b@S;nvidia/nemotron-3-super-120b-a12b!;nvidia/nemotron-3-super-120b-a12b.k;nvidia/nemotron-3-super-120b-a12bD;"
+  },
+  {
+    "repo": "aigemini161-blip/NIMStats",
+    "file": "history.db.gz",
+    "url": "https://raw.githubusercontent.com/aigemini161-blip/NIMStats/main/history.db.gz",
+    "size_bytes": "161852",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55bz_;nvidia/nemotron-3-ultra-550b-a55bv;nvidia/nemotron-3-ultra-550b-a55bsW;nvidia/nemotron-3-ultra-550b-a55bo;nvidia/nemotron-3-ultra-550b-a55blO;"
+  },
+  {
+    "repo": "aigemini161-blip/NIMStats",
+    "file": "history.db.gz",
+    "url": "https://raw.githubusercontent.com/aigemini161-blip/NIMStats/main/history.db.gz",
+    "size_bytes": "161852",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55bz_;nvidia/nemotron-3-ultra-550b-a55bv;nvidia/nemotron-3-ultra-550b-a55bsW;nvidia/nemotron-3-ultra-550b-a55bo;nvidia/nemotron-3-ultra-550b-a55blO;"
+  },
+  {
+    "repo": "aigemini161-blip/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/aigemini161-blip/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9501",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro-0813 ,\n     nvidia/nemotron-3-super-120b-a12b ,  # pretty reliable\n     nvidia/nemotron-3-ultra-550b-a55b , # def open clown model\n#  deepseek-ai/deepseek-v4-pro , # 49 / 0\n#  minimaxai/minimax-m3 , # 30 / 9"
+  },
+  {
+    "repo": "anupamme/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/anupamme/NIMStats/main/history.db",
+    "size_bytes": "831488",
+    "exact_terms_found": "nvidia/llama-3.3-nemotron-super-49b-v1.5@!ffffff;nvidia/nemotron-3-super-120b-a12b@9ffffff;minimaxai/minimax-m3@F3333333;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@-;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "anupamme/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/anupamme/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9454",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,"
+  },
+  {
+    "repo": "brottobhmg/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/brottobhmg/NIMStats/main/history.db",
+    "size_bytes": "823296",
+    "exact_terms_found": "nvidia/llama-3.3-nemotron-super-49b-v1.5;minimaxai/minimax-m3;nvidia/nemotron-3-super-120b-a12b1;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning0;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "brottobhmg/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/brottobhmg/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9826",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,"
+  },
+  {
+    "repo": "Clouder1122/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/Clouder1122/NIMStats/main/history.db",
+    "size_bytes": "802816",
+    "exact_terms_found": "nvidia/llama-3.3-nemotron-super-49b-v1.5@!ffffff;nvidia/nemotron-3-super-120b-a12b@9ffffff;minimaxai/minimax-m3@F3333333;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@-;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "Clouder1122/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/Clouder1122/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9454",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,"
+  },
+  {
+    "repo": "data-path-9/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/data-path-9/NIMStats/main/history.db",
+    "size_bytes": "794624",
+    "exact_terms_found": "nvidia/llama-3.3-nemotron-super-49b-v1.5@!ffffff;nvidia/nemotron-3-super-120b-a12b@9ffffff;minimaxai/minimax-m3@F3333333;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@-;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "data-path-9/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/data-path-9/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "10299",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/nemotron-3-ultra-550b-a55b ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,\n     nvidia/nemotron-4-340b-instruct ,\n     nvidia/llama-3.1-nemotron-70b-instruct ,\n     nvidia/llama3-chatqa-1.5-70b ,"
+  },
+  {
+    "repo": "dinggouhua/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/dinggouhua/NIMStats/main/history.db",
+    "size_bytes": "815104",
+    "exact_terms_found": "nvidia/llama-3.3-nemotron-super-49b-v1.5;minimaxai/minimax-m3;nvidia/nemotron-3-super-120b-a12b1;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "dinggouhua/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/dinggouhua/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9454",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,"
+  },
+  {
+    "repo": "eastarctica/nimstats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/eastarctica/nimstats/main/history.db",
+    "size_bytes": "663552",
+    "exact_terms_found": "minimaxai/minimax-m3@F3333333;nvidia/nemotron-3-super-120b-a12b@9ffffff9;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@-;nvidia/llama-3.3-nemotron-super-49b-v1.5@(;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "eastarctica/nimstats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/eastarctica/nimstats/main/scripts/test_models.py",
+    "size_bytes": "9454",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,"
+  },
+  {
+    "repo": "EastArctica/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/EastArctica/NIMStats/main/history.db",
+    "size_bytes": "663552",
+    "exact_terms_found": "minimaxai/minimax-m3@F3333333;nvidia/nemotron-3-super-120b-a12b@9ffffff9;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@-;nvidia/llama-3.3-nemotron-super-49b-v1.5@(;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "EastArctica/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/EastArctica/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9454",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,"
+  },
+  {
+    "repo": "i3t2y/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/i3t2y/NIMStats/main/history.db",
+    "size_bytes": "450560",
+    "exact_terms_found": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@$;nvidia/nemotron-3-ultra-550b-a55b@7ffffff;deepseek-ai/deepseek-v4-pro-0813@B&fffff;nvidia/nemotron-3.5-lightning-30b-a3b@!;minimaxai/minimax-m3@=;"
+  },
+  {
+    "repo": "i3t2y/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/i3t2y/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9145",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/nemotron-3-ultra-550b-a55b ,\n     nvidia/nemotron-3.5-lightning-30b-a3b ,\n     deepseek-ai/deepseek-v4-pro-0813 ,"
+  },
+  {
+    "repo": "iaaan12/delaynim",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/iaaan12/delaynim/main/history.db",
+    "size_bytes": "57294848",
+    "exact_terms_found": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning>;%nvidia/nemotron-3-super-120b-a12b@S;nvidia/nemotron-3-super-120b-a12b!;nvidia/nemotron-3-super-120b-a12b.k;nvidia/nemotron-3-super-120b-a12bD;"
+  },
+  {
+    "repo": "iaaan12/delaynim",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/iaaan12/delaynim/main/scripts/test_models.py",
+    "size_bytes": "8371",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,"
+  },
+  {
+    "repo": "kumaa-1/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/kumaa-1/NIMStats/main/history.db",
+    "size_bytes": "856064",
+    "exact_terms_found": "nvidia/llama-3.3-nemotron-super-49b-v1.5@(;minimaxai/minimax-m3@F;nvidia/nemotron-3-super-120b-a12b@9;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "maurodruwel/nimstats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/maurodruwel/nimstats/main/history.db",
+    "size_bytes": "450560",
+    "exact_terms_found": "deepseek-ai/deepseek-v4-pro-0813@B&fffff;nvidia/nemotron-3.5-lightning-30b-a3b@!;nvidia/nemotron-3-ultra-550b-a55b@7ffffff.';nvidia/nemotron-3-super-120b-a12b@+3333339;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@$;"
+  },
+  {
+    "repo": "maurodruwel/nimstats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/maurodruwel/nimstats/main/scripts/test_models.py",
+    "size_bytes": "9143",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/nemotron-3-ultra-550b-a55b ,\n     nvidia/nemotron-3.5-lightning-30b-a3b ,\n     deepseek-ai/deepseek-v4-pro-0813 ,"
+  },
+  {
+    "repo": "MauroDruwel/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/MauroDruwel/NIMStats/main/history.db",
+    "size_bytes": "450560",
+    "exact_terms_found": "deepseek-ai/deepseek-v4-pro-0813@B&fffff;nvidia/nemotron-3.5-lightning-30b-a3b@!;nvidia/nemotron-3-ultra-550b-a55b@7ffffff.';nvidia/nemotron-3-super-120b-a12b@+3333339;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@$;"
+  },
+  {
+    "repo": "MauroDruwel/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/MauroDruwel/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9143",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/nemotron-3-ultra-550b-a55b ,\n     nvidia/nemotron-3.5-lightning-30b-a3b ,\n     deepseek-ai/deepseek-v4-pro-0813 ,"
+  },
+  {
+    "repo": "nextunicorn2026/nimstats-hgi",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/nextunicorn2026/nimstats-hgi/main/history.db",
+    "size_bytes": "30441472",
+    "exact_terms_found": "%nvidia/nemotron-3-super-120b-a12b@S;nvidia/nemotron-3-super-120b-a12b!;nvidia/nemotron-3-super-120b-a12b.k;nvidia/nemotron-3-super-120b-a12bD;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "nextunicorn2026/nimstats-hgi",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/nextunicorn2026/nimstats-hgi/main/scripts/test_models.py",
+    "size_bytes": "8371",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,"
+  },
+  {
+    "repo": "nextunicorn2026/NIMStats-hgi",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/nextunicorn2026/NIMStats-hgi/main/history.db",
+    "size_bytes": "30441472",
+    "exact_terms_found": "%nvidia/nemotron-3-super-120b-a12b@S;nvidia/nemotron-3-super-120b-a12b!;nvidia/nemotron-3-super-120b-a12b.k;nvidia/nemotron-3-super-120b-a12bD;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "nextunicorn2026/NIMStats-hgi",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/nextunicorn2026/NIMStats-hgi/main/scripts/test_models.py",
+    "size_bytes": "8371",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,"
+  },
+  {
+    "repo": "NiL4gh/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/NiL4gh/NIMStats/main/history.db",
+    "size_bytes": "851968",
+    "exact_terms_found": "nvidia/llama-3.3-nemotron-super-49b-v1.5@!ffffff;nvidia/nemotron-3-super-120b-a12b@9ffffff;minimaxai/minimax-m3@F3333333;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@-;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "NiL4gh/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/NiL4gh/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9454",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,"
+  },
+  {
+    "repo": "Pixyde/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/Pixyde/NIMStats/main/history.db",
+    "size_bytes": "872448",
+    "exact_terms_found": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@$;nvidia/llama-3.1-nemotron-ultra-253b-v1@;deepseek-ai/deepseek-v4-pro-0813@B&fffff;nvidia/nv-embedqa-mistral-7b-v2;nvidia/nvclip;"
+  },
+  {
+    "repo": "Pixyde/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/Pixyde/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "12010",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,\n     nvidia/nemotron-3-ultra-550b-a55b ,\n     nvidia/nemotron-3.5-lightning-30b-a3b ,\n     deepseek-ai/deepseek-v4-pro-0813 ,\n     nvidia/riva-translate-4b-instruct-v2 ,\n     nvidia/ising-calibration-1.5-31b ,"
+  },
+  {
+    "repo": "scholzthibault/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/scholzthibault/NIMStats/main/history.db",
+    "size_bytes": "598016",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55b;nvidia/llama-3.3-nemotron-super-49b-v1.5;minimaxai/minimax-m3;nvidia/nemotron-3.5-lightning-30b-a3b%;nvidia/nemotron-3-super-120b-a12b1;"
+  },
+  {
+    "repo": "scholzthibault/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/scholzthibault/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9274",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,\n     nvidia/nemotron-3-ultra-550b-a55b ,\n     nvidia/nemotron-3.5-lightning-30b-a3b ,"
+  },
+  {
+    "repo": "tobymcclean/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/tobymcclean/NIMStats/main/history.db",
+    "size_bytes": "802816",
+    "exact_terms_found": "nvidia/llama-3.3-nemotron-super-49b-v1.5@!ffffff;nvidia/nemotron-3-super-120b-a12b@9ffffff;minimaxai/minimax-m3@F3333333;nvidia/nemotron-3-nano-omni-30b-a3b-reasoning@-;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "tobymcclean/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/tobymcclean/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9454",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     minimaxai/minimax-m3 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-nano-omni-30b-a3b-reasoning ,\n     nvidia/llama-3.3-nemotron-super-49b-v1.5 ,"
+  },
+  {
+    "repo": "tudragon154203/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/tudragon154203/NIMStats/main/history.db",
+    "size_bytes": "12292096",
+    "exact_terms_found": "nvidia/nemotron-3-super-120b-a12b ;nvidia/nemotron-3-super-120b-a12b;nvidia/nemotron-3-super-120b-a12b;nvidia/nemotron-3-super-120b-a12b;nvidia/nemotron-3-super-120b-a12b;"
+  },
+  {
+    "repo": "tudragon154203/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/tudragon154203/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "8247",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     nvidia/nemotron-3-super-120b-a12b ,"
+  },
+  {
+    "repo": "vadash/nimstats",
+    "file": "history.db.gz",
+    "url": "https://raw.githubusercontent.com/vadash/nimstats/main/history.db.gz",
+    "size_bytes": "157763",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55b};nvidia/nemotron-3-ultra-550b-a55bzD;nvidia/nemotron-3-ultra-550b-a55bv;nvidia/nemotron-3-ultra-550b-a55bs<;nvidia/nemotron-3-ultra-550b-a55bo;"
+  },
+  {
+    "repo": "vadash/nimstats",
+    "file": "history.db.gz",
+    "url": "https://raw.githubusercontent.com/vadash/nimstats/main/history.db.gz",
+    "size_bytes": "157763",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55b};nvidia/nemotron-3-ultra-550b-a55bzD;nvidia/nemotron-3-ultra-550b-a55bv;nvidia/nemotron-3-ultra-550b-a55bs<;nvidia/nemotron-3-ultra-550b-a55bo;"
+  },
+  {
+    "repo": "vadash/nimstats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/vadash/nimstats/main/scripts/test_models.py",
+    "size_bytes": "9501",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro-0813 ,\n     nvidia/nemotron-3-super-120b-a12b ,  # pretty reliable\n     nvidia/nemotron-3-ultra-550b-a55b , # def open clown model\n#  deepseek-ai/deepseek-v4-pro , # 49 / 0\n#  minimaxai/minimax-m3 , # 30 / 9"
+  },
+  {
+    "repo": "vadash/NIMStats",
+    "file": "history.db.gz",
+    "url": "https://raw.githubusercontent.com/vadash/NIMStats/main/history.db.gz",
+    "size_bytes": "157763",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55b};nvidia/nemotron-3-ultra-550b-a55bzD;nvidia/nemotron-3-ultra-550b-a55bv;nvidia/nemotron-3-ultra-550b-a55bs<;nvidia/nemotron-3-ultra-550b-a55bo;"
+  },
+  {
+    "repo": "vadash/NIMStats",
+    "file": "history.db.gz",
+    "url": "https://raw.githubusercontent.com/vadash/NIMStats/main/history.db.gz",
+    "size_bytes": "157763",
+    "exact_terms_found": "nvidia/nemotron-3-ultra-550b-a55b};nvidia/nemotron-3-ultra-550b-a55bzD;nvidia/nemotron-3-ultra-550b-a55bv;nvidia/nemotron-3-ultra-550b-a55bs<;nvidia/nemotron-3-ultra-550b-a55bo;"
+  },
+  {
+    "repo": "vadash/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/vadash/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "9501",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro-0813 ,\n     nvidia/nemotron-3-super-120b-a12b ,  # pretty reliable\n     nvidia/nemotron-3-ultra-550b-a55b , # def open clown model\n#  deepseek-ai/deepseek-v4-pro , # 49 / 0\n#  minimaxai/minimax-m3 , # 30 / 9"
+  },
+  {
+    "repo": "xiaoqianran/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/xiaoqianran/NIMStats/main/history.db",
+    "size_bytes": "31223808",
+    "exact_terms_found": "nvidia/nemotron-parse-2.0;deepseek-ai/deepseek-v4-pro-0813;nvidia/nemotron-3.5-lightning-30b-a3bX;nvidia/vilaA(;nvidia/riva-translate-4b-instruct-v2@);"
+  },
+  {
+    "repo": "xiaoqianran/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/xiaoqianran/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "19257",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n             nvidiaCatalog : catalog_meta.get( total_catalog ),\n    print(f   NVIDIA catalog:        {s.get( nvidiaCatalog )} )"
+  },
+  {
+    "repo": "xijinpingxijinping08-cloud/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/xijinpingxijinping08-cloud/NIMStats/main/history.db",
+    "size_bytes": "7016448",
+    "exact_terms_found": "nvidia/nemotron-3-super-120b-a12b;nvidia/nemotron-3-super-120b-a12b;nvidia/nemotron-3-super-120b-a12b;nvidia/nemotron-3-super-120b-a12b;%nvidia/nemotron-3-super-120b-a12b@S;"
+  },
+  {
+    "repo": "xijinpingxijinping08-cloud/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/xijinpingxijinping08-cloud/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "8182",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro ,\n     nvidia/nemotron-3-super-120b-a12b ,"
+  },
+  {
+    "repo": "xudaxing2023-dot/NIMStats",
+    "file": "history.db",
+    "url": "https://raw.githubusercontent.com/xudaxing2023-dot/NIMStats/main/history.db",
+    "size_bytes": "622592",
+    "exact_terms_found": "nvidia/nemotron-3-super-120b-a12b;minimaxai/minimax-m3;nvidia/nemotron-3-ultra-550b-a55b(;deepseek-ai/deepseek-v4-pro-0813n;nvidia/nemotron-3-ultra-550b-a55b;"
+  },
+  {
+    "repo": "xudaxing2023-dot/NIMStats",
+    "file": "test_models.py",
+    "url": "https://raw.githubusercontent.com/xudaxing2023-dot/NIMStats/main/scripts/test_models.py",
+    "size_bytes": "7874",
+    "exact_terms_found": "API_BASE = os.getenv( API_BASE ,  https://integrate.api.nvidia.com/v1 )\n     deepseek-ai/deepseek-v4-pro-0813 ,\n     nvidia/nemotron-3-super-120b-a12b ,\n     nvidia/nemotron-3-ultra-550b-a55b ,\n     minimaxai/minimax-m3 ,"
+  }
+]

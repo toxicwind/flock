@@ -1,0 +1,107 @@
+ey string; elem *number.NumberSymbols }
+5*struct { key number.Locale; elem number.numberData }
+6*[]struct { key uint32; elem *http.http2clientStream }
+6*[]struct { key string; elem []*http.http2ClientConn }
+6*[]struct { key *http.http2ClientConn; elem []string }
+6*[8]struct { key string; elem *http.http2addConnCall }
+6*[]struct { key string; elem []*multipart.FileHeader }
+6*struct { key chan<- os.Signal; elem *signal.handler }
+6*[8]struct { key unsafe.Pointer; elem unsafe.Pointer }
+6*struct { key protoreflect.Kind; elem protowire.Type }
+6*[8]struct { key x509.rfc2821Mailbox; elem struct {} }
+6*[]struct { key string; elem []*x509.policyGraphNode }
+6*struct { key protowire.Number; elem *filedesc.Field }
+6*struct { key protoreflect.Name; elem *filedesc.Enum }
+6*[]struct { key protoreflect.Kind; elem reflect.Type }
+6*struct { key protowire.Number; elem *impl.fieldInfo }
+6*[8]struct { key protowire.Number; elem interface {} }
+6*[8]struct { key reflect.Type; elem protowire.Number }
+6*[8]struct { key protowire.Number; elem reflect.Type }
+6*[8]struct { key string; elem schema.CheckConstraint }
+6*[]struct { key string; elem schema.UniqueConstraint }
+6*payv1.CreateAppleSubscriptionDiscountSignatureRequest
+6*[]struct { key string; elem map[string]interface {} }
+6*func(report.DiscardReason, ratelimit.Category, int64)
+6*map[protoreflect.FieldDescriptor]protovalidate.astSet
+6*[8]struct { key string; elem *jsonschema.Vocabulary }
+6*[]*configv1.MembershipConfig_FeatureConfig_ItemConfig
+AuthorizedNetworks#json:"authorizedNetworks,omitempty"
+6*[8]struct { key protoreflect.Kind; elem *types.Type }
+6*[]struct { key string; elem cel.ASTValidatorFactory }
+6*[8]struct { key int64; elem []*types.AttributeTrail }
+6*[]struct { key string; elem func(time.Time) ref.Val }
+6*struct { key string; elem protoreflect.ProtoMessage }
+6*struct { key jsonschema.jsonPointer; elem struct {} }
+6dev.msh.team/protos/kimi-go/kimi/gateway/membership/v2
+6*func() *membershipv2.ListBalanceActionsRequest_Filter
+6*[]struct { key string; elem *i18n.parsedTranslation }
+6*struct { key string; elem checker.FunctionEstimator }
+6*func(string, antlr.Token, antlr.RecognitionException)
+6*[8]struct { key string; elem *pgservicefile.Service }
+6*struct { key *pgconn.StatementDescription; elem int }
+6*[8]struct { key reflect.Type; elem *yaml.structInfo }
+6*[]struct { key string; elem *antlr.TokensStartState }
+6*[]struct { key int; elem []*antlr.PredictionContext }
+6*[8]struct { key string; elem proto.ProfileEventType }
+6*struct { key string; elem cldrlocale.weekPreference }
+6*struct { key int; elem number.compactPluralPatterns }
+7*[]struct { key *http.http2serverConn; elem struct {} }
+7*[]struct { key *http.persistConn; elem *list.Element }
+7*[8]struct { key uint32; elem *http.http2clientStream }
+7*[8]struct { key string; elem []*http.http2ClientConn }
+7*[8]struct { key *http.http2ClientConn; elem []string }
+7*[8]struct { key string; elem []*multipart.FileHeader }
+7*[]struct { key string; elem *connect.compressionPool }
+7*struct { key uint64; elem *fuse.retrieveCacheRequest }
+7*struct { key profile.sampleKey; elem *profile.Sample }
+7*[8]struct { key string; elem []*x509.policyGraphNode }
+7*struct { key protoreflect.Name; elem *filedesc.Field }
+7*struct { key protoreflect.Name; elem *filedesc.Oneof }
+7*[8]struct { key protoreflect.Kind; elem reflect.Type }
+7*struct { key protoreflect.Name; elem *impl.oneofInfo }
+7*struct { key reflect.Type; elem *impl.coderFieldInfo }
+7*[8]struct { key string; elem schema.UniqueConstraint }
+7*payv1.CreateAppleSubscriptionDiscountSignatureResponse
+7*[8]struct { key string; elem map[string]interface {} }
+7*struct { key *regexp.Regexp; elem *jsonschema.Schema }
+7*[]struct { key reflect.Type; elem *jsonschema.Schema }
+BearerTokenEnvVar%json:"bearer_token_env_var,omitempty"
+7*struct { key i18n.Locale; elem kimimodel.StyleConfig }
+ID4gorm:"column:id;type:uuid;primaryKey;comment:
+ID4gorm:"column:id;primaryKey;comment:
+7*[]struct { key interface {}; elem protoreflect.Value }
+7*struct { key string; elem prometheus.LabelConstraint }
+7*[]struct { key jsonschema.url; elem *jsonschema.root }
+7*[8]struct { key string; elem cel.ASTValidatorFactory }
+7*[8]struct { key string; elem func(time.Time) ref.Val }
+7*[]struct { key string; elem *pb.EnumValueDescription }
+7*[]struct { key string; elem push.NotificationHandler }
+7dev.msh.team/protos/kimi-go/kimi/gateway/chat/common/v1
+7*func() []*membershipv2.Capability_Constraint_RateLimit
+7*[8]struct { key string; elem *i18n.parsedTranslation }
+7*func() *membershipv2.Balance_Action_Index_WebsiteInfra
+7*[]struct { key int64; elem checker.entrySizeEstimate }
+7*struct { key reflect.Type; elem [2]pgtype.EncodePlan }
+7*[]struct { key uint64; elem auth.CredentialsListener }
+7*[]struct { key do.ServiceDescription; elem struct {} }
+7*[8]struct { key string; elem *antlr.TokensStartState }
+7*[8]struct { key int; elem []*antlr.PredictionContext }
+7*[]struct { key number.Locale; elem number.numberData }
+8*[8]struct { key *http.http2serverConn; elem struct {} }
+8*[8]struct { key *http.persistConn; elem *list.Element }
+8*[8]struct { key string; elem *connect.compressionPool }
+8*[]struct { key chan<- os.Signal; elem *signal.handler }
+8*func(io.Reader, []uint8) ([]uint8, tls.keyShare, error)
+8*[]struct { key protoreflect.Kind; elem protowire.Type }
+8*struct { key protoreflect.FullName; elem interface {} }
+8*[]struct { key protowire.Number; elem *filedesc.Field }
+8*[]struct { key protoreflect.Name; elem *filedesc.Enum }
+8*struct { key protoreflect.Name; elem *filedesc.Method }
+8*[]struct { key protowire.Number; elem *impl.fieldInfo }
+Keyword0protobuf:"bytes,1,opt,name=keyword,proto3,oneof"
+8*struct { key sentry.TransactionSource; elem struct {} }
+8*[8]struct { key reflect.Type; elem *jsonschema.Schema }
+8*[8]struct { key interface {}; elem protoreflect.Value }
+8*struct { key string; elem protoreflect.FileDescriptor }
+8*[8]struct { key jsonschema.url; elem *jsonschema.root }
+8*struct { key string; elem interp

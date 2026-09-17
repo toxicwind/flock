@@ -1,0 +1,7 @@
+<section class="space-y-4 text-center">
+  <img src="/assets/static/logo.png" alt="Effusion Labs" class="mx-auto w-24" />
+  <h1 class="font-heading text-5xl sm:text-6xl">Effusion Labs</h1>
+  <p class="text-lg text-gray-300">Art · Culture · Innovation</p>
+  <p class="mx-auto max-w-prose text-gray-400">Where experimental ideas meet practical prototypes.</p>
+  <a href="/map/" class="inline-block rounded-md bg-primary px-6 py-3 font-heading text-bg-dark transition hover:bg-lapis focus:outline-none focus:ring">Launch the Map</a>
+</section>

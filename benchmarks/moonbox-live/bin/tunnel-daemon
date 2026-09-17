@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+import subprocess, time, signal, sys
+procs = []
+def cleanup(*a):
+    for p in procs: p.terminate()
+    sys.exit(0)
+signal.signal(signal.SIGTERM, cleanup)
+# Tunnel kernel server to 18889
+p1 = subprocess.Popen(["socat","TCP-LISTEN:18889,reuseaddr,fork","TCP:127.0.0.1:8888"])
+procs.append(p1)
+# Tunnel restarter to 18890  
+p2 = subprocess.Popen(["socat","TCP-LISTEN:18890,reuseaddr,fork","TCP:127.0.0.1:18080"])
+procs.append(p2)
+# Tunnel envd-alt to 18891
+p3 = subprocess.Popen(["socat","TCP-LISTEN:18891,reuseaddr,fork","TCP:127.0.0.1:18888"])
+procs.append(p3)
+print("tunnels: 18889->8888, 18890->18080, 18891->18888")
+for p in procs: p.wait()

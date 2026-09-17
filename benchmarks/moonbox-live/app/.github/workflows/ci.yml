@@ -1,0 +1,79 @@
+name: "CI • Doctor → Quality → Test → Build (Bun)"
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CI: true
+  PUPPETEER_SKIP_DOWNLOAD: "1"
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "1"
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+
+jobs:
+  verify:
+    name: "✅ Doctor, Quality, Test, Build"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          submodules: recursive
+
+      - name: 🔧 Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: ♻️ Restore Generated Data Cache
+        uses: actions/cache@v5
+        with:
+          path: src/content/projects/lv-images/generated
+          key: ${{ runner.os }}-lv-generated-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-lv-generated-
+
+      - name: 📦 Install dependencies
+        run: bun install --no-save
+
+      - name: 🧊 Install Chromium
+        run: ./bin/install-chromium.sh
+
+      - name: 🩺 bun run doctor
+        run: bun run doctor
+
+      - name: 🧪 bun run test
+        run: bun run test
+
+      - name: 🏗️ bun run build:offline
+        run: bun run build:offline
+
+      - name: 🎨 bunx vite build
+        run: bunx vite build
+
+      - name: 📦 Archive build output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site/
+
+      - name: 🚀 Sync to Production
+        if: github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PORTAINER_WEBHOOK: ${{ secrets.PORTAINER_WEBHOOK_EFFUSION }}
+        run: |
+          chmod +x tools/generate-artifacts.sh tools/upload-artifacts.sh tools/sync-to-production.sh
+          ./tools/sync-to-production.sh

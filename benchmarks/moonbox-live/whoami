@@ -1,0 +1,3 @@
+#!/bin/sh
+# whoami — returns canonical RID
+cat /mnt/agents/dot/var/RID 2>/dev/null || echo "UNKNOWN"

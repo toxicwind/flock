@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/toxicwind/toxicwind-repos.git
+	fetch = +refs/heads/dev/security-audit-2026:refs/remotes/origin/dev/security-audit-2026
+[user]
+	name = toxicwind
+	email = toxicwind@users.noreply.github.com
+[credential]
+	helper = store

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "tailwindcss",
+    "version": "4.1.11",
+    "license": "MIT",
+    "homepage": "https://tailwindcss.com",
+    "repo": "https://github.com/tailwindlabs/tailwindcss.git",
+    "source": "npm"
+  },
+  {
+    "name": "@11ty/eleventy",
+    "version": "3.1.2",
+    "license": "MIT",
+    "homepage": "https://www.11ty.dev/",
+    "repo": "git://github.com/11ty/eleventy.git",
+    "source": "npm"
+  },
+  {
+    "name": "nunjucks",
+    "version": "3.2.4",
+    "license": "BSD-2-Clause",
+    "homepage": "",
+    "repo": "https://github.com/mozilla/nunjucks.git",
+    "source": "npm"
+  },
+  {
+    "name": "markdown-it",
+    "version": "14.1.0",
+    "license": "MIT",
+    "homepage": "",
+    "repo": "markdown-it/markdown-it",
+    "source": "npm"
+  },
+  {
+    "name": "prismjs",
+    "version": "1.30.0",
+    "license": "MIT",
+    "homepage": "",
+    "repo": "git+https://github.com/PrismJS/prism.git",
+    "source": "npm"
+  },
+  {
+    "name": "daisyui",
+    "version": "5.0.50",
+    "license": "MIT",
+    "homepage": "https://daisyui.com",
+    "repo": "https://github.com/saadeghi/daisyui.git",
+    "source": "npm"
+  },
+  {
+    "name": "postcss",
+    "version": "8.5.6",
+    "license": "MIT",
+    "homepage": "https://postcss.org/",
+    "repo": "postcss/postcss",
+    "source": "npm"
+  }
+]

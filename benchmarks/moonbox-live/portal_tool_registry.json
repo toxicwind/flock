@@ -1,0 +1,178 @@
+{
+  "timestamp": "2026-08-09T20:47:21.517558",
+  "container_id": "35829eec9ddb448583192863a45a8eb6",
+  "api_key_status": "EXHAUSTED_403",
+  "base_url": "https://agent-gw.kimi.com/coding",
+  "plugins": [
+    {
+      "name": "audio_generation",
+      "version": "0.2.1",
+      "description": "Generate audio through agent-gw: convert text to speech with a chosen voice, or create custom sound effects from an English description and a duration. Output is saved locally as mp3.",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/audio_generation/kimi.plugin.json",
+      "scripts": [
+        ".agents/plugins/audio_generation/scripts/audio_generation_tool.py"
+      ],
+      "skills": [
+        ".agents/plugins/audio_generation/skills/audio_generation/SKILL.md"
+      ]
+    },
+    {
+      "name": "canva-global",
+      "version": "0.1.6",
+      "description": "Canva \u6d77\u5916\u7248\u63d2\u4ef6\u8986\u76d6\u8bbe\u8ba1\u521b\u4f5c\u3001\u54c1\u724c\u6a21\u677f\u4f7f\u7528\u3001\u56e2\u961f\u534f\u4f5c\u3001\u7d20\u6750\u7ba1\u7406\u7b49\u573a\u666f\u3002\u5e38\u89c1\u7528\u6cd5\u5305\u62ec\u5feb\u901f\u521b\u5efa\u65b0\u8bbe\u8ba1\u3001\u5957\u7528\u54c1\u724c\u6a21\u677f\u6279\u91cf\u4ea7\u51fa\u7269\u6599\u3001\u6574\u7406\u8bbe\u8ba1\u7a3f\u5230\u6587\u4ef6\u5939,\u4ee5\u53ca\u5728\u8bbe\u8ba1\u4e0a\u7559\u8bc4\u8bba\u4e0e\u56e2\u961f\u534f\u4f5c\u3002",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/canva-global/kimi.plugin.json",
+      "scripts": [],
+      "skills": [
+        ".agents/plugins/canva-global/skills/canva-mcp-design/SKILL.md"
+      ]
+    },
+    {
+      "name": "github",
+      "version": "0.1.9",
+      "description": "GitHub \u5b98\u65b9 MCP \u2014\u2014 issues / PR / \u4ed3\u5e93 / \u4ee3\u7801\u641c\u7d22 / Projects / Discussions / Copilot \u7f16\u7801 Agent\u3002",
+      "category": "DEVELOPER",
+      "config_path": ".agents/plugins/github/kimi.plugin.json",
+      "scripts": [],
+      "skills": []
+    },
+    {
+      "name": "image_generation",
+      "version": "0.2.2",
+      "description": "Create an image based on a text description using AI image generation through agent-gw, with supported ratio/resolution combinations, optional transparent background, and reference image guidance.",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/image_generation/kimi.plugin.json",
+      "scripts": [
+        ".agents/plugins/image_generation/scripts/image_generation_tool.py"
+      ],
+      "skills": [
+        ".agents/plugins/image_generation/skills/image_generation/SKILL.md"
+      ]
+    },
+    {
+      "name": "imf",
+      "version": "0.1.8",
+      "description": "Query IMF macroeconomic data from WEO and COFER for GDP, inflation, debt, unemployment, trade balances, reserve currency shares, and cross-country analysis through agent-gw.",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/imf/kimi.plugin.json",
+      "scripts": [
+        ".agents/plugins/imf/scripts/imf_tool.py"
+      ],
+      "skills": [
+        ".agents/plugins/imf/skills/imf/SKILL.md"
+      ]
+    },
+    {
+      "name": "musepool",
+      "version": "0.2.7",
+      "description": "\u8bbe\u8ba1\u7075\u611f\u5e93",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/musepool/kimi.plugin.json",
+      "scripts": [
+        ".agents/plugins/musepool/scripts/muse_tool.py"
+      ],
+      "skills": [
+        ".agents/plugins/musepool/skills/musepool/SKILL.md"
+      ]
+    },
+    {
+      "name": "scholar",
+      "version": "0.1.4",
+      "description": "A freely accessible web search engine that indexes the full text or metadata of scholarly literature across an array of publishing formats and disciplines. It provides comprehensive academic research ",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/scholar/kimi.plugin.json",
+      "scripts": [
+        ".agents/plugins/scholar/scripts/scholar_tool.py"
+      ],
+      "skills": [
+        ".agents/plugins/scholar/skills/scholar/SKILL.md"
+      ]
+    },
+    {
+      "name": "sec_edgar",
+      "version": "0.1.7",
+      "description": "SEC EDGAR provides comprehensive US public company filings and financial data, including company info, filings, XBRL facts, financial statements, insider trades, institutional holdings, and material c",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/sec_edgar/kimi.plugin.json",
+      "scripts": [
+        ".agents/plugins/sec_edgar/scripts/sec_edgar_tool.py"
+      ],
+      "skills": [
+        ".agents/plugins/sec_edgar/skills/sec_edgar/SKILL.md"
+      ]
+    },
+    {
+      "name": "world_bank_open_data",
+      "version": "0.1.6",
+      "description": "Query World Bank Open Data for global development indicators, country time series, and economic, social, and environmental metrics through agent-gw.",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/world_bank_open_data/kimi.plugin.json",
+      "scripts": [
+        ".agents/plugins/world_bank_open_data/scripts/world_bank_open_data_tool.py"
+      ],
+      "skills": [
+        ".agents/plugins/world_bank_open_data/skills/world_bank_open_data/SKILL.md"
+      ]
+    },
+    {
+      "name": "yahoo_finance",
+      "version": "0.1.8",
+      "description": "Query Yahoo Finance stock information, trading data, company profiles, financial metrics, statements, ownership, analyst coverage, and risk metrics through agent-gw.",
+      "category": "PRODUCTIVITY",
+      "config_path": ".agents/plugins/yahoo_finance/kimi.plugin.json",
+      "scripts": [
+        ".agents/plugins/yahoo_finance/scripts/yahoo_finance_tool.py"
+      ],
+      "skills": [
+        ".agents/plugins/yahoo_finance/skills/yahoo_finance/SKILL.md"
+      ]
+    }
+  ],
+  "user_skills": [
+    {
+      "name": "infra-recon-forensics",
+      "scripts": [
+        ".user/skills/infra-recon-forensics/scripts/async_fallback_scan.py",
+        ".user/skills/infra-recon-forensics/scripts/nlp_cluster.py",
+        ".user/skills/infra-recon-forensics/scripts/seed_hunter.py",
+        ".user/skills/infra-recon-forensics/scripts/semantic_weirdness.py"
+      ]
+    },
+    {
+      "name": "sdk-auditor",
+      "scripts": [
+        ".user/skills/sdk-auditor/scripts/aggregate.py",
+        ".user/skills/sdk-auditor/scripts/audit_engine.py",
+        ".user/skills/sdk-auditor/scripts/fetch_pkgs.py",
+        ".user/skills/sdk-auditor/scripts/run_audit.py"
+      ]
+    },
+    {
+      "name": "seed-hunter-compat",
+      "scripts": [
+        ".user/skills/seed-hunter-compat/scripts/nlp_cluster.py",
+        ".user/skills/seed-hunter-compat/scripts/seed_hunter.py",
+        ".user/skills/seed-hunter-compat/scripts/semantic_weirdness.py"
+      ]
+    },
+    {
+      "name": "stemforge",
+      "scripts": [
+        ".user/skills/stemforge/scripts/als.py",
+        ".user/skills/stemforge/scripts/ana.py",
+        ".user/skills/stemforge/scripts/boot.py",
+        ".user/skills/stemforge/scripts/cdp.py",
+        ".user/skills/stemforge/scripts/h.py",
+        ".user/skills/stemforge/scripts/inst.py",
+        ".user/skills/stemforge/scripts/kr.py",
+        ".user/skills/stemforge/scripts/loader.py",
+        ".user/skills/stemforge/scripts/luf.py",
+        ".user/skills/stemforge/scripts/pyfix.py",
+        ".user/skills/stemforge/scripts/search.py",
+        ".user/skills/stemforge/scripts/stems.py"
+      ]
+    }
+  ],
+  "credentials_source": "/mnt/portal-overlay/.agent-gw.json"
+}

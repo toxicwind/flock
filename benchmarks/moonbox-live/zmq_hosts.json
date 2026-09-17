@@ -1,0 +1,27 @@
+{
+  "account": {
+    "host": "account.dev.kimi.team",
+    "error": "HTTP Error 404: Not Found"
+  },
+  "chatty": {
+    "host": "chatty.dev.kimi.team",
+    "error": "HTTP Error 404: Not Found"
+  },
+  "fs-internal": {
+    "host": "fs-internal.dev.kimi.team",
+    "error": "HTTP Error 404: Not Found"
+  },
+  "marci-test": {
+    "host": "kimi-marci-test.mse.msh.work",
+    "error": "timed out"
+  },
+  "kimi": {
+    "host": "kimi.kimi.team",
+    "status": 200,
+    "body": "<!doctype html> <html lang=\"zh-CN\" translate=\"no\" class=\"light\"> <head> <script type=\"module\" crossorigin src=\"https://statics.moonshot.cn/kimi-web-seo/assets/polyfills-B7LwMgLB.js\"></script> <meta ch"
+  },
+  "notify": {
+    "host": "notify.dev.kimi.team",
+    "error": "HTTP Error 404: Not Found"
+  }
+}

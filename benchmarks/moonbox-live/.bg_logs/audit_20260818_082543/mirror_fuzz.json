@@ -1,0 +1,80 @@
+[
+  {
+    "host": "pypi.mirrors.msh.team",
+    "port": 443,
+    "reachable": false,
+    "ms": 3007.0,
+    "error": "timed out"
+  },
+  {
+    "host": "pypi.msh.team",
+    "port": 443,
+    "reachable": false,
+    "ms": 3007.16,
+    "error": "timed out"
+  },
+  {
+    "host": "mirrors.cloud.aliyuncs.com",
+    "port": 443,
+    "reachable": false,
+    "ms": 3005.47,
+    "error": "timed out"
+  },
+  {
+    "host": "msh-sandbox.tencentcloudcr.com",
+    "port": 443,
+    "reachable": false,
+    "ms": 3006.19,
+    "error": "timed out"
+  },
+  {
+    "host": "kimi-api-sandbox.msh.team",
+    "port": 443,
+    "reachable": true,
+    "ms": 9.04
+  },
+  {
+    "host": "agent-gw.kimi.com",
+    "port": 443,
+    "reachable": true,
+    "ms": 330.07
+  },
+  {
+    "host": "drive9.ai",
+    "port": 443,
+    "reachable": true,
+    "ms": 315.63
+  },
+  {
+    "host": "drive9.io",
+    "port": 443,
+    "reachable": false,
+    "ms": 178.7,
+    "error": "[Errno -2] Name or service not known"
+  },
+  {
+    "host": "huggingface.co",
+    "port": 443,
+    "reachable": false,
+    "ms": 3005.17,
+    "error": "timed out"
+  },
+  {
+    "host": "cdn.jsdelivr.net",
+    "port": 443,
+    "reachable": true,
+    "ms": 162.11
+  },
+  {
+    "host": "registry.npmjs.org",
+    "port": 443,
+    "reachable": true,
+    "ms": 174.41
+  },
+  {
+    "host": "files.pythonhosted.org",
+    "port": 443,
+    "reachable": true,
+    "ms": 163.14
+  }
+]

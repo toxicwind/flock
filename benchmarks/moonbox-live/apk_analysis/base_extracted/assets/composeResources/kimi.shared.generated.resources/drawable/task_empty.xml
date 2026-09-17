@@ -1,0 +1,46 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- 日历主体 -->
+    <path
+        android:strokeColor="#C2C6CF"
+        android:strokeWidth="3.4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M34,40 h52 a8,8 0 0 1 8,8 v36 a8,8 0 0 1 -8,8 h-52 a8,8 0 0 1 -8,-8 v-36 a8,8 0 0 1 8,-8 z" />
+    <!-- 顶部分隔 -->
+    <path
+        android:strokeColor="#C2C6CF"
+        android:strokeWidth="3.4"
+        android:strokeLineCap="round"
+        android:pathData="M26,56 H94" />
+    <!-- 装订环 -->
+    <path
+        android:strokeColor="#C2C6CF"
+        android:strokeWidth="3.4"
+        android:strokeLineCap="round"
+        android:pathData="M46,32 V46" />
+    <path
+        android:strokeColor="#C2C6CF"
+        android:strokeWidth="3.4"
+        android:strokeLineCap="round"
+        android:pathData="M74,32 V46" />
+    <!-- 表盘（遮挡日历右下角） -->
+    <path
+        android:fillColor="#F5F5F5"
+        android:pathData="M78,86 m-19,0 a19,19 0 1,0 38,0 a19,19 0 1,0 -38,0 z" />
+    <path
+        android:strokeColor="#C2C6CF"
+        android:strokeWidth="3.4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M78,86 m-17,0 a17,17 0 1,0 34,0 a17,17 0 1,0 -34,0 z" />
+    <path
+        android:strokeColor="#C2C6CF"
+        android:strokeWidth="3.4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M78,77 V86 L85,90" />
+</vector>

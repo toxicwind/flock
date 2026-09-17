@@ -1,0 +1,3 @@
+/*! pre,cn,6472917,2026-08-20 14:22:08 */
+import{Cn as file_google_protobuf_descriptor,xn as fileDesc}from"./framework-VkMmM-pB.js";var file_kimi_common_v1_options=fileDesc("ChxraW1pL2NvbW1vbi92MS9vcHRpb25zLnByb3RvEg5raW1pLmNvbW1vbi52MSIeCgtJMThuT3B0aW9ucxIPCgdlbmFibGVkGAEgASgIOlAKBGkxOG4SHS5nb29nbGUucHJvdG9idWYuRmllbGRPcHRpb25zGNGGAyABKAsyGy5raW1pLmNvbW1vbi52MS5JMThuT3B0aW9uc1IEaTE4bjo4CgdpZF9raW5kEh0uZ29vZ2xlLnByb3RvYnVmLkZpZWxkT3B0aW9ucxjShgMgASgJUgZpZEtpbmRiBnByb3RvMw",[file_google_protobuf_descriptor]);export{file_kimi_common_v1_options as t};
+//# sourceMappingURL=options_pb-DAOIPxqz.js.map

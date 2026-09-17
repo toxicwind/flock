@@ -1,0 +1,1 @@
+{"id": "test_001", "status": "ok", "stdout": "WORKER_ALIVE\n", "stderr": "/bin/sh: 1: bun: not found\n", "returncode": 127}

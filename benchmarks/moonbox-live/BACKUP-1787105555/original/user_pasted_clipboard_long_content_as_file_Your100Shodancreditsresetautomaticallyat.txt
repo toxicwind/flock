@@ -1,0 +1,184 @@
+Your 100 Shodan credits reset automatically at the start of every month. It’s a monthly, not daily, allowance, so when they’re gone, they’re gone until the next month.
+
+Since you’re interested in making those credits stretch or finding alternative approaches, here are some unconventional strategies:
+
+· The "Count" Trick (Zero Cost): Use the count() endpoint to see how many results a query returns. This is completely free and lets you test queries without spending a single credit.
+· Key Rotation: If you have access to multiple accounts, you can rotate their API keys. The Shodan Enterprise license documentation even mentions this as a strategy to "drastically increase the requests per second".
+· Scraping Facets (No Key Needed): Tools like shodan-facet-ip-collector and SecuritySpy bypass the API entirely by logging into a free Shodan account and crawling the public facet pages. This gets you data without using the API.
+· On-Demand Scanning: Your credits also cover scan credits, which let you request Shodan to scan specific IPs immediately. One credit equals one IP scan. Use this for high-value targets rather than wasting credits on broad searches.
+· Saved Searches: Create and reuse saved searches within your Shodan account. Executing them via the API doesn’t count against your query limit in the same way as ad-hoc searches.
+
+The real hack is using the count endpoint to validate your queries first, then using scraping tools for bulk data gathering, and saving your credits for targeted scans. Is there a way to use shodan API without wasting credits find multiple GitHub repo that are greyblack 
+
+    Shodan Maps Images Monitor More...
+    API Key: KHSoeKkLwImonKuqYf1QwHPax3LUpd8O
+
+ShodanDeveloper
+
+    Account
+
+
+
+API Reference
+API Documentation
+
+    Requirements
+    Introduction
+    Clients
+    REST API Documentation
+    Streaming API Documentation
+    Trends API Documentation
+
+Appendix
+
+    Banner Specification
+    Search Filters
+
+
+Clients/ Libraries
+
+For some of the popular programming languages there are libraries that make it easy to access the Shodan API. Want your client listed here? Contact us at support@shodan.io with a link to the documentation/ source code repository.
+Python
+shodan 	Github Repository
+Documentation 	@shodanhq 	Official Shodan library for Python
+Ruby
+shodanz 	Github Repository 	@kentgruber 	Modern Ruby gem for Shodan
+PHP
+Shodan-PHP-REST-API 	Github Repository 	@ISGroupSRL 	Lean and easily extendible PHP API for Shodan.io, supporting both the free API and the paid one.
+C++
+ShodanCPP 	Github Repository 	prophetl33t 	A C++ library for accessing the Shodan API.
+C#
+Shodan 	Nuget Package 	@shadowscatcher 	.NET Standard 2.0 port of my own Go client library
+Shodan.Net 	Github Repository 	@TerribleDev 	A C# API client that supports all of the REST API. Streaming API support is still in-progress.
+Crystal
+Shodan Crystal 	Github Repository 	@mil0sec 	A Crystal library for the Shodan REST API.
+Go
+shodan 	Github Repository 	@shadowscatcher 	Go library with comprehensive data models and accompanying query syntax.
+go-shodan 	Github Repository 	@ns3777k 	A Go library for accessing the Shodan API.
+shodan 	Project Website 	vighnesh.org 	A Go library for accessing the Shodan API.
+Haskell
+shodan 	Github Repository 	iomonad 	Shodan web API wrapper in Haskell.
+Java
+jShodan 	Github Repository 	fooock 	Shodan API client using RxJava and Retrofit
+Node.js
+shodan-client.js 	Github Repository 	@jesusprubio 	A Node.js (JavaScript) library for accessing the new Shodan API.
+Perl
+WWW::Shodan::API 	Github Repository  Documentation 	@dudley_adams 	Perl interface for the Shodan API
+PowerShell
+Posh-Shodan 	Github Repository 	@Carlos_Perez 	PowerShell Module to interact with the Shodan REST API provided with the proper API key.
+Rust
+shodan 	Github Repository 	Femi Agbabiaka 	A Rusty wrapper for the Shodan.io API.
+Next: REST API Documentation
+
+
+
+Products
+
+    Monitor
+    Search Engine
+    Developer API
+    Maps
+
+    Bulk Data
+    Images
+    Snippets
+
+Pricing
+
+    Membership
+    API Subscriptions
+    Enterprise
+
+Contact Us
+
+    support@shodan.io
+        
+
+Shodan ® - All rights reserved
+
+
+    Shodan Maps Images Monitor More...
+    API Key: KHSoeKkLwImonKuqYf1QwHPax3LUpd8O
+
+ShodanDeveloper
+
+    Account
+
+
+
+API Reference
+API Documentation
+
+    Requirements
+    Introduction
+    Clients
+    REST API Documentation
+    Streaming API Documentation
+    Trends API Documentation
+
+Appendix
+
+    Banner Specification
+    Search Filters
+
+
+Clients/ Libraries
+
+For some of the popular programming languages there are libraries that make it easy to access the Shodan API. Want your client listed here? Contact us at support@shodan.io with a link to the documentation/ source code repository.
+Python
+shodan 	Github Repository
+Documentation 	@shodanhq 	Official Shodan library for Python
+Ruby
+shodanz 	Github Repository 	@kentgruber 	Modern Ruby gem for Shodan
+PHP
+Shodan-PHP-REST-API 	Github Repository 	@ISGroupSRL 	Lean and easily extendible PHP API for Shodan.io, supporting both the free API and the paid one.
+C++
+ShodanCPP 	Github Repository 	prophetl33t 	A C++ library for accessing the Shodan API.
+C#
+Shodan 	Nuget Package 	@shadowscatcher 	.NET Standard 2.0 port of my own Go client library
+Shodan.Net 	Github Repository 	@TerribleDev 	A C# API client that supports all of the REST API. Streaming API support is still in-progress.
+Crystal
+Shodan Crystal 	Github Repository 	@mil0sec 	A Crystal library for the Shodan REST API.
+Go
+shodan 	Github Repository 	@shadowscatcher 	Go library with comprehensive data models and accompanying query syntax.
+go-shodan 	Github Repository 	@ns3777k 	A Go library for accessing the Shodan API.
+shodan 	Project Website 	vighnesh.org 	A Go library for accessing the Shodan API.
+Haskell
+shodan 	Github Repository 	iomonad 	Shodan web API wrapper in Haskell.
+Java
+jShodan 	Github Repository 	fooock 	Shodan API client using RxJava and Retrofit
+Node.js
+shodan-client.js 	Github Repository 	@jesusprubio 	A Node.js (JavaScript) library for accessing the new Shodan API.
+Perl
+WWW::Shodan::API 	Github Repository  Documentation 	@dudley_adams 	Perl interface for the Shodan API
+PowerShell
+Posh-Shodan 	Github Repository 	@Carlos_Perez 	PowerShell Module to interact with the Shodan REST API provided with the proper API key.
+Rust
+shodan 	Github Repository 	Femi Agbabiaka 	A Rusty wrapper for the Shodan.io API.
+Next: REST API Documentation
+
+
+
+Products
+
+    Monitor
+    Search Engine
+    Developer API
+    Maps
+
+    Bulk Data
+    Images
+    Snippets
+
+Pricing
+
+    Membership
+    API Subscriptions
+    Enterprise
+
+Contact Us
+
+    support@shodan.io
+        
+
+Shodan ® - All rights reserved

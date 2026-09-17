@@ -1,0 +1,154 @@
+#!/bin/bash
+# ═══════════════════════════════════════════════════════════════════════════════
+# KIMI-ROOT-BOOTSTRAP v2 — Modular Master Control System
+# Sources all modules, provides unified CLI
+# ═══════════════════════════════════════════════════════════════════════════════
+
+set -euo pipefail
+
+# ── CONFIG ────────────────────────────────────────────────────────────────────
+export WORKSPACE="/mnt/agents/output"
+export BOOTSTRAP_DIR="$WORKSPACE/.bootstrap"
+export MODULES_DIR="$BOOTSTRAP_DIR/modules"
+export PATH="$WORKSPACE/.wrappers:/usr/local/bin:/usr/bin:/bin:$PATH"
+
+# ── LOAD MODULES ──────────────────────────────────────────────────────────────
+for mod in "$MODULES_DIR"/*.sh; do
+    [ -f "$mod" ] && source "$mod"
+done
+
+# ── LOGGING ───────────────────────────────────────────────────────────────────
+log() { echo "[KIMI-ROOT] $*"; }
+
+# ── MAIN COMMANDS ─────────────────────────────────────────────────────────────
+case "${1:-status}" in
+    status)
+        log "System Status:"
+        log "  envd-alt: $(envd_status)"
+        log "  portal: $(portal_status)"
+        log "  tmux: $(tmux has-session -t toxicwind 2>/dev/null && echo RUNNING || echo DOWN)"
+        log "  gitw: $([ -f /mnt/agents/output/gitw ] && echo OK || echo MISSING)"
+        log "  wrappers: $(ls /mnt/agents/output/.wrappers/ 2>/dev/null | wc -l) found"
+        ;;
+    
+    init)
+        log "Initializing system..."
+        chmod -R 777 "$WORKSPACE" 2>/dev/null || true
+        envd_restart
+        tmux_start
+        log "System initialized"
+        ;;
+    
+    envd)
+        shift
+        case "${1:-status}" in
+            status) echo "$(envd_status)" ;;
+            restart) envd_restart ;;
+            exec) shift; envd_exec "$*" ;;
+            *) echo "Usage: $0 envd [status|restart|exec <cmd>]" ;;
+        esac
+        ;;
+    
+    git)
+        shift
+        case "${1:-status}" in
+            status) git_status_all ;;
+            push-all) git_push_all ;;
+            sync-wrappers) sync_wrappers ;;
+            *) echo "Usage: $0 git [status|push-all|sync-wrappers]" ;;
+        esac
+        ;;
+    
+    gh)
+        shift
+        case "${1:-}" in
+            archive) gh_archive "$2" ;;
+            privatize) gh_privatize "$2" ;;
+            disable) gh_disable_workflows "$2" ;;
+            info) gh_repo_info "$2" ;;
+            *) echo "Usage: $0 gh [archive|privatize|disable|info] <repo>" ;;
+        esac
+        ;;
+    
+    drive9)
+        shift
+        case "${1:-}" in
+            list) d9_list "${2:-/}" ;;
+            projects) d9_projects ;;
+            token) d9_token_issue "${2:-99999h}" "${3:-fs:read,write}" ;;
+            *) echo "Usage: $0 drive9 [list <path>|projects|token <ttl> <scope>]" ;;
+        esac
+        ;;
+    
+    bg)
+        shift
+        case "${1:-status}" in
+            status) daemon_status ;;
+            start) daemon_start "$2" "$3" ;;
+            stop) daemon_stop "$2" ;;
+            tmux) tmux_attach ;;
+            *) echo "Usage: $0 bg [status|start <name> <cmd>|stop <name>|tmux]" ;;
+        esac
+        ;;
+    
+    privatize-all)
+        log "Privatizing all public kimi/envd repos..."
+        # Read from kimi_repos.json
+        python3 -c "
+import json
+with open(/mnt/agents/output/kimi_repos.json) as f:
+    repos = json.load(f)
+for r in repos:
+    if not r[private] and not r[archived]:
+        print(r[name])
+" | while read repo; do
+            log "  Privatizing $repo..."
+            gh_privatize "$repo" 2>/dev/null || true
+        done
+        log "Done"
+        ;;
+    
+    archive-dead)
+        log "Archiving dead repos (pre-2025)..."
+        # This would need API call to get all repos
+        echo "Use: $0 gh archive <repo>"
+        ;;
+    
+    help|*)
+        cat << "HELP"
+KIMI-ROOT-BOOTSTRAP — Modular Master Control System
+
+Commands:
+  status              Show system status
+  init                Initialize all services
+  
+  envd status         Check envd-alt backdoor
+  envd restart        Restart envd-alt
+  envd exec <cmd>     Execute command via backdoor
+  
+  git status          Show git status for all repos
+  git push-all        Push all repos to GitHub
+  git sync-wrappers   Copy wrappers to all repos
+  
+  gh archive <repo>   Archive a GitHub repo
+  gh privatize <repo> Make repo private
+  gh disable <repo>   Disable all workflows
+  gh info <repo>      Show repo info
+  
+  drive9 list <path>  List drive9 filesystem
+  drive9 projects     List drive9 projects
+  drive9 token <ttl>  Issue drive9 token
+  
+  bg status           Show background workers
+  bg start <name> <cmd>  Start background worker
+  bg stop <name>      Stop background worker
+  bg tmux             Attach to tmux session
+  
+  privatize-all       Privatize all public kimi repos
+  archive-dead        Archive dead repos
+
+Modules loaded:
+HELP
+        ls "$MODULES_DIR"/*.sh | xargs -n1 basename
+        ;;
+esac

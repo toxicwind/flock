@@ -1,0 +1,151 @@
+ uint64; elem struct {} }
+&*struct { key uint64; elem *fs.Inode }
+&*[8]struct { key uint32; elem string }
+&kimi.darkmatter/apps/portal/fs/agentgw
+json:"SSECKeyMD5,omitempty"
+&*[]struct { key string; elem []int64 }
+&*map[profile.sampleKey]*profile.Sample
+&*weak.Pointer[crypto/ecdsa.PrivateKey]
+&*func() (*boring.PublicKeyECDH, error)
+&*func([]uint8) (hpke.PublicKey, error)
+&*[8]struct { key string; elem uint16 }
+&*struct { key language.Tag; elem int }
+&*orderv1.TerminateSubscriptionResponse
+&*func() *mcpv1.MCPServerProxyAuthExtra
+&*mcpv1.GetMCPServerOAuthConfigResponse
+&*[]struct { key string; elem []uint8 }
+&*payv1.VoidSubscriptionCheckoutRequest
+&*struct { key interface {}; elem int }
+ProviderKey
+gorm:"column:provider_key"
+&*[]struct { key string; elem float64 }
+&*struct { key string; elem []float64 }
+&*[]struct { key string; elem ref.Val }
+&*configv1.SlidesConfig_PageLimitOption
+&*struct { key i18n.Locale; elem bool }
+&*[]struct { key oid.Oid; elem string }
+&*struct { key token.Token; elem bool }
+&*[]struct { key int64; elem ast.Expr }
+&*[8]struct { key int64; elem ref.Val }
+&*struct { key int; elem interface {} }
+&*[8]struct { key int; elem struct {} }
+&*[]struct { key string; elem float32 }
+&*[8]struct { key string; elem uint32 }
+KeywordLocation
+json:"keywordLocation"
+&*[8]struct { key string; elem *int64 }
+&*func() []*membershipv2.Giftcard_Claim
+&*membershipv2.ListGiftcardCodesRequest
+&*membershipv2.ClaimGiftcardCodeRequest
+&*membershipv2.ClaimEventBalanceRequest
+&*func() []*membershipv2.Balance_Action
+&*membershipv2.ListSubscriptionsRequest
+&*credentialsv1.GetAPIKeyByUserResponse
+&*membershipv2.GetFeatureDetailsRequest
+&*membershipv2.GetBalanceActionResponse
+&*func() []*membershipv2.Resource_Usage
+&*membershipv2.FinalizeCreditRequest_Op
+&*func() *membershipv2.Entitlement_Type
+&*func() *membershipv2.EnterpriseOption
+&*membershipv2.CreateEntitlementRequest
+&*struct { key int64; elem *expr.Expr }
+&*struct { key int64; elem *expr.Type }
+&*expr.Expr_CreateStruct_Entry_FieldKey
+&*[]struct { key int64; elem []string }
+&*func(antlr.Token, antlr.Token) string
+&*[]struct { key string; elem *string }
+&*maintnotifications.MovingOperationKey
+&*struct { key string; elem *do.Scope }
+&*[]struct { key proto.IPv6; elem int }
+&*[]struct { key proto.IPv4; elem int }
+&*struct { key proto.Enum16; elem int }
+&*[8]struct { key time.Time; elem int }
+&*struct { key proto.Int256; elem int }
+&*struct { key proto.Int128; elem int }
+&*[8]struct { key [64]uint8; elem int }
+&*[8]struct { key [32]uint8; elem int }
+&*[8]struct { key [16]uint8; elem int }
+&*[]struct { key [128]uint8; elem int }
+&*map.group[string]proto.CardinalityKey
+'*[]struct { key string; elem []string }
+'kimi.darkmatter/apps/portal/fs/portalgw
+'*struct { key string; elem *flag.Flag }
+'*struct { key reflect.Type; elem bool }
+'*struct { key string; elem net.byName }
+'*func(*portalv1.GetAPIKeyRequest) error
+'*[]struct { key string; elem [2]int32 }
+'*[8]struct { key string; elem []int64 }
+'*struct { key string; elem []x509.OID }
+'*func([]uint8) (hpke.PrivateKey, error)
+'*func(*ecdh.PublicKey) ([]uint8, error)
+'*func([]uint8) (*ecdh.PublicKey, error)
+'*[]struct { key [11]uint8; elem int16 }
+'*mcpv1.GetMCPServerAuthorizationRequest
+'*orderv1.IncreaseMembershipCountRequest
+'*orderv1.DecreaseMembershipCountRequest
+'*struct { key interface {}; elem bool }
+'*[8]struct { key string; elem []uint8 }
+'*payv1.VoidSubscriptionCheckoutResponse
+'*struct { key uintptr; elem struct {} }
+'*[]struct { key gob.typeId; elem bool }
+'*struct { key codes.Code; elem string }
+'*struct { key string; elem codes.Code }
+'*struct { key coinv1.Coin; elem int64 }
+'*[8]struct { key string; elem float64 }
+'*map.group[ratelimit.Category]struct {}
+'*[]struct { key float64; elem float64 }
+'*[8]struct { key string; elem ref.Val }
+'*struct { key ref.Val; elem struct {} }
+'*func() billingv1.Authentication_Method
+SSLKey postgres:"sslkey" env:"PGSSLKEY"
+'*[8]struct { key oid.Oid; elem string }
+'*struct { key string; elem func(bool) }
+'*[]struct { key cel.limitID; elem int }
+'*[8]struct { key int64; elem ast.Expr }
+'*[]struct { key ref.Val; elem ref.Val }
+'*struct { key int64; elem *types.Type }
+'*struct { key bool; elem interface {} }
+'*[8]struct { key string; elem float32 }
+'*struct { key uint; elem interface {} }
+'*struct { key string; elem *expr.Type }
+'*membershipv2.ListGiftcardClaimsRequest
+'*membershipv2.ListGiftcardCodesResponse
+'*membershipv2.ClaimGiftcardCodeResponse
+'*membershipv2.CreateGiftcardCodeRequest
+'*membershipv2.ClaimEventBalanceResponse
+'*membershipv2.ListBalanceActionsRequest
+'*membershipv2.ListSubscriptionsResponse
+'*membershipv2.GetFeatureDetailsResponse
+'*membershipv2.Balance_Action_Index_Chat
+'*membershipv2.Balance_Action_Index_Claw
+'*func() membershipv2.Entitlement_Status
+'*membershipv2.CreateEntitlementResponse
+'*membershipv2.Entitlement_Zygote_Wallet
+'*[]struct { key int32; elem struct {} }
+'*expr.isExpr_CreateStruct_Entry_KeyKind
+'*[8]struct { key int64; elem []string }
+'*struct { key types.Kind; elem string }
+'*[8]struct { key string; elem *string }
+'*func(uint64, auth.CredentialsListener)
+'*[]struct { key *yaml.Node; elem bool }
+'*struct { key string; elem *yaml.Node }
+'*func(antlr.Token) *antlr.ErrorNodeImpl
+'*map[ecma402.UnicodeExtensionKey]string
+'*[8]struct { key proto.IPv6; elem int }
+'*[8]struct { key proto.IPv4; elem int }
+'*[]struct { key proto.Enum8; elem int }
+'*struct { key proto.UInt256; elem int }
+'*struct { key proto.UInt128; elem int }
+'*[]struct { key *[512]uint8; elem int }
+'*[]struct { key *[256]uint8; elem int }
+'*[8]struct { key [128]uint8; elem int }
+'*struct { key uint32; elem *zstd.dict }
+(*[8]struct { key string; elem []string }
+(*[]struct { key string; elem struct {} }
+(*[]struct { key string; elem *fs.Inode }
+(*struct { key pprof.handler; elem bool }
+(*struct { key reflect.visit; elem bool }
+(*struct { key uint32; elem []*abi.Type }
+(*[]struct { key tls.alert; elem string }
+(*[]struct { key x509.sum224; elem bool }
+(*[]struct { key uin

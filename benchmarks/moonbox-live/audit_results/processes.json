@@ -1,0 +1,303 @@
+[
+  {
+    "pid": "1",
+    "cmd": "/package/admin/s6/command/s6-svscan -d4 -- /run/service",
+    "uid": "0",
+    "cwd": "/run/service",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-svscan"
+  },
+  {
+    "pid": "17",
+    "cmd": "python3 -m http.server 18080 --directory /tmp/project-probe",
+    "uid": "0",
+    "cwd": "/app",
+    "exe": "/usr/local/bin/python3.12"
+  },
+  {
+    "pid": "29",
+    "cmd": "s6-supervise s6-linux-init-shutdownd",
+    "uid": "0",
+    "cwd": "/run/service/s6-linux-init-shutdownd",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "30",
+    "cmd": "/package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B",
+    "uid": "0",
+    "cwd": "/run/service/s6-linux-init-shutdownd",
+    "exe": "/package/admin/s6-linux-init-1.1.2.0/command/s6-linux-init-shutdownd"
+  },
+  {
+    "pid": "38",
+    "cmd": "s6-supervise browser-guard",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/browser-guard",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "39",
+    "cmd": "s6-supervise envd",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/envd",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "40",
+    "cmd": "s6-supervise kernel-server",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kernel-server",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "41",
+    "cmd": "s6-supervise kasmvnc",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kasmvnc",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "42",
+    "cmd": "s6-supervise sshd",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/sshd",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "43",
+    "cmd": "s6-supervise portal",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/portal",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "44",
+    "cmd": "s6-supervise socat",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/socat",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "45",
+    "cmd": "s6-supervise s6rc-oneshot-runner",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-oneshot-runner",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "46",
+    "cmd": "s6-supervise s6rc-fdholder",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-fdholder",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "62",
+    "cmd": "sshd: /usr/sbin/sshd -D -e [listener] 0 of 10-100 startups",
+    "uid": "0",
+    "cwd": "/",
+    "exe": "/usr/sbin/sshd"
+  },
+  {
+    "pid": "63",
+    "cmd": "/usr/local/bin/python3 /opt/moonbox-project-template/bin/project-cdp-proxy.py",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/socat",
+    "exe": "/usr/local/bin/python3.12"
+  },
+  {
+    "pid": "69",
+    "cmd": "/usr/local/bin/portal -http-bind -allow-other -env prod -gateway-addr https://kimi-api-sandbox.msh.team/apiv2 /mnt/portal-overlay",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/portal",
+    "exe": "/usr/local/bin/portal"
+  },
+  {
+    "pid": "75",
+    "cmd": "/bin/bash /root/setup_kasmvnc.sh",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kasmvnc",
+    "exe": "/usr/bin/bash"
+  },
+  {
+    "pid": "76",
+    "cmd": "python3 /app/kernel_server.py --host 0.0.0.0 --port 8888 --log-level info",
+    "uid": "999",
+    "cwd": "/tmp/kimi-project-kernel",
+    "exe": "/usr/local/bin/python3.12"
+  },
+  {
+    "pid": "79",
+    "cmd": "/usr/local/bin/envd -isnotfc",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/envd",
+    "exe": "/usr/local/bin/envd"
+  },
+  {
+    "pid": "84",
+    "cmd": "python3 /app/browser_guard.py --wait-display --display :99 --timeout 60 --monitor",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/local/bin/python3.12"
+  },
+  {
+    "pid": "85",
+    "cmd": "/package/admin/s6/command/s6-ipcserverd -1 -- /package/admin/s6/command/s6-ipcserver-access -v0 -E -l0 -i data/rules -- /package/admin/s6/command/s6-sudod -t 30000 -- /package/admin/s6-rc/command/s6-r",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-oneshot-runner",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-ipcserverd"
+  },
+  {
+    "pid": "156",
+    "cmd": "/usr/bin/Xvnc :99 -SecurityTypes None -AlwaysShared -DisableBasicAuth -publicIP 1.1.1.1 -http-header Cross-Origin-Embedder-Policy=require-corp -http-header Cross-Origin-Opener-Policy=same-origin -MaxD",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kasmvnc",
+    "exe": "/usr/bin/Xkasmvnc"
+  },
+  {
+    "pid": "178",
+    "cmd": "sleep infinity",
+    "uid": "0",
+    "cwd": "/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kasmvnc",
+    "exe": "/usr/bin/sleep"
+  },
+  {
+    "pid": "181",
+    "cmd": "/usr/local/bin/python3 -m ipykernel_launcher -f /tmp/tmpst0leg6p.json",
+    "uid": "999",
+    "cwd": "/tmp/kimi-project-kernel",
+    "exe": "/usr/local/bin/python3.12"
+  },
+  {
+    "pid": "343",
+    "cmd": "/usr/lib/chromium/chromium --show-component-extension-options --enable-gpu-rasterization --no-default-browser-check --disable-pings --media-router=0 --enable-remote-extensions --load-extension= chrome",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "359",
+    "cmd": "/usr/lib/chromium/chrome_crashpad_handler --monitor-self --monitor-self-annotation=ptype=crashpad-handler --database=/home/kimi/.config/chromium/Crash Reports --annotation=channel=built on Debian GNU/",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chrome_crashpad_handler"
+  },
+  {
+    "pid": "362",
+    "cmd": "/usr/lib/chromium/chrome_crashpad_handler --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler --database=/home/kimi/.config/chromium/Crash Reports --annotation=channel=built on Debian",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chrome_crashpad_handler"
+  },
+  {
+    "pid": "363",
+    "cmd": "/usr/lib/chromium/chromium --type=zygote --no-zygote-sandbox --no-sandbox --enable-logging=file --crashpad-handler-pid=0 --enable-crash-reporter=,built on Debian GNU/Linux 12 (bookworm) --user-data-di",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "365",
+    "cmd": "/usr/lib/chromium/chromium --type=zygote --no-sandbox --enable-logging=file --crashpad-handler-pid=0 --enable-crash-reporter=,built on Debian GNU/Linux 12 (bookworm) --user-data-dir=/tmp/chromium_user",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "383",
+    "cmd": "/usr/lib/chromium/chromium --type=gpu-process --no-sandbox --enable-gpu-rasterization --ozone-platform=x11 --crashpad-handler-pid=0 --enable-crash-reporter=,built on Debian GNU/Linux 12 (bookworm) --u",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "387",
+    "cmd": "/usr/lib/chromium/chromium --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --crashpad-handler-pid=0 --enable-crash-reporter=,built ",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "402",
+    "cmd": "/usr/lib/chromium/chromium --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=utility --no-sandbox --crashpad-handler-pid=0 --enable-crash-reporter=,bui",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "420",
+    "cmd": "/usr/lib/chromium/chromium --type=renderer --crashpad-handler-pid=0 --enable-crash-reporter=,built on Debian GNU/Linux 12 (bookworm) --user-data-dir=/tmp/chromium_user_data --change-stack-guard-on-for",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "421",
+    "cmd": "/usr/lib/chromium/chromium --type=renderer --crashpad-handler-pid=0 --enable-crash-reporter=,built on Debian GNU/Linux 12 (bookworm) --user-data-dir=/tmp/chromium_user_data --change-stack-guard-on-for",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "463",
+    "cmd": "/usr/lib/chromium/chromium --type=renderer --crashpad-handler-pid=0 --enable-crash-reporter=,built on Debian GNU/Linux 12 (bookworm) --user-data-dir=/tmp/chromium_user_data --change-stack-guard-on-for",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "534",
+    "cmd": "/usr/lib/chromium/chromium --type=utility --utility-sub-type=on_device_model.mojom.OnDeviceModelService --lang=en-US --service-sandbox-type=on_device_model_execution --no-sandbox --crashpad-handler-pi",
+    "uid": "999",
+    "cwd": "/app",
+    "exe": "/usr/lib/chromium/chromium"
+  },
+  {
+    "pid": "627",
+    "cmd": "s6-supervise drive9-fuse-watchdog",
+    "uid": "0",
+    "cwd": "/run/service/drive9-fuse-watchdog",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "629",
+    "cmd": "s6-supervise drive9-fuse",
+    "uid": "0",
+    "cwd": "/run/service/drive9-fuse",
+    "exe": "/package/admin/s6-2.12.0.2/command/s6-supervise"
+  },
+  {
+    "pid": "630",
+    "cmd": "/bin/bash ./run drive9-fuse-watchdog",
+    "uid": "0",
+    "cwd": "/run/service/drive9-fuse-watchdog",
+    "exe": "/usr/bin/bash"
+  },
+  {
+    "pid": "631",
+    "cmd": "/usr/local/bin/drive9 mount --foreground --mode=fuse -allow-other -readdir-prefetch --parallel-read-concurrency 8 --read-concurrency 48 --server http://10.213.5.144 --profile kimi-project --durability",
+    "uid": "0",
+    "cwd": "/run/service/drive9-fuse",
+    "exe": "/usr/local/bin/drive9"
+  },
+  {
+    "pid": "3940",
+    "cmd": "sh -c cat > /mnt/agents/output/audit_drive9.py << 'PYEOF'\n#!/usr/bin/env python3\n\"\"\"Maximal drive9 + system audit - saves everything to files in chunks.\"\"\"\nimport os, subprocess, json, sys, time, hash",
+    "uid": "0",
+    "cwd": "/mnt/agents",
+    "exe": "/usr/bin/dash"
+  },
+  {
+    "pid": "3957",
+    "cmd": "python3 /mnt/agents/output/audit_drive9.py",
+    "uid": "0",
+    "cwd": "/mnt/agents",
+    "exe": "/usr/local/bin/python3.12"
+  },
+  {
+    "pid": "4463",
+    "cmd": "sleep 15",
+    "uid": "0",
+    "cwd": "/run/service/drive9-fuse-watchdog",
+    "exe": "/usr/bin/sleep"
+  }
+]

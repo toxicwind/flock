@@ -1,0 +1,19 @@
+{
+  "changed": [
+    "src/index.njk",
+    "src/_includes/layout.njk",
+    "src/_includes/header.njk",
+    "src/404.njk",
+    "tailwind.config.cjs",
+    "test/feed-cap.test.mjs",
+    "src/styles/app.tailwind.css",
+    "test/fluid-type.test.mjs",
+    "test/skip-link.test.mjs",
+    "docs/reports/assets-inventory.json",
+    "docs/reports/audit-log.md",
+    "src/scripts/theme-toggle.js",
+    "test/theme-toggle.test.mjs"
+  ],
+  "routes": ["/", "/404.html"],
+  "flows": []
+}

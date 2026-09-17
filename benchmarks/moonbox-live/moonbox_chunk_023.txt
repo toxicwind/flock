@@ -1,0 +1,92 @@
+ key jsonschema.anchor; elem jsonschema.jsonPointer }
+>*membershipv2.GetMembershipUsageStatusResponse_RateLimitStatus
+>*struct { F uintptr; X0 *v1.MessageFormat; X1 []v1.tokenInfo }
+>*[8]struct { key string; elem number.compactExponentPatterns }
+?*struct { key http.connectMethodKey; elem []*http.persistConn }
+?*[8]struct { key string; elem *internal.Entry[string,[]uint8] }
+?*[]struct { key language.Language; elem *language.matchHeader }
+?*[]struct { key protowire.Number; elem protoreflect.RawFields }
+Key;protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"
+?*struct { key filedesc.Edition; elem filedesc.EditionFeatures }
+E2BTrafficAccessToken)json:"e2b_traffic_access_token,omitempty"
+?*[8]struct { key string; elem *kimimodel.PluginLocalizedEntry }
+Platform6gorm:"column:platform;primaryKey;comment:
+?*struct { key uint64; elem []prometheus.metricWithLabelValues }
+?*struct { key string; elem *io_prometheus_client.MetricFamily }
+?*struct { key filedesc.Edition; elem *descriptorpb.FeatureSet }
+?*[]struct { key string; elem protoreflect.EnumValueDescriptor }
+Key;protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"
+?*[]struct { key string; elem func(time.Time, ref.Val) ref.Val }
+?*[8]struct { key string; elem map[string]*pb.FieldDescription }
+?*struct { key string; elem map[string]*i18n.parsedTranslation }
+Key;protobuf:"bytes,9,opt,name=key,proto3" json:"key,omitempty"
+Key;protobuf:"bytes,8,opt,name=key,proto3" json:"key,omitempty"
+@*[]struct { key http.connectMethodKey; elem http.wantConnQueue }
+@*[8]struct { key language.Language; elem *language.matchHeader }
+BoolKey8protobuf:"varint,7,opt,name=bool_key,json=boolKey,oneof"
+UintKey8protobuf:"varint,9,opt,name=uint_key,json=uintKey,oneof"
+@*[8]struct { key protowire.Number; elem protoreflect.RawFields }
+@*datatypes.JSONType[kimi.darkmatter/packages/kimimodel.Manifest]
+@*[]struct { key string; elem *descriptorpb.FileDescriptorProto }
+@*[8]struct { key string; elem protoreflect.EnumValueDescriptor }
+@*[]struct { key global.instID; elem global.delegatedInstrument }
+Key<protobuf:"bytes,15,opt,name=key,proto3" json:"key,omitempty"
+@*[8]struct { key string; elem func(time.Time, ref.Val) ref.Val }
+AbsoluteKeywordLocation(json:"AbsoluteKeywordLocation,omitempty"
+@*[]struct { key jsonschema.anchor; elem jsonschema.jsonPointer }
+@*membershipv2.isGetSubscriptionStatsResponse_Notice_Action_Inner
+@*func() *membershipv2.GetSubscriptionStatsResponse_RateLimitStat
+@*membershipv2.GetSubscriptionStatsResponse_Notice_Action_Booster
+@*membershipv2.GetSubscriptionStatsResponse_Notice_Action_Paywall
+Key<protobuf:"bytes,11,opt,name=key,proto3" json:"key,omitempty"
+A*[]struct { key http.connectMethodKey; elem []*http.persistConn }
+A*[8]struct { key http.connectMethodKey; elem http.wantConnQueue }
+TrafficLimit4location:"header" locationName:"X-Tos-Traffic-Limit"
+A*struct { key protowire.Number; elem protoreflect.ExtensionType }
+A*struct { key protoreflect.EnumNumber; elem *filedesc.EnumValue }
+A*[]struct { key filedesc.Edition; elem filedesc.EditionFeatures }
+A*struct { key reflect.Type; elem protoreflect.MessageDescriptor }
+A*struct { key reflect.Type; elem map[gob.typeId]**gob.decEngine }
+A*struct { key *jsonschema.Schema; elem *jsonschema.resolvedInfo }
+	TokenType7gorm:"comment:
+A*[]struct { key uint64; elem []prometheus.metricWithLabelValues }
+A*[]struct { key string; elem *io_prometheus_client.MetricFamily }
+A*[]struct { key filedesc.Edition; elem *descriptorpb.FeatureSet }
+A*[8]struct { key string; elem *descriptorpb.FileDescriptorProto }
+A*[8]struct { key global.instID; elem global.delegatedInstrument }
+A*[8]struct { key jsonschema.anchor; elem jsonschema.jsonPointer }
+A*struct { key jsonschema.jsonPointer; elem *jsonschema.resource }
+A*[]struct { key string; elem map[string]*i18n.parsedTranslation }
+Bind=protobuf:"bytes,1,opt,name=bind,proto3" json:"bind,omitempty"
+B*[8]struct { key http.connectMethodKey; elem []*http.persistConn }
+B*go.shape.struct { net/http.key string; net/http.values []string }
+B*func(*tls.ClientHelloInfo) ([]tls.EncryptedClientHelloKey, error)
+B*func(io.Reader) (*tls.keySharePrivateKeys, []tls.keyShare, error)
+B*struct { pragma.NoUnkeyedLiterals; Message protoreflect.Message }
+B*[8]struct { key filedesc.Edition; elem filedesc.EditionFeatures }
+B*i18n.Multilingual[kimi.darkmatter/packages/kimimodel.StyleConfig]
+ID?gorm:"column:id;type:uuid;primaryKey;not null;comment:
+Keywords9gorm:"comment:
+UserID;gorm:"primaryKey;not null;column:user_id;comment:
+B*[8]struct { key uint64; elem []prometheus.metricWithLabelValues }
+B*[8]struct { key string; elem *io_prometheus_client.MetricFamily }
+B*[8]struct { key filedesc.Edition; elem *descriptorpb.FeatureSet }
+B*func() []*membershipv2.GetSubscriptionStatsResponse_Notice_Action
+B*[8]struct { key string; elem map[string]*i18n.parsedTranslation }
+B*struct { key uint32; elem map[reflect.Type][2]pgtype.EncodePlan }
+C*[]struct { key protowire.Number; elem protoreflect.ExtensionType }
+C*[]struct { key protoreflect.EnumNumber; elem *filedesc.EnumValue }
+C*struct { key protowire.Number; elem protoreflect.FieldDescriptor }
+C*[]struct { key reflect.Type; elem protoreflect.MessageDescriptor }
+C*[]struct { key reflect.Type; elem map[gob.typeId]**gob.decEngine }
+C*[]struct { key *jsonschema.Schema; elem *jsonschema.resolvedInfo }
+C*struct { key reflect.Kind; elem func(reflect.Value) interface {} }
+C*datatypes.JSONType[*kimi.darkmatter/packages/kimimodel.SlidesData]
+C*datatypes.JSONType[*kimi.darkmatter/packages/kimimodel.ToolConfig]
+C*struct { key protoreflect.FullName; elem protoreflect.Descriptor }
+C*[]struct { key jsonschema.jsonPointer; elem *jsonschema.resource }
+C*func(context.Context, time.Duration, ...string) *redis.ZWithKeyCmd
+MapKey<protobuf:"bytes,3,opt,name=map_key,json=mapKey,proto3,oneof"
+D*cache.Volatile[string,kimi.darkmatter/apps/portal/tos.cachedObject]
+D*struct { key http.http2FrameType; elem map[http.http2Flags]string }
+ServerSideEncryptionKeyID*json:"ServerSideEncryptionKeyID,omitemp

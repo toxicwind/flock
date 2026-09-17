@@ -1,0 +1,25 @@
+#!/bin/bash
+# gitw — Persistent git wrapper for K8s sandbox
+# Stores metadata in /mnt/agents/output/.git_repos/<repo>.git
+# FULLY DETACHED — uses setsid for all operations
+repo_name=$(basename "$(pwd)")
+git_dir="/mnt/agents/output/.git_repos/${repo_name}.git"
+work_tree="/mnt/agents/output/${repo_name}"
+
+# Clean locks
+rm -f "$git_dir"/*.lock 2>/dev/null
+
+# Init bare repo if missing
+if [ ! -d "$git_dir" ]; then
+    mkdir -p "$git_dir"
+    git init --bare "$git_dir" 2>/dev/null
+fi
+
+# Migrate existing .git directory
+if [ -d "$work_tree/.git" ]; then
+    cp -r "$work_tree/.git/"* "$git_dir/" 2>/dev/null
+    rm -rf "$work_tree/.git"
+fi
+
+# Run git from work_tree so paths resolve correctly
+cd "$work_tree" && git --git-dir="$git_dir" --work-tree="$work_tree" "$@"

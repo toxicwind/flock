@@ -1,0 +1,21 @@
+{
+  "name": "nim-bench-dashboard-maximal",
+  "version": "2.0.0-maximal",
+  "type": "module",
+  "description": "MAXIMAL dataframe aesthetic - all external libs - model intel",
+  "scripts": {
+    "dev": "bun --hot src/server.ts",
+    "start": "bun src/server.ts",
+    "save-all": "python3 scripts/save_all.py"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.2",
+    "hono": "^4.4.0",
+    "ag-grid-community": "^31.0.1",
+    "d3": "^7.8.5",
+    "plotly.js-dist-min": "^2.27.0",
+    "echarts": "^5.4.3",
+    "lodash": "^4.17.21",
+    "animejs": "^3.2.2"
+  }
+}

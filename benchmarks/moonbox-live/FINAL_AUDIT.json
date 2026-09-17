@@ -1,0 +1,49 @@
+{
+  "title": "STEELMAN AUDIT - Moonbox Container d87br2oh8njkr90jf520",
+  "generated": 1786696585.61856,
+  "findings": {
+    "quota_system": {
+      "location": "portal_binary + drive9_binary + envd_binary",
+      "functions": [
+        "GetQuota",
+        "GetQuotaValue",
+        "GetQuotaMetric",
+        "quotaKey",
+        "limiter",
+        "DropRate",
+        "checkLimits",
+        "hitReadLimit"
+      ],
+      "tool_budget": "25 calls per turn (THIS is the 100/100 you see)",
+      "drive9_quota": "Storage quota via postQuota/decodeQuotaResponse",
+      "portal_quota": "API rate limit via GetQuotaId"
+    },
+    "crud_endpoints": {
+      "note": "No standalone CRUD API found in container",
+      "github_crud": "14 GitHub API endpoints for user toxicwind (from backup repo)",
+      "portal_crud": "Bind token requires POST /api/v1/bind_token with JWT",
+      "kernel_crud": "GET/POST /api/kernels for Jupyter kernel lifecycle"
+    },
+    "credentials": {
+      "agent_gw_json": "/mnt/portal-overlay/.agent-gw.json - FUSE DISCONNECTED",
+      "ssh_key": "moonshot@space.local ed25519",
+      "ssh_password": "sshpassword (in env)",
+      "bind_manifest": "/tmp/portal-bind-manifest.json with user_id + chat_id"
+    },
+    "active_services": {
+      "kernel": "8888 UP",
+      "cdp_raw": "9222 UP",
+      "cdp_proxy": "9223 UP",
+      "portal": "8080 UP (but CallTools/Status/APIKey return 404)",
+      "envd": "49983 UP",
+      "probe": "18080 UP",
+      "vnc": "6080 UP"
+    }
+  },
+  "recommendations": [
+    "Fix FUSE mount to read /mnt/portal-overlay/.agent-gw.json",
+    "Use bind token JWT to authenticate portal endpoints",
+    "The 100/100 quota is the 25-call tool budget - plan accordingly",
+    "CallTools endpoint needs gRPC/HTTP2 framing, not plain HTTP"
+  ]
+}

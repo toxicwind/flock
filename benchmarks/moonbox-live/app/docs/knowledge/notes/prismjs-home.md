@@ -1,0 +1,1 @@
+PrismJS syntax highlighter info.

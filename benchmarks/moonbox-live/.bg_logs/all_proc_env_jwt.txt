@@ -1,0 +1,228 @@
+=== PID 1 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 1263 ===
+=== PID 155 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+PYTHONUSERBASE=/home/kimi/.local
+XAUTHORITY=/root/.Xauthority
+SSH_PASSWORD=sshpassword
+=== PID 17 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+PYTHONUSERBASE=/home/kimi/.local
+XAUTHORITY=/root/.Xauthority
+SSH_PASSWORD=sshpassword
+=== PID 179 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+SSH_PASSWORD=sshpassword
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PROJECT_WORKSPACE_PATH=/mnt/agents
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+=== PID 180 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+SSH_PASSWORD=sshpassword
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+PWD=/tmp/kimi-project-kernel
+XAUTHORITY=/home/kimi/.Xauthority
+HOME=/home/kimi
+WORKDIR=/tmp/kimi-project-kernel
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+=== PID 2159 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 2334 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+NODE_PATH=/usr/lib/node_modules
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 2348 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+NODE_PATH=/usr/lib/node_modules
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+=== PID 2349 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+NODE_PATH=/usr/lib/node_modules
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+=== PID 2426 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+NODE_PATH=/usr/lib/node_modules
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 29 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 30 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 38 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 380 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+LD_LIBRARY_PATH=/usr/local/lib/python3.12/site-packages/cv2/../../lib64:
+HOME=/home/kimi
+GOOGLE_DEFAULT_CLIENT_SECRET=kdloedMFGdGla2P1zacGjAQh
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+PATH=/command:/home/kimi/.local/bin:/home/kimi/.npm-global/bin:/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 39 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 396 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+LD_LIBRARY_PATH=/usr/local/lib/python3.12/site-packages/cv2/../../lib64:
+HOME=/home/kimi
+GOOGLE_DEFAULT_CLIENT_SECRET=kdloedMFGdGla2P1zacGjAQh
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+PATH=/command:/home/kimi/.local/bin:/home/kimi/.npm-global/bin:/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 399 ===
+=== PID 40 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 400 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+LD_LIBRARY_PATH=/usr/local/lib/python3.12/site-packages/cv2/../../lib64:
+HOME=/home/kimi
+GOOGLE_DEFAULT_CLIENT_SECRET=kdloedMFGdGla2P1zacGjAQh
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+PATH=/command:/home/kimi/.local/bin:/home/kimi/.npm-global/bin:/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 401 ===
+=== PID 41 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 42 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 420 ===
+=== PID 424 ===
+=== PID 43 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 44 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 441 ===
+=== PID 45 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 46 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 462 ===
+ort=9222 --js-flags="--max_old_space_size=512" --ozone-platform=x11 --disable-gpu-compositing --disable-blink-features=AutomationControlled --lang=en-US --num-raster-threads=1 --renderer-client-id=6 --time-ticks-at-unix-epoch=-1786488301441901 --launch-time-ticks=10213187 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,5113969253396868346,143297891816981250,2097152 --field-trial-handle=3,i,126410935448717099,17207373808068258175,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,11015644277093030643,4692651234250867059,4 --trace-process-track-uuid=3190708991934122588 --enable-logging=file --log-file=/tmp/chromium_detailed.log
+=== PID 463 ===
+ort=9222 --js-flags="--max_old_space_size=512" --ozone-platform=x11 --disable-gpu-compositing --disable-blink-features=AutomationControlled --lang=en-US --num-raster-threads=1 --renderer-client-id=5 --time-ticks-at-unix-epoch=-1786488301441901 --launch-time-ticks=10216770 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,6791212700196426406,10079812634853550587,2097152 --field-trial-handle=3,i,126410935448717099,17207373808068258175,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,11015644277093030643,4692651234250867059,4 --trace-process-track-uuid=3190708990997080739 --enable-logging=file --log-file=/tmp/chromium_detailed.log
+=== PID 501 ===
+ort=9222 --js-flags="--max_old_space_size=512" --ozone-platform=x11 --disable-gpu-compositing --disable-blink-features=AutomationControlled --lang=en-US --num-raster-threads=1 --renderer-client-id=8 --time-ticks-at-unix-epoch=-1786488301441901 --launch-time-ticks=11071032 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,16302024661141558137,13565862064283754557,2097152 --field-trial-handle=3,i,126410935448717099,17207373808068258175,262144 --variations-seed-version --pseudonymization-salt-handle=7,i,11015644277093030643,4692651234250867059,4 --trace-process-track-uuid=3190708993808206286 --enable-logging=file --log-file=/tmp/chromium_detailed.log
+=== PID 511 ===
+=== PID 59 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 604 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 606 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 607 ===
+DRIVE9_API_KEY=drive9_ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjBaVzVoYm5SZmFXUWlPaUptTUROalltUXhNaTFsWWpZMkxUUXlNV010WWpSak5DMWxaV1EzTTJNd1ltTTBZbVlpTENKMGIydGxibDkyWlhKemFXOXVJam94TENKcFlYUWlPakUzT0RVM09EYzJNRGtzSW1wdmRYSnVZV3hmY0dWeWJXbHpjMmx2Ym5NaU9sc2lhbTkxY201aGJEcGpjbVZoZEdVaUxDSnFiM1Z5Ym1Gc09tRndjR1Z1WkNJc0ltcHZkWEp1WVd3NmNtVmhaQ0lzSW1wdmRYSnVZV3c2Wm1sdVpDSXNJbXB2ZFhKdVlXdzZkbVZ5YVdaNUlpd2lhbTkxY201aGJEcHpaV0ZzSWl3aWFtOTFjbTVoYkRwaGNuUnBabUZqZERwM2NtbDBaU0lzSW1wdmRYSnVZV3c2WVdSdGFXNGlMQ0pxYjNWeWJtRnNPbk52ZFhKalpUcG5ZWFJsZDJGNVgyOWljMlZ5ZG1Wa0lpd2lhbTkxY201aGJEcHpiM1Z5WTJVNmMyVnlkbVZ5WDI5aWMyVnlkbVZrSWl3aWFtOTFjbTVoYkRwemIzVnlZMlU2YVcxd2IzSjBaV1FpWFgwLnhkWjB0TlZNVTgyNEhKMXhuWHU1UXpDUlNSdldXQjJFNk1WY3BvaF9XVDg
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 608 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+=== PID 65 ===
+=== PID 66 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+SSH_PASSWORD=sshpassword
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+PWD=/tmp/kimi-project-kernel
+XAUTHORITY=/home/kimi/.Xauthority
+HOME=/home/kimi
+WORKDIR=/tmp/kimi-project-kernel
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+=== PID 72 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+SSH_PASSWORD=sshpassword
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+PWD=/run/s6-rc:s6-rc-init:jdjHin/servicedirs/portal
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PROJECT_WORKSPACE_PATH=/mnt/agents
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+=== PID 77 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+SSH_PASSWORD=sshpassword
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PROJECT_WORKSPACE_PATH=/mnt/agents
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+=== PID 79 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+SSH_PASSWORD=sshpassword
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/home/kimi/.Xauthority
+HOME=/home/kimi
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PROJECT_WORKSPACE_PATH=/mnt/agents
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+=== PID 83 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+SSH_PASSWORD=sshpassword
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PROJECT_WORKSPACE_PATH=/mnt/agents
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+=== PID 8455 ===
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+SSH_PASSWORD=sshpassword
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+PWD=/tmp/kimi-project-kernel
+XAUTHORITY=/home/kimi/.Xauthority
+HOME=/home/kimi
+WORKDIR=/tmp/kimi-project-kernel
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+=== PID 86 ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools

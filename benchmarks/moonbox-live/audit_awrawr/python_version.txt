@@ -1,0 +1,11 @@
+=== COMMAND ===
+python3 --version; pip3 --version 2>/dev/null || echo 'no pip3'
+
+=== OUTPUT ===
+
+
+=== STDERR ===
+<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>
+
+=== RC ===
+-1

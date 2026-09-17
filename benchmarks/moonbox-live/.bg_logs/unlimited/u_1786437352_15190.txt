@@ -1,0 +1,4 @@
+/usr/local/bin/python3 -m ipykernel_launcher -f /tmp/tmpjzgampb4.json 
+real	0m0.065s
+user	0m0.007s
+sys	0m0.009s

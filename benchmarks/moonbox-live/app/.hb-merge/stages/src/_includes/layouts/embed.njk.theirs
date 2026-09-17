@@ -1,0 +1,41 @@
+<a href="{{ url }}" class="embed block border border-zinc-700 rounded-md p-4 bg-zinc-900 hover:bg-zinc-800 transition-all">
+  <div class="mb-1">
+    <strong class="text-lg">{{ title or fileSlug or "Untitled" }}</strong>
+  </div>
+
+  {% if description %}
+    <p class="text-zinc-400 text-sm mb-2">{{ description }}</p>
+  {% endif %}
+
+  <div class="text-xs text-zinc-400 space-y-1">
+    {% if status or certainty or importance %}
+    <div class="flex gap-3 flex-wrap">
+      {% if status %}<span class="inline-block px-2 py-0.5 bg-zinc-800 rounded">{{ status }}</span>{% endif %}
+      {% if certainty %}<span class="inline-block px-2 py-0.5 bg-zinc-800 rounded">certainty: {{ certainty }}</span>{% endif %}
+      {% if importance %}<span class="inline-block px-2 py-0.5 bg-zinc-800 rounded">importance: {{ importance }}</span>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if tags %}
+    <div class="mt-1">
+      <strong class="text-zinc-500">Tags:</strong>
+      <span>
+        {% for tag in tags %}
+          <span class="inline-block px-1.5 py-0.5 bg-zinc-800 rounded-sm mr-1">{{ tag }}</span>
+        {% endfor %}
+      </span>
+    </div>
+    {% endif %}
+
+    {% if memory_ref %}
+    <div class="mt-1">
+      <strong class="text-zinc-500">Memory:</strong>
+      <ul class="list-disc pl-4">
+        {% for ref in memory_ref %}
+          <li><a href="{{ ref }}" class="text-zinc-300 hover:text-zinc-100 underline">{{ ref }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</a>

@@ -1,0 +1,60 @@
+]
+type:.eq.go.opentelemetry.io/otel/attribute.KeyValue
+go.opentelemetry.io/otel/attribute.(*Key).Bool
+go.opentelemetry.io/otel/attribute.(*Key).BoolSlice
+go.opentelemetry.io/otel/attribute.(*Key).ByteSlice
+go.opentelemetry.io/otel/attribute.(*Key).Defined
+go.opentelemetry.io/otel/attribute.(*Key).Float64
+go.opentelemetry.io/otel/attribute.(*Key).Float64Slice
+go.opentelemetry.io/otel/attribute.(*Key).Int
+go.opentelemetry.io/otel/attribute.(*Key).Int64
+go.opentelemetry.io/otel/attribute.(*Key).Int64Slice
+go.opentelemetry.io/otel/attribute.(*Key).IntSlice
+go.opentelemetry.io/otel/attribute.(*Key).Slice
+go.opentelemetry.io/otel/attribute.(*Key).String
+go.opentelemetry.io/otel/attribute.(*Key).StringSlice
+go.opentelemetry.io/otel/attribute.(*KeyValue).Valid
+type:.eq.[10]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[1]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[2]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[3]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[4]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[5]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[6]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[7]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[8]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.[9]go.opentelemetry.io/otel/attribute.KeyValue
+type:.eq.go.shape.struct { Key go.opentelemetry.io/otel/attribute.Key; Value go.opentelemetry.io/otel/attribute.Value }
+github.com/go-logr/logr/funcr.Formatter.nonStringKey
+slices.pdqsortCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.reverseRangeCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.insertionSortCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.partitionCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.partitionEqualCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.partialInsertionSortCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.choosePivotCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.medianAdjacentCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.medianCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.order2CmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.breakPatternsCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.heapSortCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.siftDownCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }]
+go.opentelemetry.io/otel/trace.newSpanLimits
+go.opentelemetry.io/otel/trace.checkKeyPart
+go.opentelemetry.io/otel/trace.checkKeyRemain
+go.opentelemetry.io/otel/trace.checkKeyTenant
+go.opentelemetry.io/otel/trace.checkKey
+go.opentelemetry.io/otel/propagation.HeaderCarrier.Keys
+go.opentelemetry.io/otel/propagation.(*HeaderCarrier).Keys
+slices.pdqsortCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.reverseRangeCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.insertionSortCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.partitionCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.partitionEqualCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.partialInsertionSortCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.choosePivotCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.medianAdjacentCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.medianCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.order2CmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.breakPatternsCmpFunc[go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }]
+slices.heapSortCmpFunc[go.shape.str

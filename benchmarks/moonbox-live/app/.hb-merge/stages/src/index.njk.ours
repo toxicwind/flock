@@ -1,0 +1,207 @@
+---
+layout: "base.njk"
+metaDisable: true
+showTitle: false
+prose: false
+fullBleed: true
+---
+
+{% from "components/icons.njk" import icon %}
+
+<div id="home-shell" class="stack" style="--space: var(--space-3xl)">
+  {# --- Hero Section --- #}
+  <section class="stack" style="--space: var(--space-xl)">
+    <div class="max-w-screen-xl mx-auto px-gutter py-space-xl">
+      <div class="switcher" style="--threshold: 60rem; --space: var(--space-2xl)">
+        <div class="stack" style="--space: var(--space-l)">
+          <div class="stack" style="--space: var(--space-2xs)">
+            <span class="text-xs font-black uppercase tracking-[0.3em] text-primary"
+            >Lab Status: Active</span>
+            <h1 class="text-h1 font-black leading-tight tracking-tighter">
+              {{ title or 'Ideas, Prototypes, & Creative Synthesis.' }}
+            </h1>
+          </div>
+
+          <p class="text-xl opacity-70 max-w-prose leading-relaxed">
+            {{
+              lede or 'Effusion Labs is a digital studio dedicated to building high-fidelity tools and exploring the frontiers of agentic systems.'
+            }}
+          </p>
+
+          <div class="cluster" style="--space: var(--space-s)">
+            {% for c in (ctas or []) %}
+              <a
+                class="btn {% if c.variant == 'ghost' %}btn-ghost border-2 border-base-content/20{% else %}btn-primary hb-shadow-brut{% endif %} px-8 uppercase tracking-widest font-bold"
+                href="{{ c.href | url }}"
+              >
+                {{ c.label }}
+              </a>
+            {% endfor %}
+            <a
+              class="btn btn-secondary hb-shadow-brut px-8 uppercase tracking-widest font-bold"
+              href="{{ '/map/' | url }}"
+            >
+              Knowledge Map
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="hb-accent p-space-l hb-inlay stack items-center justify-center relative overflow-hidden"
+          style="--space: var(--space-m)"
+        >
+          <div class="absolute inset-0 opacity-10 hb-grid"></div>
+          <div class="stack text-center z-10" style="--space: var(--space-xs)">
+            <span class="text-[0.6rem] uppercase tracking-widest opacity-50 font-mono"
+            >Total Garden Entries</span>
+            <span class="text-7xl font-black hb-num-outline">{{ inventory.total or 0 }}</span>
+            <div class="cluster justify-center" style="--space: var(--space-2xs)">
+              <span class="badge badge-outline badge-xs opacity-50">Projects</span>
+              <span class="badge badge-outline badge-xs opacity-50">Concepts</span>
+              <span class="badge badge-outline badge-xs opacity-50">Sparks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# --- Core Areas (Lanes) --- #}
+  <section class="bg-base-200/30 py-space-3xl border-y border-base-content/5">
+    <div class="max-w-screen-xl mx-auto px-gutter stack" style="--space: var(--space-xl)">
+      <div class="stack" style="--space: var(--space-3xs)">
+        <h2 class="text-xs uppercase tracking-[0.4em] font-black opacity-30">The Core Garden</h2>
+        <p class="text-h2 font-black tracking-tight">Structured Knowledge Lanes</p>
+      </div>
+
+      <div class="grid-auto" style="--grid-min: 20rem; --space: var(--space-l)">
+        {% for lane in coreLanes %}
+          <div
+            class="hb-brut-card p-space-m stack relative group overflow-hidden"
+            style="--space: var(--space-m)"
+          >
+            <div class="cluster justify-between items-center">
+              <div class="cluster" style="--space: var(--space-xs)">
+                <span class="text-primary">{{ icon(lane.icon, { class: 'w-6 h-6' }) }}</span>
+                <h3 class="text-xl font-black tracking-tight">{{ lane.label }}</h3>
+              </div>
+              <span class="text-2xl font-black hb-num-outline opacity-40">{{ lane.count }}</span>
+            </div>
+
+            <p class="text-sm opacity-60 leading-relaxed">{{ lane.summary }}</p>
+
+            <ul class="list-none p-0 m-0 stack" style="--space: var(--space-xs)">
+              {% for item in lane.entries %}
+                <li class="border-l-2 border-base-content/10 pl-3">
+                  <a
+                    href="{{ item.url | url }}"
+                    class="stack no-underline group/item"
+                    style="--space: 0"
+                  >
+                    <span
+                      class="text-sm font-bold group-hover/item:text-primary transition-colors"
+                    >{{ item.data.title }}</span>
+                    <time class="text-[0.6rem] opacity-40 font-mono uppercase">{{
+                      item.date | readableDate
+                    }}</time>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+
+            <a
+              href="{{ lane.href | url }}"
+              class="btn btn-sm btn-ghost group-hover:bg-primary/20 transition-colors uppercase tracking-widest text-[0.6rem] font-black mt-auto"
+            >
+              Explore Lane {{ icon('arrow-right', { class: 'w-3 h-3 ml-2' }) }}
+            </a>
+
+            <div class="absolute inset-0 bg-gradient-to-br {{ lane.accent }} opacity-5 group-hover:opacity-10 transition-opacity">
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {# --- Latest Stream --- #}
+  <section
+    class="max-w-screen-xl mx-auto px-gutter py-space-3xl stack"
+    style="--space: var(--space-xl)"
+  >
+    <div class="cluster justify-between items-end" style="--space: var(--space-m)">
+      <div class="stack" style="--space: var(--space-3xs)">
+        <h2 class="text-xs uppercase tracking-[0.4em] font-black opacity-30">Freshly Cultivated</h2>
+        <p class="text-h2 font-black tracking-tight">Latest Lab Updates</p>
+      </div>
+      <a href="/work/" class="btn btn-outline hb-shadow-brut uppercase font-bold tracking-widest"
+      >Open Index</a>
+    </div>
+
+    <div class="grid-auto" style="--grid-min: 24rem; --space: var(--space-l)">
+      {% for item in latest %}
+        <a
+          href="{{ item.url | url }}"
+          class="hb-brut-card p-space-m hb-anim no-underline group stack"
+          style="--space: var(--space-s)"
+        >
+          <div class="cluster justify-between items-center">
+            <span class="text-[0.6rem] uppercase tracking-widest font-mono opacity-40">{{
+              item.data.type or 'Entry'
+            }}</span>
+            <time class="text-[0.65rem] font-mono opacity-40">{{ item.date | readableDate }}</time>
+          </div>
+          <h3 class="text-lg font-black tracking-tight hb-ink group-hover:text-primary transition-colors underline decoration-transparent group-hover:decoration-primary/30">
+            {{ item.data.title }}
+          </h3>
+          {% if item.data.description %}
+            <p class="text-sm opacity-60 leading-relaxed clamp-3">{{ item.data.description }}</p>
+          {% endif %}
+          <span
+            class="text-xs uppercase tracking-widest font-bold text-primary mt-auto opacity-0 group-hover:opacity-100 transition-opacity"
+          >Open Build {{ icon('arrow-right', { class: 'w-3 h-3 ml-1' }) }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  {# --- Satellite Areas --- #}
+  <section class="bg-base-100 py-space-3xl stack" style="--space: var(--space-xl)">
+    <div class="max-w-screen-xl mx-auto px-gutter stack" style="--space: var(--space-l)">
+      <h2 class="text-xs uppercase tracking-[0.4em] font-black opacity-30 text-center">
+        Satellite Infrastructure
+      </h2>
+      <div class="switcher" style="--threshold: 45rem; --space: var(--space-l)">
+        {% for lane in satelliteLanes %}
+          <div
+            class="hb-accent p-space-m hb-inlay stack group h-full"
+            style="--space: var(--space-m)"
+          >
+            <div class="cluster justify-between">
+              <div class="cluster" style="--space: var(--space-xs)">
+                <span class="text-secondary">{{ icon(lane.icon, { class: 'w-5 h-5' }) }}</span>
+                <h3 class="text-lg font-black tracking-tight">{{ lane.label }}</h3>
+              </div>
+              <span class="text-sm font-mono opacity-30 tracking-widest">[{{ lane.count }}]</span>
+            </div>
+            <p class="text-xs opacity-60 leading-relaxed">{{ lane.summary }}</p>
+            <ul class="list-none p-0 m-0 stack" style="--space: var(--space-2xs)">
+              {% for item in lane.entries %}
+                <li>
+                  <a
+                    href="{{ item.url | url }}"
+                    class="text-sm opacity-80 hover:text-secondary hover:opacity-100 transition-all font-semibold select-none"
+                  >• {{ item.data.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+            <a
+              href="{{ lane.href | url }}"
+              class="btn btn-xs btn-ghost self-start mt-auto opacity-40 hover:opacity-100"
+            >Surface Layer {{ icon('chevron-right', { class: 'w-3 h-3' }) }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,99 @@
+name: pi-ci
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'packages/**'
+      - 'scripts/**'
+      - 'package*.json'
+      - 'tsconfig*.json'
+      - '.github/workflows/pi-ci.yml'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'packages/**'
+      - 'scripts/**'
+      - 'package*.json'
+      - 'tsconfig*.json'
+      - '.github/workflows/pi-ci.yml'
+
+concurrency:
+  group: pi-ci-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      agent: ${{ steps.filter.outputs.agent }}
+      ai: ${{ steps.filter.outputs.ai }}
+      coding: ${{ steps.filter.outputs.coding }}
+      server: ${{ steps.filter.outputs.server }}
+      tui: ${{ steps.filter.outputs.tui }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        id: filter
+        with:
+          filters: |
+            agent: [packages/agent/**]
+            ai: [packages/ai/**]
+            coding: [packages/coding-agent/**]
+            server: [packages/server/**]
+            tui: [packages/tui/**]
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: ${{ needs.changes.outputs.agent == 'true' || needs.changes.outputs.ai == 'true' || needs.changes.outputs.coding == 'true' || needs.changes.outputs.server == 'true' || needs.changes.outputs.tui == 'true' || github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npx biome check --error-on-warnings .
+
+  typecheck:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: ${{ needs.changes.outputs.agent == 'true' || needs.changes.outputs.ai == 'true' || needs.changes.outputs.coding == 'true' || needs.changes.outputs.server == 'true' || needs.changes.outputs.tui == 'true' || github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: sudo apt-get update && sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+      - run: npm ci --ignore-scripts
+      - run: npm run build:offline
+      - run: npx tsgo --noEmit
+
+  test-unit:
+    runs-on: ubuntu-latest
+    needs: changes
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [agent, ai, coding-agent, server, tui]
+    if: ${{ needs.changes.outputs[matrix.pkg] == 'true' || github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run test --workspace=packages/${{ matrix.pkg }} --if-present
+
+  test-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: node --test scripts/*.test.mjs

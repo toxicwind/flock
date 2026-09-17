@@ -1,0 +1,7 @@
+#!/bin/bash
+# runc - "Run with Chunking" wrapper
+# Usage: runc "your long command here"
+# If output > 7500 chars, auto-saves to /tmp/chunks/ and returns metadata
+# Read chunks: python3 /mnt/agents/output/chunked_runner.py --read BASENAME --index N
+
+python3 /mnt/agents/output/chunked_runner.py "$@"

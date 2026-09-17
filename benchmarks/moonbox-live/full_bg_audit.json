@@ -1,0 +1,296 @@
+{
+  "files": {
+    "FINDING_trace_20260811_075313.md": {
+      "size": 6902,
+      "lines": 178
+    },
+    "actions-poll.log": {
+      "size": 10988,
+      "lines": 244
+    },
+    "agent_gw_analysis.jsonl": {
+      "size": 27627,
+      "lines": 4
+    },
+    "all_proc_env.txt": {
+      "size": 13473,
+      "lines": 313
+    },
+    "all_proc_env_detailed.logjson": {
+      "size": 29424,
+      "lines": 592
+    },
+    "all_proc_env_jwt.txt": {
+      "size": 12883,
+      "lines": 228
+    },
+    "auto_commit.log": {
+      "size": 2119,
+      "lines": 43
+    },
+    "auto_hook.log": {
+      "size": 12439,
+      "lines": 261
+    },
+    "auto_hook_v2.log": {
+      "size": 1666,
+      "lines": 35
+    },
+    "banned_keys.txt": {
+      "size": 99,
+      "lines": 1
+    },
+    "bg_worker.out": {
+      "size": 500,
+      "lines": 6
+    },
+    "browser_guard.log": {
+      "size": 156,
+      "lines": 3
+    },
+    "build.log": {
+      "size": 22,
+      "lines": 1
+    },
+    "cdn_discovery.jsonl": {
+      "size": 17031,
+      "lines": 1
+    },
+    "daemon.log": {
+      "size": 546,
+      "lines": 9
+    },
+    "deep_scan.out": {
+      "size": 0,
+      "lines": 0
+    },
+    "full_trace.log": {
+      "size": 3731,
+      "lines": 99
+    },
+    "gitwatch.log": {
+      "size": 0,
+      "lines": 0
+    },
+    "gitwatch.sh": {
+      "size": 335,
+      "lines": 10
+    },
+    "gitwatch_agentsmd.log": {
+      "size": 1672,
+      "lines": 60
+    },
+    "gitwatch_envd.log": {
+      "size": 330,
+      "lines": 10
+    },
+    "gitwatch_recon.log": {
+      "size": 0,
+      "lines": 0
+    },
+    "gitwatch_status.log": {
+      "size": 0,
+      "lines": 0
+    },
+    "k3_proxy.log": {
+      "size": 170,
+      "lines": 3
+    },
+    "kernel_escalate.log": {
+      "size": 2872,
+      "lines": 24
+    },
+    "kernel_exec.log": {
+      "size": 1329,
+      "lines": 4
+    },
+    "kernel_hijack.log": {
+      "size": 0,
+      "lines": 0
+    },
+    "kernel_mitm.jsonl": {
+      "size": 1038655,
+      "lines": 6732
+    },
+    "monadic.jsonl": {
+      "size": 190,
+      "lines": 2
+    },
+    "portal_endpoints.txt": {
+      "size": 56087,
+      "lines": 95
+    },
+    "portal_history_methods.txt": {
+      "size": 0,
+      "lines": 0
+    },
+    "project_state.parquet": {
+      "size": 0,
+      "lines": 0
+    },
+    "race_master_run.log": {
+      "size": 5462,
+      "lines": 73
+    },
+    "race_results_1786507482.json": {
+      "size": 70661,
+      "lines": 1769
+    },
+    "race_results_1786688384.json": {
+      "size": 67770,
+      "lines": 1693
+    },
+    "race_results_1786688724.json": {
+      "size": 67769,
+      "lines": 1693
+    },
+    "race_summary_1786507482.json": {
+      "size": 2659,
+      "lines": 79
+    },
+    "race_summary_1786688384.json": {
+      "size": 1092,
+      "lines": 28
+    },
+    "race_summary_1786688725.json": {
+      "size": 1091,
+      "lines": 28
+    },
+    "recon_db_query.json": {
+      "size": 1628,
+      "lines": 37
+    },
+    "recon_sweep.json": {
+      "size": 21635,
+      "lines": 1167
+    },
+    "s6_env_dump.txt": {
+      "size": 165,
+      "lines": 9
+    },
+    "shell_unlimited.sh": {
+      "size": 1958,
+      "lines": 72
+    },
+    "test_large.txt": {
+      "size": 23893,
+      "lines": 5000
+    },
+    "tool_mitm.jsonl": {
+      "size": 1166050,
+      "lines": 5281
+    },
+    "tool_mitm_v2.jsonl": {
+      "size": 22594,
+      "lines": 104
+    },
+    "tunnel_daemon.log": {
+      "size": 21014,
+      "lines": 412
+    },
+    "worker.log": {
+      "size": 1664,
+      "lines": 31
+    }
+  },
+  "endpoints": [
+    "http://10.213.5.144",
+    "http://127.0.0.1:18080/healthz",
+    "http://127.0.0.1:19999/api/status",
+    "http://127.0.0.1:6080/",
+    "http://127.0.0.1:8080/agent.reception.v1.CallTools",
+    "http://127.0.0.1:8080/api/v1/bind_token",
+    "http://127.0.0.1:8080/api/v1/status",
+    "http://127.0.0.1:8080/kimi.portal.v1.PortalService/GetAPIKey",
+    "http://127.0.0.1:8888/api/kernels",
+    "http://127.0.0.1:8888/kernel/connection",
+    "http://127.0.0.1:8888/kernel/status",
+    "http://127.0.0.1:9223/json/version",
+    "http://169.254.169.254/latest/api/token",
+    "http://json-schema.org/draft-07/schema#oneOf:",
+    "http://pypi.mirrors.msh.team/simple/",
+    "https://10.0.0.1/api/v1/namespaces",
+    "https://10.96.0.1/api/v1/namespaces",
+    "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "https://agent-gw-dev.dev.kimi.team/coding/v1/embeddings",
+    "https://agent-gw-dev.dev.kimi.team/coding/v1/fetch",
+    "https://agent-gw-dev.dev.kimi.team/coding/v1/mcp/",
+    "https://agent-gw-dev.dev.kimi.team/coding/v1/models",
+    "https://agent-gw-dev.dev.kimi.team/coding/v1/search",
+    "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "https://agent-gw-dev.dev.kimi.team/coding/v1http:",
+    "https://agent-gw-dev.dev.kimi.team/codingA",
+    "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "https://agent-gw.kimi.com/coding/v1/embeddings",
+    "https://agent-gw.kimi.com/coding/v1/fetch",
+    "https://agent-gw.kimi.com/coding/v1/mcp/",
+    "https://agent-gw.kimi.com/coding/v1/models",
+    "https://agent-gw.kimi.com/coding/v1/search",
+    "https://agent-gw.kimi.com/coding/v1/tools",
+    "https://agent-gw.kimi.com/coding/v1Mount",
+    "https://agent-gw.kimi.com/codinginvalid",
+    "https://api.github.com/",
+    "https://api.github.com/user",
+    "https://api.github.com/user/repos?per_page=100",
+    "https://api.github.com/user/repos?per_page=100&page=2",
+    "https://api.github.com/user/repos?per_page=100&page=4",
+    "https://api.github.com/users/toxicwind/events{/priva",
+    "https://api.github.com/users/toxicwind/followers\\",
+    "https://api.github.com/users/toxicwind/following{/other_user}\\",
+    "https://api.github.com/users/toxicwind/gists{/gist_id}\\",
+    "https://api.github.com/users/toxicwind/orgs\\",
+    "https://api.github.com/users/toxicwind/repos\\",
+    "https://api.github.com/users/toxicwind/starred{/owner}{/repo}\\",
+    "https://api.github.com/users/toxicwind/subscriptions\\",
+    "https://api.github.com/users/toxicwind\\",
+    "https://auth.kimi.com/.well-known/openid-configuration",
+    "https://auth.kimi.com/oauth/authorize?client_id=17e5f671-d194-4dfb-9706-5516cb48c098&response_type=token",
+    "https://avatars.git",
+    "https://avatars.githubusercontent.com/u/1934561?v=4\\",
+    "https://connectrpc.com/docs/go/common-errorshybrid",
+    "https://docs.github.com/rest\\",
+    "https://github.com/toxicwind/effusion-labs.git",
+    "https://github.com/toxicwind/effusion-labs/security/dependabot",
+    "https://github.com/toxicwind\\",
+    "https://REDACTED@github.com/toxicwind/effusion-labs.git",
+    "https://github_pat_11AAOYJYI0rNctmEN5p`",
+    "https://go.dev/blog/protobuf-apiv20051953eb9618e1c9a1f929a21a0b68540eea2da725b99b315f3b8b489918ef109e156193951ec7e937b1652c0bd3bb1bf073573df883d2c34f1ef451fd46b503f0000c6858e06b70404e9cd9e3ecb662395b4429c648139053fb521f828af606b4d3dbaa14b5e77efe75928fe1dc127a2ffa8de3348b3c1856a429bf97e7e31c2e5bd66011839296a789a3bc0045c8a5fb42c7d1bd998f54449579b446817afbd17273e662c97ee72995ef42640c550b9013fad0761353c7086a272c24088be94769fd16650HTTP/1.1",
+    "https://go.dev/blog/protobuf-apiv2Number",
+    "https://json-schema.org/draft/2019-09/schemahttps://json-schema.org/draft/2019-09/vocab/https://json-schema.org/draft/2020-12/vocab/compile",
+    "https://json-schema.org/draft/2020-12/schemamaxItems:",
+    "https://kimi-api-sandbox.msh.team/apiv2",
+    "https://kimi-api-sandbox.msh.team/apiv2/v1/chat/completions",
+    "https://kimi-api-sandbox.msh.team/apiv2/v1/embeddings",
+    "https://kimi-api-sandbox.msh.team/apiv2/v1/fetch",
+    "https://kimi-api-sandbox.msh.team/apiv2/v1/mcp/",
+    "https://kimi-api-sandbox.msh.team/apiv2/v1/models",
+    "https://kimi-api-sandbox.msh.team/apiv2/v1/search",
+    "https://kimi-api-sandbox.msh.team/apiv2/v1/tools",
+    "https://kimi-api-sandbox.msh.team/apiv2failed",
+    "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "https://kimi-api-sandbox.msh.team/v1/embeddings",
+    "https://kimi-api-sandbox.msh.team/v1/fetch",
+    "https://kimi-api-sandbox.msh.team/v1/mcp/",
+    "https://kimi-api-sandbox.msh.team/v1/models",
+    "https://kimi-api-sandbox.msh.team/v1/search",
+    "https://kimi-api-sandbox.msh.team/v1/tools",
+    "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "https://kimi.kimi.team/apiv2/v1/embeddings",
+    "https://kimi.kimi.team/apiv2/v1/fetch",
+    "https://kimi.kimi.team/apiv2/v1/mcp/",
+    "https://kimi.kimi.team/apiv2/v1/models",
+    "https://kimi.kimi.team/apiv2/v1/search",
+    "https://kimi.kimi.team/apiv2/v1/tools",
+    "https://kimi.kimi.team/apiv2failed",
+    "https://kubernetes.default.svc.cluster.local/api/v1/namespaces",
+    "https://kubernetes.default.svc/api/v1/namespaces",
+    "https://toxicwind:REDACTED@github.com/toxicwind/paintball-field.git",
+    "https://www.kimi.com/"
+  ],
+  "token_refs": 399,
+  "errors": [
+    "s6: [Errno 21] Is a directory: '/mnt/agents/output/.bg_logs/s6'",
+    "traces: [Errno 21] Is a directory: '/mnt/agents/output/.bg_logs/traces'",
+    "unlimited: [Errno 21] Is a directory: '/mnt/agents/output/.bg_logs/unlimited'"
+  ]
+}

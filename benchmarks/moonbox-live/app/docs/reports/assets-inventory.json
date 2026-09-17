@@ -1,0 +1,464 @@
+[
+  {
+    "path": ".eleventy.js",
+    "size": 290,
+    "hash": "3a06affb02db6e85b0737178897ff814c933843f7cca311bb015732b25ff5184",
+    "type": "config",
+    "importers": []
+  },
+  {
+    "path": "README.md",
+    "size": 3303,
+    "hash": "195f5ed7f2d85c088b716fcb85e901f0042fb800e73e4d23bda81bd29ddf0d9d",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "Untitled-1.html",
+    "size": 485210,
+    "hash": "53a82ce7df21d2f8cc34a6cbb3774a8119e0670129f41b619fb7e95d1a5f106b",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "Untitled-2.html",
+    "size": 316380,
+    "hash": "429ea2560689654da19fa1cc4142234cccd66597f0eab9f1e6e1a43d986b0b30",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "lib/config.js",
+    "size": 233,
+    "hash": "d9fefec9bd765bbabd28192f2d4c455a6f0b15c7dc08089d9aa2e36277dc08bc",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/constants.js",
+    "size": 329,
+    "hash": "5071ef77722d01d281126dee09b04aab004722ec945e34ff1cc5a4a5f071a1a3",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/eleventy/register.js",
+    "size": 2641,
+    "hash": "a0aa2c8a3fe46bc797ebf5a6a5c041af4680a73a3df1b5601e5d9a5f500ee2c4",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/filters.js",
+    "size": 2137,
+    "hash": "60601206ed4ab8b9cb9c6b5b34a73e969e80848e47f9a5747e5935fd3145c4df",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/markdown/footnotes.js",
+    "size": 8422,
+    "hash": "548e4c627293a023d5208ecbdcbc2624a8534d74eb4d1bf7be28a449f5cc94d6",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/markdown/index.js",
+    "size": 1093,
+    "hash": "7c3a4010417ea49238b1dbc3ff5fa3f01f17a21a52d38bdb363889bdcca1c583",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/markdown/inlineMacros.js",
+    "size": 1040,
+    "hash": "654f6d9f10ce68ebcdfebfccee9f0725416fc334fa697f60206b11faf0c8c891",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/markdown/links.js",
+    "size": 555,
+    "hash": "04724040498a13ed3f9ab54ea4e0de24fca21020963eb0146a1c090361019471",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/plugins.js",
+    "size": 1093,
+    "hash": "963d234798ad22153b83d9c0739bc3648520cc72595ff74dbcfcc6259275ebd9",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/postcss.js",
+    "size": 1029,
+    "hash": "d03a4515ae06d6cff1e4857fb0f2275acafb816c8af2d807a326713de80759e7",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/postcssPlugins.js",
+    "size": 351,
+    "hash": "02395f357d04aac388a545decedfa787e5863f8eb606753205383a2056b100ab",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/shortcodes.js",
+    "size": 734,
+    "hash": "e10b1c96479d5414c556a43baf218ad193c4ae67a35dc0901e38347cc0d86412",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/utils.js",
+    "size": 963,
+    "hash": "51132ee7191fcf7fa320374bdab306bb505f3acdc91f3b59fd54abe010e5cf09",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "lib/webpageToMarkdown.js",
+    "size": 922,
+    "hash": "9a9914017ab401c6ab91fd3d49e236a77b021643f77f573286bd7703f1edc198",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "output.html",
+    "size": 193727,
+    "hash": "29482c41f8236b1791b18a133e361ebc6462955e41c3e4c983bce57ce425985b",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "postcss.config.cjs",
+    "size": 70,
+    "hash": "82e9cc8a8243ae76c3790a37580a80ef725c718a6a1a00dcae7715c32552cd0c",
+    "type": "config",
+    "importers": []
+  },
+  {
+    "path": "src/404.njk",
+    "size": 305,
+    "hash": "158503ef010fc7d69edd6627899c15f38b58f741d54d5a416d130c3eb6f22846",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/_data/nav.js",
+    "size": 280,
+    "hash": "7ff9333f12d6a9e4d7c18a81ce45088f2365cd22d280ad51ba68b79de01087ab",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "src/_includes/header.njk",
+    "size": 1367,
+    "hash": "08b7b1d82f2698e4063af7597d5384d5dcf81aba2d2824fd7f2d41a210c9eb63",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/_includes/layout.njk",
+    "size": 3657,
+    "hash": "bdc75d6d0e81841f787a1381c5caefde996cb89f70bb34bbb40678b9e8879972",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/_includes/layouts/embed.njk",
+    "size": 1507,
+    "hash": "23d62328cbcb864db44ca366ee606ababc3c4a9ae10bd142b1d9849d03a4a9d8",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/aesthetic-inquiry.md",
+    "size": 21998,
+    "hash": "b4be14caeff93baf955d39c3381026a29996100d54c176dbadc4008c8cc593ec",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/atlas-process.md",
+    "size": 25394,
+    "hash": "0d39060d5b2361b04eda93ce56c3fa573affbbe8fea1ce27c31cb0577966a3bb",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/autocatalytic-system.md",
+    "size": 7650,
+    "hash": "ec77eb86fa0a0a86c893cda814065fc0856bcc430250245f5a5cfbf3963b3fdd",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/compliant-spire.md",
+    "size": 37482,
+    "hash": "8ff446c6345f8c155565c1b088094188fa85423c11d3bfa534153aae1da02374",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/core-concept.md",
+    "size": 3966,
+    "hash": "0d25a4b117d69aab5d59a3125a7738938dba2415e180d09501d24124147cf645",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/ghost-byline.md",
+    "size": 27503,
+    "hash": "0c781b93ec5a7c0913ec857fd72283c326d5e6f215bb60ff49b38208a228764e",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/ghost-engine.md",
+    "size": 20274,
+    "hash": "939f42c5994d96c666ddfbe9657c2bc498399ff65de7b81920cc0337bc0c9386",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/index.njk",
+    "size": 417,
+    "hash": "a9382ddd32c2c80040f6fab55349706195dbe0d8272a54f63c13704ae266acc1",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/parroting-mimicry.md",
+    "size": 13771,
+    "hash": "d5c78bdbd7f5c748a1810464bef6917c30457ecab53e63537d01ba390f36a6f6",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/readers-journey.md",
+    "size": 7469,
+    "hash": "67509adc59c2f54a3027fb836746fc1cc4492d2796fd8c4b3df9c4d9aefd3c41",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/rhizomatic-protocol.md",
+    "size": 14756,
+    "hash": "e6ff91b1cfc83e0dacac033a991c0bcf55c96a7617b4e42deb576448a6f1ba7e",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/three-studies-sensory.md",
+    "size": 16993,
+    "hash": "551e5853b4052474e3aab1bb33d8b23c982cb8c043c6cd265fbe46e595f047ea",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/concepts/workshop-weather.md",
+    "size": 34106,
+    "hash": "54806d09049ebbd24a38dd00f24200a866880c14ce105e0e0314d7e3b67e343f",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/meta/a-b-curatorial-protocolist.md",
+    "size": 4456,
+    "hash": "3ed6976e8b0e386d96f03239cf8410113a12cd79b1ff51ed7433617916ce068d",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/meta/curatorial-generativism.md",
+    "size": 16167,
+    "hash": "1f2d725cd6f78febc24c171f5f2ac6dab640aafcbe63b06b04e80bc59a9eae99",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/meta/index.njk",
+    "size": 572,
+    "hash": "a6e1f047cde18362d3f6027dc6b84de956cca0b0b24cc6b31fb0c7b3d1806253",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/meta/methodology.md",
+    "size": 2133,
+    "hash": "19e5bf7fd6f8cc55fb71048c8fb21a39d799c2c0bf0159eaf87bbb339c7bf257",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/meta/protocolist.md",
+    "size": 13649,
+    "hash": "641a57b5137ab7af1ad09465ccff28a72a692dc75520de18f9deb035af95fcbf",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/meta/style-guide.md",
+    "size": 7594,
+    "hash": "a63185cb12b039e1b349a6aca6ceea86e39caf5934cdef77b07876901c2031a4",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/meta/unified-referencing-syntax.md",
+    "size": 3578,
+    "hash": "43fd7a2f06bb30db3592f2ce39bac1b3b2a983b08efe66d2e736be64653c92a0",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/projects/index.njk",
+    "size": 450,
+    "hash": "0b3f66a9540183a9df80831ca7ccc09483836c4ffea44fb0a30014f7d379f34d",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/projects/project-dandelion.md",
+    "size": 6006,
+    "hash": "c97a8aa7b6ad6b1684ef9de1b801e684de5e279a745d84e56ae67225926efe53",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/academic-blindness.md",
+    "size": 19740,
+    "hash": "d12969f8d1f60630e0304fb47a3220a3193214b04e2997d4a36cc028d4e2efff",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/breakfast-eggs.md",
+    "size": 11958,
+    "hash": "e8d4fabdeebe3fe3dc995f44a6284430e3a1ffd876db25d2aa20f98f23445c1d",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/george-eastman-obscure.md",
+    "size": 4222,
+    "hash": "1e25143e622353781cf51d3b5d8aeb3642f659bc173bf7a819e264dfeff4b22f",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/illusion-japan-nicotine.md",
+    "size": 22794,
+    "hash": "62b8030e856670527375303d8be6e624d9540ef714e5d20849387a6e023c8f83",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/index.njk",
+    "size": 605,
+    "hash": "ad3111437d66b4cb7c74cc831bc1cd5e77a3b38d7088fd50f17c53d81abeb820",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/murakami-market-analysis-2025.md",
+    "size": 57607,
+    "hash": "4ec2664edc3565aba3f6d8738f296f44f14107d3e4652fe00843b7f287a0f04e",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/paulin-paulin-paulin-marketing.md",
+    "size": 21970,
+    "hash": "9a9bbcfe6c4e874031a4d36e899de967140be40cc5421f7ab94588ab52064f6f",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/smoker-sysadmin.md",
+    "size": 9656,
+    "hash": "233b34b4f1b46b20deafb1c41b9e3ac6700331dcb62e9af7ddd8b2672e58196b",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/content/sparks/vapor-linked-governance.md",
+    "size": 12452,
+    "hash": "6797f75a22a557852523d0d09bf6adaa63b3d41524b1a5bb23cc41c68609b100",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/feed.njk",
+    "size": 1135,
+    "hash": "503534280fe1feb4c124f2a630d195810980fc88641f94b7da6ae31a4942a7a2",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/index.njk",
+    "size": 3294,
+    "hash": "699046c309422cd4687e8156bab699c3ef07f905569aa42982966f345a39cd20",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/map.njk",
+    "size": 7975,
+    "hash": "05547eaf5bfb450bcd0cc7822fc290325367b284345c698c9ba3c469edc2865d",
+    "type": "template",
+    "importers": []
+  },
+  {
+    "path": "src/scripts/base.js",
+    "size": 86,
+    "hash": "61231d7b443d4c51c0a8f2563950fdc97c490c2a5b19429e88b92b1f4bdccfab",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "src/scripts/footnote-nav.js",
+    "size": 2703,
+    "hash": "c680f236046fa92e7da56219355655368f683f4edb38aee85836320f480275ee",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "src/scripts/theme-toggle.js",
+    "size": 1009,
+    "hash": "d4380aecb1602765c9788d37dd0c0c091d1acd1f8d81730c5630f31b03cac54f",
+    "type": "js",
+    "importers": []
+  },
+  {
+    "path": "src/styles/aliases.css",
+    "size": 54,
+    "hash": "86fa122e297df8ed4efa1d9d6a425095d6d6c9cc6b05e40a3326547fcb359f6f",
+    "type": "css",
+    "importers": []
+  },
+  {
+    "path": "src/styles/app.tailwind.css",
+    "size": 8803,
+    "hash": "d18d4f42e2301065f21805962c5e20f1947a1ff810122cd9b4949e545662e9d9",
+    "type": "css",
+    "importers": []
+  },
+  {
+    "path": "tailwind.config.cjs",
+    "size": 728,
+    "hash": "bc3ecc1ee7f2b84130d53e98501bbd3b8065f5043e8a3a7a23fda1ca081121e6",
+    "type": "config",
+    "importers": []
+  },
+  {
+    "path": "webpage-to-markdown.js",
+    "size": 404,
+    "hash": "b952eb442c46473fb80addfe699a8bf4bd8427d1d7fef329b846ec6118b7cd2d",
+    "type": "js",
+    "importers": []
+  }
+]

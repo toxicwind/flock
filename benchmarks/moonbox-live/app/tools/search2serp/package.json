@@ -1,0 +1,10 @@
+{
+  "name": "search2serp",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "index.js",
+  "dependencies": {
+    "undici": "^7.13.0",
+    "jsdom": "^26.1.0"
+  }
+}

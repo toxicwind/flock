@@ -1,0 +1,423 @@
+<<<<<<< HEAD
+/* src/styles/app.tailwind.css */
+@config "../../tailwind.config.mjs";
+@import "./tokens.css";
+@import "tailwindcss";
+
+/* Bind Tailwind's `dark:` variant to the daisyUI dark theme ("sunset") */
+@custom-variant dark (&:where([data-theme=sunset], [data-theme=sunset] *));
+
+/* Plugins (Tailwind v4 style) */
+@plugin "@tailwindcss/typography";
+
+/* daisyUI v5 — enable themes with explicit defaults */
+@plugin "daisyui" {
+  themes: nord --default, sunset --prefersdark;
+  /* logs: false;  // uncomment to silence plugin logs */
+}
+
+/* Project CSS */
+@import "./home.css";
+@import "./mschf-overlay.css";
+
+@layer base {
+  body { @apply font-body text-[var(--step-0)] leading-[1.5]; }
+  h1 { @apply font-heading text-[var(--step-4)] mb-8; }
+  h2 { @apply font-heading text-[var(--step-3)] mb-6; }
+  h3 { @apply font-heading text-[var(--step-2)] mb-4; }
+  p, ul, ol, blockquote { @apply mb-4; }
+  p:empty { display: none; }
+
+  .heading-anchor { @apply mr-2 no-underline text-gray-400; }
+
+  pre.shiki,
+=======
+@config "../../tailwind.config.cjs";
+@import "./tokens.css";
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "@tailwindcss/typography";
+@import "prismjs/themes/prism-tomorrow.css";
+@import "./home.css";
+
+@layer base {
+  h1 { @apply font-heading text-[clamp(2rem,4vw+1rem,3rem)]; }
+  h2 { @apply font-heading text-[clamp(1.5rem,3vw+0.75rem,2.25rem)]; }
+
+  pre[class*="language-"],
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+  :not(pre) > code {
+    background-color: rgb(var(--color-code-bg));
+    color: rgb(var(--color-code-text));
+  }
+<<<<<<< HEAD
+
+  .shiki { counter-reset: line; }
+  .shiki .line { display: block; }
+  .shiki .line::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 2rem;
+    margin-right: 1rem;
+    color: rgb(var(--color-border));
+    text-align: right;
+  }
+  html[data-theme='dark'] .shiki {
+    background-color: var(--shiki-dark-bg);
+    color: var(--shiki-dark);
+  }
+  html[data-theme='dark'] .shiki span {
+    color: var(--shiki-dark);
+  }
+=======
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+}
+
+@layer components {
+  .skip-link { @apply sr-only focus:not-sr-only fixed top-2 left-2 z-50 rounded bg-primary text-text px-4 py-2; }
+}
+
+<<<<<<< HEAD
+=======
+/* ——— Small utility cluster (unchanged names) ——— */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+@layer components {
+  .spec-note-soft     { @apply italic text-gray-500 border-b border-dotted border-gray-300 cursor-help; }
+  .spec-note-subtle   { @apply text-gray-400 border-b border-dashed border-gray-300 cursor-help; }
+  .spec-note-liminal  { @apply underline decoration-dotted decoration-gray-400 text-slate-500 italic cursor-help; }
+  .spec-note-archival { @apply uppercase tracking-wide text-xs text-gray-600 border-b border-gray-400 cursor-help; }
+  .spec-note-ghost    { @apply italic underline decoration-dotted decoration-gray-400 text-gray-400 cursor-help; }
+  .silence-node { @apply h-screen bg-white; } .push-up { @apply -mt-20; } .push-left { @apply -ml-16; }
+  .rotate-90 { @apply transform rotate-90 origin-top-left block; } .mirror-x { @apply transform -scale-x-100 block; }
+  .flicker { @apply animate-pulse; } .audio-embed { @apply my-4 block; } .qr-code { @apply my-4 block w-32 h-32; }
+
+<<<<<<< HEAD
+=======
+  /* color signifiers retained */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+  .slate{ @apply text-slate-500;} .gray{ @apply text-gray-500;} .zinc{ @apply text-zinc-500;} .neutral{ @apply text-neutral-500;}
+  .stone{ @apply text-stone-500;} .red{ @apply text-red-500;} .orange{ @apply text-orange-500;} .amber{ @apply text-amber-500;}
+  .yellow{ @apply text-yellow-500;} .lime{ @apply text-lime-500;} .green{ @apply text-green-500;} .emerald{ @apply text-emerald-500;}
+  .teal{ @apply text-teal-500;} .cyan{ @apply text-cyan-500;} .sky{ @apply text-sky-500;} .blue{ @apply text-blue-500;}
+  .indigo{ @apply text-indigo-500;} .violet{ @apply text-violet-500;} .purple{ @apply text-purple-500;} .fuchsia{ @apply text-fuchsia-500;}
+  .pink{ @apply text-pink-500;} .rose{ @apply text-rose-500;} .blackout{ @apply text-black bg-black; }
+}
+
+<<<<<<< HEAD
+/* Inline footnote popover (theme-aware) */
+=======
+/* ——— Inline footnote popover (theme-aware) ——— */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+@layer components {
+  .annotation-ref { @apply relative inline-block; }
+  .annotation-anchor {
+    @apply px-1 underline decoration-dotted transition-colors duration-150 cursor-pointer;
+    color: hsl(var(--p));
+  }
+  .annotation-anchor:hover { color: hsl(var(--pf)); }
+  .annotation-anchor:focus { outline: none; box-shadow: 0 0 0 2px hsl(var(--p)/.35); }
+
+  .annotation-popup {
+    @apply absolute -translate-x-1/2 left-1/2 top-7 z-50 max-w-sm rounded-xl p-4 text-sm leading-relaxed
+<<<<<<< HEAD
+           border shadow-xl opacity-0 pointer-events-none transition-all duration-200 ease-in-out translate-y-1
+           text-left overflow-y-auto max-h-72 block;
+=======
+           border shadow-xl opacity-0 pointer-events-none transition-all duration-200 ease-in-out translate-y-1;
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+    background-color: hsl(var(--b1)/.95);
+    backdrop-filter: blur(6px);
+    border-color: hsl(var(--bc)/.12);
+    color: hsl(var(--bc));
+  }
+  .annotation-ref:hover .annotation-popup,
+  .annotation-ref:focus-within .annotation-popup { @apply opacity-100 pointer-events-auto translate-y-0; }
+
+  .annotation-popup p { @apply mb-3 last:mb-0; }
+  .annotation-popup blockquote {
+    @apply pl-4 py-2 rounded mb-3 italic;
+    border-left: 4px solid hsl(var(--bc)/.2);
+    background-color: hsl(var(--b2)/.5);
+    color: hsl(var(--bc));
+  }
+  .annotation-popup a { color: hsl(var(--p)); }
+  .annotation-popup a:hover { color: hsl(var(--pf)); }
+  .annotation-popup code {
+    @apply rounded px-1 py-0.5 text-xs font-mono;
+    background-color: hsl(var(--b2));
+    color: hsl(var(--bc));
+  }
+  .annotation-popup .footnote-source {
+    @apply text-xs mt-2 pt-2 font-medium;
+    border-top: 1px solid hsl(var(--bc)/.12);
+    color: hsl(var(--bc)/.75);
+  }
+
+  @media (max-width:640px){
+<<<<<<< HEAD
+    .annotation-popup { @apply fixed inset-x-4 bottom-4 mx-auto translate-x-0 transform-none max-w-[90vw] max-h-[70vh]; }
+  }
+}
+
+/* Targeting / scroll affordances */
+=======
+    .annotation-popup { @apply fixed inset-x-4 bottom-4 mx-auto translate-x-0 transform-none max-w-[90vw]; }
+  }
+}
+
+/* ——— Targeting / scroll affordances (works with sticky headers) ——— */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+@layer components {
+  :root { --header-height: 5rem; }
+  [id^="fn"],[id^="fnref"],.footnote-item,.annotation-anchor,.footnote-local,.footnote-enhanced,.footnote-ref{
+    scroll-margin-top: calc(var(--header-height) + 1rem);
+  }
+  html{ scroll-behavior: smooth; }
+
+<<<<<<< HEAD
+  .footnote-highlight{
+    background-color: hsl(var(--p)/.15);
+    border-radius: .375rem;
+    transition: background-color .3s ease-in-out;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .footnote-highlight{ transition: none; }
+  }
+
+  [id^="fn"]:target,[id^="fnref"]:target{
+    border-radius:.375rem;
+    box-shadow: 0 0 0 2px hsl(var(--in)/.45);
+=======
+  [id^="fn"]:target,[id^="fnref"]:target{
+    border-radius:.375rem;
+    box-shadow: 0 0 0 2px hsl(var(--in)/.45); /* info color ring */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+    animation: footnote-highlight 2.2s ease-in-out;
+  }
+  @keyframes footnote-highlight{
+    0%{ background-color: hsl(var(--in)/.25); }
+    50%{ background-color: hsl(var(--in)/.12); }
+    100%{ background-color: transparent; }
+  }
+
+  [id^="fn"]:focus,[id^="fnref"]:focus{ outline: none; box-shadow: 0 0 0 2px hsl(var(--in)/.55); }
+
+  @media (max-width:640px){ :root{ --header-height: 4rem; } }
+  @media (min-width:1280px){ :root{ --header-height: 5.5rem; } }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    [id^="fn"]:target,[id^="fnref"]:target{ animation: none; }
+    .annotation-popup{ transition: none; }
+  }
+}
+
+<<<<<<< HEAD
+/* Footnote card */
+=======
+/* ——— Footnote card (daisyUI theme + Typography tolerance + Prism-safe) ——— */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+@layer components {
+  .footnote-aside{
+    @apply block w-full my-6 rounded-lg border p-4 text-[0.95rem] leading-relaxed;
+    background-color: hsl(var(--b1));
+    border-color: hsl(var(--bc)/.14);
+    color: hsl(var(--bc));
+  }
+
+  .footnote-aside .footnote-local{ @apply flex items-start justify-between gap-3 mb-2; }
+  .footnote-aside .footnote-content{ @apply flex-1 min-w-0; }
+  .footnote-aside .footnote-content > p{ @apply m-0 font-medium break-words; color: hsl(var(--bc)); }
+
+  .footnote-aside .footnote-backref{
+    @apply ml-2 text-xs no-underline transition-colors;
+    color: hsl(var(--bc)/.65);
+  }
+  .footnote-aside .footnote-backref:hover{ color: hsl(var(--bc)); }
+
+<<<<<<< HEAD
+=======
+  /* Explanation: full-width, calm rhythm */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+  .footnote-aside .footnote-explanation{
+    @apply block w-full clear-both mt-2 pl-4;
+    border-left: 1px solid hsl(var(--bc)/.18);
+    color: hsl(var(--bc)/.9);
+    line-height: 1.7;
+  }
+  .footnote-aside .footnote-explanation p{ @apply m-0 mb-2 last:mb-0; }
+  .footnote-aside .footnote-explanation a{ color: hsl(var(--p)); }
+  .footnote-aside .footnote-explanation a:hover{ color: hsl(var(--pf)); }
+  .footnote-aside .footnote-explanation code{
+    @apply rounded px-1 py-0.5 text-[0.85em] font-mono;
+    background-color: hsl(var(--b2));
+    color: hsl(var(--bc));
+  }
+  .footnote-aside .footnote-explanation footer{
+    @apply mt-3 pt-2 text-xs;
+    border-top: 1px solid hsl(var(--bc)/.12);
+    color: hsl(var(--bc)/.7);
+  }
+
+<<<<<<< HEAD
+=======
+  /* If someone forgets `not-prose`, still resist Typography defaults */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+  .prose .footnote-aside .footnote-explanation{
+    margin-top: .5rem;
+    padding-left: 1rem;
+    border-left: 1px solid hsl(var(--bc)/.18);
+    color: hsl(var(--bc)/.9);
+<<<<<<< HEAD
+    font-style: normal;
+=======
+    font-style: normal; /* prevent forced italics */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+    background: transparent;
+  }
+}
+
+<<<<<<< HEAD
+/* Optional compact variant */
+=======
+/* ——— Optional compact variant (keeps your existing name) ——— */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+@layer components {
+  .footnote-aside--compact{ @apply border-0 bg-transparent p-0 my-6; }
+  .footnote-aside--compact .footnote-local{ @apply mb-2 bg-transparent px-0 py-0; }
+  .footnote-aside--compact .footnote-explanation{
+    padding-left: 1rem;
+    border-left: 4px solid hsl(var(--bc)/.25);
+  }
+}
+
+<<<<<<< HEAD
+/* Standard footnote list */
+=======
+/* ——— Standard footnote list (hybrid compat) ——— */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+@layer components {
+  .footnotes-hybrid{ @apply mt-8 pt-6 border-t; border-color: hsl(var(--bc)/.14); }
+  .footnote-enhanced{ @apply mb-3 text-sm leading-relaxed; color: hsl(var(--bc)); }
+  .footnotes-list{ @apply space-y-2; }
+  .footnote-item{ @apply relative rounded transition-colors pl-2; }
+  .footnote-item:hover{ background-color: hsl(var(--b2)); }
+  .footnote-ref a{ color: hsl(var(--p)); }
+  .footnote-ref a:hover{ color: hsl(var(--pf)); }
+}
+
+<<<<<<< HEAD
+/* Prism interop */
+@layer components {
+  .footnote-aside pre.shiki,
+  .annotation-popup pre.shiki{
+    @apply rounded-md p-3 overflow-x-auto text-xs leading-6;
+    background-color: hsl(var(--b2));
+=======
+/* ——— Prism interop (code readability inside footnotes/popup) ——— */
+@layer components {
+  .footnote-aside pre[class*="language-"],
+  .annotation-popup pre[class*="language-"]{
+    @apply rounded-md p-3 overflow-x-auto text-xs leading-6;
+    background-color: hsl(var(--b2)); /* keeps Prism theme legible on both themes */
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+    border: 1px solid hsl(var(--bc)/.12);
+    color: hsl(var(--bc));
+  }
+  .footnote-aside :not(pre) > code,
+  .annotation-popup :not(pre) > code{
+    @apply rounded px-1 py-0.5 text-[0.85em];
+    background-color: hsl(var(--b2));
+    color: hsl(var(--bc));
+  }
+}
+
+<<<<<<< HEAD
+/* Link affordances */
+@layer components {
+  .interlink::before{ content:"⇢ "; margin-right:.15rem; color:currentColor; font-size:.9em; }
+  .external-link{ @apply underline transition-colors; color: hsl(var(--p)); }
+  .external-link:hover{ color: hsl(var(--pf)); }
+}
+
+/* Callout */
+@layer components {
+  .callout { @apply relative w-full rounded-xl border p-4 md:p-5 shadow-sm; background-color: hsl(var(--b1)); border-color: hsl(var(--bc)/.14); color: hsl(var(--bc)); }
+  .callout-head { @apply mb-3; }
+  .callout-title { @apply m-0 font-heading text-sm tracking-wider uppercase; letter-spacing:.08em; color: hsl(var(--bc)); }
+  .callout-kicker { @apply m-0 mt-1 text-sm; color: hsl(var(--bc)/.7); }
+  .callout-body { @apply mt-2; }
+  /* tones */
+  .callout--info   .callout-title{ color:hsl(var(--in)); }
+  .callout--warn   .callout-title{ color:hsl(var(--wa)); }
+  .callout--danger .callout-title{ color:hsl(var(--er)); }
+  .callout--good   .callout-title{ color:hsl(var(--su)); }
+  /* docking */
+  .callout--dock-right { @apply lg:float-right lg:ml-6 lg:w-[min(22rem,38%)]; }
+  .callout--dock-left  { @apply lg:float-left  lg:mr-6 lg:w-[min(22rem,38%)]; }
+  .callout--dock-center{ @apply w-full; }
+  /* footnote/links inside */
+  .callout :not(pre)>code{ @apply rounded px-1 py-0.5 text-[0.85em] font-mono; background-color:hsl(var(--b2)); color:hsl(var(--bc)); }
+  .callout a{ color:hsl(var(--p)); } .callout a:hover{ color:hsl(var(--pf)); }
+}
+
+/* Failure Box */
+@layer components {
+  .failbox {
+    @apply relative w-full rounded-xl border p-4 md:p-5 shadow-sm;
+    background-color: hsl(var(--b1));
+    border-color: hsl(var(--bc)/.14);
+    color: hsl(var(--bc));
+  }
+  .failbox:focus-within { box-shadow: 0 0 0 2px hsl(var(--p)/.25); }
+
+  .failbox-head { @apply mb-3; }
+  .failbox-title { @apply m-0 font-heading text-sm tracking-wider uppercase; letter-spacing: .08em; color: hsl(var(--bc)); }
+  .failbox-kicker { @apply m-0 mt-1 text-sm; color: hsl(var(--bc)/.7); }
+
+  .failbox-body { @apply mt-2; }
+
+  .failbox--accent { @apply pl-4 md:pl-5; }
+  .failbox--accent { border-left: 4px solid hsl(var(--p)); }
+  .failbox--accent .failbox-title { color: hsl(var(--p)); }
+
+  .failitem { @apply py-3 border-t border-dashed; border-color: hsl(var(--bc)/.16); }
+  .failitem:first-child { @apply border-t-0 pt-0; }
+  .failitem:last-child  { @apply pb-0; }
+
+  .failitem-label { @apply mb-1; }
+  .failitem-label strong { @apply font-semibold; letter-spacing: .01em; }
+
+  .failitem-content { @apply text-[0.98rem] leading-relaxed; }
+  .failitem-content p { @apply m-0; }
+  .failitem-content + .failitem-content { @apply mt-2; }
+
+  .failbox a { color: hsl(var(--p)); }
+  .failbox a:hover { color: hsl(var(--pf)); }
+  .failbox :not(pre)>code { @apply rounded px-1 py-0.5 text-[0.85em] font-mono; background-color: hsl(var(--b2)); color: hsl(var(--bc)); }
+
+  @media (prefers-color-scheme: dark) { .failbox { box-shadow: 0 1px 0 0 hsl(var(--bc)/.08); } }
+}
+
+/* SpecSheet / MarketTable */
+@layer components {
+  .spec-sheet { @apply grid gap-2 rounded-lg border-4 p-4 sm:grid-cols-[max-content_auto]; }
+  .spec-sheet dt { @apply font-semibold tracking-tight pr-4; }
+  .spec-sheet dd { @apply mb-1 break-words hyphens-auto; }
+
+  .market-table { @apply mt-4 w-full border-2 border-collapse; }
+  .market-table th, .market-table td { @apply border-2 px-2 py-1 text-left; }
+  .market-table th { @apply bg-slate-100 font-semibold dark:bg-slate-800; }
+}
+
+/* Tailwind v4 content discovery */
+@source "../**/*.{njk,md,html,js}";
+=======
+/* ——— Link affordances (unchanged names) ——— */
+@layer components {
+  .interlink::before{ content:"↗ "; margin-right:.15rem; color:currentColor; font-size:.9em; }
+  .external-link{ @apply underline transition-colors; color: hsl(var(--p)); }
+  .external-link:hover{ color: hsl(var(--pf)); }
+}
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option

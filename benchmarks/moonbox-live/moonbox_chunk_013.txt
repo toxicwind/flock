@@ -1,0 +1,137 @@
+rror }
+)*[]struct { key string; elem *yaml.Node }
+)*map.group[string]*antlr.TokensStartState
+)*pgproto3.AuthenticationCleartextPassword
+)*struct { key string; elem proto.Enum16 }
+)*struct { key proto.Enum16; elem string }
+)*[8]struct { key proto.Enum16; elem int }
+)*struct { key proto.Decimal64; elem int }
+)*struct { key proto.Decimal32; elem int }
+)*[]struct { key proto.UInt256; elem int }
+)*[8]struct { key proto.Int256; elem int }
+)*[]struct { key proto.UInt128; elem int }
+)*[8]struct { key proto.Int128; elem int }
+)*struct { key reflect.Kind; elem string }
+)*[]struct { key uint32; elem *zstd.dict }
+**struct { key *http.conn; elem struct {} }
+**struct { key string; elem http.muxEntry }
+**struct { key string; elem connect.Codec }
+**[8]struct { key string; elem *flag.Flag }
+**[]struct { key pprof.handler; elem bool }
+**[8]struct { key reflect.Type; elem bool }
+**[]struct { key reflect.visit; elem bool }
+**struct { key int32; elem unsafe.Pointer }
+**[]struct { key uint32; elem []*abi.Type }
+**struct { key unsafe.Pointer; elem int32 }
+**[8]struct { key string; elem net.byName }
+**[]struct { key uint32; elem fuse.Status }
+*kimi.darkmatter/apps/portal/fs/evosessions
+**struct { key string; elem tos.cacheItem }
+**map[profile.functionKey]*profile.Function
+**map[profile.locationKey]*profile.Location
+**[8]struct { key string; elem []x509.OID }
+**func(io.Reader) (*ecdh.PrivateKey, error)
+**struct { key filedesc.pathKey; elem int }
+**[]struct { key string; elem token.Token }
+**[]struct { key *syntax.Regexp; elem int }
+**struct { key *syntax.Regexp; elem int64 }
+**mcpv1.CreateMCPServerAuthorizationRequest
+**orderv1.DecreaseMembershipCountV2Response
+**[]struct { key string; elem gorm.Plugin }
+**struct { key string; elem clause.Clause }
+**struct { key string; elem *schema.Field }
+**[8]struct { key interface {}; elem bool }
+**struct { key string; elem *schema.Index }
+**struct { key *sql.driverStmt; elem bool }
+**struct { key string; elem driver.Driver }
+**payv1.CreateSubscriptionByReceiptResponse
+**[8]struct { key uintptr; elem struct {} }
+**[]struct { key *gob.typeInfo; elem bool }
+**struct { key gob.typeId; elem gob.decOp }
+**[8]struct { key codes.Code; elem string }
+**[8]struct { key string; elem codes.Code }
+**[]struct { key i18n.Locale; elem string }
+**[8]struct { key coinv1.Coin; elem int64 }
+Key&gorm:"index:idx_promotional_asset_key"
+**[8]struct { key ref.Val; elem struct {} }
+**[]struct { key string; elem *types.Type }
+**struct { key string; elem reflect.Value }
+**[]struct { key string; elem *tls.Config }
+**[8]struct { key string; elem func(bool) }
+**struct { key int64; elem procfs.CPUStat }
+**[]struct { key cel.limitID; elem string }
+**[8]struct { key int64; elem *types.Type }
+**[8]struct { key bool; elem interface {} }
+**[]struct { key int32; elem interface {} }
+**[]struct { key int64; elem interface {} }
+**[8]struct { key uint; elem interface {} }
+**[8]struct { key string; elem *expr.Type }
+**func() membershipv2.Giftcard_Claim_Status
+**func() *membershipv2.Giftcard_Code_Status
+**membershipv2.ActivateGiftcardClaimRequest
+**membershipv2.CreateApplicationFormRequest
+**membershipv2.GetSubscriptionStatsResponse
+**func() membershipv2.Balance_Action_Status
+**func() *membershipv2.Balance_Action_Index
+**membershipv2.Balance_Action_Index_Coding_
+**func() *membershipv2.Entitlement_Metadata
+**[]struct { key int; elem *time.Location }
+**[8]struct { key types.Kind; elem string }
+**struct { key int; elem []antlr.ATNState }
+**map.group[uint64]auth.CredentialsListener
+**[]struct { key uint64; elem func(error) }
+**[8]struct { key string; elem *yaml.Node }
+**func(antlr.Token) *antlr.TerminalNodeImpl
+**struct { key int; elem []antlr.JPCEntry }
+**[]struct { key string; elem plural.Form }
+**struct { key string; elem number.system }
+**struct { key string; elem catmsg.Handle }
+**[]struct { key string; elem proto.Enum8 }
+**[]struct { key proto.Enum8; elem string }
+**struct { key proto.Decimal256; elem int }
+**struct { key proto.Decimal128; elem int }
+**[8]struct { key proto.UInt256; elem int }
+**[8]struct { key proto.UInt128; elem int }
+**[]struct { key proto.Error; elem string }
+**struct { key proto.Feature; elem string }
+**[]struct { key string; elem proto.Error }
+**struct { key string; elem proto.Feature }
+**[]struct { key string; elem proto.Stage }
+**[8]struct { key uint32; elem *zstd.dict }
++*[]main.bindResponseConfiguredReadonlyMount
++*struct { key http.ConnState; elem string }
++*struct { key string; elem []*http.Cookie }
++*[8]struct { key pprof.handler; elem bool }
++*[8]struct { key reflect.visit; elem bool }
++*[]struct { key string; elem interface {} }
++*struct { key abi.TypeOff; elem *abi.Type }
++*[8]struct { key uint32; elem []*abi.Type }
++*struct { key string; elem map[string]int }
++*[8]struct { key uint32; elem fuse.Status }
++*[]struct { key uint32; elem interface {} }
++*func() *portalv1.ValidateBindTokenResponse
++*[]struct { key string; elem *tos.syncReq }
++kimi.darkmatter/packages/kimimodel/kimilink
++*struct { key idgen.TypeCode; elem string }
+NewKey$location:"query" locationName:"name"
++*struct { key string; elem *pprof.Profile }
++*struct { key uintptr; elem pprof.locInfo }
++*struct { key protoreflect.Name; elem int }
++*[8]struct { key string; elem token.Token }
++*[8]struct { key *syntax.Regexp; elem int }
++*mcpv1.CreateMCPServerAuthorizationResponse
++*[8]struct { key string; elem gorm.Plugin }
++*struct { key string; elem []interface {} }
++*struct { key string; elem jsontext.Value }
++*struct { key gob.typeId; elem *gob.decOp }
++*[8]struct { key *gob.typeInfo; elem bool }
++*[8]struct { key i18n.Locale; elem string }
++*[]struct { key string; elem baggage.Item }
++*struct { key attribute.Type; elem string }
++*[8]struct { key string; elem *types.Type }
++*[]struct { key string; elem semver.cfunc }
++*[8]struct { key string; elem *tls.Config }
++*[8]struct { key cel.limitID; elem string }
++*struct { key int64; elem ast.OffsetRange }
++*[]struct { key string; elem parser.Macro }
++*[8]struct { key int32; elem int

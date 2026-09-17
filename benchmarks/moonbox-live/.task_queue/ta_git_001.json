@@ -1,0 +1,1 @@
+{"id": "ta_git_001", "type": "shell", "cmd": "cd /mnt/agents/output/triangle-access && git status --short | wc -l", "timeout": 10}

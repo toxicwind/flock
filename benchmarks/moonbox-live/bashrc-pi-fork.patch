@@ -1,0 +1,34 @@
+
+# === PI FORK OVERRIDES (added by kimi-sandbox architect) ===
+export PATH="/home/toxic/bin:$PATH"
+export PATH="/home/toxic/projects/pi-agent/node_modules/.bin:$PATH"
+
+# pi → local fork
+pi() {
+    local PI_FORK="/home/toxic/projects/pi-agent"
+    local PI_PACKAGE="${PI_FORK}/packages/coding-agent"
+    if [[ ! -f "${PI_PACKAGE}/dist/cli.js" ]]; then
+        echo "[pi] Building fork first..." >&2
+        (cd "$PI_FORK" && npm run build --workspace=packages/coding-agent 2>/dev/null || npm run build 2>/dev/null)
+    fi
+    node "${PI_PACKAGE}/dist/cli.js" "$@"
+}
+
+# grok → local fork (stub)
+grok() {
+    local GROK_FORK="/home/toxic/projects/grok"
+    if [[ ! -d "$GROK_FORK" ]]; then
+        echo "[grok] Fork not cloned. Run: git clone <fork> $GROK_FORK" >&2
+        return 1
+    fi
+    echo "[grok] Execute your grok logic here"
+}
+
+# Quick cd aliases
+alias cdp="cd /home/toxic/projects/pi-agent"
+alias cdg="cd /home/toxic/projects/grok 2>/dev/null || echo 'grok not cloned'"
+
+# Tailscale helper
+alias ts="tailscale"
+alias ts-status="tailscale status"
+# === END PI FORK OVERRIDES ===

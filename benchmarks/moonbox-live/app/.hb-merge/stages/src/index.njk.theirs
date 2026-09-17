@@ -1,0 +1,80 @@
+---
+layout: "layout.njk"
+metaDisable: true
+showTitle: false
+---
+
+{% from "components/section.njk" import section %}
+{% from "components/tile.njk" import tile %}
+{% from "components/pathway.njk" import pathway %}
+{% from "components/kpis.njk" import kpis %}
+
+{% include "components/hero.njk" %}
+
+<main class="mx-auto max-w-screen-xl px-6 sm:px-8 space-y-16">
+
+  {% if featured %}
+    {% call section('Featured', null) %}
+      <div class="grid gap-6 sm:grid-cols-3">
+        {{ tile(featured) }}
+      </div>
+    {% endcall %}
+  {% endif %}
+
+  {% if today and today.length %}
+    {% call section('Today at the Lab', '/meta/') %}
+      <div class="grid gap-6 sm:grid-cols-3">
+        {% for item in today %}
+          {{ tile(item) }}
+        {% endfor %}
+      </div>
+    {% endcall %}
+  {% endif %}
+
+  {% if tryNow and tryNow.length %}
+    {% call section('Try It Now', '/projects/') %}
+      <div class="grid gap-6 sm:grid-cols-3">
+        {% for item in tryNow %}
+          {{ tile(item) }}
+        {% endfor %}
+      </div>
+    {% endcall %}
+  {% endif %}
+
+  {% if ideaPathways and ideaPathways.length %}
+    {% call section('Idea Pathways', '/concepts/') %}
+      <div class="space-y-3">
+        {% for p in ideaPathways %}
+          {{ pathway(p) }}
+        {% endfor %}
+      </div>
+    {% endcall %}
+  {% endif %}
+
+  {% if openQuestions and openQuestions.length %}
+    {% call section('Open Questions', '/meta/') %}
+      <ul class="space-y-2">
+        {% for q in openQuestions %}
+          <li class="text-gray-200">{{ q }}</li>
+        {% endfor %}
+      </ul>
+    {% endcall %}
+  {% endif %}
+
+  {% if notebook and notebook.length %}
+    {% call section('Lab Notebook', '/sparks/') %}
+      <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        {% for item in notebook %}
+          {{ tile(item) }}
+        {% endfor %}
+      </div>
+    {% endcall %}
+  {% endif %}
+
+  {% if explore and explore.length %}
+    {% call section('Explore More', null) %}
+      {{ kpis(explore) }}
+    {% endcall %}
+  {% endif %}
+
+</main>

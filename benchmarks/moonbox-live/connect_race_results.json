@@ -1,0 +1,107 @@
+{
+  "kimi.gateway.order.v1.OrderService/GetGoods": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "error": "Not Found"
+  },
+  "kimi.gateway.user.v1.UserService/GetUserProfile": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "error": "Not Found"
+  },
+  "kimi.gateway.config.v1.ConfigService/GetConfig": {
+    "status": 500,
+    "body": "{\"code\":\"internal\",\"details\":[{\"type\":\"common.error.v1.ErrorDetail\",\"value\":\"CGYSHwoFZW4tVVMSFkludGVybmFsIHNlcnZpY2UgZXJyb3I\",\"debug\":{\"reason\":\"REASON_INTERNAL_ERROR\",\"localizedMessage\":{\"locale\":\"en-US\",\"message\":\"Internal service error\"}}}]}",
+    "error": "Internal Server Error"
+  },
+  "kimi.gateway.config.v1.ConfigService/GetAvailableModels": {
+    "status": 200,
+    "body": "{\"availableModels\":[{\"scenario\":\"SCENARIO_K2D5\",\"displayName\":\"Instant\",\"description\":\"Fast chat, quick replies\",\"inputPlaceholder\":\"Ask anything. Images work too.\",\"key\":\"k2d6\",\"reasoningEffortOptions\":[{\"effort\":\"REASONING_EFFORT_NONE\",\"displayName\":\"Standard\"},{\"effort\":\"REASONING_EFFORT_LOW\",\"displayName\":\"High\"}],\"defaultReasoningEffort\":\"REASONING_EFFORT_LOW\"},{\"scenario\":\"SCENARIO_OK_COMPUTER\",\"displayName\":\"K3\",\"description\":\"Chat & Agent, flagship all-rounder\",\"kimiPlusId\":\"ok-computer\",\"agentMode\":\"TYPE_NORMAL\",\"inputPlaceholder\":\"Ask anything, or task an agent...\",\"key\":\"k3\",\"switchableTo\":[\"k3-agent-ultra\"],\"reasoningEffortOptions\":[{\"effort\":\"REASONING_EFFORT_LOW\",\"displayName\":\"Standard\"},{\"effort\":\"REASONING_EFFORT_HIGH\",\"displayName\":\"High\"},{\"effort\":\"REASONING_EFFORT_MAX\",\"displayName\":\"Max\",\"description\":\"Consumes more credits\"}],\"defaultReasoningEffort\":\"REASONING_EFFORT_HIGH\",\"contextLengthOptions\":[{\"contextLength\":\"CONTEXT_LENGTH_L\",\"displayName\":\"Standard\",\"avai",
+    "headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 09:15:00 GMT",
+      "Content-Type": "application/json",
+      "Content-Length": "2187",
+      "Connection": "close",
+      "Vary": "Accept-Encoding",
+      "x-internal-adhoc-canary": "777113169",
+      "accept-encoding": "gzip",
+      "vary": "Accept-Encoding",
+      "x-server-span-id": "6c6541a0c0111e30",
+      "x-trace-id": "618c8d074e8fe2b183b9ca01e3091719",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "server-timing": "inner; dur=8"
+    }
+  },
+  "kimi.gateway.billing.v1.BillingService/GetBillingInfo": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "error": "Not Found"
+  },
+  "kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats": {
+    "status": 200,
+    "body": "{\"ratelimitCode5h\":{\"enabled\":true,\"resetTime\":\"2026-08-14T13:34:30.926798405Z\"},\"ratelimitCode7d\":{\"enabled\":true,\"resetTime\":\"2026-08-18T01:34:30.926798405Z\"},\"subscriptionBalance\":{\"id\":\"19fa65c1-51c2-8379-8000-0000fc91957e\",\"feature\":\"FEATURE_OMNI\",\"type\":\"SUBSCRIPTION\",\"unit\":\"UNIT_CREDIT\",\"amountUsedRatio\":1,\"kimiCodeUsedRatio\":0.1364,\"expireTime\":\"2026-08-29T00:00:00Z\",\"domain\":\"DOMAIN_NEXUS\"},\"notice\":{\"actions\":[{\"paywall\":{\"needUpgrade\":true,\"upgradeTo\":\"LEVEL_ADVANCED\",\"source\":\"membership_quota_notice\"}}],\"tip\":\"Monthly quota used up\",\"content\":\"Your monthly quota is used up. Refreshes on {time}.\",\"resetTime\":\"2026-08-29T00:00:00Z\"},\"overdrawn\":true}",
+    "headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 09:15:00 GMT",
+      "Content-Type": "application/json",
+      "Content-Length": "670",
+      "Connection": "close",
+      "x-internal-adhoc-canary": "777113169",
+      "accept-encoding": "gzip",
+      "vary": "Origin",
+      "x-server-span-id": "362dde9a08e13dd4",
+      "x-trace-id": "97f9032e2b0432ac658ab0af7a0699bf",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "server-timing": "inner; dur=25"
+    }
+  },
+  "kimi.gateway.project.v1.ProjectService/ListProjectFiles": {
+    "status": 400,
+    "body": "{\"code\":\"invalid_argument\",\"details\":[{\"type\":\"buf.validate.Violations\",\"value\":\"CkMSCHJlcXVpcmVkGhF2YWx1ZSBpcyByZXF1aXJlZCoSChAIARIKcHJvamVjdF9pZBgJMhAKDggZEghyZXF1aXJlZBgI\",\"debug\":{\"violations\":[{\"field\":{\"elements\":[{\"fieldNumber\":1,\"fieldName\":\"project_id\",\"fieldType\":\"TYPE_STRING\"}]},\"rule\":{\"elements\":[{\"fieldNumber\":25,\"fieldName\":\"required\",\"fieldType\":\"TYPE_BOOL\"}]},\"ruleId\":\"required\",\"message\":\"value is required\"}]}}]}",
+    "error": "Bad Request"
+  },
+  "kimi.gateway.membership.v2.MembershipService/GetSubscription": {
+    "status": 200,
+    "body": "{\"subscription\":{\"subscriptionId\":\"19fa65c0-fea2-88b8-8000-000044d4f72a\",\"goods\":{\"id\":\"b2c3d4e5-f6a7-8901-bcde-f23456789014\",\"title\":\"Allegretto\",\"durationDays\":30,\"useRegion\":\"REGION_OVERSEA\",\"createTime\":\"2025-09-03T09:26:48.609Z\",\"updateTime\":\"2025-09-03T09:26:48.609Z\",\"membershipLevel\":\"LEVEL_INTERMEDIATE\",\"amounts\":[{\"currency\":\"USD\",\"priceInCents\":\"3900\"}],\"billingCycle\":{\"duration\":1,\"timeUnit\":\"TIME_UNIT_MONTH\"},\"type\":\"GOODS_TYPE_SUBSCRIPTION\",\"domain\":\"DOMAIN_NEXUS\"},\"subscriptionTime\":\"2026-07-28T01:34:31.255Z\",\"currentStartTime\":\"2026-07-28T01:34:31.255Z\",\"currentEndTime\":\"2026-08-29T00:00:00Z\",\"nextBillingTime\":\"2026-08-28T01:34:31.255Z\",\"status\":\"SUBSCRIPTION_STATUS_ACTIVE\",\"paymentChannel\":\"PAYMENT_CHANNEL_GOOGLE_PLAY\",\"type\":\"TYPE_PURCHASE\",\"active\":true},\"balances\":[{\"id\":\"19fa65c1-51c2-8379-8000-0000fc91957e\",\"feature\":\"FEATURE_OMNI\",\"type\":\"SUBSCRIPTION\",\"unit\":\"UNIT_CREDIT\",\"amountUsedRatio\":1,\"expireTime\":\"2026-08-29T00:00:00Z\",\"domain\":\"DOMAIN_NEXUS\"}],\"subscribe",
+    "headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 09:15:01 GMT",
+      "Content-Type": "application/json",
+      "Content-Length": "2867",
+      "Connection": "close",
+      "Vary": "Accept-Encoding",
+      "x-internal-adhoc-canary": "777113169",
+      "accept-encoding": "gzip",
+      "vary": "Accept-Encoding",
+      "x-server-span-id": "e0299af79c3df270",
+      "x-trace-id": "2d2383fdede15f0334110a5160597396",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "server-timing": "inner; dur=13"
+    }
+  },
+  "kimi.gateway.membership.v2.MembershipService/ListBalanceActions": {
+    "status": 200,
+    "body": "{\"nextPageToken\":\"IBQ=\",\"actions\":[{\"id\":\"19fff8b6-30e2-8772-8000-00007e87aa24\",\"feature\":\"FEATURE_CHAT\",\"title\":\"k2.6: Container Skill Search (35)\",\"items\":[{\"balanceId\":\"19fa65c1-51c2-8379-8000-0000fc91957e\",\"unit\":\"UNIT_CREDIT\"}],\"status\":\"DONE\",\"timestamp\":\"2026-08-14T09:12:32.783417Z\"},{\"id\":\"19fff8a1-7922-8702-8000-00001829a8d2\",\"feature\":\"FEATURE_CHAT\",\"title\":\"k2.6: Container Skill Search (34)\",\"items\":[{\"balanceId\":\"19fa65c1-51c2-8379-8000-0000fc91957e\",\"unit\":\"UNIT_CREDIT\"}],\"status\":\"DONE\",\"timestamp\":\"2026-08-14T09:11:07.922819Z\"},{\"id\":\"19fff892-9602-8e6d-8000-00005eb1da4a\",\"feature\":\"FEATURE_CHAT\",\"title\":\"k2.6: Seller Disclosure Reply (42)\",\"items\":[{\"balanceId\":\"19fa65c1-51c2-8379-8000-0000fc91957e\",\"unit\":\"UNIT_CREDIT\"}],\"status\":\"DONE\",\"timestamp\":\"2026-08-14T09:10:06.945451Z\"},{\"id\":\"19fff887-c232-8ac2-8000-0000a2be4c79\",\"feature\":\"FEATURE_CHAT\",\"title\":\"k2.6: Container Skill Search (33)\",\"items\":[{\"balanceId\":\"19fa65c1-51c2-8379-8000-0000fc91957e\",\"unit\":\"UNIT_CREDI",
+    "headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 09:15:01 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Vary": "Accept-Encoding",
+      "x-internal-adhoc-canary": "777113169",
+      "accept-encoding": "gzip",
+      "vary": "Accept-Encoding",
+      "x-server-span-id": "05adc1828c1b6b36",
+      "x-trace-id": "c504aa4c3082e6670d3024c21419ec12",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "server-timing": "inner; dur=42"
+    }
+  },
+  "kimi.gateway.promotion.v1.PromotionService/ApplyPromoCode": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "error": "Not Found"
+  }
+}

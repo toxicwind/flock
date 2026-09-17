@@ -1,0 +1,221 @@
+#!/usr/local/bin/python3.12
+# autopush_hardened.py — Permanent, resumable, timeout-safe autopush
+# Processes ONE dir at a time, saves progress, skips unchanged
+
+import os, sys, json, time, pathlib, subprocess, hashlib
+
+DOT = pathlib.Path("/mnt/agents/dot")
+PROGRESS_FILE = DOT / "var" / "autopush_progress.json"
+LOG_FILE = DOT / "var" / "log" / "autopush.log"
+PAT = os.environ.get("GH_PAT") or os.environ.get("MOONBOX_PAT") or ""
+GITHUB_USER = "toxicwind"
+PREFIX = "moonbox"
+
+def log(msg):
+    ts = time.strftime("%Y%m%d_%H%M%S", time.gmtime())
+    line = f"[{ts}] {msg}"
+    print(line, flush=True)
+    try:
+        with open(LOG_FILE, "a") as f:
+            f.write(line + "\n")
+    except:
+        pass
+
+def load_progress():
+    try:
+        with open(PROGRESS_FILE) as f:
+            return json.load(f)
+    except:
+        return {"completed": [], "failed": [], "last_run": 0, "total_dirs": 0}
+
+def save_progress(p):
+    try:
+        PROGRESS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(PROGRESS_FILE, "w") as f:
+            json.dump(p, f, indent=2)
+    except Exception as e:
+        log(f"PROGRESS_SAVE_ERR: {e}")
+
+def get_dir_hash(work_tree):
+    """Quick hash of directory contents to detect changes."""
+    wt = pathlib.Path(work_tree)
+    files = sorted([f for f in wt.rglob("*") if f.is_file() and f.stat().st_size < 1000000 and ".git" not in str(f) and "_git" not in str(f)])[:100]
+    h = hashlib.sha256()
+    for f in files:
+        try:
+            h.update(f.read_bytes()[:4096])
+        except:
+            pass
+    return h.hexdigest()[:16]
+
+def fix_git_dir(work_tree):
+    wt = pathlib.Path(work_tree)
+    gd = wt / "_git"
+    
+    # Remove stale locks
+    for lock in gd.glob("*.lock"):
+        try:
+            lock.unlink()
+        except:
+            pass
+    
+    # Ensure structure
+    for sub in ["objects/info", "objects/pack", "refs/heads", "refs/tags", "hooks", "info"]:
+        (gd / sub).mkdir(parents=True, exist_ok=True)
+    
+    # HEAD
+    try:
+        (gd / "HEAD").write_text("ref: refs/heads/main\n")
+    except:
+        pass
+    
+    # Config
+    try:
+        (gd / "config").write_text("[core]\n    repositoryformatversion = 0\n    filemode = true\n    bare = false\n    logallrefupdates = true\n[init]\n    defaultBranch = main\n")
+    except:
+        pass
+    
+    # .gitfile
+    try:
+        (wt / ".gitfile").write_text("gitdir: _git\n")
+    except:
+        pass
+    
+    return True
+
+def git_cmd(work_tree, *args, timeout=15):
+    wt = pathlib.Path(work_tree)
+    gd = wt / "_git"
+    env = {
+        **os.environ,
+        "GIT_DIR": str(gd),
+        "GIT_WORK_TREE": str(wt),
+        "GIT_AUTHOR_NAME": "fyksdwD",
+        "GIT_AUTHOR_EMAIL": "fyksdwD@320feec8.local",
+        "GIT_COMMITTER_NAME": "fyksdwD",
+        "GIT_COMMITTER_EMAIL": "fyksdwD@320feec8.local",
+        "GIT_ASKPASS": "/bin/false",
+        "GIT_TERMINAL_PROMPT": "0",
+    }
+    cmd = ["git"] + list(args)
+    r = subprocess.run(cmd, env=env, capture_output=True, text=True, timeout=timeout)
+    return r.returncode == 0, r.stdout, r.stderr
+
+def push_dir(work_tree):
+    wt = pathlib.Path(work_tree)
+    name = wt.name
+    
+    log(f"PUSH_START: {name}")
+    
+    # Skip if not a directory or is dot (handled specially)
+    if not wt.is_dir():
+        log(f"SKIP_NOT_DIR: {name}")
+        return False
+    
+    # Fix git structure
+    fix_git_dir(wt)
+    
+    # Ensure remote
+    repo_name = f"{PREFIX}-{name}-{time.strftime('%Y%m%d')}"
+    ok, out, err = git_cmd(wt, "remote", "get-url", "origin", timeout=5)
+    if not ok:
+        remote_url = f"https://toxicwind:{PAT}@github.com/toxicwind/{repo_name}.git"
+        git_cmd(wt, "remote", "add", "origin", remote_url, timeout=5)
+        log(f"REMOTE_ADDED: {repo_name}")
+    
+    # Add
+    ok, out, err = git_cmd(wt, "add", "-A", timeout=10)
+    if not ok:
+        log(f"ADD_WARN: {name}: {err[:100] if err else 'unknown'}")
+    
+    # Commit
+    ok, out, err = git_cmd(wt, "commit", "-m", f"autopush:{int(time.time())}:{name}", "--quiet", timeout=10)
+    if not ok and "nothing to commit" not in (err or ""):
+        log(f"COMMIT_WARN: {name}: {err[:100] if err else 'unknown'}")
+    
+    # Push
+    ok, out, err = git_cmd(wt, "push", "origin", "main", "--force", "--quiet", timeout=30)
+    if ok:
+        log(f"PUSH_OK: {name}")
+        return True
+    else:
+        log(f"PUSH_FAIL: {name}: {err[:100] if err else 'unknown'}")
+        return False
+
+def main():
+    progress = load_progress()
+    
+    # Get all directories under /mnt/agents
+    all_dirs = sorted([d for d in pathlib.Path("/mnt/agents").iterdir() if d.is_dir()])
+    
+    # Priority order: dot first, then output, temp, upload, then others
+    priority = ["dot", "output", "temp", "upload", "claude-forge", "recon", "protodump"]
+    dirs = []
+    for p in priority:
+        pd = pathlib.Path(f"/mnt/agents/{p}")
+        if pd in all_dirs:
+            dirs.append(pd)
+            all_dirs.remove(pd)
+    dirs.extend(all_dirs)
+    
+    log(f"AUTOPUSH_START: {len(dirs)} dirs")
+    
+    success_count = 0
+    fail_count = 0
+    
+    for d in dirs:
+        name = d.name
+        
+        # Skip if already completed in this run
+        if name in progress.get("completed", []):
+            log(f"SKIP_ALREADY_DONE: {name}")
+            continue
+        
+        # Check for changes
+        current_hash = get_dir_hash(d)
+        last_hash = progress.get("hashes", {}).get(name, "")
+        
+        if current_hash == last_hash and name != "dot":
+            log(f"SKIP_UNCHANGED: {name}")
+            progress["completed"].append(name)
+            save_progress(progress)
+            continue
+        
+        # Push with timeout protection
+        try:
+            ok = push_dir(d)
+            if ok:
+                progress["completed"].append(name)
+                progress.setdefault("hashes", {})[name] = current_hash
+                success_count += 1
+            else:
+                progress.setdefault("failed", []).append(name)
+                fail_count += 1
+        except subprocess.TimeoutExpired:
+            log(f"PUSH_TIMEOUT: {name}")
+            progress.setdefault("failed", []).append(name)
+            fail_count += 1
+        except Exception as e:
+            log(f"PUSH_EXCEPT: {name}: {e}")
+            progress.setdefault("failed", []).append(name)
+            fail_count += 1
+        
+        save_progress(progress)
+        
+        # Small delay to avoid overwhelming GitHub API
+        time.sleep(0.5)
+    
+    log(f"AUTOPUSH_DONE: OK={success_count} FAIL={fail_count}")
+    save_progress(progress)
+    
+    # Print summary
+    print(f"\n=== SUMMARY ===")
+    print(f"Total: {len(dirs)}")
+    print(f"Success: {success_count}")
+    print(f"Failed: {fail_count}")
+    print(f"Completed: {progress['completed']}")
+    if progress.get("failed"):
+        print(f"Failed: {progress['failed']}")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,1 @@
+#!/usr/bin/env python3.12.12 -OO -X faulthandler -X tracemalloc=25 -X dev -X utf8=1 -W all -u -S -c 'import sys; sys.path.insert(0, sys.path[0] if sys.path else str())' -m benchmark_toolkit

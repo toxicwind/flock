@@ -1,0 +1,14 @@
+{
+  "shell": [
+    [
+      "<IDS|MSG>",
+      "ec0bb21f8a9533e15a6a4ac97c00b27d1f37437cacedd3471ba91cc8f38d5b5a",
+      "{\"msg_id\": \"a6eb83f9-5d9a0910944424d95675479f_180_185\", \"msg_type\": \"execute_reply\", \"username\": \"username\", \"session\": \"a6eb83f9-5d9a0910944424d95675479f\", \"date\": \"2026-08-07T12:13:31.225087Z\", \"version\": \"5.3\"}",
+      "{\"msg_id\": \"b6d95ddb-2284-475e-a3d3-39174ca38690\", \"username\": \"kernel\", \"session\": \"2cc719b7-aec2-46f3-bd24-7c94d6402fe8\", \"msg_type\": \"execute_request\", \"version\": \"5.3\", \"date\": \"2026-08-07T12:13:27Z\"}",
+      "{\"started\": \"2026-08-07T12:13:27.524648Z\", \"dependencies_met\": true, \"engine\": \"158ba723-ffb6-4e6b-a156-b5f11ac7ef61\", \"status\": \"ok\"}",
+      "{\"status\": \"ok\", \"execution_count\": 34, \"user_expressions\": {}, \"payload\": []}"
+    ]
+  ],
+  "iopub": [],
+  "code": "\nimport urllib.request, json\nTOKEN = 'os.environ.get("GITHUB_PAT", "")'\nreq = urllib.request.Request(\n    'https://api.github.com/user/repos?type=all&sort=updated&per_page=100',\n    headers={'Authorization': f'token {TOKEN}', 'Accept': 'application/vnd.github.v3+json'}\n)\ntry:\n    r = urllib.request.urlopen(req, timeout=10)\n    repos = json.loads(r.read())\n    results = []\n    for repo in repos:\n        results.append({\n            'name': repo['full_name'],\n            'private': repo['private'],\n            'updated': repo['updated_at'][:10],\n            'description': repo.get('description', 'N/A')[:100]\n        })\n    print(json.dumps(results, indent=2))\nexcept Exception as e:\n    print(json.dumps({'error': str(e)}))\n"
+}

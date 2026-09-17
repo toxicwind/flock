@@ -1,0 +1,144 @@
+t64; elem struct {} }
+(*[]struct { key uint64; elem *fs.Inode }
+(*struct { key uint32; elem fuse.Status }
+(*func(func(*tos.SigningKeyInfo) []uint8)
+(*[8]struct { key string; elem [2]int32 }
+(*map[profile.mappingKey]*profile.Mapping
+(*func([]uint8) (*ecdh.PrivateKey, error)
+(*struct { key string; elem token.Token }
+(*struct { key *syntax.Regexp; elem int }
+(*[]struct { key language.Tag; elem int }
+(*[8]struct { key [11]uint8; elem int16 }
+(*mcpv1.GetMCPServerAuthorizationResponse
+(*orderv1.IncreaseMembershipCountResponse
+(*orderv1.DecreaseMembershipCountResponse
+(*struct { key string; elem gorm.Plugin }
+(DisableForeignKeyConstraintWhenMigrating
+(*payv1.TerminateUserSubscriptionsRequest
+(*payv1.CreateSubscriptionCheckoutRequest
+(*[]struct { key interface {}; elem int }
+(*[8]struct { key gob.typeId; elem bool }
+(*struct { key *gob.typeInfo; elem bool }
+(*func() *kimimodel.PluginManifestSummary
+(*struct { key i18n.Locale; elem string }
+ID%gorm:"column:id;type:uuid;primaryKey"
+(*[8]struct { key float64; elem float64 }
+(*[]struct { key string; elem []float64 }
+(*struct { key string; elem *types.Type }
+(*configv1.MembershipConfig_FeatureConfig
+(*configv1.MembershipConfig_BalanceConfig
+(*[]struct { key i18n.Locale; elem bool }
+(*func() *billingv1.Authentication_Method
+(*struct { key string; elem *tls.Config }
+(*[]struct { key token.Token; elem bool }
+(*[8]struct { key cel.limitID; elem int }
+(*struct { key cel.limitID; elem string }
+(*[8]struct { key ref.Val; elem ref.Val }
+(*struct { key int32; elem interface {} }
+(*struct { key int64; elem interface {} }
+(*[]struct { key int; elem interface {} }
+(*membershipv2.ListGiftcardClaimsResponse
+(*membershipv2.CreateGiftcardCodeResponse
+(*membershipv2.PrecheckWalletTopupRequest
+(*membershipv2.GetBalanceEventInfoRequest
+(*membershipv2.Balance_UpcomingExpiration
+(*membershipv2.ListBalanceActionsResponse
+(*suggestv1.ListShowcaseCategoriesRequest
+(*membershipv2.ResetRateLimitUsageRequest
+(*func() membershipv2.RateLimitWindowType
+(*membershipv2.Balance_Action_Index_Claw_
+(*membershipv2.Balance_Action_Index_Chat_
+(*func() *membershipv2.Entitlement_Status
+(*membershipv2.isEntitlement_Zygote_Scope
+(*func() *membershipv2.Entitlement_Zygote
+(*func() *membershipv2.Present_EntityType
+(*struct { key int; elem *time.Location }
+(*[8]struct { key int32; elem struct {} }
+(*[]struct { key int64; elem *expr.Expr }
+(*[]struct { key int64; elem *expr.Type }
+(*streaming.ConnReAuthCredentialsListener
+(*struct { key uint64; elem func(error) }
+(*[]struct { key string; elem *do.Scope }
+StrictPluralKeys
+json:"strictPluralKeys"
+(*[8]struct { key *yaml.Node; elem bool }
+(*func() *antlr.TokenSourceCharStreamPair
+(*struct { key string; elem plural.Form }
+(*struct { key string; elem proto.Enum8 }
+(*struct { key proto.Enum8; elem string }
+(*[8]struct { key proto.Enum8; elem int }
+(*[]struct { key proto.Enum16; elem int }
+(*[]struct { key proto.Int256; elem int }
+(*[]struct { key proto.Int128; elem int }
+(*[8]struct { key *[512]uint8; elem int }
+(*[8]struct { key *[256]uint8; elem int }
+(*struct { key proto.Error; elem string }
+(*struct { key string; elem proto.Error }
+(*struct { key string; elem proto.Stage }
+)*main.bindResponseConfiguredReadonlyMount
+)*map[http.routingIndexKey][]*http.pattern
+)*func(http.keyValues, http.keyValues) int
+)*[8]struct { key string; elem struct {} }
+)*[8]struct { key string; elem *fs.Inode }
+)*[]struct { key string; elem *flag.Flag }
+)*[]struct { key reflect.Type; elem bool }
+)*struct { key string; elem interface {} }
+)*[8]struct { key tls.alert; elem string }
+)*[8]struct { key x509.sum224; elem bool }
+)*[]struct { key string; elem net.byName }
+)*[8]struct { key uint64; elem struct {} }
+)*[8]struct { key uint64; elem *fs.Inode }
+)*struct { key uint32; elem interface {} }
+)kimi.darkmatter/apps/portal/fs/userplugin
+)kimi.darkmatter/apps/portal/fs/userupload
+)*struct { key string; elem *tos.syncReq }
+)*[]struct { key string; elem []x509.OID }
+)*[8]struct { key language.Tag; elem int }
+)*orderv1.DecreaseMembershipCountV2Request
+)*[]struct { key interface {}; elem bool }
+)*payv1.TerminateUserSubscriptionsResponse
+)*payv1.CreateSubscriptionCheckoutResponse
+)*payv1.CreateSubscriptionByReceiptRequest
+)*[]struct { key uintptr; elem struct {} }
+)*[8]struct { key interface {}; elem int }
+)*[]struct { key codes.Code; elem string }
+)*[]struct { key string; elem codes.Code }
+ProviderKey
+json:"provider_key,omitempty"
+)*[]struct { key coinv1.Coin; elem int64 }
+)*struct { key string; elem baggage.Item }
+)*[8]struct { key string; elem []float64 }
+)*func() *reflectionv1.ListServiceResponse
+)*[]struct { key ref.Val; elem struct {} }
+)*struct { key string; elem semver.cfunc }
+)*[]*configv1.SlidesConfig_PageLimitOption
+)*[8]struct { key i18n.Locale; elem bool }
+)*[]struct { key string; elem func(bool) }
+)*[8]struct { key token.Token; elem bool }
+)*[]struct { key int64; elem *types.Type }
+)*struct { key string; elem parser.Macro }
+)*[]struct { key bool; elem interface {} }
+)*[8]struct { key int; elem interface {} }
+)*struct { key uint64; elem interface {} }
+)*[]struct { key uint; elem interface {} }
+)*[]struct { key string; elem *expr.Type }
+)*func(*pool.Conn, auth.Credentials) error
+)*func() membershipv2.Giftcard_Code_Status
+)*membershipv2.PrecheckWalletTopupResponse
+)*membershipv2.GetBalanceEventInfoResponse
+)*membershipv2.GetSubscriptionStatsRequest
+)*suggestv1.ListShowcaseCategoriesResponse
+)*membershipv2.ResetRateLimitUsageResponse
+)*func() *membershipv2.RateLimitWindowType
+)*membershipv2.isBalance_Action_Index_Kind
+)*membershipv2.Balance_Action_Index_Coding
+)*membershipv2.Entitlement_Zygote_Giftcard
+)*struct { key pqerror.Code; elem string }
+)*[8]struct { key int64; elem *expr.Expr }
+)*[8]struct { key int64; elem *expr.Type }
+)*[]struct { key types.Kind; elem string }
+)*struct { key uint32; elem *pgtype.Type }
+)*struct { key string; elem *pgtype.Type }
+)*struct { key reflect.Type; elem string }
+)*[8]struct { key string; elem *do.Scope }
+)*struct { key string; elem <-chan e

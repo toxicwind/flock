@@ -1,0 +1,1 @@
+{"id": "test_001", "type": "shell", "cmd": "echo WORKER_ALIVE; bun --version", "timeout": 10}

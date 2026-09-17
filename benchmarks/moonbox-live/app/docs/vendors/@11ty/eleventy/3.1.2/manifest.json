@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://www.11ty.dev/docs/",
+    "path": "docs/vendors/@11ty/eleventy/3.1.2/getting-started.md",
+    "title": "Breadcrumbs:",
+    "sha256": "fa82cd55e1fcacbb4823afa2791e9ccdb237729b9170a445955facd7f346346b",
+    "retrieved_at": "2025-08-10T07:36:05.510Z",
+    "size": 51244
+  },
+  {
+    "url": "https://www.11ty.dev/docs/config/",
+    "path": "docs/vendors/@11ty/eleventy/3.1.2/configuration.md",
+    "title": "Breadcrumbs:",
+    "sha256": "c048449bbca7636cf795de3a59a3c5b295d69e12723e8b0037060013895e391c",
+    "retrieved_at": "2025-08-10T07:36:05.749Z",
+    "size": 27031
+  }
+]

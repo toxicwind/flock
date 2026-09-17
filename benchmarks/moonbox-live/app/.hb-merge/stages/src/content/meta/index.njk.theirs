@@ -1,0 +1,15 @@
+---
+title: "Meta"
+layout: "layout.njk"
+permalink: "/meta/index.html" # <-- Add or modify this line for correct URL
+eleventyNavigation:
+  key: Meta
+  parent: Showcase # Adjust parent as needed for your navigation
+---
+<p>This section contains information about the lab itself, its purpose, and related administrative details.</p>
+<ul>
+{# Loop through all items in the 'meta' collection, excluding the current page #}
+{% for item in collections.meta %}
+    {% if item.url != page.url %}<li><a href="{{ item.url }}">{{ item.data.title }}</a></li>{% endif %}
+{% endfor %}
+</ul>

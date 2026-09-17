@@ -1,0 +1,91 @@
+Here is an exhaustive, line-by-line audit and technical breakdown of the Kimi AgentGwClient Python SDK code.
+Part 1: How to Use Completions (Including Unlimited Streaming)
+The client supports both OpenAI-compatible (/v1/chat/completions) and Anthropic-compatible (/v1/messages) APIs, with native Server-Sent Events (SSE) streaming.
+1. Standard Synchronous Chat Completion
+from agent_gw import AgentGwClient
+
+with AgentGwClient(api_key="sk-...", base_url="https://agent-gw-dev.dev.kimi.team/coding") as client:
+    response = client.chat_completion(
+        model="kimi-k1.5",
+        messages=[{"role": "user", "content": "Write a Python script for web scraping."}],
+        temperature=0.7,
+    )
+    print(response["choices"][0]["message"]["content"])
+
+2. Unlimited SSE Streaming Completions
+When stream=True is passed, chat_completion() returns a generator yielding parsed JSON SSE chunks. Because long-running agent reasoning or multi-turn coding outputs can take extended time, set timeout=None or a large float value on the client call to allow unlimited streaming without client-side timeout drops.
+with AgentGwClient(api_key="sk-...", timeout=None) as client:
+    stream_iterator = client.chat_completion(
+        model="kimi-k1.5",
+        messages=[{"role": "user", "content": "Refactor a 10,000-line codebase."}],
+        stream=True,
+    )
+
+    for chunk in stream_iterator:
+        # Check for standard OpenAI delta content
+        choices = chunk.get("choices", [])
+        if choices:
+            delta = choices[0].get("delta", {}).get("content", "")
+            print(delta, end="", flush=True)
+
+3. Anthropic Messages API Format (/v1/messages)
+response = client.messages(
+    model="claude-3-5-sonnet",
+    messages=[{"role": "user", "content": "Hello!"}],
+    max_tokens=1024,
+)
+
+Part 2: Audit of Every Chinese Comment & Docstring
+Below is the translation and architectural analysis of every Chinese string, line by line.
+| Line Range | Original Chinese Code / Comment | Literal English Translation | Architectural Insight & Audit |
+|---|---|---|---|
+| Lines 1–13 | Kimi agent-gw 的同步客户端。覆盖的路由（除标注外均为 POST）... | Synchronous client for Kimi agent-gw. Covered routes (all POST unless noted)... | Dual API Gateway: Acts as a universal adapter exposing OpenAI /v1/chat/completions, Anthropic /v1/messages, NLP utilities, stock market queries, and multimodal generation. |
+| Line 45 | # 用户家目录下的固定路径 | Fixed path under user home directory. | Reads default credentials from ~/.kimi/agent-gw.json. |
+| Lines 49–52 | 读 ~/.kimi/agent-gw.json，文件不存在返回 {}。JSON 必须是 {"api_key": "...", "base_url": "..."} 形式的对象，否则抛 ValueError —— 这是配置错误，不该静默吃掉。 | Reads ~/.kimi/agent-gw.json, returns {} if non-existent. Must be a JSON object, otherwise raises ValueError — this is a config error and shouldn't be silently swallowed. | Loud Failure Philosophy: Explicitly rejects malformed JSON config files rather than falling back silently, preventing tricky debugging loops. |
+| Line 77 | 从 cfg 取首个非空字符串字段（自动 strip），都没值返回 None。 | Extracts first non-empty string from cfg (auto-stripped), returns None if all empty. | Helper for clean parameter extraction. |
+| Line 86 | 显式参数 > KIMI_API_KEY env > JSON 配置 > 报错 | Explicit argument > KIMI_API_KEY env > JSON config > Error | Strict priority hierarchy for API key resolution. |
+| Line 103 | 显式参数 > KIMI_BASE_URL env > JSON 配置 base_url > DEFAULT_BASE_URL | Explicit argument > KIMI_BASE_URL env > JSON config base_url > DEFAULT_BASE_URL | Resolves endpoint URL with a fallback to [https://agent-gw-dev.dev.kimi.team/coding](https://agent-gw-dev.dev.kimi.team/coding). |
+| Line 116 | 显式参数 > KIMI_CHAT_ID env > JSON 配置 kimi_chat_id > None | Explicit argument > KIMI_CHAT_ID env > JSON config kimi_chat_id > None | Context header resolution for stateful Kimi chat sessions (X-Kimi-Chat-Id). |
+| Lines 126–127 | 为兼容已有 kimiPluginBaseUrl 配置，同时接受 https://host 和 https://host/v1/tools 两种写法。 | For compatibility with existing kimiPluginBaseUrl configs, accepts both https://host and https://host/v1/tools forms. | Legacy Migration Hack: Auto-strips /v1/tools or /v1 suffix if users pass an old plugin endpoint. |
+| Lines 138–145 | agent-gw 返回信封结构... | agent-gw return envelope structure... | Describes the standard return envelope: {"is_success": bool, "error": "...", "result": {"user": [{"text": "<inner JSON string>"}]}}. |
+| Lines 150–152 | 大多数 method 返回 {"is_success": ..., "result": ...} 信封；但有的 method（如 get_data_source_desc）直接返回 plain string，这里把非字典的响应包装成一个等价的成功信封，保持调用方代码一致。 | Most methods return an envelope; but some (like get_data_source_desc) return plain strings. Non-dict responses are wrapped into an equivalent success envelope to maintain consistent caller code. | Envelope Normalization: Standardizes raw strings or non-dictionary backend returns into a uniform ToolResponse object. |
+| Lines 167–168 | 无信封字段的响应（媒体生成 / 图搜返回原始 proto JSON）：HTTP 已 200，没有显式 error 即视为成功。 | Responses without envelope fields (media gen / image search return raw proto JSON): HTTP 200 with no explicit error is treated as success. | Handles raw Protobuf JSON payloads emitted by media services. |
+| Line 185 | 首条用户文本（即内层 JSON 字符串原文）。 | First user text (i.e., raw inner JSON string). | Extracts nested JSON string stored inside result.user[0].text. |
+| Lines 192–196 | 把 text 解析为 JSON。数据源信封：返回内层 result.user[0].text 解析后的对象。媒体生成 / 图搜：响应本身就是原始 JSON... | Parses text to JSON. Data source envelope: returns object parsed from inner text. Media gen / image search: returns raw dict response. | Double-deserialization logic to unwrap stringified JSON payloads. |
+| Lines 241–250 | 调用 get_stock_realtime_price。参数: ticker: 股票代码；批量时用逗号分隔... 美股需带 .US 后缀... time: 时间字符串... 美股 iFind 期望美东时间（ET），其余市场传北京时间。 | Calls get_stock_realtime_price. Params: ticker (comma-separated, US stocks require .US), time (YYYY-MM-DD HH:MM:SS, US stocks require ET, others CST/BJT). | Financial Terminal Integration: Interfaces directly with Tonghuashun iFind (China's leading enterprise Bloomberg rival). |
+| Line 267 | 调用 nlp_embedding。服务端字段名为 texts（数组），单串入参会自动包成单元素列表。 | Calls nlp_embedding. Server field name is texts (array); single string input automatically wrapped into 1-element list. | Auto-wraps single strings into list for backend compatibility. |
+| Lines 281–285 | 媒体生成 / 图搜：这些 method 的素材与产物均为文件 URL：素材可先通过 agent-gw 的 POST /v1/storage 上传拿到 signed_url 再作为 reference_*_urls 传入... | Media generation / Image search: Materials and outputs are file URLs. Materials can be uploaded via POST /v1/storage to get signed_url, then passed as reference_*_urls. | Explains the multi-modal workflow pipeline. |
+| Lines 298–303 | 调用 generate_image（生图）。参数对应 agent.media.v1.GenerateImageRequest... | Calls generate_image. Parameters correspond to agent.media.v1.GenerateImageRequest... | Directly mirrors Protobuf spec field names (ratio, resolution, background). |
+| Line 323 | 调用 generate_sound_effects（生音效音频）。 | Calls generate_sound_effects (generate sound effect audio). | Sound effect synthesis endpoint. |
+| Line 336 | 调用 generate_speech（生人声音频）。 | Calls generate_speech (generate human voice audio). | Voice TTS synthesis endpoint. |
+| Line 357 | 调用 generate_video（生视频）。视频生成较慢，默认 timeout 放宽到 300s。 | Calls generate_video (generate video). Video generation is slow; default timeout relaxed to 300s (5 min). | Long-polling timeout adjustment for video rendering. |
+| Lines 383–385 | 调用 search_image（图搜），透传到 search.v3.SearchImageRequest。其余字段（scene / engines / page_token 等）可用 **opts 传入。 | Calls search_image (image search), passthrough to search.v3.SearchImageRequest. | Direct gRPC request mapping for reverse image search. |
+| Lines 689–691 | 调用 POST /v1/files —— multipart 文件上传，agent-gw 透传到 OpenGW。服务端只暴露上传（POST）一个端点，不支持 LIST/GET/DELETE/CONTENT。 | Calls POST /v1/files — multipart upload, agent-gw passes through to OpenGW. Server only exposes upload (POST), does not support LIST/GET/DELETE/CONTENT. | Write-only storage paradigm for security/isolation on OpenGW. |
+| Lines 724–729 | 调用 POST /v1/storage —— 上传素材文件，底层走 kimifs。与 upload_file（透传 OpenGW）不同：本接口返回公网可访问的签名下载 URL，可直接作为媒体生成工具的 reference_*_urls 传入。 | Calls POST /v1/storage — uploads media asset files using kimifs. Different from upload_file: returns a publicly accessible signed download URL for multimodal references. | Dual Storage Backend: Disambiguates OpenAI OpenGW files from kimifs public asset storage. |
+| Line 748 | 调用 GET /v1/storage/{file_id} —— 取文件元信息并重新签发 signed_url。 | Calls GET /v1/storage/{file_id} — retrieves metadata and re-issues signed_url. | Re-issues temporary signed URLs when expired. |
+| Lines 763–767 | 下载 /v1/storage 文件的二进制内容。先经 get_storage_file 拿到 signed_url，再直接 GET 该 URL（公网，kimifs 会 307 重定向到对象存储）。agent-gw 不承载文件流量，故下载不带 apikey、不经网关。 | Downloads binary content of /v1/storage files. First fetches signed_url, then directly GETs that URL (public, kimifs 307 redirects to object storage). Gateway does not proxy file traffic, so download has no API key and bypasses gateway. | Zero-Proxy Gateway Offloading: Crucial architectural design for scaling. |
+| Line 780 | 直接打 signed_url（公网，不经网关、不带 apikey）。用 session.request 而非 self._request，避免附加 Authorization 等网关头。 | Directly hits signed_url (public, bypasses gateway, no API key). Uses session.request instead of self._request to avoid attaching Authorization gateway headers. | Security credential leak prevention: Ensures internal Bearer tokens are never sent to external S3/CDN buckets. |
+Part 3: Most Standout, Obtuse, and "Whoa This Is Emergent" Discoveries
+1. Security & Traffic Engineering: Zero-Proxy Direct S3 Offloading
+In download_storage() (lines 763–787):
+# 直接打 signed_url（公网，不经网关、不带 apikey）。用 session.request 而非 self._request，避免附加 Authorization 等网关头。
+resp = self._session.request("GET", signed_url, ...)
+
+ * Why it's clever: Instead of proxying heavy media files (images, video, audio) through agent-gw, the gateway returns a signed_url. The client then bypasses the gateway entirely, hitting the CDN/S3 object storage, which responds with a 307 Temporary Redirect.
+ * Security Precision: The code explicitly avoids calling self._request() and uses a raw session.request() to prevent sending the Authorization: Bearer <KIMI_API_KEY> header to S3/CDN endpoints, avoiding credential leakage to cloud storage providers.
+2. Dual-Storage Backend Division (OpenGW vs kimifs)
+The SDK maintains two separate file upload endpoints that target completely different backend architectures:
+ * upload_file() (/v1/files): Passthrough to OpenGW (OpenAI file API style). It is strictly write-only (POST), with no support for LIST, GET, DELETE, or reading content.
+ * upload_storage() (/v1/storage): Backed by kimifs (Kimi File System). This returns a public signed_url specifically designed to feed reference assets into image (generate_image) and video (generate_video) pipelines.
+3. Tonghuashun iFind Financial Terminal Integration (get_stock_realtime_price)
+The gateway includes built-in integration with iFind (China's leading institutional financial data terminal):
+params: Dict[str, Any] = {"ticker": ticker, "time": time, "type": type}
+if file_path:
+    params["file_path"] = file_path # Injects local file path for iFind output
+
+ * Timezone Rules: US stock queries require US Eastern Time (ET), while Chinese A-shares (.SH, .SZ) require Beijing Time (CST/BJT).
+ * Local File Injection: Allows specifying a local file_path (e.g. /tmp/foo.json) for temporary financial data export.
+4. Custom Context Headers (X-Kimi-Chat-Id and X-Kimi-Skill)
+All HTTP requests automatically attach custom headers if present:
+ * X-Kimi-Chat-Id: Tracks multi-turn session identity across agent execution nodes.
+ * X-Kimi-Skill: Identifies active skill modules/tools loaded by the agent runner.

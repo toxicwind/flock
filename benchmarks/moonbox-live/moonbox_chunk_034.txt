@@ -1,0 +1,46 @@
+name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"varint,3,opt,name=target_type,json=targetType,proto3,enum=kimi.gateway.skill.v1.SkillJobType" json:"target_type,omitempty"
+SubscriptionBalance|protobuf:"bytes,5,opt,name=subscription_balance,json=subscriptionBalance,proto3,oneof" json:"subscription_balance,omitempty"
+protobuf:"varint,2,opt,name=vote_action,json=voteAction,proto3,enum=kimi.gateway.suggest.v1.VoteAction" json:"vote_action,omitempty"
+protobuf:"bytes,6,rep,name=extra,proto3" json:"extra,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,8,rep,name=extra,proto3" json:"extra,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,5,rep,name=extra,proto3" json:"extra,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,1,rep,name=extra,proto3" json:"extra,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,13,rep,name=extra,proto3" json:"extra,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+MembershipExpireTime|protobuf:"bytes,22,opt,name=membership_expire_time,json=membershipExpireTime,proto3" json:"membership_expire_time,omitempty"
+protobuf:"varint,3,opt,name=template_type,json=templateType,proto3,enum=kimi.slides.v1.TemplateType" json:"template_type,omitempty"
+protobuf:"varint,7,opt,name=tool_action,json=toolAction,proto3,enum=kimi.gateway.im.v1.ToolAction,oneof" json:"tool_action,omitempty"
+*go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/auto/sdk/internal/telemetry.Value "json:\"value,omitempty\"" }
+FlowControlByteLimit~protobuf:"varint,7,opt,name=flow_control_byte_limit,json=flowControlByteLimit,proto3" json:"flow_control_byte_limit,omitempty"
+protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+TerminateSubscription}protobuf:"varint,2,opt,name=terminate_subscription,json=terminateSubscription,proto3" json:"terminate_subscription,omitempty"
+*go.shape.struct { Key string "json:\"key,omitempty\""; Value go.opentelemetry.io/otel/trace/internal/telemetry.Value "json:\"value,omitempty\"" }
+protobuf:"varint,5,opt,name=template_type,json=templateType,proto3,enum=kimi.websites.v1.TemplateType" json:"template_type,omitempty"
+protobuf:"varint,2,opt,name=sub_feature,json=subFeature,proto3,enum=kimi.gateway.membership.v2.SubFeature" json:"sub_feature,omitempty"
+protobuf:"bytes,3,rep,name=extras,proto3" json:"extras,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,2,rep,name=extras,proto3" json:"extras,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,5,rep,name=extras,proto3" json:"extras,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"varint,1,opt,name=sub_feature,json=subFeature,proto3,enum=kimi.gateway.membership.v2.SubFeature" json:"sub_feature,omitempty"
+protobuf:"varint,10,opt,name=template_type,json=templateType,proto3,enum=kimi.websites.v1.TemplateType" json:"template_type,omitempty"
+protobuf:"varint,11,opt,name=template_type,json=templateType,proto3,enum=kimi.websites.v1.TemplateType" json:"template_type,omitempty"
+PurchaseSubscription
+protobuf:"bytes,9,opt,name=purchase_subscription,json=purchaseSubscription,proto3,oneof" json:"purchase_subscription,omitempty"
+protobuf:"varint,1,opt,name=window_type,json=windowType,proto3,enum=kimi.membership.v2.RateLimitWindowType" json:"window_type,omitempty"
+protobuf:"varint,3,opt,name=export_type,json=exportType,proto3,enum=kimi.gateway.converter.v1.DocumentType" json:"export_type,omitempty"
+protobuf:"varint,2,opt,name=export_type,json=exportType,proto3,enum=kimi.gateway.converter.v1.DocumentType" json:"export_type,omitempty"
+protobuf:"varint,7,opt,name=invoice_status,json=invoiceStatus,proto3,enum=kimi.order.v1.InvoiceStatus" json:"invoice_status,omitempty"
+ShowMembershipPricing
+protobuf:"varint,2,opt,name=show_membership_pricing,json=showMembershipPricing,proto3" json:"show_membership_pricing,omitempty"
+protobuf:"bytes,1,rep,name=details,proto3" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,3,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,5,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,4,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,1,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,2,rep,name=queries,proto3" json:"queries,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,2,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"varint,6,opt,name=target_kind,json=targetKind,proto3,enum=kimi.websites.v1.WebsiteReportTargetKind" json:"target_kind,omitempty"
+*connect.BidiStreamForClient[dev.msh.team/protos/kimi-go/kimi/portal/v1.GetAPIKeyRequest,dev.msh.team/protos/kimi-go/kimi/portal/v1.GetAPIKeyResponse]
+*func(struct { pragma.NoUnkeyedLiterals; MessageA protoreflect.Message; MessageB protoreflect.Message }) struct { pragma.NoUnkeyedLiterals; Equal bool }
+*connect.ClientStreamForClient[dev.msh.team/protos/kimi-go/kimi/portal/v1.GetAPIKeyRequest,dev.msh.team/protos/kimi-go/kimi/portal/v1.GetAPIKeyResponse]
+protobuf:"bytes,7,rep,name=metadata,p

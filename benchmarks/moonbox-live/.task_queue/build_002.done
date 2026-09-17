@@ -1,0 +1,1 @@
+{"id": "build_002", "status": "ok", "stdout": "/bin/sh: 1: /root/.bun/bin/bun: not found\n", "stderr": "", "returncode": 0}

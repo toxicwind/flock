@@ -1,0 +1,427 @@
+=== OBTUSE RECON 2026-08-22T18:42:30+00:00 ===
+=== 1. NEW KERNEL CONNECTION FILES ===
+-rw------- 1 kimi kimi 270 Aug 22 16:36 /tmp/tmpa99scuud.json
+--- /tmp/tmpa99scuud.json ---
+{
+    "shell_port": 48803,
+    "iopub_port": 33127,
+    "stdin_port": 37213,
+    "control_port": 41813,
+    "hb_port": 54435,
+    "ip": "127.0.0.1",
+    "key": "db5ab4de-213f1e431f5c084260d5d909",
+    "transport": "tcp",
+    "signature_scheme": "hmac-sha256",
+    "kernel_name": "python3"
+}
+
+=== 2. PROBE NEW INTERNAL IPs ===
+172.24.128.40:25000 -> CLOSED
+172.24.128.40:25001 -> CLOSED
+172.24.128.40:27000 -> CLOSED
+172.24.128.40:27017 -> CLOSED
+172.24.128.40:50051 -> CLOSED
+172.24.128.40:8080 -> CLOSED
+172.24.128.40:8443 -> CLOSED
+172.24.128.40:9090 -> CLOSED
+172.24.128.40:3000 -> CLOSED
+172.24.128.40:8000 -> CLOSED
+172.24.128.40:9000 -> CLOSED
+172.24.128.40:443 -> CLOSED
+172.24.128.40:80 -> CLOSED
+172.24.128.17:25000 -> CLOSED
+172.24.128.17:25001 -> CLOSED
+172.24.128.17:27000 -> CLOSED
+172.24.128.17:27017 -> CLOSED
+172.24.128.17:50051 -> CLOSED
+172.24.128.17:8080 -> CLOSED
+172.24.128.17:8443 -> CLOSED
+172.24.128.17:9090 -> CLOSED
+172.24.128.17:3000 -> CLOSED
+172.24.128.17:8000 -> CLOSED
+172.24.128.17:9000 -> CLOSED
+172.24.128.17:443 -> CLOSED
+172.24.128.17:80 -> CLOSED
+
+=== 3. MONGODB PROBE ===
+PORT 27000: timed out
+PORT 27017: timed out
+PORT 25000: timed out
+PORT 25001: timed out
+
+=== 4. USER IDs IN METRICS (DEEPER) ===
+
+=== 5. SWAGGER / OPENAPI / FASTAPI DIRECT PROBE ===
+http://172.24.128.40:25000/openapi.json -> TIMEOUT
+
+http://172.24.128.40:25000/docs -> TIMEOUT
+
+http://172.24.128.40:25000/redoc -> TIMEOUT
+
+http://172.24.128.40:25000/swagger.json -> TIMEOUT
+
+http://172.24.128.40:25000/swagger-ui.html -> TIMEOUT
+
+http://172.24.128.40:25000/api/docs -> TIMEOUT
+
+http://172.24.128.40:25000/v1/docs -> TIMEOUT
+
+http://172.24.128.40:25000/health -> TIMEOUT
+
+http://172.24.128.40:25000/metrics -> TIMEOUT
+
+http://172.24.128.40:25000/ready -> TIMEOUT
+
+http://172.24.128.40:25000/live -> TIMEOUT
+
+http://172.24.128.40:25001/openapi.json -> TIMEOUT
+
+http://172.24.128.40:25001/docs -> TIMEOUT
+
+http://172.24.128.40:25001/redoc -> TIMEOUT
+
+http://172.24.128.40:25001/swagger.json -> TIMEOUT
+
+http://172.24.128.40:25001/swagger-ui.html -> TIMEOUT
+
+http://172.24.128.40:25001/api/docs -> TIMEOUT
+
+http://172.24.128.40:25001/v1/docs -> TIMEOUT
+
+http://172.24.128.40:25001/health -> TIMEOUT
+
+http://172.24.128.40:25001/metrics -> TIMEOUT
+
+http://172.24.128.40:25001/ready -> TIMEOUT
+
+http://172.24.128.40:25001/live -> TIMEOUT
+
+http://172.24.128.40:27000/openapi.json -> TIMEOUT
+
+http://172.24.128.40:27000/docs -> TIMEOUT
+
+http://172.24.128.40:27000/redoc -> TIMEOUT
+
+http://172.24.128.40:27000/swagger.json -> TIMEOUT
+
+http://172.24.128.40:27000/swagger-ui.html -> TIMEOUT
+
+http://172.24.128.40:27000/api/docs -> TIMEOUT
+
+http://172.24.128.40:27000/v1/docs -> TIMEOUT
+
+http://172.24.128.40:27000/health -> TIMEOUT
+
+http://172.24.128.40:27000/metrics -> TIMEOUT
+
+http://172.24.128.40:27000/ready -> TIMEOUT
+
+http://172.24.128.40:27000/live -> TIMEOUT
+
+http://172.24.128.17:80/openapi.json -> TIMEOUT
+
+http://172.24.128.17:80/docs -> TIMEOUT
+
+http://172.24.128.17:80/redoc -> TIMEOUT
+
+http://172.24.128.17:80/swagger.json -> TIMEOUT
+
+http://172.24.128.17:80/swagger-ui.html -> TIMEOUT
+
+http://172.24.128.17:80/api/docs -> TIMEOUT
+
+http://172.24.128.17:80/v1/docs -> TIMEOUT
+
+http://172.24.128.17:80/health -> TIMEOUT
+
+http://172.24.128.17:80/metrics -> TIMEOUT
+
+http://172.24.128.17:80/ready -> TIMEOUT
+
+http://172.24.128.17:80/live -> TIMEOUT
+
+http://172.24.128.17:443/openapi.json -> TIMEOUT
+
+http://172.24.128.17:443/docs -> TIMEOUT
+
+http://172.24.128.17:443/redoc -> TIMEOUT
+
+http://172.24.128.17:443/swagger.json -> TIMEOUT
+
+http://172.24.128.17:443/swagger-ui.html -> TIMEOUT
+
+http://172.24.128.17:443/api/docs -> TIMEOUT
+
+http://172.24.128.17:443/v1/docs -> TIMEOUT
+
+http://172.24.128.17:443/health -> TIMEOUT
+
+http://172.24.128.17:443/metrics -> TIMEOUT
+
+http://172.24.128.17:443/ready -> TIMEOUT
+
+http://172.24.128.17:443/live -> TIMEOUT
+
+http://172.24.128.5:80/openapi.json -> 404
+http://172.24.128.5:80/docs -> 404
+http://172.24.128.5:80/redoc -> 404
+http://172.24.128.5:80/swagger.json -> 404
+http://172.24.128.5:80/swagger-ui.html -> 404
+http://172.24.128.5:80/api/docs -> 404
+http://172.24.128.5:80/v1/docs -> 404
+http://172.24.128.5:80/health -> 404
+http://172.24.128.5:80/metrics -> 404
+http://172.24.128.5:80/ready -> 404
+http://172.24.128.5:80/live -> 404
+http://172.24.128.5:443/openapi.json -> 400
+http://172.24.128.5:443/docs -> 400
+http://172.24.128.5:443/redoc -> 400
+http://172.24.128.5:443/swagger.json -> 400
+http://172.24.128.5:443/swagger-ui.html -> 400
+http://172.24.128.5:443/api/docs -> 400
+http://172.24.128.5:443/v1/docs -> 400
+http://172.24.128.5:443/health -> 400
+http://172.24.128.5:443/metrics -> 400
+http://172.24.128.5:443/ready -> 400
+http://172.24.128.5:443/live -> 400
+
+=== 6. CDP / BROWSER GUARD STATE ===
+{
+   "Browser": "Chrome/151.0.7922.71",
+   "Protocol-Version": "1.3",
+   "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+   "V8-Version": "15.1.206.10",
+   "WebKit-Version": "537.36 (@ef35003457e93c278f911a334b06e4a5f8967e06)",
+   "webSocketDebuggerUrl": "ws://127.0.0.1:9222/devtools/browser/05ddcfb9-d669-43bf-badd-0d4885f54946"
+}
+{"Browser":"Chrome/151.0.7922.71","Protocol-Version":"1.3","User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36","V8-Version":"15.1.206.10","WebKit-Version":"537.36 (@ef35003457e93c278f911a334b06e4a5f8967e06)","webSocketDebuggerUrl":"ws://127.0.0.1:9223/devtools/browser/05ddcfb9-d669-43bf-badd-0d4885f54946"}[ {
+   "description": "",
+   "devtoolsFrontendUrl": "https://chrome-devtools-frontend.appspot.com/serve_rev/@ef35003457e93c278f911a334b06e4a5f8967e06/inspector.html?ws=127.0.0.1:9222/devtools/page/4B7BF89BF23F5C7A1342B256C5C609F8",
+   "faviconUrl": "https://www.kimi.ai/favicon-light.ico",
+   "id": "4B7BF89BF23F5C7A1342B256C5C609F8",
+   "title": "Kimi AI with K3 | Built for Agentic Coding &amp; Knowledge Work",
+   "type": "page",
+   "url": "https://www.kimi.ai/chat/1a02a922-fbd2-80c8-8000-0951b138653e?chat_enter_method=home",
+   "webSocketDebuggerUrl": "ws://127.0.0.1:9222/devtools/page/4B7BF89BF23F5C7A1342B256C5C609F8"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "https://chrome-devtools-frontend.appspot.com/serve_rev/@ef35003457e93c278f911a334b06e4a5f8967e06/inspector.html?ws=127.0.0.1:9222/devtools/page/9F7EB5F4F8F2F86951E3FAE3639A7D70",
+   "faviconUrl": "https://www.kimi.com/favicon-light.ico",
+   "id": "9F7EB5F4F8F2F86951E3FAE3639A7D70",
+   "title": "Kimi AI with K3 | Built for Agentic Coding &amp; Knowledge Work",
+   "type": "page",
+   "url": "https://www.kimi.com/",
+   "webSocketDebuggerUrl": "ws://127.0.0.1:9222/devtools/page/9F7EB5F4F8F2F86951E3FAE3639A7D70"
+}, {
+   "description": "",
+
+=== 7. PROCESS ENV DEEP DIVE ===
+--- PID 17 ---
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+CUBE_CONTAINER_ID_SANDBOX=320feec878d145a09c0a962d1a5699f9
+PYTHONUSERBASE=/home/kimi/.local
+XAUTHORITY=/root/.Xauthority
+--- PID 69 ---
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+CUBE_CONTAINER_ID_SANDBOX=320feec878d145a09c0a962d1a5699f9
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+--- PID 72 ---
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+PWD=/tmp/kimi-project-kernel
+XAUTHORITY=/home/kimi/.Xauthority
+HOME=/home/kimi
+WORKDIR=/tmp/kimi-project-kernel
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+--- PID 78 ---
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+CUBE_CONTAINER_ID_SANDBOX=320feec878d145a09c0a962d1a5699f9
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+--- PID 79 ---
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+CUBE_CONTAINER_ID_SANDBOX=320feec878d145a09c0a962d1a5699f9
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+--- PID 81 ---
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/home/kimi/.Xauthority
+HOME=/home/kimi
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+CUBE_CONTAINER_ID_SANDBOX=320feec878d145a09c0a962d1a5699f9
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+--- PID 155 ---
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+CUBE_CONTAINER_ID_SANDBOX=320feec878d145a09c0a962d1a5699f9
+PYTHONUSERBASE=/home/kimi/.local
+XAUTHORITY=/root/.Xauthority
+--- PID 177 ---
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+CUBE_CONTAINER_ID_SANDBOX=320feec878d145a09c0a962d1a5699f9
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+--- PID 180 ---
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+PWD=/tmp/kimi-project-kernel
+XAUTHORITY=/home/kimi/.Xauthority
+HOME=/home/kimi
+WORKDIR=/tmp/kimi-project-kernel
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+--- PID 340 ---
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+HOME=/home/kimi
+GOOGLE_DEFAULT_CLIENT_ID=811574891467.apps.googleusercontent.com
+GOOGLE_DEFAULT_CLIENT_SECRET=kdloedMFGdGla2P1zacGjAQh
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+--- PID 356 ---
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+HOME=/home/kimi
+GOOGLE_DEFAULT_CLIENT_ID=811574891467.apps.googleusercontent.com
+GOOGLE_DEFAULT_CLIENT_SECRET=kdloedMFGdGla2P1zacGjAQh
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+--- PID 359 ---
+SCF_POD_ID=320feec878d145a09c0a962d1a5699f9
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+PIP_CACHE_DIR=/home/kimi/.cache/pip
+HOME=/home/kimi
+GOOGLE_DEFAULT_CLIENT_ID=811574891467.apps.googleusercontent.com
+GOOGLE_DEFAULT_CLIENT_SECRET=kdloedMFGdGla2P1zacGjAQh
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+
+=== 8. METRICS FILE SIZE & HASH ===
+-rw-r--r-- 1 root root 3952298 Aug 21 18:44 /mnt/agents/output/metrics_full.txt
+920a21c45cd32284e8acd36c3b5d60c0  /mnt/agents/output/metrics_full.txt
+15637 /mnt/agents/output/metrics_full.txt
+
+=== 9. PORTAL BIND TOKEN DEEP DIVE ===
+kimiapi_plugin_uninstalls_total{plugin="chatcut-kimi-work"} 1
+kimiapi_plugin_uninstalls_total{plugin="crunchbase"} 2
+# HELP kimiapi_portal_bind_token_auth_total Total portal bind-token authentication results.
+# TYPE kimiapi_portal_bind_token_auth_total counter
+kimiapi_portal_bind_token_auth_total{issuer="chatty",result="success"} 140
+# HELP kimiapi_portal_grant_resolution_total Total portal grant resolution results.
+# TYPE kimiapi_portal_grant_resolution_total counter
+# HELP regionroute_forward_total Requests forwarded to the peer region, by service and decision signal.
+# TYPE regionroute_forward_total counter
+regionroute_forward_total{service="kimiapi",signal="token_claim"} 15
+# HELP rpc_client_duration_milliseconds Measures the duration of inbound RPC.
+# TYPE rpc_client_duration_milliseconds histogram
+# TYPE kimiapi_issuance_credential_requests_total counter
+kimiapi_issuance_credential_requests_total{result="success",service="asr"} 32
+# HELP kimiapi_issuance_sts_issuance_duration_seconds Duration of Tencent STS credential issuance requests by target service and result
+# TYPE kimiapi_issuance_sts_issuance_duration_seconds histogram
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="0.005"} 0
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="0.01"} 0
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="0.025"} 0
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="0.05"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="0.1"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="0.25"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="0.5"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="1"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="2.5"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="5"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="10"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_bucket{result="success",service="asr",le="+Inf"} 10
+kimiapi_issuance_sts_issuance_duration_seconds_sum{result="success",service="asr"} 0.412500686
+kimiapi_issuance_sts_issuance_duration_seconds_count{result="success",service="asr"} 10
+# HELP kimiapi_issuance_sts_issuances_total Total number of real Tencent STS credential issuances (cache misses) by target service and result
+# TYPE kimiapi_issuance_sts_issuances_total counter
+kimiapi_issuance_sts_issuances_total{result="success",service="asr"} 10
+# HELP kimiapi_k3_chat_context_length_requests_total K3 chat requests by the context length explicitly selected by the client
+# TYPE kimiapi_k3_chat_context_length_requests_total counter
+
+=== 10. HAR / NETWORK TRACES ===
+/mnt/agents/temp/Share(4).data.txt
+/mnt/agents/temp/mobidevtools.har(7).txt
+/mnt/agents/temp/mobidevtools.har(8).txt
+/mnt/agents/temp/mobidevtools.har(9).txt
+/mnt/agents/temp/user_pasted_clipboard_long_content_as_file_Use unshare to get.txt
+/mnt/agents/temp/user_pasted_clipboard_long_content_as_file_unshare --user --map.txt
+/mnt/agents/temp/www.kimi.com_Archive [26-07-28 10-32-39].har.txt
+/mnt/agents/temp/www.kimi.com_Archive [26-07-31 01-45-30].har.txt
+/mnt/agents/temp/www.kimi.com_Archive [26-08-12 18-41-33].har.txt
+/mnt/agents/temp/www.kimi.com_Archive [26-08-12 18-48-34].har.txt
+/mnt/agents/temp/www.kimi.com_Archive [26-08-14 10-50-25].har.txt
+/mnt/agents/output/.agents/osint_harvester.log
+/mnt/agents/output/.agents/osint_harvester.pid
+/mnt/agents/output/.agents/osint_harvester.py
+/mnt/agents/output/.backup/vllm-kernel/.buildkite/hardware_tests
+/mnt/agents/output/.backup/vllm-kernel/.buildkite/lm-eval-harness
+/mnt/agents/output/.backup/vllm-kernel/.buildkite/lm-eval-harness/run-lm-eval-chartqa-vllm-vlm-baseline.sh
+/mnt/agents/output/.backup/vllm-kernel/.buildkite/scripts/hardware_ci
+/mnt/agents/output/.backup/vllm-kernel/benchmarks/multi_turn/convert_sharegpt_to_openai.py
+/mnt/agents/output/.backup/vllm-kernel/docs/assets/deployment/hf-inference-endpoints-select-hardware.png
+/mnt/agents/output/.backup/vllm-kernel/docs/models/hardware_supported_models
+/mnt/agents/output/.backup/vllm-kernel/examples/deployment/chart-helm
+/mnt/agents/output/.backup/vllm-kernel/examples/deployment/chart-helm/Chart.yaml
+/mnt/agents/output/.backup/vllm-kernel/examples/disaggregated/lmcache/kv_cache_sharing_lmcache_v1.py
+/mnt/agents/output/.backup/vllm-kernel/examples/features/sharded_state
+/mnt/agents/output/.backup/vllm-kernel/examples/features/sharded_state/load_sharded_state_offline.py
+/mnt/agents/output/.backup/vllm-kernel/examples/features/sharded_state/save_sharded_state_offline.py
+/mnt/agents/output/.backup/vllm-kernel/rust/src/bench/src/datasets/sharegpt.rs
+/mnt/agents/output/.backup/vllm-kernel/rust/src/chat/src/output/harmony
+/mnt/agents/output/.backup/vllm-kernel/rust/src/chat/src/renderer/harmony
+/mnt/agents/output/.backup/vllm-kernel/tests/distributed/test_ca_buffer_sharing.py
+
+=== DONE ===

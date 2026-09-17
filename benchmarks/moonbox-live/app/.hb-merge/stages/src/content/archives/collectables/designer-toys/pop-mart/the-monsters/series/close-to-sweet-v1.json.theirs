@@ -1,0 +1,11 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "close-to-sweet-v1",
+  "title": "Close to Sweet (v1)",
+  "character_slugs": [
+    "mokoko"
+  ],
+  "notes": "Seeded from initial article; needs confirmation."
+}

@@ -1,0 +1,26 @@
+{
+  "https://kimi.kimi.team/apiv2/metrics": {
+    "status": 200,
+    "content_type": "text/plain; version=0.0.4; charset=utf-8; escaping=underscores",
+    "body": "# HELP db_client_connections_create_time_milliseconds The time it took to create a new connection.\n# TYPE db_client_connections_create_time_milliseconds histogram\ndb_client_connections_create_time_mil"
+  },
+  "https://agent-gw.kimi.com/coding/": {
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "body": "{\"message\":\"Welcome to the Kimi For Coding API!\"}"
+  },
+  "https://agent-gw.kimi.com/coding/healthz": {
+    "status": 204,
+    "content_type": null,
+    "body": ""
+  },
+  "https://agent-gw-dev.dev.kimi.team/coding/": {
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "body": "{\"message\":\"Welcome to the Kimi For Coding API!\"}"
+  },
+  "https://kimi-api-sandbox.msh.team/apiv2/healthz": {
+    "status": 404,
+    "error": "Not Found"
+  }
+}

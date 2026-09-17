@@ -1,0 +1,1825 @@
+[
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription",
+    "body": {
+      "subscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "balances": [
+        {
+          "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+          "feature": "FEATURE_OMNI",
+          "type": "SUBSCRIPTION",
+          "unit": "UNIT_CREDIT",
+          "amountUsedRatio": 1,
+          "expireTime": "2026-08-29T00:00:00Z",
+          "domain": "DOMAIN_NEXUS"
+        }
+      ],
+      "subscribed": true,
+      "purchaseSubscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "capabilities": [
+        {
+          "feature": "FEATURE_SAMPLE_TO_SKILL",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_PROJECT",
+          "constraint": {
+            "projectNum": 20,
+            "userCapacity": "21474836480"
+          }
+        },
+        {
+          "feature": "FEATURE_WIDGET_TASK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_CODING",
+          "constraint": {
+            "parallelism": 20
+          }
+        },
+        {
+          "feature": "FEATURE_SWARM",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES_NBP",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WORK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_DOCUMENTS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_AUTOMATION",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_DEEP_RESEARCH",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CHAT",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_CLAW",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WEBSITES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DREAM",
+          "constraint": {}
+        },
+        {
+          "feature": "FEATURE_AGENT",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SHEETS",
+          "constraint": {
+            "parallelism": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/ListSubscriptions",
+    "body": {
+      "subscriptions": [
+        {
+          "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+          "goods": {
+            "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+            "title": "Allegretto",
+            "durationDays": 30,
+            "useRegion": "REGION_OVERSEA",
+            "createTime": "2025-09-03T09:26:48.609Z",
+            "updateTime": "2025-09-03T09:26:48.609Z",
+            "membershipLevel": "LEVEL_INTERMEDIATE",
+            "amounts": [
+              {
+                "currency": "USD",
+                "priceInCents": "3900"
+              }
+            ],
+            "billingCycle": {
+              "duration": 1,
+              "timeUnit": "TIME_UNIT_MONTH"
+            },
+            "type": "GOODS_TYPE_SUBSCRIPTION",
+            "domain": "DOMAIN_NEXUS"
+          },
+          "subscriptionTime": "2026-07-28T01:34:31.255Z",
+          "currentStartTime": "2026-07-28T01:34:31.255Z",
+          "currentEndTime": "2026-08-29T00:00:00Z",
+          "nextBillingTime": "2026-08-28T01:34:31.255Z",
+          "status": "SUBSCRIPTION_STATUS_ACTIVE",
+          "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+          "type": "TYPE_PURCHASE",
+          "active": true
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats",
+    "body": {
+      "ratelimitCode5h": {
+        "enabled": true,
+        "resetTime": "2026-08-15T09:34:30.869619942Z"
+      },
+      "ratelimitCode7d": {
+        "enabled": true,
+        "resetTime": "2026-08-18T01:34:30.869619942Z"
+      },
+      "subscriptionBalance": {
+        "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+        "feature": "FEATURE_OMNI",
+        "type": "SUBSCRIPTION",
+        "unit": "UNIT_CREDIT",
+        "amountUsedRatio": 1,
+        "kimiCodeUsedRatio": 0.1364,
+        "expireTime": "2026-08-29T00:00:00Z",
+        "domain": "DOMAIN_NEXUS"
+      },
+      "notice": {
+        "actions": [
+          {
+            "paywall": {
+              "needUpgrade": true,
+              "upgradeTo": "LEVEL_ADVANCED",
+              "source": "membership_quota_notice"
+            }
+          }
+        ],
+        "tip": "Monthly quota used up",
+        "content": "Your monthly quota is used up. Refreshes on {time}.",
+        "resetTime": "2026-08-29T00:00:00Z"
+      },
+      "overdrawn": true
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.GiftcardService/ListGiftcardCodes",
+    "body": {}
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.GiftcardService/ListGiftcardClaims",
+    "body": {}
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats",
+    "body": {
+      "ratelimitCode5h": {
+        "enabled": true,
+        "resetTime": "2026-08-15T09:34:30.379757189Z"
+      },
+      "ratelimitCode7d": {
+        "enabled": true,
+        "resetTime": "2026-08-18T01:34:30.379757189Z"
+      },
+      "subscriptionBalance": {
+        "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+        "feature": "FEATURE_OMNI",
+        "type": "SUBSCRIPTION",
+        "unit": "UNIT_CREDIT",
+        "amountUsedRatio": 1,
+        "kimiCodeUsedRatio": 0.1364,
+        "expireTime": "2026-08-29T00:00:00Z",
+        "domain": "DOMAIN_NEXUS"
+      },
+      "notice": {
+        "actions": [
+          {
+            "paywall": {
+              "needUpgrade": true,
+              "upgradeTo": "LEVEL_ADVANCED",
+              "source": "membership_quota_notice"
+            }
+          }
+        ],
+        "tip": "Monthly quota used up",
+        "content": "Your monthly quota is used up. Refreshes on {time}.",
+        "resetTime": "2026-08-29T00:00:00Z"
+      },
+      "overdrawn": true
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription",
+    "body": {
+      "subscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "balances": [
+        {
+          "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+          "feature": "FEATURE_OMNI",
+          "type": "SUBSCRIPTION",
+          "unit": "UNIT_CREDIT",
+          "amountUsedRatio": 1,
+          "expireTime": "2026-08-29T00:00:00Z",
+          "domain": "DOMAIN_NEXUS"
+        }
+      ],
+      "subscribed": true,
+      "purchaseSubscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "capabilities": [
+        {
+          "feature": "FEATURE_AGENT",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CLAW",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SHEETS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES_NBP",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WIDGET_TASK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_PROJECT",
+          "constraint": {
+            "projectNum": 20,
+            "userCapacity": "21474836480"
+          }
+        },
+        {
+          "feature": "FEATURE_SWARM",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WEBSITES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WORK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_CHAT",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_DOCUMENTS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DREAM",
+          "constraint": {}
+        },
+        {
+          "feature": "FEATURE_DEEP_RESEARCH",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CODING",
+          "constraint": {
+            "parallelism": 20
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SAMPLE_TO_SKILL",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_AUTOMATION",
+          "constraint": {
+            "cronNum": 15
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats",
+    "body": {
+      "ratelimitCode5h": {
+        "enabled": true,
+        "resetTime": "2026-08-15T09:34:30.675386244Z"
+      },
+      "ratelimitCode7d": {
+        "enabled": true,
+        "resetTime": "2026-08-18T01:34:30.675386244Z"
+      },
+      "subscriptionBalance": {
+        "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+        "feature": "FEATURE_OMNI",
+        "type": "SUBSCRIPTION",
+        "unit": "UNIT_CREDIT",
+        "amountUsedRatio": 1,
+        "kimiCodeUsedRatio": 0.1364,
+        "expireTime": "2026-08-29T00:00:00Z",
+        "domain": "DOMAIN_NEXUS"
+      },
+      "notice": {
+        "actions": [
+          {
+            "paywall": {
+              "needUpgrade": true,
+              "upgradeTo": "LEVEL_ADVANCED",
+              "source": "membership_quota_notice"
+            }
+          }
+        ],
+        "tip": "Monthly quota used up",
+        "content": "Your monthly quota is used up. Refreshes on {time}.",
+        "resetTime": "2026-08-29T00:00:00Z"
+      },
+      "overdrawn": true
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription",
+    "body": {
+      "subscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "balances": [
+        {
+          "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+          "feature": "FEATURE_OMNI",
+          "type": "SUBSCRIPTION",
+          "unit": "UNIT_CREDIT",
+          "amountUsedRatio": 1,
+          "expireTime": "2026-08-29T00:00:00Z",
+          "domain": "DOMAIN_NEXUS"
+        }
+      ],
+      "subscribed": true,
+      "purchaseSubscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "capabilities": [
+        {
+          "feature": "FEATURE_CODING",
+          "constraint": {
+            "parallelism": 20
+          }
+        },
+        {
+          "feature": "FEATURE_SWARM",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DOCUMENTS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SAMPLE_TO_SKILL",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_AUTOMATION",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_WIDGET_TASK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_AGENT",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CLAW",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SHEETS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WORK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_DEEP_RESEARCH",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CHAT",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_WEBSITES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES_NBP",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DREAM",
+          "constraint": {}
+        },
+        {
+          "feature": "FEATURE_PROJECT",
+          "constraint": {
+            "projectNum": 20,
+            "userCapacity": "21474836480"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats",
+    "body": {
+      "ratelimitCode5h": {
+        "enabled": true,
+        "resetTime": "2026-08-15T09:34:30.986659383Z"
+      },
+      "ratelimitCode7d": {
+        "enabled": true,
+        "resetTime": "2026-08-18T01:34:30.986659383Z"
+      },
+      "subscriptionBalance": {
+        "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+        "feature": "FEATURE_OMNI",
+        "type": "SUBSCRIPTION",
+        "unit": "UNIT_CREDIT",
+        "amountUsedRatio": 1,
+        "kimiCodeUsedRatio": 0.1364,
+        "expireTime": "2026-08-29T00:00:00Z",
+        "domain": "DOMAIN_NEXUS"
+      },
+      "notice": {
+        "actions": [
+          {
+            "paywall": {
+              "needUpgrade": true,
+              "upgradeTo": "LEVEL_ADVANCED",
+              "source": "membership_quota_notice"
+            }
+          }
+        ],
+        "tip": "Monthly quota used up",
+        "content": "Your monthly quota is used up. Refreshes on {time}.",
+        "resetTime": "2026-08-29T00:00:00Z"
+      },
+      "overdrawn": true
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription",
+    "body": {
+      "subscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "balances": [
+        {
+          "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+          "feature": "FEATURE_OMNI",
+          "type": "SUBSCRIPTION",
+          "unit": "UNIT_CREDIT",
+          "amountUsedRatio": 1,
+          "expireTime": "2026-08-29T00:00:00Z",
+          "domain": "DOMAIN_NEXUS"
+        }
+      ],
+      "subscribed": true,
+      "purchaseSubscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "capabilities": [
+        {
+          "feature": "FEATURE_CODING",
+          "constraint": {
+            "parallelism": 20
+          }
+        },
+        {
+          "feature": "FEATURE_CLAW",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WEBSITES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DOCUMENTS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WORK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_WIDGET_TASK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_DEEP_RESEARCH",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SHEETS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DREAM",
+          "constraint": {}
+        },
+        {
+          "feature": "FEATURE_AGENT",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CHAT",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_SWARM",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES_NBP",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SAMPLE_TO_SKILL",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_AUTOMATION",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_PROJECT",
+          "constraint": {
+            "projectNum": 20,
+            "userCapacity": "21474836480"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats",
+    "body": {
+      "ratelimitCode5h": {
+        "enabled": true,
+        "resetTime": "2026-08-15T09:34:30.455323706Z"
+      },
+      "ratelimitCode7d": {
+        "enabled": true,
+        "resetTime": "2026-08-18T01:34:30.455323706Z"
+      },
+      "subscriptionBalance": {
+        "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+        "feature": "FEATURE_OMNI",
+        "type": "SUBSCRIPTION",
+        "unit": "UNIT_CREDIT",
+        "amountUsedRatio": 1,
+        "kimiCodeUsedRatio": 0.1364,
+        "expireTime": "2026-08-29T00:00:00Z",
+        "domain": "DOMAIN_NEXUS"
+      },
+      "notice": {
+        "actions": [
+          {
+            "paywall": {
+              "needUpgrade": true,
+              "upgradeTo": "LEVEL_ADVANCED",
+              "source": "membership_quota_notice"
+            }
+          }
+        ],
+        "tip": "Monthly quota used up",
+        "content": "Your monthly quota is used up. Refreshes on {time}.",
+        "resetTime": "2026-08-29T00:00:00Z"
+      },
+      "overdrawn": true
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription",
+    "body": {
+      "subscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "balances": [
+        {
+          "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+          "feature": "FEATURE_OMNI",
+          "type": "SUBSCRIPTION",
+          "unit": "UNIT_CREDIT",
+          "amountUsedRatio": 1,
+          "expireTime": "2026-08-29T00:00:00Z",
+          "domain": "DOMAIN_NEXUS"
+        }
+      ],
+      "subscribed": true,
+      "purchaseSubscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "capabilities": [
+        {
+          "feature": "FEATURE_WORK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_DEEP_RESEARCH",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SWARM",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SHEETS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_PROJECT",
+          "constraint": {
+            "projectNum": 20,
+            "userCapacity": "21474836480"
+          }
+        },
+        {
+          "feature": "FEATURE_CHAT",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES_NBP",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_AUTOMATION",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_DREAM",
+          "constraint": {}
+        },
+        {
+          "feature": "FEATURE_AGENT",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CODING",
+          "constraint": {
+            "parallelism": 20
+          }
+        },
+        {
+          "feature": "FEATURE_WEBSITES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DOCUMENTS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SAMPLE_TO_SKILL",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_CLAW",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WIDGET_TASK",
+          "constraint": {
+            "cronNum": 15
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats",
+    "body": {
+      "ratelimitCode5h": {
+        "enabled": true,
+        "resetTime": "2026-08-15T09:34:31.214916644Z"
+      },
+      "ratelimitCode7d": {
+        "enabled": true,
+        "resetTime": "2026-08-18T01:34:31.214916644Z"
+      },
+      "subscriptionBalance": {
+        "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+        "feature": "FEATURE_OMNI",
+        "type": "SUBSCRIPTION",
+        "unit": "UNIT_CREDIT",
+        "amountUsedRatio": 1,
+        "kimiCodeUsedRatio": 0.1364,
+        "expireTime": "2026-08-29T00:00:00Z",
+        "domain": "DOMAIN_NEXUS"
+      },
+      "notice": {
+        "actions": [
+          {
+            "paywall": {
+              "needUpgrade": true,
+              "upgradeTo": "LEVEL_ADVANCED",
+              "source": "membership_quota_notice"
+            }
+          }
+        ],
+        "tip": "Monthly quota used up",
+        "content": "Your monthly quota is used up. Refreshes on {time}.",
+        "resetTime": "2026-08-29T00:00:00Z"
+      },
+      "overdrawn": true
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription",
+    "body": {
+      "subscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "balances": [
+        {
+          "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+          "feature": "FEATURE_OMNI",
+          "type": "SUBSCRIPTION",
+          "unit": "UNIT_CREDIT",
+          "amountUsedRatio": 1,
+          "expireTime": "2026-08-29T00:00:00Z",
+          "domain": "DOMAIN_NEXUS"
+        }
+      ],
+      "subscribed": true,
+      "purchaseSubscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "capabilities": [
+        {
+          "feature": "FEATURE_WIDGET_TASK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_AGENT",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CODING",
+          "constraint": {
+            "parallelism": 20
+          }
+        },
+        {
+          "feature": "FEATURE_CLAW",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DOCUMENTS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SHEETS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES_NBP",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DREAM",
+          "constraint": {}
+        },
+        {
+          "feature": "FEATURE_DEEP_RESEARCH",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CHAT",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_WEBSITES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SAMPLE_TO_SKILL",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_WORK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_SWARM",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_AUTOMATION",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_PROJECT",
+          "constraint": {
+            "projectNum": 20,
+            "userCapacity": "21474836480"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats",
+    "body": {
+      "ratelimitCode5h": {
+        "enabled": true,
+        "resetTime": "2026-08-15T09:34:31.133972242Z"
+      },
+      "ratelimitCode7d": {
+        "enabled": true,
+        "resetTime": "2026-08-18T01:34:31.133972242Z"
+      },
+      "subscriptionBalance": {
+        "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+        "feature": "FEATURE_OMNI",
+        "type": "SUBSCRIPTION",
+        "unit": "UNIT_CREDIT",
+        "amountUsedRatio": 1,
+        "kimiCodeUsedRatio": 0.1364,
+        "expireTime": "2026-08-29T00:00:00Z",
+        "domain": "DOMAIN_NEXUS"
+      },
+      "notice": {
+        "actions": [
+          {
+            "paywall": {
+              "needUpgrade": true,
+              "upgradeTo": "LEVEL_ADVANCED",
+              "source": "membership_quota_notice"
+            }
+          }
+        ],
+        "tip": "Monthly quota used up",
+        "content": "Your monthly quota is used up. Refreshes on {time}.",
+        "resetTime": "2026-08-29T00:00:00Z"
+      },
+      "overdrawn": true
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription",
+    "body": {
+      "subscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "balances": [
+        {
+          "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+          "feature": "FEATURE_OMNI",
+          "type": "SUBSCRIPTION",
+          "unit": "UNIT_CREDIT",
+          "amountUsedRatio": 1,
+          "expireTime": "2026-08-29T00:00:00Z",
+          "domain": "DOMAIN_NEXUS"
+        }
+      ],
+      "subscribed": true,
+      "purchaseSubscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "capabilities": [
+        {
+          "feature": "FEATURE_CODING",
+          "constraint": {
+            "parallelism": 20
+          }
+        },
+        {
+          "feature": "FEATURE_DOCUMENTS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SHEETS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_AGENT",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CHAT",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_SAMPLE_TO_SKILL",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_WORK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_DREAM",
+          "constraint": {}
+        },
+        {
+          "feature": "FEATURE_PROJECT",
+          "constraint": {
+            "projectNum": 20,
+            "userCapacity": "21474836480"
+          }
+        },
+        {
+          "feature": "FEATURE_CLAW",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WEBSITES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WIDGET_TASK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_AUTOMATION",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_SWARM",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES_NBP",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DEEP_RESEARCH",
+          "constraint": {
+            "parallelism": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats",
+    "body": {
+      "ratelimitCode5h": {
+        "enabled": true,
+        "resetTime": "2026-08-15T09:34:30.394285586Z"
+      },
+      "ratelimitCode7d": {
+        "enabled": true,
+        "resetTime": "2026-08-18T01:34:30.394285586Z"
+      },
+      "subscriptionBalance": {
+        "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+        "feature": "FEATURE_OMNI",
+        "type": "SUBSCRIPTION",
+        "unit": "UNIT_CREDIT",
+        "amountUsedRatio": 1,
+        "kimiCodeUsedRatio": 0.1364,
+        "expireTime": "2026-08-29T00:00:00Z",
+        "domain": "DOMAIN_NEXUS"
+      },
+      "notice": {
+        "actions": [
+          {
+            "paywall": {
+              "needUpgrade": true,
+              "upgradeTo": "LEVEL_ADVANCED",
+              "source": "membership_quota_notice"
+            }
+          }
+        ],
+        "tip": "Monthly quota used up",
+        "content": "Your monthly quota is used up. Refreshes on {time}.",
+        "resetTime": "2026-08-29T00:00:00Z"
+      },
+      "overdrawn": true
+    }
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription",
+    "body": {
+      "subscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "balances": [
+        {
+          "id": "19fa65c1-51c2-8379-8000-0000fc91957e",
+          "feature": "FEATURE_OMNI",
+          "type": "SUBSCRIPTION",
+          "unit": "UNIT_CREDIT",
+          "amountUsedRatio": 1,
+          "expireTime": "2026-08-29T00:00:00Z",
+          "domain": "DOMAIN_NEXUS"
+        }
+      ],
+      "subscribed": true,
+      "purchaseSubscription": {
+        "subscriptionId": "19fa65c0-fea2-88b8-8000-000044d4f72a",
+        "goods": {
+          "id": "b2c3d4e5-f6a7-8901-bcde-f23456789014",
+          "title": "Allegretto",
+          "durationDays": 30,
+          "useRegion": "REGION_OVERSEA",
+          "createTime": "2025-09-03T09:26:48.609Z",
+          "updateTime": "2025-09-03T09:26:48.609Z",
+          "membershipLevel": "LEVEL_INTERMEDIATE",
+          "amounts": [
+            {
+              "currency": "USD",
+              "priceInCents": "3900"
+            }
+          ],
+          "billingCycle": {
+            "duration": 1,
+            "timeUnit": "TIME_UNIT_MONTH"
+          },
+          "type": "GOODS_TYPE_SUBSCRIPTION",
+          "domain": "DOMAIN_NEXUS"
+        },
+        "subscriptionTime": "2026-07-28T01:34:31.255Z",
+        "currentStartTime": "2026-07-28T01:34:31.255Z",
+        "currentEndTime": "2026-08-29T00:00:00Z",
+        "nextBillingTime": "2026-08-28T01:34:31.255Z",
+        "status": "SUBSCRIPTION_STATUS_ACTIVE",
+        "paymentChannel": "PAYMENT_CHANNEL_GOOGLE_PLAY",
+        "type": "TYPE_PURCHASE",
+        "active": true
+      },
+      "capabilities": [
+        {
+          "feature": "FEATURE_DOCUMENTS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DREAM",
+          "constraint": {}
+        },
+        {
+          "feature": "FEATURE_PROJECT",
+          "constraint": {
+            "projectNum": 20,
+            "userCapacity": "21474836480"
+          }
+        },
+        {
+          "feature": "FEATURE_SHEETS",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_DEEP_RESEARCH",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CLAW",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_AUTOMATION",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_WEBSITES",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_WIDGET_TASK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_SLIDES_NBP",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_SAMPLE_TO_SKILL",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_WORK",
+          "constraint": {
+            "cronNum": 15
+          }
+        },
+        {
+          "feature": "FEATURE_AGENT",
+          "constraint": {
+            "parallelism": 2
+          }
+        },
+        {
+          "feature": "FEATURE_CODING",
+          "constraint": {
+            "parallelism": 20
+          }
+        },
+        {
+          "feature": "FEATURE_CHAT",
+          "constraint": {
+            "parallelism": 3
+          }
+        },
+        {
+          "feature": "FEATURE_SWARM",
+          "constraint": {
+            "parallelism": 2
+          }
+        }
+      ]
+    }
+  }
+]

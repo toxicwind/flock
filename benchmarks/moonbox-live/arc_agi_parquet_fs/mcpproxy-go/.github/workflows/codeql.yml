@@ -1,0 +1,62 @@
+name: CodeQL Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # Weekly scan — Tuesday 03:17 UTC (off-peak, avoids Monday congestion)
+    - cron: '17 3 * * 2'
+
+permissions:
+  security-events: write
+  packages: read
+  actions: read
+  contents: read
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: go
+            # build-mode: autobuild — CodeQL 2.25.x does not support
+            # build-mode:none for Go; autobuild runs `go build ./...` which
+            # is sufficient because the standard module builds cleanly on
+            # ubuntu-latest (verified by the Build CI job).
+            build-mode: autobuild
+          - language: javascript-typescript
+            # build-mode: none — default for JS/TS; no compilation needed.
+            build-mode: none
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@5595ccaf912efad79be6eef63a5619ff05969be3  # v4.37.6
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      # NOTE: init/autobuild/analyze MUST be pinned to the SAME codeql-action
+      # SHA. Version skew breaks hard at runtime: init writes a config file
+      # that older analyze/autobuild binaries refuse to load ("Loaded a
+      # configuration file for version 'X', but running version 'Y'").
+      # Dependabot bumps them together via the codeql-action group in
+      # .github/dependabot.yml.
+      - name: Autobuild
+        if: matrix.build-mode == 'autobuild'
+        uses: github/codeql-action/autobuild@5595ccaf912efad79be6eef63a5619ff05969be3  # v4.37.6
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@5595ccaf912efad79be6eef63a5619ff05969be3  # v4.37.6
+        with:
+          category: /language:${{ matrix.language }}

@@ -1,0 +1,8 @@
+model name	: AMD EPYC 9K84 96-Core Processor
+siblings	: 3
+cpu cores	: 3
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm rep_good nopl cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c hypervisor lahf_lm abm pti ibpb vmmcall kvm_pvm_guest fsgsbase bmi1 avx2 bmi2 invpcid avx512f avx512dq avx512cd avx512bw avx512vl xsaveopt arat
+model name	: AMD EPYC 9K84 96-Core Processor
+siblings	: 3
+cpu cores	: 3
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm rep_good nopl cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c hypervisor lahf_lm abm pti ibpb vmmcall kvm_pvm_guest fsgsbase bmi1 avx2 bmi2 invpcid avx512f avx512dq avx512cd avx512bw avx512vl xsaveopt arat

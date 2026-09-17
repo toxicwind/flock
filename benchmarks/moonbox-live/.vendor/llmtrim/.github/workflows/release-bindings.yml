@@ -1,0 +1,318 @@
+name: Release bindings
+
+# Publishes the language bindings (built on the llmtrim-core engine) on each version tag,
+# independently of the CLI release (release.yml) so a binding-publish failure never blocks
+# the binary/crate release. Each package bundles the compiled engine — consumers need no
+# Rust toolchain.
+#
+# REQUIRED ONE-TIME SETUP (per channel):
+#   PyPI      — register this repo + workflow `release-bindings.yml` as a Trusted Publisher
+#               at https://pypi.org/manage/project/llmtrim/settings/publishing/ (no secret).
+#   RubyGems  — add this repo + workflow as a Trusted Publisher for the `llmtrim` gem at
+#               https://rubygems.org/gems/llmtrim (OIDC, no secret).
+# Kotlin (Maven Central) and Swift are added in their own jobs (see follow-up); they need
+# Sonatype + GPG secrets and a release asset respectively.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  # ---- Python: build a wheel per platform, then publish all to PyPI via OIDC ----------
+  # The Linux jobs build on ubuntu-22.04 (glibc 2.35) rather than -latest (2.39): the
+  # bundled cdylib links against the build host's glibc, so a newer host yields a
+  # manylinux tag most current distros can't install. 22.04 covers Ubuntu 22.04+/Debian
+  # 12+. For maximum reach (RHEL 9, older), build inside a manylinux_2_28 container — the
+  # proper fix, left as a follow-up. The same glibc-floor reasoning applies to ruby-build
+  # and kotlin-natives below.
+  python-build:
+    name: Python wheel (${{ matrix.target }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-22.04,     target: x86_64-unknown-linux-gnu }
+          - { os: ubuntu-22.04-arm,  target: aarch64-unknown-linux-gnu }
+          - { os: macos-latest,      target: x86_64-apple-darwin }   # cross-compiled (Intel runners are scarce)
+          - { os: macos-latest,      target: aarch64-apple-darwin }
+          - { os: windows-latest,    target: x86_64-pc-windows-msvc }
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash   # the build scripts are bash — force Git Bash on Windows
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+      - run: pip install maturin pytest wheel
+      # Builds the self-contained wheel (cdylib + injected UniFFI glue) for this runner's
+      # platform; --release for the shipped artifact.
+      - name: Build wheel
+        env:
+          LLMTRIM_TARGET: ${{ matrix.target }}
+        run: |
+          rustup target add "$LLMTRIM_TARGET"
+          crates/llmtrim-uniffi/scripts/build-wheel.sh --release
+      # The x86_64 wheel is cross-built on an arm64 runner, so it can't run here — skip its
+      # smoke (the native-arch wheels still get tested).
+      - name: Smoke-test the wheel before publishing
+        if: matrix.target != 'x86_64-apple-darwin'
+        run: |
+          pip install target/wheels/llmtrim-*.whl
+          pytest crates/llmtrim-uniffi/tests/python -q
+      - uses: actions/upload-artifact@v7
+        with:
+          name: wheel-${{ matrix.target }}
+          path: target/wheels/*.whl
+
+  python-publish:
+    name: Publish to PyPI
+    needs: python-build
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write   # OIDC for Trusted Publishing — no stored token
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: wheel-*
+          path: dist
+          merge-multiple: true
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist
+
+  # ---- Ruby: build a platform gem per platform, then push all to RubyGems via OIDC -----
+  ruby-build:
+    name: Ruby gem (${{ matrix.target }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-22.04,     target: x86_64-unknown-linux-gnu }
+          - { os: ubuntu-22.04-arm,  target: aarch64-unknown-linux-gnu }
+          - { os: macos-latest,      target: x86_64-apple-darwin }   # cross-compiled (Intel runners are scarce)
+          - { os: macos-latest,      target: aarch64-apple-darwin }
+          - { os: windows-latest,    target: x86_64-pc-windows-msvc }
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash   # the build scripts are bash — force Git Bash on Windows
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - name: Build gem
+        env:
+          LLMTRIM_VERSION: ${{ github.ref_name }}
+          LLMTRIM_TARGET: ${{ matrix.target }}
+        run: |
+          rustup target add "$LLMTRIM_TARGET"
+          # gem versions use X.Y.Z (no leading v).
+          export LLMTRIM_VERSION="${LLMTRIM_VERSION#v}"
+          crates/llmtrim-uniffi/scripts/build-gem.sh
+      - uses: actions/upload-artifact@v7
+        with:
+          name: gem-${{ matrix.target }}
+          path: crates/llmtrim-uniffi/packaging/ruby/*.gem
+
+  ruby-publish:
+    name: Publish to RubyGems
+    needs: ruby-build
+    runs-on: ubuntu-latest
+    environment: rubygems
+    permissions:
+      id-token: write   # OIDC for RubyGems Trusted Publishing
+    steps:
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: gem-*
+          path: gems
+          merge-multiple: true
+      - uses: rubygems/configure-rubygems-credentials@v2.1.0
+      - run: |
+          set -euo pipefail
+          for g in gems/*.gem; do
+            echo "pushing $g"
+            gem push "$g"
+          done
+
+  # ---- Kotlin: one fat jar bundling every platform's native lib -> Maven Central --------
+  # SETUP: a Sonatype Central Portal account + a GPG signing key, exposed to the publish
+  # job as secrets MAVEN_CENTRAL_USERNAME / _PASSWORD and SIGNING_KEY (armored) / _PASSWORD.
+  kotlin-natives:
+    name: Kotlin native (${{ matrix.jna }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-22.04,    target: x86_64-unknown-linux-gnu,  jna: linux-x86-64 }
+          - { os: ubuntu-22.04-arm, target: aarch64-unknown-linux-gnu, jna: linux-aarch64 }
+          - { os: macos-latest,     target: x86_64-apple-darwin,       jna: darwin-x86-64 }   # cross-compiled
+          - { os: macos-latest,     target: aarch64-apple-darwin,      jna: darwin-aarch64 }
+          - { os: windows-latest,   target: x86_64-pc-windows-msvc,    jna: win32-x86-64 }
+          - { os: windows-11-arm,   target: aarch64-pc-windows-msvc,   jna: win32-aarch64 }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build release cdylib
+        shell: bash
+        run: |
+          rustup target add ${{ matrix.target }}
+          cargo build --release -p llmtrim-uniffi --target ${{ matrix.target }}
+          mkdir out
+          cp target/${{ matrix.target }}/release/{libllmtrim_ffi.so,libllmtrim_ffi.dylib,llmtrim_ffi.dll} out/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v7
+        with:
+          name: native-${{ matrix.jna }}
+          path: out/*
+
+  kotlin-publish:
+    name: Publish to Maven Central
+    needs: kotlin-natives
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-java@v5.6.0
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Generate Kotlin glue (from the unstripped debug build)
+        run: |
+          cargo build -p llmtrim-uniffi
+          rm -rf crates/llmtrim-uniffi/packaging/kotlin/src/main/kotlin
+          cargo run -q --bin uniffi-bindgen -p llmtrim-uniffi -- \
+            generate --library target/debug/libllmtrim_ffi.so --language kotlin \
+            --out-dir crates/llmtrim-uniffi/packaging/kotlin/src/main/kotlin
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: native-*
+          path: natives
+      - name: Lay out every platform's native lib at its JNA resource prefix
+        run: |
+          set -euo pipefail
+          for d in natives/native-*; do
+            jna="${d#natives/native-}"
+            dest="crates/llmtrim-uniffi/packaging/kotlin/src/main/resources/$jna"
+            mkdir -p "$dest"
+            cp "$d"/* "$dest"/
+          done
+          find crates/llmtrim-uniffi/packaging/kotlin/src/main/resources -type f
+      - name: Publish (signed) to Maven Central
+        working-directory: crates/llmtrim-uniffi/packaging/kotlin
+        env:
+          LLMTRIM_VERSION: ${{ github.ref_name }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        run: |
+          export LLMTRIM_VERSION="${LLMTRIM_VERSION#v}"
+          ./gradlew publishToMavenCentral --no-daemon --no-configuration-cache
+
+  # ---- Swift: build the XCFramework, attach it to the release, emit the checksum --------
+  # The tagged in-repo Package.swift can't carry the checksum (it's only known after the zip
+  # is built, post-tag). Distribution is therefore a separate repo, fkiene/llmtrim-swift,
+  # whose Package.swift consumes the remote binaryTarget; the swift-package-bump job below
+  # updates and tags it from this job's checksum output, so consumers get a normal SwiftPM
+  # `from: "X.Y.Z"`.
+  swift-xcframework:
+    name: Swift XCFramework (release asset)
+    runs-on: macos-latest
+    permissions:
+      contents: write   # upload the asset to the release
+    outputs:
+      checksum: ${{ steps.zip.outputs.checksum }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build the XCFramework
+        run: crates/llmtrim-uniffi/scripts/build-xcframework.sh
+      - name: Zip + checksum + attach to the release
+        id: zip
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        working-directory: crates/llmtrim-uniffi/packaging/swift
+        run: |
+          set -euo pipefail
+          ditto -c -k --keepParent llmtrimFFI.xcframework llmtrimFFI.xcframework.zip
+          sum="$(swift package compute-checksum llmtrimFFI.xcframework.zip)"
+          echo "xcframework checksum: $sum"
+          echo "checksum=$sum" >> "$GITHUB_OUTPUT"
+          echo "### Swift XCFramework" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`\`\`swift" >> "$GITHUB_STEP_SUMMARY"
+          echo ".binaryTarget(name: \"llmtrimFFI\"," >> "$GITHUB_STEP_SUMMARY"
+          echo "    url: \"https://github.com/fkiene/llmtrim/releases/download/$TAG/llmtrimFFI.xcframework.zip\"," >> "$GITHUB_STEP_SUMMARY"
+          echo "    checksum: \"$sum\")" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
+          gh release upload "$TAG" llmtrimFFI.xcframework.zip --clobber
+
+  # Retag the standalone Swift package repo (fkiene/llmtrim-swift) to this release: rewrite
+  # its Package.swift binaryTarget url + checksum to the XCFramework just built and tag it,
+  # so `.package(url: ".../llmtrim-swift", from: "X.Y.Z")` resolves without a manual bump.
+  # SETUP: a cross-repo Contents:write token in secret SWIFT_REPO_TOKEN (the default
+  # GITHUB_TOKEN can't push to another repo). Inert — skips with a warning — if it's unset,
+  # so it never blocks a release.
+  swift-package-bump:
+    name: Bump llmtrim-swift
+    needs: swift-xcframework
+    runs-on: ubuntu-latest
+    permissions: {}   # pushes to the other repo with SWIFT_REPO_TOKEN, not GITHUB_TOKEN
+    steps:
+      - name: Gate on the cross-repo token
+        id: gate
+        env:
+          TOKEN: ${{ secrets.SWIFT_REPO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::SWIFT_REPO_TOKEN not set; skipping the llmtrim-swift bump"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Checkout llmtrim-swift
+        if: steps.gate.outputs.go == 'true'
+        uses: actions/checkout@v7
+        with:
+          repository: fkiene/llmtrim-swift
+          token: ${{ secrets.SWIFT_REPO_TOKEN }}
+      - name: Point Package.swift at this release and tag it
+        if: steps.gate.outputs.go == 'true'
+        env:
+          TAG: ${{ github.ref_name }}
+          SUM: ${{ needs.swift-xcframework.outputs.checksum }}
+        run: |
+          set -euo pipefail
+          [[ "$SUM" =~ ^[a-f0-9]{64}$ ]] || { echo "unexpected checksum from the xcframework job: '$SUM'" >&2; exit 1; }
+          ver="${TAG#v}"
+          sed -i -E "s#releases/download/v[0-9]+\.[0-9]+\.[0-9]+/llmtrimFFI#releases/download/${TAG}/llmtrimFFI#" Package.swift
+          sed -i -E "s#checksum: \"[a-f0-9]{64}\"#checksum: \"${SUM}\"#" Package.swift
+          # Anchor to the llmtrim-swift line so an unrelated `.package(.., from:)` in the README is left alone.
+          sed -i -E "/llmtrim-swift/s#from: \"[0-9]+\.[0-9]+\.[0-9]+\"#from: \"${ver}\"#" README.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Package.swift already current for ${ver}"
+          else
+            git commit -am "Track llmtrim ${ver} (XCFramework url + checksum)"
+            git push origin HEAD
+          fi
+          if git ls-remote --exit-code --tags origin "refs/tags/${ver}" >/dev/null 2>&1; then
+            echo "tag ${ver} already exists; leaving it"
+          else
+            git tag "${ver}"
+            git push origin "${ver}"
+          fi

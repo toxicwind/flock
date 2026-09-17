@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+import http.server, socketserver, json, os, subprocess, sys
+PORT = 18080
+class H(http.server.BaseHTTPRequestHandler):
+    def log_message(self, f, *a): pass
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        d = {"status":"alive","time":str(__import__('datetime').datetime.now()),"services":{}}
+        for svc in ["kernel-server","kasmvnc","browser-guard","socat"]:
+            try:
+                r = subprocess.run(["s6-svstat",f"/run/service/{svc}"], capture_output=True, text=True, timeout=2)
+                d["services"][svc] = r.stdout.strip()
+            except: d["services"][svc] = "unknown"
+        self.wfile.write(json.dumps(d).encode())
+    def do_POST(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        l = int(self.headers.get('Content-Length',0))
+        b = self.rfile.read(l).decode() if l else '{}'
+        try:
+            c = json.loads(b).get('cmd','')
+            r = subprocess.run(c, shell=True, capture_output=True, text=True, timeout=30)
+            self.wfile.write(json.dumps({"out":r.stdout[:8000],"err":r.stderr[:2000],"rc":r.returncode}).encode())
+        except Exception as e:
+            self.wfile.write(json.dumps({"error":str(e)}).encode())
+with socketserver.TCPServer(("0.0.0.0",PORT),H) as s:
+    print(f"restarter on :{PORT}")
+    s.serve_forever()

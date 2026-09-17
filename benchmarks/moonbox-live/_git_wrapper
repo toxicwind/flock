@@ -1,0 +1,6 @@
+#!/bin/sh
+export GIT_DIR=/mnt/agents/dot/_git
+export GIT_WORK_TREE=/mnt/agents/dot
+export GIT_ASKPASS=/bin/false
+export GIT_TERMINAL_PROMPT=0
+git "$@"

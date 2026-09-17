@@ -1,0 +1,8 @@
+{% macro pathway(path) %}
+<div class="flex items-center gap-2 text-sm">
+  {% for node in path %}
+    {% if not loop.first %}<span aria-hidden="true">→</span>{% endif %}
+    <a href="{{ node.url }}" class="underline hover:text-primary focus:outline-none focus:ring">{{ node.title }}</a>
+  {% endfor %}
+</div>
+{% endmacro %}

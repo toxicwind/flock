@@ -1,0 +1,209 @@
+<<<<<<< HEAD
+name: "Deploy • Portainer"
+=======
+name: Build and Deploy to GHCR
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option
+
+on:
+  push:
+    branches: [main]
+<<<<<<< HEAD
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: true
+  REGISTRY: ghcr.io
+  WEB_IMAGE: ghcr.io/toxicwind/effusion-labs
+  GATEWAY_IMAGE: ghcr.io/toxicwind/markdown-gateway
+  npm_config_audit: "false"
+  npm_config_fund: "false"
+  npm_config_proxy: ""
+  npm_config_https_proxy: ""
+  npm_config_http_proxy: ""
+  PUPPETEER_SKIP_DOWNLOAD: "1"
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "1"
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+
+jobs:
+  build_web:
+    name: "🏗️ Build & Push"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: 🏷️ Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.WEB_IMAGE }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=short
+
+      - name: 🐳 Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🔑 Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏗️ Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  build_gateway:
+    name: "🏗️ Build Gateway"
+    runs-on: ubuntu-latest
+    needs: build_web
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Detect gateway changes
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            gateway:
+              - 'markdown_gateway/**'
+              - 'docker-compose.yml'
+
+      - name: 🐳 Set up Buildx
+        if: steps.changes.outputs.gateway == 'true'
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🔑 Login to GHCR
+        if: steps.changes.outputs.gateway == 'true'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏷️ Docker metadata
+        if: steps.changes.outputs.gateway == 'true'
+        id: gateway-meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.GATEWAY_IMAGE }}
+          tags: |
+            type=raw,value=latest
+            type=sha,format=short
+
+      - name: 🏗️ Build image
+        if: steps.changes.outputs.gateway == 'true'
+        uses: docker/build-push-action@v6
+        with:
+          context: ./markdown_gateway
+          push: true
+          tags: ${{ steps.gateway-meta.outputs.tags }}
+          labels: ${{ steps.gateway-meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64
+
+      - name: ℹ️ Gateway unchanged
+        if: steps.changes.outputs.gateway != 'true'
+        run: echo "Gateway unchanged; skipping image build."
+
+  deploy:
+    name: "🚀 Trigger Portainer"
+    needs:
+      - build_web
+      - build_gateway
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: 📞 Invoke webhook
+        env:
+          HOOK: ${{ secrets.PORTAINER_WEBHOOK_EFFUSION }}
+        run: |
+          set -Eeuo pipefail
+          if [[ -z "$HOOK" ]]; then
+            echo "Portainer webhook not configured; skipping." >&2
+            exit 0
+          fi
+          curl --fail --retry 5 --retry-delay 3 --retry-all-errors -X POST "$HOOK"
+=======
+
+permissions:
+  contents: read
+  packages: write  # ← Enables write access for GHCR
+
+env:
+  NODE_VERSION: '20'
+  IMAGE_ID: ghcr.io/${{ github.actor }}/effusion-labs:latest
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ env.NODE_VERSION }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ env.NODE_VERSION }}-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build Eleventy static files
+        run: npm run build
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        run: |
+          echo "📦 Building and pushing $IMAGE_ID"
+          docker build -t "$IMAGE_ID" -f .portainer/Dockerfile .
+          docker push "$IMAGE_ID"
+      - name: Trigger Portainer Webhook Redeployment
+        run: |
+          if ! curl -X POST http://effusionlabs.com:9000/api/stacks/webhooks/d85d48d6-a407-4ac0-8683-a7962bfbb9d3; then
+            echo "Webhook trigger failed!";
+            exit 1;
+          fi
+>>>>>>> broken/codex/add-dark-mode-as-default-with-light-mode-option

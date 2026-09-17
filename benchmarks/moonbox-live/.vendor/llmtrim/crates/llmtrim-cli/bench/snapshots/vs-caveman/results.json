@@ -1,0 +1,212 @@
+[
+  {
+    "prompt_id": "react-rerender",
+    "arm": "baseline",
+    "prompt_tokens": 81,
+    "completion_tokens": 2048,
+    "response": "### TL;DR  \nA component will re\u2011render whenever **its own state changes** \u2013 that\u2019s how React works.  \nIf you\u2019re seeing a child component re\u2011render on every state update even though you think the props haven\u2019t changed, the most common culprit is that the *prop value you\u2019re passing is a new reference*\u2026[truncated]"
+  },
+  {
+    "prompt_id": "react-rerender",
+    "arm": "caveman",
+    "prompt_tokens": 940,
+    "completion_tokens": 503,
+    "response": "Inline object literal new reference each render \u2192 component re\u2011renders. Use `useMemo` to memoize object. Next step: wrap object creation in `useMemo`."
+  },
+  {
+    "prompt_id": "react-rerender",
+    "arm": "llmtrim",
+    "prompt_tokens": 117,
+    "completion_tokens": 373,
+    "response": "React re\u2011renders a component whenever its own state changes, regardless of whether the props changed.  \nIf the parent re\u2011renders, the child will re\u2011render too unless you prevent it.  \nPassing an object literal (`<Child data={{\u2026}} />`) creates a **new reference** on every render, so React sees the pr\u2026[truncated]"
+  },
+  {
+    "prompt_id": "auth-middleware-fix",
+    "arm": "baseline",
+    "prompt_tokens": 89,
+    "completion_tokens": 2048,
+    "response": "**Short answer**\n\n`exp` in a JWT is a *Unix timestamp in seconds*.  \n`Date.now()` returns milliseconds.  \nWhen you compare them directly the token will never look expired, because\n`Date.now()` is always *much larger* than the `exp` value (or you\u2019re\ncomparing the wrong units).  \n\n**Fix**\n\n* Convert t\u2026[truncated]"
+  },
+  {
+    "prompt_id": "auth-middleware-fix",
+    "arm": "caveman",
+    "prompt_tokens": 948,
+    "completion_tokens": 384,
+    "response": "exp seconds, Date.now ms. Compare wrong. Convert.  \n\n```js\nconst payload = jwt.decode(token);\nconst nowSec = Math.floor(Date.now() / 1000);\nif (nowSec > payload.exp) {\n  // token expired\n  return res.status(401).send('Token expired');\n}\n```\n\nor multiply exp by 1000.  \n\nNext step: replace current che\u2026[truncated]"
+  },
+  {
+    "prompt_id": "auth-middleware-fix",
+    "arm": "llmtrim",
+    "prompt_tokens": 128,
+    "completion_tokens": 275,
+    "response": "`exp` in a JWT is a **seconds\u2011since\u2011epoch** value, while `Date.now()` returns **milliseconds**.  \nWhen you compare them directly, the token never appears expired because the numbers are on different scales.\n\n**Fix**\n\n```js\nconst decoded = jwt.decode(token);          // or jwt.verify(token, secret)\nc\u2026[truncated]"
+  },
+  {
+    "prompt_id": "postgres-pool",
+    "arm": "baseline",
+    "prompt_tokens": 86,
+    "completion_tokens": 2048,
+    "response": "Below is a **complete, production\u2011ready recipe** for creating a PostgreSQL connection pool in Node.js that:\n\n| Feature | Why it matters |\n|---------|----------------|\n| **Connection limits** (`max`) | Prevents the database from being overwhelmed. |\n| **Idle timeout** (`idleTimeoutMillis`) | Frees un\u2026[truncated]"
+  },
+  {
+    "prompt_id": "postgres-pool",
+    "arm": "caveman",
+    "prompt_tokens": 934,
+    "completion_tokens": 304,
+    "response": "PostgreSQL pool Node.js  \n`pg` module import.  \n`Pool` constructor with `connectionString`, `max`, `idleTimeoutMillis`, `connectionTimeoutMillis`.  \n\n```js\nconst { Pool } = require('pg');\nconst pool = new Pool({\n  connectionString: process.env.DATABASE_URL,\n  max: 20, // max connections\n  idleTimeou\u2026[truncated]"
+  },
+  {
+    "prompt_id": "postgres-pool",
+    "arm": "llmtrim",
+    "prompt_tokens": 111,
+    "completion_tokens": 393,
+    "response": "**Node.js PostgreSQL pool with timeout & error handling**\n\n```js\n// db.js\nconst { Pool } = require('pg');\n\nconst pool = new Pool({\n  connectionString: process.env.DATABASE_URL,   // or host, user, password, db\n  max: 20,                     // max clients in pool\n  idleTimeoutMillis: 30000,    // cl\u2026[truncated]"
+  },
+  {
+    "prompt_id": "git-rebase-merge",
+    "arm": "baseline",
+    "prompt_tokens": 93,
+    "completion_tokens": 2048,
+    "response": "## Quick Take\u2011away\n\n| Operation | What it does | When it\u2019s handy | Trade\u2011offs |\n|----------|--------------|-----------------|------------|\n| **`git merge`** | Creates a *merge commit* that has two parents (the tip of the current branch and the tip of the branch you\u2019re merging). The commit graph keep\u2026[truncated]"
+  },
+  {
+    "prompt_id": "git-rebase-merge",
+    "arm": "caveman",
+    "prompt_tokens": 937,
+    "completion_tokens": 293,
+    "response": "git rebase rewrites history. git merge preserves history.  \n\nrebase: linearize commits. merge: create merge commit.  \n\nrebase: easier to read log. merge: keeps context of parallel work.  \n\nrebase: fast\u2011forward only. merge: can be fast\u2011forward or merge commit.  \n\nrebase: changes commit hashes. merge:\u2026[truncated]"
+  },
+  {
+    "prompt_id": "git-rebase-merge",
+    "arm": "llmtrim",
+    "prompt_tokens": 101,
+    "completion_tokens": 554,
+    "response": "**git merge**  \n* Adds a new \u201cmerge commit\u201d that has two parents.  \n* Keeps the exact history of both branches.  \n* The commit graph shows the true branching structure.  \n* No rewriting of existing commits.  \n\n**git rebase**  \n* Rewrites the commits of the current branch so they appear to have been \u2026[truncated]"
+  },
+  {
+    "prompt_id": "async-refactor",
+    "arm": "baseline",
+    "prompt_tokens": 144,
+    "completion_tokens": 859,
+    "response": "Below is a clean, `async/await`\u2011based rewrite of the original callback style.  \nThe new `getUser` returns a **Promise** (so callers can `await` it or use `.then/.catch`).  \nIf you\u2019re still using the old callback API, you can keep a thin wrapper that forwards the result, but the core logic is now pro\u2026[truncated]"
+  },
+  {
+    "prompt_id": "async-refactor",
+    "arm": "caveman",
+    "prompt_tokens": null,
+    "completion_tokens": null,
+    "response": null
+  },
+  {
+    "prompt_id": "async-refactor",
+    "arm": "llmtrim",
+    "prompt_tokens": 157,
+    "completion_tokens": 315,
+    "response": "```js\n// If db.query uses callbacks, promisify it once\nconst { promisify } = require('util');\nconst query = promisify(db.query).bind(db);\n\nasync function getUser(id) {\n  const rows = await query('SELECT * FROM users WHERE id = ?', [id]);\n\n  if (!rows.length) throw new Error('Not found');\n\n  return r\u2026[truncated]"
+  },
+  {
+    "prompt_id": "microservices-monolith",
+    "arm": "baseline",
+    "prompt_tokens": 99,
+    "completion_tokens": 2048,
+    "response": "## Quick Take\u2011away\n\nBefore you start \u201csplitting the monolith\u201d you should answer **one simple question**:\n\n> **Do the benefits of a distributed architecture outweigh the added operational, technical, and cultural complexity for this particular problem?**\n\nIf the answer is \u201cyes"
+  },
+  {
+    "prompt_id": "microservices-monolith",
+    "arm": "caveman",
+    "prompt_tokens": 945,
+    "completion_tokens": 194,
+    "response": "Monolith size \u2192 performance hit.  \n- Codebase complexity \u2192 maintenance cost.  \n- Coupling between modules \u2192 hard to isolate.  \n- Shared database schema \u2192 migration risk.  \n- Deployment pipeline \u2192 single deploy cycle.  \n- Team skill set \u2192 microservice knowledge.  \n- Service boundaries \u2192 clear domain \u2026[truncated]"
+  },
+  {
+    "prompt_id": "microservices-monolith",
+    "arm": "llmtrim",
+    "prompt_tokens": 109,
+    "completion_tokens": 571,
+    "response": "- **Performance vs. Complexity** \u2013 Verify that the slowdown is due to scaling limits, not code inefficiencies; micro\u2011services add network latency and operational overhead.  \n- **Domain Boundaries** \u2013 Identify natural business boundaries (e.g., billing, inventory, user auth) that can be isolated with\u2026[truncated]"
+  },
+  {
+    "prompt_id": "pr-security-review",
+    "arm": "baseline",
+    "prompt_tokens": 126,
+    "completion_tokens": 2048,
+    "response": "Below is a quick\u2011fire security audit of the snippet you posted, followed by concrete remediation steps.  \nI\u2019ll cover the most critical issues first (SQL injection, error handling, data exposure, and missing auth/validation), then touch on some \u201cnice\u2011to\u2011have\u201d hardening practices.\n\n```js\napp.get('/api\u2026[truncated]"
+  },
+  {
+    "prompt_id": "pr-security-review",
+    "arm": "caveman",
+    "prompt_tokens": 962,
+    "completion_tokens": 249,
+    "response": "SQL injection risk. `req.params.id` unsanitized. Use parameterized query.  \n`const query = 'SELECT * FROM users WHERE id = ?'; db.query(query, [req.params.id])`.  \nMissing error handling. Add `.catch(err => res.status(500).json({error: err.message}))`.  \nNo authentication/authorization. Add middlewa\u2026[truncated]"
+  },
+  {
+    "prompt_id": "pr-security-review",
+    "arm": "llmtrim",
+    "prompt_tokens": 134,
+    "completion_tokens": 2048,
+    "response": null
+  },
+  {
+    "prompt_id": "docker-multi-stage",
+    "arm": "baseline",
+    "prompt_tokens": 102,
+    "completion_tokens": 2048,
+    "response": "Below is a **complete, production\u2011ready multi\u2011stage Dockerfile** for a Node.js + TypeScript app that keeps the final image as small as possible.  \nIt uses the official `node:20-alpine` image for the build stage (which already contains the TypeScript compiler via `npm`) and the slimmer `node:20-alpin\u2026[truncated]"
+  },
+  {
+    "prompt_id": "docker-multi-stage",
+    "arm": "caveman",
+    "prompt_tokens": 941,
+    "completion_tokens": 585,
+    "response": "Dockerfile  \n```dockerfile\n# Stage 1 \u2013 build\nFROM node:20-alpine AS builder\nWORKDIR /app\n\n# Copy package metadata\nCOPY package*.json ./\n\n# Install only production deps\nRUN npm ci --omit=dev\n\n# Copy source, compile TS\nCOPY . .\nRUN npm run build   # tsc output to /app/dist\n\n# Stage 2 \u2013 runtime\nFROM no\u2026[truncated]"
+  },
+  {
+    "prompt_id": "docker-multi-stage",
+    "arm": "llmtrim",
+    "prompt_tokens": 121,
+    "completion_tokens": 640,
+    "response": "**Dockerfile**\n\n```dockerfile\n# ---------- Builder ----------\nFROM node:20-alpine AS builder\n\n# Set working directory\nWORKDIR /app\n\n# Install build\u2011time dependencies\nCOPY package.json package-lock.json ./\nRUN npm ci          # installs dev + prod deps\n\n# Copy source & compile\nCOPY . .\nRUN npm run bu\u2026[truncated]"
+  },
+  {
+    "prompt_id": "race-condition-debug",
+    "arm": "baseline",
+    "prompt_tokens": 94,
+    "completion_tokens": 2048,
+    "response": null
+  },
+  {
+    "prompt_id": "race-condition-debug",
+    "arm": "caveman",
+    "prompt_tokens": 929,
+    "completion_tokens": 324,
+    "response": "Counter race. Use atomic UPDATE.  \n`UPDATE counters SET value = value + 1 WHERE id = $1 RETURNING value;`  \nWrap in transaction.  \n`BEGIN; UPDATE ...; COMMIT;`  \nIf multiple requests hit same row, PostgreSQL queues them.  \nSet isolation level `SERIALIZABLE` or `REPEATABLE READ` to avoid phantom read\u2026[truncated]"
+  },
+  {
+    "prompt_id": "race-condition-debug",
+    "arm": "llmtrim",
+    "prompt_tokens": 122,
+    "completion_tokens": 413,
+    "response": "Use an atomic `UPDATE \u2026 RETURNING` inside a transaction (or a single statement) so PostgreSQL does the increment and returns the new value in one step.  \n```sql\n-- table: counters(id serial primary key, value bigint)\n```\n\n```js\n// Node.js (pg)\nconst { Pool } = require('pg');\nconst pool = new Pool();\u2026[truncated]"
+  },
+  {
+    "prompt_id": "error-boundary",
+    "arm": "baseline",
+    "prompt_tokens": 91,
+    "completion_tokens": 2048,
+    "response": null
+  },
+  {
+    "prompt_id": "error-boundary",
+    "arm": "caveman",
+    "prompt_tokens": 926,
+    "completion_tokens": 774,
+    "response": "```jsx\nimport React from 'react';\n\nclass ErrorBoundary extends React.Component {\n  state = { hasError: false, error: null, info: null };\n\n  static getDerivedStateFromError(error) {\n    return { hasError: true, error };\n  }\n\n  componentDidCatch(error, info) {\n    console.error('ErrorBoundary caught e\u2026[truncated]"
+  },
+  {
+    "prompt_id": "error-boundary",
+    "arm": "llmtrim",
+    "prompt_tokens": 106,
+    "completion_tokens": 463,
+    "response": "```jsx\n// ErrorBoundary.jsx\nimport React from 'react';\n\nclass ErrorBoundary extends React.Component {\n  state = { hasError: false, error: null, info: null };\n\n  static getDerivedStateFromError(error) {\n    return { hasError: true, error };\n  }\n\n  componentDidCatch(error, info) {\n    this.setState({ \u2026[truncated]"
+  }
+]

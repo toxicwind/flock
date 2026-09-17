@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.GiftcardService/ListGiftcardCodes",
+    "body": {}
+  },
+  {
+    "url": "https://www.kimi.com/apiv2/kimi.gateway.membership.v2.GiftcardService/ListGiftcardClaims",
+    "body": {}
+  }
+]

@@ -1,0 +1,4 @@
+--- SIGHUP {si_signo=SIGHUP, si_code=SI_USER, si_pid=16478, si_uid=0} ---
+--- SIGHUP {si_signo=SIGHUP, si_code=SI_TKILL, si_pid=73, si_uid=0} ---
+--- SIGHUP {si_signo=SIGHUP, si_code=SI_TKILL, si_pid=73, si_uid=0} ---
++++ killed by SIGHUP +++

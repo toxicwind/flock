@@ -1,0 +1,9 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "have-a-seat",
+  "title": "Have a Seat",
+  "character_slugs": ["labubu"],
+  "notes": "Seeded from initial article; needs confirmation."
+}

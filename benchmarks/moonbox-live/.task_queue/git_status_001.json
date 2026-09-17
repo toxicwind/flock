@@ -1,0 +1,1 @@
+{"id": "git_status_001", "type": "shell", "cmd": "cd /mnt/agents/output/app && git status --short | head -10", "timeout": 10}

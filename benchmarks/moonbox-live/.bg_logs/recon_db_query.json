@@ -1,0 +1,38 @@
+{
+  "endpoints": {
+    "/e2b-dev/infra/packages/envd/internal/api": 153,
+    "/oapi-codegen/runtime/types": 94,
+    "/oapi-codegen/runtime": 25,
+    "api.encoding": 2,
+    "https://go.dev/blog/protobuf-apiv20051953eb9618e1c9a1f929a21a0b68540eea2da725b99b315f3b8b489918ef109e156193951ec7e937b1652c0bd3bb1bf073573df883d2c34f1ef451fd46b503f0000c6858e06b70404e9cd9e3ecb662395b4429c648139053fb521f828af606b4d3dbaa14b5e77efe75928fe1dc127a2ffa8de3348b3c1856a429bf97e7e31c2e5bd66011839296a789a3bc0045c8a5fb42c7d1bd998f54449579b446817afbd17273e662c97ee72995ef42640c550b9013fad0761353c7086a272c24088be94769fd16650HTTP/1.1": 1,
+    "http://169.254.169.254/latest/api/token": 1,
+    "/genproto/protobuf/apigoogle": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/api": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/auth": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/compose": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/download": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/encoding": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/envs": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/error": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/init": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/secure_token": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/store": 1,
+    "/e2b-dev/infra/packages/envd/internal/api/upload": 1,
+    "/internal/impl/api_export": 1,
+    "/internal/impl/api_export_opaque": 1,
+    "/protobuf/api": 1
+  },
+  "features": {
+    "TYPE_": 16
+  },
+  "grpc_defs": {},
+  "ports": {
+    "4": 10,
+    "5": 10,
+    "53": 2,
+    "2030": 1,
+    "22": 1,
+    "33": 1,
+    "18": 1
+  }
+}

@@ -1,0 +1,74 @@
+============================================================
+MOONBOX FULL DUMP
+============================================================
+
+=== ENVIRONMENT ===
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+XAUTHORITY=/home/kimi/.Xauthority
+
+=== PROCESSES ===
+root         1  0.0  0.0    436     0 ?        Ss   04:10   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root        17  0.0  0.4 100964 20668 hvc0     S+   04:10   0:00 python3 -m http.server 18080 --directory /tmp/project-probe
+root        29  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise s6-linux-init-shutdownd
+root        30  0.0  0.0    204     0 ?        Ss   04:10   0:00 /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+root        38  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise portal
+root        39  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise sshd
+root        40  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise browser-guard
+root        41  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise kernel-server
+root        42  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise s6rc-fdholder
+root        43  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise kasmvnc
+root        44  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise socat
+root        45  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise s6rc-oneshot-runner
+root        46  0.0  0.0    216     0 ?        S    04:10   0:00 s6-supervise envd
+root        67  0.0  0.5  29932 24764 ?        Ss   04:10   0:00 /usr/local/bin/python3 /opt/moonbox-project-template/bin/project-cdp-proxy.py
+kimi        71  0.1  2.2 570524 94412 ?        Ssl  04:10   0:04 python3 /app/kernel_server.py --host 0.0.0.0 --port 8888 --log-level info
+root        73  0.0  0.2  15452  8784 ?        Ss   04:10   0:00 sshd: /usr/sbin/sshd -D -e [listener] 0 of 10-100 startups
+kimi        79  0.2  1.9 458596 80252 ?        Ssl  04:10   0:06 python3 /app/browser_guard.py --wait-display --display :99 --timeout 60 --monitor
+root        81  1.1  0.5 2013548 22308 ?       Ssl  04:10   0:28 /usr/local/bin/envd -isnotfc
+root        85  0.0  0.0    208     0 ?        Ss   04:10   0:00 /package/admin/s6/command/s6-ipcserverd -1 -- /package/admin/s6/command/s6-ipcserver-access -v0 -E -l0 -i data/rules -- /package/admin/
+kimi       182  2.9  9.1 3384432 378072 ?      Ssl  04:10   1:10 /usr/local/bin/python3 -m ipykernel_launcher -f /tmp/tmpn6wmv9f9.json
+kimi       342  0.4  7.4 55591732 306896 ?     Sl   04:10   0:11 /usr/lib/chromium/chromium --show-component-extension-options --enable-gpu-rasterization --no-default-browser-check --disable-pings --m
+root       733  0.0  0.0    216     0 ?        S    04:19   0:00 s6-supervise drive9-fuse-watchdog
+root       736  0.0  0.0    216     0 ?        S    04:19   0:00 s6-supervise drive9-fuse
+root      5193  0.1  0.1   9580  7488 ?        S    04:39   0:00 find / -name portal -path */s6* -type f
+root     12724  9.3  1.0 1377704 44620 ?       Ssl  04:50   0:00 /usr/local/bin/portal -http-bind -allow-other -env prod -gateway-addr https://kimi-api-sandbox.msh.team/apiv2 /mnt/portal-overlay
+
+=== NETWORK ===
+--- cat /proc/net/tcp ---
+  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode                                                     
+   0: 0100007F:B50F 00000000:0000 0A 00000000:00000000 00:00000000 00000000   999        0 307 1 0000000087dac9ae 100 0 0 10 0                       
+   1: 00000000:2407 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 2254 1 000000009c2185b7 100 0 0 10 0                      
+   2: 0100007F:2406 00000000:0000 0A 00000000:00000000 00:00000000 00000000   999        0 2763 1 00000000343f1caf 100 0 0 10 0                      
+   3: 00000000:17C0 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 1966 1 000000006c66c55a 100 0 0 10 0                      
+   4: 0100007F:8E13 00000000:0000 0A 00000000:00000000 00:00000000 00000000   999        0 295 1 00000000be495c66 100 0 0 10 0                       
+   5: 00000000:46A0 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 157 1 000
+--- cat /proc/net/route ---
+Iface	Destination	Gateway 	Flags	RefCnt	Use	Metric	Mask		MTU	Window	IRTT                                                       
+eth0	00000000	0544FEA9	0003	0	0	0	00000000	0	0	0                                                                               
+eth0	0444FEA9	00000000	0001	0	0	0	FCFFFFFF	0	0	0                                                                               
+
+--- cat /etc/resolv.conf ---
+# Generated by NetworkManager
+nameserver 183.60.83.19
+nameserver 183.60.82.98
+
+
+=== PORTAL LOGS ===
+--- /tmp/portal_new.log ---
+2026/08/14 20:49:49 INFO Portal launched. service=portal commit="" commit_date="" dirty="" build=go1.26.5-X:jsonv2
+2026/08/14 20:49:49 INFO Setup endpoint. service=portal env=dev gateway_addr=https://kimi.kimi.team/apiv2
+2026/08/14 20:49:49 INFO Setup chat. service=portal chat_id="" user_id="" canary_header=""
+2026/08/14 20:49:49 INFO Startup bind deferred: identity incomplete. service=portal reason="user_id is required"
+/usr/bin/fusermount3: mount failed: Operation not permitted
+2026/08/14 20:49:49 ERROR Mount failed. service=portal error="fusermount exited with code 256\n"
+
+--- /tmp/portal_strace.log ---
+11906 read(10,  <unfinished ...>
+11905 read(10,  <unfinished ...>
+11901 read(10,  <unfinished ...>
+11949 accept4(5, {sa_family=AF_INET6, sin6_port=htons(53648), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 8
+11949 g

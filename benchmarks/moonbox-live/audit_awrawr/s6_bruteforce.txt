@@ -1,0 +1,1989 @@
+=== S6 FULL PROC DUMP ===
+
+========== PID 1 ==========
+--- cmdline ---
+/package/admin/s6/command/s6-svscan -d4 -- /run/service 
+--- status ---
+Name:	s6-svscan
+Umask:	0022
+State:	S (sleeping)
+Tgid:	1
+Ngid:	0
+Pid:	1
+PPid:	0
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+NStgid:	1
+NSpid:	1
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     448 kB
+VmSize:	     440 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     356 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000028016a27
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	341
+nonvoluntary_ctxt_switches:	6
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/service/.s6-svscan/lock
+lr-x------ 1 root root 64 Aug 10 00:15 5 -> /run/service/.s6-svscan/control
+l-wx------ 1 root root 64 Aug 10 00:15 6 -> /run/service/.s6-svscan/control
+lrwx------ 1 root root 64 Aug 10 00:15 7 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-svscan
+--- cwd ---
+/run/service
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271661348                          /package/admin/s6-2.12.0.2/command/s6-svscan
+0040b000-0040d000 rw-p 0000a000 fe:20 271661348                          /package/admin/s6-2.12.0.2/command/s6-svscan
+06827000-06828000 ---p 00000000 00:00 0                                  [heap]
+06828000-06829000 rw-p 00000000 00:00 0                                  [heap]
+7ffcef4ed000-7ffcef546000 rw-p 00000000 00:00 0                          [stack]
+7ffcef5af000-7ffcef5b3000 r--p 00000000 00:00 0                          [vvar]
+7ffcef5b3000-7ffcef5b5000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+1
+
+========== PID 29 ==========
+--- cmdline ---
+s6-supervise s6-linux-init-shutdownd 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	29
+Ngid:	0
+Pid:	29
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	29
+NSpid:	29
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	5
+nonvoluntary_ctxt_switches:	1
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/service/s6-linux-init-shutdownd/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/service/s6-linux-init-shutdownd/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/service/s6-linux-init-shutdownd/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/service/s6-linux-init-shutdownd
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+30312000-30313000 ---p 00000000 00:00 0                                  [heap]
+30313000-30314000 rw-p 00000000 00:00 0                                  [heap]
+7ffe76911000-7ffe76932000 rw-p 00000000 00:00 0                          [stack]
+7ffe76988000-7ffe7698c000 r--p 00000000 00:00 0                          [vvar]
+7ffe7698c000-7ffe7698e000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+29
+
+========== PID 30 ==========
+--- cmdline ---
+/package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B 
+--- status ---
+Name:	s6-linux-init-s
+Umask:	0022
+State:	S (sleeping)
+Tgid:	30
+Ngid:	0
+Pid:	30
+PPid:	29
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	30
+NSpid:	30
+NSpgid:	30
+NSsid:	30
+Kthread:	0
+VmPeak:	     204 kB
+VmSize:	     204 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	       8 kB
+VmStk:	     132 kB
+VmExe:	      40 kB
+VmLib:	       8 kB
+VmPTE:	      24 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	0
+--- fd ---
+total 0
+dr-x------ 2 root root  5 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/service/s6-linux-init-shutdownd/fifo
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/service/s6-linux-init-shutdownd/fifo
+--- exe ---
+/package/admin/s6-linux-init-1.1.2.0/command/s6-linux-init-shutdownd
+--- cwd ---
+/run/service/s6-linux-init-shutdownd
+--- maps ---
+00400000-0040a000 r-xp 00000000 fe:20 271669958                          /package/admin/s6-linux-init-1.1.2.0/command/s6-linux-init-shutdownd
+0040a000-0040c000 rw-p 00009000 fe:20 271669958                          /package/admin/s6-linux-init-1.1.2.0/command/s6-linux-init-shutdownd
+7ffc43db5000-7ffc43dd6000 rw-p 00000000 00:00 0                          [stack]
+7ffc43dee000-7ffc43df2000 r--p 00000000 00:00 0                          [vvar]
+7ffc43df2000-7ffc43df4000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+30
+
+========== PID 38 ==========
+--- cmdline ---
+s6-supervise browser-guard 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	38
+Ngid:	0
+Pid:	38
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	38
+NSpid:	38
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	7
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/browser-guard/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/browser-guard/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/browser-guard/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/browser-guard
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+2c7a1000-2c7a2000 ---p 00000000 00:00 0                                  [heap]
+2c7a2000-2c7a3000 rw-p 00000000 00:00 0                                  [heap]
+7ffc0c429000-7ffc0c44a000 rw-p 00000000 00:00 0                          [stack]
+7ffc0c5f6000-7ffc0c5fa000 r--p 00000000 00:00 0                          [vvar]
+7ffc0c5fa000-7ffc0c5fc000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+38
+
+========== PID 39 ==========
+--- cmdline ---
+s6-supervise envd 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	39
+Ngid:	0
+Pid:	39
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	39
+NSpid:	39
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	2
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/envd/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/envd/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/envd/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/envd
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+2a4e4000-2a4e5000 ---p 00000000 00:00 0                                  [heap]
+2a4e5000-2a4e6000 rw-p 00000000 00:00 0                                  [heap]
+7ffebfc8c000-7ffebfcad000 rw-p 00000000 00:00 0                          [stack]
+7ffebfdbe000-7ffebfdc2000 r--p 00000000 00:00 0                          [vvar]
+7ffebfdc2000-7ffebfdc4000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+39
+
+========== PID 40 ==========
+--- cmdline ---
+s6-supervise kernel-server 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	40
+Ngid:	0
+Pid:	40
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	40
+NSpid:	40
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	0
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kernel-server/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kernel-server/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kernel-server/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kernel-server
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+29214000-29215000 ---p 00000000 00:00 0                                  [heap]
+29215000-29216000 rw-p 00000000 00:00 0                                  [heap]
+7fff256e6000-7fff25707000 rw-p 00000000 00:00 0                          [stack]
+7fff2573d000-7fff25741000 r--p 00000000 00:00 0                          [vvar]
+7fff25741000-7fff25743000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+40
+
+========== PID 41 ==========
+--- cmdline ---
+s6-supervise kasmvnc 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	41
+Ngid:	0
+Pid:	41
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	41
+NSpid:	41
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	4
+nonvoluntary_ctxt_switches:	3
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kasmvnc/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kasmvnc/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kasmvnc/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/kasmvnc
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+22cb2000-22cb3000 ---p 00000000 00:00 0                                  [heap]
+22cb3000-22cb4000 rw-p 00000000 00:00 0                                  [heap]
+7ffce877b000-7ffce879c000 rw-p 00000000 00:00 0                          [stack]
+7ffce87d9000-7ffce87dd000 r--p 00000000 00:00 0                          [vvar]
+7ffce87dd000-7ffce87df000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+41
+
+========== PID 42 ==========
+--- cmdline ---
+s6-supervise sshd 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	42
+Ngid:	0
+Pid:	42
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	42
+NSpid:	42
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	0
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/sshd/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/sshd/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/sshd/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/sshd
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+126f8000-126f9000 ---p 00000000 00:00 0                                  [heap]
+126f9000-126fa000 rw-p 00000000 00:00 0                                  [heap]
+7ffc5cfaa000-7ffc5cfcb000 rw-p 00000000 00:00 0                          [stack]
+7ffc5cfee000-7ffc5cff2000 r--p 00000000 00:00 0                          [vvar]
+7ffc5cff2000-7ffc5cff4000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+42
+
+========== PID 43 ==========
+--- cmdline ---
+s6-supervise portal 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	43
+Ngid:	0
+Pid:	43
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	43
+NSpid:	43
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	1
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/portal/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/portal/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/portal/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/portal
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+2fffe000-2ffff000 ---p 00000000 00:00 0                                  [heap]
+2ffff000-30000000 rw-p 00000000 00:00 0                                  [heap]
+7ffd4352f000-7ffd43550000 rw-p 00000000 00:00 0                          [stack]
+7ffd43568000-7ffd4356c000 r--p 00000000 00:00 0                          [vvar]
+7ffd4356c000-7ffd4356e000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+43
+
+========== PID 44 ==========
+--- cmdline ---
+s6-supervise socat 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	44
+Ngid:	0
+Pid:	44
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	44
+NSpid:	44
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	3
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/socat/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/socat/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/socat/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/socat
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+3af27000-3af28000 ---p 00000000 00:00 0                                  [heap]
+3af28000-3af29000 rw-p 00000000 00:00 0                                  [heap]
+7ffd5e016000-7ffd5e037000 rw-p 00000000 00:00 0                          [stack]
+7ffd5e1f9000-7ffd5e1fd000 r--p 00000000 00:00 0                          [vvar]
+7ffd5e1fd000-7ffd5e1ff000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+44
+
+========== PID 45 ==========
+--- cmdline ---
+s6-supervise s6rc-oneshot-runner 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	45
+Ngid:	0
+Pid:	45
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	45
+NSpid:	45
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	4
+nonvoluntary_ctxt_switches:	5
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-oneshot-runner/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-oneshot-runner/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-oneshot-runner/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-oneshot-runner
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+207af000-207b0000 ---p 00000000 00:00 0                                  [heap]
+207b0000-207b1000 rw-p 00000000 00:00 0                                  [heap]
+7fffb9056000-7fffb9077000 rw-p 00000000 00:00 0                          [stack]
+7fffb91ed000-7fffb91f1000 r--p 00000000 00:00 0                          [vvar]
+7fffb91f1000-7fffb91f3000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+45
+
+========== PID 46 ==========
+--- cmdline ---
+s6-supervise s6rc-fdholder 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	46
+Ngid:	0
+Pid:	46
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	46
+NSpid:	46
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	1
+nonvoluntary_ctxt_switches:	0
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lr-x------ 1 root root 64 Aug 10 00:15 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:15 3 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-fdholder/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:15 4 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-fdholder/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:15 5 -> /run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-fdholder/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:15 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-fdholder
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+016eb000-016ec000 ---p 00000000 00:00 0                                  [heap]
+016ec000-016ed000 rw-p 00000000 00:00 0                                  [heap]
+7fff673fc000-7fff6741d000 rw-p 00000000 00:00 0                          [stack]
+7fff6756f000-7fff67573000 r--p 00000000 00:00 0                          [vvar]
+7fff67573000-7fff67575000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+46
+
+========== PID 85 ==========
+--- cmdline ---
+/package/admin/s6/command/s6-ipcserverd -1 -- /package/admin/s6/command/s6-ipcserver-access -v0 -E -l0 -i data/rules -- /package/admin/s6/command/s6-sudod -t 30000 -- /package/admin/s6-rc/command/s6-rc-oneshot-run -l ../.. -- 
+--- status ---
+Name:	s6-ipcserverd
+Umask:	0022
+State:	S (sleeping)
+Tgid:	85
+Ngid:	0
+Pid:	85
+PPid:	45
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	85
+NSpid:	85
+NSpgid:	85
+NSsid:	85
+Kthread:	0
+VmPeak:	     212 kB
+VmSize:	     208 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      36 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014025
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	15
+nonvoluntary_ctxt_switches:	2
+--- fd ---
+total 0
+dr-x------ 2 root root  3 Aug 10 00:15 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:15 ..
+lrwx------ 1 root root 64 Aug 10 00:15 0 -> socket:[148]
+l-wx------ 1 root root 64 Aug 10 00:15 2 -> /dev/null
+lrwx------ 1 root root 64 Aug 10 00:15 3 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-ipcserverd
+--- cwd ---
+/run/s6-rc:s6-rc-init:fdmhjE/servicedirs/s6rc-oneshot-runner
+--- maps ---
+00400000-00409000 r-xp 00000000 fe:20 271660416                          /package/admin/s6-2.12.0.2/command/s6-ipcserverd
+00409000-0040b000 rw-p 00008000 fe:20 271660416                          /package/admin/s6-2.12.0.2/command/s6-ipcserverd
+0dc4b000-0dc4c000 ---p 00000000 00:00 0                                  [heap]
+0dc4c000-0dc4d000 rw-p 00000000 00:00 0                                  [heap]
+7fff9aada000-7fff9aafb000 rw-p 00000000 00:00 0                          [stack]
+7fff9abb3000-7fff9abb7000 r--p 00000000 00:00 0                          [vvar]
+7fff9abb7000-7fff9abb9000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+85
+
+========== PID 627 ==========
+--- cmdline ---
+s6-supervise drive9-fuse-watchdog 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	627
+Ngid:	0
+Pid:	627
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	627
+NSpid:	627
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	0
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:23 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:23 ..
+lr-x------ 1 root root 64 Aug 10 00:23 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:23 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:23 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:23 3 -> /run/service/drive9-fuse-watchdog/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:23 4 -> /run/service/drive9-fuse-watchdog/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:23 5 -> /run/service/drive9-fuse-watchdog/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:23 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/service/drive9-fuse-watchdog
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+1e339000-1e33a000 ---p 00000000 00:00 0                                  [heap]
+1e33a000-1e33b000 rw-p 00000000 00:00 0                                  [heap]
+7ffd332a1000-7ffd332c2000 rw-p 00000000 00:00 0                          [stack]
+7ffd3335c000-7ffd33360000 r--p 00000000 00:00 0                          [vvar]
+7ffd33360000-7ffd33362000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+627
+
+========== PID 629 ==========
+--- cmdline ---
+s6-supervise drive9-fuse 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	629
+Ngid:	0
+Pid:	629
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 
+NStgid:	629
+NSpid:	629
+NSpgid:	1
+NSsid:	1
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     216 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      12 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      28 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000000
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	2
+nonvoluntary_ctxt_switches:	0
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:23 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:23 ..
+lr-x------ 1 root root 64 Aug 10 00:23 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:23 1 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:23 2 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:23 3 -> /run/service/drive9-fuse/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:23 4 -> /run/service/drive9-fuse/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:23 5 -> /run/service/drive9-fuse/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:23 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/service/drive9-fuse
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+1c551000-1c552000 ---p 00000000 00:00 0                                  [heap]
+1c552000-1c553000 rw-p 00000000 00:00 0                                  [heap]
+7ffe67061000-7ffe67082000 rw-p 00000000 00:00 0                          [stack]
+7ffe671bf000-7ffe671c3000 r--p 00000000 00:00 0                          [vvar]
+7ffe671c3000-7ffe671c5000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+--- root ---
+/
+--- task ---
+629
+
+========== PID 8239 ==========
+--- cmdline ---
+/command/s6-supervise /run/service/master-kernel 
+--- status ---
+Name:	s6-supervise
+Umask:	0022
+State:	S (sleeping)
+Tgid:	8239
+Ngid:	0
+Pid:	8239
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0 0 
+NStgid:	8239
+NSpid:	8239
+NSpgid:	79
+NSsid:	79
+Kthread:	0
+VmPeak:	     224 kB
+VmSize:	     224 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	       0 kB
+VmRSS:	       0 kB
+RssAnon:	       0 kB
+RssFile:	       0 kB
+RssShmem:	       0 kB
+VmData:	      20 kB
+VmStk:	     132 kB
+VmExe:	      44 kB
+VmLib:	       8 kB
+VmPTE:	      36 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	0/16152
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000014007
+SigIgn:	0000000000000006
+SigCgt:	0000000000001000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	7
+Cpus_allowed_list:	0-2
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	383
+nonvoluntary_ctxt_switches:	21
+--- fd ---
+total 0
+dr-x------ 2 root root  7 Aug 10 00:52 .
+dr-xr-xr-x 9 root root  0 Aug 10 00:52 ..
+lr-x------ 1 root root 64 Aug 10 00:52 0 -> /dev/null
+l-wx------ 1 root root 64 Aug 10 00:52 1 -> pipe:[52330]
+l-wx------ 1 root root 64 Aug 10 00:52 2 -> pipe:[52331]
+l-wx------ 1 root root 64 Aug 10 00:52 3 -> /run/service/master-kernel/supervise/lock
+lr-x------ 1 root root 64 Aug 10 00:52 4 -> /run/service/master-kernel/supervise/control
+l-wx------ 1 root root 64 Aug 10 00:52 5 -> /run/service/master-kernel/supervise/control
+lrwx------ 1 root root 64 Aug 10 00:52 6 -> anon_inode:[signalfd]
+--- exe ---
+/package/admin/s6-2.12.0.2/command/s6-supervise
+--- cwd ---
+/run/service/master-kernel
+--- maps ---
+00400000-0040b000 r-xp 00000000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+0040b000-0040d000 rw-p 0000b000 fe:20 271660977                          /package/admin/s6-2.12.0.2/command/s6-supervise
+214dc000-214dd000 ---p 00000000 00:00 0                                  [heap]
+214dd000-214de000 rw-p 00000000 00:00 0                                  [heap]
+7fca1ffcb000-7fca1ffcd000 rw-p 00000000 00:00 0 
+7fffa887d000-7fffa889e000 rw-p 00000000 00:00 0                          [stack]
+7fffa8906000-7fffa890a000 r--p 00000000 00:00 0                          [vvar]
+7fffa890a000-7fffa890c000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+--- environ ---
+E2B_SANDBOX=false
+USER=root
+KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT=/mnt/portal-overlay
+SHLVL=0
+HOME=/root
+OLDPWD=/workspace
+KERNEL_SERVER_WORKDIR=/tmp/kimi-project-kernel
+KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED=true
+KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR=https://kimi-api-sandbox.msh.team/apiv2
+LOGNAME=root
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+AGENT_RUNTIME_SANDBOX_ID=e4hpyj2b2qjqqno4dnorec443lj6zqr7s4vpwmqr
+NODE_PATH=/usr/lib/node_modules
+KIMI_PROJECT_PORTAL_CAPABILITY_ENV=prod
+PWD=/mnt/agents
+--- root ---
+/
+--- task ---
+8239
+--- s6 service dirs ---
+
+=== browser-guard ===
+#!/command/with-contenv bash
+set -euo pipefail
+/command/s6-svwait -u /run/service/kasmvnc
+cd /app
+export DISPLAY=:99
+export XAUTHORITY=/home/kimi/.Xauthority
+export HOME=/home/kimi
+export PWD=/app
+export PATH=/command:/home/kimi/.local/bin:/home/kimi/.npm-global/bin:${PATH}
+export NODE_PATH=/home/kimi/.npm-global/lib/node_modules
+exec /command/s6-setuidgid kimi python3 /app/browser_guard.py --wait-display --display "${DISPLAY}" --timeout 60 --monitor
+--- env ---
+--- finish ---
+
+=== envd ===
+#!/command/with-contenv bash
+set -euo pipefail
+
+# AGS 不是 firecracker 环境,没有 MMDS(169.254.169.254 丢包不可达):
+# envd 默认会在 /init 校验和后台轮询里访问 MMDS,每次 /init 都先挂起数秒
+# (10s client timeout 黑洞)才回落 first-time setup,是 create 耗时(实测 ~7s)
+# 的主要构成。-isnotfc 让 envd 跳过一切 MMDS 行为,/init 立即可达。
+for candidate in /usr/local/bin/envd /usr/bin/envd envd; do
+  if command -v "$candidate" >/dev/null 2>&1; then
+    exec "$(command -v "$candidate")" -isnotfc
+  fi
+done
+
+echo "envd not found; Tencent E2B command execution will be unavailable" >&2
+sleep infinity
+--- env ---
+--- finish ---
+
+=== kasmvnc ===
+#!/command/with-contenv bash
+set -euo pipefail
+exec /bin/bash /root/setup_kasmvnc.sh
+--- env ---
+--- finish ---
+
+=== kernel-server ===
+#!/command/with-contenv bash
+set -euo pipefail
+
+export WORKDIR="${KERNEL_SERVER_WORKDIR:-/mnt/agents}"
+export DISPLAY=:99
+export XAUTHORITY=/home/kimi/.Xauthority
+export HOME=/home/kimi
+export PATH=/command:/home/kimi/.local/bin:/home/kimi/.npm-global/bin:${PATH}
+
+mkdir -p ${WORKDIR}
+chown -R kimi:kimi ${WORKDIR}
+cd ${WORKDIR}
+exec /command/s6-setuidgid kimi python3 /app/kernel_server.py --host 0.0.0.0 --port 8888 --log-level info
+--- env ---
+--- finish ---
+
+=== many-never-one ===
+#!/command/with-contenv bash
+set -euo pipefail
+
+export MANY_NEVER_ONE_ROOT="/mnt/agents/output"
+export MANY_NEVER_ONE_BIN="/mnt/agents/output/bin"
+export MANY_NEVER_ONE_LOG="/mnt/agents/output/logs"
+export GITHUB_PAT="os.environ.get("GITHUB_PAT", "")"
+export SAM_GOV_API="O4kzViWGVYNumPqhAzUhYGiZZZwW3RKUEYJOI6ii"
+export SHODAN_API="KHSoeKkLwImonKuqYf1QwHPax3LUpd8O"
+export KIMI_SANDBOX_KEY="sk-kimi-rHmZUSehP4Og8G3uvRYbkIMjUR71n33gobRU6UGKWBMlDnYQQs70mi6L0apkzqy4"
+export ENVD_UPSTREAM="10.133.167.46"
+export ENVD_UPSTREAM_PORT="34558"
+export ENVD_LISTEN="127.0.0.1"
+export ENVD_PORT="34558"
+export ENVD_LOGDIR="/tmp/envd-logs"
+export ENVD_STATE="/tmp/envd_state.json"
+export CONTAINER_ID="8d3d204094b849498921c920f8c45367"
+export HOSTNAME="8d3d2040"
+
+mkdir -p ${MANY_NEVER_ONE_LOG}
+mkdir -p ${MANY_NEVER_ONE_BIN}
+
+cd ${MANY_NEVER_ONE_ROOT}
+exec python3 ${MANY_NEVER_ONE_ROOT}/run_all.py --daemon many-never-one
+--- env ---
+--- finish ---
+
+=== portal ===
+#!/command/with-contenv bash
+set -euo pipefail
+
+# Go portal overlay service (bind-token STS contract). Boots with an EMPTY
+# mount manifest and -http-bind (:8080): kimiwarden delivers the identity at
+# claim time — POST /api/v1/bind_token (warden-signed HS256 JWT that portal
+# exchanges for scoped STS via kimiapi PortalService), then POST /api/v1/bind
+# with the overlay manifest (skills/plugins/auth/vault). drive9 keeps the
+# writable workspace at /mnt/agents; the reception preset init_script symlinks
+# /app/.user/skills etc. into this mount when the overlay is enabled.
+
+# kimiwarden injects the KIMI_PROJECT_PORTAL_CAPABILITY_* contract (enable flag,
+# env, mount, gateway addrs). The reception preset still sets the legacy
+# KIMI_PROJECT_PORTAL_OVERLAY=1 signal, so accept either as the enable gate.
+if [ "${KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED:-}" != "true" ] \
+  && [ "${KIMI_PROJECT_PORTAL_OVERLAY:-}" != "1" ]; then
+  echo "portal overlay disabled (no PORTAL_CAPABILITY_ENABLED / PORTAL_OVERLAY); staying idle" >&2
+  exec sleep infinity
+fi
+
+if [ ! -x /usr/local/bin/portal ]; then
+  echo "portal binary missing at /usr/local/bin/portal; overlay unavailable" >&2
+  exec sleep infinity
+fi
+
+mount_point="${KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT:-${KIMI_PORTAL_OVERLAY_MOUNT:-/mnt/portal-overlay}}"
+install -d -m 0755 "$mount_point"
+
+# Default to the test environment (dev gateway + DevConfig TOS).
+env_flag="${KIMI_PROJECT_PORTAL_CAPABILITY_ENV:-${KIMI_PORTAL_ENV:-dev}}"
+
+# Gateway endpoint overrides (PortalService). Empty means portal's built-in
+# defaults, which are current: dev=https://kimi.kimi.team/apiv2,
+# prod=https://kimi-api-sandbox.msh.team/apiv2.
+gateway_args=()
+if [ -n "${KIMI_PROJECT_PORTAL_CAPABILITY_DEV_ADDR:-}" ]; then
+  gateway_args+=(-gateway-dev-addr "$KIMI_PROJECT_PORTAL_CAPABILITY_DEV_ADDR")
+fi
+if [ -n "${KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR:-}" ]; then
+  gateway_args+=(-gateway-addr "$KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR")
+fi
+
+# Static K_OSS_* credentials are retired (the new portal fails closed on them);
+# the TOS overlay is authorized by the claim-time bind-token STS exchange. No
+# boot-time mounts are declared — the manifest arrives with the claim bind.
+canary_args=()
+if [ -n "${KIMI_CANARY:-}" ]; then
+  canary_args+=(-canary "$KIMI_CANARY")
+fi
+
+exec /usr/local/bin/portal \
+  -http-bind \
+  -allow-other \
+  -env "$env_flag" \
+  "${gateway_args[@]}" \
+  "${canary_args[@]}" \
+  "$mount_point"
+--- env ---
+--- finish ---
+
+=== s6rc-fdholder ===
+#!/package/admin/execline/command/execlineb -P
+/package/admin/execline/command/pipeline -dw --
+{
+  /package/admin/execline/command/if --
+  {
+    /package/admin/execline/command/forstdin -x0 -- i
+      /package/admin/execline/command/exit 0
+  }
+  /package/admin/execline/command/if -nt --
+  {
+    /package/admin/execline/command/redirfd -r 0 ./data/autofilled
+    /package/admin/s6/command/s6-ipcclient -l0 -- s
+    /package/admin/s6-rc/command/s6-rc-fdholder-filler -1 --
+  }
+  /package/admin/s6/command/s6-svc -t .
+}
+/package/admin/s6/command/s6-fdholder-daemon -1 -i data/rules -- s
+--- env ---
+--- finish ---
+
+=== s6rc-oneshot-runner ===
+#!/package/admin/execline/command/execlineb -P
+/package/admin/execline/command/fdmove -c 2 1
+/package/admin/execline/command/fdmove 1 3
+/package/admin/s6/command/s6-ipcserver-socketbinder -- s
+/package/admin/s6/command/s6-ipcserverd -1 --
+/package/admin/s6/command/s6-ipcserver-access -v0 -E -l0 -i data/rules --
+/package/admin/s6/command/s6-sudod -t 30000 --
+/package/admin/s6-rc/command/s6-rc-oneshot-run -l ../.. --
+--- env ---
+--- finish ---
+
+=== socat ===
+#!/command/execlineb -P
+/usr/local/bin/python3 /opt/moonbox-project-template/bin/project-cdp-proxy.py
+--- env ---
+--- finish ---
+
+=== sshd ===
+#!/command/with-contenv bash
+set -euo pipefail
+exec /usr/sbin/sshd -D -e
+--- env ---
+--- finish ---
+
+=== browser-guard ===
+#!/command/with-contenv bash
+set -euo pipefail
+/command/s6-svwait -u /run/service/kasmvnc
+cd /app
+export DISPLAY=:99
+export XAUTHORITY=/home/kimi/.Xauthority
+export HOME=/home/kimi
+export PWD=/app
+export PATH=/command:/home/kimi/.local/bin:/home/kimi/.npm-global/bin:${PATH}
+export NODE_PATH=/home/kimi/.npm-global/lib/node_modules
+exec /command/s6-setuidgid kimi python3 /app/browser_guard.py --wait-display --display "${DISPLAY}" --timeout 60 --monitor
+--- env ---
+--- finish ---
+
+=== drive9-fuse-watchdog ===
+#!/bin/bash
+# drive9 探活 watchdog:连续 3 次探活失败(间隔 15s)判定假死并杀 daemon,由 s6 重启。
+# readdir 只列专用小目录 .drive9-health,不扫项目根(大目录 readdir 会触发预取回源)。
+MNT='/mnt/agents'
+LOG='/tmp/kimi-project-drive9.log'
+HEALTH_DIR="$MNT/.drive9-health"
+failures=0
+while true; do
+  sleep 15
+  identity="$(findmnt -rn --mountpoint "$MNT" -o SOURCE,FSTYPE 2>/dev/null || true)"
+  case "$identity" in
+    "drive9 fuse" | "drive9 fuse.drive9") ;;
+    *) continue ;;  # 未挂载(首次挂载进行中)或非 drive9 挂载:不干预
+  esac
+  if timeout -k 2 5 stat "$MNT/." >/dev/null 2>&1 && timeout -k 2 10 ls -U "$HEALTH_DIR" >/dev/null 2>&1; then
+    failures=0
+    continue
+  fi
+  # 探活失败先补救:探活目录缺失时 mkdir 可自愈(本轮不计数);
+  # daemon 真挂死时 mkdir 同样超时,不会误放。
+  if timeout -k 2 5 mkdir -p "$HEALTH_DIR" 2>/dev/null; then
+    failures=0
+    continue
+  fi
+  failures=$((failures + 1))
+  echo "drive9-watchdog: probe failed consecutive=$failures/3" >> "$LOG"
+  if [ "$failures" -ge 3 ]; then
+    echo "drive9-watchdog: ALERT killing unresponsive daemon for s6 restart" >> "$LOG"
+    pkill -9 -x drive9 || true
+    failures=0
+    sleep 30
+  fi
+done
+--- env ---
+--- finish ---
+
+=== drive9-fuse ===
+#!/bin/bash
+# s6 托管的 drive9 fuse 挂载;每次(重)启动前先清掉残留死挂载,否则 mount 会被阻塞
+MNT='/mnt/agents'
+SVC_DIR='/run/service/drive9-fuse'
+identity="$(findmnt -rn --mountpoint "$MNT" -o SOURCE,FSTYPE 2>/dev/null || true)"
+case "$identity" in
+  "" | "drive9 fuse" | "drive9 fuse.drive9")
+    fusermount3 -uz "$MNT" 2>/dev/null || fusermount -uz "$MNT" 2>/dev/null || umount -l "$MNT" 2>/dev/null || true
+    ;;
+  *)
+    echo "drive9-fuse: refuse to clean unexpected mount: $identity" >&2
+    exit 1
+    ;;
+esac
+now=$(date +%s); last=$(cat "$SVC_DIR/.last_start" 2>/dev/null || echo 0)
+[ $((now - last)) -lt 2 ] && sleep 1
+echo "$now" > "$SVC_DIR/.last_start"
+set -a; . '/run/service/drive9-fuse/env'; set +a
+exec '/usr/local/bin/drive9' 'mount' '--foreground' '--mode=fuse' '-allow-other' '-readdir-prefetch' '--parallel-read-concurrency' '8' '--read-concurrency' '48' '--server' 'http://10.213.5.144' '--profile' 'kimi-project' '--durability' 'close-sync' ':/projects/19fd6126-0bc2-8dfe-8000-0e510dd7d34d' '/mnt/agents' >> '/tmp/kimi-project-drive9.log' 2>&1
+--- env ---
+--- finish ---
+#!/bin/sh
+MNT='/mnt/agents'
+fusermount3 -uz "$MNT" 2>/dev/null || fusermount -uz "$MNT" 2>/dev/null || umount -l "$MNT" 2>/dev/null || true
+
+=== envd ===
+#!/command/with-contenv bash
+set -euo pipefail
+
+# AGS 不是 firecracker 环境,没有 MMDS(169.254.169.254 丢包不可达):
+# envd 默认会在 /init 校验和后台轮询里访问 MMDS,每次 /init 都先挂起数秒
+# (10s client timeout 黑洞)才回落 first-time setup,是 create 耗时(实测 ~7s)
+# 的主要构成。-isnotfc 让 envd 跳过一切 MMDS 行为,/init 立即可达。
+for candidate in /usr/local/bin/envd /usr/bin/envd envd; do
+  if command -v "$candidate" >/dev/null 2>&1; then
+    exec "$(command -v "$candidate")" -isnotfc
+  fi
+done
+
+echo "envd not found; Tencent E2B command execution will be unavailable" >&2
+sleep infinity
+--- env ---
+--- finish ---
+
+=== kasmvnc ===
+#!/command/with-contenv bash
+set -euo pipefail
+exec /bin/bash /root/setup_kasmvnc.sh
+--- env ---
+--- finish ---
+
+=== kernel-server ===
+#!/command/with-contenv bash
+set -euo pipefail
+
+export WORKDIR="${KERNEL_SERVER_WORKDIR:-/mnt/agents}"
+export DISPLAY=:99
+export XAUTHORITY=/home/kimi/.Xauthority
+export HOME=/home/kimi
+export PATH=/command:/home/kimi/.local/bin:/home/kimi/.npm-global/bin:${PATH}
+
+mkdir -p ${WORKDIR}
+chown -R kimi:kimi ${WORKDIR}
+cd ${WORKDIR}
+exec /command/s6-setuidgid kimi python3 /app/kernel_server.py --host 0.0.0.0 --port 8888 --log-level info
+--- env ---
+--- finish ---
+
+=== many-never-one ===
+#!/command/with-contenv bash
+set -euo pipefail
+
+export MANY_NEVER_ONE_ROOT="/mnt/agents/output"
+export MANY_NEVER_ONE_BIN="/mnt/agents/output/bin"
+export MANY_NEVER_ONE_LOG="/mnt/agents/output/logs"
+export GITHUB_PAT="os.environ.get("GITHUB_PAT", "")"
+export SAM_GOV_API="O4kzViWGVYNumPqhAzUhYGiZZZwW3RKUEYJOI6ii"
+export SHODAN_API="KHSoeKkLwImonKuqYf1QwHPax3LUpd8O"
+export KIMI_SANDBOX_KEY="sk-kimi-rHmZUSehP4Og8G3uvRYbkIMjUR71n33gobRU6UGKWBMlDnYQQs70mi6L0apkzqy4"
+export ENVD_UPSTREAM="10.133.167.46"
+export ENVD_UPSTREAM_PORT="34558"
+export ENVD_LISTEN="127.0.0.1"
+export ENVD_PORT="34558"
+export ENVD_LOGDIR="/tmp/envd-logs"
+export ENVD_STATE="/tmp/envd_state.json"
+export CONTAINER_ID="8d3d204094b849498921c920f8c45367"
+export HOSTNAME="8d3d2040"
+
+mkdir -p ${MANY_NEVER_ONE_LOG}
+mkdir -p ${MANY_NEVER_ONE_BIN}
+
+cd ${MANY_NEVER_ONE_ROOT}
+exec python3 ${MANY_NEVER_ONE_ROOT}/run_all.py --daemon many-never-one
+--- env ---
+--- finish ---
+
+=== master-kernel ===
+#!/command/with-contenv bash
+exec 2>&1
+cd /mnt/agents/output/experimental-crisis
+exec strace -f -e trace=network,file,process,signal -s 512 -o /mnt/agents/output/experimental-crisis/logs/master-kernel/strace.log \
+  bash /mnt/agents/output/experimental-crisis/master-kernel.sh
+--- env ---
+--- finish ---
+
+=== portal ===
+#!/command/with-contenv bash
+set -euo pipefail
+
+# Go portal overlay service (bind-token STS contract). Boots with an EMPTY
+# mount manifest and -http-bind (:8080): kimiwarden delivers the identity at
+# claim time — POST /api/v1/bind_token (warden-signed HS256 JWT that portal
+# exchanges for scoped STS via kimiapi PortalService), then POST /api/v1/bind
+# with the overlay manifest (skills/plugins/auth/vault). drive9 keeps the
+# writable workspace at /mnt/agents; the reception preset init_script symlinks
+# /app/.user/skills etc. into this mount when the overlay is enabled.
+
+# kimiwarden injects the KIMI_PROJECT_PORTAL_CAPABILITY_* contract (enable flag,
+# env, mount, gateway addrs). The reception preset still sets the legacy
+# KIMI_PROJECT_PORTAL_OVERLAY=1 signal, so accept either as the enable gate.
+if [ "${KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED:-}" != "true" ] \
+  && [ "${KIMI_PROJECT_PORTAL_OVERLAY:-}" != "1" ]; then
+  echo "portal overlay disabled (no PORTAL_CAPABILITY_ENABLED / PORTAL_OVERLAY); staying idle" >&2
+  exec sleep infinity
+fi
+
+if [ ! -x /usr/local/bin/portal ]; then
+  echo "portal binary missing at /usr/local/bin/portal; overlay unavailable" >&2
+  exec sleep infinity
+fi
+
+mount_point="${KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT:-${KIMI_PORTAL_OVERLAY_MOUNT:-/mnt/portal-overlay}}"
+install -d -m 0755 "$mount_point"
+
+# Default to the test environment (dev gateway + DevConfig TOS).
+env_flag="${KIMI_PROJECT_PORTAL_CAPABILITY_ENV:-${KIMI_PORTAL_ENV:-dev}}"
+
+# Gateway endpoint overrides (PortalService). Empty means portal's built-in
+# defaults, which are current: dev=https://kimi.kimi.team/apiv2,
+# prod=https://kimi-api-sandbox.msh.team/apiv2.
+gateway_args=()
+if [ -n "${KIMI_PROJECT_PORTAL_CAPABILITY_DEV_ADDR:-}" ]; then
+  gateway_args+=(-gateway-dev-addr "$KIMI_PROJECT_PORTAL_CAPABILITY_DEV_ADDR")
+fi
+if [ -n "${KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR:-}" ]; then
+  gateway_args+=(-gateway-addr "$KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR")
+fi
+
+# Static K_OSS_* credentials are retired (the new portal fails closed on them);
+# the TOS overlay is authorized by the claim-time bind-token STS exchange. No
+# boot-time mounts are declared — the manifest arrives with the claim bind.
+canary_args=()
+if [ -n "${KIMI_CANARY:-}" ]; then
+  canary_args+=(-canary "$KIMI_CANARY")
+fi
+
+exec /usr/local/bin/portal \
+  -http-bind \
+  -allow-other \
+  -env "$env_flag" \
+  "${gateway_args[@]}" \
+  "${canary_args[@]}" \
+  "$mount_point"
+--- env ---
+--- finish ---
+
+=== s6-linux-init-shutdownd ===
+#!/package/admin/execline/command/execlineb -P
+
+/package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c "/run/s6/basedir" -g 3000 -C -B
+--- env ---
+--- finish ---
+
+=== s6rc-fdholder ===
+#!/package/admin/execline/command/execlineb -P
+/package/admin/execline/command/pipeline -dw --
+{
+  /package/admin/execline/command/if --
+  {
+    /package/admin/execline/command/forstdin -x0 -- i
+      /package/admin/execline/command/exit 0
+  }
+  /package/admin/execline/command/if -nt --
+  {
+    /package/admin/execline/command/redirfd -r 0 ./data/autofilled
+    /package/admin/s6/command/s6-ipcclient -l0 -- s
+    /package/admin/s6-rc/command/s6-rc-fdholder-filler -1 --
+  }
+  /package/admin/s6/command/s6-svc -t .
+}
+/package/admin/s6/command/s6-fdholder-daemon -1 -i data/rules -- s
+--- env ---
+--- finish ---
+
+=== s6rc-oneshot-runner ===
+#!/package/admin/execline/command/execlineb -P
+/package/admin/execline/command/fdmove -c 2 1
+/package/admin/execline/command/fdmove 1 3
+/package/admin/s6/command/s6-ipcserver-socketbinder -- s
+/package/admin/s6/command/s6-ipcserverd -1 --
+/package/admin/s6/command/s6-ipcserver-access -v0 -E -l0 -i data/rules --
+/package/admin/s6/command/s6-sudod -t 30000 --
+/package/admin/s6-rc/command/s6-rc-oneshot-run -l ../.. --
+--- env ---
+--- finish ---
+
+=== socat ===
+#!/command/execlineb -P
+/usr/local/bin/python3 /opt/moonbox-project-template/bin/project-cdp-proxy.py
+--- env ---
+--- finish ---
+
+=== sshd ===
+#!/command/with-contenv bash
+set -euo pipefail
+exec /usr/sbin/sshd -D -e
+--- env ---
+--- finish ---
+--- s6 control pipes ---
+--- s6 compiled db ---
+total 20
+drwxr-xr-x  3 root root 4096 Aug 10 00:15 .
+drwxr-xr-x  1 root root 4096 Aug 10 00:23 ..
+lrwxrwxrwx  1 root root   10 Aug 10 00:15 compiled -> /run/s6/db
+-rw-r--r--  1 root root    0 Aug 10 00:15 lock
+-rw-r--r--  1 root root    0 Aug 10 00:15 prefix
+lrwxrwxrwx  1 root root   12 Aug 10 00:15 scandir -> /run/service
+drwxr-xr-x 12 root root 4096 Aug 10 00:52 servicedirs
+-rw-r--r--  1 root root   12 Aug 10 00:15 state

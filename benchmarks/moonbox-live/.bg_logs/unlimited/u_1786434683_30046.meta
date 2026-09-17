@@ -1,0 +1,1 @@
+{"id":"u_1786434683_30046","cmd":"ps auxf | rg auto_hook | rg -v rg","rc":127,"size":200,"parts":1,"file":"/mnt/agents/output/.bg_logs/unlimited/u_1786434683_30046.txt"}

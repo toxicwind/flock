@@ -1,0 +1,1 @@
+{"id": "build_001", "type": "bun", "cmd": "export PATH=\"/root/.bun/bin:$PATH\" && cd /mnt/agents/output/app && bun install 2>&1 | tail -5 && bun run build 2>&1 | tail -10", "timeout": 300, "env": {"PATH": "/root/.bun/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"}}

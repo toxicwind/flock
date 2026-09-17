@@ -1,0 +1,155 @@
+{
+  "timestamp": 1787343574.8909206,
+  "ops": [
+    {
+      "phase": "portal_pid",
+      "status": "ok",
+      "result": "portal_pid=70",
+      "ms": 0
+    },
+    {
+      "phase": "portal_env",
+      "status": "fail",
+      "result": "[Errno 13] Permission denied: '/proc/70/environ'",
+      "ms": 0
+    },
+    {
+      "phase": "portal_sockets",
+      "status": "ok",
+      "result": "['127.0.0.1:37221', '127.0.0.1:32846', '10.133.166.7:55654', '127.0.0.1:9222', '10.213.5.144:80', '172.217.114.4:443', '74.125.20.188:5228', '10.213.5.144:80', '127.0.0.1:37346', '127.0.0.1:50765', '127.0.0.1:37190', '169.254.0.49:443', '127.0.0.1:37221', '127.0.0.1:53293', '172.29.160.117:443', '127.0.0.1:53293', '127.0.0.1:42828', '127.0.0.1:45136', '127.0.0.1:37358', '127.0.0.1:33188', '127.0.0",
+      "ms": 14
+    },
+    {
+      "phase": "raw_18080_get",
+      "status": "ok",
+      "result": "HTTP/1.0 200 OK\r\nServer: SimpleHTTP/0.6 Python/3.12.12\r\nDate: Fri, 21 Aug 2026 20:19:34 GMT\r\nContent-type: text/html; charset=utf-8\r\nContent-Length: 226\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Directory listing for /</title>\n</head>\n<body>\n<h1>Directory listing for /",
+      "ms": 44
+    },
+    {
+      "phase": "raw_18080_gift",
+      "status": "ok",
+      "result": "HTTP/1.0 501 Unsupported method ('POST')\r\nServer: SimpleHTTP/0.6 Python/3.12.12\r\nDate: Fri, 21 Aug 2026 20:19:34 GMT\r\nConnection: close\r\nContent-Type: text/html;charset=utf-8\r\nContent-Length: 357\r\n\r\n",
+      "ms": 0
+    },
+    {
+      "phase": "envd_health",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 2
+    },
+    {
+      "phase": "envd_fs",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 7
+    },
+    {
+      "phase": "envd_proc",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 0
+    },
+    {
+      "phase": "envd_port",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 0
+    },
+    {
+      "phase": "cdp_9223",
+      "status": "ok",
+      "result": "['page:chrome://newtab/']",
+      "ms": 12
+    },
+    {
+      "phase": "cdp_9222",
+      "status": "ok",
+      "result": "['page:chrome://newtab/']",
+      "ms": 0
+    },
+    {
+      "phase": "gift_sandbox_agentgw",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 30
+    },
+    {
+      "phase": "gift_www_agentgw",
+      "status": "fail",
+      "result": "HTTP Error 401: Unauthorized",
+      "ms": 1175
+    },
+    {
+      "phase": "gift_sandbox_bind",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 23
+    },
+    {
+      "phase": "gift_www_bind",
+      "status": "fail",
+      "result": "HTTP Error 401: Unauthorized",
+      "ms": 1078
+    },
+    {
+      "phase": "promo_sandbox",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 61
+    },
+    {
+      "phase": "promo_www",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 997
+    },
+    {
+      "phase": "portal_manifest",
+      "status": "ok",
+      "result": "{'bind_token': '?', 'workflow': '?', 'gateway_addr': '?'}",
+      "ms": 0
+    },
+    {
+      "phase": "portal_virtual",
+      "status": "ok",
+      "result": "{'/mnt/portal-overlay/.subscription': 'not_exists', '/mnt/portal-overlay/.credits': 'not_exists', '/mnt/portal-overlay/.promo': 'not_exists', '/mnt/portal-overlay/.giftcodes': 'not_exists', '/mnt/portal-overlay/.billing': 'not_exists'}",
+      "ms": 5
+    },
+    {
+      "phase": "other_kernels",
+      "status": "ok",
+      "result": "['/tmp/tmpe47e8h8x.json: python3']",
+      "ms": 1
+    },
+    {
+      "phase": "raw_kimi_80",
+      "status": "ok",
+      "result": "HTTP/1.1 401 Unauthorized\r\nDate: Fri, 21 Aug 2026 20:19:38 GMT\r\nContent-Type: application/json\r\nContent-Length: 236\r\nConnection: keep-alive\r\naccept-encoding: gzip\r\nvary: Origin\r\n\r\n",
+      "ms": 13
+    },
+    {
+      "phase": "raw_kimi_443",
+      "status": "ok",
+      "result": "HTTP/1.1 400 Bad Request\r\nDate: Fri, 21 Aug 2026 20:19:38 GMT\r\nContent-Type: text/html\r\nContent-Length: 248\r\nConnection: close\r\n\r\n<html>\r\n<head><title>400 The plain HTTP request was sent to HTTPS port</title></head>\r\n<body>\r\n<center><h1>400 Bad Request</h1></center>\r\n<center>The plain HTTP request w",
+      "ms": 11
+    },
+    {
+      "phase": "agentgw_models",
+      "status": "fail",
+      "result": "HTTP Error 403: Forbidden",
+      "ms": 1000
+    },
+    {
+      "phase": "agentgw_chat",
+      "status": "fail",
+      "result": "HTTP Error 403: Forbidden",
+      "ms": 1026
+    },
+    {
+      "phase": "kernel_self_exec",
+      "status": "fail",
+      "result": "timed out",
+      "ms": 3041
+    }
+  ]
+}

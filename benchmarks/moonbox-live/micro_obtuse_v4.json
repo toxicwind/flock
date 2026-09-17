@@ -1,0 +1,95 @@
+{
+  "timestamp": 1787343713.9572234,
+  "ops": [
+    {
+      "phase": "18080_root",
+      "status": "ok",
+      "result": "<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Directory listing for /</title>\n</head>\n<body>\n<h1>Directory listing for /</h1>\n<hr>\n<ul>\n<li><a href=\"healthz\">healthz</a></li>\n</ul>\n<hr>\n</body>\n</html>\n",
+      "ms": 3
+    },
+    {
+      "phase": "18080_files",
+      "status": "ok",
+      "result": "{'healthz': 'ok'}",
+      "ms": 4
+    },
+    {
+      "phase": "metadata_169",
+      "status": "fail",
+      "result": "HTTP Error 403: Forbidden",
+      "ms": 22
+    },
+    {
+      "phase": "metadata_paths",
+      "status": "fail",
+      "result": "HTTP Error 400: Bad Request",
+      "ms": 21
+    },
+    {
+      "phase": "internal_10_133_166_7",
+      "status": "fail",
+      "result": "timed out",
+      "ms": 3000
+    },
+    {
+      "phase": "internal_10_133_166_50",
+      "status": "fail",
+      "result": "timed out",
+      "ms": 3001
+    },
+    {
+      "phase": "path_variants_www",
+      "status": "ok",
+      "result": "{'/apiv2/kimi.gateway.promotion.v1.PromotionService/ListPromotionalAssets': 'HTTP 404', '/apiv2/kimi.gateway.membership.v2.GiftcardService/ListGiftcardCodes': 'HTTP 401', '/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscription': 'HTTP 401', '/apiv2/kimi.gateway.membership.v2.MembershipService/GetCurrentUser': 'HTTP 404', '/grpc/kimi.gateway.membership.v2.GiftcardService/ListGiftcardCodes': '200: <!doctype html> <html lang=\"zh-CN\" translate=\"no\" class=\"light\"> <head> <script type=\"mo",
+      "ms": 12092
+    },
+    {
+      "phase": "path_variants_kimi",
+      "status": "ok",
+      "result": "{'/apiv2/kimi.gateway.promotion.v1.PromotionService/ListPromotionalAssets': 'HTTP 404', '/apiv2/kimi.gateway.membership.v2.GiftcardService/ListGiftcardCodes': 'HTTP 401'}",
+      "ms": 100
+    },
+    {
+      "phase": "cdp_pages",
+      "status": "ok",
+      "result": "['page:chrome://newtab/', 'iframe:chrome-untrusted://new-tab-page/one-google-bar?paramsencoded']",
+      "ms": 44
+    },
+    {
+      "phase": "portal_manifest_full",
+      "status": "ok",
+      "result": "{'user_id': 'd87br2oh8njkr90jf520', 'chat_id': '1a020679-d222-869b-8000-0951bdc10738', 'skills': {}, 'auth': {}, 'plugins': {'region': 'REGION_OVERSEA'}, 'vault': {}, 'agentgw': {}, 'configured_readonly': {}}",
+      "ms": 0
+    },
+    {
+      "phase": "18080_interesting",
+      "status": "ok",
+      "result": "[]",
+      "ms": 3
+    },
+    {
+      "phase": "gift_sandbox_x_token",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 26
+    },
+    {
+      "phase": "gift_sandbox_noauth",
+      "status": "fail",
+      "result": "HTTP Error 404: Not Found",
+      "ms": 23
+    },
+    {
+      "phase": "internal_25000",
+      "status": "fail",
+      "result": "timed out",
+      "ms": 3001
+    },
+    {
+      "phase": "plugins_list",
+      "status": "ok",
+      "result": "[\"audio_generation: ['audio_generation_tool.py']\", \"igo_open_data: ['igo', 'HANDOFF.md', 'README.md', 'TEST_REPORT.md', 'igo_open_data_tool.py']\", \"image_generation: ['image_generation_tool.py']\", \"imf: ['imf_tool.py']\", \"musepool: ['__pycache__', 'muse_tool.py']\", \"scholar: ['scholar_tool.py']\", \"sec_edgar: ['sec_edgar_tool.py']\", \"video_generation: ['video_generation_tool.py', 'video_generation_watch.py']\", \"world_bank_open_data: ['world_bank_open_data_tool.py']\", \"yahoo_finance: ['yahoo_finan",
+      "ms": 4
+    }
+  ]
+}

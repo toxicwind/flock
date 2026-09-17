@@ -1,0 +1,674 @@
+use std::collections::HashMap;
+use std::io::Read;
+use std::path::{Path, PathBuf};
+use std::sync::{Arc, Mutex};
+use std::time::{Duration, Instant};
+
+use samply_symbols::{BreakpadIndex, BreakpadIndexCreator, BreakpadParseError, OwnedBreakpadIndex};
+use tokio::io::{AsyncReadExt, AsyncWriteExt};
+
+use crate::downloader::{ChunkConsumer, Downloader, DownloaderObserver, FileDownloadOutcome};
+use crate::file_creation::{create_file_cleanly, CleanFileCreationError};
+use crate::DownloadError;
+
+/// The error type used in the observer notification [`DownloaderObserver::on_symindex_generation_failed`].
+#[derive(thiserror::Error, Debug)]
+pub enum SymindexGenerationError {
+    /// No cache directory for breakpad symindex files has been configured.
+    #[error("No symindex cache directory")]
+    NoSymindexCacheDir,
+
+    /// Could not create destination directory.
+    #[error("Could not create destination directory {0}: {1}")]
+    CouldNotCreateDestinationDirectory(PathBuf, std::io::Error),
+
+    /// Could not parse breakpad sym file.
+    #[error("Could not parse breakpad sym file: {0}")]
+    BreakpadParsing(BreakpadParseError),
+
+    /// There was an error while reading the breakpad symbol file.
+    #[error("Error while reading the breakpad symbol file: {0}")]
+    SymReading(std::io::Error),
+
+    /// There was an error while writing the extracted file.
+    #[error("Error while writing the file: {0}")]
+    FileWriting(std::io::Error),
+
+    /// Other error.
+    #[error("Other error: {0}")]
+    Other(Box<dyn std::error::Error + Send + Sync>),
+}
+
+pub struct BreakpadSymbolDownloader {
+    inner: Arc<BreakpadSymbolDownloaderInner>,
+}
+
+impl BreakpadSymbolDownloader {
+    pub fn new(
+        breakpad_directories_readonly: Vec<PathBuf>,
+        breakpad_servers: Vec<(String, PathBuf)>,
+        breakpad_symindex_cache_dir: Option<PathBuf>,
+        downloader: Option<Arc<Downloader>>,
+    ) -> Self {
+        let inner = BreakpadSymbolDownloaderInner {
+            breakpad_directories_readonly,
+            breakpad_servers,
+            breakpad_symindex_cache_dir,
+            observer: None,
+            downloader: downloader.unwrap_or_default(),
+            negative_cache_ttl: None,
+            negative_cache: Mutex::new(HashMap::new()),
+        };
+        Self {
+            inner: Arc::new(inner),
+        }
+    }
+
+    /// Set the observer for this downloader.
+    ///
+    /// The observer can be used for logging, displaying progress bars, informing
+    /// automatic expiration of cached files, and so on.
+    ///
+    /// See the [`DownloaderObserver`] trait for more information.
+    pub fn set_observer(&mut self, observer: Option<Arc<dyn DownloaderObserver>>) {
+        Arc::get_mut(&mut self.inner).unwrap().observer = observer;
+    }
+
+    /// Set the TTL for the in-memory negative cache.
+    ///
+    /// When set, `get_file` will remember paths for which all servers returned 404, and
+    /// return `Ok(None)` immediately for subsequent requests within the TTL, without
+    /// contacting the servers again. Transient errors are never cached.
+    ///
+    /// By default no negative caching is performed.
+    pub fn set_negative_cache_ttl(&mut self, ttl: Duration) {
+        Arc::get_mut(&mut self.inner).unwrap().negative_cache_ttl = Some(ttl);
+    }
+
+    /// Download (if needed) and return the local path to the breakpad symbol file at `rel_path`.
+    ///
+    /// Returns:
+    /// - `Ok(Some(path))` — file found locally or successfully downloaded
+    /// - `Ok(None)` — all servers returned 404; the file definitively does not exist
+    /// - `Err(e)` — at least one server returned a transient error (5xx, 429, network
+    ///   failure, etc.); the file may exist but was unreachable
+    pub async fn get_file(&self, rel_path: &str) -> Result<Option<PathBuf>, DownloadError> {
+        self.inner.get_file(rel_path).await
+    }
+
+    pub async fn get_file_no_download(&self, rel_path: &str) -> Option<PathBuf> {
+        self.inner.get_file_no_download(rel_path).await
+    }
+
+    /// If we have a configured symindex cache directory, and there is a .sym file at
+    /// `local_path` for which we don't have a .symindex file, create the .symindex file.
+    pub async fn ensure_symindex(
+        &self,
+        sym_path: &Path,
+        rel_path: &str,
+    ) -> Result<PathBuf, SymindexGenerationError> {
+        self.inner.ensure_symindex(sym_path, rel_path).await
+    }
+
+    #[allow(dead_code)]
+    pub fn symindex_path(&self, rel_path: &str) -> Option<PathBuf> {
+        self.inner.symindex_path(rel_path)
+    }
+}
+
+struct BreakpadSymbolDownloaderInner {
+    breakpad_directories_readonly: Vec<PathBuf>,
+    breakpad_servers: Vec<(String, PathBuf)>,
+    breakpad_symindex_cache_dir: Option<PathBuf>,
+    observer: Option<Arc<dyn DownloaderObserver>>,
+    downloader: Arc<Downloader>,
+    negative_cache_ttl: Option<Duration>,
+    negative_cache: Mutex<HashMap<String, Instant>>,
+}
+
+impl BreakpadSymbolDownloaderInner {
+    pub async fn get_file_no_download(&self, rel_path: &str) -> Option<PathBuf> {
+        let dirs: Vec<_> = self
+            .breakpad_directories_readonly
+            .iter()
+            .chain(self.breakpad_servers.iter().map(|(_url, dir)| dir))
+            .collect();
+        for dir in dirs {
+            let path = dir.join(rel_path);
+            if self.check_file_exists(&path).await {
+                if let Some(observer) = self.observer.as_deref() {
+                    observer.on_file_accessed(&path);
+                }
+                return Some(path);
+            }
+        }
+
+        None
+    }
+
+    pub async fn get_file(&self, rel_path: &str) -> Result<Option<PathBuf>, DownloadError> {
+        if let Some(path) = self.get_file_no_download(rel_path).await {
+            return Ok(Some(path));
+        }
+
+        if let Some(ttl) = self.negative_cache_ttl {
+            let cached_at = self.negative_cache.lock().unwrap().get(rel_path).copied();
+            if let Some(cached_at) = cached_at {
+                if cached_at.elapsed() < ttl {
+                    return Ok(None);
+                }
+            }
+        }
+
+        let mut transient_error: Option<DownloadError> = None;
+        for (server_base_url, cache_dir) in &self.breakpad_servers {
+            match self
+                .get_bp_sym_file_from_server(rel_path, server_base_url, cache_dir)
+                .await
+            {
+                Ok(path) => return Ok(Some(path)),
+                Err(DownloadError::StatusError(404)) => {}
+                Err(e) => transient_error = Some(e),
+            }
+        }
+
+        match transient_error {
+            Some(e) => Err(e),
+            None => {
+                if self.negative_cache_ttl.is_some() {
+                    self.negative_cache
+                        .lock()
+                        .unwrap()
+                        .insert(rel_path.to_owned(), Instant::now());
+                }
+                Ok(None)
+            }
+        }
+    }
+
+    /// Return whether a file is found at `path`, and notify the observer if not.
+    async fn check_file_exists(&self, path: &Path) -> bool {
+        let file_exists = matches!(tokio::fs::metadata(path).await, Ok(meta) if meta.is_file());
+        if !file_exists {
+            if let Some(observer) = self.observer.as_deref() {
+                observer.on_file_missed(path);
+            }
+        }
+        file_exists
+    }
+
+    async fn get_bp_sym_file_from_server(
+        &self,
+        rel_path: &str,
+        server_base_url: &str,
+        cache_dir: &Path,
+    ) -> Result<PathBuf, DownloadError> {
+        let dest_path = cache_dir.join(rel_path);
+        let server_base_url = server_base_url.trim_end_matches('/');
+        let url = format!("{server_base_url}/{rel_path}");
+
+        let observer = self.observer.clone();
+        let download = self.downloader.initiate_download(&url, observer).await?;
+        let index_generator = BreakpadIndexCreatorChunkConsumer(BreakpadIndexCreator::new());
+        let outcome = download
+            .download_to_file_with_chunk_consumer(&dest_path, index_generator)
+            .await?;
+
+        match outcome {
+            FileDownloadOutcome::DidCreateNewFile(index_result) => {
+                if let Ok(index) = index_result {
+                    if let Some(symindex_path) = self.symindex_path(rel_path) {
+                        let _ = self.write_symindex(&symindex_path, index).await;
+                    }
+                }
+            }
+            FileDownloadOutcome::FoundExistingFile => {
+                let _ = self.ensure_symindex(&dest_path, rel_path).await;
+            }
+        }
+
+        Ok(dest_path)
+    }
+
+    pub fn symindex_path(&self, rel_path: &str) -> Option<PathBuf> {
+        let symindex_dir = self.breakpad_symindex_cache_dir.as_deref()?;
+        Some(symindex_dir.join(rel_path).with_extension("symindex"))
+    }
+
+    async fn write_symindex(
+        &self,
+        symindex_path: &Path,
+        index: OwnedBreakpadIndex,
+    ) -> Result<(), SymindexGenerationError> {
+        if let Some(parent_dir) = symindex_path.parent() {
+            tokio::fs::create_dir_all(parent_dir).await.map_err(|e| {
+                SymindexGenerationError::CouldNotCreateDestinationDirectory(
+                    parent_dir.to_owned(),
+                    e,
+                )
+            })?;
+        }
+        let index_size_result: Result<u64, CleanFileCreationError<SymindexGenerationError>> =
+            create_file_cleanly(
+                symindex_path,
+                |mut index_file| async move {
+                    tokio::task::spawn_blocking(move || -> std::io::Result<u64> {
+                        index.index().to_writer(&mut index_file)?;
+                        let metadata = index_file.metadata()?;
+                        Ok(metadata.len())
+                    })
+                    .await
+                    .unwrap()
+                    .map_err(SymindexGenerationError::FileWriting)
+                },
+                || async {
+                    let size = std::fs::metadata(symindex_path)
+                        .map_err(|_| {
+                            SymindexGenerationError::Other(
+                                "Could not get size of existing extracted file".into(),
+                            )
+                        })?
+                        .len();
+                    Ok(size)
+                },
+            )
+            .await;
+
+        match index_size_result {
+            Ok(size_in_bytes) => {
+                if let Some(observer) = self.observer.as_deref() {
+                    observer.on_file_created(symindex_path, size_in_bytes);
+                }
+            }
+            Err(CleanFileCreationError::CallbackIndicatedError(e)) => return Err(e),
+            Err(e) => return Err(SymindexGenerationError::FileWriting(e.into())),
+        }
+
+        Ok(())
+    }
+
+    /// If we have a configured symindex cache directory, and there is a .sym file at
+    /// `local_path` for which we don't have a .symindex file, create the .symindex file.
+    pub async fn ensure_symindex(
+        &self,
+        sym_path: &Path,
+        rel_path: &str,
+    ) -> Result<PathBuf, SymindexGenerationError> {
+        let Some(symindex_path) = self.symindex_path(rel_path) else {
+            return Err(SymindexGenerationError::NoSymindexCacheDir);
+        };
+
+        if let Ok(mut symindex_file) = tokio::fs::File::open(&symindex_path).await {
+            let file_check_ok = validate_symindex_magic_and_version(&mut symindex_file).await;
+            let _ = symindex_file.flush().await;
+            drop(symindex_file);
+
+            if file_check_ok {
+                if let Some(observer) = self.observer.as_deref() {
+                    observer.on_file_accessed(&symindex_path);
+                }
+                return Ok(symindex_path);
+            }
+
+            // Bad symindex, let's remove it and regenerate it.
+            let _ = tokio::fs::remove_file(&symindex_path).await;
+        }
+
+        self.create_symindex_for_sym_file(sym_path, &symindex_path)
+            .await?;
+        Ok(symindex_path)
+    }
+
+    async fn create_symindex_for_sym_file(
+        &self,
+        sym_path: &Path,
+        symindex_path: &Path,
+    ) -> Result<(), SymindexGenerationError> {
+        let index_bytes = self.parse_sym_file_into_index(sym_path).await?;
+        self.write_symindex(symindex_path, index_bytes).await?;
+        Ok(())
+    }
+
+    async fn parse_sym_file_into_index(
+        &self,
+        sym_path: &Path,
+    ) -> Result<OwnedBreakpadIndex, SymindexGenerationError> {
+        let sym_path = sym_path.to_path_buf();
+        tokio::task::spawn_blocking(|| {
+            let mut sym_file =
+                std::fs::File::open(sym_path).map_err(SymindexGenerationError::SymReading)?;
+            let mut parser = BreakpadIndexCreator::new();
+            const CHUNK_SIZE: usize = 64 * 1024; // 64 KiB
+            let mut buffer = vec![0; CHUNK_SIZE];
+            loop {
+                let read_len = sym_file
+                    .read(&mut buffer)
+                    .map_err(SymindexGenerationError::SymReading)?;
+                if read_len == 0 {
+                    break;
+                }
+                parser.consume(&buffer[..read_len]);
+            }
+            parser
+                .finish()
+                .map_err(SymindexGenerationError::BreakpadParsing)
+        })
+        .await
+        .unwrap()
+    }
+}
+
+async fn validate_symindex_magic_and_version(file: &mut tokio::fs::File) -> bool {
+    let mut magic_and_version_bytes = [0u8; 12];
+    file.read_exact(&mut magic_and_version_bytes).await.is_ok()
+        && BreakpadIndex::validate_magic_and_version(&magic_and_version_bytes).is_ok()
+}
+
+struct BreakpadIndexCreatorChunkConsumer(BreakpadIndexCreator);
+
+impl ChunkConsumer for BreakpadIndexCreatorChunkConsumer {
+    type Output = Result<OwnedBreakpadIndex, BreakpadParseError>;
+
+    fn consume_chunk(&mut self, chunk_data: &[u8]) {
+        self.0.consume(chunk_data);
+    }
+
+    fn finish(self) -> Self::Output {
+        self.0.finish()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+
+    use super::*;
+    use wiremock::matchers::{method, path};
+    use wiremock::{Mock, MockServer, ResponseTemplate};
+
+    // Minimal valid breakpad sym file.
+    const TESTPROJ_SYM: &[u8] = b"MODULE Linux x86_64 D48F191186D67E69DF025AD71FB91E1F0 testproj\nFILE 0 /home/user/main.rs\nFUNC 5380 44 0 testproj::main\n5380 9 1 0\n";
+    const REL_PATH: &str = "testproj/D48F191186D67E69DF025AD71FB91E1F0/testproj.sym";
+
+    #[tokio::test]
+    async fn get_file_no_download_finds_local_file() {
+        let dir = tempfile::tempdir().unwrap();
+        let sym_path = dir.path().join(REL_PATH);
+        std::fs::create_dir_all(sym_path.parent().unwrap()).unwrap();
+        std::fs::write(&sym_path, TESTPROJ_SYM).unwrap();
+
+        let downloader =
+            BreakpadSymbolDownloader::new(vec![dir.path().to_path_buf()], vec![], None, None);
+        let result = downloader.get_file_no_download(REL_PATH).await;
+        assert_eq!(result, Some(sym_path));
+    }
+
+    #[tokio::test]
+    async fn get_file_no_download_returns_none_when_missing() {
+        let dir = tempfile::tempdir().unwrap();
+        let downloader =
+            BreakpadSymbolDownloader::new(vec![dir.path().to_path_buf()], vec![], None, None);
+        let result = downloader.get_file_no_download(REL_PATH).await;
+        assert!(result.is_none());
+    }
+
+    #[tokio::test]
+    async fn ensure_symindex_creates_valid_symindex() {
+        let sym_dir = tempfile::tempdir().unwrap();
+        let symindex_dir = tempfile::tempdir().unwrap();
+        let sym_path = sym_dir.path().join(REL_PATH);
+        std::fs::create_dir_all(sym_path.parent().unwrap()).unwrap();
+        std::fs::write(&sym_path, TESTPROJ_SYM).unwrap();
+
+        let downloader = BreakpadSymbolDownloader::new(
+            vec![sym_dir.path().to_path_buf()],
+            vec![],
+            Some(symindex_dir.path().to_path_buf()),
+            None,
+        );
+        let symindex_path = downloader
+            .ensure_symindex(&sym_path, REL_PATH)
+            .await
+            .unwrap();
+        assert!(symindex_path.exists());
+    }
+
+    #[tokio::test]
+    async fn ensure_symindex_errors_on_malformed_sym_file() {
+        let sym_dir = tempfile::tempdir().unwrap();
+        let symindex_dir = tempfile::tempdir().unwrap();
+        let sym_path = sym_dir.path().join(REL_PATH);
+        std::fs::create_dir_all(sym_path.parent().unwrap()).unwrap();
+        std::fs::write(&sym_path, b"this is junk").unwrap();
+
+        let downloader = BreakpadSymbolDownloader::new(
+            vec![sym_dir.path().to_path_buf()],
+            vec![],
+            Some(symindex_dir.path().to_path_buf()),
+            None,
+        );
+        let err = downloader
+            .ensure_symindex(&sym_path, REL_PATH)
+            .await
+            .unwrap_err();
+        assert!(
+            matches!(err, SymindexGenerationError::BreakpadParsing(_)),
+            "{err:?}"
+        );
+    }
+
+    #[tokio::test]
+    async fn get_file_downloads_from_server() {
+        let server = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(200).set_body_bytes(TESTPROJ_SYM))
+            .mount(&server)
+            .await;
+
+        let cache_dir = tempfile::tempdir().unwrap();
+        let downloader = BreakpadSymbolDownloader::new(
+            vec![],
+            vec![(server.uri(), cache_dir.path().to_path_buf())],
+            None,
+            Some(Arc::new(Downloader::new_with_max_retries(0))),
+        );
+        let result = downloader.get_file(REL_PATH).await;
+        assert!(result.as_ref().unwrap().is_some());
+        assert!(result.unwrap().unwrap().exists());
+    }
+
+    #[tokio::test]
+    async fn get_file_url_preserves_tilde_and_plus() {
+        // Real-world case: Mesa drivers shipped via Debian-style backports
+        // have names like `libgallium-24.2.8-1~bpo12+rpt1.so`.
+        // symbols.mozilla.org actually returns 200 for this exact path with
+        // raw `~` and `+`, so the round-trip must preserve them — sanitizing
+        // or percent-encoding either character would 404.
+        const DEBUG_NAME: &str = "libgallium-24.2.8-1~bpo12+rpt1.so";
+        const DEBUG_ID: &str = "686E9835D66E381253D84E5E01FEFAD30";
+        let rel_path = format!("{DEBUG_NAME}/{DEBUG_ID}/{DEBUG_NAME}.sym");
+
+        let server = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{rel_path}")))
+            .respond_with(ResponseTemplate::new(200).set_body_bytes(TESTPROJ_SYM))
+            .mount(&server)
+            .await;
+
+        let cache_dir = tempfile::tempdir().unwrap();
+        let downloader = BreakpadSymbolDownloader::new(
+            vec![],
+            vec![(server.uri(), cache_dir.path().to_path_buf())],
+            None,
+            Some(Arc::new(Downloader::new_with_max_retries(0))),
+        );
+        let result = downloader.get_file(&rel_path).await;
+        assert!(result.as_ref().unwrap().is_some(), "{:?}", result);
+        assert!(result.unwrap().unwrap().exists());
+    }
+
+    #[tokio::test]
+    async fn get_file_falls_back_to_second_server_on_404() {
+        let server1 = MockServer::start().await;
+        let server2 = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(404))
+            .mount(&server1)
+            .await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(200).set_body_bytes(TESTPROJ_SYM))
+            .mount(&server2)
+            .await;
+
+        let cache_dir1 = tempfile::tempdir().unwrap();
+        let cache_dir2 = tempfile::tempdir().unwrap();
+        let downloader = BreakpadSymbolDownloader::new(
+            vec![],
+            vec![
+                (server1.uri(), cache_dir1.path().to_path_buf()),
+                (server2.uri(), cache_dir2.path().to_path_buf()),
+            ],
+            None,
+            None,
+        );
+        let result = downloader.get_file(REL_PATH).await;
+        assert!(result.as_ref().unwrap().is_some());
+        assert!(result.unwrap().unwrap().exists());
+    }
+
+    #[tokio::test]
+    async fn get_file_returns_none_when_all_servers_404() {
+        let server1 = MockServer::start().await;
+        let server2 = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(404))
+            .mount(&server1)
+            .await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(404))
+            .mount(&server2)
+            .await;
+
+        let cache_dir1 = tempfile::tempdir().unwrap();
+        let cache_dir2 = tempfile::tempdir().unwrap();
+        let downloader = BreakpadSymbolDownloader::new(
+            vec![],
+            vec![
+                (server1.uri(), cache_dir1.path().to_path_buf()),
+                (server2.uri(), cache_dir2.path().to_path_buf()),
+            ],
+            None,
+            None,
+        );
+        let result = downloader.get_file(REL_PATH).await;
+        assert!(matches!(result, Ok(None)));
+    }
+
+    #[tokio::test]
+    async fn get_file_returns_err_on_transient_server_error() {
+        let server = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(503))
+            .mount(&server)
+            .await;
+
+        let cache_dir = tempfile::tempdir().unwrap();
+        let downloader = BreakpadSymbolDownloader::new(
+            vec![],
+            vec![(server.uri(), cache_dir.path().to_path_buf())],
+            None,
+            Some(Arc::new(Downloader::new_with_max_retries(0))),
+        );
+        let result = downloader.get_file(REL_PATH).await;
+        assert!(matches!(result, Err(DownloadError::StatusError(503))));
+    }
+
+    #[tokio::test]
+    async fn get_file_returns_err_when_first_server_transient_second_server_404() {
+        let server1 = MockServer::start().await;
+        let server2 = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(500))
+            .mount(&server1)
+            .await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(404))
+            .mount(&server2)
+            .await;
+
+        let cache_dir1 = tempfile::tempdir().unwrap();
+        let cache_dir2 = tempfile::tempdir().unwrap();
+        let downloader = BreakpadSymbolDownloader::new(
+            vec![],
+            vec![
+                (server1.uri(), cache_dir1.path().to_path_buf()),
+                (server2.uri(), cache_dir2.path().to_path_buf()),
+            ],
+            None,
+            Some(Arc::new(Downloader::new_with_max_retries(0))),
+        );
+        let result = downloader.get_file(REL_PATH).await;
+        assert!(matches!(result, Err(DownloadError::StatusError(500))));
+    }
+
+    #[tokio::test]
+    async fn negative_cache_suppresses_second_request_after_404() {
+        let server = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(404))
+            .expect(1) // must be called exactly once despite two get_file calls
+            .mount(&server)
+            .await;
+
+        let cache_dir = tempfile::tempdir().unwrap();
+        let mut downloader = BreakpadSymbolDownloader::new(
+            vec![],
+            vec![(server.uri(), cache_dir.path().to_path_buf())],
+            None,
+            Some(Arc::new(Downloader::new_with_max_retries(0))),
+        );
+        downloader.set_negative_cache_ttl(Duration::from_secs(60));
+
+        assert!(matches!(downloader.get_file(REL_PATH).await, Ok(None)));
+        assert!(matches!(downloader.get_file(REL_PATH).await, Ok(None)));
+        // wiremock will fail the test if the server was called more than once
+    }
+
+    #[tokio::test]
+    async fn negative_cache_does_not_suppress_request_after_transient_error() {
+        let server = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path(format!("/{REL_PATH}")))
+            .respond_with(ResponseTemplate::new(503))
+            .expect(2) // must be called both times
+            .mount(&server)
+            .await;
+
+        let cache_dir = tempfile::tempdir().unwrap();
+        let mut downloader = BreakpadSymbolDownloader::new(
+            vec![],
+            vec![(server.uri(), cache_dir.path().to_path_buf())],
+            None,
+            Some(Arc::new(Downloader::new_with_max_retries(0))),
+        );
+        downloader.set_negative_cache_ttl(Duration::from_secs(60));
+
+        assert!(matches!(
+            downloader.get_file(REL_PATH).await,
+            Err(DownloadError::StatusError(503))
+        ));
+        assert!(matches!(
+            downloader.get_file(REL_PATH).await,
+            Err(DownloadError::StatusError(503))
+        ));
+    }
+}

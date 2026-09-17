@@ -1,0 +1,245 @@
+.hybridPublicKey
+*hpke.dhKEMPrivateKey
+GetAdditionalBindings
+*orderv1.Subscription
+LookUpFieldByBindName
+*sentry.limitedBuffer
+json:"mcp_key"
+*[]ratelimit.Priority
+*protovalidate.astSet
+GetMinMembershipLevel
+*i18n.localizerCtxKey
+*billingv1.APIKeyMeta
+*map[token.Token]bool
+GetStructureObjectKey
+GetMonthlyChargeLimit
+*membershipv2.Balance
+*membershipv2.Feature
+*credentialsv1.APIKey
+*membershipv2.Present
+writeAuthSwitchPacket
+*auth.UnsubscribeFunc
+*[]v1.pluralTokenInfo
+*func() []antlr.Token
+GetHiddenTokensToLeft
+*func(*pgproto3.Bind)
+traceAuthenticationOk
+*proto.CardinalityKey
+*main.bindTokenRequest
+*http.connectMethodKey
+*func() jsontext.Token
+*tls.hybridKeyExchange
+certificateAuthorities
+*tls.ecdheKeyAgreement
+*[1]attribute.KeyValue
+PreSignedPostSignature
+*tos.wrapLimiterReader
+*boring.PrivateKeyECDH
+*func() hpke.PublicKey
+*hpke.hybridPrivateKey
+*tls13.HandshakeSecret
+ResumptionMasterSecret
+*[]*orderv1.Membership
+*[2]attribute.KeyValue
+*[3]attribute.KeyValue
+*[5]attribute.KeyValue
+*[0]attribute.KeyValue
+*[4]attribute.KeyValue
+*[6]attribute.KeyValue
+*[7]attribute.KeyValue
+*[8]attribute.KeyValue
+*[9]attribute.KeyValue
+*func() *rsa.PublicKey
+*sentry.spanContextKey
+gorm:"primaryKey"
+*kimimodel.MCPUserAuth
+*[]protoreflect.MapKey
+GetMembershipExpiredAt
+GetIsMembershipExpired
+*tidb.ExportS3AuthType
+*tidb.ImportS3AuthType
+*[]pq.LoadBalanceHosts
+*func(*redis.ZWithKey)
+ClusterCountKeysInSlot
+CommandGetKeysAndFlags
+*membershipv2.Giftcard
+GetSubscriptionBalance
+*[]*membershipv2.Goods
+*membershipv2.Resource
+GetNextTokenWithinRule
+SetNextTokenWithinRule
+*func(int) antlr.Token
+tokenFactorySourcePair
+GetHiddenTokensToRight
+previousTokenOnChannel
+AuthenticationResponse
+*pgproto3.BindComplete
+traceAuthenticationGSS
+*func(xml.Token) error
+*[]http.socksAuthMethod
+RawSubjectPublicKeyInfo
+isBoundaryDelimiterLine
+*func() *ecdh.PublicKey
+*map[string]token.Token
+GetFlowControlByteLimit
+*[10]attribute.KeyValue
+GetListServicesResponse
+*protovalidate.bindings
+*clawv1.ModelAPIKeyType
+GetMembershipExpireTime
+*tidb.AuthorizedNetwork
+*tidb.ExportS3AccessKey
+*tidb.ExportGCSAuthType
+*tidb.ExportOSSAuthType
+*tidb.ImportGCSAuthType
+*tidb.ImportOSSAuthType
+*map[cel.limitID]string
+absoluteKeywordLocation
+*redis.ZSliceWithKeyCmd
+*func() *redis.ZWithKey
+*func([]redis.KeyFlags)
+*redis.KeyValueSliceCmd
+*func([]redis.KeyValue)
+*[]*membershipv2.Wallet
+*[]membershipv2.Feature
+GetPurchaseSubscription
+*internal.FastSemaphore
+*func(auth.Credentials)
+*yaml.yaml_token_type_t
+*yaml.yaml_simple_key_t
+*antlr.TokensStartState
+traceAuthenticationSASL
+authenticationSASLFinal
+*main.bindStatusResponse
+*main.bindResponseMounts
+*[2]http.socksAuthMethod
+EncryptedClientHelloKeys
+*tls.keySharePrivateKeys
+processClientKeyExchange
+processServerKeyExchange
+json:"Key,omitempty"
+*func() crypto.PublicKey
+*x509.PublicKeyAlgorithm
+ClientEarlyTrafficSecret
+GetTerminateSubscription
+*func() *ecdsa.PublicKey
+*mlkem.encryptionKey1024
+*mlkem.decryptionKey1024
+*errdetails.QuotaFailure
+*kimimodel.ManifestSkill
+json:"key,omitempty"
+*prometheus.constSummary
+*i18n.legacyLocaleCtxKey
+*func() *billingv1.Quota
+*tidb.ExportOSSAccessKey
+*tidb.ImportOSSAccessKey
+*types.stringKeyIterator
+*func() []redis.KeyFlags
+*func() []redis.KeyValue
+ChannelWithSubscriptions
+*[]*membershipv2.Balance
+*membershipv2.Capability
+*[]*orderv1.Subscription
+*membershipv2.SubFeature
+GetShowMembershipPricing
+*membershipv2.Model_Type
+*membershipv2.Tool_Usage
+executeTokensWithContext
+getPossiblyUnhashableKey
+setPossiblyUnhashableKey
+*func(antlr.TokenStream)	
+*func(antlr.TokenSource)
+*antlr.CommonTokenStream
+*pgproto3.BackendKeyData
+unicodeExtensionKeywords
+*localeid.UnicodeKeyword
+*http.http2RSTStreamFrame
+*tls.clientKeyExchangeMsg
+*tls.serverKeyExchangeMsg
+generateClientKeyExchange
+generateServerKeyExchange
+*chattyv1.KeywordArgument
+ServerSideEncryptionKeyID
+*tos.MirrorHeaderKeyValue
+getWithoutKeySmallFastStr
+*func() *ecdsa.PrivateKey
+EarlyExporterMasterSecret
+*pragma.NoUnkeyedLiterals
+*map[filedesc.pathKey]int
+*orderv1.MembershipStatus
+*func() *mcpv1.OAuthToken
+*func(attribute.Key) bool
+*payv1.SubscriptionStatus
+gorm:"primaryKey"
+*billingv1.Authentication
+*func() membershipv2.Unit
+*membershipv2.Model_Usage
+*membershipv2.Entitlement
+*func(antlr.Token) string
+*func() antlr.TokenStream
+*auth.CredentialsListener
+CircuitBreakerMaxRequests
+*streaming.ReAuthPoolHook
+*[]yaml.yaml_simple_key_t
+*func(antlr.TokenFactory)
+*func() antlr.TokenSource
+*antlr.CommonTokenFactory
+authenticationMD5Password
+authenticationGSSContinue
+CalculatedRowsBeforeLimit
+json:"auth,omitempty"
+*portalv1.GetAPIKeyRequest
+*portalv1.BindTokenContext
+*json.requireKeyedLiterals
+*func(protoreflect.MapKey)
+*func() slidesv1.PageLimit
+*tos.NotificationFilterKey
+*tos.RedirectAllRequestsTo
+json:"NextToken"
+*tos.ReadCloserWithLimiter
+*mlkem.EncapsulationKey768
+*mlkem.DecapsulationKey768
+GetFlowControlElementLimit
+*mcpv1.AuthorizationStatus
+*orderv1.Subscription_Type
+*func() ratelimit.Category
+*func() attribute.KeyValue
+*trace.traceContextKeyType
+*func() ratelimit.Priority
+*[]kimimodel.ManifestSkill
+json:"interests"
+*configv1.MembershipConfig
+*func() []*billingv1.Limit
+*skillv1.ListSkillsRequest
+*adminv1.ListSkillsRequest
+*tidb.ClusterSpendingLimit
+*[]*tidb.AuthorizedNetwork
+*map.group[cel.limitID]int
+*cel.nestingLimitValidator
+*membershipv2.Balance_Type
+*func() *membershipv2.Unit
+*suggestv1.Showcase_Author
+*map[proto.AuthCode]string
+enableVariadicOperatorASTs
+*func() antlr.TokenFactory
+*parser.recoveryLimitError
+*map[string]*rsa.PublicKey
+LocaleCodeFromKey
+*[]*antlr.TokensStartState
+getNumberOfOnChannelTokens
+*pgproto3.AuthenticationOk
+authenticationSASLContinue
+*func() (xml.Token, error)
+*[]localeid.UnicodeKeyword
+StrictMaxConcurrentRequests
+*connect.sentinelContextKey
+*portalv1.GetAPIKeyResponse
+*func() *portalv1.AuthMount
+*func(jsontext.Token) error
+GetEncryptedClientHelloKeys
+SetMaxDynamicTableSizeLimit
+*userctxv1.Membership_Level
+*func() protoreflect.MapKey
+*[]tos.MirrorHeaderKeyValue
+*tos.PostSignatureCondition
+*x509.UnknownAuthorityError

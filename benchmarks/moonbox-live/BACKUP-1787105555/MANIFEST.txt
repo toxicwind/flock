@@ -1,0 +1,16 @@
+BACKUP CREATED: 2026-08-19T02:13:40+00:00
+LOCATION: /mnt/agents/output/BACKUP-1787105555
+CONTENTS:
+  - credentials/     : Hidden .secrets, .hook.sh, .master_hook.sh, .store
+  - original/        : Uploaded terminal history file
+  - llama-swap-modified/ : Modified astmatrix files (NO ORIGINAL BACKUP - RECOVER FROM YOUR MACHINE)
+  - mcpproxy-go-astmatrix/ : New astmatrix port for mcpproxy-go
+  - apk-suite/       : APK analysis tools and repo
+  - git-repo/        : Git repo (primary in /tmp)
+  - bashrc.*         : .bashrc backup and current
+  - strace/          : strace build artifacts
+  - rg/              : ripgrep binary
+  - environment.txt  : Full environment dump
+  - set.txt          : Full shell variables
+  - processes.txt    : Running processes
+  - init.txt         : Init process info

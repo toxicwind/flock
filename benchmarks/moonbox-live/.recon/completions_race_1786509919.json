@@ -1,0 +1,4466 @@
+[
+  {
+    "name": "PROD_models",
+    "status": 403,
+    "latency_ms": 1046.86,
+    "body": {
+      "error": {
+        "code": "api_key_path_forbidden",
+        "message": "This API key is not permitted to access this endpoint.",
+        "type": "invalid_request_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2619357679",
+      "X-Trace-Id": "4bf86d2f2b885022644a7279ef8e57de",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "PROD_chat_std",
+    "status": 403,
+    "latency_ms": 971.28,
+    "body": {
+      "error": {
+        "code": "api_key_path_forbidden",
+        "message": "This API key is not permitted to access this endpoint.",
+        "type": "invalid_request_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2517287288",
+      "X-Trace-Id": "3af3a53f01294fd3d4c8c81226ab008f",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_stream",
+    "status": 403,
+    "latency_ms": 3373.64,
+    "body": {
+      "error": {
+        "code": "api_key_path_forbidden",
+        "message": "This API key is not permitted to access this endpoint.",
+        "type": "invalid_request_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:17 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2576683390",
+      "X-Trace-Id": "9cf86d8768b2850812eb149595f47ac0",
+      "server-timing": "inner; dur=9"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_messages",
+    "status": 403,
+    "latency_ms": 979.99,
+    "body": {
+      "error": {
+        "type": "permission_error",
+        "message": "This API key is not permitted to access this endpoint."
+      },
+      "type": "error"
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "119",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2580132077",
+      "X-Trace-Id": "ff1bd6a296eb4779a119d8b734ff67ea",
+      "server-timing": "inner; dur=5"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_count_tokens",
+    "status": 403,
+    "latency_ms": 1432.98,
+    "body": {
+      "error": {
+        "type": "permission_error",
+        "message": "This API key is not permitted to access this endpoint."
+      },
+      "type": "error"
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "119",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2073825937",
+      "X-Trace-Id": "beb4763dc5835701b77d5ad3407568c0",
+      "server-timing": "inner; dur=5"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_embeddings",
+    "status": 403,
+    "latency_ms": 1084.21,
+    "body": {
+      "error": {
+        "message": "You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance",
+        "type": "access_terminated_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "118452904",
+      "X-Trace-Id": "54e453273019e5753e388b24b63012fe",
+      "server-timing": "inner; dur=14"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_search",
+    "status": 403,
+    "latency_ms": 2338.1,
+    "body": {
+      "error": {
+        "type": "access_terminated_error",
+        "message": "You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1807533158",
+      "X-Trace-Id": "b1055b39a5e43d071c7de413271b58e3",
+      "server-timing": "inner; dur=15"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_fetch",
+    "status": 403,
+    "latency_ms": 2452.46,
+    "body": {
+      "error": {
+        "type": "access_terminated_error",
+        "message": "You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "118452904",
+      "X-Trace-Id": "62be4ec0fee62e1fd8982c5e3d51619d",
+      "server-timing": "inner; dur=14"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_tools_stock",
+    "status": 403,
+    "latency_ms": 973.86,
+    "body": {
+      "error": {
+        "message": "You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance",
+        "type": "access_terminated_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3935936833",
+      "X-Trace-Id": "8543bc483906695ad31f920dbb9378de",
+      "server-timing": "inner; dur=27"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_tools_datasource",
+    "status": 403,
+    "latency_ms": 1010.03,
+    "body": {
+      "error": {
+        "message": "You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance",
+        "type": "access_terminated_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1159460320",
+      "X-Trace-Id": "62038789433258cc89f52bd27387168a",
+      "server-timing": "inner; dur=32"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_tools_genimg",
+    "status": 403,
+    "latency_ms": 1831.08,
+    "body": {
+      "error": {
+        "message": "You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance",
+        "type": "access_terminated_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "866282830",
+      "X-Trace-Id": "a42544a0eaaa18aac0db1953bda229f6",
+      "server-timing": "inner; dur=29"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_tools_websearch",
+    "status": 404,
+    "latency_ms": 2195.04,
+    "body": {
+      "error": "method not found"
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "28",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "872336605",
+      "X-Trace-Id": "ea7283085779b01bedb0da9854efa5b5",
+      "server-timing": "inner; dur=6"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_storage_meta",
+    "status": 404,
+    "latency_ms": 978.93,
+    "body": {
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "file not found"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "57",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "4112951216",
+      "X-Trace-Id": "0b560a8916a1fe9598693397271e7495",
+      "server-timing": "inner; dur=16"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "PROD_files_probe",
+    "status": 400,
+    "latency_ms": 2484.11,
+    "body": {
+      "error": {
+        "message": "Invalid request: request Content-Type isn't multipart/form-data",
+        "type": "invalid_request_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "118",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3773823045",
+      "Msh-Gid": "claw",
+      "Msh-Org-Id": "org-msh-clawgw",
+      "Msh-Project-Id": "proj-189887b02a7e42fd89c27d43319e34f3",
+      "Msh-Request-Id": "9ceb3173-9608-11f1-ad86-16a162b9de22",
+      "Msh-Trace-Mode": "on",
+      "Msh-Uid": "clawgw",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Vary": "Origin",
+      "X-Msh-Trace-Id": "f3c249e485df7347bca217156e33e410",
+      "X-Trace-Id": "f3c249e485df7347bca217156e33e410",
+      "server-timing": "inner; dur=22"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_skill",
+    "status": 403,
+    "latency_ms": 1791.13,
+    "body": {
+      "error": {
+        "code": "api_key_path_forbidden",
+        "message": "This API key is not permitted to access this endpoint.",
+        "type": "invalid_request_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3758758640",
+      "X-Trace-Id": "5f3f2563ce1b7ed21d0e43062814435e",
+      "server-timing": "inner; dur=5"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_device",
+    "status": 403,
+    "latency_ms": 2407.6,
+    "body": {
+      "error": {
+        "code": "api_key_path_forbidden",
+        "message": "This API key is not permitted to access this endpoint.",
+        "type": "invalid_request_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "4017104963",
+      "X-Trace-Id": "cea53b90a0d62f6065653045ac77767b",
+      "server-timing": "inner; dur=7"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_nochatid",
+    "status": 403,
+    "latency_ms": 1904.83,
+    "body": {
+      "error": {
+        "code": "api_key_path_forbidden",
+        "message": "This API key is not permitted to access this endpoint.",
+        "type": "invalid_request_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3938779346",
+      "X-Trace-Id": "c54d1a0a002b1c175ac1f431546a696d",
+      "server-timing": "inner; dur=4"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_badauth",
+    "status": 401,
+    "latency_ms": 978.05,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2827822601",
+      "X-Trace-Id": "5b2fa676c4cdadb584830deb03039a30",
+      "server-timing": "inner; dur=11"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_mcp_init",
+    "status": 404,
+    "latency_ms": 985.17,
+    "body": {
+      "error": {
+        "message": "The requested resource was not found",
+        "type": "resource_not_found_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2627304137",
+      "X-Trace-Id": "6811945fc8eb68ef927ffac36ec154f7",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_cdn_manifest",
+    "status": 404,
+    "latency_ms": 1034.45,
+    "body": {
+      "error": {
+        "message": "The requested resource was not found",
+        "type": "resource_not_found_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3938779346",
+      "X-Trace-Id": "5fc17c38a6cdc8746951f88a16ff1f5b",
+      "server-timing": "inner; dur=5"
+    },
+    "url": "https://agent-gw.kimi.com/coding/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "PROD_models",
+    "status": 401,
+    "latency_ms": 964.03,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "48692138",
+      "X-Trace-Id": "ffa93b5cb13756ed6367b3e7b88cdb0e",
+      "server-timing": "inner; dur=10"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "PROD_chat_std",
+    "status": 401,
+    "latency_ms": 2110.72,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1851084132",
+      "X-Trace-Id": "fa301199b6d928b0b83f768af881cbe6",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_stream",
+    "status": 401,
+    "latency_ms": 2185.3,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2250905487",
+      "X-Trace-Id": "46d67b4abfb0d22ba5dc92df8604a346",
+      "server-timing": "inner; dur=4"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_messages",
+    "status": 401,
+    "latency_ms": 977.31,
+    "body": {
+      "error": {
+        "type": "authentication_error",
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again."
+      },
+      "type": "error"
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "169",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "866282830",
+      "X-Trace-Id": "ba3b4808e60c1da31125866025b64c80",
+      "server-timing": "inner; dur=11"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_count_tokens",
+    "status": 401,
+    "latency_ms": 983.45,
+    "body": {
+      "error": {
+        "type": "authentication_error",
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again."
+      },
+      "type": "error"
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "169",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2250905487",
+      "X-Trace-Id": "882793becd6e2512be42ddf078e14036",
+      "server-timing": "inner; dur=7"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_embeddings",
+    "status": 401,
+    "latency_ms": 962.57,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2580132077",
+      "X-Trace-Id": "ab67dc049e97116ab3022969c83fdbae",
+      "server-timing": "inner; dur=10"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_search",
+    "status": 401,
+    "latency_ms": 1444.42,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2827822601",
+      "X-Trace-Id": "92860e8c12b6e95e5e6649c32659d46e",
+      "server-timing": "inner; dur=6"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_fetch",
+    "status": 401,
+    "latency_ms": 1857.03,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "492436827",
+      "X-Trace-Id": "5799b5d2d657c3f4f08fa7c3ad62daf9",
+      "server-timing": "inner; dur=4"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_tools_stock",
+    "status": 401,
+    "latency_ms": 1866.18,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1851084132",
+      "X-Trace-Id": "44d331887c911391957ff0f1b69e74e4",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_tools_datasource",
+    "status": 401,
+    "latency_ms": 992.15,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3297235937",
+      "X-Trace-Id": "2dc36a4eb048b8b98f5f799128899eaa",
+      "server-timing": "inner; dur=6"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_tools_genimg",
+    "status": 401,
+    "latency_ms": 957.69,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "872336605",
+      "X-Trace-Id": "e248d1cc95949daa1e429c67544ccde1",
+      "server-timing": "inner; dur=6"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_tools_websearch",
+    "status": 401,
+    "latency_ms": 986.76,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2832304026",
+      "X-Trace-Id": "95de1c4381120ba96a05ceeadec70de6",
+      "server-timing": "inner; dur=6"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_storage_meta",
+    "status": 401,
+    "latency_ms": 958.28,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "4036202273",
+      "X-Trace-Id": "a9d1d69150b17aac9de1dccd68d625cb",
+      "server-timing": "inner; dur=7"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "PROD_files_probe",
+    "status": 401,
+    "latency_ms": 965.27,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3731365684",
+      "X-Trace-Id": "66bc75200d8f57e97898a49c043dc85c",
+      "server-timing": "inner; dur=6"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_skill",
+    "status": 401,
+    "latency_ms": 1002.01,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2625411196",
+      "X-Trace-Id": "af57cb5720b5e41d4be06346c58206bc",
+      "server-timing": "inner; dur=7"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_device",
+    "status": 401,
+    "latency_ms": 970.02,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2580132077",
+      "X-Trace-Id": "e78d6b45ee9c529cb718f2c20cdc3fa7",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_nochatid",
+    "status": 401,
+    "latency_ms": 973.52,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1609840949",
+      "X-Trace-Id": "f8b7e2537c3d8af5bb0a3170a87c449d",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_chat_badauth",
+    "status": 401,
+    "latency_ms": 1845.53,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2255926812",
+      "X-Trace-Id": "d01532ef737bfdab919d06f7d6ed1944",
+      "server-timing": "inner; dur=5"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_mcp_init",
+    "status": 404,
+    "latency_ms": 1056.98,
+    "body": {
+      "error": {
+        "message": "The requested resource was not found",
+        "type": "resource_not_found_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1253057246",
+      "X-Trace-Id": "fd8df9e227d206a09cca148eabe2d782",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "PROD_cdn_manifest",
+    "status": 404,
+    "latency_ms": 950.09,
+    "body": {
+      "error": {
+        "message": "The requested resource was not found",
+        "type": "resource_not_found_error"
+      }
+    },
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2073825937",
+      "X-Trace-Id": "9d52056e5f452b32b0ed8bb34375f3aa",
+      "server-timing": "inner; dur=3"
+    },
+    "url": "https://agent-gw.kimi.com/coding/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "DEV_models",
+    "status": 401,
+    "latency_ms": 37.52,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "ecf1834f5aa7973512a14e471293f1fa",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "DEV_chat_std",
+    "status": 401,
+    "latency_ms": 410.71,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "6b10a7acd1bce62b984f4f4eb75f475f",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_stream",
+    "status": 401,
+    "latency_ms": 154.53,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "c664c21532d90c71e557a18d40e163ad",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_messages",
+    "status": 401,
+    "latency_ms": 55.99,
+    "body": {
+      "error": {
+        "type": "authentication_error",
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again."
+      },
+      "type": "error"
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "169",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "e7a9888a08defa7e57bb5ff66986e573",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_count_tokens",
+    "status": 400,
+    "latency_ms": 33.71,
+    "body": {
+      "error": {
+        "type": "invalid_request_error",
+        "message": "Invalid request Error"
+      },
+      "type": "error"
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "91",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "5dc0eabc46f9585b02067a7144c15a29",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_embeddings",
+    "status": 401,
+    "latency_ms": 197.23,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "600eb8168a84377bae84ca780e42c360",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_search",
+    "status": 401,
+    "latency_ms": 401.92,
+    "body": {
+      "error": {
+        "type": "invalid_authentication_error",
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again."
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "b0c05b5c525dedf8f18015804c07f60f",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_fetch",
+    "status": 401,
+    "latency_ms": 149.84,
+    "body": {
+      "error": {
+        "type": "invalid_authentication_error",
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again."
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "a869d65b28f3b4e90a1d6956489ae6b9",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_tools_stock",
+    "status": 401,
+    "latency_ms": 151.71,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "c26d988fa3513f9133acad535acee843",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_tools_datasource",
+    "status": 401,
+    "latency_ms": 150.9,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "409736a60d7929d8587499a8da7b8bc0",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_tools_genimg",
+    "status": 401,
+    "latency_ms": 30.97,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "9f21c7a7f19c6352cfe5e6a3fb6b5e19",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_tools_websearch",
+    "status": 404,
+    "latency_ms": 144.97,
+    "body": {
+      "error": "method not found"
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "28",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "dc34eb9607a9873fd161768df3f5a513",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_storage_meta",
+    "status": 401,
+    "latency_ms": 141.58,
+    "body": {
+      "error": {
+        "code": "UNAUTHORIZED",
+        "message": "the API key appears to be invalid or may have expired"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "99",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "767012885985ac2a55997f352c377847",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "DEV_files_probe",
+    "status": 401,
+    "latency_ms": 141.59,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "b12f8c5fef14f85b12c16c2fd25fb62e",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_skill",
+    "status": 401,
+    "latency_ms": 152.84,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "e5e947c86094d1a3605c9bcec55ac743",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_device",
+    "status": 401,
+    "latency_ms": 145.92,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "96af0d642d168355bec9a8569d793f57",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_nochatid",
+    "status": 401,
+    "latency_ms": 397.41,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "3a514b9e451759118d8f076e2d74a8d6",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_badauth",
+    "status": 401,
+    "latency_ms": 398.82,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "d234fc3e306c401ae294e2b9de2344a1",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_mcp_init",
+    "status": 404,
+    "latency_ms": 22.04,
+    "body": {
+      "error": {
+        "message": "The requested resource was not found",
+        "type": "resource_not_found_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "6120d6e2da44c54374430774191b0909",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_cdn_manifest",
+    "status": 404,
+    "latency_ms": 138.95,
+    "body": {
+      "error": {
+        "message": "The requested resource was not found",
+        "type": "resource_not_found_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "99a653f1ce611009fac205341cafca6a",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "DEV_models",
+    "status": 401,
+    "latency_ms": 186.33,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "305297c803801121b0d6191f6fc59c80",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "DEV_chat_std",
+    "status": 401,
+    "latency_ms": 396.91,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "b090c074c212ea97db782a98a0689175",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_stream",
+    "status": 401,
+    "latency_ms": 394.65,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "a50933d1c12136d77bd2dcfbec9fea4e",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_messages",
+    "status": 401,
+    "latency_ms": 5035.33,
+    "body": {
+      "error": {
+        "type": "authentication_error",
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again."
+      },
+      "type": "error"
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:18 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "169",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "25be222772515818b9c4b71d1e93c56a",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_count_tokens",
+    "status": 400,
+    "latency_ms": 16.74,
+    "body": {
+      "error": {
+        "type": "invalid_request_error",
+        "message": "Invalid request Error"
+      },
+      "type": "error"
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "91",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "cbe86e98099d029eecbcc683d21e792d",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_embeddings",
+    "status": 401,
+    "latency_ms": 10.89,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "8cda3e9ba8f11d309e963e84ec017442",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_search",
+    "status": 401,
+    "latency_ms": 11.94,
+    "body": {
+      "error": {
+        "type": "invalid_authentication_error",
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again."
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "36b6d6e2b1d0c064240c34d0f7284b23",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_fetch",
+    "status": 401,
+    "latency_ms": 8.72,
+    "body": {
+      "error": {
+        "type": "invalid_authentication_error",
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again."
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "41b4d018b492b25664a2a047f92b788e",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_tools_stock",
+    "status": 401,
+    "latency_ms": 8.1,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "4a4a150003bef5c048222731f3f08ba7",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_tools_datasource",
+    "status": 401,
+    "latency_ms": 14.21,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "77e06bf07fb2ba88558150dcebf490af",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_tools_genimg",
+    "status": 401,
+    "latency_ms": 9.22,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "056beefc329ca97ce7480535bf2a3637",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_tools_websearch",
+    "status": 404,
+    "latency_ms": 7.47,
+    "body": {
+      "error": "method not found"
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "28",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "7907a7ab9f9bcccb82b1818f140844d5",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_storage_meta",
+    "status": 401,
+    "latency_ms": 215.42,
+    "body": {
+      "error": {
+        "code": "UNAUTHORIZED",
+        "message": "the API key appears to be invalid or may have expired"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "99",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "d57fe5c774a9df92b82a91b2f285a6cf",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "DEV_files_probe",
+    "status": 401,
+    "latency_ms": 8.5,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "6fc3b453f72fa1e22f77d15d4991a51f",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_skill",
+    "status": 401,
+    "latency_ms": 11.75,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "ecc0fd362815f5f6cbd888b747f5714d",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_device",
+    "status": 401,
+    "latency_ms": 10.0,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "b95808c9c9a921d44ed3cea1f3b944ec",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_nochatid",
+    "status": 401,
+    "latency_ms": 12.23,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "a63e551fa11e32cda3ef8a46e96239ad",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_chat_badauth",
+    "status": 401,
+    "latency_ms": 13.06,
+    "body": {
+      "error": {
+        "message": "The API Key appears to be invalid or may have expired. Please verify your credentials and try again.",
+        "type": "invalid_authentication_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "9d40d3785a4125ba01bb99220b405c87",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_mcp_init",
+    "status": 404,
+    "latency_ms": 5.78,
+    "body": {
+      "error": {
+        "message": "The requested resource was not found",
+        "type": "resource_not_found_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "30ffaf47a2900aa45a80bbab6d651734",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "DEV_cdn_manifest",
+    "status": 404,
+    "latency_ms": 5.11,
+    "body": {
+      "error": {
+        "message": "The requested resource was not found",
+        "type": "resource_not_found_error"
+      }
+    },
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "4d5c16d0d1670f783c802c9fa054bddd",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "SANDBOX_models",
+    "status": 404,
+    "latency_ms": 23.21,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "SANDBOX_chat_std",
+    "status": 404,
+    "latency_ms": 27.75,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_stream",
+    "status": 404,
+    "latency_ms": 27.01,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_messages",
+    "status": 404,
+    "latency_ms": 21.76,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_count_tokens",
+    "status": 404,
+    "latency_ms": 6.5,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_embeddings",
+    "status": 404,
+    "latency_ms": 24.2,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_search",
+    "status": 404,
+    "latency_ms": 24.18,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_fetch",
+    "status": 404,
+    "latency_ms": 25.22,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_tools_stock",
+    "status": 404,
+    "latency_ms": 26.54,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_tools_datasource",
+    "status": 404,
+    "latency_ms": 27.18,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_tools_genimg",
+    "status": 404,
+    "latency_ms": 32.34,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_tools_websearch",
+    "status": 404,
+    "latency_ms": 20.89,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_storage_meta",
+    "status": 404,
+    "latency_ms": 23.98,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "SANDBOX_files_probe",
+    "status": 404,
+    "latency_ms": 26.92,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_skill",
+    "status": 404,
+    "latency_ms": 26.75,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_device",
+    "status": 404,
+    "latency_ms": 23.54,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_nochatid",
+    "status": 404,
+    "latency_ms": 27.86,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_badauth",
+    "status": 404,
+    "latency_ms": 28.66,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_mcp_init",
+    "status": 404,
+    "latency_ms": 26.09,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_cdn_manifest",
+    "status": 404,
+    "latency_ms": 6.67,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "SANDBOX_models",
+    "status": 404,
+    "latency_ms": 30.37,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "SANDBOX_chat_std",
+    "status": 404,
+    "latency_ms": 20.03,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_stream",
+    "status": 404,
+    "latency_ms": 26.28,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_messages",
+    "status": 404,
+    "latency_ms": 29.53,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_count_tokens",
+    "status": 404,
+    "latency_ms": 26.09,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_embeddings",
+    "status": 404,
+    "latency_ms": 29.01,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_search",
+    "status": 404,
+    "latency_ms": 6.88,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_fetch",
+    "status": 404,
+    "latency_ms": 26.43,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_tools_stock",
+    "status": 404,
+    "latency_ms": 27.99,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_tools_datasource",
+    "status": 404,
+    "latency_ms": 23.9,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_tools_genimg",
+    "status": 404,
+    "latency_ms": 26.65,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_tools_websearch",
+    "status": 404,
+    "latency_ms": 27.41,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_storage_meta",
+    "status": 404,
+    "latency_ms": 27.96,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "SANDBOX_files_probe",
+    "status": 404,
+    "latency_ms": 29.78,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_skill",
+    "status": 404,
+    "latency_ms": 23.21,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_device",
+    "status": 404,
+    "latency_ms": 30.03,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_nochatid",
+    "status": 404,
+    "latency_ms": 29.88,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_chat_badauth",
+    "status": 404,
+    "latency_ms": 28.92,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_mcp_init",
+    "status": 404,
+    "latency_ms": 7.65,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "SANDBOX_cdn_manifest",
+    "status": 404,
+    "latency_ms": 34.19,
+    "body": "",
+    "headers": {
+      "date": "Wed, 12 Aug 2026 04:45:13 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    },
+    "url": "https://kimi-api-sandbox.msh.team/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "TEAM_models",
+    "status": 404,
+    "latency_ms": 31.03,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "TEAM_chat_std",
+    "status": 404,
+    "latency_ms": 53.98,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_stream",
+    "status": 404,
+    "latency_ms": 32.13,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_messages",
+    "status": 404,
+    "latency_ms": 26.46,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_count_tokens",
+    "status": 404,
+    "latency_ms": 39.28,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_embeddings",
+    "status": 404,
+    "latency_ms": 30.71,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_search",
+    "status": 404,
+    "latency_ms": 52.43,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_fetch",
+    "status": 404,
+    "latency_ms": 32.58,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_tools_stock",
+    "status": 404,
+    "latency_ms": 30.32,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_tools_datasource",
+    "status": 404,
+    "latency_ms": 24.42,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_tools_genimg",
+    "status": 404,
+    "latency_ms": 46.13,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_tools_websearch",
+    "status": 404,
+    "latency_ms": 24.02,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_storage_meta",
+    "status": 404,
+    "latency_ms": 25.25,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "TEAM_files_probe",
+    "status": 404,
+    "latency_ms": 44.27,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_skill",
+    "status": 404,
+    "latency_ms": 26.62,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_device",
+    "status": 404,
+    "latency_ms": 5.33,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_nochatid",
+    "status": 404,
+    "latency_ms": 31.17,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_badauth",
+    "status": 404,
+    "latency_ms": 10.04,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_mcp_init",
+    "status": 404,
+    "latency_ms": 5.56,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_cdn_manifest",
+    "status": 404,
+    "latency_ms": 11.27,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "TEAM_models",
+    "status": 404,
+    "latency_ms": 7.64,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "TEAM_chat_std",
+    "status": 404,
+    "latency_ms": 4.64,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_stream",
+    "status": 404,
+    "latency_ms": 10.65,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_messages",
+    "status": 404,
+    "latency_ms": 10.13,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_count_tokens",
+    "status": 404,
+    "latency_ms": 15.28,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_embeddings",
+    "status": 404,
+    "latency_ms": 10.4,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_search",
+    "status": 404,
+    "latency_ms": 30.13,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_fetch",
+    "status": 404,
+    "latency_ms": 13.78,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_tools_stock",
+    "status": 404,
+    "latency_ms": 16.9,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_tools_datasource",
+    "status": 404,
+    "latency_ms": 9.5,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_tools_genimg",
+    "status": 404,
+    "latency_ms": 7.82,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_tools_websearch",
+    "status": 404,
+    "latency_ms": 9.98,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_storage_meta",
+    "status": 404,
+    "latency_ms": 10.63,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "TEAM_files_probe",
+    "status": 404,
+    "latency_ms": 24.05,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_skill",
+    "status": 404,
+    "latency_ms": 33.67,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_device",
+    "status": 404,
+    "latency_ms": 27.49,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_nochatid",
+    "status": 404,
+    "latency_ms": 10.2,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_chat_badauth",
+    "status": 404,
+    "latency_ms": 24.17,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_mcp_init",
+    "status": 404,
+    "latency_ms": 21.45,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "TEAM_cdn_manifest",
+    "status": 404,
+    "latency_ms": 10.77,
+    "body": "404 page not found\n",
+    "headers": {
+      "Date": "Wed, 12 Aug 2026 04:45:14 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "url": "https://kimi.kimi.team/apiv2/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "CDN_models",
+    "status": 404,
+    "latency_ms": 1172.3,
+    "body": {
+      "Code": "NoSuchKey",
+      "RequestId": "3b25077bfa5b25386a7bfa5b-bf55b4a-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "HostId": "MqsHaJwyBCQjwKXeXcywzdGRDZUrYEqd",
+      "Message": "The specified key does not exist.",
+      "EC": "0017-00000003",
+      "Key": "agentgw/pysdk/v1/models"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "243",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache18.zjtaizhou-mp02,cache08.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|404",
+      "X-Request-Id": "4d9ebcf1a9b00a81b8dc722621d0f304",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000003",
+      "X-Tos-Id-2": "3b25077bfa5b25386a7bfa5b-bf55b4a-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "3b25077bfa5b25386a7bfa5b-bf55b4a-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "6",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "CDN_chat_std",
+    "status": 412,
+    "latency_ms": 2177.35,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "4f60077bfa5bb6a96a7bfa5b-ba79df6-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "LptYuCjrBDqlnOLIpMqTULwudyAUNThd",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache27.czmp,cache01.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "630fee8a82d2b4902fe4604fe0b957cc",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "4f60077bfa5bb6a96a7bfa5b-ba79df6-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "4f60077bfa5bb6a96a7bfa5b-ba79df6-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_stream",
+    "status": 412,
+    "latency_ms": 1166.31,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "219e077bfa5b8ac26a7bfa5b-b79d3b7-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "AwVaJdKuONMZIDkarkJKBGQEBEQBKBuO",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache02.czmp,cache03.bjchaoyangqu-ct02",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "ce4a65c24ef6942ef0778542f6667d0f",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "219e077bfa5b8ac26a7bfa5b-b79d3b7-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "219e077bfa5b8ac26a7bfa5b-b79d3b7-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_messages",
+    "status": 412,
+    "latency_ms": 3348.53,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "9aa3077bfa5c85cc6a7bfa5c-bc176fa-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "xEHKKQNtkzHXWRKtNDIpxeDOgwJaiMXc",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache37.zjhuzhou-mp01,cache03.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "c2ae0c8c2f90d87660221e422768c442",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "9aa3077bfa5c85cc6a7bfa5c-bc176fa-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "9aa3077bfa5c85cc6a7bfa5c-bc176fa-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_count_tokens",
+    "status": 412,
+    "latency_ms": 1516.22,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "bfbb077bfa5b50da6a7bfa5b-bf6227c-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "HostId": "CwkKqLJZlyIaFQeRpHDNYdVHyzyXsRUS",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache36.zjningbo-mp02,cache03.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "c09a2d9c2fd0bf1ac3fbbea2d7c7b282",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "bfbb077bfa5b50da6a7bfa5b-bf6227c-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Request-Id": "bfbb077bfa5b50da6a7bfa5b-bf6227c-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_embeddings",
+    "status": 412,
+    "latency_ms": 1197.7,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "2395077bfa5bf7dd6a7bfa5b-b348c3b-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "LEoEmQqYRuWpdPTpjRGEflIDymfRPfDH",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache06.zjtaizhou-mp02,cache01.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "f99e1ee656207a0aefab64a01c7ceac7",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "2395077bfa5bf7dd6a7bfa5b-b348c3b-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "2395077bfa5bf7dd6a7bfa5b-b348c3b-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_search",
+    "status": 412,
+    "latency_ms": 2364.41,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "e1a0077bfa5bf4106a7bfa5b-b7d04fe-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "yUiPFniyKRSLTWbetWPssLBWnccDvZGQ",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache05.sdjinan-mp04,cache01.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "990587fe363f51e1f26a536fbe86fd39",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "e1a0077bfa5bf4106a7bfa5b-b7d04fe-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "e1a0077bfa5bf4106a7bfa5b-b7d04fe-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_fetch",
+    "status": 412,
+    "latency_ms": 1972.26,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "3af1077bfa5ba80a6a7bfa5b-bb7ff76-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "doLtpFsLRTKqAzmIfyJHSnAkYwzRZHpV",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache03.zjhuzhou-mp01,cache22.bjchaoyangqu-ct02",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "27b7252ffdc1c29b88283cd9665266ba",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "3af1077bfa5ba80a6a7bfa5b-bb7ff76-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "3af1077bfa5ba80a6a7bfa5b-bb7ff76-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_tools_stock",
+    "status": 412,
+    "latency_ms": 1136.24,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "9f67077bfa5b701e6a7bfa5b-b67f1b2-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "KNzPKequfnPzZPTfSFUerTWRqMGWUHmp",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache44.zjtaizhou-mp02,cache02.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "a98056fba83ea85a5e950f784b66cad4",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "9f67077bfa5b701e6a7bfa5b-b67f1b2-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "9f67077bfa5b701e6a7bfa5b-b67f1b2-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_tools_datasource",
+    "status": 412,
+    "latency_ms": 1155.29,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "a28f077bfa5ba3ea6a7bfa5b-bb7ff78-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "rnazuAFdcluvrLUaYfoQeRFiEqLXnFuC",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache51.zjtaizhou-mp02,cache04.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "d79afcd9bb0426c7369627f3fcb2b1ec",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "a28f077bfa5ba3ea6a7bfa5b-bb7ff78-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "a28f077bfa5ba3ea6a7bfa5b-bb7ff78-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_tools_genimg",
+    "status": 412,
+    "latency_ms": 2860.37,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "4bea077bfa5c2d6f6a7bfa5c-beb6185-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "ZIZjtgqxPyDbBCCoOPHLYeKuWStYGKMV",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache32.zjtaizhou-mp02,cache01.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "c674d0d00d0b22c119832b4278c0ad33",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "4bea077bfa5c2d6f6a7bfa5c-beb6185-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "4bea077bfa5c2d6f6a7bfa5c-beb6185-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_tools_websearch",
+    "status": 412,
+    "latency_ms": 1531.93,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "6ff5077bfa5b8c8e6a7bfa5b-bec0cfa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "mlibvpVUkCNRbUXtAABFbCNWmDliTKvc",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache63.zjtaizhou-mp02,cache01.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "0741d8f49d2f282ffac63fe42be49102",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "6ff5077bfa5b8c8e6a7bfa5b-bec0cfa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "6ff5077bfa5b8c8e6a7bfa5b-bec0cfa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_storage_meta",
+    "status": 404,
+    "latency_ms": 1200.29,
+    "body": {
+      "Code": "NoSuchKey",
+      "RequestId": "aaa0077bfa5b73d06a7bfa5b-befbdf7-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "HostId": "ndtOyhHpIXuedfpBpgbBVGTZXGeIbRjj",
+      "Message": "The specified key does not exist.",
+      "EC": "0017-00000003",
+      "Key": "agentgw/pysdk/v1/storage/nonexistent"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "256",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache01.zjhuzhou-mp01,cache02.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|404",
+      "X-Request-Id": "6adb417e270d8cf2bb20ff2d53f9cea3",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000003",
+      "X-Tos-Id-2": "aaa0077bfa5b73d06a7bfa5b-befbdf7-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "aaa0077bfa5b73d06a7bfa5b-befbdf7-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "6",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "CDN_files_probe",
+    "status": 412,
+    "latency_ms": 1191.11,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "bc4077bfa5bf17e6a7bfa5b-b3c5d73-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "wNtTnBbQEGAVPqSsaeklVdUYUDSgUzfw",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache22.zjhuzhou-mp01,cache02.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "d049038fa0b26aa0e418fab820200cb1",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "bc4077bfa5bf17e6a7bfa5b-b3c5d73-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "bc4077bfa5bf17e6a7bfa5b-b3c5d73-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_skill",
+    "status": 412,
+    "latency_ms": 1159.71,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "ae1f077bfa5ba5836a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "aUjXGENjFpqeUknUlCnjXVoFOsHKaNge",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache14.czmp,cache03.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "48c610afe4140b48cfec464de6ab0efd",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "ae1f077bfa5ba5836a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "ae1f077bfa5ba5836a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_device",
+    "status": 412,
+    "latency_ms": 5483.2,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "7caf077bfa5f7f026a7bfa5f-b71b679-1wu0q7-PoO-cb-tos-1az-front-azc-16",
+      "HostId": "tfpaZPHlLqXURoQEFvIaILRguVUPMAnl",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:19 GMT",
+      "Via": "cache06.czmp,cache01.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "f3a2cbd81f90e72ffdecc320f8176358",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "7caf077bfa5f7f026a7bfa5f-b71b679-1wu0q7-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Request-Id": "7caf077bfa5f7f026a7bfa5f-b71b679-1wu0q7-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_nochatid",
+    "status": 412,
+    "latency_ms": 1151.36,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "ae1f077bfa5ba57c6a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "aUjXGENjFpqeUknUlCnjXVoFOsHKaNge",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache49.czmp,cache01.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "96fbc1072389cef0d56a13f83a9716fd",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "ae1f077bfa5ba57c6a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "ae1f077bfa5ba57c6a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_badauth",
+    "status": 412,
+    "latency_ms": 1038.34,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "219e077bfa5b8afa6a7bfa5b-b79d3b7-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "AwVaJdKuONMZIDkarkJKBGQEBEQBKBuO",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache05.czmp,cache01.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "ad4dbed3a5c400b51488951213806c2d",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "219e077bfa5b8afa6a7bfa5b-b79d3b7-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "219e077bfa5b8afa6a7bfa5b-b79d3b7-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_mcp_init",
+    "status": 412,
+    "latency_ms": 1131.39,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "455a077bfa5bd9456a7bfa5b-b35317d-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "HostId": "tNppSEhHYRWqSDIygoXpbguWgNrrpjmN",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache14.zjningbo-mp02,cache02.bjchaoyangqu-ct02",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "e6c6749d9709fc454f33e096ec54481c",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "455a077bfa5bd9456a7bfa5b-b35317d-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Request-Id": "455a077bfa5bd9456a7bfa5b-b35317d-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_cdn_manifest",
+    "status": 200,
+    "latency_ms": 1215.62,
+    "body": {
+      "name": "agent-gw",
+      "description": "Kimi agent-gw \u7684 Python SDK",
+      "homepage": "https://cdn.kimi.com/agentgw/pysdk/",
+      "repository": "git@dev.msh.team:leixun/agent-gw-pysdk.git",
+      "latest": {
+        "version": "0.2.6",
+        "url": "https://cdn.kimi.com/agentgw/pysdk/v0.2.6/agent_gw-0.2.6-py3-none-any.whl",
+        "sha256": "78271707103275a433f5cda0da30fba52ddc99bff3e6e73927a0307040908715",
+        "requires_python": ">=3.8"
+      },
+      "versions": [
+        {
+          "version": "0.2.0",
+          "url": "https://cdn.kimi.com/agentgw/pysdk/v0.2.0/agent_gw-0.2.0-py3-none-any.whl",
+          "sha256": "05668b10e7989ff52f11882cc1deaa291ab18eed4c064e1e5c2fa702f2670702",
+          "requires_python": ">=3.8"
+        },
+        {
+          "version": "0.2.5",
+          "url": "https://cdn.kimi.com/agentgw/pysdk/v0.2.5/agent_gw-0.2.5-py3-none-any.whl",
+          "sha256": "504971727e435b2f0506d33dd1a1b3219f72c8e1e69c999f30f3b4a6296c8bfc",
+          "requires_python": ">=3.8"
+        },
+        {
+          "version": "0.2.6",
+          "url": "https://cdn.kimi.com/agentgw/pysdk/v0.2.6/agent_gw-0.2.6-py3-none-any.whl",
+          "sha256": "78271707103275a433f5cda0da30fba52ddc99bff3e6e73927a0307040908715",
+          "requires_python": ">=3.8"
+        }
+      ]
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "1191",
+      "Connection": "keep-alive",
+      "Accept-Ranges": "bytes",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Etag": "\"0af3fb8630958760c0d9203796e13766\"",
+      "Last-Modified": "Fri, 03 Jul 2026 10:13:50 GMT",
+      "Via": "cache04.gdfoshan-mp02,cache09.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Request-Id": "05f4312dde2276fb1f4bb3b512d86e32",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Create-Time": "Fri, 03 Jul 2026 10:13:50 GMT",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Hash-Crc64ecma": "4354010886249982813",
+      "X-Tos-Id-2": "87e077bfa5bb1646a7bfa5b-bdf7efb-1wu0q3-GO-cb-tos-1az-front-azc-16",
+      "X-Tos-Request-Id": "87e077bfa5bb1646a7bfa5b-bdf7efb-1wu0q3-GO-cb-tos-1az-front-azc-16",
+      "X-Tos-Server-Time": "8",
+      "X-Tos-Storage-Class": "STANDARD",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/manifest.json",
+    "method": "GET"
+  },
+  {
+    "name": "CDN_models",
+    "status": 404,
+    "latency_ms": 1200.41,
+    "body": {
+      "Code": "NoSuchKey",
+      "RequestId": "901077bfa5b62bf6a7bfa5b-bdac0f9-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "HostId": "OtTjzGhdnQOoTmNcAYBRwPyHaHjNMxDN",
+      "Message": "The specified key does not exist.",
+      "EC": "0017-00000003",
+      "Key": "agentgw/pysdk/v1/models"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "242",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache37.zjtaizhou-mp02,cache03.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|404",
+      "X-Request-Id": "df8fe16cc6bdb4b1cb4f5e5b5bae9965",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000003",
+      "X-Tos-Id-2": "901077bfa5b62bf6a7bfa5b-bdac0f9-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "901077bfa5b62bf6a7bfa5b-bdac0f9-1wu0q3-GO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "5",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/models",
+    "method": "GET"
+  },
+  {
+    "name": "CDN_chat_std",
+    "status": 412,
+    "latency_ms": 1480.21,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "c591077bfa5bfeaa6a7bfa5b-bc1ea75-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "MjwJadUGHFytqHtVoXMkRHmouwpFCeYT",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache09.czmp,cache02.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "10c3ff7c0237c0c9b3bb8dad0ea3e4dd",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "c591077bfa5bfeaa6a7bfa5b-bc1ea75-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "c591077bfa5bfeaa6a7bfa5b-bc1ea75-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_stream",
+    "status": 412,
+    "latency_ms": 1948.19,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "ae1f077bfa5cab3b6a7bfa5c-b717bf5-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "aUjXGENjFpqeUknUlCnjXVoFOsHKaNge",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache33.czmp,cache07.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "5a6116a4fcd3192dc6fd2268da859281",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "ae1f077bfa5cab3b6a7bfa5c-b717bf5-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "ae1f077bfa5cab3b6a7bfa5c-b717bf5-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_messages",
+    "status": 412,
+    "latency_ms": 1135.65,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "9aa3077bfa5b7f2a6a7bfa5b-bc176fa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "xEHKKQNtkzHXWRKtNDIpxeDOgwJaiMXc",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache02.zjhuzhou-mp01,cache10.bjchaoyangqu-ct02",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "16e336ca48d989afb5212e701e9d35c6",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "9aa3077bfa5b7f2a6a7bfa5b-bc176fa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "9aa3077bfa5b7f2a6a7bfa5b-bc176fa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/messages",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_count_tokens",
+    "status": 412,
+    "latency_ms": 1139.22,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "fb8b077bfa5b62646a7bfa5b-b7aa503-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "OCSEhpmyDwaXfkplSAzVrhATUloFHhPi",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache34.zjningbo-mp02,cache11.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "a593161a075fc39091c35cebb36b912e",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "fb8b077bfa5b62646a7bfa5b-b7aa503-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "fb8b077bfa5b62646a7bfa5b-b7aa503-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/messages/count_tokens",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_embeddings",
+    "status": 412,
+    "latency_ms": 1629.08,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "97c5077bfa5cd57d6a7bfa5c-b532535-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "fhwelpDfWIJiGoPQkriwjUBGxCcvXfKJ",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache29.zjtaizhou-mp02,cache04.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "9ec3df66348f09589821a4d872fae46d",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "97c5077bfa5cd57d6a7bfa5c-b532535-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "97c5077bfa5cd57d6a7bfa5c-b532535-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/embeddings",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_search",
+    "status": 412,
+    "latency_ms": 1133.73,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "f9f7077bfa5b5e446a7bfa5b-b6b8076-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "HostId": "QfukxNoCSdtycXzxFUFbQNwPDSDrnOst",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache18.sdjinan-mp04,cache04.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "818562489d169438a1976ba12f3f4b01",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "f9f7077bfa5b5e446a7bfa5b-b6b8076-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Request-Id": "f9f7077bfa5b5e446a7bfa5b-b6b8076-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/search",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_fetch",
+    "status": 412,
+    "latency_ms": 2159.84,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "5505077bfa5c6aca6a7bfa5c-b43aefb-1wu0q4-PoO-cb-tos-1az-front-azc-16",
+      "HostId": "fwqkURtSPBCtIGkjLDLiJSIqUIETmyYY",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache27.zjhuzhou-mp01,cache01.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "fa98fdd0020757e1652271b184e89ea1",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "5505077bfa5c6aca6a7bfa5c-b43aefb-1wu0q4-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Request-Id": "5505077bfa5c6aca6a7bfa5c-b43aefb-1wu0q4-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/fetch",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_tools_stock",
+    "status": 412,
+    "latency_ms": 1069.99,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "6ff5077bfa5b8da96a7bfa5b-bec0cfa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "mlibvpVUkCNRbUXtAABFbCNWmDliTKvc",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache06.zjtaizhou-mp02,cache02.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "3d9df2fd7504eb852e487e60e68d2286",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "6ff5077bfa5b8da96a7bfa5b-bec0cfa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "6ff5077bfa5b8da96a7bfa5b-bec0cfa-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_tools_datasource",
+    "status": 412,
+    "latency_ms": 1159.47,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "4bea077bfa5b27a76a7bfa5b-beb6185-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "ZIZjtgqxPyDbBCCoOPHLYeKuWStYGKMV",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache70.zjtaizhou-mp02,cache02.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "751accd7ac1c1b9e8d74fd51a3c6b171",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "4bea077bfa5b27a76a7bfa5b-beb6185-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "4bea077bfa5b27a76a7bfa5b-beb6185-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_tools_genimg",
+    "status": 412,
+    "latency_ms": 1185.8,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "4bea077bfa5b27d86a7bfa5b-beb6185-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "ZIZjtgqxPyDbBCCoOPHLYeKuWStYGKMV",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache61.zjtaizhou-mp02,cache01.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "3885a53056701c505915e8b6bc5bdba3",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "4bea077bfa5b27d86a7bfa5b-beb6185-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "4bea077bfa5b27d86a7bfa5b-beb6185-1wu0q3-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_tools_websearch",
+    "status": 412,
+    "latency_ms": 1419.14,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "9f67077bfa5c75c66a7bfa5c-b67f1b2-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "HostId": "KNzPKequfnPzZPTfSFUerTWRqMGWUHmp",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "325",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache37.zjtaizhou-mp02,cache01.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "dfc34c169a9e49641e1b81a25c791069",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "9f67077bfa5c75c66a7bfa5c-b67f1b2-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "9f67077bfa5c75c66a7bfa5c-b67f1b2-1wu0q4-PoO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/tools",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_storage_meta",
+    "status": 404,
+    "latency_ms": 2130.83,
+    "body": {
+      "Code": "NoSuchKey",
+      "RequestId": "ce73077bfa5c15026a7bfa5c-b6da43c-1wu0q4-GO-cb-tos-1az-front-azc-1",
+      "HostId": "eZCgJHueSDhNuFUqCpgPfPkWjuglsvgU",
+      "Message": "The specified key does not exist.",
+      "EC": "0017-00000003",
+      "Key": "agentgw/pysdk/v1/storage/nonexistent"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "256",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache07.zjhuzhou-mp01,cache03.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|404",
+      "X-Request-Id": "6067764efffe7baa0f4337af015e5bab",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000003",
+      "X-Tos-Id-2": "ce73077bfa5c15026a7bfa5c-b6da43c-1wu0q4-GO-cb-tos-1az-front-azc-1",
+      "X-Tos-Request-Id": "ce73077bfa5c15026a7bfa5c-b6da43c-1wu0q4-GO-cb-tos-1az-front-azc-1",
+      "X-Tos-Server-Time": "4",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/storage/nonexistent",
+    "method": "GET"
+  },
+  {
+    "name": "CDN_files_probe",
+    "status": 412,
+    "latency_ms": 1114.43,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "42f7077bfa5b62a96a7bfa5b-b097475-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "FNUyOLjKuPfcWAuEzmfAOzKocQwNJbGk",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache26.zjhuzhou-mp01,cache02.bjchaoyangqu-ct02",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "dfb03b0388d7b072f46835b28252c3bc",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "42f7077bfa5b62a96a7bfa5b-b097475-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "42f7077bfa5b62a96a7bfa5b-b097475-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/files",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_skill",
+    "status": 412,
+    "latency_ms": 1032.47,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "ae1f077bfa5ba8d76a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "aUjXGENjFpqeUknUlCnjXVoFOsHKaNge",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache10.czmp,cache02.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "671ad9451a4ffbf487cc4fbfc36ba6ec",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "ae1f077bfa5ba8d76a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "ae1f077bfa5ba8d76a7bfa5b-b717bf5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_device",
+    "status": 412,
+    "latency_ms": 2094.13,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "7caf077bfa5c72036a7bfa5c-b71b679-1wu0q4-PoO-cb-tos-1az-front-azc-16",
+      "HostId": "tfpaZPHlLqXURoQEFvIaILRguVUPMAnl",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache26.czmp,cache01.nmgct05",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "eee08643594584fdd2dc66799cbefa1d",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "7caf077bfa5c72036a7bfa5c-b71b679-1wu0q4-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Request-Id": "7caf077bfa5c72036a7bfa5c-b71b679-1wu0q4-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_nochatid",
+    "status": 412,
+    "latency_ms": 1159.74,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "7caf077bfa5b6cab6a7bfa5b-b71b679-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "HostId": "tfpaZPHlLqXURoQEFvIaILRguVUPMAnl",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache02.czmp,cache09.bjchaoyangqu-ct02",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "8fbc2dfbcde8e1a190c7ec5edfbb064b",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "7caf077bfa5b6cab6a7bfa5b-b71b679-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Request-Id": "7caf077bfa5b6cab6a7bfa5b-b71b679-1wu0q3-PoO-cb-tos-1az-front-azc-16",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_chat_badauth",
+    "status": 412,
+    "latency_ms": 3531.44,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "7191077bfa5c144f6a7bfa5c-b3c5d72-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "upIWpGnowcoSTyExqKjjizZjSqGHgZoX",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:16 GMT",
+      "Via": "cache40.czmp,cache01.bjchaoyangqu-ct02",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "fc7f6569b6d287b866651a28c252e5c6",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "7191077bfa5c144f6a7bfa5c-b3c5d72-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "7191077bfa5c144f6a7bfa5c-b3c5d72-1wu0q4-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/chat/completions",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_mcp_init",
+    "status": 412,
+    "latency_ms": 1134.36,
+    "body": {
+      "Code": "PreconditionFailed",
+      "RequestId": "9486077bfa5bbf1e6a7bfa5b-b4cb4f5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "HostId": "jPpUtoYLGEfGzHAmEKYGrmyIXLzXUOgY",
+      "Message": "At least one of the pre-conditions you specified did not hold",
+      "Condition": "Bucket POST must be of the enclosure-type multipart/form-data",
+      "EC": "0017-00000418"
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json",
+      "Content-Length": "326",
+      "Connection": "keep-alive",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Via": "cache03.zjningbo-mp02,cache01.hbczct03",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Exception-Info": "O2|412",
+      "X-Request-Id": "1d73657a11deb493aaafab1d96f27266",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Ec": "0017-00000418",
+      "X-Tos-Id-2": "9486077bfa5bbf1e6a7bfa5b-b4cb4f5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "9486077bfa5bbf1e6a7bfa5b-b4cb4f5-1wu0q3-PoO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "0",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/v1/mcp/",
+    "method": "POST"
+  },
+  {
+    "name": "CDN_cdn_manifest",
+    "status": 200,
+    "latency_ms": 1215.59,
+    "body": {
+      "name": "agent-gw",
+      "description": "Kimi agent-gw \u7684 Python SDK",
+      "homepage": "https://cdn.kimi.com/agentgw/pysdk/",
+      "repository": "git@dev.msh.team:leixun/agent-gw-pysdk.git",
+      "latest": {
+        "version": "0.2.6",
+        "url": "https://cdn.kimi.com/agentgw/pysdk/v0.2.6/agent_gw-0.2.6-py3-none-any.whl",
+        "sha256": "78271707103275a433f5cda0da30fba52ddc99bff3e6e73927a0307040908715",
+        "requires_python": ">=3.8"
+      },
+      "versions": [
+        {
+          "version": "0.2.0",
+          "url": "https://cdn.kimi.com/agentgw/pysdk/v0.2.0/agent_gw-0.2.0-py3-none-any.whl",
+          "sha256": "05668b10e7989ff52f11882cc1deaa291ab18eed4c064e1e5c2fa702f2670702",
+          "requires_python": ">=3.8"
+        },
+        {
+          "version": "0.2.5",
+          "url": "https://cdn.kimi.com/agentgw/pysdk/v0.2.5/agent_gw-0.2.5-py3-none-any.whl",
+          "sha256": "504971727e435b2f0506d33dd1a1b3219f72c8e1e69c999f30f3b4a6296c8bfc",
+          "requires_python": ">=3.8"
+        },
+        {
+          "version": "0.2.6",
+          "url": "https://cdn.kimi.com/agentgw/pysdk/v0.2.6/agent_gw-0.2.6-py3-none-any.whl",
+          "sha256": "78271707103275a433f5cda0da30fba52ddc99bff3e6e73927a0307040908715",
+          "requires_python": ">=3.8"
+        }
+      ]
+    },
+    "headers": {
+      "Server": "Byte-nginx",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "1191",
+      "Connection": "keep-alive",
+      "Accept-Ranges": "bytes",
+      "Date": "Wed, 12 Aug 2026 04:45:15 GMT",
+      "Etag": "\"0af3fb8630958760c0d9203796e13766\"",
+      "Last-Modified": "Fri, 03 Jul 2026 10:13:50 GMT",
+      "Via": "cache54.gdfoshan-mp02,cache11.hebct",
+      "X-Bdcdn-Cache-Status": "TCP_MISS,TCP_MISS",
+      "X-Request-Id": "25469dcca427c133cf635991e1c39e27",
+      "X-Request-Ip": "43.153.86.66",
+      "X-Response-Cache": "miss",
+      "X-Response-Cinfo": "43.153.86.66",
+      "X-Tos-Create-Time": "Fri, 03 Jul 2026 10:13:50 GMT",
+      "X-Tos-Cs-Type": "CDN",
+      "X-Tos-Hash-Crc64ecma": "4354010886249982813",
+      "X-Tos-Id-2": "28f9077bfa5bfee76a7bfa5b-bed3ef9-1wu0q3-GO-cb-tos-1az-front-azc-17",
+      "X-Tos-Request-Id": "28f9077bfa5bfee76a7bfa5b-bed3ef9-1wu0q3-GO-cb-tos-1az-front-azc-17",
+      "X-Tos-Server-Time": "8",
+      "X-Tos-Storage-Class": "STANDARD",
+      "X-Tt-Trace-Tag": "id=5"
+    },
+    "url": "https://cdn.kimi.com/agentgw/pysdk/manifest.json",
+    "method": "GET"
+  }
+]

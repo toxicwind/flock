@@ -1,0 +1,16 @@
+=== portal PID  ===
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+XAUTHORITY=/home/kimi/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PROJECT_WORKSPACE_PATH=/mnt/agents
+NODE_PATH=/usr/lib/node_modules
+PATH=/command:/home/kimi/.local/bin:/home/kimi/.npm-global/bin:/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+XAUTHORITY=/root/.Xauthority
+GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305
+PROJECT_WORKSPACE_PATH=/mnt/agents
+NODE_PATH=/usr/lib/node_modules
+PATH=/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
+
+real	0m7.384s
+user	0m0.030s
+sys	0m0.060s

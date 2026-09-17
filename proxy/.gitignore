@@ -1,0 +1,12 @@
+/target
+.env
+/data
+__pycache__/
+.claude/
+
+# token-scrub 2026-09-14: never commit secrets
+*.pat
+github_*_pat.json
+.env*
+*secret*
+*token*

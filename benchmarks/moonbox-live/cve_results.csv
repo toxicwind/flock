@@ -1,0 +1,4 @@
+cve_id,description,tested,result,notes
+CVE-2026-33186,gRPC-Go auth bypass via malformed :path,YES,FAILED,Portal still requires auth
+CVE-2025-68926,Hardcoded gRPC auth tokens,YES,FAILED,No hardcoded tokens found
+CVE-2026-44351,Empty HMAC secret bypass,YES,FAILED,Gateway rejects empty key

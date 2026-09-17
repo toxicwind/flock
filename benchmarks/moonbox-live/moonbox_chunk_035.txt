@@ -1,0 +1,46 @@
+roto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"bytes,1,rep,name=messages,proto3" json:"messages,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"varint,7,opt,name=balance_type,json=balanceType,proto3,enum=kimi.gateway.membership.v2.Balance_Type" json:"balance_type,omitempty"
+protobuf:"bytes,3,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+*connect.Client[dev.msh.team/protos/kimi-go/kimi/portal/v1.ValidateBindTokenRequest,dev.msh.team/protos/kimi-go/kimi/portal/v1.ValidateBindTokenResponse]
+*func(struct { pragma.NoUnkeyedLiterals; Source protoreflect.Message; Destination protoreflect.Message }) struct { pragma.NoUnkeyedLiterals; Flags uint8 }
+gorm:"column:user_id;type:text;primaryKey;index:idx_evo_state_accum_user,priority:2;comment:
+protobuf:"varint,1,opt,name=context_length,json=contextLength,proto3,enum=kimi.common.v1.ContextLength,oneof" json:"context_length,omitempty"
+protobuf:"varint,9,opt,name=context_length,json=contextLength,proto3,enum=kimi.common.v1.ContextLength,oneof" json:"context_length,omitempty"
+protobuf:"varint,4,opt,name=target_kind,json=targetKind,proto3,enum=kimi.websites.v1.WebsiteReportTargetKind,oneof" json:"target_kind,omitempty"
+*func(struct { pragma.NoUnkeyedLiterals; Message protoreflect.Message; Buf []uint8; Flags uint8 }) (struct { pragma.NoUnkeyedLiterals; Buf []uint8 }, error)
+protobuf:"varint,24,opt,name=context_length,json=contextLength,proto3,enum=kimi.common.v1.ContextLength,oneof" json:"context_length,omitempty"
+*connect.BidiStreamForClientSimple[dev.msh.team/protos/kimi-go/kimi/portal/v1.GetAPIKeyRequest,dev.msh.team/protos/kimi-go/kimi/portal/v1.GetAPIKeyResponse]
+MembershipLevel
+protobuf:"varint,4,opt,name=membership_level,json=membershipLevel,proto3,enum=userctx.v1.Membership_Level" json:"membership_level,omitempty"
+MembershipLevel
+protobuf:"varint,12,opt,name=membership_level,json=membershipLevel,proto3,enum=userctx.v1.Membership_Level" json:"membership_level,omitempty"
+MembershipLevel
+protobuf:"varint,20,opt,name=membership_level,json=membershipLevel,proto3,enum=userctx.v1.Membership_Level" json:"membership_level,omitempty"
+protobuf:"varint,2,opt,name=occupation,proto3,enum=kimi.gateway.membership.v2.CreateApplicationFormRequest_Occupation" json:"occupation,omitempty"
+protobuf:"bytes,4,rep,name=positions,proto3" json:"positions,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"
+*connect.ClientStreamForClientSimple[dev.msh.team/protos/kimi-go/kimi/portal/v1.GetAPIKeyRequest,dev.msh.team/protos/kimi-go/kimi/portal/v1.GetAPIKeyResponse]
+FlowControlElementLimit
+protobuf:"varint,6,opt,name=flow_control_element_limit,json=flowControlElementLimit,proto3" json:"flow_control_element_limit,omitempty"
+protobuf:"varint,5,opt,name=upgrade_strategy,json=upgradeStrategy,proto3,enum=kimi.config.v1.UpgradeStrategy" json:"upgrade_strategy,omitempty"
+protobuf:"varint,4,opt,name=agent_mode_type,json=agentModeType,proto3,enum=kimi.chat.v1.KimiPlus_AgentMode_Type" json:"agent_mode_type,omitempty"
+protobuf:"varint,5,opt,name=agent_mode_type,json=agentModeType,proto3,enum=kimi.chat.v1.KimiPlus_AgentMode_Type" json:"agent_mode_type,omitempty"
+protobuf:"varint,6,opt,name=agent_mode_type,json=agentModeType,proto3,enum=kimi.chat.v1.KimiPlus_AgentMode_Type" json:"agent_mode_type,omitempty"
+protobuf:"varint,15,opt,name=agent_mode_type,json=agentModeType,proto3,enum=kimi.chat.v1.KimiPlus_AgentMode_Type" json:"agent_mode_type,omitempty"
+*go.shape.struct { encoding/json/v2.name string; encoding/json/v2.key encoding/json/v2.addressableValue; encoding/json/v2.val encoding/json/v2.addressableValue }
+*go.shape.struct { Name string; Path string; Ino uint64; ETag string; Size int64; ModTime time.Time; IsDir bool; kimi.darkmatter/apps/portal/tos.tombstone bool }
+protobuf:"varint,2,opt,name=message_order,json=messageOrder,proto3,enum=kimi.chat.v1.GetChatShareRequest_MessageOrder" json:"message_order,omitempty"
+protobuf:"varint,4,rep,packed,name=balance_types,json=balanceTypes,proto3,enum=kimi.gateway.membership.v2.Balance_Type" json:"balance_types,omitempty"
+protobuf:"varint,6,opt,name=deployment_status,json=deploymentStatus,proto3,enum=kimi.config.v1.DeploymentStatus" json:"deployment_status,omitempty"
+protobuf:"varint,5,opt,name=deployment_status,json=deploymentStatus,proto3,enum=kimi.config.v1.DeploymentStatus" json:"deployment_status,omitempty"
+protobuf:"varint,10,rep,packed,name=balance_types,json=balanceTypes,proto3,enum=kimi.gateway.membership.v2.Balance_Type" json:"balance_types,omitempty"
+protobuf:"varint,11,opt,name=deployment_status,json=deploymentStatus,proto3,enum=kimi.config.v1.DeploymentStatus" json:"deployment_status,omitempty"
+protobuf:"varint,8,opt,name=reasoning_effort,json=reasoningEffort,proto3,enum=kimi.common.v1.ReasoningEffort,oneof" json:"reasoning_effort,omitempty"
+protobuf:"bytes,3,rep,name=type_map,json=typeMap,proto3" json:"type_map,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"
+protobuf:"varint,19,opt,name=reasoning_effort,json=reasoningEffort,proto3,enum=kimi.common.v1.ReasoningEffort,oneof" json:"reasoning_effort,omitempty"
+*connect.BidiStreamForClient[dev.msh.team/protos/kimi-go/kimi/portal/v1.ValidateBindTokenRequest,dev.msh.team/protos/kimi-go/kimi/portal/v1.ValidateBindTokenResponse]
+protobuf:"bytes,3,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"
+*connect.ClientStreamForClient[dev.msh.team/protos/kimi-go/kimi/portal/v1.ValidateBindTokenRequest,dev.msh.team/protos/kimi-go/kimi/portal/v1.ValidateBindTokenResponse]
+MonthlyChargeLimitEnabled
+protobuf:"varint,12,opt,name=monthly_charge_limit_enabled,json=monthlyChargeLimitEnabled,proto3" json:"monthly_charge_limit_enabled,omitempty"
+MinMembershipLev

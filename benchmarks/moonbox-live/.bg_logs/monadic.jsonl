@@ -1,0 +1,2 @@
+{"ts": "2026-08-12T00:25:51.140124", "event": "one_to_many", "inputs": 3, "processors": 2, "results": 6}
+{"ts": "2026-08-12T00:25:51.198202", "event": "many_to_one", "valid": 6, "total": 6}

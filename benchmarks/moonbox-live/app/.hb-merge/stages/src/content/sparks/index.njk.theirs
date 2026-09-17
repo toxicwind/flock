@@ -1,0 +1,15 @@
+---
+title: "Sparks"
+layout: "layout.njk"
+permalink: "/sparks/index.html" # <-- Add or modify this line for correct URL
+eleventyNavigation:
+  key: Sparks
+  parent: Showcase # Adjust parent as needed for your navigation
+---
+<p>Here you'll find nascent ideas, quick notes, and experimental fragments that may one day ignite into full concepts or projects.</p>
+<ul>
+{# Loop through all items in the 'sparks' collection, excluding the current page #}
+{% for item in collections.sparks %}
+    {% if item.url != page.url %}<li><a href="{{ item.url }}">{{ item.data.title }}</a></li>{% endif %}
+{% endfor %}
+</ul>

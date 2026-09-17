@@ -1,0 +1,14 @@
+---
+title: "Projects"
+layout: "layout.njk"
+permalink: "/projects/index.html" # <-- Add or modify this line
+eleventyNavigation:
+  key: Projects
+  parent: Showcase # If you use parent for navigation hierarchy
+---
+<p>This is the central hub for all projects explored within the lab.</p>
+<ul>
+{% for item in collections.projects %}
+    {% if item.url != page.url %}<li><a href="{{ item.url }}">{{ item.data.title }}</a></li>{% endif %}
+{% endfor %}
+</ul>

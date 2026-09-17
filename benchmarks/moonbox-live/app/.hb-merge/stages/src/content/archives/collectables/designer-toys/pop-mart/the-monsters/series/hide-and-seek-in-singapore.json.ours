@@ -1,0 +1,9 @@
+{
+  "type": "series",
+  "brand": "pop-mart",
+  "line": "the-monsters",
+  "slug": "hide-and-seek-in-singapore",
+  "title": "Hide and Seek in Singapore",
+  "character_slugs": ["labubu"],
+  "notes": "Seeded from initial article; needs confirmation."
+}

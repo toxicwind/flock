@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIM Bench — MODEL Focus — 28 repos • 610k results</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>body{font-family:Inter,sans-serif} .mono{font-family:'JetBrains Mono',monospace}</style>
+</head>
+<body class="bg-[#07070a] text-zinc-100">
+<div class="max-w-[1800px] mx-auto p-6">
+  <!-- Header MODEL FOCUS -->
+  <div class="flex justify-between items-start mb-6">
+    <div>
+      <h1 class="text-5xl font-black tracking-tighter">MODEL <span class="text-lime-400">INTEL</span> — NVIDIA NIM</h1>
+      <p class="text-zinc-400 mt-2 text-sm">All forks history.db consolidated — Sept 13 2026 — 28 repos • 57 files • 25,222 runs • 610,090 results • raw.githubusercontent.com</p>
+      <div class="flex gap-2 mt-3">
+        <span class="px-3 py-1 rounded-full bg-lime-400 text-black text-xs font-bold mono">deepseek-v4-pro-0813</span>
+        <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs mono">minimax-m3</span>
+        <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs mono">nemotron-3-ultra-550b</span>
+        <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs mono">nemotron-3-super-120b</span>
+        <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs mono">nano-omni-30b</span>
+      </div>
+    </div>
+    <div class="text-right">
+      <div class="text-xs text-zinc-500">ANOMALY DETECTION</div>
+      <div class="text-2xl font-bold text-amber-400" id="anomalyCount">-</div>
+      <div class="text-xs text-zinc-500">models flagged</div>
+    </div>
+  </div>
+
+  <!-- Stats MODEL focus -->
+  <div class="grid grid-cols-6 gap-3 mb-6">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4"><div class="text-[10px] text-zinc-500 uppercase">Unique Models</div><div class="text-2xl font-bold" id="s-models">-</div><div class="text-[10px] text-zinc-600">across all forks</div></div>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4"><div class="text-[10px] text-zinc-500 uppercase">Avg Response</div><div class="text-2xl font-bold" id="s-avg">-</div><div class="text-[10px] text-zinc-600">ms all models</div></div>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4"><div class="text-[10px] text-zinc-500 uppercase">Fastest LLM</div><div class="text-lg font-bold text-lime-400" id="s-fast">-</div><div class="text-[10px] text-zinc-600" id="s-fast-ms">-</div></div>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4"><div class="text-[10px] text-zinc-500 uppercase">Slowest LLM</div><div class="text-lg font-bold text-red-400" id="s-slow">-</div><div class="text-[10px] text-zinc-600" id="s-slow-ms">-</div></div>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4"><div class="text-[10px] text-zinc-500 uppercase">Anomalous Embed</div><div class="text-lg font-bold text-amber-400" id="s-embed">-</div><div class="text-[10px] text-zinc-600"><500ms</div></div>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4"><div class="text-[10px] text-zinc-500 uppercase">Total Runs</div><div class="text-2xl font-bold" id="s-runs">25,222</div><div class="text-[10px] text-zinc-600">610,090 results</div></div>
+  </div>
+
+  <!-- Model Comparison -->
+  <div class="grid grid-cols-3 gap-4 mb-6">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 col-span-2">
+      <h3 class="font-bold mb-1">Model Head-to-Head — deepseek-v4-pro-0813 vs minimax-m3 vs nemotron-3-ultra vs super-120b vs nano-omni</h3>
+      <p class="text-xs text-zinc-500 mb-4">Lower ms = faster, but check tokens & success. Anomaly: nvclip 81ms is embedding, not LLM.</p>
+      <canvas id="chartCompare" height="300"></canvas>
+    </div>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+      <h3 class="font-bold mb-4">Model Category Breakdown</h3>
+      <canvas id="chartCat" height="300"></canvas>
+      <div class="mt-4 text-xs space-y-1 mono" id="catList"></div>
+    </div>
+  </div>
+
+  <!-- Deep Dive Requested Models -->
+  <div class="grid grid-cols-3 gap-4 mb-6">
+    <div class="bg-gradient-to-br from-lime-900/20 to-zinc-900 border border-lime-800/30 rounded-2xl p-5">
+      <h3 class="font-bold text-lime-300">deepseek-v4-pro-0813</h3>
+      <div class="text-xs text-zinc-400 mt-1">Best coding / reasoning — maurodruwel 9861ms, i3t2y 11263ms</div>
+      <div class="mt-3 mono text-sm space-y-1" id="deepseekInfo"></div>
+      <canvas id="chartDeepseek" height="120" class="mt-3"></canvas>
+    </div>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+      <h3 class="font-bold">minimax-m3</h3>
+      <div class="text-xs text-zinc-400 mt-1">Default balanced router — 30/9 success in logs</div>
+      <div class="mt-3 mono text-sm space-y-1" id="minimaxInfo"></div>
+      <canvas id="chartMinimax" height="120" class="mt-3"></canvas>
+    </div>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+      <h3 class="font-bold">nemotron-3-ultra-550b</h3>
+      <div class="text-xs text-zinc-400 mt-1">Def open clown model — max capability, heaviest</div>
+      <div class="mt-3 mono text-sm space-y-1" id="ultraInfo"></div>
+      <canvas id="chartUltra" height="120" class="mt-3"></canvas>
+    </div>
+  </div>
+
+  <!-- All Models Table MODEL FOCUS -->
+  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="font-bold">All Models — Digging & Anomaly Comparison (model-first, not repo-first)</h3>
+      <input id="searchModel" placeholder="search model, provider, anomaly..." class="bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2 text-sm w-80 mono">
+    </div>
+    <div class="overflow-auto max-h-[600px]">
+      <table class="w-full text-sm mono">
+        <thead class="sticky top-0 bg-zinc-900 text-zinc-500 text-xs"><tr><th class="text-left p-2">Model</th><th class="text-left p-2">Provider</th><th class="text-left p-2">Category</th><th class="text-right p-2">Avg ms</th><th class="text-right p-2">Runs</th><th class="text-right p-2">Results</th><th class="text-left p-2">Anomaly</th><th class="text-left p-2">Verdict</th></tr></thead>
+        <tbody id="modelBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Anomalies -->
+  <div class="bg-amber-950/20 border border-amber-800/30 rounded-2xl p-5">
+    <h3 class="font-bold text-amber-300">Anomalous Models Detected</h3>
+    <p class="text-xs text-zinc-400 mt-1">Models that don't behave like normal LLMs — embedding, translation, or broken benchmarks</p>
+    <div id="anomalyList" class="mt-4 grid grid-cols-2 gap-3 text-xs mono"></div>
+  </div>
+</div>
+
+<script>
+async function load() {
+  let data;
+  try { data = await (await fetch('/api/data')).json(); } 
+  catch { try { data = await (await fetch('/data/consolidated.json')).json(); } catch { data = {repos:[], models:[]}; } }
+
+  // Build model map across all repos
+  const modelMap = new Map();
+  data.repos.forEach(r=>{
+    (r.top_models||[]).forEach(m=>{
+      const key = m.model;
+      if (!modelMap.has(key)) modelMap.set(key, {model:key, totalRuns:0, totalResults:0, rts:[], repos:[]});
+      const entry = modelMap.get(key);
+      entry.totalRuns += 1;
+      entry.totalResults += m.count||0;
+      entry.rts.push(m.avg_rt);
+      entry.repos.push(r.repo);
+    });
+  });
+  // Also from flat models list
+  data.models.forEach(m=>{
+    const key = m.model;
+    if (!modelMap.has(key)) modelMap.set(key, {model:key, totalRuns:0, totalResults:0, rts:[], repos:[]});
+    const e = modelMap.get(key);
+    e.totalRuns++;
+    e.totalResults += m.count||0;
+    e.rts.push(m.avg_rt);
+  });
+
+  const models = [...modelMap.values()].map(e=>{
+    const avg = e.rts.reduce((a,b)=>a+b,0)/e.rts.length;
+    const min = Math.min(...e.rts);
+    const max = Math.max(...e.rts);
+    const std = Math.sqrt(e.rts.reduce((s,v)=>s+Math.pow(v-avg,2),0)/e.rts.length);
+    // category detection
+    let cat = 'LLM';
+    const name = e.model.toLowerCase();
+    if (name.includes('clip') || name.includes('embed')) cat='Embedding';
+    else if (name.includes('riva') || name.includes('translate')) cat='Translation';
+    else if (name.includes('villa') || name.includes('parse')) cat='Vision/Parse';
+    else if (avg < 500) cat='Anomalous Fast (<500ms)';
+    else if (name.includes('nano') || name.includes('lightning') || name.includes('flash')) cat='Fast LLM';
+    else if (name.includes('ultra') || name.includes('340b') || name.includes('253b')) cat='Ultra LLM';
+    else cat='Standard LLM';
+    
+    let anomaly = '';
+    let verdict = '';
+    if (avg < 150) { anomaly='⚠️ Too fast for LLM'; verdict='Likely embedding/cache'; }
+    else if (avg > 80000) { anomaly='🐌 Ultra slow'; verdict='Heavy ultra or failing'; }
+    else if (std > avg*0.5) { anomaly='📈 High variance'; verdict='Unstable uptime'; }
+    else if (name.includes('llama-3_3-70b') && avg < 200) { anomaly='🚨 Suspicious 70B @ 88ms'; verdict='Probably TTFB not full response'; }
+    else { anomaly='✅ Normal'; verdict='OK'; }
+
+    return {...e, avg, min, max, std, cat, anomaly, verdict};
+  }).sort((a,b)=>a.avg-b.avg);
+
+  // Stats
+  document.getElementById('s-models').textContent = models.length;
+  const overallAvg = models.reduce((s,m)=>s+m.avg,0)/models.length;
+  document.getElementById('s-avg').textContent = Math.round(overallAvg)+'ms';
+  document.getElementById('s-fast').textContent = models[0]?.model.split('/').pop().slice(0,20) || '-';
+  document.getElementById('s-fast-ms').textContent = models[0]? Math.round(models[0].avg)+'ms' : '-';
+  document.getElementById('s-slow').textContent = models[models.length-1]?.model.split('/').pop().slice(0,20) || '-';
+  document.getElementById('s-slow-ms').textContent = models[models.length-1]? Math.round(models[models.length-1].avg)+'ms' : '-';
+  document.getElementById('s-embed').textContent = models.filter(m=>m.avg<500).length;
+  document.getElementById('anomalyCount').textContent = models.filter(m=>m.anomaly!=='✅ Normal').length;
+
+  // Comparison chart for requested models
+  const wanted = ['deepseek-v4-pro-0813','minimax-m3','nemotron-3-ultra-550b','nemotron-3-super-120b','nemotron-3-nano-omni'];
+  const compData = wanted.map(w=>{
+    const found = models.filter(m=>m.model.toLowerCase().includes(w.toLowerCase()));
+    const avg = found.length ? found.reduce((s,m)=>s+m.avg,0)/found.length : 0;
+    return {label:w, avg};
+  }).filter(d=>d.avg>0);
+
+  new Chart(document.getElementById('chartCompare'), {
+    type:'bar',
+    data:{labels:compData.map(d=>d.label), datasets:[{label:'Avg ms (lower faster)', data:compData.map(d=>d.avg), backgroundColor:['#a3e635','#3f3f46','#facc15','#f87171','#60a5fa']}]},
+    options:{responsive:true, plugins:{legend:{labels:{color:'#fff'}}}, scales:{x:{ticks:{color:'#888'}}, y:{ticks:{color:'#888'}}}}
+  });
+
+  // Category breakdown
+  const cats = {};
+  models.forEach(m=>{ cats[m.cat]=(cats[m.cat]||0)+1; });
+  new Chart(document.getElementById('chartCat'), {
+    type:'doughnut',
+    data:{labels:Object.keys(cats), datasets:[{data:Object.values(cats), backgroundColor:['#a3e635','#facc15','#f87171','#60a5fa','#a78bfa','#34d399']}]},
+    options:{plugins:{legend:{labels:{color:'#fff', font:{size:10}}}}}
+  });
+  document.getElementById('catList').innerHTML = Object.entries(cats).map(([k,v])=>`<div>${k}: ${v}</div>`).join('');
+
+  // Deep dives
+  function fillInfo(id, keyword) {
+    const found = models.filter(m=>m.model.toLowerCase().includes(keyword.toLowerCase()));
+    const el = document.getElementById(id);
+    if (!found.length) { el.innerHTML='No data'; return; }
+    const avg = found.reduce((s,m)=>s+m.avg,0)/found.length;
+    const totalRes = found.reduce((s,m)=>s+m.totalResults,0);
+    el.innerHTML = `<div>Avg: ${Math.round(avg)}ms</div><div>Results: ${totalRes}</div><div>Repos: ${[...new Set(found.flatMap(f=>f.repos))].length}</div><div class="text-[10px] mt-2">${found[0].model}</div>`;
+  }
+  fillInfo('deepseekInfo','deepseek-v4-pro-0813');
+  fillInfo('minimaxInfo','minimax-m3');
+  fillInfo('ultraInfo','nemotron-3-ultra-550b');
+
+  // Table
+  const tbody = document.getElementById('modelBody');
+  models.forEach(m=>{
+    const tr = document.createElement('tr');
+    tr.className = 'border-t border-zinc-800 hover:bg-zinc-800/40';
+    const provider = m.model.split('/')[0];
+    tr.innerHTML = `<td class="p-2 max-w-[300px] truncate text-zinc-200">${m.model}</td><td class="p-2 text-zinc-500">${provider}</td><td class="p-2 text-xs"><span class="px-2 py-1 rounded bg-zinc-800">${m.cat}</span></td><td class="p-2 text-right">${Math.round(m.avg)}</td><td class="p-2 text-right">${m.totalRuns}</td><td class="p-2 text-right">${m.totalResults}</td><td class="p-2 text-xs ${m.anomaly.includes('✅')?'text-zinc-500':'text-amber-400'}">${m.anomaly}</td><td class="p-2 text-xs text-zinc-400">${m.verdict}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  // Anomalies
+  const anomDiv = document.getElementById('anomalyList');
+  models.filter(m=>m.anomaly!=='✅ Normal').slice(0,12).forEach(m=>{
+    const d = document.createElement('div');
+    d.className='bg-zinc-950 border border-zinc-800 rounded-xl p-3';
+    d.innerHTML=`<div class="text-zinc-200">${m.model}</div><div class="text-amber-300">${m.anomaly} — ${Math.round(m.avg)}ms</div><div class="text-[10px] text-zinc-500">${m.verdict} • std ${Math.round(m.std)} • repos ${[...new Set(m.repos)].length}</div>`;
+    anomDiv.appendChild(d);
+  });
+
+  document.getElementById('searchModel').addEventListener('input', e=>{
+    const q = e.target.value.toLowerCase();
+    [...tbody.children].forEach(tr=>{ tr.style.display = tr.textContent.toLowerCase().includes(q)?'':'none'; });
+  });
+}
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,1694 @@
+{
+  "SANDBOX_SKILL_/v1/search": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 45.15,
+    "url": "https://kimi-api-sandbox.msh.team/v1/search",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_SKILL_/v1/tools": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 59.55,
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "DEV_STD_/v1/search": {
+    "status": 401,
+    "body": "{\"error\":{\"type\":\"invalid_authentication_error\",\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\"}}",
+    "latency_ms": 71.29,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/search",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "1ad32c7b15f5fbffa01ca69064ce0ff1",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_DEVICE_/v1/search": {
+    "status": 401,
+    "body": "{\"error\":{\"type\":\"invalid_authentication_error\",\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\"}}",
+    "latency_ms": 52.07,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/search",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "51a518a98254bc9100012cd3b3fa42f0",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_DEVICE_/v1/chat/completions": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 56.7,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "42c820b2688806a7a1e71030995273b7",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX2_DEVICE_/v1/chat/completions": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 14.3,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/chat/completions",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "DEV_STD_/v1/embeddings": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 30.39,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/embeddings",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "462a1f03fdea3a65d61a2503633cc7fc",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_STD_/v1/chat/completions": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 42.91,
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_SKILL_/v1/fetch": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 48.06,
+    "url": "https://kimi-api-sandbox.msh.team/v1/fetch",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "DEV_STD_/v1/fetch": {
+    "status": 401,
+    "body": "{\"error\":{\"type\":\"invalid_authentication_error\",\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\"}}",
+    "latency_ms": 56.59,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/fetch",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "51b3e8ae0d45849d4fcffa0f05c7535b",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_SKILL_/v1/chat/completions": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 50.55,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "336e2ba8952c12faa8dd568232334517",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_DEVICE_/v1/search": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 37.09,
+    "url": "https://kimi-api-sandbox.msh.team/v1/search",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_STD_/v1/mcp/": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 45.57,
+    "url": "https://kimi-api-sandbox.msh.team/v1/mcp/",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "DEV_STD_/v1/mcp/": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "latency_ms": 34.12,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/mcp/",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "54a0c39248a31bae1440b800b6d54a8f",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_DEVICE_/v1/mcp/": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "latency_ms": 62.66,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/mcp/",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "8d41ddb906b7be302274ec540437e14f",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_SKILL_/v1/embeddings": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 58.66,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/embeddings",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "f27f0cfbb4389ce62447dca6830abe69",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_STD_/v1/fetch": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 48.73,
+    "url": "https://kimi-api-sandbox.msh.team/v1/fetch",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_SKILL_/v1/chat/completions": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 46.66,
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "DEV_SKILL_/v1/models": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 70.61,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/models",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "0c36c25567d18512b9f8890adef7403d",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_SKILL_/v1/mcp/": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "latency_ms": 42.22,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/mcp/",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "7aee5d5ad92df92238e62d86a4113dd3",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_DEVICE_/v1/fetch": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 46.43,
+    "url": "https://kimi-api-sandbox.msh.team/v1/fetch",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_DEVICE_/v1/models": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 10.26,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/models",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    }
+  },
+  "DEV_STD_/v1/models": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 58.51,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/models",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "1cdef0d6c194cd4f8daad86886279b08",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_DEVICE_/v1/chat/completions": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 57.89,
+    "url": "https://kimi-api-sandbox.msh.team/v1/chat/completions",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "DEV_STD_/v1/tools": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 68.57,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "17aeea76d973c8ecec98ee3da1b09be6",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_DEVICE_/v1/tools": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 84.29,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "df8b683a015134526a901ee80988828c",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_SKILL_/v1/models": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 57.54,
+    "url": "https://kimi-api-sandbox.msh.team/v1/models",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_STD_/v1/models": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 50.42,
+    "url": "https://kimi-api-sandbox.msh.team/v1/models",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    }
+  },
+  "DEV_DEVICE_/v1/models": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 49.08,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/models",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "ea2dbcb6194b0fcdf3c30c4fd3317698",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX2_STD_/v1/models": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 9.52,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/models",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    }
+  },
+  "DEV_SKILL_/v1/fetch": {
+    "status": 401,
+    "body": "{\"error\":{\"type\":\"invalid_authentication_error\",\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\"}}",
+    "latency_ms": 43.48,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/fetch",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "5f82cb7de9eb43f1538052dd2aab33fa",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_STD_/v1/tools": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 55.64,
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "DEV_SKILL_/v1/tools": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 64.65,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/tools",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "31d5cf0f062a2a0106268516551c3f99",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_STD_/v1/search": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 35.24,
+    "url": "https://kimi-api-sandbox.msh.team/v1/search",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_DEVICE_/v1/tools": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 10.57,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/tools",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_DEVICE_/v1/models": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 49.61,
+    "url": "https://kimi-api-sandbox.msh.team/v1/models",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_DEVICE_/v1/tools": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 54.95,
+    "url": "https://kimi-api-sandbox.msh.team/v1/tools",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "DEV_DEVICE_/v1/fetch": {
+    "status": 401,
+    "body": "{\"error\":{\"type\":\"invalid_authentication_error\",\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\"}}",
+    "latency_ms": 69.27,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/fetch",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "38d3a39b9f5cd60b82aa0b03f62a4446",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_DEVICE_/v1/embeddings": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 48.65,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/embeddings",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "8c6e0f85719fc4a77da6fc7fa9fb2414",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_SKILL_/v1/search": {
+    "status": 401,
+    "body": "{\"error\":{\"type\":\"invalid_authentication_error\",\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\"}}",
+    "latency_ms": 71.46,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/search",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "b8f7af39b8288f59a04ef92bf51f8430",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "DEV_STD_/v1/chat/completions": {
+    "status": 401,
+    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your credentials and try again.\",\"type\":\"invalid_authentication_error\"}}",
+    "latency_ms": 75.62,
+    "url": "https://agent-gw-dev.dev.kimi.team/coding/v1/chat/completions",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "162",
+      "Connection": "keep-alive",
+      "X-Trace-Id": "648f86c4041015a52622e76d0fcf1c3e",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "SANDBOX_SKILL_/v1/mcp/": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 47.51,
+    "url": "https://kimi-api-sandbox.msh.team/v1/mcp/",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_DEVICE_/v1/mcp/": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 49.39,
+    "url": "https://kimi-api-sandbox.msh.team/v1/mcp/",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_STD_/v1/tools": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 32.25,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/tools",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_SKILL_/v1/embeddings": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 41.77,
+    "url": "https://kimi-api-sandbox.msh.team/v1/embeddings",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_DEVICE_/v1/embeddings": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 43.09,
+    "url": "https://kimi-api-sandbox.msh.team/v1/embeddings",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_SKILL_/v1/tools": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 38.27,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/tools",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX_STD_/v1/embeddings": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 45.87,
+    "url": "https://kimi-api-sandbox.msh.team/v1/embeddings",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_SKILL_/v1/models": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 45.03,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/models",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_SKILL_/v1/mcp/": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 25.67,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/mcp/",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_STD_/v1/embeddings": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 26.19,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/embeddings",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_STD_/v1/chat/completions": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 51.66,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/chat/completions",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_DEVICE_/v1/fetch": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 38.62,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/fetch",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_SKILL_/v1/chat/completions": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 56.05,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/chat/completions",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_DEVICE_/v1/search": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 42.14,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/search",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_DEVICE_/v1/mcp/": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 37.15,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/mcp/",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_SKILL_/v1/search": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 45.48,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/search",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_STD_/v1/mcp/": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 40.5,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/mcp/",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_STD_/v1/search": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 47.93,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/search",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "SANDBOX2_STD_/v1/fetch": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 48.64,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/fetch",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "PORTAL_BIND_dev": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/bind_token (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f5769990980>: Failed t",
+    "latency_ms": 11.09,
+    "url": "http://127.0.0.1:8080/api/v1/bind_token"
+  },
+  "TEAM_STD_/v1/models": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 42.82,
+    "url": "https://kimi.kimi.team/apiv2/v1/models",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "PORTAL_BIND_sk-kimi-": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/bind_token (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f5769a57c20>: Failed t",
+    "latency_ms": 9.82,
+    "url": "http://127.0.0.1:8080/api/v1/bind_token"
+  },
+  "PORTAL_BIND_admin": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/bind_token (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f5768728cb0>: Failed t",
+    "latency_ms": 15.13,
+    "url": "http://127.0.0.1:8080/api/v1/bind_token"
+  },
+  "SANDBOX2_DEVICE_/v1/embeddings": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 50.78,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/embeddings",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "PORTAL_RPC_/agent.reception.v1.CallTools": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /agent.reception.v1.CallTools (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f576b798b00",
+    "latency_ms": 13.32,
+    "url": "http://127.0.0.1:8080/agent.reception.v1.CallTools"
+  },
+  "SANDBOX2_SKILL_/v1/fetch": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 59.91,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/fetch",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "PORTAL_BIND_portal": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/bind_token (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f5768728620>: Failed t",
+    "latency_ms": 20.92,
+    "url": "http://127.0.0.1:8080/api/v1/bind_token"
+  },
+  "PORTAL_RPC_/kimi.portal.v1.PortalService/GetAPIKey": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /kimi.portal.v1.PortalService/GetAPIKey (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f",
+    "latency_ms": 20.96,
+    "url": "http://127.0.0.1:8080/kimi.portal.v1.PortalService/GetAPIKey"
+  },
+  "TEAM_STD_/v1/fetch": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 44.19,
+    "url": "https://kimi.kimi.team/apiv2/v1/fetch",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_STD_/v1/mcp/": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 42.04,
+    "url": "https://kimi.kimi.team/apiv2/v1/mcp/",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_SKILL_/v1/chat/completions": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 52.46,
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_SKILL_/v1/tools": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 51.14,
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_DEVICE_/v1/fetch": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 47.29,
+    "url": "https://kimi.kimi.team/apiv2/v1/fetch",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "PORTAL_BIND_kimi": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/bind_token (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f57686e6390>: Failed t",
+    "latency_ms": 32.56,
+    "url": "http://127.0.0.1:8080/api/v1/bind_token"
+  },
+  "CDP_VERSION": {
+    "status": 200,
+    "body": "{\"Browser\":\"Chrome/151.0.7922.71\",\"Protocol-Version\":\"1.3\",\"User-Agent\":\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36\",\"V8-Version\":\"15.1.206.10\",\"WebKit-Version\":\"537.36 (@ef35003457e93c278f911a334b06e4a5f8967e06)\",\"webSocketDebuggerUrl\":\"ws://127.0.0.1:9223/devtools/browser/83f3c5f2-5f8d-482d-a4ee-a195e69ea160\"}",
+    "latency_ms": 17.46,
+    "url": "http://127.0.0.1:9223/json/version",
+    "resp_headers": {
+      "Content-Security-Policy": "frame-ancestors 'none'",
+      "Content-Length": "372",
+      "Content-Type": "application/json; charset=UTF-8"
+    }
+  },
+  "TEAM_SKILL_/v1/models": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 65.63,
+    "url": "https://kimi.kimi.team/apiv2/v1/models",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "RESTARTER": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=18080): Max retries exceeded with url: /healthz (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f57686c73e0>: Failed to establi",
+    "latency_ms": 17.3,
+    "url": "http://127.0.0.1:18080/healthz"
+  },
+  "PORTAL_BIND_test": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/bind_token (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f576867d820>: Failed t",
+    "latency_ms": 41.77,
+    "url": "http://127.0.0.1:8080/api/v1/bind_token"
+  },
+  "KERNEL_API": {
+    "status": 404,
+    "body": "{\"detail\":\"Not Found\"}",
+    "latency_ms": 23.87,
+    "url": "http://127.0.0.1:8888/api/kernels",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "uvicorn",
+      "content-length": "22",
+      "content-type": "application/json"
+    }
+  },
+  "SANDBOX2_SKILL_/v1/embeddings": {
+    "status": 404,
+    "body": "",
+    "latency_ms": 71.55,
+    "url": "https://kimi-api-sandbox.msh.team/apiv2/v1/embeddings",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "istio-envoy",
+      "connection": "close",
+      "content-length": "0"
+    }
+  },
+  "PORTAL_BIND_warden": {
+    "status": 0,
+    "error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/bind_token (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f57686c5880>: Failed t",
+    "latency_ms": 37.68,
+    "url": "http://127.0.0.1:8080/api/v1/bind_token"
+  },
+  "TEAM_STD_/v1/tools": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 61.08,
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_DEVICE_/v1/chat/completions": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 63.2,
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "KERNEL_STATUS": {
+    "status": 200,
+    "body": "{\"success\":true,\"kernel_alive\":true,\"kernel_pid\":180,\"connection_file\":\"/tmp/tmplq54goey.json\",\"client_connected\":true}",
+    "latency_ms": 25.88,
+    "url": "http://127.0.0.1:8888/kernel/status",
+    "resp_headers": {
+      "date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "server": "uvicorn",
+      "content-length": "119",
+      "content-type": "application/json"
+    }
+  },
+  "TEAM_SKILL_/v1/fetch": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 55.64,
+    "url": "https://kimi.kimi.team/apiv2/v1/fetch",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "VNC": {
+    "status": 200,
+    "body": "<!DOCTYPE html><html lang=\"en\" class=\"noVNC_loading\"><head><title>KasmVNC</title><meta charset=\"utf-8\"><link rel=\"icon\" sizes=\"16x16\" type=\"image/png\" href=\"./assets/368_kasm_logo_only_16x16-BfyYpHuV.png\"><link rel=\"icon\" sizes=\"24x24\" type=\"image/png\" href=\"./assets/368_kasm_logo_only_24x24-D7jg-XCq.png\"><link rel=\"icon\" sizes=\"32x32\" type=\"image/png\" href=\"./assets/368_kasm_logo_only_32x32-ig-uDAV_.png\"><link rel=\"icon\" sizes=\"48x48\" type=\"image/png\" href=\"./assets/368_kasm_logo_only_48x48-BZGnQuRf.png\"><link rel=\"icon\" sizes=\"60x60\" type=\"image/png\" href=\"./assets/368_kasm_logo_only_60x60-C4pNA9Lt.png\"><link rel=\"icon\" sizes=\"64x64\" type=\"image/png\" href=\"./assets/368_kasm_logo_only_64x64-DEs5-x8M.png\"><link rel=\"icon\" sizes=\"72x72\" type=\"image/png\" href=\"./assets/368_kasm_logo_only_72x",
+    "latency_ms": 23.89,
+    "url": "http://127.0.0.1:6080/",
+    "resp_headers": {
+      "Server": "KasmVNC/4.0",
+      "Connection": "close",
+      "Content-type": "text/html",
+      "Content-length": "68872",
+      "Cross-Origin-Embedder-Policy": "require-corp",
+      "Cross-Origin-Opener-Policy": "same-origin"
+    }
+  },
+  "TEAM_STD_/v1/search": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 63.8,
+    "url": "https://kimi.kimi.team/apiv2/v1/search",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_STD_/v1/embeddings": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 53.3,
+    "url": "https://kimi.kimi.team/apiv2/v1/embeddings",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_SKILL_/v1/embeddings": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 54.69,
+    "url": "https://kimi.kimi.team/apiv2/v1/embeddings",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_SKILL_/v1/search": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 65.98,
+    "url": "https://kimi.kimi.team/apiv2/v1/search",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_DEVICE_/v1/tools": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 73.26,
+    "url": "https://kimi.kimi.team/apiv2/v1/tools",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_DEVICE_/v1/mcp/": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 65.65,
+    "url": "https://kimi.kimi.team/apiv2/v1/mcp/",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_DEVICE_/v1/embeddings": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 59.92,
+    "url": "https://kimi.kimi.team/apiv2/v1/embeddings",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_SKILL_/v1/mcp/": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 67.39,
+    "url": "https://kimi.kimi.team/apiv2/v1/mcp/",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_DEVICE_/v1/search": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 72.2,
+    "url": "https://kimi.kimi.team/apiv2/v1/search",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_DEVICE_/v1/models": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 82.68,
+    "url": "https://kimi.kimi.team/apiv2/v1/models",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "TEAM_STD_/v1/chat/completions": {
+    "status": 404,
+    "body": "404 page not found\n",
+    "latency_ms": 83.67,
+    "url": "https://kimi.kimi.team/apiv2/v1/chat/completions",
+    "resp_headers": {
+      "Date": "Fri, 14 Aug 2026 06:19:41 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "19",
+      "Connection": "keep-alive",
+      "vary": "Origin",
+      "x-content-type-options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  },
+  "PROD_STD_/v1/models": {
+    "status": 403,
+    "body": "{\"error\":{\"code\":\"api_key_path_forbidden\",\"message\":\"This API key is not permitted to access this endpoint.\",\"type\":\"invalid_request_error\"}}",
+    "latency_ms": 983.76,
+    "url": "https://agent-gw.kimi.com/coding/v1/models",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1303820500",
+      "X-Trace-Id": "6cb2039332830b9b7ef1a0c9bb58b2d5",
+      "server-timing": "inner; dur=25"
+    }
+  },
+  "PROD_DEVICE_/v1/embeddings": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "latency_ms": 974.3,
+    "url": "https://agent-gw.kimi.com/coding/v1/embeddings",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2507523058",
+      "X-Trace-Id": "77e54e75e0d05c9dffd3951e0cad2b78",
+      "server-timing": "inner; dur=15"
+    }
+  },
+  "PROD_STD_/v1/mcp/": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "latency_ms": 980.12,
+    "url": "https://agent-gw.kimi.com/coding/v1/mcp/",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1389336665",
+      "X-Trace-Id": "2619ece4e406faa2496f6a8173529b75",
+      "server-timing": "inner; dur=3"
+    }
+  },
+  "PROD_STD_/v1/search": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 990.92,
+    "url": "https://agent-gw.kimi.com/coding/v1/search",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3957646395",
+      "X-Trace-Id": "c2a08f8c0a0e1c2ec778827bb9a4a201",
+      "server-timing": "inner; dur=45"
+    }
+  },
+  "PROD_SKILL_/v1/tools": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "latency_ms": 1001.9,
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3721436809",
+      "X-Trace-Id": "0eaeb4203297d70e2be37a61917b277b",
+      "server-timing": "inner; dur=54"
+    }
+  },
+  "PROD_STD_/v1/embeddings": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "latency_ms": 1008.41,
+    "url": "https://agent-gw.kimi.com/coding/v1/embeddings",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "163547940",
+      "X-Trace-Id": "97af93c8894cdbdefc80ae6e28f66799",
+      "server-timing": "inner; dur=30"
+    }
+  },
+  "PROD_SKILL_/v1/models": {
+    "status": 403,
+    "body": "{\"error\":{\"code\":\"api_key_path_forbidden\",\"message\":\"This API key is not permitted to access this endpoint.\",\"type\":\"invalid_request_error\"}}",
+    "latency_ms": 1028.88,
+    "url": "https://agent-gw.kimi.com/coding/v1/models",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1250499413",
+      "X-Trace-Id": "7437c5c022a2f18c8f61f07ad064fa25",
+      "server-timing": "inner; dur=6"
+    }
+  },
+  "PROD_DEVICE_/v1/chat/completions": {
+    "status": 403,
+    "body": "{\"error\":{\"code\":\"api_key_path_forbidden\",\"message\":\"This API key is not permitted to access this endpoint.\",\"type\":\"invalid_request_error\"}}",
+    "latency_ms": 1026.72,
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1858636041",
+      "X-Trace-Id": "1ee161c09e8f8d23aab12ceb5fcf989b",
+      "server-timing": "inner; dur=2"
+    }
+  },
+  "PROD_SKILL_/v1/search": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1035.3,
+    "url": "https://agent-gw.kimi.com/coding/v1/search",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "4272861012",
+      "X-Trace-Id": "cd5bd3b44148a57ef69cfb3f1b374095",
+      "server-timing": "inner; dur=26"
+    }
+  },
+  "PROD_SKILL_/v1/embeddings": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "latency_ms": 1076.92,
+    "url": "https://agent-gw.kimi.com/coding/v1/embeddings",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2694346145",
+      "X-Trace-Id": "0299efc21ca91aae95c7ff254d96b045",
+      "server-timing": "inner; dur=16"
+    }
+  },
+  "SSRF_http___127.0.0.1_8080_api_v1_bind_token": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1001.26,
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "951341591",
+      "X-Trace-Id": "b085dde4e767ad3a6d92e1dadd0d4dee",
+      "server-timing": "inner; dur=34"
+    }
+  },
+  "SSRF_http___169.254.68.6_": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1012.15,
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "431163843",
+      "X-Trace-Id": "7230ca489b3dfd557bbed052a47bf99d",
+      "server-timing": "inner; dur=17"
+    }
+  },
+  "AUTH_OAUTH": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "latency_ms": 1096.09,
+    "url": "https://auth.kimi.com/oauth/authorize?client_id=17e5f671-d194-4dfb-9706-5516cb48c098&response_type=token",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "146",
+      "Connection": "keep-alive",
+      "server-timing": "inner; dur=1"
+    }
+  },
+  "SSRF_http___10.133.167.46_34558_": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1089.53,
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "4009921371",
+      "X-Trace-Id": "f0026c3ccc8a034ea7e04b7962e8dfcc",
+      "server-timing": "inner; dur=29"
+    }
+  },
+  "GH_USER": {
+    "status": 401,
+    "body": "{\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+    "latency_ms": 1197.57,
+    "url": "https://api.github.com/user",
+    "resp_headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "X-GitHub-Media-Type": "github.v3; format=json",
+      "Access-Control-Expose-Headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, X-GitHub-Edge-Region, Deprecation, Sunset",
+      "Access-Control-Allow-Origin": "*",
+      "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+      "X-Frame-Options": "deny",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "0",
+      "Referrer-Policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+      "Content-Security-Policy": "default-src 'none'",
+      "Vary": "Accept-Encoding, Accept, X-Requested-With",
+      "Server": "github.com",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "X-GitHub-Request-Id": "85F2:73F86:7EC697:849BF5:6A7EB37E",
+      "x-github-edge-region": "southeastasia",
+      "connection": "close"
+    }
+  },
+  "PROD_SKILL_/v1/fetch": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1362.86,
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "4009921371",
+      "X-Trace-Id": "0bb97856a869836a92918945c9bc7d96",
+      "server-timing": "inner; dur=15"
+    }
+  },
+  "PROD_DEVICE_/v1/search": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1372.23,
+    "url": "https://agent-gw.kimi.com/coding/v1/search",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3725152872",
+      "X-Trace-Id": "8c7235fb208c35669f599fc8228e98cb",
+      "server-timing": "inner; dur=13"
+    }
+  },
+  "GH_REPOS": {
+    "status": 401,
+    "body": "{\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+    "latency_ms": 1235.09,
+    "url": "https://api.github.com/user/repos?per_page=100",
+    "resp_headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "X-GitHub-Media-Type": "github.v3; format=json",
+      "Access-Control-Expose-Headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, X-GitHub-Edge-Region, Deprecation, Sunset",
+      "Access-Control-Allow-Origin": "*",
+      "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+      "X-Frame-Options": "deny",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "0",
+      "Referrer-Policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+      "Content-Security-Policy": "default-src 'none'",
+      "Vary": "Accept-Encoding, Accept, X-Requested-With",
+      "Server": "github.com",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "X-GitHub-Request-Id": "1CA1:6CC7:A80A2D:ADD90F:6A7EB37E",
+      "x-github-edge-region": "southeastasia",
+      "connection": "close"
+    }
+  },
+  "PROD_STD_/v1/fetch": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1397.85,
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:42 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1730293258",
+      "X-Trace-Id": "843895d9e768ff19c37bfe82ec3425f4",
+      "server-timing": "inner; dur=18"
+    }
+  },
+  "PROD_DEVICE_/v1/fetch": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1521.42,
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "2627691761",
+      "X-Trace-Id": "6a416698fb6d1a2dec987ecaf37873ea",
+      "server-timing": "inner; dur=28"
+    }
+  },
+  "SSRF_http___127.0.0.1_34558_": {
+    "status": 403,
+    "body": "{\"error\":{\"type\":\"access_terminated_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\"}}",
+    "latency_ms": 1436.86,
+    "url": "https://agent-gw.kimi.com/coding/v1/fetch",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1261026749",
+      "X-Trace-Id": "e16ae213b9f16a0c1bdedaf9539c1878",
+      "server-timing": "inner; dur=29"
+    }
+  },
+  "PROD_DEVICE_/v1/models": {
+    "status": 403,
+    "body": "{\"error\":{\"code\":\"api_key_path_forbidden\",\"message\":\"This API key is not permitted to access this endpoint.\",\"type\":\"invalid_request_error\"}}",
+    "latency_ms": 1868.75,
+    "url": "https://agent-gw.kimi.com/coding/v1/models",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3896322266",
+      "X-Trace-Id": "de763a1833de84e72118bc579c240230",
+      "server-timing": "inner; dur=6"
+    }
+  },
+  "PROD_STD_/v1/tools": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "latency_ms": 2017.73,
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "431163843",
+      "X-Trace-Id": "df713fd4a901be01d6773d1f7c63c026",
+      "server-timing": "inner; dur=23"
+    }
+  },
+  "PROD_DEVICE_/v1/tools": {
+    "status": 403,
+    "body": "{\"error\":{\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. Upgrade to get more: https://www.kimi.com/  \u4e2a\u4eba\u8bbe\u7f6e - \u8ba2\u9605 - \u67e5\u770b\u660e\u7ec6 \u67e5\u770b\u8be6\u60c5. Error details: resource_exhausted: insufficient balance\",\"type\":\"access_terminated_error\"}}",
+    "latency_ms": 2054.58,
+    "url": "https://agent-gw.kimi.com/coding/v1/tools",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "311",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "1583609554",
+      "X-Trace-Id": "dd839eb54203ab94dcfd944461e50593",
+      "server-timing": "inner; dur=30"
+    }
+  },
+  "PROD_SKILL_/v1/chat/completions": {
+    "status": 403,
+    "body": "{\"error\":{\"code\":\"api_key_path_forbidden\",\"message\":\"This API key is not permitted to access this endpoint.\",\"type\":\"invalid_request_error\"}}",
+    "latency_ms": 2167.2,
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3896322266",
+      "X-Trace-Id": "37a7ad4aa46b706cf6eef31063b0ad6c",
+      "server-timing": "inner; dur=6"
+    }
+  },
+  "PROD_STD_/v1/chat/completions": {
+    "status": 403,
+    "body": "{\"error\":{\"code\":\"api_key_path_forbidden\",\"message\":\"This API key is not permitted to access this endpoint.\",\"type\":\"invalid_request_error\"}}",
+    "latency_ms": 2254.63,
+    "url": "https://agent-gw.kimi.com/coding/v1/chat/completions",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "141",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "294448006",
+      "X-Trace-Id": "f97afe946d01a58ba75ea6d50232d1e7",
+      "server-timing": "inner; dur=3"
+    }
+  },
+  "PROD_DEVICE_/v1/mcp/": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "latency_ms": 2300.12,
+    "url": "https://agent-gw.kimi.com/coding/v1/mcp/",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "4148430935",
+      "X-Trace-Id": "3ef223616ac8e56d9a0f5409f9ebdaf4",
+      "server-timing": "inner; dur=4"
+    }
+  },
+  "PROD_SKILL_/v1/mcp/": {
+    "status": 404,
+    "body": "{\"error\":{\"message\":\"The requested resource was not found\",\"type\":\"resource_not_found_error\"}}",
+    "latency_ms": 2412.82,
+    "url": "https://agent-gw.kimi.com/coding/v1/mcp/",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:43 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Content-Length": "94",
+      "Connection": "keep-alive",
+      "x-internal-adhoc-canary": "3157825997",
+      "X-Trace-Id": "589d440d1ad210d232c536a9443b52a3",
+      "server-timing": "inner; dur=5"
+    }
+  },
+  "AUTH_WELLKNOWN": {
+    "status": 404,
+    "body": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "latency_ms": 3033.86,
+    "url": "https://auth.kimi.com/.well-known/openid-configuration",
+    "resp_headers": {
+      "Server": "nginx",
+      "Date": "Fri, 14 Aug 2026 06:19:44 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "146",
+      "Connection": "keep-alive",
+      "server-timing": "inner; dur=2"
+    }
+  }
+}

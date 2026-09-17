@@ -1,0 +1,11 @@
+{
+"timestamp": "2026-08-23T00:16:10+00:00",
+"endpoints": {
+  "/apiv2/user": 404,
+  "/apiv2/subscription": 404,
+  "/apiv2/metrics": 200,
+  "/api/prompt-snippet/list": 401,
+  "/api/file/upload": 400,
+  "/ws/tickets": 401
+}
+}

@@ -1,0 +1,27 @@
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+5391  accept4(5, {sa_family=AF_INET6, sin6_port=htons(56748), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 8
+5391  getsockname(8, {sa_family=AF_INET6, sin6_port=htons(8080), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_scope_id=0}, [112 => 28]) = 0
+5391  setsockopt(8, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+5391  setsockopt(8, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+5391  setsockopt(8, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0
+5391  setsockopt(8, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0
+5391  setsockopt(8, SOL_TCP, TCP_KEEPCNT, [9], 4) = 0
+5391  accept4(5, 0x2ae53c231adc, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+134   write(9, "\27\3\3\0$X\244\271\342L\357\261N\250\305\352\376\351f\256S\226e\272\21\357@\vn\231N3/5\27p\10\337;\310\233", 41) = 41
+134   write(2, "2026/08/18 08:43:55 INFO Bind token accepted. service=portal user_id=d87br2oh8njkr90jf520 chat_id=1a0073ef-f1c2-8272-8000-0951f5f99721 region=REGION_OVERSEA workflow=WORKFLOW_K2D5 expire_time=2026-08-18T03:43:55.000Z\n", 217) = 217
+134   write(8, "HTTP/1.1 204 No Content\r\nDate: Tue, 18 Aug 2026 00:43:55 GMT\r\n\r\n", 64) = 64
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+5391  write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+142   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+5391  write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+134   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+133   write(7, "\1\0\0\0\0\0\0\0", 8)   = 8
+5391  write(7, "\1\0\0\0\0\0\0\0", 8)   = 8

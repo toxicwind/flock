@@ -1,0 +1,11 @@
+=== COMMAND ===
+cat ~/.bash_profile 2>/dev/null || cat ~/.profile 2>/dev/null || echo 'no profile'
+
+=== OUTPUT ===
+
+
+=== STDERR ===
+<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>
+
+=== RC ===
+-1
