@@ -19,8 +19,8 @@ Previously `nim-proxy` (+ clients, tools, dashboards, benchmarks); now one thing
 ## Wiring
 
 - The sovereign router's `nvidia` provider and herd's AstMatrix both terminate at
-  flock's `:8000` — flock is the local enforcement point; **AstMatrix owns the
-  canonical provider definitions**.
+  flock's `:8000` — flock is the local enforcement point and owns the
+  canonical provider definitions (nim-proxy absorbed 2026-09-17).
 - Upstream provenance: the proxy core derives from
   [miztertea/nim-proxy](https://github.com/miztertea/nim-proxy) (MIT).
 
