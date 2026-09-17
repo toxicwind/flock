@@ -65,6 +65,6 @@ Reasoning cannot be turned off for Gemini 2.5 Pro or 3.x models.
 - Free-tier note: Gemini API has a no-cost tier in AI Studio (rate-limited);
   verify current quotas before depending on it for the reactive loop.
 - Standing scope note (2026-09-14): NIM proxy is designated exclusively for
-  NIM/NVIDIA; non-NVIDIA providers belong to Herd astmatrix. A Gemini lane in
+  NIM/NVIDIA; non-NVIDIA providers belong to Herd. A Gemini lane in
   nim_proxy would be a deliberate scope change — recorded here as research,
   not implemented.
