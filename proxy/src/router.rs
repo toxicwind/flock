@@ -182,6 +182,10 @@ struct RouterInner {
     /// Owns the SQLite writer thread. `None` in unit tests (persistence
     /// disabled); the persist handle is separately `PersistHandle::disabled`.
     _writer: Option<StateWriter>,
+    /// Empty-completion strikes per (provider, model): incremented when a
+    /// 2xx chat completion arrives with no content and no tool calls.
+    /// Entries decay after EMPTY_STRIKE_DECAY; surfaced on /metrics.
+    empty_strikes: Mutex<HashMap<(String, String), (u32, Instant)>>,
 }
 
 /// The router: cloneable handle to the multi-provider subsystem.
@@ -226,6 +230,25 @@ pub struct Acquired {
     pub attempt_started: Instant,
     /// Session identity for sticky affinity; written on success.
     pub session: Option<String>,
+}
+
+/// True for chat-completion request paths (query string included): the
+/// only paths the empty-completion substance guard inspects.
+fn is_chat_completions_path(path_query: &str) -> bool {
+    let path = path_query.split(['?', '#']).next().unwrap_or(path_query);
+    path == "/v1/chat/completions" || path.ends_with("/chat/completions")
+}
+
+/// Live per-provider metadata for the /v1/models catalog enrichment.
+pub struct ProviderMeta {
+    pub provider: String,
+    pub display_name: String,
+    pub usable: bool,
+    pub healthy: bool,
+    pub latency_ms: Option<f64>,
+    pub elo: i32,
+    pub circuit: &'static str,
+    pub models: Vec<String>,
 }
 
 impl RouterHandle {
@@ -293,6 +316,7 @@ impl RouterHandle {
                 .map_err(|e| format!("cannot build HTTP client: {e}"))?,
             data_dir: data_dir.to_path_buf(),
             _writer: Some(writer),
+            empty_strikes: Mutex::new(HashMap::new()),
         });
         let handle = Self { inner };
         handle.spawn_probe_loop();
@@ -823,6 +847,67 @@ impl RouterHandle {
     /// upstream listing, tagged with its source provider. Used by the
     /// models endpoint; the proxy's per-request model cache semantics
     /// (TTL, single-flight refresh) live on each runtime's `models_cache`.
+    /// Empty-completion strikes decay after this long without a new strike.
+    pub const EMPTY_STRIKE_DECAY: Duration = Duration::from_secs(600);
+
+    /// Record an empty completion (2xx, no content, no tool calls) against a
+    /// provider/model pair. Surfaced as the flock_model_empty_strikes gauge.
+    pub fn record_empty_strike(&self, provider: &str, model: &str) {
+        let mut strikes = self.inner.empty_strikes.lock().unwrap();
+        let entry = strikes
+            .entry((provider.to_owned(), model.to_owned()))
+            .or_insert((0, Instant::now()));
+        entry.0 += 1;
+        entry.1 = Instant::now();
+        gauge!(
+            "flock_model_empty_strikes",
+            "provider" => provider.to_owned(),
+            "model" => model.to_owned(),
+        )
+        .set(entry.0 as f64);
+    }
+
+    /// Current strike count for a provider/model pair (0 when decayed).
+    pub fn empty_strike_count(&self, provider: &str, model: &str) -> u32 {
+        let mut strikes = self.inner.empty_strikes.lock().unwrap();
+        let key = (provider.to_owned(), model.to_owned());
+        match strikes.get(&key) {
+            Some((n, at)) if at.elapsed() < Self::EMPTY_STRIKE_DECAY => *n,
+            _ => {
+                strikes.remove(&key);
+                0
+            }
+        }
+    }
+
+    /// One live metadata record per provider runtime: usability (keys
+    /// present), health-probe state, circuit state, ELO, and model list.
+    /// Backs the /v1/models live-metadata enrichment.
+    pub fn provider_metadata(&self) -> Vec<ProviderMeta> {
+        let runtimes = self.inner.runtimes.read().unwrap();
+        runtimes
+            .values()
+            .map(|rt| {
+                let def = rt.def.read().unwrap();
+                let circuit = match rt.circuit.lock().unwrap().state() {
+                    CircuitState::Closed => "closed",
+                    CircuitState::HalfOpen => "half_open",
+                    CircuitState::Open => "open",
+                };
+                ProviderMeta {
+                    provider: def.name.clone(),
+                    display_name: def.display_name.clone(),
+                    usable: def.usable(),
+                    healthy: self.inner.health.is_healthy(&def.name),
+                    latency_ms: self.inner.health.latency_ms(&def.name),
+                    elo: self.inner.health.get_elo(&def.name),
+                    circuit,
+                    models: def.models.clone(),
+                }
+            })
+            .collect()
+    }
+
     pub fn models_snapshot(&self) -> Vec<ProviderModels> {
         self.inner
             .runtimes
@@ -1075,6 +1160,13 @@ pub struct ExecuteCtx {
 pub enum ExecuteOutcome {
     /// Upstream response; relay the body stream verbatim (coalescing off).
     Response(reqwest::Response),
+    /// Buffered upstream response: the router read the body to apply the
+    /// empty-completion substance guard; relay these bytes verbatim.
+    Buffered {
+        status: u16,
+        content_type: String,
+        body: bytes::Bytes,
+    },
     /// Shared buffered response (coalescing on): the leader read the full
     /// body and published it; followers receive the same bytes.
     Coalesced(std::sync::Arc<crate::coalescer::SharedResponse>),
@@ -1160,6 +1252,7 @@ impl RouterHandle {
         };
         let mut last_error = RouteError::Unavailable("no candidate attempted".to_owned());
         let mut attempts = 0usize;
+        let mut empty_count = 0usize;
         for candidate in candidates.iter().cycle() {
             // The deadline is the arbiter: saturation and stubborn
             // upstreams surface as 504, never as a failover 502.
@@ -1231,6 +1324,85 @@ impl RouterHandle {
                             candidate.provider
                         ));
                     } else {
+                        // Empty-completion substance guard: a 2xx chat
+                        // completion with no content and no tool calls is a
+                        // failure, not a success. Read the body, strike the
+                        // provider/model pair, and fail over; when every
+                        // candidate comes back empty the loop exits with an
+                        // honest 502. Non-chat-completion paths keep the
+                        // zero-copy relay below.
+                        if status >= 200
+                            && status < 300
+                            && is_chat_completions_path(&path_query)
+                        {
+                            let content_type = r
+                                .headers()
+                                .get(reqwest::header::CONTENT_TYPE)
+                                .and_then(|v| v.to_str().ok())
+                                .unwrap_or("application/json")
+                                .to_owned();
+                            // A stalled body is a gateway failure, never an empty
+                            // 200: the old relay() mapped body-read errors to
+                            // 502, and failover cannot help a body that already
+                            // sent 200 headers.
+                            let bytes = match r.bytes().await {
+                                Ok(b) => b,
+                                Err(_) => {
+                                    drop(lead.take());
+                                    return Err(RouteError::Unavailable(
+                                        "upstream body stalled".to_owned(),
+                                    ));
+                                }
+                            };
+                            if !crate::observation::has_substance(&bytes) {
+                                // Never publish an empty body to coalesced
+                                // followers: drop the lead so they proceed
+                                // alone.
+                                drop(lead.take());
+                                self.finish_failure(&acq, status, false, None);
+                                self.record_empty_strike(&candidate.provider, &model);
+                                empty_count += 1;
+                                if empty_count >= candidates.len() {
+                                    // Every candidate came back empty: an
+                                    // honest gateway failure, never a blank
+                                    // 200 and never a deadline spin.
+                                    return Err(RouteError::Unavailable(format!(
+                                        "all candidates returned empty completions for model '{model}'",
+                                    )));
+                                }
+                                tracing::warn!(
+                                    provider = %candidate.provider,
+                                    model = %model,
+                                    "empty completion guarded: failing over",
+                                );
+                                last_error = RouteError::Unavailable(format!(
+                                    "empty completion from {} for model '{model}'",
+                                    candidate.provider
+                                ));
+                                continue;
+                            }
+                            self.finish_success(&acq, status);
+                            if let Some(lead) = lead.take() {
+                                let shared = std::sync::Arc::new(
+                                    crate::coalescer::SharedResponse {
+                                        status,
+                                        content_type: content_type.clone(),
+                                        body: bytes,
+                                    },
+                                );
+                                lead.complete(crate::coalescer::SharedResponse {
+                                    status: shared.status,
+                                    content_type: shared.content_type.clone(),
+                                    body: shared.body.clone(),
+                                });
+                                return Ok(ExecuteOutcome::Coalesced(shared));
+                            }
+                            return Ok(ExecuteOutcome::Buffered {
+                                status,
+                                content_type,
+                                body: bytes,
+                            });
+                        }
                         self.finish_success(&acq, status);
                         if let Some(lead) = lead.take() {
                             let ct = r
@@ -1322,6 +1494,7 @@ mod tests {
             client: reqwest::Client::new(),
             data_dir: PathBuf::from("/tmp/flock-router-test"),
             _writer: None,
+            empty_strikes: Mutex::new(HashMap::new()),
         });
         RouterHandle { inner }
     }

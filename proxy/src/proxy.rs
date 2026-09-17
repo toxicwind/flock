@@ -697,6 +697,27 @@ async fn buffered(
             record_request(&ctx, shared.status.to_string().as_str());
             relay_shared(&shared, &ctx)
         }
+        Ok(crate::router::ExecuteOutcome::Buffered {
+            status,
+            content_type,
+            body,
+        }) => {
+            // The router already applied the empty-completion substance
+            // guard to these bytes; relay verbatim and observe.
+            histogram!("flock_upstream_seconds", "model" => ctx.model.clone())
+                .record(sent_at.elapsed().as_secs_f64());
+            record_request(&ctx, status.to_string().as_str());
+            let http_status =
+                StatusCode::from_u16(status).unwrap_or(StatusCode::BAD_GATEWAY);
+            if http_status.is_success() {
+                record_observations(&ctx, &observe_buffered(&body));
+            }
+            Response::builder()
+                .status(http_status)
+                .header(header::CONTENT_TYPE, content_type)
+                .body(Body::from(body))
+                .unwrap()
+        }
         Err(crate::router::RouteError::Deadline) => {
             record_request(&ctx, "504");
             gateway_timeout(&cfg, state.pool().len())
@@ -1029,6 +1050,27 @@ fn streaming(
 /// other enabled provider contributes its configured model ids, tagged with
 /// their source provider. Non-JSON bodies pass through untouched, and the
 /// merge is idempotent (already-listed ids are not duplicated).
+/// Live Flock metadata attached to each /v1/models entry: which
+/// provider serves it, whether that provider is usable (keys present) and
+/// healthy, circuit state, probe latency, ELO, and the current
+/// empty-completion strike count for the exact (provider, model) pair.
+fn flock_model_meta(
+    router: &crate::router::RouterHandle,
+    meta: &crate::router::ProviderMeta,
+    model: &str,
+) -> serde_json::Value {
+    serde_json::json!({
+        "provider": meta.provider,
+        "display_name": meta.display_name,
+        "usable": meta.usable,
+        "healthy": meta.healthy,
+        "latency_ms": meta.latency_ms,
+        "elo": meta.elo,
+        "circuit": meta.circuit,
+        "empty_strikes": router.empty_strike_count(&meta.provider, model),
+    })
+}
+
 fn aggregate_models(body: &Bytes, router: &crate::router::RouterHandle) -> Bytes {
     let mut v: serde_json::Value = match serde_json::from_slice(body) {
         Ok(v) => v,
@@ -1038,6 +1080,7 @@ fn aggregate_models(body: &Bytes, router: &crate::router::RouterHandle) -> Bytes
         Some(d) => d,
         None => return body.clone(),
     };
+    let metas = router.provider_metadata();
     let mut seen: std::collections::HashSet<String> = data
         .iter()
         .filter_map(|m| {
@@ -1046,13 +1089,25 @@ fn aggregate_models(body: &Bytes, router: &crate::router::RouterHandle) -> Bytes
                 .map(|id| id.to_owned())
         })
         .collect();
-    for pm in router.models_snapshot() {
-        // The live upstream listing already covers nvidia; skip it so the
-        // merge never duplicates or shadows the authoritative entries.
+    // The upstream listing is nvidia's catalog: enrich every entry with the
+    // live nvidia provider metadata instead of leaving it bare.
+    if let Some(nv) = metas.iter().find(|m| m.provider == "nvidia") {
+        for entry in data.iter_mut() {
+            let id = entry
+                .get("id")
+                .and_then(|i| i.as_str())
+                .unwrap_or("")
+                .to_owned();
+            entry["flock"] = flock_model_meta(router, nv, &id);
+        }
+    }
+    for pm in &metas {
+        // Nvidia's ids already came from the authoritative upstream listing
+        // above; the merge only adds the other providers' routable models.
         if pm.provider == "nvidia" {
             continue;
         }
-        for m in pm.models {
+        for m in &pm.models {
             if m == "*" {
                 continue;
             }
@@ -1061,6 +1116,7 @@ fn aggregate_models(body: &Bytes, router: &crate::router::RouterHandle) -> Bytes
                     "id": m,
                     "object": "model",
                     "owned_by": pm.provider,
+                    "flock": flock_model_meta(router, pm, m),
                 }));
             }
         }
