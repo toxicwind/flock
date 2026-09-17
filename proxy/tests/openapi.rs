@@ -69,8 +69,8 @@ fn spec_is_usable() {
         .map(|item| item.as_object().expect("path item").len())
         .sum();
     assert_eq!(
-        operation_count, 17,
-        "15 /api/* operations + the 2 setup operations"
+        operation_count, 19,
+        "17 /api/* operations + the 2 setup operations"
     );
     assert_eq!(
         paths["/api/locale-bootstrap"]["get"]["security"]

@@ -187,9 +187,7 @@ impl Governor {
                         blocked_until_unix: s
                             .blocked_until
                             .filter(|b| *b > now)
-                            .map(|b| {
-                                now_unix.saturating_add(b.duration_since(now).as_secs())
-                            })
+                            .map(|b| now_unix.saturating_add(b.duration_since(now).as_secs()))
                             .unwrap_or(0),
                     },
                 )

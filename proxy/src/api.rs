@@ -513,6 +513,8 @@ impl Modify for SecurityAddon {
         crate::settings::account,
         crate::settings::locale,
         crate::settings::validate_key,
+        crate::settings::providers,
+        crate::settings::routing,
         crate::settings::setup_submit,
         crate::settings::setup_validate_key,
     ),
@@ -537,6 +539,10 @@ impl Modify for SecurityAddon {
         NimKeyRow,
         OkResponse,
         PoolSummary,
+        crate::settings::ProviderRow,
+        crate::settings::ProvidersResponse,
+        crate::settings::RoutingReq,
+        crate::providers::Strategy,
         Role,
         RollupPoint,
         ServerSettings,
@@ -775,11 +781,7 @@ mod tests {
                 &[("client", "fixture-client"), ("stream", "true")],
                 20.0,
             ),
-            labeled_metric(
-                "flock_tool_calls_total",
-                &[("model", "fixture/alpha")],
-                8.0,
-            ),
+            labeled_metric("flock_tool_calls_total", &[("model", "fixture/alpha")], 8.0),
             labeled_metric("flock_tool_choice_total", &[("mode", "auto")], 10.0),
             labeled_metric(
                 "flock_json_mode_total",
@@ -1028,11 +1030,7 @@ mod tests {
         vec![
             active_requests(2.0),
             labeled_metric("flock_queue_depth", &[], 1.0),
-            labeled_metric(
-                "flock_model_inflight",
-                &[("model", "fixture/alpha")],
-                2.0,
-            ),
+            labeled_metric("flock_model_inflight", &[("model", "fixture/alpha")], 2.0),
             labeled_metric("flock_model_limit", &[("model", "fixture/alpha")], 8.0),
         ]
     }

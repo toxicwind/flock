@@ -10,7 +10,7 @@ use axum::extract::{Form, FromRequest, Request, State};
 use axum::http::{header, HeaderMap, StatusCode};
 use axum::response::{IntoResponse, Response};
 use serde::de::{self, IgnoredAny, MapAccess, Visitor};
-use serde::{Deserialize, Deserializer};
+use serde::{Deserialize, Deserializer, Serialize};
 use utoipa::ToSchema;
 
 use crate::api::{
@@ -39,9 +39,16 @@ pub fn commit(
     config::save(&state.data_dir, &candidate)
         .map_err(|e| format!("cannot write the config store: {e}"))?;
     *state.cfg.write().unwrap() = Arc::new(candidate.runtime());
-    {
-        let mut pool = state.pool.write().unwrap();
-        *pool = Arc::new(pool.rebuild(candidate.pool_specs()));
+    // The router owns every provider runtime (pool, FIFO, governor,
+    // circuit). Its rebuild reconfigures the nvidia pool through the
+    // handle shared with AppState::pool, carrying rate state over, and
+    // refreshes routing + governor knobs. No separate pool rebuild.
+    state.router.rebuild(&candidate);
+    // If nvidia was disabled or removed, its runtime is gone: fail the
+    // serving pool closed (empty lanes) rather than serving on orphaned
+    // rate-limit state.
+    if state.router.runtime("nvidia").is_none() {
+        *state.pool.write().unwrap() = Arc::new(crate::pool::Pool::new(vec![]));
     }
     if candidate.history.days != guard.history.days {
         state
@@ -928,6 +935,152 @@ pub async fn server(
             ok_json()
         }
         Ok(false) => ok_json(),
+        Err(e) => bad_request(e),
+    }
+}
+
+/// One row of `GET /api/providers`: a provider runtime the router owns,
+/// with live health, circuit, pool, and counters.
+#[derive(Debug, Clone, Serialize, ToSchema)]
+pub struct ProviderRow {
+    pub name: String,
+    pub display_name: String,
+    pub base_url: String,
+    pub enabled: bool,
+    pub usable: bool,
+    pub healthy: bool,
+    pub latency_ms: Option<f64>,
+    pub elo: i32,
+    pub circuit: String,
+    pub models: Vec<String>,
+    pub free: bool,
+    pub weight: f64,
+    pub requests: u64,
+    pub errors: u64,
+    pub pool_lanes: usize,
+    pub pool_capacity_rpm: usize,
+}
+
+/// `GET /api/providers` response body.
+#[derive(Debug, Clone, Serialize, ToSchema)]
+pub struct ProvidersResponse {
+    pub strategy: crate::providers::Strategy,
+    pub providers: Vec<ProviderRow>,
+}
+
+fn circuit_label(c: crate::circuit::CircuitState) -> &'static str {
+    match c {
+        crate::circuit::CircuitState::Closed => "closed",
+        crate::circuit::CircuitState::HalfOpen => "half_open",
+        crate::circuit::CircuitState::Open => "open",
+    }
+}
+
+/// `GET /api/providers` (admin) — the router's live provider registry:
+/// every provider runtime with health, ELO, circuit state, pool geometry,
+/// and request counters. The single place to see what the multi-provider
+/// router is doing right now.
+#[utoipa::path(
+    get,
+    path = "/api/providers",
+    tag = "dashboard",
+    responses(
+        (status = 200, description = "Live provider registry snapshot", body = ProvidersResponse),
+        (status = 401, description = "No session, or the caller's user was deleted", body = ApiError),
+        (status = 403, description = "Provider status requires an admin", body = ApiError),
+    ),
+)]
+pub async fn providers(
+    State(state): State<Arc<AppState>>,
+    Extension(Identity(username)): Extension<Identity>,
+) -> Response {
+    match role_of(&state.store.lock().unwrap(), &username) {
+        Some(r) if r.is_admin() => {}
+        Some(_) => return forbidden("provider status requires an admin"),
+        None => return stale_session(),
+    }
+    let views = state.router.provider_views();
+    let rows = views
+        .into_iter()
+        .map(|v| ProviderRow {
+            name: v.name,
+            display_name: v.display_name,
+            base_url: v.base_url,
+            enabled: v.enabled,
+            usable: v.usable,
+            healthy: v.healthy,
+            latency_ms: v.latency_ms,
+            elo: v.elo,
+            circuit: circuit_label(v.circuit).to_owned(),
+            models: v.models,
+            free: v.free,
+            weight: v.weight,
+            requests: v.requests,
+            errors: v.errors,
+            pool_lanes: v.pool_lanes,
+            pool_capacity_rpm: v.pool_capacity_rpm,
+        })
+        .collect();
+    axum::Json(ProvidersResponse {
+        strategy: state.router.routing_config().strategy,
+        providers: rows,
+    })
+    .into_response()
+}
+
+/// `POST /api/settings/routing` (admin) — atomically applies the routing
+/// strategy and its knobs, then rebuilds the router in place (pool/FIFO
+/// state carries over; only knobs and candidate sets change).
+#[derive(Debug, Clone, Deserialize, ToSchema)]
+pub struct RoutingReq {
+    pub strategy: crate::providers::Strategy,
+    pub max_parallel: usize,
+    pub max_retries: usize,
+    pub sticky_ttl_secs: u64,
+    pub fifo_max: usize,
+    pub enable_coalescing: bool,
+    pub probe_interval_secs: u64,
+}
+
+#[utoipa::path(
+    post,
+    path = "/api/settings/routing",
+    tag = "settings",
+    request_body = RoutingReq,
+    responses(
+        (status = 200, description = "Routing applied as one candidate, persisted, and rebuilt into the live router", body = OkResponse),
+        (status = 400, description = "The complete candidate was rejected; no settings were applied", body = ApiError),
+        (status = 401, description = "No session, or the caller's user was deleted", body = ApiError),
+        (status = 403, description = "Routing settings require an admin", body = ApiError),
+        (status = 422, description = "A field is missing or the wrong type — a partial body is never a silent reset", body = ApiError),
+    ),
+)]
+pub async fn routing(
+    State(state): State<Arc<AppState>>,
+    Extension(Identity(username)): Extension<Identity>,
+    ApiJson(req): ApiJson<RoutingReq>,
+) -> Response {
+    let result = {
+        let mut guard = state.store.lock().unwrap();
+        match role_of(&guard, &username) {
+            Some(r) if r.is_admin() => {}
+            Some(_) => return forbidden("routing settings require an admin"),
+            None => return stale_session(),
+        }
+        let mut cand = guard.clone();
+        cand.routing = crate::providers::RoutingCfg {
+            strategy: req.strategy,
+            max_parallel: req.max_parallel,
+            max_retries: req.max_retries,
+            sticky_ttl_secs: req.sticky_ttl_secs,
+            fifo_max: req.fifo_max,
+            enable_coalescing: req.enable_coalescing,
+            probe_interval_secs: req.probe_interval_secs,
+        };
+        commit(&state, &mut guard, cand)
+    };
+    match result {
+        Ok(()) => ok_json(),
         Err(e) => bad_request(e),
     }
 }

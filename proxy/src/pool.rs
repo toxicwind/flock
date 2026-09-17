@@ -59,6 +59,7 @@ pub struct Pool {
 }
 
 /// One lane's live state (see [`Pool::lane_stats`]).
+#[derive(Debug, Clone)]
 pub struct LaneStat {
     pub key: String,
     pub rpm: usize,
@@ -66,6 +67,7 @@ pub struct LaneStat {
     pub cooldown_ms: u64,
 }
 
+#[derive(Debug)]
 pub enum Reservation {
     /// Slot reserved; send the request with this key. `stamp` identifies the
     /// reservation so an unused slot can be returned via [`Pool::release`].
@@ -270,9 +272,7 @@ impl Pool {
                 let mut ms: Vec<u64> = sent
                     .iter()
                     .filter(|t| now.duration_since(**t) < WINDOW)
-                    .map(|t| {
-                        now_ms.saturating_sub(now.duration_since(*t).as_millis() as u64)
-                    })
+                    .map(|t| now_ms.saturating_sub(now.duration_since(*t).as_millis() as u64))
                     .collect();
                 ms.sort_unstable();
                 (l.key.clone(), ms)

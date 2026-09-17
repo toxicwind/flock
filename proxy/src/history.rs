@@ -1731,10 +1731,8 @@ mod tests {
 
     #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
     async fn async_append_uses_the_blocking_pool_and_waits_for_persistence() {
-        let directory = std::env::temp_dir().join(format!(
-            "flock-history-append-test-{}",
-            std::process::id()
-        ));
+        let directory =
+            std::env::temp_dir().join(format!("flock-history-append-test-{}", std::process::id()));
         let _ = fs::remove_dir_all(&directory);
         let history = Arc::new(History::open(directory.clone(), 0, capacity(40)).unwrap());
         let (sampler_tx, sampler_rx) = std::sync::mpsc::channel();

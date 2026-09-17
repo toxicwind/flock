@@ -18,6 +18,7 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use serde::{Deserialize, Serialize};
+use utoipa::ToSchema;
 
 /// Buffered-request coalescing window. AstMatrix instantiated its
 /// `RequestCoalescer` with a 5 s TTL but never called it; here the TTL is
@@ -93,7 +94,7 @@ pub fn resolve_key_material(key: &ProviderKey) -> Option<String> {
 /// The routing strategy for a model with more than one usable provider.
 /// Names intentionally match AstMatrix's configured strategy identifiers so
 /// existing Herd/router configs keep meaning them.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default, ToSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum Strategy {
     /// Try candidates in order, with circuit/limiter/health gates per
@@ -289,7 +290,11 @@ impl ProviderDef {
         if self.default_rpm > 0 {
             return self.default_rpm;
         }
-        if self.free_tier { 10 } else { 60 }
+        if self.free_tier {
+            10
+        } else {
+            60
+        }
     }
 
     /// Whether this provider can serve traffic right now: enabled, and
@@ -318,7 +323,10 @@ impl ProviderDef {
     /// Rewrite the requested model id through this provider's model map.
     /// Returns the id to actually send upstream.
     pub fn map_model<'a>(&'a self, model: &'a str) -> &'a str {
-        self.model_map.get(model).map(|s| s.as_str()).unwrap_or(model)
+        self.model_map
+            .get(model)
+            .map(|s| s.as_str())
+            .unwrap_or(model)
     }
 
     /// Owned version of [`Self::map_model`] for the router's candidates.
@@ -390,7 +398,10 @@ impl ProviderSet {
             by_model.insert(String::new(), wildcards);
         }
         let _ = &mut providers;
-        Self { providers, by_model }
+        Self {
+            providers,
+            by_model,
+        }
     }
 
     pub fn get(&self, name: &str) -> Option<&ProviderDef> {
@@ -467,44 +478,40 @@ pub fn default_providers() -> Vec<ProviderDef> {
         });
     };
 
+    // Canonical defaults, line-for-line from
+    // projects/herd/internal/astmatrix/providers.go (defaultProviders).
     p(
         "llama-swap",
         "http://127.0.0.1:25100/v1",
         "",
         true,
         false,
-        &["*"],
+        &["local-fast", "local-quality", "local-longctx"],
         1.0,
-        1500,
+        1600,
     );
     p(
         "openrouter",
         "https://openrouter.ai/api/v1",
         "OPENROUTER_API_KEY",
         false,
-        true,
-        &[
-            "openrouter/auto",
-            "x-ai/grok-4.1-fast:free",
-            "qwen/qwen3-coder:free",
-            "inclusionai/ling-3.0-flash:free",
-        ],
+        false,
+        &["openrouter/auto", "openrouter/optimus-alpha"],
         1.0,
-        1620,
+        1500,
     );
     p(
         "nvidia",
         "https://integrate.api.nvidia.com/v1",
         "NVIDIA_API_KEY",
         false,
-        false,
+        true,
         &[
-            "nvidia/llama-3.1-nemotron-ultra-253b-v1",
-            "nvidia/nemotron-3-nano-30b-a3b",
-            "moonshotai/kimi-k2.5",
+            "nvidia/llama-3.1-nemotron-70b",
+            "nvidia/mistral-7b-instruct",
         ],
         1.2,
-        1700,
+        1550,
     );
     p(
         "groq",
@@ -512,8 +519,8 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "GROQ_API_KEY",
         false,
         true,
-        &["llama-3.3-70b-versatile", "openai/gpt-oss-120b"],
-        0.9,
+        &["groq/llama-3.1-70b-versatile", "groq/mixtral-8x7b"],
+        1.5,
         1580,
     );
     p(
@@ -522,9 +529,9 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "TOGETHER_API_KEY",
         false,
         false,
-        &["meta-llama/Llama-3.3-70B-Instruct-Turbo"],
-        0.9,
-        1550,
+        &["together/llama-3.1-70b", "together/mixtral-8x22b"],
+        1.0,
+        1520,
     );
     p(
         "cerebras",
@@ -532,9 +539,9 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "CEREBRAS_API_KEY",
         false,
         true,
-        &["llama-3.3-70b", "gpt-oss-120b"],
-        0.9,
-        1590,
+        &["cerebras/llama-3.1-70b"],
+        1.3,
+        1560,
     );
     p(
         "fireworks",
@@ -542,29 +549,29 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "FIREWORKS_API_KEY",
         false,
         false,
-        &["accounts/fireworks/models/llama-v3p3-70b-instruct"],
-        0.8,
-        1540,
+        &["fireworks/llama-3.1-70b", "fireworks/mixtral-8x22b"],
+        1.0,
+        1510,
     );
     p(
         "hyperbolic",
         "https://api.hyperbolic.xyz/v1",
         "HYPERBOLIC_API_KEY",
         false,
-        false,
-        &["meta-llama/Llama-3.3-70B-Instruct"],
-        0.8,
-        1530,
+        true,
+        &["hyperbolic/llama-3.1-70b"],
+        1.0,
+        1490,
     );
     p(
         "github",
-        "https://models.github.ai/inference",
+        "https://models.inference.ai.azure.com",
         "GITHUB_TOKEN",
         false,
         true,
-        &["openai/gpt-4o", "meta/Llama-3.3-70B-Instruct"],
-        0.7,
-        1520,
+        &["github/Phi-4", "github/gpt-4o-mini"],
+        1.0,
+        1500,
     );
     p(
         "mistral",
@@ -572,9 +579,9 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "MISTRAL_API_KEY",
         false,
         false,
-        &["mistral-large-latest", "mistral-medium-latest"],
-        0.9,
-        1600,
+        &["mistral/mistral-large-2"],
+        1.0,
+        1530,
     );
     p(
         "openai",
@@ -582,7 +589,7 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "OPENAI_API_KEY",
         false,
         false,
-        &["gpt-4o", "gpt-4o-mini"],
+        &["gpt-4o", "gpt-4o-mini", "o1-preview"],
         1.0,
         1650,
     );
@@ -592,9 +599,9 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "PERPLEXITY_API_KEY",
         false,
         false,
-        &["sonar", "sonar-pro"],
-        0.8,
-        1560,
+        &["perplexity/sonar"],
+        1.0,
+        1480,
     );
     p(
         "siliconflow",
@@ -602,9 +609,9 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "SILICONFLOW_API_KEY",
         false,
         true,
-        &["Qwen/Qwen3-Coder-30B-A3B-Instruct"],
-        0.8,
-        1545,
+        &["siliconflow/deepseek-v2"],
+        1.0,
+        1470,
     );
     v
 }
@@ -718,28 +725,85 @@ mod tests {
             .iter()
             .map(|p| p.name.as_str())
             .collect();
-        assert!(c.contains(&"openrouter"));
-        // llama-swap declares "*", so it claims everything too.
-        assert!(c.contains(&"llama-swap"));
-        // an unlisted model still resolves via the wildcard
+        assert_eq!(c, vec!["openrouter"]);
+        // No builtin declares "*", so an unlisted model resolves to nobody.
         let c2: Vec<&str> = set
             .candidates("some/unknown-model")
             .iter()
             .map(|p| p.name.as_str())
             .collect();
-        assert_eq!(c2, vec!["llama-swap"]);
+        assert!(c2.is_empty());
+    }
+
+    #[test]
+    fn wildcard_claims_everything_when_configured() {
+        let mut defs = default_providers();
+        defs.iter_mut().find(|p| p.name == "nvidia").unwrap().models = vec!["*".to_string()];
+        let set = ProviderSet::new(defs);
+        let c: Vec<&str> = set
+            .candidates("some/unknown-model")
+            .iter()
+            .map(|p| p.name.as_str())
+            .collect();
+        assert_eq!(c, vec!["nvidia"]);
+    }
+
+    #[test]
+    fn builtin_defaults_match_astmatrix() {
+        // Line-for-line against defaultProviders in
+        // projects/herd/internal/astmatrix/providers.go.
+        let defs = default_providers();
+        let by_name = |n: &str| defs.iter().find(|p| p.name == n).unwrap();
+        let ls = by_name("llama-swap");
+        assert_eq!(ls.base_url, "http://127.0.0.1:25100/v1");
+        assert!(ls.no_auth);
+        assert_eq!(ls.elo, 1600);
+        assert_eq!(
+            ls.models,
+            vec!["local-fast", "local-quality", "local-longctx"]
+        );
+        let nv = by_name("nvidia");
+        assert_eq!(nv.base_url, "https://integrate.api.nvidia.com/v1");
+        assert!(nv.free_tier);
+        assert_eq!(nv.weight, 1.2);
+        assert_eq!(nv.elo, 1550);
+        let or = by_name("openrouter");
+        assert!(!or.free_tier);
+        assert_eq!(or.elo, 1500);
+        assert_eq!(
+            or.models,
+            vec!["openrouter/auto", "openrouter/optimus-alpha"]
+        );
+        let gh = by_name("github");
+        assert_eq!(gh.base_url, "https://models.inference.ai.azure.com");
+        assert_eq!(gh.models, vec!["github/Phi-4", "github/gpt-4o-mini"]);
+        let oai = by_name("openai");
+        assert_eq!(oai.elo, 1650);
+        assert_eq!(oai.models, vec!["gpt-4o", "gpt-4o-mini", "o1-preview"]);
+        let sf = by_name("siliconflow");
+        assert!(sf.free_tier);
+        assert_eq!(sf.elo, 1470);
     }
 
     #[test]
     fn strategy_names_parse() {
         assert_eq!(Strategy::parse("hybrid"), Some(Strategy::Hybrid));
         assert_eq!(Strategy::parse("ast_race"), Some(Strategy::AstRace));
-        assert_eq!(Strategy::parse("sticky_affinity"), Some(Strategy::StickyAffinity));
+        assert_eq!(
+            Strategy::parse("sticky_affinity"),
+            Some(Strategy::StickyAffinity)
+        );
         assert_eq!(Strategy::parse("weighted_elo"), Some(Strategy::WeightedElo));
-        assert_eq!(Strategy::parse("least_latency"), Some(Strategy::LeastLatency));
+        assert_eq!(
+            Strategy::parse("least_latency"),
+            Some(Strategy::LeastLatency)
+        );
         assert_eq!(Strategy::parse("round_robin"), Some(Strategy::RoundRobin));
         assert_eq!(Strategy::parse("free"), Some(Strategy::Free));
-        assert_eq!(Strategy::parse("circuit_chain"), Some(Strategy::CircuitChain));
+        assert_eq!(
+            Strategy::parse("circuit_chain"),
+            Some(Strategy::CircuitChain)
+        );
         assert_eq!(Strategy::parse("bogus"), None);
     }
 }

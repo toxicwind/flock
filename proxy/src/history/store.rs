@@ -1771,10 +1771,8 @@ mod tests {
     fn first_open_publishes_one_synced_canonical_boot_record() {
         // This catches a missing safe-publication boundary, including an
         // accidental fallback to the legacy history.jsonl path.
-        let dir = std::env::temp_dir().join(format!(
-            "flock-history-store-red-{}",
-            std::process::id()
-        ));
+        let dir =
+            std::env::temp_dir().join(format!("flock-history-store-red-{}", std::process::id()));
         let _ = fs::remove_dir_all(&dir);
         fs::create_dir_all(&dir).unwrap();
 
@@ -2074,11 +2072,7 @@ mod tests {
         let history = Arc::new(History::open(dir.clone(), 0, history_capacity()).unwrap());
         let first_t = now + 2;
         history.append(first_t, "flock_requests_total 1\n", history_capacity());
-        history.append(
-            first_t + 1,
-            "flock_requests_total 2\n",
-            history_capacity(),
-        );
+        history.append(first_t + 1, "flock_requests_total 2\n", history_capacity());
 
         let before_second = history.rollup(first_t - 1, first_t, 1000).diagnostics;
         assert_eq!(before_second.valid_samples, 1);

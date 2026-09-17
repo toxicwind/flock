@@ -947,7 +947,11 @@ mod tests {
         assert_eq!(nv.keys[0].owner, "root");
         assert_eq!(nv.models, vec!["*".to_string()]);
         // The other providers are present but unusable without key material.
-        let or = sc.providers.iter().find(|p| p.name == "openrouter").unwrap();
+        let or = sc
+            .providers
+            .iter()
+            .find(|p| p.name == "openrouter")
+            .unwrap();
         assert!(or.enabled);
         assert!(!or.usable());
         // Saving persists version 2 and mirrors the legacy upstream block.

@@ -2898,7 +2898,9 @@ async fn metrics_report_traffic_tokens_and_affinity() {
     assert!(metrics.contains(r#"client="alice""#));
     assert!(metrics.contains(r#"model="mock/model-a""#));
     assert!(
-        metrics.contains(r#"flock_completion_tokens_total{client="alice",model="mock/model-a",source="usage"} 2"#),
+        metrics.contains(
+            r#"flock_completion_tokens_total{client="alice",model="mock/model-a",source="usage"} 2"#
+        ),
         "exact usage counted: {metrics}"
     );
     assert!(metrics.contains("flock_affinity_total"));
@@ -3250,8 +3252,7 @@ async fn request_shape_and_quality_metrics_are_recorded() {
         "stop finish recorded: {metrics}"
     );
     assert!(
-        metrics
-            .contains(r#"flock_finish_reason_total{model="mock/model-a",reason="tool_calls"}"#),
+        metrics.contains(r#"flock_finish_reason_total{model="mock/model-a",reason="tool_calls"}"#),
         "tool_calls finish recorded"
     );
     assert!(
@@ -3326,8 +3327,7 @@ async fn buffered_quality_and_edge_cases_are_recorded() {
 
     // Buffered quality extraction (from relay()).
     assert!(
-        metrics
-            .contains(r#"flock_finish_reason_total{model="mock/model-a",reason="tool_calls"}"#),
+        metrics.contains(r#"flock_finish_reason_total{model="mock/model-a",reason="tool_calls"}"#),
         "buffered tool_calls finish recorded: {metrics}"
     );
     assert!(

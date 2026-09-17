@@ -33,6 +33,10 @@ pub struct Slot {
     pub key: String,
 }
 
+/// Cloning shares the FIFO: every clone sends to the same queue, served
+/// by the single `run` task. This is how the serving path shares the
+/// router's nvidia dispatcher \u2014 one pool, one FIFO, no split-brain.
+#[derive(Clone)]
 pub struct Dispatcher {
     queue: mpsc::UnboundedSender<Waiter>,
 }

@@ -170,6 +170,47 @@
         "security": []
       }
     },
+    "/api/providers": {
+      "get": {
+        "tags": [
+          "dashboard"
+        ],
+        "summary": "`GET /api/providers` (admin) — the router's live provider registry:\nevery provider runtime with health, ELO, circuit state, pool geometry,\nand request counters. The single place to see what the multi-provider\nrouter is doing right now.",
+        "operationId": "providers",
+        "responses": {
+          "200": {
+            "description": "Live provider registry snapshot",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProvidersResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No session, or the caller's user was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Provider status requires an admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/settings/account": {
       "post": {
         "tags": [
@@ -646,6 +687,76 @@
           },
           "403": {
             "description": "Not the key's owner and not an admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/settings/routing": {
+      "post": {
+        "tags": [
+          "settings"
+        ],
+        "operationId": "routing",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoutingReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Routing applied as one candidate, persisted, and rebuilt into the live router",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The complete candidate was rejected; no settings were applied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No session, or the caller's user was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Routing settings require an admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "A field is missing or the wrong type — a partial body is never a silent reset",
             "content": {
               "application/json": {
                 "schema": {
@@ -1986,6 +2097,111 @@
           }
         }
       },
+      "ProviderRow": {
+        "type": "object",
+        "description": "One row of `GET /api/providers`: a provider runtime the router owns,\nwith live health, circuit, pool, and counters.",
+        "required": [
+          "name",
+          "display_name",
+          "base_url",
+          "enabled",
+          "usable",
+          "healthy",
+          "elo",
+          "circuit",
+          "models",
+          "free",
+          "weight",
+          "requests",
+          "errors",
+          "pool_lanes",
+          "pool_capacity_rpm"
+        ],
+        "properties": {
+          "base_url": {
+            "type": "string"
+          },
+          "circuit": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "elo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "errors": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "free": {
+            "type": "boolean"
+          },
+          "healthy": {
+            "type": "boolean"
+          },
+          "latency_ms": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double"
+          },
+          "models": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "pool_capacity_rpm": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pool_lanes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "requests": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "usable": {
+            "type": "boolean"
+          },
+          "weight": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "ProvidersResponse": {
+        "type": "object",
+        "description": "`GET /api/providers` response body.",
+        "required": [
+          "strategy",
+          "providers"
+        ],
+        "properties": {
+          "providers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProviderRow"
+            }
+          },
+          "strategy": {
+            "$ref": "#/components/schemas/Strategy"
+          }
+        }
+      },
       "ResetPassword": {
         "type": "object",
         "required": [
@@ -2050,6 +2266,49 @@
             "items": {
               "$ref": "#/components/schemas/MetricValue"
             }
+          }
+        }
+      },
+      "RoutingReq": {
+        "type": "object",
+        "description": "`POST /api/settings/routing` (admin) — atomically applies the routing\nstrategy and its knobs, then rebuilds the router in place (pool/FIFO\nstate carries over; only knobs and candidate sets change).",
+        "required": [
+          "strategy",
+          "max_parallel",
+          "max_retries",
+          "sticky_ttl_secs",
+          "fifo_max",
+          "enable_coalescing",
+          "probe_interval_secs"
+        ],
+        "properties": {
+          "enable_coalescing": {
+            "type": "boolean"
+          },
+          "fifo_max": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_parallel": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_retries": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "probe_interval_secs": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "sticky_ttl_secs": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "strategy": {
+            "$ref": "#/components/schemas/Strategy"
           }
         }
       },
@@ -2226,6 +2485,20 @@
             "type": "boolean"
           }
         }
+      },
+      "Strategy": {
+        "type": "string",
+        "description": "The routing strategy for a model with more than one usable provider.\nNames intentionally match AstMatrix's configured strategy identifiers so\nexisting Herd/router configs keep meaning them.",
+        "enum": [
+          "hybrid",
+          "ast_race",
+          "sticky_affinity",
+          "weighted_elo",
+          "least_latency",
+          "round_robin",
+          "free",
+          "circuit_chain"
+        ]
       },
       "Tail": {
         "type": "object",

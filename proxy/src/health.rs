@@ -107,11 +107,22 @@ impl HealthDb {
     }
 
     pub fn latency_ms(&self, provider: &str) -> Option<f64> {
-        self.inner.read().unwrap().latencies_ms.get(provider).copied()
+        self.inner
+            .read()
+            .unwrap()
+            .latencies_ms
+            .get(provider)
+            .copied()
     }
 
     pub fn get_elo(&self, provider: &str) -> i32 {
-        self.inner.read().unwrap().elos.get(provider).copied().unwrap_or(1500)
+        self.inner
+            .read()
+            .unwrap()
+            .elos
+            .get(provider)
+            .copied()
+            .unwrap_or(1500)
     }
 
     pub fn set_elo(&self, provider: &str, elo: i32) {
@@ -194,17 +205,16 @@ impl HealthDb {
         let mut g = self.inner.write().unwrap();
         for row in &r.rows {
             g.healthy.insert(row.provider.clone(), row.healthy);
-            g.last_probe_unix.insert(row.provider.clone(), row.last_probe_unix);
+            g.last_probe_unix
+                .insert(row.provider.clone(), row.last_probe_unix);
             if let Some(ms) = row.latency_ms {
                 g.latencies_ms.insert(row.provider.clone(), ms);
             }
             g.elos.insert(row.provider.clone(), row.elo);
         }
         for s in &r.stickies {
-            g.stickies.insert(
-                s.session.clone(),
-                (s.provider.clone(), s.expires_unix),
-            );
+            g.stickies
+                .insert(s.session.clone(), (s.provider.clone(), s.expires_unix));
         }
     }
 }
@@ -305,7 +315,7 @@ pub struct RestoredRuntime {
     pub circuits: HashMap<String, CircuitSnapshot>,
     pub governors: HashMap<(String, String), GovernorSnapshot>,
     pub lane_windows: HashMap<String, Vec<LaneWindowRow>>, // provider -> rows
-    pub cooldowns: HashMap<(String, String), u64>,          // (provider, key) -> until ms
+    pub cooldowns: HashMap<(String, String), u64>,         // (provider, key) -> until ms
 }
 
 /// A cheap cloneable handle to the persistence writer. `None` sender means
@@ -370,6 +380,16 @@ CREATE TABLE IF NOT EXISTS sticky_sessions (
     expires_unix INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS idx_sticky_expires ON sticky_sessions(expires_unix);
+CREATE TABLE IF NOT EXISTS model_state (
+    provider TEXT NOT NULL,
+    model TEXT NOT NULL,
+    successes INTEGER NOT NULL DEFAULT 0,
+    failures INTEGER NOT NULL DEFAULT 0,
+    rate_limited INTEGER NOT NULL DEFAULT 0,
+    avg_latency_ms REAL,
+    window_start_unix INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (provider, model)
+);
 CREATE TABLE IF NOT EXISTS circuits (
     provider TEXT PRIMARY KEY,
     state INTEGER NOT NULL DEFAULT 0,
@@ -601,11 +621,17 @@ fn apply_op(conn: &rusqlite::Connection, op: PersistOp) -> Result<(), String> {
 
 /// Synchronous boot restore. Runs before any provider runtime starts.
 /// Missing database = first boot: attempts the one-time AstMatrix import.
-pub fn restore(data_dir: &Path, now_unix: u64) -> Result<(RestoredProviders, RestoredRuntime), String> {
+pub fn restore(
+    data_dir: &Path,
+    now_unix: u64,
+) -> Result<(RestoredProviders, RestoredRuntime), String> {
     let path = state_db_path(data_dir);
     if !path.exists() {
         // First boot: try the one-time legacy import, then open fresh.
-        let report = import_astmatrix(&astmatrix_db_default(), data_dir, now_unix).unwrap_or_default();
+        // No config in scope on this path; the default sticky TTL bounds
+        // the session_affinity hydration (stale pins are dropped anyway).
+        let report =
+            import_astmatrix(&astmatrix_db_default(), data_dir, now_unix, 3600).unwrap_or_default();
         if report.imported_anything() {
             eprintln!("[flock-state] imported AstMatrix state: {report:?}");
         }
@@ -616,7 +642,9 @@ pub fn restore(data_dir: &Path, now_unix: u64) -> Result<(RestoredProviders, Res
     let mut providers = RestoredProviders::default();
     {
         let mut stmt = conn
-            .prepare("SELECT provider, healthy, latency_ms, elo, last_probe_unix FROM provider_state")
+            .prepare(
+                "SELECT provider, healthy, latency_ms, elo, last_probe_unix FROM provider_state",
+            )
             .map_err(err)?;
         let rows = stmt
             .query_map([], |r| {
@@ -761,12 +789,19 @@ pub fn restore(data_dir: &Path, now_unix: u64) -> Result<(RestoredProviders, Res
 pub struct ImportReport {
     pub provider_rows: usize,
     pub sticky_rows: usize,
+    pub model_rows: usize,
+    pub affinity_rows: usize,
+    pub affinity_stale: usize,
     pub extra_tables: Vec<String>,
 }
 
 impl ImportReport {
     pub fn imported_anything(&self) -> bool {
-        self.provider_rows > 0 || self.sticky_rows > 0 || !self.extra_tables.is_empty()
+        self.provider_rows > 0
+            || self.sticky_rows > 0
+            || self.model_rows > 0
+            || self.affinity_rows > 0
+            || !self.extra_tables.is_empty()
     }
 }
 
@@ -780,6 +815,7 @@ pub fn import_astmatrix(
     ast_path: &Path,
     data_dir: &Path,
     now_unix: u64,
+    sticky_ttl_secs: u64,
 ) -> Result<ImportReport, String> {
     if !ast_path.exists() {
         return Ok(ImportReport::default());
@@ -821,7 +857,7 @@ pub fn import_astmatrix(
         let has = |c: &str| cols.iter().any(|x| x == c);
         // Build a SELECT over the columns that exist.
         let mut select_cols: Vec<String> = vec!["provider".to_string()];
-        for c in ["healthy", "latency_ms", "failures", "last_probe"] {
+        for c in ["healthy", "latency_ms", "failures", "elo", "last_probe"] {
             if has(c) {
                 select_cols.push(c.to_string());
             }
@@ -838,6 +874,7 @@ pub fn import_astmatrix(
                 let mut healthy = true;
                 let mut latency_ms: Option<f64> = None;
                 let mut failures: i64 = 0;
+                let mut elo: Option<i64> = None;
                 let mut last_probe_unix: u64 = 0;
                 for c in &select_cols[1..] {
                     match c.as_str() {
@@ -850,7 +887,12 @@ pub fn import_astmatrix(
                             idx += 1;
                         }
                         "failures" => {
-                            failures = r.get(idx)?;
+                            // NULL in the live DB: no recorded strikes.
+                            failures = r.get::<_, Option<i64>>(idx)?.unwrap_or(0);
+                            idx += 1;
+                        }
+                        "elo" => {
+                            elo = r.get(idx)?;
                             idx += 1;
                         }
                         "last_probe" => {
@@ -863,16 +905,26 @@ pub fn import_astmatrix(
                         _ => {}
                     }
                 }
-                Ok((provider, healthy, latency_ms, failures, last_probe_unix))
+                Ok((
+                    provider,
+                    healthy,
+                    latency_ms,
+                    failures,
+                    elo,
+                    last_probe_unix,
+                ))
             })
             .map_err(err)?;
         for r in rows {
-            let (provider, healthy, latency_ms, failures, last_probe_unix) =
+            let (provider, healthy, latency_ms, failures, elo_col, last_probe_unix) =
                 r.map_err(err)?;
-            // Repeated failure strikes depress the seeded ELO slightly, so
-            // the weighted strategies don't prefer a historically flaky
+            // Prefer AstMatrix's own ELO when it recorded one; otherwise
+            // repeated failure strikes depress the seed slightly, so the
+            // weighted strategies don't prefer a historically flaky
             // provider on first boot.
-            let elo = 1500 - (failures.min(20) as i32) * 5;
+            let elo = elo_col
+                .map(|e| e as i32)
+                .unwrap_or_else(|| 1500 - (failures.min(20) as i32) * 5);
             conn.execute(
                 "INSERT INTO provider_state (provider, healthy, latency_ms, elo, last_probe_unix)
                  VALUES (?1, ?2, ?3, ?4, ?5)
@@ -913,9 +965,7 @@ pub fn import_astmatrix(
             .find(|c| has(c))
             .copied();
         if let (Some(sc), Some(ec)) = (sess_col, exp_col) {
-            let sql = format!(
-                "SELECT {sc}, provider, {ec} FROM legacy.sticky_sessions"
-            );
+            let sql = format!("SELECT {sc}, provider, {ec} FROM legacy.sticky_sessions");
             let mut stmt = conn.prepare(&sql).map_err(err)?;
             let rows = stmt
                 .query_map([], |r| {
@@ -947,8 +997,117 @@ pub fn import_astmatrix(
         }
     }
 
+    // session_affinity -> sticky_sessions (live pins). AstMatrix's own
+    // in-memory lookup never enforced expiry; here a pin only survives if
+    // its updated_at is still inside the sticky TTL. Stale rows are
+    // dropped, never resurrected, and the drop count is reported.
+    // Observed schema (2026-09-17): session_affinity(session_id, provider,
+    // model, updated_at) with updated_at as a unix float.
+    if legacy_tables.iter().any(|t| t == "session_affinity") {
+        let cols: Vec<String> = {
+            let mut stmt = conn
+                .prepare("SELECT name FROM pragma_table_info('session_affinity', 'legacy')")
+                .map_err(err)?;
+            let rows = stmt.query_map([], |r| r.get(0)).map_err(err)?;
+            rows.collect::<Result<Vec<String>, _>>().map_err(err)?
+        };
+        let has = |c: &str| cols.iter().any(|x| x == c);
+        let sc = ["session_id", "session"]
+            .into_iter()
+            .find(|c| has(c))
+            .unwrap_or("session_id");
+        let sql = format!("SELECT {sc}, provider, updated_at FROM legacy.session_affinity");
+        let mut stmt = conn.prepare(&sql).map_err(err)?;
+        let rows = stmt
+            .query_map([], |r| {
+                let session: String = r.get(0)?;
+                let provider: String = r.get(1)?;
+                let updated_at: f64 = r.get(2)?;
+                Ok((session, provider, updated_at as u64))
+            })
+            .map_err(err)?;
+        for r in rows {
+            let (session, provider, updated_at) = r.map_err(err)?;
+            let expires = updated_at.saturating_add(sticky_ttl_secs);
+            if expires > now_unix {
+                conn.execute(
+                    "INSERT OR IGNORE INTO sticky_sessions (session, provider, expires_unix)
+                     VALUES (?1, ?2, ?3)",
+                    rusqlite::params![session, provider, expires as i64],
+                )
+                .map_err(err)?;
+                report.affinity_rows += 1;
+            } else {
+                report.affinity_stale += 1;
+            }
+        }
+    }
+
+    // model_health -> model_state (latest window per provider+model).
+    // Observed schema (2026-09-17): model_health(provider, model,
+    // window_start, successes, failures, rate_limited, total_ms, min_ms,
+    // max_ms). Routing stays per-provider (AstMatrix's granularity), so
+    // per-model health is preserved as operator-visible state rather than
+    // folded into ELO (which would double-count provider_health.failures).
+    if legacy_tables.iter().any(|t| t == "model_health") {
+        let mut stmt = conn
+            .prepare(
+                "SELECT provider, model, successes, failures, rate_limited,
+                        CASE WHEN (successes + failures) > 0
+                             THEN total_ms * 1.0 / (successes + failures)
+                             ELSE NULL END,
+                        window_start
+                 FROM legacy.model_health",
+            )
+            .map_err(err)?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok((
+                    r.get::<_, String>(0)?,
+                    r.get::<_, String>(1)?,
+                    r.get::<_, i64>(2)?,
+                    r.get::<_, i64>(3)?,
+                    r.get::<_, i64>(4)?,
+                    r.get::<_, Option<f64>>(5)?,
+                    r.get::<_, f64>(6)? as u64,
+                ))
+            })
+            .map_err(err)?;
+        // Keep the latest window per (provider, model).
+        let mut latest: std::collections::HashMap<
+            (String, String),
+            (i64, i64, i64, Option<f64>, u64),
+        > = std::collections::HashMap::new();
+        for r in rows {
+            let (provider, model, succ, fail, rl, avg_ms, win) = r.map_err(err)?;
+            let e = latest
+                .entry((provider, model))
+                .or_insert((0, 0, 0, None, 0));
+            if win >= e.4 {
+                *e = (succ, fail, rl, avg_ms, win);
+            }
+        }
+        for ((provider, model), (succ, fail, rl, avg_ms, win)) in latest {
+            conn.execute(
+                "INSERT INTO model_state
+                     (provider, model, successes, failures, rate_limited, avg_latency_ms, window_start_unix)
+                 VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)
+                 ON CONFLICT(provider, model) DO UPDATE SET
+                     successes=excluded.successes, failures=excluded.failures,
+                     rate_limited=excluded.rate_limited,
+                     avg_latency_ms=excluded.avg_latency_ms,
+                     window_start_unix=excluded.window_start_unix",
+                rusqlite::params![provider, model, succ, fail, rl, avg_ms, win as i64],
+            )
+            .map_err(err)?;
+            report.model_rows += 1;
+        }
+    }
+
     // Carry over the remaining AstMatrix history tables verbatim for the
     // operator's continuity. Table names are our constants, never input.
+    // model_health and session_affinity are functionally imported above;
+    // their raw history is still archived for diffing.
     for t in [
         "requests",
         "model_health",
@@ -986,7 +1145,7 @@ fn parse_rfc3339_unix(s: &str) -> Option<u64> {
         return None;
     }
     let (time_part, tz_part) = time.split_at(8); // "13:18:13" | "-06:00" / ".123-06:00" / "Z" / ""
-    // Strip fractional seconds from the zone designator.
+                                                 // Strip fractional seconds from the zone designator.
     let tz_part = match tz_part.find(|c| c == '+' || c == '-' || c == 'Z') {
         Some(i) => &tz_part[i..],
         None => "",
@@ -1129,7 +1288,11 @@ mod tests {
         w.shutdown();
         // Reopen synchronously and verify everything survived.
         let (prov, rt) = restore(&dir, 5000).expect("restore");
-        let row = prov.rows.iter().find(|r| r.provider == "groq").expect("row");
+        let row = prov
+            .rows
+            .iter()
+            .find(|r| r.provider == "groq")
+            .expect("row");
         assert!(!row.healthy);
         assert!(row.latency_ms.is_some());
         assert_eq!(row.elo, 1580);
@@ -1139,7 +1302,10 @@ mod tests {
         let snap = rt.circuits.get("groq").expect("circuit");
         assert_eq!(snap.state, 2);
         assert_eq!(snap.failures, 5);
-        let gov = rt.governors.get(&("groq".to_string(), "m".to_string())).expect("gov");
+        let gov = rt
+            .governors
+            .get(&("groq".to_string(), "m".to_string()))
+            .expect("gov");
         assert_eq!(gov.worker_limit, 4);
         assert_eq!(gov.blocked_until_unix, 4300);
         let lanes = rt.lane_windows.get("groq").expect("lanes");
@@ -1178,19 +1344,26 @@ mod tests {
         {
             let conn = rusqlite::Connection::open(&ast_path).unwrap();
             conn.execute_batch(
-                "CREATE TABLE provider_health (provider TEXT PRIMARY KEY, healthy INTEGER, latency_ms REAL, failures INTEGER, last_probe TEXT);
+                "CREATE TABLE provider_health (provider TEXT PRIMARY KEY, healthy INTEGER, latency_ms REAL, failures INTEGER, elo INTEGER, last_probe TEXT);
                  CREATE TABLE sticky_sessions (session_id TEXT PRIMARY KEY, provider TEXT, model TEXT, expires_at TEXT, created_at TEXT);
+                 CREATE TABLE session_affinity (session_id TEXT PRIMARY KEY, provider TEXT, model TEXT, updated_at REAL);
                  CREATE TABLE requests (id INTEGER PRIMARY KEY, provider TEXT);
-                 CREATE TABLE model_health (provider TEXT, model TEXT);",
+                 CREATE TABLE model_health (provider TEXT NOT NULL, model TEXT NOT NULL, window_start REAL, successes INTEGER, failures INTEGER, rate_limited INTEGER, total_ms REAL, min_ms REAL, max_ms REAL);",
             )
             .unwrap();
             conn.execute(
-                "INSERT INTO provider_health VALUES ('nvidia', 1, 133.0, 0, '2026-09-17T13:18:13-06:00')",
+                "INSERT INTO provider_health VALUES ('nvidia', 1, 133.0, 0, NULL, '2026-09-17T13:18:13-06:00')",
                 [],
             )
             .unwrap();
             conn.execute(
-                "INSERT INTO provider_health VALUES ('github', 0, NULL, 12, '2026-09-17T13:18:14-06:00')",
+                "INSERT INTO provider_health VALUES ('github', 0, NULL, 12, NULL, '2026-09-17T13:18:14-06:00')",
+                [],
+            )
+            .unwrap();
+            // A recorded ELO wins over the failure-derived seed.
+            conn.execute(
+                "INSERT INTO provider_health VALUES ('groq', 1, 40.0, 30, 1625, '2026-09-17T13:18:15-06:00')",
                 [],
             )
             .unwrap();
@@ -1206,9 +1379,27 @@ mod tests {
             .unwrap();
             conn.execute("INSERT INTO requests (provider) VALUES ('nvidia')", [])
                 .unwrap();
+            // session_affinity: one fresh pin, one stale (2 months old).
+            let now_f = (days_from_civil(2026, 9, 17).unwrap() * 86400 + 19 * 3600) as f64;
             conn.execute(
-                "INSERT INTO model_health VALUES ('nvidia', 'm')",
-                [],
+                "INSERT INTO session_affinity VALUES ('fresh-pin', 'openrouter', 'm', ?1)",
+                [now_f - 100.0],
+            )
+            .unwrap();
+            conn.execute(
+                "INSERT INTO session_affinity VALUES ('stale-pin', 'groq', 'm', ?1)",
+                [now_f - 60.0 * 86400.0],
+            )
+            .unwrap();
+            // model_health: two windows for one pair; latest wins.
+            conn.execute(
+                "INSERT INTO model_health VALUES ('nvidia', 'm', ?1, 90, 10, 0, 5000.0, 20.0, 900.0)",
+                [now_f - 7200.0],
+            )
+            .unwrap();
+            conn.execute(
+                "INSERT INTO model_health VALUES ('nvidia', 'm', ?1, 95, 5, 1, 4000.0, 20.0, 800.0)",
+                [now_f - 3600.0],
             )
             .unwrap();
         }
@@ -1216,9 +1407,12 @@ mod tests {
         // 'live' expires 14:18:13-06:00 = 20:18:13Z; 'dead' 12:00-06:00 = 18:00Z.
         // 2026-09-17T19:00:00Z = ?
         let now_unix = days_from_civil(2026, 9, 17).unwrap() * 86400 + 19 * 3600;
-        let report = import_astmatrix(&ast_path, &dir, now_unix).expect("import");
-        assert_eq!(report.provider_rows, 2);
+        let report = import_astmatrix(&ast_path, &dir, now_unix, 3600).expect("import");
+        assert_eq!(report.provider_rows, 3);
         assert_eq!(report.sticky_rows, 1);
+        assert_eq!(report.affinity_rows, 1);
+        assert_eq!(report.affinity_stale, 1);
+        assert_eq!(report.model_rows, 1);
         assert!(report.extra_tables.contains(&"requests".to_string()));
         assert!(report.extra_tables.contains(&"model_health".to_string()));
 
@@ -1230,9 +1424,26 @@ mod tests {
         let gh = prov.rows.iter().find(|r| r.provider == "github").unwrap();
         assert!(!gh.healthy);
         assert_eq!(gh.elo, 1500 - 12 * 5); // strikes depress the seed
-        assert_eq!(prov.stickies.len(), 1);
-        assert_eq!(prov.stickies[0].session, "live");
-        // The verbatim history tables exist under the ast_ prefix.
+        let gq = prov.rows.iter().find(|r| r.provider == "groq").unwrap();
+        assert_eq!(gq.elo, 1625); // recorded ELO wins over the seed formula
+        assert_eq!(prov.stickies.len(), 2);
+        assert!(prov.stickies.iter().any(|st| st.session == "live"));
+        assert!(prov.stickies.iter().any(|st| st.session == "fresh-pin"));
+        // The stale affinity pin was dropped, never resurrected.
+        assert!(!prov.stickies.iter().any(|st| st.session == "stale-pin"));
+        // model_state holds the latest window only.
+        let conn = rusqlite::Connection::open(state_db_path(&dir)).unwrap();
+        let (succ, fail, rl, avg_ms): (i64, i64, i64, Option<f64>) = conn
+            .query_row(
+                "SELECT successes, failures, rate_limited, avg_latency_ms FROM model_state
+                 WHERE provider = 'nvidia' AND model = 'm'",
+                [],
+                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?)),
+            )
+            .unwrap();
+        assert_eq!((succ, fail, rl), (95, 5, 1));
+        assert!((avg_ms.unwrap() - 40.0).abs() < 1e-6); // 4000/100
+                                                        // The verbatim history tables exist under the ast_ prefix.
         let conn = rusqlite::Connection::open(state_db_path(&dir)).unwrap();
         let n: i64 = conn
             .query_row("SELECT COUNT(*) FROM ast_requests", [], |r| r.get(0))
@@ -1245,12 +1456,7 @@ mod tests {
     #[test]
     fn missing_legacy_db_imports_nothing() {
         let dir = tempfile_like();
-        let report = import_astmatrix(
-            &dir.join("nope.db"),
-            &dir,
-            1_000_000,
-        )
-        .expect("import");
+        let report = import_astmatrix(&dir.join("nope.db"), &dir, 1_000_000, 3600).expect("import");
         assert!(!report.imported_anything());
         std::fs::remove_dir_all(&dir).ok();
     }

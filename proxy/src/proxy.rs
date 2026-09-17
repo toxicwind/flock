@@ -322,8 +322,7 @@ fn record_shape(ctx: &Ctx, parsed: Option<&serde_json::Value>, wants_stream: boo
     }
     if let Some(n) = count_tools(v) {
         histogram!("flock_request_tools", "client" => ctx.client.clone()).record(n as f64);
-        counter!("flock_tool_choice_total", "mode" => tool_choice_mode(v).to_owned())
-            .increment(1);
+        counter!("flock_tool_choice_total", "mode" => tool_choice_mode(v).to_owned()).increment(1);
     }
     if let Some(mt) = v
         .get("max_tokens")
@@ -383,8 +382,7 @@ fn record_observations(
     }
     if let Observation::Measured(tool_calls) = observations.tool_calls {
         if tool_calls > 0 {
-            counter!("flock_tool_calls_total", "model" => ctx.model.clone())
-                .increment(tool_calls);
+            counter!("flock_tool_calls_total", "model" => ctx.model.clone()).increment(tool_calls);
         }
     }
     completion.map(|value| (value, source))
@@ -686,6 +684,9 @@ async fn buffered(
             Err(e) => {
                 tracing::warn!(lane = slot.lane, error = %e, "upstream connection error, retrying");
                 enter_cooldown(&slot, "connect", Duration::from_secs(5));
+                state
+                    .router
+                    .record_attempt("nvidia", &ctx.model, 0, sent_at.elapsed(), false);
                 continue;
             }
         };
@@ -697,18 +698,38 @@ async fn buffered(
             // key capacity on a failover that cannot help.
             let detail = resp.text().await.unwrap_or_default();
             if governor::is_worker_exhausted(&detail) {
-                state
-                    .governor
-                    .note_exhausted(&ctx.model, cfg.governor.overrides.get(&ctx.model).copied());
+                // record_attempt owns the single note_exhausted on the
+                // shared governor (called while the permit is still held).
+                state.router.record_attempt(
+                    "nvidia",
+                    &ctx.model,
+                    status.as_u16(),
+                    sent_at.elapsed(),
+                    true,
+                );
                 continue; // permit drops here; re-admission waits out the drain
             }
             tracing::info!(lane = slot.lane, %status, ?backoff, "lane in cooldown, retrying");
             enter_cooldown(&slot, status.as_str(), backoff);
+            state.router.record_attempt(
+                "nvidia",
+                &ctx.model,
+                status.as_u16(),
+                sent_at.elapsed(),
+                false,
+            );
             continue;
         }
         histogram!("flock_upstream_seconds", "model" => ctx.model.clone())
             .record(sent_at.elapsed().as_secs_f64());
         record_request(&ctx, resp.status().as_str());
+        state.router.record_attempt(
+            "nvidia",
+            &ctx.model,
+            resp.status().as_u16(),
+            sent_at.elapsed(),
+            false,
+        );
         return relay(resp, &ctx).await;
     }
 }
@@ -805,6 +826,13 @@ fn streaming(
                     Err(e) => {
                         tracing::warn!(lane = slot.lane, error = %e, "upstream connection error, retrying");
                         enter_cooldown(&slot, "connect", Duration::from_secs(5));
+                        state.router.record_attempt(
+                            "nvidia",
+                            &ctx.model,
+                            0,
+                            sent_at.elapsed(),
+                            false,
+                        );
                         continue;
                     }
                 };
@@ -815,6 +843,13 @@ fn streaming(
                     tracing::info!(model = %ctx.model, "model rejected stream_options; retrying without injection");
                     state.no_inject.lock().unwrap().insert(ctx.model.clone());
                     body = fallback.take().unwrap();
+                    state.router.record_attempt(
+                        "nvidia",
+                        &ctx.model,
+                        400,
+                        sent_at.elapsed(),
+                        false,
+                    );
                     continue;
                 }
 
@@ -831,15 +866,21 @@ fn streaming(
                     // Worker exhaustion is model-scoped: back off the model via
                     // the governor, never the lane (see `buffered`).
                     let detail = resp.text().await.unwrap_or_default();
-                    if governor::is_worker_exhausted(&detail) {
-                        state.governor.note_exhausted(
-                            &ctx.model,
-                            cfg.governor.overrides.get(&ctx.model).copied(),
-                        );
-                    } else {
+                    let exhausted = governor::is_worker_exhausted(&detail);
+                    // record_attempt owns the single note_exhausted on the
+                    // shared governor when exhausted (called while the permit
+                    // is still held); the lane is never cooled down here.
+                    if !exhausted {
                         tracing::info!(lane = slot.lane, %status, ?backoff, "lane in cooldown, retrying");
                         enter_cooldown(&slot, status.as_str(), backoff);
                     }
+                    state.router.record_attempt(
+                        "nvidia",
+                        &ctx.model,
+                        status.as_u16(),
+                        sent_at.elapsed(),
+                        exhausted,
+                    );
                     if !send(": retrying\n\n").await {
                         record_request(&ctx, "disconnect");
                         return;
@@ -854,12 +895,26 @@ fn streaming(
                     let detail = resp.text().await.unwrap_or_default();
                     tracing::warn!(%status, "upstream rejected request");
                     record_request(&ctx, status.as_str());
+                    state.router.record_attempt(
+                        "nvidia",
+                        &ctx.model,
+                        status.as_u16(),
+                        sent_at.elapsed(),
+                        false,
+                    );
                     let _ = tx
                         .send(Ok(sse_error(&format!("upstream error {status}: {detail}"))))
                         .await;
                     return;
                 }
 
+                state.router.record_attempt(
+                    "nvidia",
+                    &ctx.model,
+                    resp.status().as_u16(),
+                    sent_at.elapsed(),
+                    false,
+                );
                 *observer.lock().unwrap() = Some(SseObserver::default());
                 let mut first_chunk: Option<Instant> = None;
                 let mut chunks = resp.bytes_stream();
@@ -972,11 +1027,58 @@ fn streaming(
 /// /v1/models, cached so harness catalog polls cost zero rate budget. The
 /// lock is held across the refresh so concurrent misses make one upstream
 /// call (followers see the fresh cache when they get the lock).
+/// Merge the multi-provider registry into a `/v1/models` body. The live
+/// upstream (nvidia) listing stays authoritative for its own models; every
+/// other enabled provider contributes its configured model ids, tagged with
+/// their source provider. Non-JSON bodies pass through untouched, and the
+/// merge is idempotent (already-listed ids are not duplicated).
+fn aggregate_models(body: &Bytes, router: &crate::router::RouterHandle) -> Bytes {
+    let mut v: serde_json::Value = match serde_json::from_slice(body) {
+        Ok(v) => v,
+        Err(_) => return body.clone(),
+    };
+    let data = match v.get_mut("data").and_then(|d| d.as_array_mut()) {
+        Some(d) => d,
+        None => return body.clone(),
+    };
+    let mut seen: std::collections::HashSet<String> = data
+        .iter()
+        .filter_map(|m| {
+            m.get("id")
+                .and_then(|id| id.as_str())
+                .map(|id| id.to_owned())
+        })
+        .collect();
+    for pm in router.models_snapshot() {
+        // The live upstream listing already covers nvidia; skip it so the
+        // merge never duplicates or shadows the authoritative entries.
+        if pm.provider == "nvidia" {
+            continue;
+        }
+        for m in pm.models {
+            if m == "*" {
+                continue;
+            }
+            if seen.insert(m.clone()) {
+                data.push(serde_json::json!({
+                    "id": m,
+                    "object": "model",
+                    "owned_by": pm.provider,
+                }));
+            }
+        }
+    }
+    serde_json::to_vec(&v)
+        .map(Bytes::from)
+        .unwrap_or_else(|_| body.clone())
+}
+
 async fn models(state: Arc<AppState>, cfg: Arc<Config>) -> Response {
     let mut cache = state.models_cache.lock().await;
     if let Some((at, body)) = cache.as_ref() {
         if at.elapsed() < cfg.models_ttl {
-            return json_response(StatusCode::OK, body.clone());
+            let merged = aggregate_models(&body, &state.router);
+            return json_response(StatusCode::OK, merged);
         }
     }
     let deadline = Instant::now() + Duration::from_secs(30);
@@ -987,7 +1089,8 @@ async fn models(state: Arc<AppState>, cfg: Arc<Config>) -> Response {
         Ok(resp) if resp.status().is_success() => {
             let body = resp.bytes().await.unwrap_or_default();
             *cache = Some((Instant::now(), body.clone()));
-            json_response(StatusCode::OK, body)
+            let merged = aggregate_models(&body, &state.router);
+            json_response(StatusCode::OK, merged)
         }
         Ok(resp) => {
             if retryable(resp.status()) {

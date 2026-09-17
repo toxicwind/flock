@@ -79,8 +79,7 @@ pub struct ProviderMetrics {
 
 impl ProviderRuntime {
     fn build(def: ProviderDef) -> Arc<Self> {
-        let pool: PoolHandle =
-            Arc::new(RwLock::new(Arc::new(Pool::new(def.lane_specs()))));
+        let pool: PoolHandle = Arc::new(RwLock::new(Arc::new(Pool::new(def.lane_specs()))));
         let dispatcher = Dispatcher::new(pool.clone());
         Arc::new(Self {
             def: RwLock::new(def),
@@ -136,8 +135,7 @@ impl ProviderRuntime {
             .map(|(key, sent_ms)| LaneWindowRow { key, sent_ms })
             .collect();
         let cooldowns: Vec<(String, u64)> = pool.cooldown_rows(now_unix);
-        let governors: Vec<(String, crate::governor::GovernorSnapshot)> =
-            self.governor.snapshots();
+        let governors: Vec<(String, crate::governor::GovernorSnapshot)> = self.governor.snapshots();
         RuntimeSnapshot {
             provider: name,
             circuit: self.circuit.lock().unwrap().snapshot(),
@@ -245,10 +243,18 @@ impl RouterHandle {
             // reads health tables only.
             let src = health::astmatrix_db_default();
             if src.exists() {
-                match health::import_astmatrix(&src, data_dir, now_unix) {
+                match health::import_astmatrix(
+                    &src,
+                    data_dir,
+                    now_unix,
+                    stored.routing.sticky_ttl_secs,
+                ) {
                     Ok(report) => tracing::info!(
                         provider_rows = report.provider_rows,
                         sticky_rows = report.sticky_rows,
+                        model_rows = report.model_rows,
+                        affinity_rows = report.affinity_rows,
+                        affinity_stale = report.affinity_stale,
                         extra_tables = ?report.extra_tables,
                         "imported AstMatrix health state"
                     ),
@@ -541,9 +547,7 @@ impl RouterHandle {
                 self.inner.health.latency_ms(&a.name()),
                 self.inner.health.latency_ms(&b.name()),
             ) {
-                (Some(x), Some(y)) => x
-                    .partial_cmp(&y)
-                    .unwrap_or(std::cmp::Ordering::Equal),
+                (Some(x), Some(y)) => x.partial_cmp(&y).unwrap_or(std::cmp::Ordering::Equal),
                 // Any measured latency beats unknown latency (AstMatrix).
                 (Some(_), None) => std::cmp::Ordering::Less,
                 (None, Some(_)) => std::cmp::Ordering::Greater,
@@ -573,11 +577,12 @@ impl RouterHandle {
         candidate: &RouteCandidate,
         ctx: &AcquireCtx,
     ) -> Result<Acquired, RouteError> {
-        let rt = self
-            .runtime(&candidate.provider)
-            .ok_or_else(|| RouteError::Unavailable(format!("unknown provider {}", candidate.provider)))?;
+        let rt = self.runtime(&candidate.provider).ok_or_else(|| {
+            RouteError::Unavailable(format!("unknown provider {}", candidate.provider))
+        })?;
         rt.metrics.requests.fetch_add(1, Ordering::Relaxed);
-        counter!("flock_route_requests_total", "provider" => candidate.provider.clone()).increment(1);
+        counter!("flock_route_requests_total", "provider" => candidate.provider.clone())
+            .increment(1);
 
         // Circuit gate (mutating: a half-open trial consumes the trial).
         {
@@ -593,7 +598,13 @@ impl RouterHandle {
             }
         }
         // Provider token bucket.
-        if !self.inner.limiter.lock().unwrap().allow(&candidate.provider) {
+        if !self
+            .inner
+            .limiter
+            .lock()
+            .unwrap()
+            .allow(&candidate.provider)
+        {
             rt.metrics.rate_limited.fetch_add(1, Ordering::Relaxed);
             counter!("flock_route_rate_limited_total", "provider" => candidate.provider.clone())
                 .increment(1);
@@ -634,9 +645,8 @@ impl RouterHandle {
         ctx: &AcquireCtx,
         candidate: &RouteCandidate,
     ) -> Result<Option<ModelPermit>, RouteError> {
-        let gated = self.inner.governor_enabled.load(Ordering::SeqCst)
-            && model != "none"
-            && ctx.gated_path;
+        let gated =
+            self.inner.governor_enabled.load(Ordering::SeqCst) && model != "none" && ctx.gated_path;
         if !gated {
             return Ok(None);
         }
@@ -678,7 +688,9 @@ impl RouterHandle {
         rt.circuit.lock().unwrap().record_success();
         let latency = acq.attempt_started.elapsed();
         self.inner.health.record_latency(&acq.provider, latency);
-        self.inner.health.record_health(&acq.provider, true, now_unix);
+        self.inner
+            .health
+            .record_health(&acq.provider, true, now_unix);
         if acq.strategy == Strategy::StickyAffinity {
             if let Some(session) = acq.session.as_deref() {
                 self.inner.health.set_sticky(
@@ -691,7 +703,8 @@ impl RouterHandle {
         }
         counter!("flock_route_success_total",
             "provider" => acq.provider.clone(),
-            "status" => status.to_string()).increment(1);
+            "status" => status.to_string())
+        .increment(1);
     }
 
     /// Record a failed attempt: circuit failure on 429/5xx (never on 4xx —
@@ -705,7 +718,9 @@ impl RouterHandle {
         rt.metrics.errors.fetch_add(1, Ordering::Relaxed);
         if status == 429 || status >= 500 {
             rt.circuit.lock().unwrap().record_failure(now_unix);
-            self.inner.health.record_health(&acq.provider, false, now_unix);
+            self.inner
+                .health
+                .record_health(&acq.provider, false, now_unix);
             let backoff = backoff_for_status(status);
             acq.slot.pool.penalize(acq.slot.lane, backoff);
             self.inner.persist.op(PersistOp::Cooldown {
@@ -726,7 +741,52 @@ impl RouterHandle {
         }
         counter!("flock_route_errors_total",
             "provider" => acq.provider.clone(),
-            "status" => status.to_string()).increment(1);
+            "status" => status.to_string())
+        .increment(1);
+    }
+
+    /// Record one upstream attempt from the serving path without the full
+    /// [`Acquired`] ceremony. The serving path owns lane cooldown itself
+    /// (the legacy retry loop), so this only feeds the router's shared
+    /// health view: circuit breaker, latency, and provider counters.
+    /// `status` is the HTTP status, or 0 for a connection-level failure.
+    pub fn record_attempt(
+        &self,
+        provider: &str,
+        model: &str,
+        status: u16,
+        latency: std::time::Duration,
+        worker_exhausted: bool,
+    ) {
+        let now_unix = unix_now();
+        let Some(rt) = self.runtime(provider) else {
+            return;
+        };
+        let failed = status == 0 || status == 429 || status >= 500;
+        if failed {
+            rt.circuit.lock().unwrap().record_failure(now_unix);
+            self.inner.health.record_health(provider, false, now_unix);
+            rt.metrics.errors.fetch_add(1, Ordering::Relaxed);
+        } else {
+            rt.circuit.lock().unwrap().record_success();
+            self.inner.health.record_health(provider, true, now_unix);
+        }
+        self.inner.health.record_latency(provider, latency);
+        if worker_exhausted {
+            let pinned = self
+                .inner
+                .governor_overrides
+                .read()
+                .unwrap()
+                .get(model)
+                .copied();
+            rt.governor.note_exhausted(model, pinned);
+        }
+        rt.metrics.requests.fetch_add(1, Ordering::Relaxed);
+        counter!("flock_route_attempt_total",
+            "provider" => provider.to_string(),
+            "status" => status.to_string())
+        .increment(1);
     }
 
     /// Aggregate `/v1/models` across providers: each provider's cached
@@ -828,8 +888,14 @@ impl RouterHandle {
     /// record, so the tick only carries the in-memory runtime state.
     fn persist_once(&self) {
         let now_unix = unix_now();
-        let rts: Vec<Arc<ProviderRuntime>> =
-            self.inner.runtimes.read().unwrap().values().cloned().collect();
+        let rts: Vec<Arc<ProviderRuntime>> = self
+            .inner
+            .runtimes
+            .read()
+            .unwrap()
+            .values()
+            .cloned()
+            .collect();
         for rt in rts {
             let snap = rt.snapshot(now_unix);
             self.inner.persist.op(PersistOp::Circuit {
@@ -986,8 +1052,12 @@ mod tests {
     async fn hybrid_orders_by_latency_then_elo() {
         let r = test_router(vec![test_def("a"), test_def("b"), test_def("c")]);
         let now = unix_now();
-        r.inner.health.record_latency("a", Duration::from_millis(200));
-        r.inner.health.record_latency("b", Duration::from_millis(50));
+        r.inner
+            .health
+            .record_latency("a", Duration::from_millis(200));
+        r.inner
+            .health
+            .record_latency("b", Duration::from_millis(50));
         r.inner.health.set_elo("c", 1800);
         let cands = r.select("m", "s", Some(Strategy::Hybrid));
         let names: Vec<_> = cands.iter().map(|c| c.provider.as_str()).collect();
@@ -1111,5 +1181,105 @@ mod tests {
         r.rebuild(&stored);
         assert!(r.runtime("a").is_none());
         assert!(r.runtime("b").is_some());
+    }
+    #[tokio::test]
+    async fn serving_handles_share_nvidia_runtime() {
+        // The serving path must reuse the router's nvidia handles, not
+        // copies: one pool, one governor (Arc ptr equality), one FIFO.
+        let r = test_router(vec![test_def("nvidia")]);
+        let (pool, _dispatch, governor) = crate::nvidia_serving_handles(&r);
+        let rt = r.runtime("nvidia").expect("nvidia runtime");
+        assert!(
+            std::sync::Arc::ptr_eq(&pool, &rt.pool),
+            "serving pool is not the router nvidia pool"
+        );
+        assert!(
+            std::sync::Arc::ptr_eq(&governor, &rt.governor),
+            "serving governor is not the router nvidia governor"
+        );
+    }
+
+    #[tokio::test]
+    async fn dispatcher_clone_shares_single_fifo() {
+        // Cloning a Dispatcher must share its queue: grants from the clone
+        // are paced by the same 25 ms GRANT_GAP as the original. Two
+        // independently constructed Dispatchers would grant concurrently.
+        use crate::pool::LaneSpec;
+        let pool: PoolHandle = std::sync::Arc::new(std::sync::RwLock::new(std::sync::Arc::new(
+            Pool::new(vec![LaneSpec {
+                key: "k".into(),
+                rpm: 1000,
+                enabled: true,
+            }]),
+        )));
+        let d1 = Dispatcher::new(pool);
+        let d2 = d1.clone();
+        let deadline = std::time::Instant::now() + std::time::Duration::from_secs(5);
+        let _s1 = d1.acquire(deadline, None).await.expect("slot 1");
+        let mid = std::time::Instant::now();
+        let _s2 = d2.acquire(deadline, None).await.expect("slot 2");
+        let gap = mid.elapsed();
+        assert!(
+            gap >= std::time::Duration::from_millis(20),
+            "clone granted {gap:?} after the original: not the shared FIFO"
+        );
+    }
+
+    #[tokio::test]
+    async fn rebuild_preserves_nvidia_lane_windows() {
+        // Settings rebuild must carry 61 s sliding-window state across: a
+        // request recorded before rebuild still counts toward RPM after.
+        let r = test_router(vec![test_def("nvidia")]);
+        let rt = r.runtime("nvidia").expect("nvidia runtime");
+        {
+            let pool = rt.pool.read().unwrap();
+            match pool.reserve(None) {
+                crate::pool::Reservation::Ready { .. } => {}
+                w => panic!("expected Ready, got {w:?}"),
+            }
+            let stats = pool.lane_stats();
+            assert!(stats.iter().any(|s| s.in_window >= 1), "window not filled");
+        }
+        let mut stored = StoredConfig::default();
+        let mut def = test_def("nvidia");
+        def.display_name = "renamed".into(); // non-pool knob changes only
+        stored.providers = vec![def];
+        r.rebuild(&stored);
+        let rt2 = r.runtime("nvidia").expect("nvidia runtime after rebuild");
+        assert!(
+            std::sync::Arc::ptr_eq(&rt, &rt2),
+            "rebuild replaced the nvidia runtime object"
+        );
+        let stats = rt2.pool.read().unwrap().lane_stats();
+        assert!(
+            stats.iter().any(|s| s.in_window >= 1),
+            "lane window state lost across rebuild: {stats:?}"
+        );
+    }
+
+    #[tokio::test]
+    async fn rebuild_applies_provider_url_and_key_changes() {
+        // Base URL / key edits must take effect on the live runtime without
+        // replacing the runtime object (state above is preserved).
+        let r = test_router(vec![test_def("nvidia")]);
+        let mut stored = StoredConfig::default();
+        let mut def = test_def("nvidia");
+        def.base_url = "https://new.example.com".into();
+        def.keys.push(crate::providers::ProviderKey {
+            key: "k2".into(),
+            key_env: String::new(),
+            owner: "root".into(),
+            enabled: true,
+            rpm: 60,
+        });
+        stored.providers = vec![def];
+        r.rebuild(&stored);
+        let rt = r.runtime("nvidia").expect("nvidia runtime");
+        assert_eq!(rt.def.read().unwrap().base_url, "https://new.example.com");
+        let stats = rt.pool.read().unwrap().lane_stats();
+        assert!(
+            stats.iter().any(|s| s.key == "k2"),
+            "new key lane missing after rebuild: {stats:?}"
+        );
     }
 }

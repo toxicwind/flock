@@ -7,7 +7,7 @@
 //! explicit per-key or per-provider RPM.
 
 use std::collections::HashMap;
-use std::time::{Duration, Instant};
+use std::time::Instant;
 
 use crate::providers::ProviderDef;
 
@@ -105,6 +105,7 @@ impl ProviderRateLimiter {
 mod tests {
     use super::*;
     use crate::providers::ProviderKey;
+    use std::time::Duration;
 
     #[test]
     fn bucket_starts_full_and_refills() {

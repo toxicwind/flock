@@ -115,8 +115,14 @@ pub struct AppState {
     /// is closed (dashboard redirects to /setup, /v1 answers 503).
     pub setup_required: std::sync::atomic::AtomicBool,
     /// Current key pool; the dispatcher reads it per grant, settings swap it.
+    /// This handle is shared with the router's nvidia runtime: one pool, one
+    /// FIFO, no split-brain on rate-limit state.
     pub pool: PoolHandle,
     pub dispatch: Dispatcher,
+    /// The multi-provider subsystem: per-provider runtimes (pool, FIFO,
+    /// governor, circuit, coalescer), health DB, routing strategies. The
+    /// nvidia runtime's pool/governor handles above are shared with it.
+    pub router: router::RouterHandle,
     pub http: reqwest::Client,
     pub models_cache: Mutex<Option<(Instant, Bytes)>>,
     /// Models that rejected stream_options injection; never inject for them again.
@@ -459,6 +465,34 @@ fn health_probe() -> ! {
 /// Full proxy entry point — everything `main()` used to be. Lives in the
 /// library crate so the fuzz targets (fuzz/) can link the internals;
 /// src/main.rs is a shim that calls this.
+/// The serving path NVIDIA handles, shared with the router nvidia
+/// runtime: one pool, one FIFO, one governor. The pool and governor are
+/// the runtime Arc handles (Arc ptr equality holds); the dispatcher is
+/// cloned, and cloning a Dispatcher shares its queue (one run task), so
+/// the serving path and the router drain the same FIFO. A separately
+/// constructed Dispatcher would be a second independent queue.
+/// Falls back to fresh handles when nvidia is disabled or absent. The
+/// fallback pool is empty so serving fails closed, never on orphaned
+/// rate state.
+pub(crate) fn nvidia_serving_handles(
+    router: &router::RouterHandle,
+) -> (PoolHandle, Dispatcher, Arc<governor::Governor>) {
+    let nvidia_rt = router.runtime("nvidia");
+    let pool: PoolHandle = nvidia_rt
+        .as_ref()
+        .map(|rt| rt.pool.clone())
+        .unwrap_or_else(|| Arc::new(RwLock::new(Arc::new(Pool::new(vec![])))));
+    let dispatch: Dispatcher = nvidia_rt
+        .as_ref()
+        .map(|rt| rt.dispatcher.clone())
+        .unwrap_or_else(|| Dispatcher::new(pool.clone()));
+    let governor: Arc<governor::Governor> = nvidia_rt
+        .as_ref()
+        .map(|rt| rt.governor.clone())
+        .unwrap_or_default();
+    (pool, dispatch, governor)
+}
+
 #[tokio::main]
 pub async fn run() {
     if std::env::args().any(|a| a == "--health") {
@@ -569,7 +603,14 @@ pub async fn run() {
         "Whether canonical history persistence is degraded (0 = ok, 1 = degraded)."
     );
 
-    let pool: PoolHandle = Arc::new(RwLock::new(Arc::new(Pool::new(pool_specs))));
+    // The router owns every provider runtime. The serving path keeps its
+    // exact NVIDIA lane/FIFO/governor semantics by sharing the nvidia
+    // runtime's pool and governor handles: one pool, one FIFO queue.
+    let router = router::RouterHandle::build(&stored, &data_dir).unwrap_or_else(|e| {
+        tracing::error!("multi-provider router failed to build: {e}");
+        std::process::exit(1);
+    });
+    let (pool, dispatch, governor) = nvidia_serving_handles(&router);
 
     // Metrics history: finish indexing before the listener can report ready,
     // then sample the registry with contemporaneous pool capacity.
@@ -629,7 +670,7 @@ pub async fn run() {
     };
 
     let state = Arc::new(AppState {
-        dispatch: Dispatcher::new(pool.clone()),
+        dispatch,
         pool,
         http: reqwest::Client::builder()
             .connect_timeout(Duration::from_secs(10))
@@ -641,7 +682,8 @@ pub async fn run() {
         model_labels: std::sync::Mutex::new(std::collections::HashSet::new()),
         admin: Admin::new(trust_proxy),
         inflight: AtomicUsize::new(0),
-        governor: Arc::new(governor::Governor::default()),
+        governor,
+        router,
         history: hist,
         prometheus,
         config_revision: AtomicU64::new(1),
@@ -671,6 +713,8 @@ pub async fn run() {
         .route(routes::API_SETTINGS_USERS, post(settings::users))
         .route(routes::API_SETTINGS_ACCOUNT, post(settings::account))
         .route(routes::API_SETTINGS_LOCALE, post(settings::locale))
+        .route(routes::API_PROVIDERS, get(settings::providers))
+        .route(routes::API_SETTINGS_ROUTING, post(settings::routing))
         .route(
             routes::API_SETTINGS_VALIDATE_KEY,
             post(settings::validate_key),
