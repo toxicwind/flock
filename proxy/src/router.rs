@@ -710,18 +710,48 @@ impl RouterHandle {
     /// Record a failed attempt: circuit failure on 429/5xx (never on 4xx —
     /// a client error is not provider failure), health mark, lane cooldown
     /// via the granting slot's own pool.
-    pub fn finish_failure(&self, acq: &Acquired, status: u16, worker_exhausted: bool) {
+    pub fn finish_failure(
+        &self,
+        acq: &Acquired,
+        status: u16,
+        worker_exhausted: bool,
+        retry_after: Option<Duration>,
+    ) {
         let now_unix = unix_now();
         let Some(rt) = self.runtime(&acq.provider) else {
             return;
         };
         rt.metrics.errors.fetch_add(1, Ordering::Relaxed);
-        if status == 429 || status >= 500 {
+        // Lane cooldown, exactly the old serving path: a connection-level
+        // failure cools the lane 5 s with the connect label; an HTTP
+        // 429/5xx cools it for the upstream Retry-After header (default
+        // 10 s). A 4xx never cools the lane and never touches the circuit.
+        // Worker exhaustion is model-scoped: the governor drains instead
+        // of burning a lane cooldown on a failover that cannot help. The
+        // lane is spared, but the circuit still sees the failure.
+        let cooldown: Option<(String, Duration)> = if worker_exhausted {
+            None
+        } else if status == 0 {
+            Some(("connect".to_string(), Duration::from_secs(5)))
+        } else if status == 429 || status >= 500 {
+            Some((
+                status.to_string(),
+                retry_after.unwrap_or(Duration::from_secs(10)),
+            ))
+        } else {
+            None
+        };
+        if status == 0 || status == 429 || status >= 500 {
             rt.circuit.lock().unwrap().record_failure(now_unix);
             self.inner
                 .health
                 .record_health(&acq.provider, false, now_unix);
-            let backoff = backoff_for_status(status);
+        }
+        if let Some((label, backoff)) = cooldown {
+            counter!("flock_lane_cooldown_total",
+                "lane" => acq.slot.lane.to_string(),
+                "status" => label.clone())
+            .increment(1);
             acq.slot.pool.penalize(acq.slot.lane, backoff);
             self.inner.persist.op(PersistOp::Cooldown {
                 provider: acq.provider.clone(),
@@ -962,14 +992,6 @@ impl AcquireCtx {
     }
 }
 
-fn backoff_for_status(status: u16) -> Duration {
-    if status == 429 {
-        Duration::from_secs(30)
-    } else {
-        Duration::from_secs(10)
-    }
-}
-
 /// Operator view of one provider.
 #[derive(Debug, Clone)]
 pub struct ProviderView {
@@ -997,6 +1019,262 @@ pub struct ProviderModels {
     pub provider: String,
     pub models: Vec<String>,
     pub cached: bool,
+}
+
+/// Retryable upstream statuses: 429 and 5xx. A 4xx is the client's error,
+/// never the provider's: it is relayed verbatim, never retried, never
+/// failed over, and never counted against the provider's circuit.
+pub(crate) fn retryable_status(status: u16) -> bool {
+    matches!(status, 429 | 500 | 502 | 503 | 504)
+}
+
+/// Rewrite the request body's `model` field to the provider's upstream id.
+/// Non-JSON bodies, or bodies already carrying the right id, pass through
+/// untouched (zero-copy when nothing changes).
+fn rewrite_body_model(body: &Bytes, model: &str) -> Bytes {
+    let mut v: serde_json::Value = match serde_json::from_slice(body) {
+        Ok(v) => v,
+        Err(_) => return body.clone(),
+    };
+    if !v.is_object() {
+        return body.clone();
+    }
+    if v.get("model").and_then(|m| m.as_str()) == Some(model) {
+        return body.clone();
+    }
+    v["model"] = serde_json::Value::String(model.to_owned());
+    serde_json::to_vec(&v)
+        .map(Bytes::from)
+        .unwrap_or_else(|_| body.clone())
+}
+
+/// One routed buffered execution: everything the proxy knows about the
+/// request, minus proxy-specific response shaping.
+pub struct ExecuteCtx {
+    pub http: reqwest::Client,
+    pub method: reqwest::Method,
+    pub path_query: String,
+    pub content_type: Option<String>,
+    pub accept: Option<String>,
+    pub body: Bytes,
+    /// Requested model label (pre-rewrite); used for selection.
+    pub model: String,
+    /// Session identity for sticky affinity.
+    pub session: Option<String>,
+    pub deadline: Instant,
+    pub heartbeat: Duration,
+    pub request_timeout: Duration,
+    /// Conversation-affinity lane hint.
+    pub prefer_lane: Option<usize>,
+    /// Whether generation endpoints gate on the model governor.
+    pub gated_path: bool,
+    pub client_gone: Box<dyn Fn() -> bool + Send + Sync>,
+}
+
+/// Outcome of [`RouterHandle::execute_buffered`].
+pub enum ExecuteOutcome {
+    /// Upstream response; relay the body stream verbatim (coalescing off).
+    Response(reqwest::Response),
+    /// Shared buffered response (coalescing on): the leader read the full
+    /// body and published it; followers receive the same bytes.
+    Coalesced(std::sync::Arc<crate::coalescer::SharedResponse>),
+}
+
+impl RouterHandle {
+    /// Execute one buffered (non-streaming) request across providers.
+    ///
+    /// Selection orders candidates by the configured strategy; each attempt
+    /// passes the provider's full admission stack (circuit gate, token
+    /// bucket, governor permit, FIFO slot) via [`RouterHandle::acquire`],
+    /// rewrites the model to the provider's upstream id, and sends. On a
+    /// connection error or a retryable status the attempt is recorded via
+    /// [`RouterHandle::finish_failure`] (circuit, lane cooldown, worker
+    /// exhaustion) and the loop fails over to the next candidate, up to
+    /// `max_retries` total attempts. Non-retryable statuses (including 4xx)
+    /// are recorded as successes and returned to the client verbatim.
+    ///
+    /// When `enable_coalescing`, identical in-flight requests collapse onto
+    /// the leader's single upstream call (AstMatrix instantiated its
+    /// coalescer but never invoked it; here it is on the request path).
+    pub async fn execute_buffered(&self, ctx: ExecuteCtx) -> Result<ExecuteOutcome, RouteError> {
+        use crate::coalescer::{coalesce_key, Coalesce};
+        let ExecuteCtx {
+            http,
+            method,
+            path_query,
+            content_type,
+            accept,
+            body,
+            model,
+            session,
+            deadline,
+            heartbeat,
+            request_timeout,
+            prefer_lane,
+            gated_path,
+            client_gone,
+        } = ctx;
+        let routing = self.routing_config();
+        let candidates = self.select(&model, session.as_deref().unwrap_or(""), None);
+        if candidates.is_empty() {
+            return Err(RouteError::Unavailable(format!(
+                "no provider serves model '{model}'"
+            )));
+        }
+        // Coalescing is keyed on request identity and owned by the first
+        // candidate's runtime (the preferred provider for this request).
+        let mut lead: Option<crate::coalescer::Lead> = if routing.enable_coalescing {
+            match self.runtime(&candidates[0].provider) {
+                Some(rt) => {
+                    let key = coalesce_key(method.as_str(), &path_query, &body);
+                    match rt.coalescer.register(key) {
+                        Coalesce::Follow(rx) => {
+                            if let Some(shared) = rt.coalescer.wait(rx).await {
+                                return Ok(ExecuteOutcome::Coalesced(shared));
+                            }
+                            None // leader died unpublished; proceed alone
+                        }
+                        Coalesce::Lead(lead) => Some(lead),
+                    }
+                }
+                None => None,
+            }
+        } else {
+            None
+        };
+        let acquire_ctx = AcquireCtx {
+            deadline,
+            heartbeat,
+            gated_path,
+            prefer_lane,
+            session,
+            client_gone,
+        };
+        // A lone candidate retries until the deadline (exactly the old
+        // single-upstream loop); several candidates bound the failover
+        // rounds by max_retries.
+        let max_attempts = if candidates.len() == 1 {
+            usize::MAX
+        } else {
+            routing.max_retries.max(1)
+        };
+        let mut last_error = RouteError::Unavailable("no candidate attempted".to_owned());
+        let mut attempts = 0usize;
+        for candidate in candidates.iter().cycle() {
+            // The deadline is the arbiter: saturation and stubborn
+            // upstreams surface as 504, never as a failover 502.
+            if Instant::now() >= deadline {
+                return Err(RouteError::Deadline);
+            }
+            if attempts >= max_attempts {
+                break;
+            }
+            attempts += 1;
+            let acq = match self.acquire(candidate, &acquire_ctx).await {
+                Ok(a) => a,
+                Err(RouteError::RateLimited(p)) => {
+                    // Fail over to the next candidate; when every
+                    // candidate is dry the cycle repeats until the
+                    // deadline above, preserving "saturation waits".
+                    // Yield briefly so a lone dry candidate does not
+                    // hot-spin the bucket.
+                    last_error = RouteError::RateLimited(p);
+                    tokio::time::sleep(Duration::from_millis(50)).await;
+                    continue;
+                }
+                Err(RouteError::Unavailable(p)) => {
+                    last_error = RouteError::Unavailable(p);
+                    continue;
+                }
+                Err(e) => return Err(e),
+            };
+            let req_body = rewrite_body_model(&body, &acq.model);
+            let url = format!("{}{}", acq.base_url, path_query);
+            let mut req = http.request(method.clone(), &url).header(
+                reqwest::header::AUTHORIZATION,
+                format!("Bearer {}", acq.slot.key),
+            );
+            if let Some(ct) = &content_type {
+                req = req.header(reqwest::header::CONTENT_TYPE, ct.as_str());
+            }
+            if let Some(a) = &accept {
+                req = req.header(reqwest::header::ACCEPT, a.as_str());
+            }
+            let resp = req.body(req_body).timeout(request_timeout).send().await;
+            match resp {
+                Err(e) => {
+                    // Connection-level failure: no status to classify.
+                    // finish_failure(0) feeds the circuit and cools the
+                    // lane 5 s with the "connect" label, exactly the old
+                    // serving path.
+                    self.finish_failure(&acq, 0, false, None);
+                    last_error = RouteError::Unavailable(format!("{}: {e}", candidate.provider));
+                }
+                Ok(r) => {
+                    let status = r.status().as_u16();
+                    if retryable_status(status) {
+                        // Sniff the error body: worker exhaustion is
+                        // model-scoped (shared across every key), so the
+                        // governor drains instead of burning lane cooldowns
+                        // on failovers that cannot help.
+                        let retry_after = r
+                            .headers()
+                            .get(reqwest::header::RETRY_AFTER)
+                            .and_then(|v| v.to_str().ok())
+                            .and_then(|s| s.parse::<u64>().ok())
+                            .map(Duration::from_secs);
+                        let detail = r.text().await.unwrap_or_default();
+                        let exhausted = governor::is_worker_exhausted(&detail);
+                        self.finish_failure(&acq, status, exhausted, retry_after);
+                        last_error = RouteError::Unavailable(format!(
+                            "{}: upstream {status}",
+                            candidate.provider
+                        ));
+                    } else {
+                        self.finish_success(&acq, status);
+                        if let Some(lead) = lead.take() {
+                            let ct = r
+                                .headers()
+                                .get(reqwest::header::CONTENT_TYPE)
+                                .and_then(|v| v.to_str().ok())
+                                .unwrap_or("")
+                                .to_owned();
+                            // A stalled body is a gateway failure, never an empty
+                            // 200: the old relay() mapped body-read errors to
+                            // 502. The 200 headers already counted the
+                            // circuit success above (exactly the old
+                            // record-then-relay order); drop the lead so
+                            // followers proceed alone.
+                            let bytes = match r.bytes().await {
+                                Ok(b) => b,
+                                Err(_) => {
+                                    drop(lead);
+                                    return Err(RouteError::Unavailable(
+                                        "upstream body stalled".to_owned(),
+                                    ));
+                                }
+                            };
+                            let shared = std::sync::Arc::new(crate::coalescer::SharedResponse {
+                                status,
+                                content_type: ct,
+                                body: bytes,
+                            });
+                            lead.complete(crate::coalescer::SharedResponse {
+                                status: shared.status,
+                                content_type: shared.content_type.clone(),
+                                body: shared.body.clone(),
+                            });
+                            return Ok(ExecuteOutcome::Coalesced(shared));
+                        }
+                        return Ok(ExecuteOutcome::Response(r));
+                    }
+                }
+            }
+        }
+        // Dropping an uncompleted Lead releases followers to proceed alone.
+        drop(lead);
+        Err(last_error)
+    }
 }
 
 #[cfg(test)]

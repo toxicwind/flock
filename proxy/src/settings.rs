@@ -255,6 +255,11 @@ pub async fn setup_submit(State(state): State<Arc<AppState>>, req: Request) -> R
                 rpm: k.rpm.unwrap_or(40),
             });
         }
+        // A fresh setup configures the legacy single upstream: it passes any
+        // requested model through, exactly like the pre-registry proxy and
+        // the v1 migration (which seeds ["*"]). Without this, the
+        // canonical model list would 502 every model it does not name.
+        cand.nvidia_mut().models = vec!["*".to_string()];
         if let Some(ck) = &req.create_client_key {
             let secret = mint_client_secret();
             cand.client_auth.keys.push(ClientKey {

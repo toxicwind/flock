@@ -510,10 +510,11 @@ pub async fn handle(
     let raw_model = parsed
         .as_ref()
         .and_then(|v| v.get("model").and_then(|m| m.as_str()))
-        .unwrap_or("none");
+        .unwrap_or("none")
+        .to_owned();
     let ctx = Ctx {
         client,
-        model: label_model(&state, raw_model),
+        model: label_model(&state, &raw_model),
         path: label_path(uri.path()),
         started: Instant::now(),
     };
@@ -603,6 +604,7 @@ pub async fn handle(
             body,
             prefer,
             wait_deadline,
+            raw_model.as_str(),
         );
         if let Some(deadline) = request_deadline {
             match tokio::time::timeout_at(deadline.0.into(), work).await {
@@ -648,90 +650,85 @@ async fn buffered(
     body: Bytes,
     prefer: Option<usize>,
     deadline: Instant,
+    raw_model: &str,
 ) -> Response {
     let _active = crate::dispatch::scopeguard(|| gauge!("flock_active_requests").decrement(1.0));
     gauge!("flock_active_requests").increment(1.0);
-    loop {
-        // Two admission gates: a model-pressure permit (worker concurrency,
-        // held through the whole upstream exchange — dropped on every exit
-        // from this iteration), then an RPM slot.
-        let Ok(_permit) = acquire_model_permit(&state, &cfg, &ctx, deadline, || true).await else {
-            record_request(&ctx, "504");
-            return gateway_timeout(&cfg, state.pool().len());
-        };
-        let Some(slot) = reserve_slot(&state, cfg.heartbeat, deadline, prefer, || true).await
-        else {
-            record_request(&ctx, "504");
-            return gateway_timeout(&cfg, state.pool().len());
-        };
-        let sent_at = Instant::now();
-        // A non-streaming request gets an overall timeout so a stalled body read
-        // can't pin an in-flight slot forever (streaming has no such cap).
-        let resp = match upstream_request(
-            &state.http,
-            &cfg.base_url,
-            &method,
-            &path_query,
-            &headers,
-            &slot.key,
-            &body,
-        )
-        .timeout(cfg.request_timeout)
-        .send()
-        .await
-        {
-            Ok(r) => r,
-            Err(e) => {
-                tracing::warn!(lane = slot.lane, error = %e, "upstream connection error, retrying");
-                enter_cooldown(&slot, "connect", Duration::from_secs(5));
-                state
-                    .router
-                    .record_attempt("nvidia", &ctx.model, 0, sent_at.elapsed(), false);
-                continue;
-            }
-        };
-        if retryable(resp.status()) && Instant::now() < deadline {
-            let status = resp.status();
-            let backoff = backoff_for(&resp);
-            // Sniff the error body: worker exhaustion is model-scoped (shared
-            // across every key), so cooling down the lane would just burn healthy
-            // key capacity on a failover that cannot help.
-            let detail = resp.text().await.unwrap_or_default();
-            if governor::is_worker_exhausted(&detail) {
-                // record_attempt owns the single note_exhausted on the
-                // shared governor (called while the permit is still held).
-                state.router.record_attempt(
-                    "nvidia",
-                    &ctx.model,
-                    status.as_u16(),
-                    sent_at.elapsed(),
-                    true,
-                );
-                continue; // permit drops here; re-admission waits out the drain
-            }
-            tracing::info!(lane = slot.lane, %status, ?backoff, "lane in cooldown, retrying");
-            enter_cooldown(&slot, status.as_str(), backoff);
-            state.router.record_attempt(
-                "nvidia",
-                &ctx.model,
-                status.as_u16(),
-                sent_at.elapsed(),
-                false,
-            );
-            continue;
+    // Session identity for sticky affinity: the authed client plus the
+    // requested model. (AstMatrix derived it from the incoming Bearer
+    // token; the authed client name is our stable equivalent.)
+    let session = format!("{}:{}", ctx.client, raw_model);
+    let sent_at = Instant::now();
+    let ectx = crate::router::ExecuteCtx {
+        http: state.http.clone(),
+        method,
+        path_query,
+        content_type: headers
+            .get(header::CONTENT_TYPE)
+            .and_then(|v| v.to_str().ok())
+            .map(str::to_owned),
+        accept: headers
+            .get(header::ACCEPT)
+            .and_then(|v| v.to_str().ok())
+            .map(str::to_owned),
+        body,
+        model: raw_model.to_owned(),
+        session: Some(session),
+        deadline,
+        heartbeat: cfg.heartbeat,
+        request_timeout: cfg.request_timeout,
+        prefer_lane: prefer,
+        gated_path: true,
+        // The buffered path never watched for a gone client (admission used
+        // `|| true`); the request deadline still bounds every attempt.
+        client_gone: Box::new(|| false),
+    };
+    let outcome = state.router.execute_buffered(ectx).await;
+    match outcome {
+        Ok(crate::router::ExecuteOutcome::Response(resp)) => {
+            histogram!("flock_upstream_seconds", "model" => ctx.model.clone())
+                .record(sent_at.elapsed().as_secs_f64());
+            record_request(&ctx, resp.status().as_str());
+            relay(resp, &ctx).await
         }
-        histogram!("flock_upstream_seconds", "model" => ctx.model.clone())
-            .record(sent_at.elapsed().as_secs_f64());
-        record_request(&ctx, resp.status().as_str());
-        state.router.record_attempt(
-            "nvidia",
-            &ctx.model,
-            resp.status().as_u16(),
-            sent_at.elapsed(),
-            false,
-        );
-        return relay(resp, &ctx).await;
+        Ok(crate::router::ExecuteOutcome::Coalesced(shared)) => {
+            histogram!("flock_upstream_seconds", "model" => ctx.model.clone())
+                .record(sent_at.elapsed().as_secs_f64());
+            record_request(&ctx, shared.status.to_string().as_str());
+            relay_shared(&shared, &ctx)
+        }
+        Err(crate::router::RouteError::Deadline) => {
+            record_request(&ctx, "504");
+            gateway_timeout(&cfg, state.pool().len())
+        }
+        Err(crate::router::RouteError::ClientGone) => {
+            record_request(&ctx, "499");
+            bad_gateway()
+        }
+        Err(crate::router::RouteError::RateLimited(_))
+        | Err(crate::router::RouteError::Unavailable(_)) => {
+            record_request(&ctx, "502");
+            bad_gateway()
+        }
     }
+}
+
+/// Relay a coalesced shared response (the leader already read the body).
+fn relay_shared(shared: &crate::coalescer::SharedResponse, ctx: &Ctx) -> Response {
+    let status = StatusCode::from_u16(shared.status).unwrap_or(StatusCode::BAD_GATEWAY);
+    if status.is_success() {
+        record_observations(ctx, &observe_buffered(&shared.body));
+    }
+    let content_type = if shared.content_type.is_empty() {
+        "application/json".to_owned()
+    } else {
+        shared.content_type.clone()
+    };
+    Response::builder()
+        .status(status)
+        .header(header::CONTENT_TYPE, content_type)
+        .body(Body::from(shared.body.clone()))
+        .unwrap()
 }
 
 /// Streaming: commit to a 200 SSE response immediately and emit `: heartbeat`
