@@ -43,6 +43,12 @@ getrandom = "0.2"
 # the requests. Pinned exactly (project convention); no served UI — the
 # scalar/redoc crates pull JS from a CDN the dashboard CSP forbids.
 utoipa = "=5.5.0"
+# Multi-provider routing state: health, ELO, sticky sessions, circuits, lane
+# windows, cooldowns, and governor snapshots survive restarts in
+# `$DATA_DIR/flock_state.db` (WAL mode, single writer thread).
+rusqlite = { version = "0.31", features = ["bundled"] }
+# Weighted-ELO strategy draws probability-proportional candidates.
+rand = "0.8"
 
 [dev-dependencies]
 axum = "0.8"

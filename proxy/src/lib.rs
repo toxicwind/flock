@@ -1,13 +1,19 @@
 mod api;
 mod auth;
+mod circuit;
+mod coalescer;
 mod config;
 mod dispatch;
 mod governor;
+mod health;
 mod history;
 mod observation;
 mod pool;
 mod presentation;
+mod providers;
 mod proxy;
+mod ratelimit;
+mod router;
 mod routes;
 mod settings;
 
@@ -184,7 +190,7 @@ fn warn_legacy_env() {
     }
 }
 
-fn unix_now() -> u64 {
+pub(crate) fn unix_now() -> u64 {
     std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .unwrap_or_default()

@@ -159,6 +159,81 @@ impl Governor {
             );
         }
     }
+
+    // -- persistence hooks ------------------------------------------------
+    // Governor state (per-model caps, drain gaps, adjustment pacing) was
+    // memory-only. These expose it for the router's write-behind
+    // persistence; admission semantics are untouched.
+
+    /// Snapshot every governed model: (model, snapshot).
+    pub fn snapshots(&self) -> Vec<(String, GovernorSnapshot)> {
+        let now = Instant::now();
+        let now_unix = crate::unix_now();
+        let models = self.models.lock().unwrap();
+        models
+            .iter()
+            .filter(|(_, s)| s.limit > 0)
+            .map(|(model, s)| {
+                let ago = |t: Option<Instant>| {
+                    t.map(|t| now_unix.saturating_sub(now.duration_since(t).as_secs()))
+                        .unwrap_or(0)
+                };
+                (
+                    model.clone(),
+                    GovernorSnapshot {
+                        worker_limit: s.limit,
+                        last_exhausted_unix: ago(s.last_exhausted),
+                        last_adjusted_unix: ago(s.last_adjusted),
+                        blocked_until_unix: s
+                            .blocked_until
+                            .filter(|b| *b > now)
+                            .map(|b| {
+                                now_unix.saturating_add(b.duration_since(now).as_secs())
+                            })
+                            .unwrap_or(0),
+                    },
+                )
+            })
+            .collect()
+    }
+
+    /// Restore a governed model's state. Elapsed drain gaps are not
+    /// resurrected; `last_exhausted`/`last_adjusted` pacing is, so the
+    /// AIMD lifecycle continues where it left off.
+    pub fn restore(&self, model: &str, snap: GovernorSnapshot) {
+        if snap.worker_limit == 0 {
+            return;
+        }
+        let now = Instant::now();
+        let now_unix = crate::unix_now();
+        let mut models = self.models.lock().unwrap();
+        let s = models.entry(model.to_owned()).or_default();
+        s.limit = snap.worker_limit;
+        let at = |unix: u64| {
+            if unix == 0 {
+                None
+            } else {
+                Some(now - Duration::from_secs(now_unix.saturating_sub(unix)))
+            }
+        };
+        s.last_exhausted = at(snap.last_exhausted_unix);
+        s.last_adjusted = at(snap.last_adjusted_unix);
+        s.blocked_until = if snap.blocked_until_unix > now_unix {
+            Some(now + Duration::from_secs(snap.blocked_until_unix - now_unix))
+        } else {
+            None
+        };
+    }
+}
+
+/// Persisted per-model governor snapshot. Wall-clock unix seconds only, so a
+/// restart can reconstruct pacing without trusting `Instant` across boots.
+#[derive(Debug, Clone, Copy, Default, serde::Serialize, serde::Deserialize)]
+pub struct GovernorSnapshot {
+    pub worker_limit: usize,
+    pub last_exhausted_unix: u64,
+    pub last_adjusted_unix: u64,
+    pub blocked_until_unix: u64,
 }
 
 #[cfg(test)]

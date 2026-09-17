@@ -4499,7 +4499,10 @@ async fn corrupt_or_future_store_refuses_to_start() {
     expect_refuses_to_start(corrupt).await;
 
     let future = scratch_data_dir();
-    std::fs::write(future.join("config.json"), r#"{"version": 2}"#).unwrap();
+    // A store version newer than this build understands must refuse to
+    // start. (Version 2 is current since the provider-registry absorption;
+    // 99 stays "future" across version bumps.)
+    std::fs::write(future.join("config.json"), r#"{"version": 99}"#).unwrap();
     expect_refuses_to_start(future).await;
 }
 
@@ -6504,15 +6507,12 @@ async fn locale_preferences_are_fail_closed() {
 
     // Both existing admin roles may set the default. Mixed case is
     // canonicalized before the durable write. The fixture began as a
-    // pre-locale v1 document, so compare the complete store and prove that
-    // each role reaches commit even when the canonical value is idempotent.
+    // pre-locale v1 document; the first commit upgrades it to the v2
+    // provider-registry schema, so the first write is checked structurally
+    // (exactly one semantic change plus the schema upgrade) and the second
+    // -- canonical-value idempotent -- must leave the store byte-identical.
     let before_server_default = locale_store_bytes(&proxy);
-    let mut expected_server_default: serde_json::Value =
-        serde_json::from_slice(&before_server_default).unwrap();
-    expected_server_default
-        .as_object_mut()
-        .expect("locale-preferences: config object")
-        .insert("default_locale".into(), serde_json::json!("en-US"));
+    let mut v2_baseline: Option<serde_json::Value> = None;
     for (label, cookie, locale) in [
         ("admin-server-default", admin.as_str(), "EN-us"),
         ("superuser-server-default", superuser.as_str(), "en-US"),
@@ -6542,11 +6542,59 @@ async fn locale_preferences_are_fail_closed() {
         }
         let stored: serde_json::Value =
             serde_json::from_slice(&locale_store_bytes(&proxy)).unwrap();
-        if stored != expected_server_default {
-            failures.push(format!(
-                "{label}: complete store changed outside canonical default_locale; before={} after={stored} expected={expected_server_default}",
-                String::from_utf8_lossy(&before_server_default)
-            ));
+        match &v2_baseline {
+            None => {
+                // First commit: the v1 fixture is upgraded to v2 on write.
+                // Exactly one semantic change (default_locale) plus the
+                // schema upgrade (version bump, seeded provider registry).
+                if stored["default_locale"] != "en-US" {
+                    failures.push(format!(
+                        "{label}: default_locale was not canonically persisted: {stored}"
+                    ));
+                }
+                if stored["version"] != 2 {
+                    failures.push(format!(
+                        "{label}: store was not upgraded to the v2 schema on write: {stored}"
+                    ));
+                }
+                let has_nvidia = stored["providers"]
+                    .as_array()
+                    .map(|ps| {
+                        ps.iter().any(|pr| {
+                            pr["name"] == "nvidia"
+                                && pr["keys"].as_array().map(|k| k.len()).unwrap_or(0) > 0
+                        })
+                    })
+                    .unwrap_or(false);
+                if !has_nvidia {
+                    failures.push(format!(
+                        "{label}: v2 upgrade did not seed the nvidia provider registry: {stored}"
+                    ));
+                }
+                // Every other top-level field must match the pre-write bytes.
+                let mut expected_rest: serde_json::Value =
+                    serde_json::from_slice(&before_server_default).unwrap();
+                for key in ["default_locale", "version", "providers", "routing"] {
+                    expected_rest.as_object_mut().unwrap().remove(key);
+                }
+                let mut stored_rest = stored.clone();
+                for key in ["default_locale", "version", "providers", "routing"] {
+                    stored_rest.as_object_mut().unwrap().remove(key);
+                }
+                if stored_rest != expected_rest {
+                    failures.push(format!(
+                        "{label}: complete store changed outside default_locale and the v2 upgrade"
+                    ));
+                }
+                v2_baseline = Some(stored);
+            }
+            Some(baseline) => {
+                if stored != *baseline {
+                    failures.push(format!(
+                        "{label}: idempotent canonical set changed the store; before={baseline} after={stored}"
+                    ));
+                }
+            }
         }
     }
 

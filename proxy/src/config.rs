@@ -21,7 +21,12 @@ use std::time::Duration;
 use serde::{Deserialize, Serialize};
 use utoipa::ToSchema;
 
+use crate::providers::{default_providers, ProviderDef, ProviderKey, RoutingCfg};
+
 pub const FILE: &str = "config.json";
+/// Current store version. Version 1 stores (the old single-`upstream` shape)
+/// are migrated in memory on load; see [`migrate_v1`].
+pub const CURRENT_VERSION: u32 = 2;
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct StoredConfig {
@@ -31,6 +36,15 @@ pub struct StoredConfig {
     pub default_locale: String,
     #[serde(default)]
     pub upstream: Upstream,
+    /// The multi-provider registry. Absent in version 1 stores — migrated
+    /// from `upstream` on load. Always contains the 13 seeded providers;
+    /// operators disable providers via `enabled: false`, never by deleting
+    /// the record (the NVIDIA record is the NIM key store of truth).
+    #[serde(default = "default_providers")]
+    pub providers: Vec<ProviderDef>,
+    /// Provider routing knobs. Absent in version 1 stores.
+    #[serde(default)]
+    pub routing: RoutingCfg,
     #[serde(default)]
     pub client_auth: ClientAuth,
     #[serde(default)]
@@ -216,7 +230,7 @@ impl Role {
 }
 
 fn default_version() -> u32 {
-    1
+    CURRENT_VERSION
 }
 fn default_locale() -> String {
     crate::presentation::DEFAULT_LOCALE.to_owned()
@@ -271,18 +285,21 @@ impl StoredConfig {
         self.users.iter_mut().find(|u| u.username == username)
     }
 
-    /// Every stored key as a pool lane spec. Disabled keys ride along as
-    /// state carriers so a disable→enable cycle can't reset their windows.
-    pub fn pool_specs(&self) -> Vec<crate::pool::LaneSpec> {
-        self.upstream
-            .nim_keys
+    /// Every stored key of one provider as pool lane specs. Disabled keys
+    /// ride along as state carriers so a disable→enable cycle can't reset
+    /// their windows.
+    pub fn provider_pool_specs(&self, provider: &str) -> Vec<crate::pool::LaneSpec> {
+        self.providers
             .iter()
-            .map(|k| crate::pool::LaneSpec {
-                key: k.key.clone(),
-                rpm: k.rpm,
-                enabled: k.enabled,
-            })
-            .collect()
+            .find(|p| p.name == provider)
+            .map(|p| p.lane_specs())
+            .unwrap_or_default()
+    }
+
+    /// The NVIDIA lane specs. The old single-pool callers used this; the
+    /// router builds one pool per provider via [`Self::provider_pool_specs`].
+    pub fn pool_specs(&self) -> Vec<crate::pool::LaneSpec> {
+        self.provider_pool_specs("nvidia")
     }
 
     /// Derive the immutable runtime snapshot the request paths consume.
@@ -334,32 +351,128 @@ pub fn load(dir: &Path) -> Result<Option<StoredConfig>, String> {
         Err(e) if e.kind() == io::ErrorKind::NotFound => return Ok(None),
         Err(e) => return Err(format!("cannot read {}: {e}", path.display())),
     };
-    let sc: StoredConfig = serde_json::from_str(&raw).map_err(|e| {
+    let mut sc: StoredConfig = serde_json::from_str(&raw).map_err(|e| {
         format!(
             "{} is corrupt ({e}); restore it from backup, or delete it to re-run first-time setup (this discards all settings and keys)",
             path.display()
         )
     })?;
-    if sc.version > 1 {
+    if sc.version == 1 {
+        // Version 1 stores predate the provider registry: the old single
+        // `upstream` block was always NVIDIA-flavored, so it becomes the
+        // nvidia provider. The migration is in-memory and idempotent — the
+        // file itself is upgraded to version 2 on the next settings save.
+        sc = migrate_v1(sc);
+    } else if sc.version > CURRENT_VERSION {
         return Err(format!(
-            "{} has version {} but this build understands version 1; upgrade flock",
+            "{} has version {} but this build understands version {CURRENT_VERSION}; upgrade flock",
             path.display(),
             sc.version
         ));
+    }
+    // A version 2 file with an explicitly emptied provider list is
+    // degenerate; restore the seeded registry (operators disable providers,
+    // they do not delete the records).
+    if sc.providers.is_empty() {
+        sc.providers = default_providers();
     }
     validate(&sc)?;
     Ok(Some(sc))
 }
 
+/// Migrate a version 1 store (single `upstream` block) to the version 2
+/// provider registry. The old upstream was always the NVIDIA lane, so its
+/// base URL and NIM keys become the `nvidia` provider with a wildcard model
+/// list (the old proxy passed any requested model through). The remaining
+/// twelve AstMatrix providers are seeded enabled-but-keyless: they appear in
+/// the operator UI ready for keys, but `usable()` keeps them out of routing
+/// until key material exists.
+fn migrate_v1(mut sc: StoredConfig) -> StoredConfig {
+    let nvidia = ProviderDef {
+        name: "nvidia".to_string(),
+        base_url: sc.upstream.base_url.clone(),
+        keys: sc
+            .upstream
+            .nim_keys
+            .iter()
+            .map(|k| ProviderKey {
+                key: k.key.clone(),
+                key_env: String::new(),
+                owner: k.owner.clone(),
+                enabled: k.enabled,
+                rpm: k.rpm,
+            })
+            .collect(),
+        models: vec!["*".to_string()],
+        display_name: "NVIDIA".to_string(),
+        enabled: true,
+        ..ProviderDef::default()
+    };
+    let mut providers = vec![nvidia];
+    providers.extend(
+        default_providers()
+            .into_iter()
+            .filter(|p| p.name != "nvidia"),
+    );
+    sc.providers = providers;
+    sc.routing = RoutingCfg::default();
+    sc.version = CURRENT_VERSION;
+    sc
+}
+
 /// Persist atomically with owner-only permissions: write config.json.tmp
 /// (0600), fsync, rename over config.json, fsync the directory. A crash at
 /// any point leaves either the old file or the new one, never a torn mix.
+///
+/// Before writing, the legacy `upstream` block is mirrored from the `nvidia`
+/// provider, so a pre-absorption (version 1) binary can still boot this file
+/// in a downgrade. The providers registry is the source of truth; `upstream`
+/// is a downgrade mirror only.
+impl StoredConfig {
+    /// The NVIDIA provider record (source of truth for NIM keys).
+    pub fn nvidia(&self) -> Option<&ProviderDef> {
+        self.providers.iter().find(|p| p.name == "nvidia")
+    }
+
+    /// Mutable access to the NVIDIA provider record.
+    pub fn nvidia_mut(&mut self) -> &mut ProviderDef {
+        self.providers
+            .iter_mut()
+            .find(|p| p.name == "nvidia")
+            .expect("nvidia provider is always seeded")
+    }
+
+    /// Copy the NVIDIA provider's base URL and keys into the legacy
+    /// `upstream` block. The providers registry is the source of truth;
+    /// `upstream` is the downgrade mirror. Idempotent: call before any
+    /// validate/persist/publish so the in-memory store, the file, and the
+    /// runtime snapshot all agree.
+    pub fn sync_upstream_mirror(&mut self) {
+        if let Some(nv) = self.providers.iter().find(|p| p.name == "nvidia") {
+            self.upstream.base_url = nv.base_url.clone();
+            self.upstream.nim_keys = nv
+                .keys
+                .iter()
+                .map(|k| NimKey {
+                    key: k.key.clone(),
+                    owner: k.owner.clone(),
+                    enabled: k.enabled,
+                    rpm: k.rpm,
+                })
+                .collect();
+        }
+    }
+}
+
 pub fn save(dir: &Path, sc: &StoredConfig) -> io::Result<()> {
     fs::create_dir_all(dir)?;
+    let mut sc = sc.clone();
+    sc.version = CURRENT_VERSION;
+    sc.sync_upstream_mirror();
     let tmp = tmp_path(dir);
     // Recreate rather than truncate so the 0600 mode always applies.
     let _ = fs::remove_file(&tmp);
-    let data = serde_json::to_vec_pretty(sc).expect("config serializes");
+    let data = serde_json::to_vec_pretty(&sc).expect("config serializes");
     {
         let mut opts = fs::OpenOptions::new();
         opts.write(true).create_new(true);
@@ -417,8 +530,11 @@ pub fn check_base_url(base: &str) -> Result<(), String> {
 
 /// One shared rulebook for the wizard, every settings endpoint, and boot.
 pub fn validate(sc: &StoredConfig) -> Result<(), String> {
-    if sc.version != 1 {
-        return Err(format!("version must be 1, got {}", sc.version));
+    if sc.version != CURRENT_VERSION {
+        return Err(format!(
+            "version must be {CURRENT_VERSION}, got {}",
+            sc.version
+        ));
     }
     validate_stored_locale("default_locale", &sc.default_locale)?;
     let l = &sc.limits;
@@ -477,15 +593,21 @@ pub fn validate(sc: &StoredConfig) -> Result<(), String> {
     }
 
     let mut keys = std::collections::HashSet::new();
-    for k in &sc.upstream.nim_keys {
-        if k.key.trim().is_empty() {
-            return Err("a NIM key is empty".into());
+    for k in sc
+        .providers
+        .iter()
+        .find(|p| p.name == "nvidia")
+        .map(|p| p.keys.as_slice())
+        .unwrap_or(&[])
+    {
+        if k.key.trim().is_empty() && k.key_env.trim().is_empty() {
+            return Err("a NIM key has neither key nor key_env".into());
         }
-        if !keys.insert(k.key.as_str()) {
+        if !k.key.is_empty() && !keys.insert(k.key.as_str()) {
             return Err("duplicate NIM key".into());
         }
-        if !(1..=10_000).contains(&k.rpm) {
-            return Err(format!("NIM key rpm {} out of range 1-10000", k.rpm));
+        if !(0..=10_000).contains(&k.rpm) {
+            return Err(format!("NIM key rpm {} out of range 0-10000", k.rpm));
         }
     }
 
@@ -519,8 +641,17 @@ pub fn validate(sc: &StoredConfig) -> Result<(), String> {
     // Ownership + the pool-floor invariant apply once the store is claimed
     // (has a superuser). A recovery store — users hand-emptied on the volume
     // — legitimately holds orphan-owned keys until the wizard reassigns them.
+    //
+    // The NIM keys live on the `nvidia` provider now; the legacy `upstream`
+    // block is a downgrade mirror kept in sync by `save`.
+    let nvidia_keys: &[ProviderKey] = sc
+        .providers
+        .iter()
+        .find(|p| p.name == "nvidia")
+        .map(|p| p.keys.as_slice())
+        .unwrap_or(&[]);
     if let Some(su) = sc.superuser() {
-        for k in &sc.upstream.nim_keys {
+        for k in nvidia_keys {
             if sc.user(&k.owner).is_none() {
                 return Err(format!("NIM key owner {:?} is not a user", k.owner));
             }
@@ -533,9 +664,7 @@ pub fn validate(sc: &StoredConfig) -> Result<(), String> {
                 ));
             }
         }
-        if !sc
-            .upstream
-            .nim_keys
+        if !nvidia_keys
             .iter()
             .any(|k| k.enabled && k.owner == su.username)
         {
@@ -543,6 +672,66 @@ pub fn validate(sc: &StoredConfig) -> Result<(), String> {
                 "the superuser must own at least one enabled NIM key (the pool floor)".into(),
             );
         }
+    }
+    validate_providers(sc)?;
+    validate_routing(&sc.routing)?;
+    Ok(())
+}
+
+/// Provider registry validation: names unique and non-empty, base URLs
+/// sane, key records well-formed, weights finite.
+fn validate_providers(sc: &StoredConfig) -> Result<(), String> {
+    let mut names = std::collections::HashSet::new();
+    for p in &sc.providers {
+        if p.name.trim().is_empty() {
+            return Err("a provider name is empty".into());
+        }
+        if !names.insert(p.name.as_str()) {
+            return Err(format!("duplicate provider {:?}", p.name));
+        }
+        if !p.base_url.is_empty() {
+            check_base_url(&p.base_url)?;
+        }
+        if !p.weight.is_finite() || p.weight < 0.0 {
+            return Err(format!(
+                "provider {:?} weight must be a finite number >= 0",
+                p.name
+            ));
+        }
+        let mut materials = std::collections::HashSet::new();
+        for k in &p.keys {
+            if k.key.trim().is_empty() && k.key_env.trim().is_empty() {
+                return Err(format!(
+                    "provider {:?} has a key with neither key nor key_env",
+                    p.name
+                ));
+            }
+            if !(0..=10_000).contains(&k.rpm) {
+                return Err(format!(
+                    "provider {:?} key rpm {} out of range 0-10000",
+                    p.name, k.rpm
+                ));
+            }
+            if !k.key.is_empty() && !materials.insert(k.key.as_str()) {
+                return Err(format!("provider {:?} has a duplicate key", p.name));
+            }
+        }
+    }
+    Ok(())
+}
+
+fn validate_routing(r: &RoutingCfg) -> Result<(), String> {
+    if r.max_parallel == 0 {
+        return Err("routing max_parallel must be >= 1".into());
+    }
+    if r.max_retries == 0 {
+        return Err("routing max_retries must be >= 1".into());
+    }
+    if r.fifo_max == 0 {
+        return Err("routing fifo_max must be >= 1".into());
+    }
+    if r.probe_interval_secs == 0 {
+        return Err("routing probe_interval_secs must be >= 1".into());
     }
     Ok(())
 }
@@ -584,6 +773,23 @@ mod tests {
     }
 
     fn claimed() -> StoredConfig {
+        // The nvidia provider is the source of truth for NIM keys; `upstream`
+        // is the downgrade mirror `save` keeps in sync.
+        let nvidia = ProviderDef {
+            name: "nvidia".into(),
+            base_url: default_base_url(),
+            keys: vec![ProviderKey {
+                key: "nvapi-one".into(),
+                key_env: String::new(),
+                owner: "root".into(),
+                enabled: true,
+                rpm: 40,
+            }],
+            models: vec!["*".into()],
+            display_name: "NVIDIA".into(),
+            enabled: true,
+            ..ProviderDef::default()
+        };
         StoredConfig {
             users: vec![User {
                 username: "root".into(),
@@ -600,6 +806,7 @@ mod tests {
                     rpm: 40,
                 }],
             },
+            providers: vec![nvidia],
             ..Default::default()
         }
     }
@@ -632,7 +839,7 @@ mod tests {
     #[test]
     fn empty_object_parses_to_defaults() {
         let sc: StoredConfig = serde_json::from_str("{}").unwrap();
-        assert_eq!(sc.version, 1);
+        assert_eq!(sc.version, CURRENT_VERSION);
         assert_eq!(sc.limits.max_wait_secs, 900);
         assert_eq!(sc.limits.heartbeat_secs, 10);
         assert_eq!(sc.client_auth.mode, Mode::Keyed, "fail closed by default");
@@ -703,12 +910,58 @@ mod tests {
     }
 
     #[test]
-    fn dashboard_defaults_are_backward_compatible() {
-        let sc: StoredConfig = serde_json::from_str(r#"{"version":1}"#).unwrap();
+    fn dashboard_defaults_are_stable() {
+        let sc: StoredConfig = serde_json::from_str(r#"{"version":2}"#).unwrap();
         assert_eq!(sc.history.days, 30);
         assert_eq!(sc.dashboard.default_window_days, 30);
         assert_eq!(sc.dashboard.slo_target_percent, 99.9);
         validate(&sc).unwrap();
+    }
+
+    #[test]
+    fn v1_store_migrates_to_provider_registry() {
+        // A version 1 store carries the old single-`upstream` block; load()
+        // must fold it into the nvidia provider and seed the other twelve
+        // AstMatrix providers keyless.
+        let dir = TestDir::new();
+        let raw = r#"{
+          "version": 1,
+          "upstream": {
+            "base_url": "https://integrate.api.nvidia.com",
+            "nim_keys": [{"key":"nvapi-one","owner":"root","enabled":true,"rpm":40}]
+          },
+          "client_auth": {"mode":"keyed","keys":[]},
+          "users": [
+            {"username":"root","password_hash":"pbkdf2-sha256$1000$aa$bb","role":"superuser"}
+          ]
+        }"#;
+        fs::write(store_path(&dir.0), raw).unwrap();
+        let sc = load(&dir.0).unwrap().expect("v1 store must load");
+        assert_eq!(sc.version, CURRENT_VERSION);
+        validate(&sc).expect("migrated store must validate");
+        assert_eq!(sc.providers.len(), 13, "all AstMatrix providers seeded");
+        let nv = sc.providers.iter().find(|p| p.name == "nvidia").unwrap();
+        assert_eq!(nv.base_url, "https://integrate.api.nvidia.com");
+        assert_eq!(nv.keys.len(), 1);
+        assert_eq!(nv.keys[0].key, "nvapi-one");
+        assert_eq!(nv.keys[0].owner, "root");
+        assert_eq!(nv.models, vec!["*".to_string()]);
+        // The other providers are present but unusable without key material.
+        let or = sc.providers.iter().find(|p| p.name == "openrouter").unwrap();
+        assert!(or.enabled);
+        assert!(!or.usable());
+        // Saving persists version 2 and mirrors the legacy upstream block.
+        save(&dir.0, &sc).unwrap();
+        let persisted: serde_json::Value =
+            serde_json::from_str(&fs::read_to_string(store_path(&dir.0)).unwrap()).unwrap();
+        assert_eq!(persisted["version"], serde_json::json!(2));
+        assert_eq!(
+            persisted["upstream"]["nim_keys"][0]["key"],
+            serde_json::json!("nvapi-one")
+        );
+        // And it loads back identically.
+        let again = load(&dir.0).unwrap().expect("round-trip");
+        assert_eq!(again.providers.len(), 13);
     }
 
     #[test]
@@ -884,7 +1137,7 @@ mod tests {
     fn locale_store_migration_refuses_corrupt_and_future_bytes_without_mutation() {
         for (label, raw) in [
             ("corrupt", b"{ not json".as_slice()),
-            ("future", br#"{"version":2}"#.as_slice()),
+            ("future", br#"{"version":3}"#.as_slice()),
         ] {
             let dir = TestDir::new();
             fs::write(store_path(&dir.0), raw).unwrap();
@@ -951,9 +1204,9 @@ mod tests {
     #[test]
     fn future_version_refuses_to_load() {
         let dir = TestDir::new();
-        fs::write(store_path(&dir.0), r#"{"version": 2}"#).unwrap();
+        fs::write(store_path(&dir.0), r#"{"version": 3}"#).unwrap();
         let err = load(&dir.0).unwrap_err();
-        assert!(err.contains("version 2"), "{err}");
+        assert!(err.contains("version 3"), "{err}");
     }
 
     #[test]
@@ -989,25 +1242,26 @@ mod tests {
                 "empty hash",
                 Box::new(|sc| sc.users[0].password_hash.clear()),
             ),
-            ("rpm zero", Box::new(|sc| sc.upstream.nim_keys[0].rpm = 0)),
+            // rpm 0 means "inherit the provider default" and stays valid;
+            // above the ceiling is still rejected.
             (
-                "rpm huge",
-                Box::new(|sc| sc.upstream.nim_keys[0].rpm = 10_001),
+                "rpm over ceiling",
+                Box::new(|sc| sc.nvidia_mut().keys[0].rpm = 10_001),
             ),
             (
                 "dup nim key",
                 Box::new(|sc| {
-                    let k = sc.upstream.nim_keys[0].clone();
-                    sc.upstream.nim_keys.push(k);
+                    let k = sc.nvidia_mut().keys[0].clone();
+                    sc.nvidia_mut().keys.push(k);
                 }),
             ),
             (
                 "dangling owner",
-                Box::new(|sc| sc.upstream.nim_keys[0].owner = "ghost".into()),
+                Box::new(|sc| sc.nvidia_mut().keys[0].owner = "ghost".into()),
             ),
             (
                 "superuser without enabled key",
-                Box::new(|sc| sc.upstream.nim_keys[0].enabled = false),
+                Box::new(|sc| sc.nvidia_mut().keys[0].enabled = false),
             ),
             (
                 "heartbeat >= max_wait",
@@ -1016,7 +1270,7 @@ mod tests {
             ("zero inflight", Box::new(|sc| sc.limits.max_inflight = 0)),
             (
                 "bad base_url",
-                Box::new(|sc| sc.upstream.base_url = "ftp://x".into()),
+                Box::new(|sc| sc.nvidia_mut().base_url = "ftp://x".into()),
             ),
             (
                 "bad governor cap",
@@ -1024,7 +1278,7 @@ mod tests {
                     sc.governor.overrides.insert("m".into(), 0);
                 }),
             ),
-            ("version not 1", Box::new(|sc| sc.version = 2)),
+            ("version unknown", Box::new(|sc| sc.version = 99)),
             (
                 "heartbeat zero",
                 Box::new(|sc| sc.limits.heartbeat_secs = 0),
@@ -1035,7 +1289,7 @@ mod tests {
             ),
             (
                 "empty nim key",
-                Box::new(|sc| sc.upstream.nim_keys[0].key = "   ".into()),
+                Box::new(|sc| sc.nvidia_mut().keys[0].key = "   ".into()),
             ),
             (
                 "bad client key name",
@@ -1078,6 +1332,10 @@ mod tests {
             mutate(&mut sc);
             assert!(validate(&sc).is_err(), "{name} should be rejected");
         }
+        // rpm 0 is legal: the key inherits the provider's default rate.
+        let mut sc = claimed();
+        sc.nvidia_mut().keys[0].rpm = 0;
+        assert!(validate(&sc).is_ok(), "rpm 0 inherits the provider default");
     }
 
     #[test]

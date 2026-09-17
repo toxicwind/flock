@@ -252,6 +252,91 @@ impl Pool {
             *cd = until;
         }
     }
+
+    // -- persistence hooks ------------------------------------------------
+    // The 61 s lane windows and cooldowns were memory-only in the old
+    // single-pool proxy. These expose them for the router's write-behind
+    // persistence without touching any lane semantics.
+
+    /// (key, sorted unix-millis send stamps) for every lane holding state.
+    /// Only stamps inside the live 61 s window are exported.
+    pub fn lane_window_rows(&self, now_unix: u64) -> Vec<(String, Vec<u64>)> {
+        let now = Instant::now();
+        let now_ms = now_unix.saturating_mul(1000);
+        self.lanes
+            .iter()
+            .map(|l| {
+                let sent = l.sent.lock().unwrap();
+                let mut ms: Vec<u64> = sent
+                    .iter()
+                    .filter(|t| now.duration_since(**t) < WINDOW)
+                    .map(|t| {
+                        now_ms.saturating_sub(now.duration_since(*t).as_millis() as u64)
+                    })
+                    .collect();
+                ms.sort_unstable();
+                (l.key.clone(), ms)
+            })
+            .filter(|(_, ms)| !ms.is_empty())
+            .collect()
+    }
+
+    /// (key, cooldown-until unix millis) for lanes currently cooling down.
+    pub fn cooldown_rows(&self, now_unix: u64) -> Vec<(String, u64)> {
+        let now = Instant::now();
+        let now_ms = now_unix.saturating_mul(1000);
+        self.lanes
+            .iter()
+            .filter_map(|l| {
+                let until = *l.cooldown_until.lock().unwrap();
+                if until > now {
+                    Some((
+                        l.key.clone(),
+                        now_ms.saturating_add(until.duration_since(now).as_millis() as u64),
+                    ))
+                } else {
+                    None
+                }
+            })
+            .collect()
+    }
+
+    /// Restore one lane's window from persisted unix-millis stamps. Stamps
+    /// older than the 61 s window are dropped — honoring them would
+    /// over-throttle after a restart.
+    pub fn restore_lane_window(&self, key: &str, sent_ms: &[u64], now_unix: u64) {
+        let now = Instant::now();
+        let now_ms = now_unix.saturating_mul(1000);
+        if let Some(lane) = self.lanes.iter().find(|l| l.key == key) {
+            let mut sent = lane.sent.lock().unwrap();
+            for &ms in sent_ms {
+                let age_ms = now_ms.saturating_sub(ms);
+                if age_ms < WINDOW.as_millis() as u64 {
+                    sent.push_back(now - Duration::from_millis(age_ms));
+                }
+            }
+        }
+    }
+
+    /// Restore a cooldown. Already-elapsed values are ignored.
+    pub fn restore_cooldown(&self, key: &str, until_ms: u64, now_unix: u64) {
+        let now_ms = now_unix.saturating_mul(1000);
+        if until_ms <= now_ms {
+            return;
+        }
+        if let Some(lane) = self.lanes.iter().find(|l| l.key == key) {
+            let until = Instant::now() + Duration::from_millis(until_ms - now_ms);
+            let mut cd = lane.cooldown_until.lock().unwrap();
+            if *cd < until {
+                *cd = until;
+            }
+        }
+    }
+
+    /// The key behind a lane index, for cooldown persistence at penalize time.
+    pub fn lane_key(&self, lane: usize) -> Option<String> {
+        self.lanes.get(lane).map(|l| l.key.clone())
+    }
 }
 
 #[cfg(test)]

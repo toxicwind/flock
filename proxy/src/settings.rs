@@ -18,7 +18,8 @@ use crate::api::{
     MintedClientKey, NimKeyRow, OkResponse, PoolSummary, ServerSettings, SetupResponse, UserRow,
     ValidateKeyResponse,
 };
-use crate::config::{self, NimKey, Role, StoredConfig, User};
+use crate::config::{self, Role, StoredConfig, User};
+use crate::providers::ProviderKey;
 use crate::{auth, AppState};
 
 /// Commit a candidate store: validate, persist, swap the runtime config and
@@ -28,8 +29,12 @@ use crate::{auth, AppState};
 pub fn commit(
     state: &AppState,
     guard: &mut StoredConfig,
-    candidate: StoredConfig,
+    mut candidate: StoredConfig,
 ) -> Result<(), String> {
+    // The providers registry is the source of truth; sync the legacy
+    // `upstream` mirror before validate/persist/publish so the in-memory
+    // store, the file, and the runtime snapshot all agree.
+    candidate.sync_upstream_mirror();
     config::validate(&candidate)?;
     config::save(&state.data_dir, &candidate)
         .map_err(|e| format!("cannot write the config store: {e}"))?;
@@ -221,7 +226,7 @@ pub async fn setup_submit(State(state): State<Arc<AppState>>, req: Request) -> R
         // Lockout recovery: keys already in the store belonged to hand-deleted
         // users; the new superuser adopts any orphans, restoring both the
         // ownership rule and the pool-floor invariant.
-        for k in &mut cand.upstream.nim_keys {
+        for k in &mut cand.nvidia_mut().keys {
             if k.owner != req.username {
                 k.owner.clone_from(&req.username);
             }
@@ -232,11 +237,12 @@ pub async fn setup_submit(State(state): State<Arc<AppState>>, req: Request) -> R
             }
         }
         if let Some(b) = &req.base_url {
-            cand.upstream.base_url = b.trim().trim_end_matches('/').to_owned();
+            cand.nvidia_mut().base_url = b.trim().trim_end_matches('/').to_owned();
         }
         for k in &req.nim_keys {
-            cand.upstream.nim_keys.push(NimKey {
+            cand.nvidia_mut().keys.push(ProviderKey {
                 key: k.key.trim().to_owned(),
+                key_env: String::new(),
                 owner: req.username.clone(),
                 enabled: true,
                 rpm: k.rpm.unwrap_or(40),
@@ -615,8 +621,9 @@ pub async fn nim_keys(
     let mut cand = guard.clone();
     match (req.add, req.remove, req.set) {
         (Some(add), None, None) => {
-            cand.upstream.nim_keys.push(NimKey {
+            cand.nvidia_mut().keys.push(ProviderKey {
                 key: add.key.trim().to_owned(),
+                key_env: String::new(),
                 owner: username,
                 enabled: true,
                 rpm: add.rpm.unwrap_or(40),
@@ -624,22 +631,22 @@ pub async fn nim_keys(
         }
         (None, Some(fp), None) => {
             let Some(pos) = cand
-                .upstream
-                .nim_keys
+                .nvidia_mut()
+                .keys
                 .iter()
                 .position(|k| fingerprint(&k.key) == fp)
             else {
                 return bad_request("no such key");
             };
-            if !role.is_admin() && cand.upstream.nim_keys[pos].owner != username {
+            if !role.is_admin() && cand.nvidia_mut().keys[pos].owner != username {
                 return forbidden("you can only remove your own keys");
             }
-            cand.upstream.nim_keys.remove(pos);
+            cand.nvidia_mut().keys.remove(pos);
         }
         (None, None, Some(set)) => {
             let Some(k) = cand
-                .upstream
-                .nim_keys
+                .nvidia_mut()
+                .keys
                 .iter_mut()
                 .find(|k| fingerprint(&k.key) == set.fingerprint)
             else {
@@ -829,7 +836,7 @@ pub async fn upstream(
             None => return stale_session(),
         }
         let mut cand = guard.clone();
-        cand.upstream.base_url = req.base_url.trim().trim_end_matches('/').to_owned();
+        cand.nvidia_mut().base_url = req.base_url.trim().trim_end_matches('/').to_owned();
         commit(&state, &mut guard, cand)
     };
     match result {
@@ -908,8 +915,9 @@ pub async fn server(
             None => return stale_session(),
         }
         let mut cand = guard.clone();
-        let upstream_changed = cand.upstream.base_url != req.base_url.trim().trim_end_matches('/');
-        cand.upstream.base_url = req.base_url.trim().trim_end_matches('/').to_owned();
+        let nv_base = cand.nvidia_mut().base_url.clone();
+        let upstream_changed = nv_base != req.base_url.trim().trim_end_matches('/');
+        cand.nvidia_mut().base_url = req.base_url.trim().trim_end_matches('/').to_owned();
         replace_limits(&mut cand, req.limits);
         commit(&state, &mut guard, cand).map(|()| upstream_changed)
     };
@@ -1128,7 +1136,7 @@ pub async fn users(
                 return forbidden("the superuser can never be deleted");
             }
             cand.users.retain(|u| u.username != target);
-            cand.upstream.nim_keys.retain(|k| k.owner != target);
+            cand.nvidia_mut().keys.retain(|k| k.owner != target);
             cand.client_auth.keys.retain(|c| c.owner != target);
         }
         (None, None, Some(reset), None) => {
