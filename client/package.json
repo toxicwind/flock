@@ -1,5 +1,5 @@
 {
-  "name": "nim-client",
+  "name": "flock-client",
   "version": "1.0.0",
   "description": "Unified TypeScript/JavaScript SDK for all 77 NVIDIA NIM free endpoints — chat, vision, speech, embeddings, biology, safety, and more.",
   "main": "dist/index.js",

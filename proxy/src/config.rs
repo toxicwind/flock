@@ -569,7 +569,7 @@ mod tests {
         fn new() -> Self {
             static N: AtomicU32 = AtomicU32::new(0);
             let dir = std::env::temp_dir().join(format!(
-                "nimproxy-config-test-{}-{}",
+                "flock-config-test-{}-{}",
                 std::process::id(),
                 N.fetch_add(1, Ordering::SeqCst)
             ));

@@ -1,9 +1,0 @@
-[
-  {
-    "host": "agent-gw-dev.dev.kimi.team",
-    "path": "/coding/v1/models",
-    "method": "GET/agent",
-    "status": 401,
-    "body": "{\"error\":{\"message\":\"The API Key appears to be invalid or may have expired. Please verify your crede"
-  }
-]

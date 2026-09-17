@@ -1,2 +1,0 @@
-/mnt/agents/upload/=== BRUTEFORCE NETWORK RECON ===.txt
-/mnt/agents/upload/sniper_super_system.tar.gz.txt

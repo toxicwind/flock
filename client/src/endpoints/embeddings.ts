@@ -1,4 +1,4 @@
-import { NimClient } from "../client.js";
+import { FlockClient } from "../client.js";
 import { Models } from "../models.js";
 import type { EmbeddingResponse, RerankResponse } from "../types.js";
 
@@ -14,7 +14,7 @@ export interface RerankOptions {
 }
 
 export class EmbeddingsEndpoint {
-  constructor(private client: NimClient) {}
+  constructor(private client: FlockClient) {}
 
   async embed(text: string, options: EmbedOptions = {}): Promise<number[]> {
     const response = await this.client.embed({

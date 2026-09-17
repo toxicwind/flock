@@ -4,6 +4,6 @@
 # The local image name deliberately differs from the published ghcr.io one so a
 # dev build can never shadow the pulled release image.
 services:
-  nim-proxy:
-    image: nim-proxy:dev
+  flock:
+    image: flock:dev
     build: .

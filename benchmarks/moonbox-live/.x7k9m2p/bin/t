@@ -1,2 +1,0 @@
-#!/bin/bash
-/usr/bin/time -f "real %e user %U sys %S maxrss %M" "$@"

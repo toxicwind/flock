@@ -56,7 +56,7 @@ impl Dispatcher {
     /// the pool.
     pub fn acquire(&self, deadline: Instant, prefer: Option<usize>) -> oneshot::Receiver<Slot> {
         let (reply, rx) = oneshot::channel();
-        gauge!("nimproxy_queue_depth").increment(1.0);
+        gauge!("flock_queue_depth").increment(1.0);
         let _ = self.queue.send(Waiter {
             reply,
             deadline,
@@ -68,7 +68,7 @@ impl Dispatcher {
 
 async fn run(handle: PoolHandle, mut queue: mpsc::UnboundedReceiver<Waiter>) {
     while let Some(waiter) = queue.recv().await {
-        let _leave = scopeguard(|| gauge!("nimproxy_queue_depth").decrement(1.0));
+        let _leave = scopeguard(|| gauge!("flock_queue_depth").decrement(1.0));
         loop {
             if waiter.reply.is_closed() {
                 break; // client hung up while queued
@@ -93,7 +93,7 @@ async fn run(handle: PoolHandle, mut queue: mpsc::UnboundedReceiver<Waiter>) {
                         Some(_) if sticky => "sticky",
                         Some(_) => "spill",
                     };
-                    counter!("nimproxy_affinity_total", "result" => affinity).increment(1);
+                    counter!("flock_affinity_total", "result" => affinity).increment(1);
                     let slot = Slot {
                         pool: pool.clone(),
                         lane,

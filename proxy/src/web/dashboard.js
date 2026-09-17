@@ -20,9 +20,9 @@ function render() {
   const windowLabel = catalogMessage('dashboard.common.note.selected_time_range');
 
   /* ----- shared per-model aggregates ----- */
-  const ptok = wgroups('nimproxy_prompt_tokens_total', 'model');
-  const ctok = wgroups('nimproxy_completion_tokens_total', 'model');
-  const reqModels = wgroups('nimproxy_requests_total', 'model', l => l.path === '/v1/chat/completions');
+  const ptok = wgroups('flock_prompt_tokens_total', 'model');
+  const ctok = wgroups('flock_completion_tokens_total', 'model');
+  const reqModels = wgroups('flock_requests_total', 'model', l => l.path === '/v1/chat/completions');
   const models = [...new Set([...ctok.keys(), ...ptok.keys(), ...reqModels.keys()])].filter(m => m !== 'none');
   models.sort((a,b) => (ctok.get(b)||0) - (ctok.get(a)||0));
   let allP = 0, allC = 0;
@@ -30,29 +30,29 @@ function render() {
     allP += ptok.get(m) || 0; allC += ctok.get(m) || 0;
   }
   const wsum = name => windowed(s => sum(s.rows, name));
-  const ttftS = wsum('nimproxy_ttft_seconds_sum'), ttftN = wsum('nimproxy_ttft_seconds_count');
-  const tpsS = wsum('nimproxy_tokens_per_second_sum'), tpsN = wsum('nimproxy_tokens_per_second_count');
-  const okByModel = wgroups('nimproxy_requests_total', 'model', l => IS_2XX(l.status));
-  const errByModel = wgroups('nimproxy_requests_total', 'model', l => IS_ERR(l.status));
-  const ttftMS = wgroups('nimproxy_ttft_seconds_sum', 'model'), ttftMC = wgroups('nimproxy_ttft_seconds_count', 'model');
-  const tpsMS = wgroups('nimproxy_tokens_per_second_sum', 'model'), tpsMC = wgroups('nimproxy_tokens_per_second_count', 'model');
+  const ttftS = wsum('flock_ttft_seconds_sum'), ttftN = wsum('flock_ttft_seconds_count');
+  const tpsS = wsum('flock_tokens_per_second_sum'), tpsN = wsum('flock_tokens_per_second_count');
+  const okByModel = wgroups('flock_requests_total', 'model', l => IS_2XX(l.status));
+  const errByModel = wgroups('flock_requests_total', 'model', l => IS_ERR(l.status));
+  const ttftMS = wgroups('flock_ttft_seconds_sum', 'model'), ttftMC = wgroups('flock_ttft_seconds_count', 'model');
+  const tpsMS = wgroups('flock_tokens_per_second_sum', 'model'), tpsMC = wgroups('flock_tokens_per_second_count', 'model');
   const errRate = m => { const e = errByModel.get(m) || 0, all = e + (okByModel.get(m) || 0); return all ? e / all * 100 : NaN; };
   const errPct = m => { const v = errRate(m); return isFinite(v) ? pctOf(v / 100, v ? 1 : 0) : NO_VALUE; };
   // Quality maps shared by the model table, finish-reason panel, and scorecard.
-  const tpotMS = wgroups('nimproxy_tpot_seconds_sum', 'model'), tpotMC = wgroups('nimproxy_tpot_seconds_count', 'model');
-  const finTotal = wgroups('nimproxy_finish_reason_total', 'model');
-  const finLen = wgroups('nimproxy_finish_reason_total', 'model', l => l.reason === 'length');
-  const reasoningByModel = wgroups('nimproxy_reasoning_tokens_total', 'model');
+  const tpotMS = wgroups('flock_tpot_seconds_sum', 'model'), tpotMC = wgroups('flock_tpot_seconds_count', 'model');
+  const finTotal = wgroups('flock_finish_reason_total', 'model');
+  const finLen = wgroups('flock_finish_reason_total', 'model', l => l.reason === 'length');
+  const reasoningByModel = wgroups('flock_reasoning_tokens_total', 'model');
   const tpotAvg = m => tpotMC.get(m) ? tpotMS.get(m) / tpotMC.get(m) : NaN;
   const truncPct = m => finTotal.get(m) ? (finLen.get(m) || 0) / finTotal.get(m) * 100 : NaN;
   const reasonPct = m => ctok.get(m) ? (reasoningByModel.get(m) || 0) / ctok.get(m) * 100 : NaN;
   const pct = v => isFinite(v) ? pctOf(v / 100, v && v < 10 ? 1 : 0) : NO_VALUE;
 
   /* ----- shared proxy / capacity aggregates ----- */
-  const reqPts = rateSeries(s => sum(s.rows, 'nimproxy_requests_total'));
+  const reqPts = rateSeries(s => sum(s.rows, 'flock_requests_total'));
   const capacityPoints = (rangeData?.points || []).map(point => {
     const duration = +point.duration_seconds || 0;
-    const requestDelta = sum((point.values || []).map(asRow), 'nimproxy_requests_total');
+    const requestDelta = sum((point.values || []).map(asRow), 'flock_requests_total');
     const rpm = duration > 0 ? requestDelta / duration * 60 : 0;
     const historicalCapacity = point.capacity?.average_rpm;
     return {
@@ -68,33 +68,33 @@ function render() {
   const capRatio = capacity > 0 ? rpmNow / capacity : 0;
   // Green while there's headroom, amber approaching the cap, red once saturated.
   const capColor = capRatio >= 0.9 ? css('--red') : capRatio >= 0.7 ? css('--amber') : MED;
-  const wreq = windowed(s => sum(s.rows, 'nimproxy_requests_total'));
-  const wok = windowed(s => sum(s.rows, 'nimproxy_requests_total', l => IS_2XX(l.status)));
+  const wreq = windowed(s => sum(s.rows, 'flock_requests_total'));
+  const wok = windowed(s => sum(s.rows, 'flock_requests_total', l => IS_2XX(l.status)));
   const okRatio = wreq ? wok/wreq : 1;
   const okColor = okRatio < 0.9 ? css('--red') : okRatio < 0.99 ? css('--amber') : css('--green');
 
   /* ----- shared client aggregates ----- */
-  const cReq = wgroups('nimproxy_requests_total', 'client');
-  const cP = wgroups('nimproxy_prompt_tokens_total', 'client');
-  const cC = wgroups('nimproxy_completion_tokens_total', 'client');
+  const cReq = wgroups('flock_requests_total', 'client');
+  const cP = wgroups('flock_prompt_tokens_total', 'client');
+  const cC = wgroups('flock_completion_tokens_total', 'client');
   const clients = [...cReq.keys()].sort((a,b) => (cC.get(b)||0) - (cC.get(a)||0));
-  const streamT = wgroups('nimproxy_stream_requests_total', 'client', l => l.stream === 'true');
-  const streamF = wgroups('nimproxy_stream_requests_total', 'client', l => l.stream === 'false');
-  const toolReqs = wgroups('nimproxy_request_tools_count', 'client');
+  const streamT = wgroups('flock_stream_requests_total', 'client', l => l.stream === 'true');
+  const streamF = wgroups('flock_stream_requests_total', 'client', l => l.stream === 'false');
+  const toolReqs = wgroups('flock_request_tools_count', 'client');
   const totStreamT = [...streamT.values()].reduce((a, b) => a + b, 0);
   const totStreamF = [...streamF.values()].reduce((a, b) => a + b, 0);
   const totGen = totStreamT + totStreamF;
   const totToolReq = [...toolReqs.values()].reduce((a, b) => a + b, 0);
 
   /* ----- shared reliability / security counters ----- */
-  const shed = windowed(s => sum(s.rows, 'nimproxy_shed_total'));
-  const unauth = windowed(s => sum(s.rows, 'nimproxy_unauthorized_total'));
-  const logins = windowed(s => sum(s.rows, 'nimproxy_login_failures_total'));
-  const cooldown429 = windowed(s => sum(s.rows, 'nimproxy_lane_cooldown_total', l => l.status === '429'));
-  const cooldownOther = windowed(s => sum(s.rows, 'nimproxy_lane_cooldown_total', l => l.status !== '429'));
-  const qwS = wsum('nimproxy_queue_wait_seconds_sum'), qwN = wsum('nimproxy_queue_wait_seconds_count');
-  const upS = wsum('nimproxy_upstream_seconds_sum'), upN = wsum('nimproxy_upstream_seconds_count');
-  const statusG = wgroups('nimproxy_requests_total', 'status');
+  const shed = windowed(s => sum(s.rows, 'flock_shed_total'));
+  const unauth = windowed(s => sum(s.rows, 'flock_unauthorized_total'));
+  const logins = windowed(s => sum(s.rows, 'flock_login_failures_total'));
+  const cooldown429 = windowed(s => sum(s.rows, 'flock_lane_cooldown_total', l => l.status === '429'));
+  const cooldownOther = windowed(s => sum(s.rows, 'flock_lane_cooldown_total', l => l.status !== '429'));
+  const qwS = wsum('flock_queue_wait_seconds_sum'), qwN = wsum('flock_queue_wait_seconds_count');
+  const upS = wsum('flock_upstream_seconds_sum'), upN = wsum('flock_upstream_seconds_count');
+  const statusG = wgroups('flock_requests_total', 'status');
   const observationFields = new Set([
     'prompt_tokens', 'completion_tokens', 'total_tokens', 'cached_tokens', 'reasoning_tokens',
   ]);
@@ -102,7 +102,7 @@ function render() {
   const observationCounts = Object.fromEntries(observationResults.map(result => [result, 0]));
   let observationPresent = false;
   for (const row of last.rows) {
-    if (row.name !== 'nimproxy_usage_observations_total'
+    if (row.name !== 'flock_usage_observations_total'
         || !observationFields.has(row.labels.field)
         || !observationResults.includes(row.labels.result)
         || !Number.isFinite(+row.value) || +row.value < 0) continue;
@@ -153,10 +153,10 @@ function renderOverview(c) {
   const { windowLabel, capRatio, capColor, okRatio, okColor, wreq, wok, allP, allC,
     reqPts, rows, shed, unauth, logins, cooldown429, rpmNow, capacity, curRpm,
     models, ctok, clients, cC, errRate, observationQuality } = c;
-  const ctokPts = rateSeries(s => sum(s.rows, 'nimproxy_completion_tokens_total'));
+  const ctokPts = rateSeries(s => sum(s.rows, 'flock_completion_tokens_total'));
   const okPts = samples.slice(1).map((s, i) => {
-    const dr = sum(s.rows, 'nimproxy_requests_total') - sum(samples[i].rows, 'nimproxy_requests_total');
-    const dok = sum(s.rows, 'nimproxy_requests_total', l => IS_2XX(l.status)) - sum(samples[i].rows, 'nimproxy_requests_total', l => IS_2XX(l.status));
+    const dr = sum(s.rows, 'flock_requests_total') - sum(samples[i].rows, 'flock_requests_total');
+    const dok = sum(s.rows, 'flock_requests_total', l => IS_2XX(l.status)) - sum(samples[i].rows, 'flock_requests_total', l => IS_2XX(l.status));
     return dr > 0 ? { t: s.t, v: Math.max(0, Math.min(100, dok / dr * 100)) } : null;
   }).filter(Boolean);
   kpiCards($('o-kpis'), [
@@ -178,8 +178,8 @@ function renderOverview(c) {
     'dashboard.common.kpi.success_rate', errorCooldownSummary(
       errShare, cooldown429));
   $('o-health').innerHTML =
-    metricRow(catalogMessage('dashboard.common.row.active_now'), fmt(sum(rows, 'nimproxy_active_requests'))) +
-    metricRow(catalogMessage('dashboard.common.row.queued'), fmt(sum(rows, 'nimproxy_queue_depth'))) +
+    metricRow(catalogMessage('dashboard.common.row.active_now'), fmt(sum(rows, 'flock_active_requests'))) +
+    metricRow(catalogMessage('dashboard.common.row.queued'), fmt(sum(rows, 'flock_queue_depth'))) +
     metricRow(catalogMessage('dashboard.overview.row.observation_quality'), observationQuality.value, observationQuality.tone) +
     metricRow(catalogMessage('dashboard.common.row.rate_limit_cooldowns'), fmt(cooldown429), cooldown429 > 0 ? 'warn' : 'zero') +
     metricRow(catalogMessage('dashboard.common.row.dropped'), fmt(shed), shed > 0 ? 'crit' : 'zero') +
@@ -196,9 +196,9 @@ function renderOverview(c) {
       `<div data-style="text-align:right"><div class="l">p95</div><div class="v" data-style="color:var(--ink-2)">${fmtV(p95)}</div></div></div></div>`;
   };
   const q = (metric, f) => { const b = wbuckets(metric, f); return [quantile(b, 0.5), quantile(b, 0.95)]; };
-  const [t50, t95] = q('nimproxy_ttft_seconds');
-  const [s50, s95] = q('nimproxy_tokens_per_second', l => l.source === 'usage');
-  const [i50, i95] = q('nimproxy_tpot_seconds');
+  const [t50, t95] = q('flock_ttft_seconds');
+  const [s50, s95] = q('flock_tokens_per_second', l => l.source === 'usage');
+  const [i50, i95] = q('flock_tpot_seconds');
   $('o-perf').innerHTML =
     perfBlock(catalogMessage('dashboard.models.ttft.heading'), catalogMessage('dashboard.overview.perf.lower_is_better'), t50, t95, secs) +
     perfBlock(catalogMessage('dashboard.models.genspeed.heading'), catalogMessage('dashboard.overview.perf.higher_is_better'), s50, s95, v => isFinite(v) ? fmt(v) + ' tok/s' : '–') +
@@ -222,23 +222,23 @@ function renderModels(c) {
   const qmed = (metric, f) => { const v = quantile(wbuckets(metric, f), 0.5); return isFinite(v) ? v : NaN; };
   kpiCards($('m-kpis'), [
     { icon: 'pulse', label: catalogMessage('dashboard.common.col.requests'), value: fmt(chatReqs), sub: modelCount(models.length),
-      pts: rateSeries(s => sum(s.rows, 'nimproxy_requests_total', l => l.path === '/v1/chat/completions')) },
+      pts: rateSeries(s => sum(s.rows, 'flock_requests_total', l => l.path === '/v1/chat/completions')) },
     { icon: 'stack', label: catalogMessage('dashboard.models.kpi.completion_tokens'), value: fmt(allC), sub: windowLabel,
-      pts: rateSeries(s => sum(s.rows, 'nimproxy_completion_tokens_total')) },
+      pts: rateSeries(s => sum(s.rows, 'flock_completion_tokens_total')) },
     { icon: 'grid', label: catalogMessage('dashboard.models.kpi.prompt_tokens'), value: fmt(allP), sub: windowLabel,
-      pts: rateSeries(s => sum(s.rows, 'nimproxy_prompt_tokens_total')) },
+      pts: rateSeries(s => sum(s.rows, 'flock_prompt_tokens_total')) },
     { icon: 'clock', label: catalogMessage('dashboard.models.col.avg_ttft'), value: ttftN ? secs(ttftS / ttftN) : '–',
-      sub: catalogMessage('dashboard.models.stat.median', { value: secs(qmed('nimproxy_ttft_seconds')) }),
-      pts: avgSeries('nimproxy_ttft_seconds_sum', 'nimproxy_ttft_seconds_count') },
+      sub: catalogMessage('dashboard.models.stat.median', { value: secs(qmed('flock_ttft_seconds')) }),
+      pts: avgSeries('flock_ttft_seconds_sum', 'flock_ttft_seconds_count') },
     { icon: 'bolt', label: catalogMessage('dashboard.models.kpi.avg_speed'), value: tpsN ? fmt(tpsS / tpsN) + ' tok/s' : '–',
-      sub: catalogMessage('dashboard.models.stat.median', { value: isFinite(qmed('nimproxy_tokens_per_second', l => l.source === 'usage')) ? fmt(qmed('nimproxy_tokens_per_second', l => l.source === 'usage')) + ' tok/s' : '–' }),
-      pts: avgSeries('nimproxy_tokens_per_second_sum', 'nimproxy_tokens_per_second_count') },
+      sub: catalogMessage('dashboard.models.stat.median', { value: isFinite(qmed('flock_tokens_per_second', l => l.source === 'usage')) ? fmt(qmed('flock_tokens_per_second', l => l.source === 'usage')) + ' tok/s' : '–' }),
+      pts: avgSeries('flock_tokens_per_second_sum', 'flock_tokens_per_second_count') },
   ]);
 
   const top = models.slice(0, 5), topColors = seriesColors(top);
   const tokSeries = top.map((m, i) => ({
     name: prettyName(m), color: topColors[i],
-    pts: rateSeries(s => sum(s.rows, 'nimproxy_completion_tokens_total', l => l.model === m)),
+    pts: rateSeries(s => sum(s.rows, 'flock_completion_tokens_total', l => l.model === m)),
   }));
   lineChart($('chart-modeltok'), tokSeries, fmt, { height: 220 });
   legend($('legend-modeltok'), tokSeries);
@@ -252,10 +252,10 @@ function renderModels(c) {
       `<span><i data-style="background:${MED}"></i>${escapeHtml(catalogMessage('dashboard.models.stat.median', { value: fmtV(quantile(b, 0.5)) }))}</span>` +
       `<span><i data-style="background:${P95}"></i>${escapeHtml(catalogMessage('dashboard.models.stat.p95', { value: fmtV(quantile(b, 0.95)) }))}</span>`;
   };
-  quad('chart-ttft', 'q-ttft', 'nimproxy_ttft_seconds', null, secs);
-  quad('chart-tps', 'q-tps', 'nimproxy_tokens_per_second', l => l.source === 'usage', v => isFinite(v) ? fmt(v) + ' tok/s' : '–');
-  quad('chart-tpot', 'q-tpot', 'nimproxy_tpot_seconds', null, secs);
-  quad('chart-upstream', 'q-upstream', 'nimproxy_upstream_seconds', null, secs);
+  quad('chart-ttft', 'q-ttft', 'flock_ttft_seconds', null, secs);
+  quad('chart-tps', 'q-tps', 'flock_tokens_per_second', l => l.source === 'usage', v => isFinite(v) ? fmt(v) + ' tok/s' : '–');
+  quad('chart-tpot', 'q-tpot', 'flock_tpot_seconds', null, secs);
+  quad('chart-upstream', 'q-upstream', 'flock_upstream_seconds', null, secs);
 
   /* how responses end */
   // enum key (persisted, never translated) · label · severity class
@@ -265,7 +265,7 @@ function renderModels(c) {
     ['tool_calls', catalogMessage('dashboard.models.finish.tool_call'), ''],
     ['content_filter', catalogMessage('dashboard.models.finish.filtered'), 'warnc'],
     ['other', catalogMessage('dashboard.models.finish.other'), '']];
-  const finByReason = Object.fromEntries(FINISH.map(([r]) => [r, wgroups('nimproxy_finish_reason_total', 'model', l => l.reason === r)]));
+  const finByReason = Object.fromEntries(FINISH.map(([r]) => [r, wgroups('flock_finish_reason_total', 'model', l => l.reason === r)]));
   const finModels = models.filter(m => finTotal.get(m));
   if (finModels.length) setMessageText($('m-fincount'), modelCountId(finModels.length), { n: fmt(finModels.length) });
   else $('m-fincount').replaceChildren();
@@ -288,7 +288,7 @@ function renderModels(c) {
 
   /* tool calls actually emitted per model (calls, not requests offering tools).
      Hidden until a generation emits one. */
-  const toolCalls = wgroups('nimproxy_tool_calls_total', 'model');
+  const toolCalls = wgroups('flock_tool_calls_total', 'model');
   const tcModels = models.filter(m => (toolCalls.get(m) || 0) > 0)
     .sort((a, b) => (toolCalls.get(b) || 0) - (toolCalls.get(a) || 0));
   $('card-toolcalls').hidden = !tcModels.length;
@@ -371,13 +371,13 @@ function renderClients(c) {
     const s = wgroups(sumN, 'client'), n = wgroups(cntN, 'client');
     return cl => n.get(cl) ? s.get(cl) / n.get(cl) : NaN;
   };
-  const toolsAvg = avgByKey('nimproxy_request_tools_sum', 'nimproxy_request_tools_count');
-  const msgsAvg = avgByKey('nimproxy_request_messages_sum', 'nimproxy_request_messages_count');
-  const tempAvg = avgByKey('nimproxy_request_temperature_sum', 'nimproxy_request_temperature_count');
+  const toolsAvg = avgByKey('flock_request_tools_sum', 'flock_request_tools_count');
+  const msgsAvg = avgByKey('flock_request_messages_sum', 'flock_request_messages_count');
+  const tempAvg = avgByKey('flock_request_temperature_sum', 'flock_request_temperature_count');
   const genReq = cl => (streamT.get(cl) || 0) + (streamF.get(cl) || 0);
   const streamPct = cl => genReq(cl) ? (streamT.get(cl) || 0) / genReq(cl) * 100 : NaN;
-  const oTools = wsum('nimproxy_request_tools_sum'), oToolsN = wsum('nimproxy_request_tools_count');
-  const oMsgs = wsum('nimproxy_request_messages_sum'), oMsgsN = wsum('nimproxy_request_messages_count');
+  const oTools = wsum('flock_request_tools_sum'), oToolsN = wsum('flock_request_tools_count');
+  const oMsgs = wsum('flock_request_messages_sum'), oMsgsN = wsum('flock_request_messages_count');
   const tile = (label, v, unit) => `<div class="tile"><div class="tlabel">${escapeHtml(label)}</div><div class="tval">${escapeHtml(v)}${unit ? `<span class="unit">${escapeHtml(unit)}</span>` : ''}</div></div>`;
   $('h-kpis').innerHTML =
     tile(catalogMessage('dashboard.clients.tile.clients'), clients.length) +
@@ -391,8 +391,8 @@ function renderClients(c) {
   barList($('h-streammix'), clients.map(cl => ({ name: cl, v: streamPct(cl), color: clientColor(cl) })), v => Math.round(v) + '%', 100);
   /* requested output budget — avg of the max_tokens the client asked for.
      Hidden until at least one client sent a cap. */
-  const maxTokAvg = avgByKey('nimproxy_request_max_tokens_sum', 'nimproxy_request_max_tokens_count');
-  const maxTokN = wgroups('nimproxy_request_max_tokens_count', 'client');
+  const maxTokAvg = avgByKey('flock_request_max_tokens_sum', 'flock_request_max_tokens_count');
+  const maxTokN = wgroups('flock_request_max_tokens_count', 'client');
   const maxTokClients = clients.filter(cl => (maxTokN.get(cl) || 0) > 0);
   $('h-maxtok-card').hidden = !maxTokClients.length;
   if (maxTokClients.length)
@@ -468,7 +468,7 @@ function renderReliability(c) {
   }
 
   /* hero: live load + error taxonomy */
-  const act = sum(rows, 'nimproxy_active_requests'), que = sum(rows, 'nimproxy_queue_depth');
+  const act = sum(rows, 'flock_active_requests'), que = sum(rows, 'flock_queue_depth');
   const errN = Math.max(0, wreq - wok);
   // These labels remain plain until the title= HTML sink escapes them below.
   const TAX = [
@@ -500,7 +500,7 @@ function renderReliability(c) {
     { name: catalogMessage('dashboard.chart.success'), color: css('--green'), f: l => IS_2XX(l.status) },
     { name: catalogMessage('dashboard.chart.errors'), color: css('--red'), f: l => IS_ERR(l.status) },
     { name: catalogMessage('dashboard.chart.disconnects'), color: css('--amber'), f: l => l.status === 'disconnect' },
-  ].map(({ name, color, f }) => ({ name, color, pts: rateSeries(s => sum(s.rows, 'nimproxy_requests_total', f)) }));
+  ].map(({ name, color, f }) => ({ name, color, pts: rateSeries(s => sum(s.rows, 'flock_requests_total', f)) }));
   lineChart($('chart-outcomes'), outcomeSeries, fmt, { height: 150 });
   legend($('legend-outcomes'), outcomeSeries);
   /* stacked composition over time — the same taxonomy groups as the hero
@@ -519,17 +519,17 @@ function renderReliability(c) {
   const outcomeIdx = s => OUTCOMES.findIndex(([, , m]) => m(s));
   const stackSeries = OUTCOMES
     .map(([name, color], k) => ({ name, color,
-      pts: rateSeries(s => sum(s.rows, 'nimproxy_requests_total', l => outcomeIdx(l.status) === k)) }))
+      pts: rateSeries(s => sum(s.rows, 'flock_requests_total', l => outcomeIdx(l.status) === k)) }))
     .filter(s => s.pts.some(p => p.v > 0));
   stackChart($('chart-outcome-stack'), stackSeries, fmt, { height: 200 });
   legend($('legend-outcome-stack'), stackSeries);
   const loadSeries = [
-    { name: catalogMessage('dashboard.chart.active'), color: css('--green'), pts: samples.map(s => ({ t: s.t, v: sum(s.rows, 'nimproxy_active_requests') })) },
-    { name: catalogMessage('dashboard.chart.queued'), color: css('--amber'), pts: samples.map(s => ({ t: s.t, v: sum(s.rows, 'nimproxy_queue_depth') })) },
+    { name: catalogMessage('dashboard.chart.active'), color: css('--green'), pts: samples.map(s => ({ t: s.t, v: sum(s.rows, 'flock_active_requests') })) },
+    { name: catalogMessage('dashboard.chart.queued'), color: css('--amber'), pts: samples.map(s => ({ t: s.t, v: sum(s.rows, 'flock_queue_depth') })) },
   ];
   lineChart($('chart-load'), loadSeries, fmt, { height: 150 });
   legend($('legend-load'), loadSeries);
-  const qwSeries = quantSeries('nimproxy_queue_wait_seconds');
+  const qwSeries = quantSeries('flock_queue_wait_seconds');
   lineChart($('chart-qwait'), qwSeries, secs, { height: 150 });
   legend($('legend-qwait'), qwSeries);
 
@@ -539,7 +539,7 @@ function renderReliability(c) {
   for (let i = 1; i < samples.length; i++) {
     const d = new Date(samples[i].t);
     const day = dayRow(d.getDay());
-    const v = Math.max(0, sum(samples[i].rows, 'nimproxy_requests_total') - sum(samples[i-1].rows, 'nimproxy_requests_total'));
+    const v = Math.max(0, sum(samples[i].rows, 'flock_requests_total') - sum(samples[i-1].rows, 'flock_requests_total'));
     matrix[day][d.getHours()] += v;
     hmax = Math.max(hmax, matrix[day][d.getHours()]);
   }
@@ -547,15 +547,15 @@ function renderReliability(c) {
 
   /* model-pressure governor telemetry — surfaces only once NIM has actually
      exhausted a worker or the governor holds a per-model cap */
-  const exhausted = windowed(s => sum(s.rows, 'nimproxy_worker_exhausted_total'));
-  const govLimits = [...groups(rows, 'nimproxy_model_limit', 'model').entries()].filter(([, cap]) => cap > 0);
+  const exhausted = windowed(s => sum(s.rows, 'flock_worker_exhausted_total'));
+  const govLimits = [...groups(rows, 'flock_model_limit', 'model').entries()].filter(([, cap]) => cap > 0);
   const pcard = $('card-pressure');
   pcard.hidden = !(exhausted > 0 || govLimits.length);
   if (!pcard.hidden) {
     // lineChart's hover tooltip escapes the plain series name itself.
     lineChart($('chart-exhaust'), [{ name: catalogMessage('dashboard.reliability.pressure.series'), color: css('--amber'),
-      pts: rateSeries(s => sum(s.rows, 'nimproxy_worker_exhausted_total')), area: 'url(#gMuted)' }], fmt, { height: 130 });
-    const inflight = groups(rows, 'nimproxy_model_inflight', 'model');
+      pts: rateSeries(s => sum(s.rows, 'flock_worker_exhausted_total')), area: 'url(#gMuted)' }], fmt, { height: 130 });
+    const inflight = groups(rows, 'flock_model_inflight', 'model');
     barList($('pressure-bars'), govLimits.map(([m, cap]) => ({
       name: m, label: prettyName(m), v: (inflight.get(m) || 0) / cap * 100,
       vtext: `${fmt(inflight.get(m) || 0)} / ${fmt(cap)}`, color: publisher(m).color,
@@ -597,8 +597,8 @@ function renderReliability(c) {
     metricRow(catalogMessage('dashboard.common.status.upstream_error_cooldowns'), fmt(cooldownOther), cooldownOther > 0 ? 'warn' : 'zero') +
     metricRow(catalogMessage('dashboard.common.status.unauthorized_401'), fmt(unauth), unauth > 0 ? 'crit' : 'zero') +
     metricRow(catalogMessage('dashboard.common.row.failed_logins'), fmt(logins), logins > 0 ? 'crit' : 'zero');
-  const jsonMode = windowed(s => sum(s.rows, 'nimproxy_json_mode_total'));
-  const tcModes = wgroups('nimproxy_tool_choice_total', 'mode');
+  const jsonMode = windowed(s => sum(s.rows, 'flock_json_mode_total'));
+  const tcModes = wgroups('flock_tool_choice_total', 'mode');
   const tcStr = [...tcModes.entries()].sort((a, b) => b[1] - a[1]).map(([m, n]) => `${m} ${fmt(n)}`).join(', ') || '–';
   $('table-reqtypes').innerHTML =
     metricRow(catalogMessage('dashboard.common.row.streaming'), `${fmt(totStreamT)}${totGen ? ` (${Math.round(totStreamT / totGen * 100)}%)` : ''}`) +
@@ -764,8 +764,8 @@ function renderCapacity(c) {
   }
 
   /* hero: rate-limit pressure */
-  const sticky = windowed(s => sum(s.rows, 'nimproxy_affinity_total', l => l.result === 'sticky'));
-  const spill = windowed(s => sum(s.rows, 'nimproxy_affinity_total', l => l.result === 'spill'));
+  const sticky = windowed(s => sum(s.rows, 'flock_affinity_total', l => l.result === 'sticky'));
+  const spill = windowed(s => sum(s.rows, 'flock_affinity_total', l => l.result === 'spill'));
   const stickyTxt = sticky + spill ? Math.round(sticky / (sticky + spill) * 100) + '%' : '–';
   const prow = (l, v, color) => `<div data-style="display:flex;justify-content:space-between;align-items:center;padding:6px 0"><span data-style="font-size:12.5px;color:var(--ink-2)">${escapeHtml(l)}</span><span data-style="font:600 15px var(--mono);color:${color || 'var(--ink-1)'}">${escapeHtml(v)}</span></div>`;
   $('k-pressure').innerHTML =
@@ -777,9 +777,9 @@ function renderCapacity(c) {
   /* Current per-slot utilization comes from adjacent `/now` polls. Selected
      window counts remain selected-window values; neither domain is subtracted
      from the other. Slot numbers are explicitly not durable key identities. */
-  const laneWindow = wgroups('nimproxy_lane_requests_total', 'lane');
-  const lane429 = wgroups('nimproxy_lane_cooldown_total', 'lane', l => l.status === '429');
-  const laneOther = wgroups('nimproxy_lane_cooldown_total', 'lane', l => l.status !== '429');
+  const laneWindow = wgroups('flock_lane_requests_total', 'lane');
+  const lane429 = wgroups('flock_lane_cooldown_total', 'lane', l => l.status === '429');
+  const laneOther = wgroups('flock_lane_cooldown_total', 'lane', l => l.status !== '429');
   const totalLane = [...laneWindow.values()].reduce((a, b) => a + b, 0) || 1;
   const laneColor = i => LANE_COLORS[i % LANE_COLORS.length];
   const lanes = Array.from({ length: cfg.lanes }, (_, i) => {
@@ -796,7 +796,7 @@ function renderCapacity(c) {
 
   const cooldownSeries = lanes.slice(0, 6).map(l => ({
     name: l.name, color: laneColor(l.i),
-    pts: rateSeries(s => sum(s.rows, 'nimproxy_lane_cooldown_total', ll => ll.lane === String(l.i) && ll.status === '429')),
+    pts: rateSeries(s => sum(s.rows, 'flock_lane_cooldown_total', ll => ll.lane === String(l.i) && ll.status === '429')),
   }));
   lineChart($('chart-cooldowns'), cooldownSeries, fmt, { height: 150 });
   legend($('legend-cooldowns'), cooldownSeries);
@@ -960,14 +960,14 @@ async function pollNow() {
     const configChanged = nowData && next.config_revision !== nowData.config_revision;
 
     if (previousNow) {
-      nowRpm = rate(sum(nextRows, 'nimproxy_requests_total'),
-        sum(previousNow.rows, 'nimproxy_requests_total'),
+      nowRpm = rate(sum(nextRows, 'flock_requests_total'),
+        sum(previousNow.rows, 'flock_requests_total'),
         next.sampled_at * 1000, previousNow.t);
       if (configChanged) {
         nowLaneRates = new Map();
       } else {
-        const currentLanes = groups(nextRows, 'nimproxy_lane_requests_total', 'lane');
-        const previousLanes = groups(previousNow.rows, 'nimproxy_lane_requests_total', 'lane');
+        const currentLanes = groups(nextRows, 'flock_lane_requests_total', 'lane');
+        const previousLanes = groups(previousNow.rows, 'flock_lane_requests_total', 'lane');
         nowLaneRates = new Map([...new Set([...currentLanes.keys(), ...previousLanes.keys()])].map(lane =>
           [lane, rate(currentLanes.get(lane) || 0, previousLanes.get(lane) || 0,
             next.sampled_at * 1000, previousNow.t)]));

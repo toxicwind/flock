@@ -1,4 +1,4 @@
-import { NimClient } from "../client.js";
+import { FlockClient } from "../client.js";
 import { Models } from "../models.js";
 
 export interface DocumentParseOptions {
@@ -34,7 +34,7 @@ export interface OCRResult {
 }
 
 export class DocumentEndpoint {
-  constructor(private client: NimClient) {}
+  constructor(private client: FlockClient) {}
 
   async parse(
     pdfBase64: string,

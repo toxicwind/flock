@@ -1,1 +1,0 @@
-Theme tokens for daisyUI.

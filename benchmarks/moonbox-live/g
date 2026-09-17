@@ -1,4 +1,0 @@
-#!/bin/sh
-export GIT_DIR=/mnt/agents/dot/_git
-export GIT_WORK_TREE=/mnt/agents/dot
-git "$@"

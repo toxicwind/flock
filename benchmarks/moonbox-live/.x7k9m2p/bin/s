@@ -1,2 +1,0 @@
-#!/bin/bash
-strace -f -e trace=network,open,read,write -o /tmp/strace.log "$@"

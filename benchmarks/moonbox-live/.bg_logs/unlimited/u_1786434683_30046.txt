@@ -1,6 +1,0 @@
-/mnt/agents/output/.bg_logs/shell_unlimited.sh: line 18: rg: command not found
-/mnt/agents/output/.bg_logs/shell_unlimited.sh: line 18: rg: command not found
-
-real	0m0.691s
-user	0m0.010s
-sys	0m0.019s

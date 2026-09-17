@@ -1,1 +1,0 @@
-{"id": "ta_build_001", "type": "bun", "cmd": "cd /mnt/agents/output/triangle-access && bun install 2>&1 | tail -3 && bun run typecheck 2>&1 | tail -10", "timeout": 300}

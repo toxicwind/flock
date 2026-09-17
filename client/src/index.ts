@@ -1,4 +1,6 @@
-export { NimClient } from "./client.js";
+export { FlockClient } from "./client.js";
+export { FlockKeyPool, parseRetryAfterMs, splitKeys } from "./keypool.js";
+export type { FlockKeyStats } from "./keypool.js";
 export { Models } from "./models.js";
 export type {
   ChatModel,
@@ -21,7 +23,7 @@ export { DocumentEndpoint } from "./endpoints/document.js";
 export { TranslationEndpoint, SUPPORTED_LANGUAGES } from "./endpoints/translation.js";
 
 export type {
-  NimClientConfig,
+  FlockClientConfig,
   ChatMessage,
   ChatCompletionRequest,
   ChatCompletionResponse,
@@ -56,7 +58,7 @@ export type {
 export type { DocumentParseOptions, ParsedDocument, OCRResult } from "./endpoints/document.js";
 export type { TranslateOptions, TranslateResult } from "./endpoints/translation.js";
 
-import { NimClient } from "./client.js";
+import { FlockClient } from "./client.js";
 import { ChatEndpoint } from "./endpoints/chat.js";
 import { VisionEndpoint } from "./endpoints/vision.js";
 import { EmbeddingsEndpoint } from "./endpoints/embeddings.js";
@@ -65,9 +67,9 @@ import { BiologyEndpoint } from "./endpoints/biology.js";
 import { SpeechEndpoint } from "./endpoints/speech.js";
 import { DocumentEndpoint } from "./endpoints/document.js";
 import { TranslationEndpoint } from "./endpoints/translation.js";
-import type { NimClientConfig } from "./types.js";
+import type { FlockClientConfig } from "./types.js";
 
-export class Nim {
+export class Flock {
   readonly chat: ChatEndpoint;
   readonly vision: VisionEndpoint;
   readonly embeddings: EmbeddingsEndpoint;
@@ -77,13 +79,13 @@ export class Nim {
   readonly document: DocumentEndpoint;
   readonly translation: TranslationEndpoint;
 
-  private _client: NimClient;
+  private _client: FlockClient;
 
-  constructor(config: NimClientConfig | string) {
-    const resolvedConfig: NimClientConfig =
+  constructor(config: FlockClientConfig | string) {
+    const resolvedConfig: FlockClientConfig =
       typeof config === "string" ? { apiKey: config } : config;
 
-    this._client = new NimClient(resolvedConfig);
+    this._client = new FlockClient(resolvedConfig);
 
     this.chat = new ChatEndpoint(this._client);
     this.vision = new VisionEndpoint(this._client);
@@ -95,11 +97,19 @@ export class Nim {
     this.translation = new TranslationEndpoint(this._client);
   }
 
-  get client(): NimClient {
+  get client(): FlockClient {
     return this._client;
   }
 }
 
-export function createNimClient(config: NimClientConfig | string): Nim {
-  return new Nim(config);
+export function createFlockClient(config: FlockClientConfig | string): Flock {
+  return new Flock(config);
 }
+
+// Deprecated aliases kept for one release cycle after the nim-client -> flock-client rename.
+/** @deprecated Use Flock instead. */
+export const Nim = Flock;
+/** @deprecated Use FlockClient instead. */
+export const NimClient = FlockClient;
+/** @deprecated Use createFlockClient instead. */
+export const createNimClient = createFlockClient;

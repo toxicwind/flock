@@ -681,7 +681,7 @@ mod tests {
                     result: "measured"
                 },
             ],
-            "nimproxy_usage_observations_total must have only literal field/result labels"
+            "flock_usage_observations_total must have only literal field/result labels"
         );
     }
 

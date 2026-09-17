@@ -1,7 +1,7 @@
 "use strict";
 const $ = (id) => document.getElementById(id);
 const setErrorText = (text) => { $("err").textContent = text || ""; };
-const EMERGENCY_MESSAGE = "NIM Proxy interface failed to load.";
+const EMERGENCY_MESSAGE = "Flock interface failed to load.";
 let MSG;
 function failInterface() {
   document.body.replaceChildren(document.createTextNode(EMERGENCY_MESSAGE));

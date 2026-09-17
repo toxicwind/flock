@@ -1,15 +1,15 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "nim-proxy dashboard API",
-    "description": "The operator surface of nim-proxy: the settings store, user and key management, and the metrics history the dashboard renders. This document is generated from the handlers; regenerate it with `UPDATE_OPENAPI=1 cargo test --test openapi`.\n\nNot covered: the OpenAI-compatible `/v1` passthrough (that contract is the upstream's, not nim-proxy's), the HTML page routes, the form-encoded `/login` and `/logout` browser flow, plain-text `/health`, and the Prometheus exposition at `/metrics`.",
+    "title": "flock dashboard API",
+    "description": "The operator surface of flock: the settings store, user and key management, and the metrics history the dashboard renders. This document is generated from the handlers; regenerate it with `UPDATE_OPENAPI=1 cargo test --test openapi`.\n\nNot covered: the OpenAI-compatible `/v1` passthrough (that contract is the upstream's, not flock's), the HTML page routes, the form-encoded `/login` and `/logout` browser flow, plain-text `/health`, and the Prometheus exposition at `/metrics`.",
     "contact": {
-      "name": "nim-proxy",
-      "url": "https://github.com/miztertea/nim-proxy"
+      "name": "flock",
+      "url": "https://github.com/toxicwind/flock"
     },
     "license": {
       "name": "MIT",
-      "url": "https://github.com/miztertea/nim-proxy/blob/main/LICENSE"
+      "url": "https://github.com/toxicwind/flock/blob/main/LICENSE"
     },
     "version": "0.6.6"
   },
@@ -1141,7 +1141,7 @@
           },
           "type": {
             "type": "string",
-            "description": "Always `proxy_error` — the error came from nim-proxy, not upstream.",
+            "description": "Always `proxy_error` — the error came from flock, not upstream.",
             "example": "proxy_error"
           }
         }
@@ -2391,7 +2391,7 @@
       "session_cookie": {
         "type": "apiKey",
         "in": "cookie",
-        "name": "nimproxy_session",
+        "name": "flock_session",
         "description": "HMAC-signed session cookie minted by POST /login. The signing key is regenerated every boot, so a restart invalidates all sessions."
       }
     }

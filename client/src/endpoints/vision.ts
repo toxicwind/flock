@@ -1,4 +1,4 @@
-import { NimClient } from "../client.js";
+import { FlockClient } from "../client.js";
 import { Models } from "../models.js";
 import type { ChatMessage } from "../types.js";
 
@@ -13,7 +13,7 @@ function toDataUrl(imageBuffer: Buffer, mimeType = "image/jpeg"): string {
 }
 
 export class VisionEndpoint {
-  constructor(private client: NimClient) {}
+  constructor(private client: FlockClient) {}
 
   async analyze(
     imageUrl: string,

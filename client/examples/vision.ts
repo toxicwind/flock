@@ -1,6 +1,6 @@
-import { Nim } from "../src/index.js";
+import { Flock } from "../src/index.js";
 
-const nim = new Nim(process.env.NVIDIA_API_KEY ?? "");
+const nim = new Flock(process.env.NVIDIA_API_KEY ?? "");
 
 const SAMPLE_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png";
 const CHART_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Percent-of-Americans-who-can-name-these-five-rights_2015_survey.svg/1200px-Percent-of-Americans-who-can-name-these-five-rights_2015_survey.svg.png";

@@ -1,1 +1,0 @@
-{"id": "test_bun", "type": "shell", "cmd": "bun --version && echo PATH_OK", "timeout": 10}

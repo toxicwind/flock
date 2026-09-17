@@ -461,7 +461,7 @@ impl Modify for SecurityAddon {
         components.add_security_scheme(
             "session_cookie",
             SecurityScheme::ApiKey(ApiKey::Cookie(ApiKeyValue::with_description(
-                "nimproxy_session",
+                "flock_session",
                 "HMAC-signed session cookie minted by POST /login. The signing key is \
                  regenerated every boot, so a restart invalidates all sessions.",
             ))),
@@ -494,8 +494,8 @@ impl Modify for SecurityAddon {
                        the upstream's, not flock's), the HTML page routes, the form-encoded \
                        `/login` and `/logout` browser flow, plain-text `/health`, and the \
                        Prometheus exposition at `/metrics`.",
-        license(name = "MIT", url = "https://github.com/miztertea/nim-proxy/blob/main/LICENSE"),
-        contact(name = "flock", url = "https://github.com/miztertea/nim-proxy"),
+        license(name = "MIT", url = "https://github.com/toxicwind/flock/blob/main/LICENSE"),
+        contact(name = "flock", url = "https://github.com/toxicwind/flock"),
     ),
     paths(
         crate::api_dashboard,
@@ -606,7 +606,7 @@ mod tests {
     fn active_requests(value: f64) -> MetricValue {
         MetricValue {
             labels: BTreeMap::new(),
-            metric: "nimproxy_active_requests".into(),
+            metric: "flock_active_requests".into(),
             value,
         }
     }
@@ -641,17 +641,17 @@ mod tests {
 
     fn histogram_samples(metric: &str, segment: FixtureSegment) -> &'static [f64] {
         let all = match metric {
-            "nimproxy_ttft_seconds" => &[0.03, 0.07, 0.2, 0.4, 0.8, 1.5, 3.0, 7.0, 12.0, 20.0][..],
-            "nimproxy_tokens_per_second" => {
+            "flock_ttft_seconds" => &[0.03, 0.07, 0.2, 0.4, 0.8, 1.5, 3.0, 7.0, 12.0, 20.0][..],
+            "flock_tokens_per_second" => {
                 &[0.5, 1.5, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0, 256.0, 400.0][..]
             }
-            "nimproxy_queue_wait_seconds" => {
+            "flock_queue_wait_seconds" => {
                 &[0.0005, 0.02, 0.1, 0.5, 2.0, 10.0, 30.0, 90.0, 300.0, 500.0][..]
             }
-            "nimproxy_upstream_seconds" => {
+            "flock_upstream_seconds" => {
                 &[0.1, 0.3, 0.7, 1.5, 3.0, 7.0, 15.0, 45.0, 100.0, 250.0][..]
             }
-            "nimproxy_tpot_seconds" => {
+            "flock_tpot_seconds" => {
                 &[0.003, 0.008, 0.015, 0.03, 0.06, 0.12, 0.24, 0.4, 0.5, 0.6][..]
             }
             _ => panic!("ui-fixture: unknown production histogram {metric}"),
@@ -710,9 +710,9 @@ mod tests {
 
     fn representative_dashboard_metrics(segment: FixtureSegment) -> Vec<MetricValue> {
         let mut values = vec![
-            metric_for("nimproxy_requests_total", "fixture/alpha", 30.0),
+            metric_for("flock_requests_total", "fixture/alpha", 30.0),
             labeled_metric(
-                "nimproxy_requests_total",
+                "flock_requests_total",
                 &[
                     ("client", "fixture-client"),
                     ("model", "fixture/zeta"),
@@ -722,12 +722,12 @@ mod tests {
                 3.0,
             ),
             labeled_metric(
-                "nimproxy_prompt_tokens_total",
+                "flock_prompt_tokens_total",
                 &[("client", "fixture-client"), ("model", "fixture/alpha")],
                 1_200.0,
             ),
             labeled_metric(
-                "nimproxy_completion_tokens_total",
+                "flock_completion_tokens_total",
                 &[
                     ("client", "fixture-client"),
                     ("model", "fixture/alpha"),
@@ -736,109 +736,109 @@ mod tests {
                 300.0,
             ),
             labeled_metric(
-                "nimproxy_reasoning_tokens_total",
+                "flock_reasoning_tokens_total",
                 &[("model", "fixture/alpha")],
                 60.0,
             ),
             labeled_metric(
-                "nimproxy_finish_reason_total",
+                "flock_finish_reason_total",
                 &[("model", "fixture/alpha"), ("reason", "stop")],
                 25.0,
             ),
             labeled_metric(
-                "nimproxy_finish_reason_total",
+                "flock_finish_reason_total",
                 &[("model", "fixture/alpha"), ("reason", "function_call")],
                 5.0,
             ),
             labeled_metric(
-                "nimproxy_finish_reason_total",
+                "flock_finish_reason_total",
                 &[("model", "fixture/alpha"), ("reason", "length")],
                 5.0,
             ),
             labeled_metric(
-                "nimproxy_finish_reason_total",
+                "flock_finish_reason_total",
                 &[("model", "fixture/alpha"), ("reason", "tool_calls")],
                 5.0,
             ),
             labeled_metric(
-                "nimproxy_finish_reason_total",
+                "flock_finish_reason_total",
                 &[("model", "fixture/alpha"), ("reason", "content_filter")],
                 5.0,
             ),
             labeled_metric(
-                "nimproxy_finish_reason_total",
+                "flock_finish_reason_total",
                 &[("model", "fixture/alpha"), ("reason", "other")],
                 5.0,
             ),
             labeled_metric(
-                "nimproxy_stream_requests_total",
+                "flock_stream_requests_total",
                 &[("client", "fixture-client"), ("stream", "true")],
                 20.0,
             ),
             labeled_metric(
-                "nimproxy_tool_calls_total",
+                "flock_tool_calls_total",
                 &[("model", "fixture/alpha")],
                 8.0,
             ),
-            labeled_metric("nimproxy_tool_choice_total", &[("mode", "auto")], 10.0),
+            labeled_metric("flock_tool_choice_total", &[("mode", "auto")], 10.0),
             labeled_metric(
-                "nimproxy_json_mode_total",
+                "flock_json_mode_total",
                 &[("client", "fixture-client")],
                 4.0,
             ),
-            labeled_metric("nimproxy_affinity_total", &[("result", "sticky")], 24.0),
-            labeled_metric("nimproxy_affinity_total", &[("result", "spill")], 2.0),
-            labeled_metric("nimproxy_lane_requests_total", &[("lane", "0")], 33.0),
+            labeled_metric("flock_affinity_total", &[("result", "sticky")], 24.0),
+            labeled_metric("flock_affinity_total", &[("result", "spill")], 2.0),
+            labeled_metric("flock_lane_requests_total", &[("lane", "0")], 33.0),
             labeled_metric(
-                "nimproxy_lane_cooldown_total",
+                "flock_lane_cooldown_total",
                 &[("lane", "0"), ("status", "429")],
                 2.0,
             ),
             labeled_metric(
-                "nimproxy_worker_exhausted_total",
+                "flock_worker_exhausted_total",
                 &[("model", "fixture/alpha")],
                 1.0,
             ),
-            labeled_metric("nimproxy_shed_total", &[], 1.0),
-            labeled_metric("nimproxy_unauthorized_total", &[], 1.0),
-            labeled_metric("nimproxy_login_failures_total", &[], 1.0),
+            labeled_metric("flock_shed_total", &[], 1.0),
+            labeled_metric("flock_unauthorized_total", &[], 1.0),
+            labeled_metric("flock_login_failures_total", &[], 1.0),
             labeled_metric(
-                "nimproxy_request_tools_count",
+                "flock_request_tools_count",
                 &[("client", "fixture-client")],
                 10.0,
             ),
             labeled_metric(
-                "nimproxy_request_tools_sum",
+                "flock_request_tools_sum",
                 &[("client", "fixture-client")],
                 15.0,
             ),
             labeled_metric(
-                "nimproxy_request_messages_count",
+                "flock_request_messages_count",
                 &[("client", "fixture-client")],
                 10.0,
             ),
             labeled_metric(
-                "nimproxy_request_messages_sum",
+                "flock_request_messages_sum",
                 &[("client", "fixture-client")],
                 40.0,
             ),
             labeled_metric(
-                "nimproxy_request_temperature_count",
+                "flock_request_temperature_count",
                 &[("client", "fixture-client")],
                 10.0,
             ),
             labeled_metric(
-                "nimproxy_request_temperature_sum",
+                "flock_request_temperature_sum",
                 &[("client", "fixture-client")],
                 7.0,
             ),
             labeled_metric(
-                "nimproxy_request_max_tokens_count",
+                "flock_request_max_tokens_count",
                 &[("client", "fixture-client")],
                 10.0,
             ),
             labeled_metric(
-                "nimproxy_request_max_tokens_sum",
+                "flock_request_max_tokens_sum",
                 &[("client", "fixture-client")],
                 10_240.0,
             ),
@@ -854,7 +854,7 @@ mod tests {
             .into_iter()
             .map(|field| {
                 labeled_metric(
-                    "nimproxy_usage_observations_total",
+                    "flock_usage_observations_total",
                     &[("field", field), ("result", "measured")],
                     10.0,
                 )
@@ -864,29 +864,29 @@ mod tests {
             metric.value = fixture_delta(metric.value, segment, metric.metric.ends_with("_sum"));
         }
         values.extend(histogram(
-            "nimproxy_ttft_seconds",
+            "flock_ttft_seconds",
             &[("model", "fixture/alpha")],
-            histogram_samples("nimproxy_ttft_seconds", segment),
+            histogram_samples("flock_ttft_seconds", segment),
         ));
         values.extend(histogram(
-            "nimproxy_tokens_per_second",
+            "flock_tokens_per_second",
             &[("model", "fixture/alpha"), ("source", "usage")],
-            histogram_samples("nimproxy_tokens_per_second", segment),
+            histogram_samples("flock_tokens_per_second", segment),
         ));
         values.extend(histogram(
-            "nimproxy_tpot_seconds",
+            "flock_tpot_seconds",
             &[("model", "fixture/alpha")],
-            histogram_samples("nimproxy_tpot_seconds", segment),
+            histogram_samples("flock_tpot_seconds", segment),
         ));
         values.extend(histogram(
-            "nimproxy_upstream_seconds",
+            "flock_upstream_seconds",
             &[("model", "fixture/alpha")],
-            histogram_samples("nimproxy_upstream_seconds", segment),
+            histogram_samples("flock_upstream_seconds", segment),
         ));
         values.extend(histogram(
-            "nimproxy_queue_wait_seconds",
+            "flock_queue_wait_seconds",
             &[],
-            histogram_samples("nimproxy_queue_wait_seconds", segment),
+            histogram_samples("flock_queue_wait_seconds", segment),
         ));
         values
     }
@@ -905,7 +905,7 @@ mod tests {
                 .into_iter()
                 .map(move |field| {
                     labeled_metric(
-                        "nimproxy_usage_observations_total",
+                        "flock_usage_observations_total",
                         &[("field", field), ("result", result)],
                         *value,
                     )
@@ -916,11 +916,11 @@ mod tests {
 
     fn assert_representative_metrics_are_production_faithful(range: &DashboardResponse) {
         let histogram_families = [
-            "nimproxy_ttft_seconds",
-            "nimproxy_tokens_per_second",
-            "nimproxy_queue_wait_seconds",
-            "nimproxy_upstream_seconds",
-            "nimproxy_tpot_seconds",
+            "flock_ttft_seconds",
+            "flock_tokens_per_second",
+            "flock_queue_wait_seconds",
+            "flock_upstream_seconds",
+            "flock_tpot_seconds",
         ];
         for family in histogram_families {
             let bucket_name = format!("{family}_bucket");
@@ -1011,8 +1011,8 @@ mod tests {
             );
         }
         for metric in [
-            "nimproxy_tokens_per_second_bucket",
-            "nimproxy_tpot_seconds_bucket",
+            "flock_tokens_per_second_bucket",
+            "flock_tpot_seconds_bucket",
         ] {
             assert!(
                 range
@@ -1027,13 +1027,13 @@ mod tests {
     fn representative_latest_metrics() -> Vec<MetricValue> {
         vec![
             active_requests(2.0),
-            labeled_metric("nimproxy_queue_depth", &[], 1.0),
+            labeled_metric("flock_queue_depth", &[], 1.0),
             labeled_metric(
-                "nimproxy_model_inflight",
+                "flock_model_inflight",
                 &[("model", "fixture/alpha")],
                 2.0,
             ),
-            labeled_metric("nimproxy_model_limit", &[("model", "fixture/alpha")], 8.0),
+            labeled_metric("flock_model_limit", &[("model", "fixture/alpha")], 8.0),
         ]
     }
 
@@ -1079,22 +1079,22 @@ mod tests {
                     ("path".into(), "/v1/chat/completions".into()),
                     ("status".into(), "200".into()),
                 ]),
-                metric: "nimproxy_requests_total".into(),
+                metric: "flock_requests_total".into(),
                 value: 3.0,
             }]
         } else {
             let value = if extreme { f64::MAX / 4.0 } else { 3.0 };
             if extreme {
                 vec![
-                    metric_for("nimproxy_requests_total", "fixture/alpha", value),
-                    metric_for("nimproxy_requests_total", "fixture/zeta", value),
+                    metric_for("flock_requests_total", "fixture/alpha", value),
+                    metric_for("flock_requests_total", "fixture/zeta", value),
                 ]
             } else {
                 representative_dashboard_metrics(FixtureSegment::All)
             }
         };
         if observation_absent || observation_results.is_some() {
-            values.retain(|metric| metric.metric != "nimproxy_usage_observations_total");
+            values.retain(|metric| metric.metric != "flock_usage_observations_total");
             if let Some(results) = observation_results {
                 values.extend(observation_quality_fixture_metrics(results));
             }
@@ -1579,17 +1579,17 @@ mod tests {
         let mut response = dashboard_now_ui_fixture(false);
         response
             .metrics
-            .retain(|metric| metric.metric != "nimproxy_usage_observations_total");
+            .retain(|metric| metric.metric != "flock_usage_observations_total");
         response.tail.from = Some(1_700_003_600);
         response.tail.to = 1_700_007_200;
         response.tail.totals = vec![
             labeled_metric(
-                "nimproxy_usage_observations_total",
+                "flock_usage_observations_total",
                 &[("field", "completion_tokens"), ("result", "estimated")],
                 7.0,
             ),
             labeled_metric(
-                "nimproxy_usage_observations_total",
+                "flock_usage_observations_total",
                 &[("field", "prompt_tokens"), ("result", "invalid")],
                 -1.0,
             ),
@@ -1658,50 +1658,50 @@ mod tests {
             .map(|metric| metric.metric.as_str())
             .collect();
         let expected_metric_inventory = std::collections::BTreeSet::from([
-            "nimproxy_active_requests",
-            "nimproxy_affinity_total",
-            "nimproxy_completion_tokens_total",
-            "nimproxy_finish_reason_total",
-            "nimproxy_json_mode_total",
-            "nimproxy_lane_cooldown_total",
-            "nimproxy_lane_requests_total",
-            "nimproxy_login_failures_total",
-            "nimproxy_model_inflight",
-            "nimproxy_model_limit",
-            "nimproxy_prompt_tokens_total",
-            "nimproxy_queue_depth",
-            "nimproxy_queue_wait_seconds_bucket",
-            "nimproxy_queue_wait_seconds_count",
-            "nimproxy_queue_wait_seconds_sum",
-            "nimproxy_reasoning_tokens_total",
-            "nimproxy_request_max_tokens_count",
-            "nimproxy_request_max_tokens_sum",
-            "nimproxy_request_messages_count",
-            "nimproxy_request_messages_sum",
-            "nimproxy_request_temperature_count",
-            "nimproxy_request_temperature_sum",
-            "nimproxy_request_tools_count",
-            "nimproxy_request_tools_sum",
-            "nimproxy_requests_total",
-            "nimproxy_shed_total",
-            "nimproxy_stream_requests_total",
-            "nimproxy_tokens_per_second_bucket",
-            "nimproxy_tokens_per_second_count",
-            "nimproxy_tokens_per_second_sum",
-            "nimproxy_tool_calls_total",
-            "nimproxy_tool_choice_total",
-            "nimproxy_tpot_seconds_bucket",
-            "nimproxy_tpot_seconds_count",
-            "nimproxy_tpot_seconds_sum",
-            "nimproxy_ttft_seconds_bucket",
-            "nimproxy_ttft_seconds_count",
-            "nimproxy_ttft_seconds_sum",
-            "nimproxy_unauthorized_total",
-            "nimproxy_upstream_seconds_bucket",
-            "nimproxy_upstream_seconds_count",
-            "nimproxy_upstream_seconds_sum",
-            "nimproxy_usage_observations_total",
-            "nimproxy_worker_exhausted_total",
+            "flock_active_requests",
+            "flock_affinity_total",
+            "flock_completion_tokens_total",
+            "flock_finish_reason_total",
+            "flock_json_mode_total",
+            "flock_lane_cooldown_total",
+            "flock_lane_requests_total",
+            "flock_login_failures_total",
+            "flock_model_inflight",
+            "flock_model_limit",
+            "flock_prompt_tokens_total",
+            "flock_queue_depth",
+            "flock_queue_wait_seconds_bucket",
+            "flock_queue_wait_seconds_count",
+            "flock_queue_wait_seconds_sum",
+            "flock_reasoning_tokens_total",
+            "flock_request_max_tokens_count",
+            "flock_request_max_tokens_sum",
+            "flock_request_messages_count",
+            "flock_request_messages_sum",
+            "flock_request_temperature_count",
+            "flock_request_temperature_sum",
+            "flock_request_tools_count",
+            "flock_request_tools_sum",
+            "flock_requests_total",
+            "flock_shed_total",
+            "flock_stream_requests_total",
+            "flock_tokens_per_second_bucket",
+            "flock_tokens_per_second_count",
+            "flock_tokens_per_second_sum",
+            "flock_tool_calls_total",
+            "flock_tool_choice_total",
+            "flock_tpot_seconds_bucket",
+            "flock_tpot_seconds_count",
+            "flock_tpot_seconds_sum",
+            "flock_ttft_seconds_bucket",
+            "flock_ttft_seconds_count",
+            "flock_ttft_seconds_sum",
+            "flock_unauthorized_total",
+            "flock_upstream_seconds_bucket",
+            "flock_upstream_seconds_count",
+            "flock_upstream_seconds_sum",
+            "flock_usage_observations_total",
+            "flock_worker_exhausted_total",
         ]);
         assert_eq!(
             metric_inventory, expected_metric_inventory,
@@ -1805,12 +1805,12 @@ mod tests {
             observation_tail_now.tail.totals,
             vec![
                 labeled_metric(
-                    "nimproxy_usage_observations_total",
+                    "flock_usage_observations_total",
                     &[("field", "completion_tokens"), ("result", "estimated")],
                     7.0,
                 ),
                 labeled_metric(
-                    "nimproxy_usage_observations_total",
+                    "flock_usage_observations_total",
                     &[("field", "prompt_tokens"), ("result", "invalid")],
                     -1.0,
                 ),
@@ -2517,7 +2517,7 @@ mod tests {
             "MetricValue",
             &MetricValue {
                 labels: BTreeMap::new(),
-                metric: "nimproxy_requests_total".into(),
+                metric: "flock_requests_total".into(),
                 value: 1.0,
             },
         );

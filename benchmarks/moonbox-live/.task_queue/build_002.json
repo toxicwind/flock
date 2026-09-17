@@ -1,1 +1,0 @@
-{"id": "build_002", "type": "shell", "cmd": "cd /mnt/agents/output/app && /root/.bun/bin/bun install 2>&1 | tail -5", "timeout": 300, "env": {"PATH": "/root/.bun/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"}}

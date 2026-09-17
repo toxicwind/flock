@@ -1,1 +1,0 @@
-{"success":true,"connection_file":"/tmp/tmpjzgampb4.json","connection_info":{"shell_port":41423,"iopub_port":58445,"stdin_port":42109,"control_port":39733,"hb_port":47247,"ip":"127.0.0.1","key":"162afae9-37e3698dea237a5a702f86a1","transport":"tcp","signature_scheme":"hmac-sha256","kernel_name":"python3"},"kernel_alive":false,"kernel_pid":181,"message":null}

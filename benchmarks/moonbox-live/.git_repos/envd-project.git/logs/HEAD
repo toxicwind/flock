@@ -1,5 +1,0 @@
-0000000000000000000000000000000000000000 b398941c6c79039dfd03347dad34e4f9f080fbf5 toxicwind <toxicwind@users.noreply.github.com> 1786416564 +0000	commit (initial): feat: gitw wrapper, .git-less repos, persistent metadata
-b398941c6c79039dfd03347dad34e4f9f080fbf5 d253b9318583ef7da96056a46ed05d3c485ba8fc toxicwind <toxicwind@users.noreply.github.com> 1786426565 +0000	commit: auto: session sync 20260811-053603
-d253b9318583ef7da96056a46ed05d3c485ba8fc a4e0fa2bf564e96e857f2ccbeb313144b64e00fb toxicwind <toxicwind@users.noreply.github.com> 1786429444 +0000	commit: auto: unlimited tools — shell_unlimited, auto_trace, auto_hook daemon, portal_unlimited, fixed bg_daemon
-a4e0fa2bf564e96e857f2ccbeb313144b64e00fb 18b38d738ac0171701d6ca3dcdf4007a6e30fc64 toxicwind <toxicwind@users.noreply.github.com> 1786434683 +0000	commit: auto: envd-project @ 2026-08-11T07:51:19
-18b38d738ac0171701d6ca3dcdf4007a6e30fc64 510b3a47ec0d7a4570be4c8d322a40f7f2b5d49d toxicwind <toxicwind@users.noreply.github.com> 1786443831 +0000	commit: auto: fix credentials

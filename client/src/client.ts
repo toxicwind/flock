@@ -1,5 +1,6 @@
+import { FlockKeyPool, parseRetryAfterMs, splitKeys } from "./keypool.js";
 import type {
-  NimClientConfig,
+  FlockClientConfig,
   NimError,
   ChatCompletionRequest,
   ChatCompletionResponse,
@@ -17,20 +18,25 @@ const DEFAULT_RETRY_DELAY = 1_000;
 
 const RETRYABLE_STATUS_CODES = new Set([429, 500, 502, 503, 504]);
 
-export class NimClient {
+export class FlockClient {
   readonly apiKey: string;
+  readonly apiKeys: string[];
   readonly baseURL: string;
   readonly timeout: number;
   readonly maxRetries: number;
   readonly retryDelay: number;
+  private readonly pool: FlockKeyPool;
 
-  constructor(config: NimClientConfig) {
-    if (!config.apiKey) {
+  constructor(config: FlockClientConfig) {
+    const keys = splitKeys(config.apiKeys ?? config.apiKey);
+    if (keys.length === 0) {
       throw new Error(
-        "NimClient requires an apiKey. Get yours free at https://build.nvidia.com"
+        "FlockClient requires an apiKey. Get yours free at https://build.nvidia.com"
       );
     }
-    this.apiKey = config.apiKey;
+    this.apiKeys = keys;
+    this.apiKey = keys[0];
+    this.pool = new FlockKeyPool(keys);
     this.baseURL = (config.baseURL ?? DEFAULT_BASE_URL).replace(/\/$/, "");
     this.timeout = config.timeout ?? DEFAULT_TIMEOUT;
     this.maxRetries = config.maxRetries ?? DEFAULT_MAX_RETRIES;
@@ -47,7 +53,22 @@ export class NimClient {
     let lastError: NimError | null = null;
 
     for (let attempt = 0; attempt <= this.maxRetries; attempt++) {
-      if (attempt > 0) {
+      // Rotate across keys: a 429 parks the key for its Retry-After and the
+      // next attempt uses the next available key immediately (no backoff).
+      let key = this.pool.nextAvailable();
+      if (key === null) {
+        const waitUntil = this.pool.earliestRetryAt();
+        const waitMs = waitUntil === null ? this.retryDelay : Math.max(0, waitUntil - Date.now());
+        await sleep(waitMs);
+        key = this.pool.nextAvailable();
+      }
+      if (key === null) {
+        throw lastError ?? createError("All API keys are rate limited", 429, true);
+      }
+      const activeKey = key;
+      const rotated = attempt > 0 && this.apiKeys.length > 1;
+
+      if (attempt > 0 && !rotated) {
         const delay = this.retryDelay * Math.pow(2, attempt - 1);
         await sleep(delay);
       }
@@ -59,7 +80,7 @@ export class NimClient {
         const response = await fetch(url, {
           ...fetchOptions,
           headers: {
-            Authorization: `Bearer ${this.apiKey}`,
+            Authorization: `Bearer ${activeKey}`,
             "Content-Type": "application/json",
             Accept: "application/json",
             ...fetchOptions.headers,
@@ -77,6 +98,12 @@ export class NimClient {
             RETRYABLE_STATUS_CODES.has(response.status)
           );
 
+          if (response.status === 429) {
+            this.pool.recordRateLimit(activeKey, parseRetryAfterMs(response.headers.get("retry-after")));
+          } else {
+            this.pool.recordFailure(activeKey, `HTTP ${response.status}`);
+          }
+
           if (error.retryable && attempt < this.maxRetries) {
             lastError = error;
             continue;
@@ -84,6 +111,7 @@ export class NimClient {
           throw error;
         }
 
+        this.pool.recordSuccess(activeKey);
         return response.json() as Promise<T>;
       } catch (err) {
         clearTimeout(timer);
@@ -112,10 +140,11 @@ export class NimClient {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.timeout);
 
+    const streamKey = this.pool.nextAvailable() ?? this.apiKey;
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${this.apiKey}`,
+        Authorization: `Bearer ${streamKey}`,
         "Content-Type": "application/json",
         Accept: "text/event-stream",
       },
@@ -187,6 +216,24 @@ export class NimClient {
       method: "POST",
       body: JSON.stringify(request),
     });
+  }
+
+  async listModels(): Promise<{ data: { id: string }[] }> {
+    return this.request<{ data: { id: string }[] }>("/models", { method: "GET" });
+  }
+
+  /**
+   * Dead-model guard: true when the model is listed as available.
+   * Mirrors the swarm client's cold-start/dead-model preflight so callers
+   * can skip dead models before spending a request on them.
+   */
+  async probeModel(model: string): Promise<boolean> {
+    try {
+      const catalog = await this.listModels();
+      return catalog.data.some((m) => m.id === model);
+    } catch {
+      return false;
+    }
   }
 }
 

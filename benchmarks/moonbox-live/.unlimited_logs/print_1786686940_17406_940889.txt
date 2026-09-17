@@ -1,1 +1,0 @@
-Use HOOK.run_unlimited(cmd) for shell commands.

@@ -1,4 +1,4 @@
-import { NimClient } from "../client.js";
+import { FlockClient } from "../client.js";
 import { Models } from "../models.js";
 import type { ChatMessage } from "../types.js";
 
@@ -35,7 +35,7 @@ export interface JailbreakResult {
 }
 
 export class SafetyEndpoint {
-  constructor(private client: NimClient) {}
+  constructor(private client: FlockClient) {}
 
   async checkContent(
     text: string,

@@ -1,5 +1,7 @@
-export interface NimClientConfig {
+export interface FlockClientConfig {
   apiKey: string;
+  /** Additional keys; apiKey may also be comma-separated. Enables rotation. */
+  apiKeys?: string[];
   baseURL?: string;
   timeout?: number;
   maxRetries?: number;

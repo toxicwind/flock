@@ -102,7 +102,7 @@ impl Governor {
             {
                 s.limit = 0;
                 s.last_adjusted = Some(now);
-                gauge!("nimproxy_model_limit", "model" => model.to_owned()).set(0.0);
+                gauge!("flock_model_limit", "model" => model.to_owned()).set(0.0);
                 tracing::info!(model, "model pressure cleared; governor dissolved");
             } else if s
                 .last_adjusted
@@ -110,7 +110,7 @@ impl Governor {
             {
                 s.limit += 1;
                 s.last_adjusted = Some(now);
-                gauge!("nimproxy_model_limit", "model" => model.to_owned()).set(s.limit as f64);
+                gauge!("flock_model_limit", "model" => model.to_owned()).set(s.limit as f64);
             }
         }
         if s.blocked_until.is_some_and(|b| b > now) {
@@ -121,7 +121,7 @@ impl Governor {
             return false;
         }
         s.inflight += 1;
-        gauge!("nimproxy_model_inflight", "model" => model.to_owned()).set(s.inflight as f64);
+        gauge!("flock_model_inflight", "model" => model.to_owned()).set(s.inflight as f64);
         true
     }
 
@@ -129,7 +129,7 @@ impl Governor {
         let mut models = self.models.lock().unwrap();
         if let Some(s) = models.get_mut(model) {
             s.inflight = s.inflight.saturating_sub(1);
-            gauge!("nimproxy_model_inflight", "model" => model.to_owned()).set(s.inflight as f64);
+            gauge!("flock_model_inflight", "model" => model.to_owned()).set(s.inflight as f64);
         }
     }
 
@@ -142,7 +142,7 @@ impl Governor {
     }
 
     fn note_exhausted_at(&self, model: &str, override_limit: Option<usize>, now: Instant) {
-        counter!("nimproxy_worker_exhausted_total", "model" => model.to_owned()).increment(1);
+        counter!("flock_worker_exhausted_total", "model" => model.to_owned()).increment(1);
         let mut models = self.models.lock().unwrap();
         let s = models.entry(model.to_owned()).or_default();
         s.blocked_until = Some(now + EXHAUST_BACKOFF);
@@ -150,7 +150,7 @@ impl Governor {
         if override_limit.is_none() {
             s.limit = (s.inflight / 2).max(1);
             s.last_adjusted = Some(now);
-            gauge!("nimproxy_model_limit", "model" => model.to_owned()).set(s.limit as f64);
+            gauge!("flock_model_limit", "model" => model.to_owned()).set(s.limit as f64);
             tracing::warn!(
                 model,
                 inflight = s.inflight,

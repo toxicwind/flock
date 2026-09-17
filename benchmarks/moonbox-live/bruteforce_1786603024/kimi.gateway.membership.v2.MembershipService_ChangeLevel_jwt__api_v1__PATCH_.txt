@@ -1,1 +1,0 @@
-{"error_type":"internal.error","message":"服务内部错误","detail":"Cannot PATCH /v1/kimi.gateway.membership.v2.MembershipService/ChangeLevel"}

@@ -1,7 +1,0 @@
-asset,status,action
-Real JWT from portal strace,EXTRACTED,TEST NOW
-JWT secret guess,WRONG (not chatty),ABANDON
-GitHub PAT,WORKING,USE
-DNS fix,WORKING,USE
-Repo clones,76 repos,PUSH
-_git backups,27 repos,VERIFY

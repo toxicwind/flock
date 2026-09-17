@@ -1,1 +1,0 @@
-{"id": "git_status_002", "type": "shell", "cmd": "cd /mnt/agents/output/app && git status --short && echo \"---END---\"", "timeout": 10}

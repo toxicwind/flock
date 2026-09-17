@@ -1,11 +1,11 @@
-# nim-client (Python)
+# flock-client (Python)
 
 Python SDK for all NVIDIA NIM free endpoints. Zero dependencies — uses only Python 3.11+ stdlib.
 
 ## Install
 
 ```bash
-pip install nim-client
+pip install flock-client
 # or from source:
 pip install -e .
 ```

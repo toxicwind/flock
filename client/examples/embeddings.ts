@@ -1,6 +1,6 @@
-import { Nim } from "../src/index.js";
+import { Flock } from "../src/index.js";
 
-const nim = new Nim(process.env.NVIDIA_API_KEY ?? "");
+const nim = new Flock(process.env.NVIDIA_API_KEY ?? "");
 
 async function main() {
   console.log("=== Single Embedding ===");

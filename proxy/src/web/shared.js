@@ -111,7 +111,7 @@ applyDynamicStyles(document);
    Catalog values remain plain Unicode text. Native DOM sinks own ordinary
    element and text-bearing attribute contexts. A branded catalog descriptor
    is inert until the fixed-markup HTML sink resolves and escapes it. */
-const EMERGENCY_MESSAGE = 'NIM Proxy interface failed to load.';
+const EMERGENCY_MESSAGE = 'Flock interface failed to load.';
 let I18N;
 let MSG;
 function failInterface() {
@@ -538,7 +538,7 @@ function rangeSamples(range, tail) {
 
 function hasSelectedRequestTraffic(selectedSamples) {
   return selectedSamples.some(sample => sample.rows.some(
-    row => row.name === 'nimproxy_requests_total' && +row.value > 0));
+    row => row.name === 'flock_requests_total' && +row.value > 0));
 }
 
 /* pool capacity from per-lane rpms when the server provides them (keys can

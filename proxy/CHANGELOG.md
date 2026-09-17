@@ -49,8 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Keep the old file for rollback or remove it manually after it is no longer
   needed.
 - Rename dashboards, alerts, and recording rules from
-  `nimproxy_lane_benched_total` to
-  `nimproxy_lane_cooldown_total`. Every other pre-existing `nimproxy_*`
+  `flock_lane_benched_total` to
+  `flock_lane_cooldown_total`. Every other pre-existing `flock_*`
   series keeps its name.
 - Pricing settings and estimated-savings fields are removed:
   `POST /api/settings/pricing`, `server.pricing`,
@@ -109,7 +109,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Evidence-backed NIM response observations.** Sanitized buffered and SSE
   fixtures pin optional usage, finish, tool-call, framing, and invalid-field
   behavior without retaining prompts or completions. The bounded
-  `nimproxy_usage_observations_total{field,result}` counter distinguishes
+  `flock_usage_observations_total{field,result}` counter distinguishes
   `measured`, `estimated`, `unavailable`, and `invalid` instead of
   presenting absence as zero.
 
@@ -232,7 +232,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   generation. Buffered expiry returns `504 deadline_exceeded`; streaming
   expiry emits the same error inside the committed SSE response. Expiry drops
   upstream work and all request-owned permits, and is exposed as request status
-  `deadline` plus `nimproxy_deadline_exceeded_total`.
+  `deadline` plus `flock_deadline_exceeded_total`.
 
 ### Security
 
@@ -433,8 +433,8 @@ validate the new release automation.
   and backs off the **model** (never benches the lane, since key failover can't
   help). Adaptive and zero-config (engages at half observed in-flight, +1 per
   stable minute, dissolves after 30 clean minutes) with optional per-model
-  pinned caps in Settings. New metrics `nimproxy_worker_exhausted_total{model}`,
-  `nimproxy_model_inflight{model}`, `nimproxy_model_limit{model}` (0 =
+  pinned caps in Settings. New metrics `flock_worker_exhausted_total{model}`,
+  `flock_model_inflight{model}`, `flock_model_limit{model}` (0 =
   ungoverned), and a Reliability **Model pressure** card that appears only once
   the governor has engaged. See `knowledge/architecture/governor.md`;
   `mock_nim.py` gained `--worker-slots N` and `loadtest.py` reports worker
@@ -457,8 +457,8 @@ validate the new release automation.
   `/v1` call until a key exists).
 - **New dashboard charts** for signals that were collected but never drawn:
   requests-by-outcome over time (Reliability), requested output budget per
-  harness from `nimproxy_request_max_tokens` (Clients), and tool-call volume
-  per model from `nimproxy_tool_calls_total` (Models).
+  harness from `flock_request_max_tokens` (Clients), and tool-call volume
+  per model from `flock_tool_calls_total` (Models).
 
 ### Fixed
 

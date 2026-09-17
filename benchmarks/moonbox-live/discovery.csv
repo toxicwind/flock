@@ -1,6 +1,0 @@
-component,endpoint,protocol,auth_type,status,notes
-portal,127.0.0.1:8080,Connect-RPC,JWT,local_proxy,bind_token rejects all attempts
-envd,127.0.0.1:49983,gRPC/HTTP2,JWT,local_proxy,"-isnotfc flag, no FC mode"
-drive9,10.213.5.144,HTTP/REST,Bearer token,404_all_paths,"WAL empty, token valid but paths unknown"
-agent-gw,agent-gw.kimi.com,HTTPS,JWT,401_invalid_jwt,requires valid JWT signature
-kimi-api-sandbox,kimi-api-sandbox.msh.team,HTTPS,JWT,401_invalid_jwt,requires valid JWT signature

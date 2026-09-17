@@ -1,9 +1,0 @@
-{
-  "task": "GITHUB_REPOS",
-  "code": "\nimport urllib.request, json\nTOKEN = \"os.environ.get("GITHUB_PAT", "")\"\nreq = urllib.request.Request(\"https://api.github.com/user/repos?type=all&sort=updated&per_page=100\", headers={\"Authorization\": f\"token {TOKEN}\", \"Accept\": \"application/vnd.github.v3+json\"})\ntry:\n    r = urllib.request.urlopen(req, timeout=10)\n    repos = json.loads(r.read())\n    results = [{\"name\": r[\"full_name\"], \"private\": r[\"private\"], \"updated\": r[\"updated_at\"][:10], \"description\": r.get(\"description\", \"N/A\")[:100]} for r in repos]\n    print(json.dumps(results, indent=2))\nexcept Exception as e:\n    print(json.dumps({\"error\": str(e)}))\n",
-  "output": [
-    "{\"error\": \"'NoneType' object is not subscriptable\"}",
-    ""
-  ],
-  "errors": []
-}

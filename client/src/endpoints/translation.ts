@@ -1,4 +1,4 @@
-import { NimClient } from "../client.js";
+import { FlockClient } from "../client.js";
 import { Models } from "../models.js";
 
 export interface TranslateOptions {
@@ -37,7 +37,7 @@ export const SUPPORTED_LANGUAGES = {
 } as const;
 
 export class TranslationEndpoint {
-  constructor(private client: NimClient) {}
+  constructor(private client: FlockClient) {}
 
   async translate(
     text: string,

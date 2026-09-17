@@ -1,2 +1,0 @@
-#!/bin/bash
-ltrace -f -e malloc+free+open+socket -o /tmp/ltrace.log "$@"

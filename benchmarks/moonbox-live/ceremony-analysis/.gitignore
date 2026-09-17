@@ -1,7 +1,0 @@
-.env
-.env.keys
-*.pem
-*.key
-secrets/
-.pat
-credentials/

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="nim-client",
+    name="flock-client",
     version="1.0.0",
     description="Unified Python SDK for all NVIDIA NIM free endpoints",
     long_description=open("README.md").read(),

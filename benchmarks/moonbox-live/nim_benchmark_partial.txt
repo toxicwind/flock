@@ -1,4 +1,0 @@
-python-dotenv could not parse statement starting at line 37
-python-dotenv could not parse statement starting at line 38
-python-dotenv could not parse statement starting at line 39
-python-dotenv could not parse statement starting at line 40

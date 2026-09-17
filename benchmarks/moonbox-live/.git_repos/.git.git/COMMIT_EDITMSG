@@ -1,7 +1,0 @@
-infra: auto-update CI, README, hooks (20260811_034949)
-
-- Update CI workflow with path filters
-- Add pre-commit config
-- Update README timestamp
-- Fix permissions and locks
-- Managed by ToxicWind Infrastructure Pipeline

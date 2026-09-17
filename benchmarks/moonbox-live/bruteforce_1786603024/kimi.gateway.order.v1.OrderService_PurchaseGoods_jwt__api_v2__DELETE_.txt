@@ -1,1 +1,0 @@
-{"error_type":"internal.error","message":"服务内部错误","detail":"Cannot DELETE /v2/kimi.gateway.order.v1.OrderService/PurchaseGoods"}

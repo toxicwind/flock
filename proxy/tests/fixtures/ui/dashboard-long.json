@@ -13,26 +13,26 @@
   "latest": [
     {
       "labels": {},
-      "metric": "nimproxy_active_requests",
+      "metric": "flock_active_requests",
       "value": 2.0
     },
     {
       "labels": {},
-      "metric": "nimproxy_queue_depth",
+      "metric": "flock_queue_depth",
       "value": 1.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_model_inflight",
+      "metric": "flock_model_inflight",
       "value": 2.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_model_limit",
+      "metric": "flock_model_limit",
       "value": 8.0
     }
   ],
@@ -56,7 +56,7 @@
             "path": "/v1/chat/completions",
             "status": "200"
           },
-          "metric": "nimproxy_requests_total",
+          "metric": "flock_requests_total",
           "value": 3.0
         }
       ]
@@ -70,7 +70,7 @@
         "path": "/v1/chat/completions",
         "status": "200"
       },
-      "metric": "nimproxy_requests_total",
+      "metric": "flock_requests_total",
       "value": 3.0
     }
   ],

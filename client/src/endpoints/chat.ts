@@ -1,4 +1,4 @@
-import { NimClient } from "../client.js";
+import { FlockClient } from "../client.js";
 import { Models } from "../models.js";
 import type { ChatMessage, ChatCompletionResponse, StreamChunk } from "../types.js";
 
@@ -17,7 +17,7 @@ export interface AskOptions extends ChatOptions {
 }
 
 export class ChatEndpoint {
-  constructor(private client: NimClient) {}
+  constructor(private client: FlockClient) {}
 
   async complete(
     messages: ChatMessage[],

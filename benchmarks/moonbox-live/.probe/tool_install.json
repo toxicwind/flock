@@ -1,6 +1,0 @@
-{
-  "grpcurl": "INSTALLED",
-  "protoc": "INSTALLED",
-  "strace": "NEEDS_ROOT",
-  "jq": "EXISTS"
-}

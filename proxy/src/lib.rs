@@ -45,15 +45,15 @@ use pool::{Pool, PoolHandle};
 // production bucket registry; fixture code must never approximate it.
 #[rustfmt::skip]
 const HISTOGRAM_BUCKETS: &[(&str, &[f64])] = &[
-    ("nimproxy_ttft_seconds",       &[0.05, 0.1, 0.25, 0.5, 1.0, 2.0, 5.0, 10.0, 30.0, 60.0]),
-    ("nimproxy_tokens_per_second",  &[1.0, 2.0, 5.0, 10.0, 20.0, 40.0, 80.0, 160.0, 320.0]),
-    ("nimproxy_queue_wait_seconds", &[0.001, 0.05, 0.25, 1.0, 5.0, 15.0, 60.0, 180.0, 600.0]),
-    ("nimproxy_upstream_seconds",   &[0.25, 0.5, 1.0, 2.0, 5.0, 10.0, 30.0, 60.0, 120.0, 300.0]),
-    ("nimproxy_tpot_seconds",       &[0.005, 0.01, 0.02, 0.04, 0.08, 0.16, 0.32]),
-    ("nimproxy_request_messages",   &[1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0]),
-    ("nimproxy_request_tools",      &[0.0, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0]),
-    ("nimproxy_request_max_tokens", &[128.0, 256.0, 512.0, 1024.0, 2048.0, 4096.0, 8192.0, 16384.0, 32768.0, 65536.0, 131072.0]),
-    ("nimproxy_request_temperature", &[0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0]),
+    ("flock_ttft_seconds",       &[0.05, 0.1, 0.25, 0.5, 1.0, 2.0, 5.0, 10.0, 30.0, 60.0]),
+    ("flock_tokens_per_second",  &[1.0, 2.0, 5.0, 10.0, 20.0, 40.0, 80.0, 160.0, 320.0]),
+    ("flock_queue_wait_seconds", &[0.001, 0.05, 0.25, 1.0, 5.0, 15.0, 60.0, 180.0, 600.0]),
+    ("flock_upstream_seconds",   &[0.25, 0.5, 1.0, 2.0, 5.0, 10.0, 30.0, 60.0, 120.0, 300.0]),
+    ("flock_tpot_seconds",       &[0.005, 0.01, 0.02, 0.04, 0.08, 0.16, 0.32]),
+    ("flock_request_messages",   &[1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0]),
+    ("flock_request_tools",      &[0.0, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0]),
+    ("flock_request_max_tokens", &[128.0, 256.0, 512.0, 1024.0, 2048.0, 4096.0, 8192.0, 16384.0, 32768.0, 65536.0, 131072.0]),
+    ("flock_request_temperature", &[0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0]),
 ];
 
 /// App-level configuration, published as an immutable snapshot: every request
@@ -555,11 +555,11 @@ pub async fn run() {
     }
     let prometheus = builder.install_recorder().expect("prometheus recorder");
     metrics::describe_counter!(
-        "nimproxy_usage_observations_total",
+        "flock_usage_observations_total",
         "Final classified upstream usage observations by field and result."
     );
     metrics::describe_gauge!(
-        "nimproxy_history_persistence_degraded",
+        "flock_history_persistence_degraded",
         "Whether canonical history persistence is degraded (0 = ok, 1 = degraded)."
     );
 
@@ -585,7 +585,7 @@ pub async fn run() {
             ))
         }
     };
-    metrics::gauge!("nimproxy_history_persistence_degraded").set(
+    metrics::gauge!("flock_history_persistence_degraded").set(
         if hist.status().persistence == "degraded" {
             1.0
         } else {

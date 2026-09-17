@@ -1,7 +1,0 @@
-{
-  "KIMI_PROJECT_PORTAL_CAPABILITY_MOUNT": "/mnt/portal-overlay",
-  "KIMI_PROJECT_PORTAL_CAPABILITY_ENABLED": "true",
-  "KIMI_PROJECT_PORTAL_CAPABILITY_PROD_ADDR": "https://kimi-api-sandbox.msh.team/apiv2",
-  "AGENT_RUNTIME_SANDBOX_ID": "sgqj7ofuyeof2qi5o3rnesihw4nfeoszfl75fgji",
-  "KIMI_PROJECT_PORTAL_CAPABILITY_ENV": "prod"
-}

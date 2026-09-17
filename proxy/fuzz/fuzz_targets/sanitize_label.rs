@@ -5,5 +5,5 @@
 use libfuzzer_sys::fuzz_target;
 
 fuzz_target!(|data: &[u8]| {
-    nim_proxy::fuzz_proxy::sanitize_label(data);
+    flock::fuzz_proxy::sanitize_label(data);
 });

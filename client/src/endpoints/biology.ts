@@ -1,4 +1,4 @@
-import { NimClient } from "../client.js";
+import { FlockClient } from "../client.js";
 
 const BIOLOGY_BASE_URL = "https://health.api.nvidia.com/v1";
 
@@ -34,7 +34,7 @@ export interface MSAResult {
 export class BiologyEndpoint {
   private bioUrl: string;
 
-  constructor(private client: NimClient) {
+  constructor(private client: FlockClient) {
     this.bioUrl = BIOLOGY_BASE_URL;
   }
 

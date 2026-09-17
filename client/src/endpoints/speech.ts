@@ -1,4 +1,4 @@
-import { NimClient } from "../client.js";
+import { FlockClient } from "../client.js";
 import { Models } from "../models.js";
 
 const AUDIO_BASE_URL = "https://integrate.api.nvidia.com/v1";
@@ -23,7 +23,7 @@ export interface TTSOptions {
 }
 
 export class SpeechEndpoint {
-  constructor(private client: NimClient) {}
+  constructor(private client: FlockClient) {}
 
   async transcribe(
     audioData: Buffer | Blob | string,

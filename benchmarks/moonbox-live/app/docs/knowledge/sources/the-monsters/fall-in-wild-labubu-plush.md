@@ -1,2 +1,0 @@
-Official description placeholder.
-sha256:ea57eba42e23ef78d869a5158bf89848529ebd507e01c9feb7ee696e2451cc27

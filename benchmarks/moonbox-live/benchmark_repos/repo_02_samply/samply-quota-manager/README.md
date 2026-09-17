@@ -1,2 +1,0 @@
-# samply-quota-manager
-

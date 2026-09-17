@@ -1,1 +1,0 @@
-{"id": "build_003", "type": "bun", "cmd": "cd /mnt/agents/output/app && bun install 2>&1 | tail -5 && bun run build 2>&1 | tail -10", "timeout": 300}

@@ -13,26 +13,26 @@
   "latest": [
     {
       "labels": {},
-      "metric": "nimproxy_active_requests",
+      "metric": "flock_active_requests",
       "value": 2.0
     },
     {
       "labels": {},
-      "metric": "nimproxy_queue_depth",
+      "metric": "flock_queue_depth",
       "value": 1.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_model_inflight",
+      "metric": "flock_model_inflight",
       "value": 2.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_model_limit",
+      "metric": "flock_model_limit",
       "value": 8.0
     }
   ],
@@ -56,7 +56,7 @@
             "path": "/v1/chat/completions",
             "status": "200"
           },
-          "metric": "nimproxy_requests_total",
+          "metric": "flock_requests_total",
           "value": 30.0
         },
         {
@@ -66,7 +66,7 @@
             "path": "/v1/chat/completions",
             "status": "504"
           },
-          "metric": "nimproxy_requests_total",
+          "metric": "flock_requests_total",
           "value": 3.0
         },
         {
@@ -74,7 +74,7 @@
             "client": "fixture-client",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_prompt_tokens_total",
+          "metric": "flock_prompt_tokens_total",
           "value": 1200.0
         },
         {
@@ -83,14 +83,14 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_completion_tokens_total",
+          "metric": "flock_completion_tokens_total",
           "value": 300.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_reasoning_tokens_total",
+          "metric": "flock_reasoning_tokens_total",
           "value": 60.0
         },
         {
@@ -98,7 +98,7 @@
             "model": "fixture/alpha",
             "reason": "stop"
           },
-          "metric": "nimproxy_finish_reason_total",
+          "metric": "flock_finish_reason_total",
           "value": 25.0
         },
         {
@@ -106,7 +106,7 @@
             "model": "fixture/alpha",
             "reason": "function_call"
           },
-          "metric": "nimproxy_finish_reason_total",
+          "metric": "flock_finish_reason_total",
           "value": 5.0
         },
         {
@@ -114,7 +114,7 @@
             "model": "fixture/alpha",
             "reason": "length"
           },
-          "metric": "nimproxy_finish_reason_total",
+          "metric": "flock_finish_reason_total",
           "value": 5.0
         },
         {
@@ -122,7 +122,7 @@
             "model": "fixture/alpha",
             "reason": "tool_calls"
           },
-          "metric": "nimproxy_finish_reason_total",
+          "metric": "flock_finish_reason_total",
           "value": 5.0
         },
         {
@@ -130,7 +130,7 @@
             "model": "fixture/alpha",
             "reason": "content_filter"
           },
-          "metric": "nimproxy_finish_reason_total",
+          "metric": "flock_finish_reason_total",
           "value": 5.0
         },
         {
@@ -138,7 +138,7 @@
             "model": "fixture/alpha",
             "reason": "other"
           },
-          "metric": "nimproxy_finish_reason_total",
+          "metric": "flock_finish_reason_total",
           "value": 5.0
         },
         {
@@ -146,49 +146,49 @@
             "client": "fixture-client",
             "stream": "true"
           },
-          "metric": "nimproxy_stream_requests_total",
+          "metric": "flock_stream_requests_total",
           "value": 20.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tool_calls_total",
+          "metric": "flock_tool_calls_total",
           "value": 8.0
         },
         {
           "labels": {
             "mode": "auto"
           },
-          "metric": "nimproxy_tool_choice_total",
+          "metric": "flock_tool_choice_total",
           "value": 10.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_json_mode_total",
+          "metric": "flock_json_mode_total",
           "value": 4.0
         },
         {
           "labels": {
             "result": "sticky"
           },
-          "metric": "nimproxy_affinity_total",
+          "metric": "flock_affinity_total",
           "value": 24.0
         },
         {
           "labels": {
             "result": "spill"
           },
-          "metric": "nimproxy_affinity_total",
+          "metric": "flock_affinity_total",
           "value": 2.0
         },
         {
           "labels": {
             "lane": "0"
           },
-          "metric": "nimproxy_lane_requests_total",
+          "metric": "flock_lane_requests_total",
           "value": 33.0
         },
         {
@@ -196,85 +196,85 @@
             "lane": "0",
             "status": "429"
           },
-          "metric": "nimproxy_lane_cooldown_total",
+          "metric": "flock_lane_cooldown_total",
           "value": 2.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_worker_exhausted_total",
+          "metric": "flock_worker_exhausted_total",
           "value": 1.0
         },
         {
           "labels": {},
-          "metric": "nimproxy_shed_total",
+          "metric": "flock_shed_total",
           "value": 1.0
         },
         {
           "labels": {},
-          "metric": "nimproxy_unauthorized_total",
+          "metric": "flock_unauthorized_total",
           "value": 1.0
         },
         {
           "labels": {},
-          "metric": "nimproxy_login_failures_total",
+          "metric": "flock_login_failures_total",
           "value": 1.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_request_tools_count",
+          "metric": "flock_request_tools_count",
           "value": 10.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_request_tools_sum",
+          "metric": "flock_request_tools_sum",
           "value": 15.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_request_messages_count",
+          "metric": "flock_request_messages_count",
           "value": 10.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_request_messages_sum",
+          "metric": "flock_request_messages_sum",
           "value": 40.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_request_temperature_count",
+          "metric": "flock_request_temperature_count",
           "value": 10.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_request_temperature_sum",
+          "metric": "flock_request_temperature_sum",
           "value": 7.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_request_max_tokens_count",
+          "metric": "flock_request_max_tokens_count",
           "value": 10.0
         },
         {
           "labels": {
             "client": "fixture-client"
           },
-          "metric": "nimproxy_request_max_tokens_sum",
+          "metric": "flock_request_max_tokens_sum",
           "value": 10240.0
         },
         {
@@ -282,7 +282,7 @@
             "le": "0.05",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 1.0
         },
         {
@@ -290,7 +290,7 @@
             "le": "0.1",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 2.0
         },
         {
@@ -298,7 +298,7 @@
             "le": "0.25",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 3.0
         },
         {
@@ -306,7 +306,7 @@
             "le": "0.5",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 4.0
         },
         {
@@ -314,7 +314,7 @@
             "le": "1",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 5.0
         },
         {
@@ -322,7 +322,7 @@
             "le": "2",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 6.0
         },
         {
@@ -330,7 +330,7 @@
             "le": "5",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 7.0
         },
         {
@@ -338,7 +338,7 @@
             "le": "10",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 8.0
         },
         {
@@ -346,7 +346,7 @@
             "le": "30",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 10.0
         },
         {
@@ -354,7 +354,7 @@
             "le": "60",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 10.0
         },
         {
@@ -362,21 +362,21 @@
             "le": "+Inf",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_bucket",
+          "metric": "flock_ttft_seconds_bucket",
           "value": 10.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_count",
+          "metric": "flock_ttft_seconds_count",
           "value": 10.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_ttft_seconds_sum",
+          "metric": "flock_ttft_seconds_sum",
           "value": 45.0
         },
         {
@@ -385,7 +385,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 1.0
         },
         {
@@ -394,7 +394,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 2.0
         },
         {
@@ -403,7 +403,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 3.0
         },
         {
@@ -412,7 +412,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 4.0
         },
         {
@@ -421,7 +421,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 5.0
         },
         {
@@ -430,7 +430,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 6.0
         },
         {
@@ -439,7 +439,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 7.0
         },
         {
@@ -448,7 +448,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 8.0
         },
         {
@@ -457,7 +457,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 9.0
         },
         {
@@ -466,7 +466,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_bucket",
+          "metric": "flock_tokens_per_second_bucket",
           "value": 10.0
         },
         {
@@ -474,7 +474,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_count",
+          "metric": "flock_tokens_per_second_count",
           "value": 10.0
         },
         {
@@ -482,7 +482,7 @@
             "model": "fixture/alpha",
             "source": "usage"
           },
-          "metric": "nimproxy_tokens_per_second_sum",
+          "metric": "flock_tokens_per_second_sum",
           "value": 910.0
         },
         {
@@ -490,7 +490,7 @@
             "le": "0.005",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_bucket",
+          "metric": "flock_tpot_seconds_bucket",
           "value": 1.0
         },
         {
@@ -498,7 +498,7 @@
             "le": "0.01",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_bucket",
+          "metric": "flock_tpot_seconds_bucket",
           "value": 2.0
         },
         {
@@ -506,7 +506,7 @@
             "le": "0.02",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_bucket",
+          "metric": "flock_tpot_seconds_bucket",
           "value": 3.0
         },
         {
@@ -514,7 +514,7 @@
             "le": "0.04",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_bucket",
+          "metric": "flock_tpot_seconds_bucket",
           "value": 4.0
         },
         {
@@ -522,7 +522,7 @@
             "le": "0.08",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_bucket",
+          "metric": "flock_tpot_seconds_bucket",
           "value": 5.0
         },
         {
@@ -530,7 +530,7 @@
             "le": "0.16",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_bucket",
+          "metric": "flock_tpot_seconds_bucket",
           "value": 6.0
         },
         {
@@ -538,7 +538,7 @@
             "le": "0.32",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_bucket",
+          "metric": "flock_tpot_seconds_bucket",
           "value": 7.0
         },
         {
@@ -546,21 +546,21 @@
             "le": "+Inf",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_bucket",
+          "metric": "flock_tpot_seconds_bucket",
           "value": 10.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_count",
+          "metric": "flock_tpot_seconds_count",
           "value": 10.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_tpot_seconds_sum",
+          "metric": "flock_tpot_seconds_sum",
           "value": 1.976
         },
         {
@@ -568,7 +568,7 @@
             "le": "0.25",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 1.0
         },
         {
@@ -576,7 +576,7 @@
             "le": "0.5",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 2.0
         },
         {
@@ -584,7 +584,7 @@
             "le": "1",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 3.0
         },
         {
@@ -592,7 +592,7 @@
             "le": "2",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 4.0
         },
         {
@@ -600,7 +600,7 @@
             "le": "5",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 5.0
         },
         {
@@ -608,7 +608,7 @@
             "le": "10",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 6.0
         },
         {
@@ -616,7 +616,7 @@
             "le": "30",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 7.0
         },
         {
@@ -624,7 +624,7 @@
             "le": "60",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 8.0
         },
         {
@@ -632,7 +632,7 @@
             "le": "120",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 9.0
         },
         {
@@ -640,7 +640,7 @@
             "le": "300",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 10.0
         },
         {
@@ -648,101 +648,101 @@
             "le": "+Inf",
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_bucket",
+          "metric": "flock_upstream_seconds_bucket",
           "value": 10.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_count",
+          "metric": "flock_upstream_seconds_count",
           "value": 10.0
         },
         {
           "labels": {
             "model": "fixture/alpha"
           },
-          "metric": "nimproxy_upstream_seconds_sum",
+          "metric": "flock_upstream_seconds_sum",
           "value": 422.6
         },
         {
           "labels": {
             "le": "0.001"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 1.0
         },
         {
           "labels": {
             "le": "0.05"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 2.0
         },
         {
           "labels": {
             "le": "0.25"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 3.0
         },
         {
           "labels": {
             "le": "1"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 4.0
         },
         {
           "labels": {
             "le": "5"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 5.0
         },
         {
           "labels": {
             "le": "15"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 6.0
         },
         {
           "labels": {
             "le": "60"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 7.0
         },
         {
           "labels": {
             "le": "180"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 8.0
         },
         {
           "labels": {
             "le": "600"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 10.0
         },
         {
           "labels": {
             "le": "+Inf"
           },
-          "metric": "nimproxy_queue_wait_seconds_bucket",
+          "metric": "flock_queue_wait_seconds_bucket",
           "value": 10.0
         },
         {
           "labels": {},
-          "metric": "nimproxy_queue_wait_seconds_count",
+          "metric": "flock_queue_wait_seconds_count",
           "value": 10.0
         },
         {
           "labels": {},
-          "metric": "nimproxy_queue_wait_seconds_sum",
+          "metric": "flock_queue_wait_seconds_sum",
           "value": 932.6205
         },
         {
@@ -750,7 +750,7 @@
             "field": "prompt_tokens",
             "result": "invalid"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -758,7 +758,7 @@
             "field": "completion_tokens",
             "result": "invalid"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -766,7 +766,7 @@
             "field": "total_tokens",
             "result": "invalid"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -774,7 +774,7 @@
             "field": "cached_tokens",
             "result": "invalid"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -782,7 +782,7 @@
             "field": "reasoning_tokens",
             "result": "invalid"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -790,7 +790,7 @@
             "field": "prompt_tokens",
             "result": "unavailable"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -798,7 +798,7 @@
             "field": "completion_tokens",
             "result": "unavailable"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -806,7 +806,7 @@
             "field": "total_tokens",
             "result": "unavailable"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -814,7 +814,7 @@
             "field": "cached_tokens",
             "result": "unavailable"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -822,7 +822,7 @@
             "field": "reasoning_tokens",
             "result": "unavailable"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -830,7 +830,7 @@
             "field": "prompt_tokens",
             "result": "estimated"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -838,7 +838,7 @@
             "field": "completion_tokens",
             "result": "estimated"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -846,7 +846,7 @@
             "field": "total_tokens",
             "result": "estimated"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -854,7 +854,7 @@
             "field": "cached_tokens",
             "result": "estimated"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -862,7 +862,7 @@
             "field": "reasoning_tokens",
             "result": "estimated"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -870,7 +870,7 @@
             "field": "prompt_tokens",
             "result": "measured"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -878,7 +878,7 @@
             "field": "completion_tokens",
             "result": "measured"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -886,7 +886,7 @@
             "field": "total_tokens",
             "result": "measured"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -894,7 +894,7 @@
             "field": "cached_tokens",
             "result": "measured"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         },
         {
@@ -902,7 +902,7 @@
             "field": "reasoning_tokens",
             "result": "measured"
           },
-          "metric": "nimproxy_usage_observations_total",
+          "metric": "flock_usage_observations_total",
           "value": 9.0
         }
       ]
@@ -916,7 +916,7 @@
         "path": "/v1/chat/completions",
         "status": "200"
       },
-      "metric": "nimproxy_requests_total",
+      "metric": "flock_requests_total",
       "value": 30.0
     },
     {
@@ -926,7 +926,7 @@
         "path": "/v1/chat/completions",
         "status": "504"
       },
-      "metric": "nimproxy_requests_total",
+      "metric": "flock_requests_total",
       "value": 3.0
     },
     {
@@ -934,7 +934,7 @@
         "client": "fixture-client",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_prompt_tokens_total",
+      "metric": "flock_prompt_tokens_total",
       "value": 1200.0
     },
     {
@@ -943,14 +943,14 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_completion_tokens_total",
+      "metric": "flock_completion_tokens_total",
       "value": 300.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_reasoning_tokens_total",
+      "metric": "flock_reasoning_tokens_total",
       "value": 60.0
     },
     {
@@ -958,7 +958,7 @@
         "model": "fixture/alpha",
         "reason": "stop"
       },
-      "metric": "nimproxy_finish_reason_total",
+      "metric": "flock_finish_reason_total",
       "value": 25.0
     },
     {
@@ -966,7 +966,7 @@
         "model": "fixture/alpha",
         "reason": "function_call"
       },
-      "metric": "nimproxy_finish_reason_total",
+      "metric": "flock_finish_reason_total",
       "value": 5.0
     },
     {
@@ -974,7 +974,7 @@
         "model": "fixture/alpha",
         "reason": "length"
       },
-      "metric": "nimproxy_finish_reason_total",
+      "metric": "flock_finish_reason_total",
       "value": 5.0
     },
     {
@@ -982,7 +982,7 @@
         "model": "fixture/alpha",
         "reason": "tool_calls"
       },
-      "metric": "nimproxy_finish_reason_total",
+      "metric": "flock_finish_reason_total",
       "value": 5.0
     },
     {
@@ -990,7 +990,7 @@
         "model": "fixture/alpha",
         "reason": "content_filter"
       },
-      "metric": "nimproxy_finish_reason_total",
+      "metric": "flock_finish_reason_total",
       "value": 5.0
     },
     {
@@ -998,7 +998,7 @@
         "model": "fixture/alpha",
         "reason": "other"
       },
-      "metric": "nimproxy_finish_reason_total",
+      "metric": "flock_finish_reason_total",
       "value": 5.0
     },
     {
@@ -1006,49 +1006,49 @@
         "client": "fixture-client",
         "stream": "true"
       },
-      "metric": "nimproxy_stream_requests_total",
+      "metric": "flock_stream_requests_total",
       "value": 20.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tool_calls_total",
+      "metric": "flock_tool_calls_total",
       "value": 8.0
     },
     {
       "labels": {
         "mode": "auto"
       },
-      "metric": "nimproxy_tool_choice_total",
+      "metric": "flock_tool_choice_total",
       "value": 10.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_json_mode_total",
+      "metric": "flock_json_mode_total",
       "value": 4.0
     },
     {
       "labels": {
         "result": "sticky"
       },
-      "metric": "nimproxy_affinity_total",
+      "metric": "flock_affinity_total",
       "value": 24.0
     },
     {
       "labels": {
         "result": "spill"
       },
-      "metric": "nimproxy_affinity_total",
+      "metric": "flock_affinity_total",
       "value": 2.0
     },
     {
       "labels": {
         "lane": "0"
       },
-      "metric": "nimproxy_lane_requests_total",
+      "metric": "flock_lane_requests_total",
       "value": 33.0
     },
     {
@@ -1056,85 +1056,85 @@
         "lane": "0",
         "status": "429"
       },
-      "metric": "nimproxy_lane_cooldown_total",
+      "metric": "flock_lane_cooldown_total",
       "value": 2.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_worker_exhausted_total",
+      "metric": "flock_worker_exhausted_total",
       "value": 1.0
     },
     {
       "labels": {},
-      "metric": "nimproxy_shed_total",
+      "metric": "flock_shed_total",
       "value": 1.0
     },
     {
       "labels": {},
-      "metric": "nimproxy_unauthorized_total",
+      "metric": "flock_unauthorized_total",
       "value": 1.0
     },
     {
       "labels": {},
-      "metric": "nimproxy_login_failures_total",
+      "metric": "flock_login_failures_total",
       "value": 1.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_request_tools_count",
+      "metric": "flock_request_tools_count",
       "value": 10.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_request_tools_sum",
+      "metric": "flock_request_tools_sum",
       "value": 15.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_request_messages_count",
+      "metric": "flock_request_messages_count",
       "value": 10.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_request_messages_sum",
+      "metric": "flock_request_messages_sum",
       "value": 40.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_request_temperature_count",
+      "metric": "flock_request_temperature_count",
       "value": 10.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_request_temperature_sum",
+      "metric": "flock_request_temperature_sum",
       "value": 7.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_request_max_tokens_count",
+      "metric": "flock_request_max_tokens_count",
       "value": 10.0
     },
     {
       "labels": {
         "client": "fixture-client"
       },
-      "metric": "nimproxy_request_max_tokens_sum",
+      "metric": "flock_request_max_tokens_sum",
       "value": 10240.0
     },
     {
@@ -1142,7 +1142,7 @@
         "le": "0.05",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 1.0
     },
     {
@@ -1150,7 +1150,7 @@
         "le": "0.1",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 2.0
     },
     {
@@ -1158,7 +1158,7 @@
         "le": "0.25",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 3.0
     },
     {
@@ -1166,7 +1166,7 @@
         "le": "0.5",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 4.0
     },
     {
@@ -1174,7 +1174,7 @@
         "le": "1",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 5.0
     },
     {
@@ -1182,7 +1182,7 @@
         "le": "2",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 6.0
     },
     {
@@ -1190,7 +1190,7 @@
         "le": "5",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 7.0
     },
     {
@@ -1198,7 +1198,7 @@
         "le": "10",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 8.0
     },
     {
@@ -1206,7 +1206,7 @@
         "le": "30",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 10.0
     },
     {
@@ -1214,7 +1214,7 @@
         "le": "60",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 10.0
     },
     {
@@ -1222,21 +1222,21 @@
         "le": "+Inf",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_bucket",
+      "metric": "flock_ttft_seconds_bucket",
       "value": 10.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_count",
+      "metric": "flock_ttft_seconds_count",
       "value": 10.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_ttft_seconds_sum",
+      "metric": "flock_ttft_seconds_sum",
       "value": 45.0
     },
     {
@@ -1245,7 +1245,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 1.0
     },
     {
@@ -1254,7 +1254,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 2.0
     },
     {
@@ -1263,7 +1263,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 3.0
     },
     {
@@ -1272,7 +1272,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 4.0
     },
     {
@@ -1281,7 +1281,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 5.0
     },
     {
@@ -1290,7 +1290,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 6.0
     },
     {
@@ -1299,7 +1299,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 7.0
     },
     {
@@ -1308,7 +1308,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 8.0
     },
     {
@@ -1317,7 +1317,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 9.0
     },
     {
@@ -1326,7 +1326,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_bucket",
+      "metric": "flock_tokens_per_second_bucket",
       "value": 10.0
     },
     {
@@ -1334,7 +1334,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_count",
+      "metric": "flock_tokens_per_second_count",
       "value": 10.0
     },
     {
@@ -1342,7 +1342,7 @@
         "model": "fixture/alpha",
         "source": "usage"
       },
-      "metric": "nimproxy_tokens_per_second_sum",
+      "metric": "flock_tokens_per_second_sum",
       "value": 910.0
     },
     {
@@ -1350,7 +1350,7 @@
         "le": "0.005",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_bucket",
+      "metric": "flock_tpot_seconds_bucket",
       "value": 1.0
     },
     {
@@ -1358,7 +1358,7 @@
         "le": "0.01",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_bucket",
+      "metric": "flock_tpot_seconds_bucket",
       "value": 2.0
     },
     {
@@ -1366,7 +1366,7 @@
         "le": "0.02",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_bucket",
+      "metric": "flock_tpot_seconds_bucket",
       "value": 3.0
     },
     {
@@ -1374,7 +1374,7 @@
         "le": "0.04",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_bucket",
+      "metric": "flock_tpot_seconds_bucket",
       "value": 4.0
     },
     {
@@ -1382,7 +1382,7 @@
         "le": "0.08",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_bucket",
+      "metric": "flock_tpot_seconds_bucket",
       "value": 5.0
     },
     {
@@ -1390,7 +1390,7 @@
         "le": "0.16",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_bucket",
+      "metric": "flock_tpot_seconds_bucket",
       "value": 6.0
     },
     {
@@ -1398,7 +1398,7 @@
         "le": "0.32",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_bucket",
+      "metric": "flock_tpot_seconds_bucket",
       "value": 7.0
     },
     {
@@ -1406,21 +1406,21 @@
         "le": "+Inf",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_bucket",
+      "metric": "flock_tpot_seconds_bucket",
       "value": 10.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_count",
+      "metric": "flock_tpot_seconds_count",
       "value": 10.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_tpot_seconds_sum",
+      "metric": "flock_tpot_seconds_sum",
       "value": 1.976
     },
     {
@@ -1428,7 +1428,7 @@
         "le": "0.25",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 1.0
     },
     {
@@ -1436,7 +1436,7 @@
         "le": "0.5",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 2.0
     },
     {
@@ -1444,7 +1444,7 @@
         "le": "1",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 3.0
     },
     {
@@ -1452,7 +1452,7 @@
         "le": "2",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 4.0
     },
     {
@@ -1460,7 +1460,7 @@
         "le": "5",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 5.0
     },
     {
@@ -1468,7 +1468,7 @@
         "le": "10",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 6.0
     },
     {
@@ -1476,7 +1476,7 @@
         "le": "30",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 7.0
     },
     {
@@ -1484,7 +1484,7 @@
         "le": "60",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 8.0
     },
     {
@@ -1492,7 +1492,7 @@
         "le": "120",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 9.0
     },
     {
@@ -1500,7 +1500,7 @@
         "le": "300",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 10.0
     },
     {
@@ -1508,101 +1508,101 @@
         "le": "+Inf",
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_bucket",
+      "metric": "flock_upstream_seconds_bucket",
       "value": 10.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_count",
+      "metric": "flock_upstream_seconds_count",
       "value": 10.0
     },
     {
       "labels": {
         "model": "fixture/alpha"
       },
-      "metric": "nimproxy_upstream_seconds_sum",
+      "metric": "flock_upstream_seconds_sum",
       "value": 422.6
     },
     {
       "labels": {
         "le": "0.001"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 1.0
     },
     {
       "labels": {
         "le": "0.05"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 2.0
     },
     {
       "labels": {
         "le": "0.25"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 3.0
     },
     {
       "labels": {
         "le": "1"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 4.0
     },
     {
       "labels": {
         "le": "5"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 5.0
     },
     {
       "labels": {
         "le": "15"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 6.0
     },
     {
       "labels": {
         "le": "60"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 7.0
     },
     {
       "labels": {
         "le": "180"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 8.0
     },
     {
       "labels": {
         "le": "600"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 10.0
     },
     {
       "labels": {
         "le": "+Inf"
       },
-      "metric": "nimproxy_queue_wait_seconds_bucket",
+      "metric": "flock_queue_wait_seconds_bucket",
       "value": 10.0
     },
     {
       "labels": {},
-      "metric": "nimproxy_queue_wait_seconds_count",
+      "metric": "flock_queue_wait_seconds_count",
       "value": 10.0
     },
     {
       "labels": {},
-      "metric": "nimproxy_queue_wait_seconds_sum",
+      "metric": "flock_queue_wait_seconds_sum",
       "value": 932.6205
     },
     {
@@ -1610,7 +1610,7 @@
         "field": "prompt_tokens",
         "result": "invalid"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1618,7 +1618,7 @@
         "field": "completion_tokens",
         "result": "invalid"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1626,7 +1626,7 @@
         "field": "total_tokens",
         "result": "invalid"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1634,7 +1634,7 @@
         "field": "cached_tokens",
         "result": "invalid"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1642,7 +1642,7 @@
         "field": "reasoning_tokens",
         "result": "invalid"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1650,7 +1650,7 @@
         "field": "prompt_tokens",
         "result": "unavailable"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1658,7 +1658,7 @@
         "field": "completion_tokens",
         "result": "unavailable"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1666,7 +1666,7 @@
         "field": "total_tokens",
         "result": "unavailable"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1674,7 +1674,7 @@
         "field": "cached_tokens",
         "result": "unavailable"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1682,7 +1682,7 @@
         "field": "reasoning_tokens",
         "result": "unavailable"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1690,7 +1690,7 @@
         "field": "prompt_tokens",
         "result": "estimated"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1698,7 +1698,7 @@
         "field": "completion_tokens",
         "result": "estimated"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1706,7 +1706,7 @@
         "field": "total_tokens",
         "result": "estimated"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1714,7 +1714,7 @@
         "field": "cached_tokens",
         "result": "estimated"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1722,7 +1722,7 @@
         "field": "reasoning_tokens",
         "result": "estimated"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1730,7 +1730,7 @@
         "field": "prompt_tokens",
         "result": "measured"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1738,7 +1738,7 @@
         "field": "completion_tokens",
         "result": "measured"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1746,7 +1746,7 @@
         "field": "total_tokens",
         "result": "measured"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1754,7 +1754,7 @@
         "field": "cached_tokens",
         "result": "measured"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     },
     {
@@ -1762,7 +1762,7 @@
         "field": "reasoning_tokens",
         "result": "measured"
       },
-      "metric": "nimproxy_usage_observations_total",
+      "metric": "flock_usage_observations_total",
       "value": 9.0
     }
   ],

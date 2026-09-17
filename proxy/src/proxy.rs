@@ -153,9 +153,9 @@ async fn reserve_slot(
     loop {
         tokio::select! {
             slot = &mut rx => {
-                histogram!("nimproxy_queue_wait_seconds").record(queued.elapsed().as_secs_f64());
+                histogram!("flock_queue_wait_seconds").record(queued.elapsed().as_secs_f64());
                 if let Ok(slot) = &slot {
-                    counter!("nimproxy_lane_requests_total", "lane" => slot.lane.to_string())
+                    counter!("flock_lane_requests_total", "lane" => slot.lane.to_string())
                         .increment(1);
                 }
                 return slot.ok();
@@ -213,14 +213,14 @@ async fn acquire_model_permit(
 /// settings-driven pool swap lands on the (possibly retired) generation that
 /// made the grant.
 fn enter_cooldown(slot: &Slot, status: &str, backoff: Duration) {
-    counter!("nimproxy_lane_cooldown_total", "lane" => slot.lane.to_string(), "status" => status.to_owned())
+    counter!("flock_lane_cooldown_total", "lane" => slot.lane.to_string(), "status" => status.to_owned())
         .increment(1);
     slot.pool.penalize(slot.lane, backoff);
 }
 
 fn record_request(ctx: &Ctx, status: &str) {
     counter!(
-        "nimproxy_requests_total",
+        "flock_requests_total",
         "client" => ctx.client.clone(),
         "model" => ctx.model.clone(),
         "path" => ctx.path.clone(),
@@ -239,7 +239,7 @@ fn record_request(ctx: &Ctx, status: &str) {
 
 fn record_deadline(ctx: &Ctx) {
     counter!(
-        "nimproxy_deadline_exceeded_total",
+        "flock_deadline_exceeded_total",
         "client" => ctx.client.clone(),
         "model" => ctx.model.clone(),
         "path" => ctx.path.clone(),
@@ -250,12 +250,12 @@ fn record_deadline(ctx: &Ctx) {
 
 fn record_tokens(ctx: &Ctx, prompt: Option<u64>, completion: Option<u64>, source: &str) {
     if let Some(p) = prompt {
-        counter!("nimproxy_prompt_tokens_total", "client" => ctx.client.clone(), "model" => ctx.model.clone())
+        counter!("flock_prompt_tokens_total", "client" => ctx.client.clone(), "model" => ctx.model.clone())
             .increment(p);
     }
     if let Some(c) = completion {
         counter!(
-            "nimproxy_completion_tokens_total",
+            "flock_completion_tokens_total",
             "client" => ctx.client.clone(),
             "model" => ctx.model.clone(),
             "source" => source.to_owned(),
@@ -310,19 +310,19 @@ fn record_shape(ctx: &Ctx, parsed: Option<&serde_json::Value>, wants_stream: boo
     // doing"). "Harness" is retired vocabulary; see
     // knowledge/decisions/standard-vocabulary.md.
     counter!(
-        "nimproxy_stream_requests_total",
+        "flock_stream_requests_total",
         "client" => ctx.client.clone(),
         "stream" => if wants_stream { "true" } else { "false" }.to_owned(),
     )
     .increment(1);
     let Some(v) = parsed else { return };
     if let Some(msgs) = v.get("messages").and_then(|m| m.as_array()) {
-        histogram!("nimproxy_request_messages", "client" => ctx.client.clone())
+        histogram!("flock_request_messages", "client" => ctx.client.clone())
             .record(msgs.len() as f64);
     }
     if let Some(n) = count_tools(v) {
-        histogram!("nimproxy_request_tools", "client" => ctx.client.clone()).record(n as f64);
-        counter!("nimproxy_tool_choice_total", "mode" => tool_choice_mode(v).to_owned())
+        histogram!("flock_request_tools", "client" => ctx.client.clone()).record(n as f64);
+        counter!("flock_tool_choice_total", "mode" => tool_choice_mode(v).to_owned())
             .increment(1);
     }
     if let Some(mt) = v
@@ -330,13 +330,13 @@ fn record_shape(ctx: &Ctx, parsed: Option<&serde_json::Value>, wants_stream: boo
         .and_then(|x| x.as_u64())
         .or_else(|| v.get("max_completion_tokens").and_then(|x| x.as_u64()))
     {
-        histogram!("nimproxy_request_max_tokens", "client" => ctx.client.clone()).record(mt as f64);
+        histogram!("flock_request_max_tokens", "client" => ctx.client.clone()).record(mt as f64);
     }
     if let Some(t) = v.get("temperature").and_then(|x| x.as_f64()) {
-        histogram!("nimproxy_request_temperature", "client" => ctx.client.clone()).record(t);
+        histogram!("flock_request_temperature", "client" => ctx.client.clone()).record(t);
     }
     if is_json_mode(v) {
-        counter!("nimproxy_json_mode_total", "client" => ctx.client.clone()).increment(1);
+        counter!("flock_json_mode_total", "client" => ctx.client.clone()).increment(1);
     }
 }
 
@@ -348,7 +348,7 @@ fn record_observations(
 ) -> Option<(u64, &'static str)> {
     for metric in usage_observation_metrics(&observations.usage) {
         counter!(
-            "nimproxy_usage_observations_total",
+            "flock_usage_observations_total",
             "field" => metric.field,
             "result" => metric.result,
         )
@@ -369,7 +369,7 @@ fn record_observations(
             continue;
         };
         counter!(
-            "nimproxy_finish_reason_total",
+            "flock_finish_reason_total",
             "model" => ctx.model.clone(),
             "reason" => reason.metric_label(),
         )
@@ -377,13 +377,13 @@ fn record_observations(
     }
     if let Observation::Measured(reasoning) = observations.usage.reasoning_tokens {
         if reasoning > 0 {
-            counter!("nimproxy_reasoning_tokens_total", "model" => ctx.model.clone())
+            counter!("flock_reasoning_tokens_total", "model" => ctx.model.clone())
                 .increment(reasoning);
         }
     }
     if let Observation::Measured(tool_calls) = observations.tool_calls {
         if tool_calls > 0 {
-            counter!("nimproxy_tool_calls_total", "model" => ctx.model.clone())
+            counter!("flock_tool_calls_total", "model" => ctx.model.clone())
                 .increment(tool_calls);
         }
     }
@@ -465,7 +465,7 @@ pub async fn handle(
         }
     });
     if inflight > cfg.max_inflight {
-        counter!("nimproxy_shed_total").increment(1);
+        counter!("flock_shed_total").increment(1);
         return overloaded(cfg.max_inflight);
     }
 
@@ -490,7 +490,7 @@ pub async fn handle(
             match matched {
                 Some(name) => name,
                 None => {
-                    counter!("nimproxy_unauthorized_total").increment(1);
+                    counter!("flock_unauthorized_total").increment(1);
                     tokio::time::sleep(Duration::from_millis(250)).await;
                     return unauthorized();
                 }
@@ -651,8 +651,8 @@ async fn buffered(
     prefer: Option<usize>,
     deadline: Instant,
 ) -> Response {
-    let _active = crate::dispatch::scopeguard(|| gauge!("nimproxy_active_requests").decrement(1.0));
-    gauge!("nimproxy_active_requests").increment(1.0);
+    let _active = crate::dispatch::scopeguard(|| gauge!("flock_active_requests").decrement(1.0));
+    gauge!("flock_active_requests").increment(1.0);
     loop {
         // Two admission gates: a model-pressure permit (worker concurrency,
         // held through the whole upstream exchange — dropped on every exit
@@ -706,7 +706,7 @@ async fn buffered(
             enter_cooldown(&slot, status.as_str(), backoff);
             continue;
         }
-        histogram!("nimproxy_upstream_seconds", "model" => ctx.model.clone())
+        histogram!("flock_upstream_seconds", "model" => ctx.model.clone())
             .record(sent_at.elapsed().as_secs_f64());
         record_request(&ctx, resp.status().as_str());
         return relay(resp, &ctx).await;
@@ -738,8 +738,8 @@ fn streaming(
         // real lifetime — exits, so max_inflight bounds live streams too.
         let _inflight = inflight_guard;
         let _active =
-            crate::dispatch::scopeguard(|| gauge!("nimproxy_active_requests").decrement(1.0));
-        gauge!("nimproxy_active_requests").increment(1.0);
+            crate::dispatch::scopeguard(|| gauge!("flock_active_requests").decrement(1.0));
+        gauge!("flock_active_requests").increment(1.0);
         let deadline_tx = tx.clone();
         let deadline_ctx = ctx.clone();
         let observer = Arc::new(Mutex::new(None));
@@ -899,7 +899,7 @@ fn streaming(
                         Ok(b) => {
                             if first_chunk.is_none() {
                                 first_chunk = Some(Instant::now());
-                                histogram!("nimproxy_ttft_seconds", "model" => ctx.model.clone())
+                                histogram!("flock_ttft_seconds", "model" => ctx.model.clone())
                                     .record(sent_at.elapsed().as_secs_f64());
                             }
                             observer
@@ -928,16 +928,16 @@ fn streaming(
                 if let (Some(first), Some((c, source))) = (first_chunk, completion) {
                     let gen_secs = first.elapsed().as_secs_f64();
                     if gen_secs > 0.1 && c > 0 {
-                        histogram!("nimproxy_tokens_per_second", "model" => ctx.model.clone(), "source" => source)
+                        histogram!("flock_tokens_per_second", "model" => ctx.model.clone(), "source" => source)
                         .record(c as f64 / gen_secs);
                         // Mean inter-token latency (time-per-output-token).
-                        histogram!("nimproxy_tpot_seconds", "model" => ctx.model.clone())
+                        histogram!("flock_tpot_seconds", "model" => ctx.model.clone())
                             .record(gen_secs / c as f64);
                     }
                 }
                 // Total upstream time for streaming, for parity with the buffered
                 // path (which records upstream_seconds directly).
-                histogram!("nimproxy_upstream_seconds", "model" => ctx.model.clone())
+                histogram!("flock_upstream_seconds", "model" => ctx.model.clone())
                     .record(sent_at.elapsed().as_secs_f64());
                 record_request(&ctx, "200");
                 return;

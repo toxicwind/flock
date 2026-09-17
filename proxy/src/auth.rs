@@ -26,7 +26,7 @@ use subtle::ConstantTimeEq;
 use crate::config::StoredConfig;
 use crate::AppState;
 
-const COOKIE: &str = "nimproxy_session";
+const COOKIE: &str = "flock_session";
 const SESSION_TTL_SECS: u64 = 12 * 3600;
 
 /// Constant-time byte equality (avoids leaking content via timing). `subtle`
@@ -498,7 +498,7 @@ pub async fn login_submit(
             .body(Body::empty())
             .unwrap();
     }
-    metrics::counter!("nimproxy_login_failures_total").increment(1);
+    metrics::counter!("flock_login_failures_total").increment(1);
     admin.note_failure();
     tokio::time::sleep(std::time::Duration::from_millis(500)).await;
     login_html(Some("invalid_credentials"))

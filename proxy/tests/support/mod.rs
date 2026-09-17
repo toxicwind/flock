@@ -441,7 +441,7 @@ fn fresh_data_dir() -> std::path::PathBuf {
     use std::sync::atomic::{AtomicU32, Ordering};
     static N: AtomicU32 = AtomicU32::new(0);
     let dir = std::env::temp_dir().join(format!(
-        "nimproxy-e2e-{}-{}",
+        "flock-e2e-{}-{}",
         std::process::id(),
         N.fetch_add(1, Ordering::SeqCst)
     ));
@@ -484,7 +484,7 @@ pub async fn start_proxy_in(data_dir: std::path::PathBuf, envs: &[(&str, &str)])
 pub async fn restart(mut proxy: Proxy, envs: &[(&str, &str)]) -> Proxy {
     let data_dir = std::mem::replace(
         &mut proxy.data_dir,
-        std::env::temp_dir().join("nimproxy-restart-placeholder"),
+        std::env::temp_dir().join("flock-restart-placeholder"),
     );
     proxy.terminate();
     spawn_and_wait_healthy(data_dir, envs).await
@@ -520,12 +520,12 @@ async fn spawn_and_wait_healthy(data_dir: std::path::PathBuf, envs: &[(&str, &st
 }
 
 fn base_cmd(port: u16, data_dir: &std::path::Path) -> std::process::Command {
-    let mut cmd = std::process::Command::new(env!("CARGO_BIN_EXE_nim-proxy"));
+    let mut cmd = std::process::Command::new(env!("CARGO_BIN_EXE_flock"));
     cmd.env_clear()
         .current_dir(std::env::temp_dir()) // dodge any local .env
         .env("PORT", port.to_string())
         .env("DATA_DIR", data_dir)
-        .env("RUST_LOG", "nim_proxy=warn")
+        .env("RUST_LOG", "flock=warn")
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::null());
     // Under `cargo llvm-cov` the spawned server must write its own coverage

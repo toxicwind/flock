@@ -295,36 +295,36 @@ The build and release path is hardened to the OpenSSF baseline (scored weekly by
 
 | Metric | Labels | Meaning |
 |---|---|---|
-| `nimproxy_requests_total` | client, model, path, status | Every request (`status` includes `disconnect`, `stall`, `stream_error`, `deadline`) |
-| `nimproxy_deadline_exceeded_total` | client, model, path | Requests stopped by `X-Nim-Proxy-Deadline-Ms` |
-| `nimproxy_prompt_tokens_total` | client, model | Prompt tokens, from upstream `usage` |
-| `nimproxy_completion_tokens_total` | client, model, source | Completion tokens; `usage` = exact, `estimate` = per-SSE-event fallback |
-| `nimproxy_ttft_seconds` | model | Upstream send → first streamed byte |
-| `nimproxy_tokens_per_second` | model, source | Generation speed |
-| `nimproxy_tpot_seconds` | model | Mean inter-token latency (time per output token) |
-| `nimproxy_upstream_seconds` | model | Upstream latency (streaming + non-streaming) |
-| `nimproxy_finish_reason_total` | model, reason | How generations end; `length` = truncation |
-| `nimproxy_tool_calls_total` | model | Tool calls emitted |
-| `nimproxy_reasoning_tokens_total` | model | Reasoning ("thinking") tokens, from `usage` details |
-| `nimproxy_usage_observations_total` | field, result | Usage-field quality: measured, estimated, unavailable, or invalid |
-| `nimproxy_stream_requests_total` | client, stream | Requests per client, streaming vs buffered |
-| `nimproxy_request_messages` | client | Conversation depth per request (histogram) |
-| `nimproxy_request_tools` | client | Tools offered per request (histogram) |
-| `nimproxy_request_max_tokens` | client | Requested output cap (histogram) |
-| `nimproxy_request_temperature` | client | Sampling temperature (histogram) |
-| `nimproxy_tool_choice_total` | mode | Tool-selection mode: `auto`/`none`/`required`/`named` |
-| `nimproxy_json_mode_total` | client | Structured-output (JSON-mode) requests |
-| `nimproxy_queue_wait_seconds` | — | Time waiting for a rate-limit slot |
-| `nimproxy_queue_depth` / `nimproxy_active_requests` | — | Live load gauges |
-| `nimproxy_lane_requests_total` | lane | Requests per key lane |
-| `nimproxy_lane_cooldown_total` | lane, status | Upstream 429/5xx/connect per lane |
-| `nimproxy_affinity_total` | result | Conversation routing: `sticky` / `spill` / `none` |
-| `nimproxy_unauthorized_total` | — | Rejected API requests |
-| `nimproxy_login_failures_total` | — | Failed dashboard logins |
-| `nimproxy_shed_total` | — | Requests shed at the in-flight cap |
-| `nimproxy_worker_exhausted_total` | model | NIM per-model worker-concurrency exhaustion events |
-| `nimproxy_model_inflight` | model | Requests in flight per model (governor gauge) |
-| `nimproxy_model_limit` | model | Current per-model concurrency cap; `0` = ungoverned |
+| `flock_requests_total` | client, model, path, status | Every request (`status` includes `disconnect`, `stall`, `stream_error`, `deadline`) |
+| `flock_deadline_exceeded_total` | client, model, path | Requests stopped by `X-Nim-Proxy-Deadline-Ms` |
+| `flock_prompt_tokens_total` | client, model | Prompt tokens, from upstream `usage` |
+| `flock_completion_tokens_total` | client, model, source | Completion tokens; `usage` = exact, `estimate` = per-SSE-event fallback |
+| `flock_ttft_seconds` | model | Upstream send → first streamed byte |
+| `flock_tokens_per_second` | model, source | Generation speed |
+| `flock_tpot_seconds` | model | Mean inter-token latency (time per output token) |
+| `flock_upstream_seconds` | model | Upstream latency (streaming + non-streaming) |
+| `flock_finish_reason_total` | model, reason | How generations end; `length` = truncation |
+| `flock_tool_calls_total` | model | Tool calls emitted |
+| `flock_reasoning_tokens_total` | model | Reasoning ("thinking") tokens, from `usage` details |
+| `flock_usage_observations_total` | field, result | Usage-field quality: measured, estimated, unavailable, or invalid |
+| `flock_stream_requests_total` | client, stream | Requests per client, streaming vs buffered |
+| `flock_request_messages` | client | Conversation depth per request (histogram) |
+| `flock_request_tools` | client | Tools offered per request (histogram) |
+| `flock_request_max_tokens` | client | Requested output cap (histogram) |
+| `flock_request_temperature` | client | Sampling temperature (histogram) |
+| `flock_tool_choice_total` | mode | Tool-selection mode: `auto`/`none`/`required`/`named` |
+| `flock_json_mode_total` | client | Structured-output (JSON-mode) requests |
+| `flock_queue_wait_seconds` | — | Time waiting for a rate-limit slot |
+| `flock_queue_depth` / `flock_active_requests` | — | Live load gauges |
+| `flock_lane_requests_total` | lane | Requests per key lane |
+| `flock_lane_cooldown_total` | lane, status | Upstream 429/5xx/connect per lane |
+| `flock_affinity_total` | result | Conversation routing: `sticky` / `spill` / `none` |
+| `flock_unauthorized_total` | — | Rejected API requests |
+| `flock_login_failures_total` | — | Failed dashboard logins |
+| `flock_shed_total` | — | Requests shed at the in-flight cap |
+| `flock_worker_exhausted_total` | model | NIM per-model worker-concurrency exhaustion events |
+| `flock_model_inflight` | model | Requests in flight per model (governor gauge) |
+| `flock_model_limit` | model | Current per-model concurrency cap; `0` = ungoverned |
 
 Request shape (messages, tools, sampling params) is captured as **counts and sizes only — never message content**. The `model` and `path` labels are sanitized (safe charset, length-capped) and `model` cardinality is bounded; `reason`, `mode`, and `stream` are fixed enums — so untrusted clients can't inject into the exposition format or explode the registry.
 
@@ -364,7 +364,7 @@ available for rollback and may be removed manually after you no longer need
 it. Historical charts begin with post-upgrade data.
 
 Also update dashboards, alerts, or recording rules from
-`nimproxy_lane_benched_total` to `nimproxy_lane_cooldown_total`. Pricing
+`flock_lane_benched_total` to `flock_lane_cooldown_total`. Pricing
 settings and estimated-savings fields are removed; an existing `pricing`
 config block is ignored. The config store remains schema v1; the new server
 locale defaults to `en-US`, and each user's optional locale defaults to no

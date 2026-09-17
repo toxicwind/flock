@@ -37,7 +37,7 @@ Break any of these and the change is wrong regardless of whether it works:
    metric names and label values, and stable identifiers. An intentional
    breaking change requires a decision, tests, and a release note.
 5. **Data is never localized.** Model ids, client names, publisher names, and
-   every `nimproxy_*` series pass through untouched. Localize repository-owned
+   every `flock_*` series pass through untouched. Localize repository-owned
    labels, not API values.
 6. **Identifiers stay frozen** during label-only work: metric names, DOM ids,
    `data-*`, CSS classes, sort keys, and config keys do not move. Deliberate
