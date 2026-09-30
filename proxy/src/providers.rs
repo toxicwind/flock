@@ -507,8 +507,9 @@ pub fn default_providers() -> Vec<ProviderDef> {
         false,
         true,
         &[
-            "nvidia/llama-3.1-nemotron-70b",
-            "nvidia/mistral-7b-instruct",
+            // Refreshed 2026-09-30: the astmatrix originals 404 upstream.
+            "nvidia/nemotron-3-ultra-550b-a55b",
+            "nvidia/llama-3.1-nemotron-70b-instruct",
         ],
         1.2,
         1550,
@@ -519,7 +520,11 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "GROQ_API_KEY",
         false,
         true,
-        &["groq/llama-3.1-70b-versatile", "groq/mixtral-8x7b"],
+        &[
+            // Refreshed 2026-09-30: bare upstream IDs; groq/ prefix 404s.
+            "openai/gpt-oss-20b",
+            "openai/gpt-oss-120b",
+        ],
         1.5,
         1580,
     );
@@ -539,7 +544,11 @@ pub fn default_providers() -> Vec<ProviderDef> {
         "CEREBRAS_API_KEY",
         false,
         true,
-        &["cerebras/llama-3.1-70b"],
+        &[
+            // Refreshed 2026-09-30: bare upstream IDs; cerebras/ prefix 404s.
+            "gpt-oss-120b",
+            "qwen-3.8-27b",
+        ],
         1.3,
         1560,
     );
@@ -613,6 +622,14 @@ pub fn default_providers() -> Vec<ProviderDef> {
         1.0,
         1470,
     );
+    // The literal "free" routing directive resolves its upstream model via
+    // model_map so a wildcard model list never sends "*" upstream.
+    if let Some(nv) = v.iter_mut().find(|p| p.name == "nvidia") {
+        nv.model_map.insert(
+            "free".to_string(),
+            "nvidia/nemotron-3-ultra-550b-a55b".to_string(),
+        );
+    }
     v
 }
 

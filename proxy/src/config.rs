@@ -388,6 +388,12 @@ pub fn load(dir: &Path) -> Result<Option<StoredConfig>, String> {
 /// the operator UI ready for keys, but `usable()` keeps them out of routing
 /// until key material exists.
 fn migrate_v1(mut sc: StoredConfig) -> StoredConfig {
+    // The v1 upstream was always the NVIDIA free lane: preserve its
+    // free-tier membership (lost to ..Default::default() before
+    // 2026-09-30, which made Strategy::Free select zero candidates).
+    // The wildcard model list is kept for pass-through compatibility;
+    // the literal "free" directive resolves its upstream model via
+    // model_map, never the wildcard.
     let nvidia = ProviderDef {
         name: "nvidia".to_string(),
         base_url: sc.upstream.base_url.clone(),
@@ -404,8 +410,15 @@ fn migrate_v1(mut sc: StoredConfig) -> StoredConfig {
             })
             .collect(),
         models: vec!["*".to_string()],
+        model_map: [(
+            "free".to_string(),
+            "nvidia/nemotron-3-ultra-550b-a55b".to_string(),
+        )]
+        .into_iter()
+        .collect(),
         display_name: "NVIDIA".to_string(),
         enabled: true,
+        free_tier: true,
         ..ProviderDef::default()
     };
     let mut providers = vec![nvidia];
@@ -946,6 +959,12 @@ mod tests {
         assert_eq!(nv.keys[0].key, "nvapi-one");
         assert_eq!(nv.keys[0].owner, "root");
         assert_eq!(nv.models, vec!["*".to_string()]);
+        assert!(nv.free_tier, "migrated nvidia keeps its free-tier lane");
+        assert_eq!(
+            nv.model_map.get("free").map(String::as_str),
+            Some("nvidia/nemotron-3-ultra-550b-a55b"),
+            "free directive resolves to a real upstream model"
+        );
         // The other providers are present but unusable without key material.
         let or = sc
             .providers

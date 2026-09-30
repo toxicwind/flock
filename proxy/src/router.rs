@@ -423,7 +423,15 @@ impl RouterHandle {
         session: &str,
         strategy_override: Option<Strategy>,
     ) -> Vec<RouteCandidate> {
-        let strategy = strategy_override.unwrap_or_else(|| self.routing_config().strategy);
+        // The literal "free" directive is a routing directive, not a model
+        // name: it forces the Free strategy (free-tier providers only,
+        // each serving its default free model) regardless of the
+        // configured default strategy.
+        let strategy = if model == "free" {
+            Strategy::Free
+        } else {
+            strategy_override.unwrap_or_else(|| self.routing_config().strategy)
+        };
         let now_unix = unix_now();
         // Sticky sessions always win when the pinned provider is still
         // usable: this is AstMatrix's sticky_affinity contract (its shipped
@@ -456,7 +464,16 @@ impl RouterHandle {
         // the model (or a wildcard). This is the multi-provider analog of
         // the old proxy's pass-through — except now unknown models don't
         // fan out to providers that never heard of them.
-        rts.retain(|rt| rt.def.read().unwrap().serves_model(model));
+        //
+        // Exception: the literal "free" routing directive. No provider
+        // lists a model named "free", so scoping here would empty the
+        // candidate set before Strategy::Free's free_tier filter ever runs.
+        // The Free strategy itself is the selector; each candidate's
+        // upstream model resolves to the provider's default below.
+        let free_directive = model == "free";
+        if !free_directive {
+            rts.retain(|rt| rt.def.read().unwrap().serves_model(model));
+        }
         if rts.is_empty() {
             return vec![];
         }
@@ -478,7 +495,20 @@ impl RouterHandle {
             .map(|rt| {
                 let (provider, m) = {
                     let def = rt.def.read().unwrap();
-                    (def.name.clone(), def.rewrite_model(model))
+                    let upstream = if free_directive {
+                        // "free" -> this provider's default free model: an
+                        // explicit model_map entry wins, else the first
+                        // listed model, else the directive itself (upstream
+                        // 404s, same as an unknown model today).
+                        def.model_map
+                            .get("free")
+                            .cloned()
+                            .or_else(|| def.models.first().cloned())
+                            .unwrap_or_else(|| model.to_string())
+                    } else {
+                        def.rewrite_model(model)
+                    };
+                    (def.name.clone(), upstream)
                 };
                 RouteCandidate {
                     provider,
@@ -1576,6 +1606,49 @@ mod tests {
         let cands = r.select("m", "s", Some(Strategy::Free));
         assert_eq!(cands.len(), 1);
         assert_eq!(cands[0].provider, "free");
+    }
+
+    #[tokio::test]
+    async fn free_directive_skips_model_scoping() {
+        // Regression: the literal "free" routing directive used to die in
+        // serves_model("free") before Strategy::Free ever ran (404, no
+        // candidates). Production providers list explicit models; none is
+        // named "free" (test_def's "*" wildcard hid this).
+        let mut paid = test_def("paid");
+        paid.free_tier = false;
+        paid.models = vec!["paid/model-x".into()];
+        let mut free = test_def("free");
+        free.free_tier = true;
+        free.models = vec!["free/best-model".into(), "free/other".into()];
+        let r = test_router(vec![paid, free]);
+        let cands = r.select("free", "s", Some(Strategy::Free));
+        assert_eq!(cands.len(), 1);
+        assert_eq!(cands[0].provider, "free");
+        assert_eq!(cands[0].model, "free/best-model");
+    }
+
+    #[tokio::test]
+    async fn free_directive_forces_free_strategy() {
+        // The literal "free" is a routing directive: it must select the
+        // Free strategy (free-tier providers only) even when the
+        // configured default is Hybrid. Before this, "free" skipped model
+        // scoping but still ran under Hybrid, so paid providers entered
+        // the candidate set and the request 404'd upstream.
+        let mut paid = test_def("paid");
+        paid.free_tier = false;
+        paid.models = vec!["paid/model-x".into()];
+        let mut free = test_def("free");
+        free.free_tier = true;
+        free.models = vec!["free/best-model".into(), "free/other".into()];
+        let r = test_router(vec![paid, free]);
+        // None = configured default (Hybrid); Some(Hybrid) = explicit.
+        for ov in [None, Some(Strategy::Hybrid)] {
+            let cands = r.select("free", "s", ov);
+            assert_eq!(cands.len(), 1, "override={ov:?}");
+            assert_eq!(cands[0].provider, "free");
+            assert_eq!(cands[0].model, "free/best-model");
+            assert_eq!(cands[0].strategy, Strategy::Free);
+        }
     }
 
     #[tokio::test]
